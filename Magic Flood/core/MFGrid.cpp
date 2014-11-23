@@ -70,11 +70,6 @@ void MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y)
     
     //update the new color on self, and add to the incremental grid array
     grid[x][y] = newColor;
-    /*int *changeArray = (int *)malloc(2 * sizeof(int));
-    changeArray[0] = x;
-    changeArray[1] = y;
-    changeList->push_back(changeArray);
-    */
     
     //updateNeighbors(oldColor, newColor, x-1, y-1, changeList);
     updateNeighbors(oldColor, newColor, x, y-1);

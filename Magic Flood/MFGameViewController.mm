@@ -28,8 +28,9 @@
                                                         message:@"What would you like to do?"
                                                        delegate:self
                                               cancelButtonTitle:@"New Game"
-                                              otherButtonTitles:@"Menu", nil];
+                                              otherButtonTitles:@"Menu", @"Resume Game", nil];
     }
+    [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
     [self.exitAlertView show];
 }
 
