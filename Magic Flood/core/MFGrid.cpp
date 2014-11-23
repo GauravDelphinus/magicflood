@@ -278,7 +278,7 @@ void MFGrid::initializeGrid()
     else if (level == GAME_LEVEL_HARD)
     {
         srandom(time(0));
-        int shape = random() % NUM_HARD_SHAPES + SHAPE_HARD_A;
+        int shape = random() % NUM_HARD_SHAPES + SHAPE_HARD_C;
         
         fprintf(stderr, "shape = %d", shape);
         grid = obstacle->createGrid(shape, gridSize);
@@ -298,10 +298,13 @@ void MFGrid::initializeGrid()
             }
         }
     }
+    
+    fprintf(stderr, "initializeGridData, created grid = %p\n", grid);
 }
 
 MFGrid::~MFGrid()
 {
+    fprintf(stderr, "~MFGrid, freeing grid = %p and startPos = %p\n", grid, startPos);
     if (grid != NULL)
     {
         for (int i = 0; i < gridSize; i++)
@@ -309,10 +312,12 @@ MFGrid::~MFGrid()
             free(grid[i]);
         }
         free(grid);
+        grid = NULL;
     }
     
     if (startPos != NULL)
     {
         free(startPos);
+        startPos = NULL;
     }
 }

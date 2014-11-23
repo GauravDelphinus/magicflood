@@ -69,6 +69,7 @@ int* getStartPos(long handle)
  **/
 void freeStartPos(long handle, int *startPos)
 {
+    fprintf(stderr, "freeStartPos called with handle = %lx, startPos = %p\n", handle, startPos);
     MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
     if (grid != NULL)
     {
@@ -138,6 +139,7 @@ int** getGridData(long handle)
                 }
             }
         
+            fprintf(stderr, "getGridData, return gridData = %p\n", gridData);
             return gridData;
         }
     }
@@ -150,6 +152,7 @@ int** getGridData(long handle)
  **/
 void freeGridData(long handle, int **gridData)
 {
+    fprintf(stderr, "freeGridData called with handle = %lx, gridData = %p\n", handle, gridData);
     MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
     if (grid != NULL)
     {

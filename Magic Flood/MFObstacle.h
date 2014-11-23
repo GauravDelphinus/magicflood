@@ -54,11 +54,20 @@ public:
 /**
  Shapes used in Hard level
  **/
-#define SHAPE_HARD_A 20
-#define SHAPE_HARD_CIRCLE 21
-#define SHAPE_HARD_SPIRAL 22
-#define SHAPE_HARD_C 23
+#define SHAPE_HARD_C 20
+#define SHAPE_HARD_G 21
+#define SHAPE_HARD_H 22
+#define SHAPE_HARD_I 23
+#define SHAPE_HARD_L 24
+#define SHAPE_HARD_M 25
+#define SHAPE_HARD_P 26
+#define SHAPE_HARD_S 27
+#define SHAPE_HARD_SATHIYA 28
+#define SHAPE_HARD_SPIRAL 29
+#define SHAPE_HARD_U 30
+#define SHAPE_HARD_W 31
+#define SHAPE_HARD_ZIGZAG 32
 
-#define NUM_HARD_SHAPES 4
+#define NUM_HARD_SHAPES 9
 
 #endif /* defined(__Magic_Flood__MFObstacle__) */

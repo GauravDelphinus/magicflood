@@ -49,6 +49,7 @@
         {
             myGrid[i] = (int *) malloc (size * sizeof(int));
         }
+        NSLog(@"initializeGameData, allocated new myGrid = %p", myGrid);
     }
     
     //copy grid to local data structure

@@ -58,6 +58,7 @@
     int **gridData = getGridData(self.gridHandle);
     [[self gameView] updateGameData:gridData];
     freeGridData(self.gridHandle, gridData);
+    gridData = NULL;
 
     if (result == RESULT_SUCCESS) //success
     {
@@ -110,7 +111,8 @@
  **/
 -(void)startNewGame
 {
-    //clear the gandle if a game was already underway
+    //clear the handle if a game was already underway
+    NSLog(@"startNewGame, gridHandle = %lx", self.gridHandle);
     if (self.gridHandle != 0)
     {
         deleteGrid(self.gridHandle);
@@ -119,6 +121,7 @@
     
     //initialize a new game grid
     self.gridHandle = createNewGrid(self.gameLevel);
+    NSLog(@"startNewGame, created new gridHandle = %lx", self.gridHandle);
     
     //extract data for the game, and then pass on to the UIView for rendering
     int *startPos = getStartPos(self.gridHandle);
@@ -127,6 +130,8 @@
     [[self gameView] initializeGameData:gridData WithSize:getGridSize(self.gridHandle) WithStartPos:startPos WithMaxMoves:getMaxMoves(self.gridHandle)];
     freeGridData(self.gridHandle, gridData);
     freeStartPos(self.gridHandle, startPos);
+    gridData = NULL;
+    startPos = NULL;
     
     //update the UI to reflect the game moves
     NSString *labeltext = [NSString stringWithFormat:@"%d / %d", getCurrMove(self.gridHandle), getMaxMoves(self.gridHandle)];
@@ -231,6 +236,7 @@
  **/
 -(void)dealloc
 {
+    NSLog(@"dealloc, gridHandle = %lx", self.gridHandle);
     if (self.gridHandle != 0)
     {
         deleteGrid(self.gridHandle);
