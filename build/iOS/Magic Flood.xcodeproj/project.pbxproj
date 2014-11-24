@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F10B45BB1A2032D9001A0B87 /* MFObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10B45B91A2032D9001A0B87 /* MFObstacle.cpp */; };
-		F10B45BD1A215300001A0B87 /* MFGridInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10B45BC1A215300001A0B87 /* MFGridInterface.cpp */; };
+		F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F147C5FA1A2364EF00CBCE83 /* Images.xcassets */; };
+		F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7771A236C23002D4DDD /* Main_iPad.storyboard */; };
+		F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */; };
+		F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153249E1A2367EF00379773 /* MFGridInterface.cpp */; };
 		F1A2F2DB1A1D7F1C000DD4E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */; };
 		F1A2F2DD1A1D7F1C000DD4E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */; };
 		F1A2F2DF1A1D7F1C000DD4E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DE1A1D7F1C000DD4E7 /* UIKit.framework */; };
 		F1A2F2E51A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1A2F2E31A1D7F1C000DD4E7 /* InfoPlist.strings */; };
 		F1A2F2E71A1D7F1C000DD4E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A2F2E61A1D7F1C000DD4E7 /* main.m */; };
-		F1A2F2EB1A1D7F1C000DD4E7 /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A2F2EA1A1D7F1C000DD4E7 /* MFAppDelegate.m */; };
-		F1A2F2EE1A1D7F1C000DD4E7 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A2F2EC1A1D7F1C000DD4E7 /* Main_iPhone.storyboard */; };
-		F1A2F2F11A1D7F1C000DD4E7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A2F2EF1A1D7F1C000DD4E7 /* Main_iPad.storyboard */; };
-		F1A2F2F41A1D7F1C000DD4E7 /* MFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A2F2F31A1D7F1C000DD4E7 /* MFViewController.m */; };
-		F1A2F2F61A1D7F1C000DD4E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A2F2F51A1D7F1C000DD4E7 /* Images.xcassets */; };
 		F1A2F2FD1A1D7F1C000DD4E7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2FC1A1D7F1C000DD4E7 /* XCTest.framework */; };
 		F1A2F2FE1A1D7F1C000DD4E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */; };
 		F1A2F2FF1A1D7F1C000DD4E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DE1A1D7F1C000DD4E7 /* UIKit.framework */; };
 		F1A2F3071A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1A2F3051A1D7F1C000DD4E7 /* InfoPlist.strings */; };
 		F1A2F3091A1D7F1C000DD4E7 /* Magic_FloodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A2F3081A1D7F1C000DD4E7 /* Magic_FloodTests.m */; };
-		F1A2F3151A1D800E000DD4E7 /* MFGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A2F3131A1D800E000DD4E7 /* MFGrid.cpp */; };
-		F1A2F3181A1DC05C000DD4E7 /* MFGameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1A2F3171A1DC05C000DD4E7 /* MFGameView.mm */; };
-		F1A2F31B1A1DC106000DD4E7 /* MFGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1A2F31A1A1DC106000DD4E7 /* MFGameViewController.mm */; };
+		F1C4EEF21A235C1300322C1E /* MFGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEF01A235C1300322C1E /* MFGrid.cpp */; };
+		F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEF61A235C3500322C1E /* MFAppDelegate.m */; };
+		F1C4EF031A235C3500322C1E /* MFGameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEF81A235C3500322C1E /* MFGameView.mm */; };
+		F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */; };
+		F1C4EF071A235C3500322C1E /* MFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF001A235C3500322C1E /* MFViewController.m */; };
+		F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,36 +40,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F10B45B91A2032D9001A0B87 /* MFObstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MFObstacle.cpp; sourceTree = "<group>"; };
-		F10B45BA1A2032D9001A0B87 /* MFObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFObstacle.h; sourceTree = "<group>"; };
-		F10B45BC1A215300001A0B87 /* MFGridInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MFGridInterface.cpp; sourceTree = "<group>"; };
-		F10B45BE1A215316001A0B87 /* MFGridInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFGridInterface.h; sourceTree = "<group>"; };
+		F147C5FA1A2364EF00CBCE83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../resources/iOS/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		F147E7781A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		F147E77A1A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		F153249D1A2366FD00379773 /* MFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAppDelegate.h; path = iOS/MFAppDelegate.h; sourceTree = "<group>"; };
+		F153249E1A2367EF00379773 /* MFGridInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGridInterface.cpp; path = ../../src/Common/MFGridInterface.cpp; sourceTree = SOURCE_ROOT; };
+		F153249F1A2367EF00379773 /* MFGridInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGridInterface.h; path = Common/MFGridInterface.h; sourceTree = "<group>"; };
 		F1A2F2D71A1D7F1C000DD4E7 /* Magic Flood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Flood.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F1A2F2DE1A1D7F1C000DD4E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F1A2F2E21A1D7F1C000DD4E7 /* Magic Flood-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Magic Flood-Info.plist"; sourceTree = "<group>"; };
+		F1A2F2E21A1D7F1C000DD4E7 /* Magic Flood-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Magic Flood-Info.plist"; path = "iOS/Magic Flood-Info.plist"; sourceTree = "<group>"; };
 		F1A2F2E41A1D7F1C000DD4E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F1A2F2E61A1D7F1C000DD4E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F1A2F2E81A1D7F1C000DD4E7 /* Magic Flood-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Magic Flood-Prefix.pch"; sourceTree = "<group>"; };
-		F1A2F2E91A1D7F1C000DD4E7 /* MFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFAppDelegate.h; sourceTree = "<group>"; };
-		F1A2F2EA1A1D7F1C000DD4E7 /* MFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFAppDelegate.m; sourceTree = "<group>"; };
-		F1A2F2ED1A1D7F1C000DD4E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		F1A2F2F01A1D7F1C000DD4E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		F1A2F2F21A1D7F1C000DD4E7 /* MFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFViewController.h; sourceTree = "<group>"; };
-		F1A2F2F31A1D7F1C000DD4E7 /* MFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFViewController.m; sourceTree = "<group>"; };
-		F1A2F2F51A1D7F1C000DD4E7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F1A2F2E61A1D7F1C000DD4E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../src/iOS/main.m; sourceTree = SOURCE_ROOT; };
+		F1A2F2E81A1D7F1C000DD4E7 /* Magic Flood-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Magic Flood-Prefix.pch"; path = "iOS/Magic Flood-Prefix.pch"; sourceTree = "<group>"; };
 		F1A2F2FB1A1D7F1C000DD4E7 /* Magic FloodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Magic FloodTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2F2FC1A1D7F1C000DD4E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F1A2F3041A1D7F1C000DD4E7 /* Magic FloodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Magic FloodTests-Info.plist"; sourceTree = "<group>"; };
 		F1A2F3061A1D7F1C000DD4E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F1A2F3081A1D7F1C000DD4E7 /* Magic_FloodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Magic_FloodTests.m; sourceTree = "<group>"; };
-		F1A2F3131A1D800E000DD4E7 /* MFGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGrid.cpp; path = core/MFGrid.cpp; sourceTree = "<group>"; };
-		F1A2F3141A1D800E000DD4E7 /* MFGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGrid.h; path = core/MFGrid.h; sourceTree = "<group>"; };
-		F1A2F3161A1DC05C000DD4E7 /* MFGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGameView.h; sourceTree = "<group>"; };
-		F1A2F3171A1DC05C000DD4E7 /* MFGameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MFGameView.mm; sourceTree = "<group>"; };
-		F1A2F3191A1DC106000DD4E7 /* MFGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGameViewController.h; sourceTree = "<group>"; };
-		F1A2F31A1A1DC106000DD4E7 /* MFGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MFGameViewController.mm; sourceTree = "<group>"; };
+		F1C4EEF01A235C1300322C1E /* MFGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGrid.cpp; path = ../../src/Common/MFGrid.cpp; sourceTree = SOURCE_ROOT; };
+		F1C4EEF11A235C1300322C1E /* MFGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGrid.h; path = ../../src/Common/MFGrid.h; sourceTree = SOURCE_ROOT; };
+		F1C4EEF61A235C3500322C1E /* MFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAppDelegate.m; path = ../../src/iOS/MFAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		F1C4EEF71A235C3500322C1E /* MFGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGameView.h; path = ../../src/iOS/MFGameView.h; sourceTree = SOURCE_ROOT; };
+		F1C4EEF81A235C3500322C1E /* MFGameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFGameView.mm; path = ../../src/iOS/MFGameView.mm; sourceTree = SOURCE_ROOT; };
+		F1C4EEF91A235C3500322C1E /* MFGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGameViewController.h; path = ../../src/iOS/MFGameViewController.h; sourceTree = SOURCE_ROOT; };
+		F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFGameViewController.mm; path = ../../src/iOS/MFGameViewController.mm; sourceTree = SOURCE_ROOT; };
+		F1C4EEFF1A235C3500322C1E /* MFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFViewController.h; path = ../../src/iOS/MFViewController.h; sourceTree = SOURCE_ROOT; };
+		F1C4EF001A235C3500322C1E /* MFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFViewController.m; path = ../../src/iOS/MFViewController.m; sourceTree = SOURCE_ROOT; };
+		F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFObstacle.cpp; path = ../../src/Common/MFObstacle.cpp; sourceTree = SOURCE_ROOT; };
+		F1C4EF091A235C6E00322C1E /* MFObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFObstacle.h; path = ../../src/Common/MFObstacle.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +96,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F14B00AD1A2363AA0039637B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F147E7771A236C23002D4DDD /* Main_iPad.storyboard */,
+				F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */,
+				F1A2F2E31A1D7F1C000DD4E7 /* InfoPlist.strings */,
+				F1A2F2E81A1D7F1C000DD4E7 /* Magic Flood-Prefix.pch */,
+				F1A2F2E21A1D7F1C000DD4E7 /* Magic Flood-Info.plist */,
+				F147C5FA1A2364EF00CBCE83 /* Images.xcassets */,
+			);
+			name = Resources;
+			path = ../../resources;
+			sourceTree = "<group>";
+		};
 		F1A2F2CE1A1D7F1C000DD4E7 = {
 			isa = PBXGroup;
 			children = (
@@ -129,32 +143,11 @@
 		F1A2F2E01A1D7F1C000DD4E7 /* Magic Flood */ = {
 			isa = PBXGroup;
 			children = (
-				F1A2F3121A1D7FA2000DD4E7 /* Core */,
-				F1A2F2E91A1D7F1C000DD4E7 /* MFAppDelegate.h */,
-				F1A2F2EA1A1D7F1C000DD4E7 /* MFAppDelegate.m */,
-				F1A2F2EC1A1D7F1C000DD4E7 /* Main_iPhone.storyboard */,
-				F1A2F2EF1A1D7F1C000DD4E7 /* Main_iPad.storyboard */,
-				F1A2F2F21A1D7F1C000DD4E7 /* MFViewController.h */,
-				F1A2F2F31A1D7F1C000DD4E7 /* MFViewController.m */,
-				F1A2F2F51A1D7F1C000DD4E7 /* Images.xcassets */,
-				F1A2F2E11A1D7F1C000DD4E7 /* Supporting Files */,
-				F1A2F3161A1DC05C000DD4E7 /* MFGameView.h */,
-				F1A2F3171A1DC05C000DD4E7 /* MFGameView.mm */,
-				F1A2F3191A1DC106000DD4E7 /* MFGameViewController.h */,
-				F1A2F31A1A1DC106000DD4E7 /* MFGameViewController.mm */,
+				F14B00AD1A2363AA0039637B /* Resources */,
+				F1C4EEF31A235C2400322C1E /* iOS */,
+				F1C4EEEF1A235BF300322C1E /* Core */,
 			);
 			path = "Magic Flood";
-			sourceTree = "<group>";
-		};
-		F1A2F2E11A1D7F1C000DD4E7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F1A2F2E21A1D7F1C000DD4E7 /* Magic Flood-Info.plist */,
-				F1A2F2E31A1D7F1C000DD4E7 /* InfoPlist.strings */,
-				F1A2F2E61A1D7F1C000DD4E7 /* main.m */,
-				F1A2F2E81A1D7F1C000DD4E7 /* Magic Flood-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F1A2F3021A1D7F1C000DD4E7 /* Magic FloodTests */ = {
@@ -175,17 +168,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F1A2F3121A1D7FA2000DD4E7 /* Core */ = {
+		F1C4EEEF1A235BF300322C1E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				F1A2F3131A1D800E000DD4E7 /* MFGrid.cpp */,
-				F1A2F3141A1D800E000DD4E7 /* MFGrid.h */,
-				F10B45B91A2032D9001A0B87 /* MFObstacle.cpp */,
-				F10B45BA1A2032D9001A0B87 /* MFObstacle.h */,
-				F10B45BC1A215300001A0B87 /* MFGridInterface.cpp */,
-				F10B45BE1A215316001A0B87 /* MFGridInterface.h */,
+				F153249E1A2367EF00379773 /* MFGridInterface.cpp */,
+				F153249F1A2367EF00379773 /* MFGridInterface.h */,
+				F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */,
+				F1C4EF091A235C6E00322C1E /* MFObstacle.h */,
+				F1C4EEF01A235C1300322C1E /* MFGrid.cpp */,
+				F1C4EEF11A235C1300322C1E /* MFGrid.h */,
 			);
 			name = Core;
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+		F1C4EEF31A235C2400322C1E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F153249D1A2366FD00379773 /* MFAppDelegate.h */,
+				F1A2F2E61A1D7F1C000DD4E7 /* main.m */,
+				F1C4EEF61A235C3500322C1E /* MFAppDelegate.m */,
+				F1C4EEF71A235C3500322C1E /* MFGameView.h */,
+				F1C4EEF81A235C3500322C1E /* MFGameView.mm */,
+				F1C4EEF91A235C3500322C1E /* MFGameViewController.h */,
+				F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */,
+				F1C4EEFF1A235C3500322C1E /* MFViewController.h */,
+				F1C4EF001A235C3500322C1E /* MFViewController.m */,
+			);
+			name = iOS;
+			path = ../../src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +276,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A2F2F11A1D7F1C000DD4E7 /* Main_iPad.storyboard in Resources */,
-				F1A2F2F61A1D7F1C000DD4E7 /* Images.xcassets in Resources */,
-				F1A2F2EE1A1D7F1C000DD4E7 /* Main_iPhone.storyboard in Resources */,
+				F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */,
+				F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */,
+				F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */,
 				F1A2F2E51A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,14 +298,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A2F3181A1DC05C000DD4E7 /* MFGameView.mm in Sources */,
-				F10B45BB1A2032D9001A0B87 /* MFObstacle.cpp in Sources */,
-				F1A2F31B1A1DC106000DD4E7 /* MFGameViewController.mm in Sources */,
-				F1A2F3151A1D800E000DD4E7 /* MFGrid.cpp in Sources */,
-				F10B45BD1A215300001A0B87 /* MFGridInterface.cpp in Sources */,
+				F1C4EF031A235C3500322C1E /* MFGameView.mm in Sources */,
+				F1C4EF071A235C3500322C1E /* MFViewController.m in Sources */,
+				F1C4EEF21A235C1300322C1E /* MFGrid.cpp in Sources */,
+				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
+				F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */,
+				F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */,
+				F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */,
 				F1A2F2E71A1D7F1C000DD4E7 /* main.m in Sources */,
-				F1A2F2F41A1D7F1C000DD4E7 /* MFViewController.m in Sources */,
-				F1A2F2EB1A1D7F1C000DD4E7 /* MFAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,29 +328,32 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F147E7771A236C23002D4DDD /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F147E7781A236C23002D4DDD /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			path = ../../resources/iOS;
+			sourceTree = SOURCE_ROOT;
+		};
+		F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F147E77A1A236C23002D4DDD /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			path = ../../resources/iOS;
+			sourceTree = SOURCE_ROOT;
+		};
 		F1A2F2E31A1D7F1C000DD4E7 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F1A2F2E41A1D7F1C000DD4E7 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F1A2F2EC1A1D7F1C000DD4E7 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1A2F2ED1A1D7F1C000DD4E7 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		F1A2F2EF1A1D7F1C000DD4E7 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1A2F2F01A1D7F1C000DD4E7 /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
+			path = ../../resources/iOS;
+			sourceTree = SOURCE_ROOT;
 		};
 		F1A2F3051A1D7F1C000DD4E7 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -430,8 +444,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Magic Flood/Magic Flood-Prefix.pch";
-				INFOPLIST_FILE = "Magic Flood/Magic Flood-Info.plist";
+				GCC_PREFIX_HEADER = "../../resources/iOS/Magic Flood-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					../../src/Common,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				INFOPLIST_FILE = "../../resources/iOS/Magic Flood-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -443,8 +462,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Magic Flood/Magic Flood-Prefix.pch";
-				INFOPLIST_FILE = "Magic Flood/Magic Flood-Info.plist";
+				GCC_PREFIX_HEADER = "../../resources/iOS/Magic Flood-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					../../src/Common,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				INFOPLIST_FILE = "../../resources/iOS/Magic Flood-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

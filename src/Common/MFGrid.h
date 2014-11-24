@@ -46,15 +46,15 @@ public:
  Grid Sizes, depending on Level.
  **/
 #define EASYGRIDSIZE 8
-#define MEDIUMGRIDSIZE 12
-#define HARDGRIDSIZE 16
+#define MEDIUMGRIDSIZE 16
+#define HARDGRIDSIZE 24
 
 /**
  Maximum Moves, depending on level.
  **/
 #define EASYMAXMOVES 20
-#define MEDIUMMAXMOVES 30
-#define HARDMAXMOVES 50
+#define MEDIUMMAXMOVES 50
+#define HARDMAXMOVES 80
 
 #endif /* defined(__Magic_Flood__MFGrid__) */
 
