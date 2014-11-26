@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ezeeideas.magicflood.MFGameActivity" >
+
+    <!-- Top Bar containing the Moves label and the Exit button -->
+	<RelativeLayout
+	    android:id="@+id/top_bar_id"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="0"
+	    >
+    <TextView
+        android:id="@+id/moves_label_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/moves_game_view" />
+
+    <Button
+        android:id="@+id/exit_game_button_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="X" />
+    </RelativeLayout>
+	
+	<!-- The View representing the main drawing board -->
+	<com.ezeeideas.magicflood.MFGameView
+	    android:id="@+id/game_view_id"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dip"
+	    android:layout_weight="2"
+	/>
+	
+	<!-- The button bar that contains the color buttons -->
+	<LinearLayout
+	    android:id="@+id/button_bar"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:layout_weight="0"
+	    >
+    <Button
+        android:id="@+id/red_button_id"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/red"/>
+
+    <Button
+        android:id="@+id/green_button_id"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/green"/>
+
+    <Button
+        android:id="@+id/blue_button_id"
+        android:layout_width="dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/blue"/>
+    
+    <Button
+        android:id="@+id/yellow_button_id"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/yellow"/>
+
+    <Button
+        android:id="@+id/orange_button_id"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/orange"/>
+
+    <Button
+        android:id="@+id/cyan_button_id"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/cyan"/>
+    </LinearLayout>
+
+</LinearLayout>

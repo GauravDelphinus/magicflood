@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   
+   <color name="background">#FFFF9900</color>
+   <color name="game_background_color">#FFFF9900</color>
+   <color name="black">#FF000000</color>
+   <color name="rule">#FFFF0000</color>
+   <color name="red">#FFFF0000</color>
+   <color name="green">#FF00FF00</color>
+   <color name="blue">#FF0000FF</color>
+   <color name="orange">#FFFF9900</color>
+   <color name="white">#FFFFFFFF</color>
+   <color name="cyan">#FF00FFFF</color>
+   <color name="yellow">#FFFFFF00</color>
+   <color name="lightorange">#FFFFCC00</color>
+   <color name="transparent">#00000000</color>
+
+ 
+</resources>
