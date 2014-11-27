@@ -14,6 +14,6 @@
    <color name="yellow">#FFFFFF00</color>
    <color name="lightorange">#FFFFCC00</color>
    <color name="transparent">#00000000</color>
-
+   <color name="gray">#FF696969</color>
  
 </resources>

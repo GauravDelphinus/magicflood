@@ -11,7 +11,7 @@
 #include "MFGrid.h"
 #include "MFObstacle.h"
 #include "MFGridInterface.h"
-#include <list>
+#include <stdio.h>
 
 /*************************** Public Functions *****************************
  ***************************************************************************
@@ -194,7 +194,7 @@ void MFGrid::initializeStartPos()
          Initialize randomly to one of the four corners
          **/
         srand((unsigned int)time(NULL));
-        int randNum = rand() % 4 + 1;
+        int randNum = 1;//rand() % 4 + 1;
         switch (randNum)
         {
             case 1: //top-left corner
@@ -224,8 +224,8 @@ void MFGrid::initializeStartPos()
         int count = 2;
         while (count --)
         {
-            startPos[0] = rand() % HARDGRIDSIZE;
-            startPos[1] = rand() % HARDGRIDSIZE;
+            startPos[0] = 1;//rand() % HARDGRIDSIZE;
+            startPos[1] = 1;//rand() % HARDGRIDSIZE;
             
             if (grid[startPos[0]][startPos[1]] != GRID_OBSTACLE)
                 break;
@@ -269,7 +269,7 @@ void MFGrid::initializeGrid()
     }
     else if (level == GAME_LEVEL_MEDIUM)
     {
-        srandom(time(0));
+        srand(time(0));
         int shape = random() % NUM_MEDIUM_SHAPES + 1;
 
         fprintf(stderr, "shape = %d", shape);
@@ -277,7 +277,7 @@ void MFGrid::initializeGrid()
     }
     else if (level == GAME_LEVEL_HARD)
     {
-        srandom(time(0));
+        srand(time(0));
         int shape = random() % NUM_HARD_SHAPES + SHAPE_HARD_C;
         
         fprintf(stderr, "shape = %d", shape);
@@ -285,7 +285,7 @@ void MFGrid::initializeGrid()
     }
     
     int prevColor = 1;
-    srandom(time(0));
+    srand(time(0));
     
     for (int i = 0; i < gridSize; i++)
     {

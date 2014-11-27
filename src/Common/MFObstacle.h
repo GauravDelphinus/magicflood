@@ -9,8 +9,6 @@
 #ifndef __Magic_Flood__MFObstacle__
 #define __Magic_Flood__MFObstacle__
 
-#include <iostream>
-
 class MFObstacle
 {
 private:

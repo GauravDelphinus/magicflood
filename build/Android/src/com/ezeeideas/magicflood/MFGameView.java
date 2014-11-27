@@ -12,29 +12,31 @@ import android.view.View;
 
 public class MFGameView extends View 
 {
-	int[][] grid;
-	int gridSize;
-	int[] startPos;
-	int maxMoves;
+	int[][] mGrid;
+	int mGridSize;
+	int[] mStartPos;
+	int mMaxMoves;
 	
 	public MFGameView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		
-		gridSize = 8;
-		grid = new int[gridSize][];
-		for (int i = 0; i < gridSize; i++)
+		/*
+		mGridSize = 8;
+		mGrid = new int[mGridSize][];
+		for (int i = 0; i < mGridSize; i++)
 		{
-			grid[i] = new int[gridSize];
+			mGrid[i] = new int[mGridSize];
 		}
 		
-		for (int i = 0; i < gridSize; i++)
+		for (int i = 0; i < mGridSize; i++)
 		{
-			for (int j = 0; j < gridSize; j++)
+			for (int j = 0; j < mGridSize; j++)
 			{
-				grid[i][j] = randInt(1, 6);
+				mGrid[i][j] = randInt(1, 6);
 			}
 		}
+		*/
 	}
 
 	protected void onDraw(Canvas canvas)
@@ -43,7 +45,7 @@ public class MFGameView extends View
 		int horizontalGap = 20;
 		int vOffset = 80;
 		int screenWidth = this.getWidth();
-		int cellSize = (screenWidth - horizontalGap)/gridSize;
+		int cellSize = (screenWidth - horizontalGap)/mGridSize;
 		int hOffset = horizontalGap / 2;
 		
 		Paint borderPaint = new Paint();
@@ -52,27 +54,66 @@ public class MFGameView extends View
 		borderPaint.setStyle(Style.STROKE);
 		borderPaint.setStrokeWidth(2);
 		
+		Paint startPaint = new Paint();
+		startPaint.setARGB(255, 0, 0, 0);
+		startPaint.setAntiAlias(true);
+		startPaint.setStyle(Style.STROKE);
+		startPaint.setStrokeWidth(4);
+		
 		Paint fillPaint = new Paint();
 		fillPaint.setAntiAlias(true);
 		fillPaint.setStyle(Style.FILL);
 		
-		for (int i = 0; i < gridSize; i++)
+		for (int i = 0; i < mGridSize; i++)
 		{
-			for (int j = 0; j < gridSize; j++)
+			for (int j = 0; j < mGridSize; j++)
 			{
 				int left = hOffset + i * cellSize;
 				int top = vOffset + j * cellSize;
 				int right = left + cellSize;
 				int bottom = top + cellSize;
 				
-				fillPaint.setColor(getColor(grid[i][j]));
+				fillPaint.setColor(getColor(mGrid[i][j]));
 				canvas.drawRect(left, top, right, bottom, fillPaint);
 				canvas.drawRect(left,  top, right, bottom, borderPaint);
 			}
 		}
+		canvas.drawRect(hOffset + mStartPos[0] * cellSize,  vOffset + mStartPos[1] * cellSize, hOffset + mStartPos[0] *cellSize + cellSize, vOffset + mStartPos[1] * cellSize + cellSize, startPaint);
 		
 	}
 
+	public void initializeGameData(int [][]grid, int size, int[] startPos, int maxMoves)
+	{
+		Log.d("magicflood", "initializeGameData");
+		mGrid = new int[size][size];
+		for (int i = 0; i < size; i++)
+		{
+			for (int j = 0; j < size; j++)
+			{
+				mGrid[i][j] = grid[i][j];
+			}
+		}
+		mGridSize = size;
+		
+		mStartPos = new int[2];
+		mStartPos[0] = startPos[0];
+		mStartPos[1] = startPos[1];
+		
+		mMaxMoves = maxMoves;
+	}
+	
+	public void updateGameData(int [][]grid)
+	{
+		for (int i = 0; i < mGridSize; i++)
+		{
+			for (int j = 0; j < mGridSize; j++)
+			{
+				mGrid[i][j] = grid[i][j];
+			}
+		}
+
+	}
+	
 	public static int randInt(int min, int max) {
 
 	    // NOTE: Usually this should be a field rather than a method
@@ -90,18 +131,20 @@ public class MFGameView extends View
 	{
 		switch (colorValue)
 		{
-		case 1:
+		case MFGameConstants.GRID_COLOR_RED:
 			return getContext().getResources().getColor(R.color.red);
-		case 2:
+		case MFGameConstants.GRID_COLOR_GREEN:
 			return getContext().getResources().getColor(R.color.green);
-		case 3:
+		case MFGameConstants.GRID_COLOR_BLUE:
 			return getContext().getResources().getColor(R.color.blue);
-		case 4:
+		case MFGameConstants.GRID_COLOR_YELLOW:
 			return getContext().getResources().getColor(R.color.yellow);
-		case 5:
+		case MFGameConstants.GRID_COLOR_ORANGE:
 			return getContext().getResources().getColor(R.color.orange);
-		case 6:
+		case MFGameConstants.GRID_COLOR_CYAN:
 			return getContext().getResources().getColor(R.color.cyan);
+		case MFGameConstants.GRID_OBSTACLE:
+			return getContext().getResources().getColor(R.color.gray);
 		}
 		
 		return -1;

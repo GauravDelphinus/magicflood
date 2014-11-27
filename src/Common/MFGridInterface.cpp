@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "MFGrid.h"
 
 static MFGrid *mGrid = NULL;

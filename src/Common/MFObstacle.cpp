@@ -9,6 +9,9 @@
 #include "MFObstacle.h"
 #include "MFGrid.h"
 #include "MFGridInterface.h"
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 MFObstacle::MFObstacle()
 {

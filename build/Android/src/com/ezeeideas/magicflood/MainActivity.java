@@ -17,6 +17,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         Button easyButton = (Button)findViewById(R.id.eazy_game_button);
         easyButton.setOnClickListener(this);
+        Button mediumButton = (Button)findViewById(R.id.medium_game_button);
+        mediumButton.setOnClickListener(this);
+        Button hardButton = (Button)findViewById(R.id.hard_game_button);
+        hardButton.setOnClickListener(this);
     }
 
 
@@ -43,16 +47,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
+		Intent i;
 		switch (arg0.getId())
 		{
-		case R.id.eazy_game_button:
-			
-	    	Intent i = new Intent(this, MFGameActivity.class); 	
+		case R.id.eazy_game_button:		
+	    	i = new Intent(this, MFGameActivity.class); 	
+	    	i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
 	    	startActivity(i);
 			break;
 		case R.id.medium_game_button:
+	    	i = new Intent(this, MFGameActivity.class); 	
+	    	i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_MEDIUM);
+	    	startActivity(i);
 			break;
 		case R.id.hard_game_button:
+	    	i = new Intent(this, MFGameActivity.class); 	
+	    	i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
+	    	startActivity(i);
 			break;
 		}
 	}

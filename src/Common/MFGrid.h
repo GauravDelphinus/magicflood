@@ -9,9 +9,6 @@
 #ifndef __Magic_Flood__MFGrid__
 #define __Magic_Flood__MFGrid__
 
-#include <iostream>
-#include <list>
-
 class MFGrid
 {
 private:

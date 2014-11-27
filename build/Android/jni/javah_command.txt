@@ -1,0 +1,1 @@
+javah -classpath ~/Tools/adt-bundle-mac-x86_64-20140702/sdk/platforms/android-21/android.jar:../src com.ezeeideas.magicflood.MFGameActivity
