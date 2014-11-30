@@ -8,15 +8,17 @@
 
 #include "MFInAppProduct.h"
 
-MFInAppProduct::MFInAppProduct(int id, const char *name, const char *description, bool isProvisioned)
+MFInAppProduct::MFInAppProduct(const char* id, const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned)
 {
     mID = id;
     mName = name;
     mDescription = description;
+    mPrice = price;
+    mPriceCode = priceCode;
     mIsProvisioned = isProvisioned;
 }
 
-int MFInAppProduct::getID()
+std::string MFInAppProduct::getID()
 {
     return mID;
 }
@@ -31,7 +33,22 @@ std::string MFInAppProduct::getDescription()
     return mDescription;
 }
 
+std::string MFInAppProduct::getPrice()
+{
+    return mPrice;
+}
+
+std::string MFInAppProduct::getPriceCode()
+{
+    return mPriceCode;
+}
+
 bool MFInAppProduct::isProvisioned()
 {
     return mIsProvisioned;
+}
+
+void MFInAppProduct::setProvisioned(bool isProvisioned)
+{
+    mIsProvisioned = isProvisioned;
 }

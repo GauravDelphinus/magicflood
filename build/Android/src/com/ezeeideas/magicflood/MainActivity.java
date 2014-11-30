@@ -2,6 +2,7 @@ package com.ezeeideas.magicflood;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,11 +28,33 @@ public class MainActivity extends Activity implements View.OnClickListener
         Button hardButton = (Button)findViewById(R.id.hard_game_button);
         hardButton.setOnClickListener(this);
         
+        //set the package name
+        MFGameConstants.PACKAGE_NAME = getPackageName();
+        
         //initialize the in-app purchase manager
-        MFInAppPurchaseManager.initialize();
+        mIAPManager = MFInAppPurchaseManager.create();
+        
+        //bind the service manager (aka connection service) to Google In-App Billing
+        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+        serviceIntent.setPackage("com.android.vending");
+        bindService(serviceIntent, mIAPManager, Context.BIND_AUTO_CREATE);
+        
+        //query the available in-app items, and update local cache (here and in C++ code)
+        mIAPManager.queryInAppItems();
     }
 
-
+    @Override
+    public void onDestroy() 
+    {
+        super.onDestroy();
+        
+        //Unbind the service manager for IAP
+        if (mIAPManager != null && mIAPManager.isServiceConnected()) 
+        {
+            unbindService(mIAPManager);
+        }   
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -75,4 +98,6 @@ public class MainActivity extends Activity implements View.OnClickListener
 			break;
 		}
 	}
+	
+	private MFInAppPurchaseManager mIAPManager;
 }

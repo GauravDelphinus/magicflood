@@ -15,9 +15,18 @@
 #include <stdlib.h>
 #include <vector>
 #include <map>
+#include <string.h>
+#include <stdio.h>
+
+struct char_cmp
+{
+bool operator () (const char *a,const char *b) const
+{
+        return strcmp(a,b)<0;}
+};
 
 static std::list<MFInAppProduct *> sInAppProductList;
-static std::map<int, std::vector<int> * > sInAppProductToObstacleMap;
+static std::map<const char *, std::vector<int> *, char_cmp> sInAppProductToObstacleMap;
 
 void initializeInAppInterface()
 {
@@ -26,28 +35,28 @@ void initializeInAppInterface()
     //A-la-carte items
     obstacles = new std::vector<int>();
     obstacles->push_back(4);
-    sInAppProductToObstacleMap[IAP_ALACARTE_1] = obstacles;
+    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_1] = obstacles;
     logPrint("magicflood", "initializeInAppInterface, added map for %d", IAP_ALACARTE_1);
     
     obstacles = new std::vector<int>();
     obstacles->push_back(5);
-    sInAppProductToObstacleMap[IAP_ALACARTE_2] = obstacles;
+    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_2] = obstacles;
     
     obstacles = new std::vector<int>();
     obstacles->push_back(6);
-    sInAppProductToObstacleMap[IAP_ALACARTE_3] = obstacles;
+    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_3] = obstacles;
     
     obstacles = new std::vector<int>();
     obstacles->push_back(7);
-    sInAppProductToObstacleMap[IAP_ALACARTE_4] = obstacles;
+    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_4] = obstacles;
 
     obstacles = new std::vector<int>();
     obstacles->push_back(8);
-    sInAppProductToObstacleMap[IAP_ALACARTE_5] = obstacles;
+    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_5] = obstacles;
     
     obstacles = new std::vector<int>();
     obstacles->push_back(9);
-    sInAppProductToObstacleMap[IAP_ALACARTE_6] = obstacles;
+    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_6] = obstacles;
     
     //combo items
     
@@ -57,7 +66,7 @@ void initializeInAppInterface()
     {
         obstacles->push_back(i);
     }
-    sInAppProductToObstacleMap[IAP_COMBO_1] = obstacles;
+    sInAppProductToObstacleMap[IAP_COMBO_HURDLES_1] = obstacles;
     
     //combo of 10 hurdles
     obstacles = new std::vector<int>();
@@ -65,7 +74,7 @@ void initializeInAppInterface()
     {
         obstacles->push_back(i);
     }
-    sInAppProductToObstacleMap[IAP_COMBO_2] = obstacles;
+    sInAppProductToObstacleMap[IAP_COMBO_HURDLES_2] = obstacles;
     
     //combo of 25 hurdles
     obstacles = new std::vector<int>();
@@ -73,7 +82,7 @@ void initializeInAppInterface()
     {
         obstacles->push_back(i);
     }
-    sInAppProductToObstacleMap[IAP_COMBO_3] = obstacles;
+    sInAppProductToObstacleMap[IAP_COMBO_HURDLES_3] = obstacles;
     
     //combo of 50 hurdles
     obstacles = new std::vector<int>();
@@ -81,16 +90,30 @@ void initializeInAppInterface()
     {
         obstacles->push_back(i);
     }
-    sInAppProductToObstacleMap[IAP_COMBO_4] = obstacles;
+    sInAppProductToObstacleMap[IAP_COMBO_HURDLES_4] = obstacles;
 }
 
-void addInAppProduct(int id, const char *name, const char *description, bool isProvisioned)
+void addInAppProduct(const char *id, const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned)
 {
-    MFInAppProduct *iap = new MFInAppProduct(id, name, description, isProvisioned);
+    MFInAppProduct *iap = new MFInAppProduct(id, name, description, price, priceCode, isProvisioned);
     sInAppProductList.push_back(iap);
 }
 
-int getNumObstaclesInInAppProduct(int productID)
+void updateInAppProduct(const char *id, bool isProvisioned)
+{
+    std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
+    while (iter != sInAppProductList.end())
+    {
+        MFInAppProduct *iap = (MFInAppProduct *) *iter;
+        if (strcmp(iap->getID().c_str(), id) == 0)
+        {
+            iap->setProvisioned(isProvisioned);
+            break;
+        }
+    }
+}
+
+int getNumObstaclesInInAppProduct(const char * productID)
 {
     logPrint("magicflood", "getNumObstaclesInInAppProduct for productID = %d", productID);
     std::vector<int> *obstaclesVector = sInAppProductToObstacleMap[productID];
@@ -102,7 +125,7 @@ int getNumObstaclesInInAppProduct(int productID)
  Return the list of obstacles in this In-App Product.
  NOTE: The caller must free the returned pointer memory.
  **/
-int *getObstaclesInInAppProduct(int productID)
+int *getObstaclesInInAppProduct(const char * productID)
 {
     int *obstacles = NULL;
     std::vector<int> *obstaclesVector = sInAppProductToObstacleMap[productID];
@@ -127,18 +150,19 @@ int getNumInAppProducts()
  Return the list of all In-App Products.
  NOTE: The caller must free the pointer memory that is returned.
  **/
-int *getAllInAppProducts()
+char **getAllInAppProducts()
 {
-    int *inAppProductsArray = NULL;
+    char **inAppProductsArray = NULL;
     if (sInAppProductList.size() > 0)
     {
-        inAppProductsArray = (int *) malloc (sInAppProductList.size() * sizeof(int));
+        inAppProductsArray = (char **) malloc (sInAppProductList.size() * sizeof(char *));
         std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
         int i = 0;
         while (iter != sInAppProductList.end())
         {
             MFInAppProduct *iap = (MFInAppProduct *) (*iter);
-            inAppProductsArray[i++] = iap->getID();
+            inAppProductsArray[i] = (char *) malloc (strlen(iap->getID().c_str()) * sizeof(char));
+            strcpy(inAppProductsArray[i++], iap->getID().c_str());
             iter++;
         }
     }
@@ -170,12 +194,12 @@ int getNumProvisionedInAppProducts()
  Return the list of all Provisioned (bought) In-App Products.
  NOTE: The caller must free the pointer memory that is returned.
  **/
-int *getProvisionedInAppProducts()
+char **getProvisionedInAppProducts()
 {
-    int *inAppProductsArray = NULL;
+    char **inAppProductsArray = NULL;
     if (sInAppProductList.size() > 0)
     {
-        inAppProductsArray = (int *) malloc (sInAppProductList.size() * sizeof(int));
+        inAppProductsArray = (char **) malloc (sInAppProductList.size() * sizeof(char *));
         std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
         int i = 0;
         while (iter != sInAppProductList.end())
@@ -183,7 +207,8 @@ int *getProvisionedInAppProducts()
             MFInAppProduct *iap = (MFInAppProduct *) (*iter);
             if (iap->isProvisioned())
             {
-                inAppProductsArray[i++] = iap->getID();
+                inAppProductsArray[i] = (char *) malloc (strlen(iap->getID().c_str()) * sizeof(char));
+                strcpy(inAppProductsArray[i++], iap->getID().c_str());
             }
             iter++;
         }
@@ -196,12 +221,12 @@ int *getProvisionedInAppProducts()
  Return the list of all Non-Provisioned (not-bought) In-App Products.
  NOTE: The caller must free the pointer memory that is returned.
  **/
-int *getNonProvisionedInAppProducts()
+char **getNonProvisionedInAppProducts()
 {
-    int *inAppProductsArray = NULL;
+    char **inAppProductsArray = NULL;
     if (sInAppProductList.size() > 0)
     {
-        inAppProductsArray = (int *) malloc (sInAppProductList.size() * sizeof(int));
+        inAppProductsArray = (char **) malloc (sInAppProductList.size() * sizeof(char *));
         std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
         int i = 0;
         while (iter != sInAppProductList.end())
@@ -209,7 +234,8 @@ int *getNonProvisionedInAppProducts()
             MFInAppProduct *iap = (MFInAppProduct *) (*iter);
             if (!iap->isProvisioned())
             {
-                inAppProductsArray[i++] = iap->getID();
+                inAppProductsArray[i] = (char *) malloc (strlen(iap->getID().c_str()) * sizeof(char));
+                strcpy(inAppProductsArray[i++], iap->getID().c_str());
             }
             iter++;
         }
@@ -222,13 +248,13 @@ int *getNonProvisionedInAppProducts()
  Check if the given In-App Product has already been provisioned (bought)
  or not.
  **/
-bool getIsInAppProductProvisioned(int productID)
+bool getIsInAppProductProvisioned(const char * productID)
 {
     std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
     while (iter != sInAppProductList.end())
     {
         MFInAppProduct *iap = (MFInAppProduct *) (*iter);
-        if (iap->getID() == productID)
+        if (strcmp(iap->getID().c_str(), productID) == 0)
         {
             if (iap->isProvisioned())
             {

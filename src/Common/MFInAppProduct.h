@@ -16,15 +16,20 @@ class MFInAppProduct
 private:
     std::string mName;
     std::string mDescription;
-    int mID;
+    std::string mID;
+    std::string mPrice;
+    std::string mPriceCode;
     bool mIsProvisioned;
     
 public:
-    MFInAppProduct(int id, const char *name, const char *description, bool isProvisioned);
+    MFInAppProduct(const char * id, const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned);
     std::string getName();
     std::string getDescription();
-    int getID();
+    std::string getID();
+    std::string getPrice();
+    std::string getPriceCode();
     bool isProvisioned();
+    void setProvisioned(bool isProvisioned);
 };
 
 #endif /* defined(__Magic_Flood__MFInAppProduct__) */

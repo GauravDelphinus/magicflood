@@ -317,11 +317,11 @@ int MFGrid::selectObstacle()
     obstacles->push_back(2);
     obstacles->push_back(3);
     
-    int *provisionedInAppProducts = getProvisionedInAppProducts();
+    char **provisionedInAppProducts = getProvisionedInAppProducts();
     int num = getNumProvisionedInAppProducts();
     for (int i = 0; i < num; i++)
     {
-        int pid = provisionedInAppProducts[i];
+        const char *pid = provisionedInAppProducts[i];
         int *obstacleIDs = getObstaclesInInAppProduct(pid);
         int numObstacles = getNumObstaclesInInAppProduct(pid);
         for (int j = 0; j < numObstacles; j++)
