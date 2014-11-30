@@ -6,8 +6,11 @@
 //  Copyright (c) 2014 EzeeIdeas. All rights reserved.
 //
 
+#include <stdarg.h>
 #include <stdio.h>
+#ifdef __ANDROID
 #include <android/log.h>
+#endif
 #include "MFNativeLog.h"
 
 void logPrint(const char *tag, const char *format, ...)
