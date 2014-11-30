@@ -20,23 +20,6 @@ public class MFGameView extends View
 	public MFGameView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
-		
-		/*
-		mGridSize = 8;
-		mGrid = new int[mGridSize][];
-		for (int i = 0; i < mGridSize; i++)
-		{
-			mGrid[i] = new int[mGridSize];
-		}
-		
-		for (int i = 0; i < mGridSize; i++)
-		{
-			for (int j = 0; j < mGridSize; j++)
-			{
-				mGrid[i][j] = randInt(1, 6);
-			}
-		}
-		*/
 	}
 
 	protected void onDraw(Canvas canvas)

@@ -10,6 +10,9 @@
 		F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F147C5FA1A2364EF00CBCE83 /* Images.xcassets */; };
 		F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7771A236C23002D4DDD /* Main_iPad.storyboard */; };
 		F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */; };
+		F147E7821A2996AC002D4DDD /* MFIAPInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7801A2996AC002D4DDD /* MFIAPInterface.cpp */; };
+		F147E7851A29990F002D4DDD /* MFInAppProduct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7831A29990F002D4DDD /* MFInAppProduct.cpp */; };
+		F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */; };
 		F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153249E1A2367EF00379773 /* MFGridInterface.cpp */; };
 		F1A2F2DB1A1D7F1C000DD4E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */; };
 		F1A2F2DD1A1D7F1C000DD4E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */; };
@@ -25,7 +28,7 @@
 		F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEF61A235C3500322C1E /* MFAppDelegate.m */; };
 		F1C4EF031A235C3500322C1E /* MFGameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEF81A235C3500322C1E /* MFGameView.mm */; };
 		F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */; };
-		F1C4EF071A235C3500322C1E /* MFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF001A235C3500322C1E /* MFViewController.m */; };
+		F1C4EF071A235C3500322C1E /* MFViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF001A235C3500322C1E /* MFViewController.mm */; };
 		F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,12 @@
 		F147C5FA1A2364EF00CBCE83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../resources/iOS/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F147E7781A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		F147E77A1A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		F147E7801A2996AC002D4DDD /* MFIAPInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFIAPInterface.cpp; path = ../../src/Common/MFIAPInterface.cpp; sourceTree = SOURCE_ROOT; };
+		F147E7811A2996AC002D4DDD /* MFIAPInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFIAPInterface.h; path = ../../src/Common/MFIAPInterface.h; sourceTree = SOURCE_ROOT; };
+		F147E7831A29990F002D4DDD /* MFInAppProduct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFInAppProduct.cpp; path = ../../src/Common/MFInAppProduct.cpp; sourceTree = SOURCE_ROOT; };
+		F147E7841A29990F002D4DDD /* MFInAppProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFInAppProduct.h; path = ../../src/Common/MFInAppProduct.h; sourceTree = SOURCE_ROOT; };
+		F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFNativeLog.cpp; path = Common/MFNativeLog.cpp; sourceTree = "<group>"; };
+		F147E7871A2A8DEF002D4DDD /* MFNativeLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNativeLog.h; path = ../../src/Common/MFNativeLog.h; sourceTree = SOURCE_ROOT; };
 		F153249D1A2366FD00379773 /* MFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAppDelegate.h; path = iOS/MFAppDelegate.h; sourceTree = "<group>"; };
 		F153249E1A2367EF00379773 /* MFGridInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGridInterface.cpp; path = ../../src/Common/MFGridInterface.cpp; sourceTree = SOURCE_ROOT; };
 		F153249F1A2367EF00379773 /* MFGridInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGridInterface.h; path = Common/MFGridInterface.h; sourceTree = "<group>"; };
@@ -67,7 +76,7 @@
 		F1C4EEF91A235C3500322C1E /* MFGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGameViewController.h; path = ../../src/iOS/MFGameViewController.h; sourceTree = SOURCE_ROOT; };
 		F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFGameViewController.mm; path = ../../src/iOS/MFGameViewController.mm; sourceTree = SOURCE_ROOT; };
 		F1C4EEFF1A235C3500322C1E /* MFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFViewController.h; path = ../../src/iOS/MFViewController.h; sourceTree = SOURCE_ROOT; };
-		F1C4EF001A235C3500322C1E /* MFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFViewController.m; path = ../../src/iOS/MFViewController.m; sourceTree = SOURCE_ROOT; };
+		F1C4EF001A235C3500322C1E /* MFViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFViewController.mm; path = ../../src/iOS/MFViewController.mm; sourceTree = SOURCE_ROOT; };
 		F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFObstacle.cpp; path = ../../src/Common/MFObstacle.cpp; sourceTree = SOURCE_ROOT; };
 		F1C4EF091A235C6E00322C1E /* MFObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFObstacle.h; path = ../../src/Common/MFObstacle.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -171,12 +180,18 @@
 		F1C4EEEF1A235BF300322C1E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F147E7801A2996AC002D4DDD /* MFIAPInterface.cpp */,
+				F147E7811A2996AC002D4DDD /* MFIAPInterface.h */,
 				F153249E1A2367EF00379773 /* MFGridInterface.cpp */,
 				F153249F1A2367EF00379773 /* MFGridInterface.h */,
 				F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */,
 				F1C4EF091A235C6E00322C1E /* MFObstacle.h */,
 				F1C4EEF01A235C1300322C1E /* MFGrid.cpp */,
 				F1C4EEF11A235C1300322C1E /* MFGrid.h */,
+				F147E7831A29990F002D4DDD /* MFInAppProduct.cpp */,
+				F147E7841A29990F002D4DDD /* MFInAppProduct.h */,
+				F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */,
+				F147E7871A2A8DEF002D4DDD /* MFNativeLog.h */,
 			);
 			name = Core;
 			path = ../../src;
@@ -193,7 +208,7 @@
 				F1C4EEF91A235C3500322C1E /* MFGameViewController.h */,
 				F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */,
 				F1C4EEFF1A235C3500322C1E /* MFViewController.h */,
-				F1C4EF001A235C3500322C1E /* MFViewController.m */,
+				F1C4EF001A235C3500322C1E /* MFViewController.mm */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -299,8 +314,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C4EF031A235C3500322C1E /* MFGameView.mm in Sources */,
-				F1C4EF071A235C3500322C1E /* MFViewController.m in Sources */,
+				F147E7851A29990F002D4DDD /* MFInAppProduct.cpp in Sources */,
+				F1C4EF071A235C3500322C1E /* MFViewController.mm in Sources */,
 				F1C4EEF21A235C1300322C1E /* MFGrid.cpp in Sources */,
+				F147E7821A2996AC002D4DDD /* MFIAPInterface.cpp in Sources */,
+				F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */,
 				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
 				F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */,
 				F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */,

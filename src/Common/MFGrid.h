@@ -27,6 +27,7 @@ private:
     bool isObstacle(int x, int y);
     void updateNeighbors(int oldColor, int newColor, int x, int y);
     bool gridCompleted(int color);
+    int selectObstacle();
     
 public:
     MFGrid (int level);

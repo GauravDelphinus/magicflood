@@ -9,8 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity implements View.OnClickListener {
-
+public class MainActivity extends Activity implements View.OnClickListener
+{
+	static 
+	{
+		System.loadLibrary(MFGameConstants.NATIVE_LIBRARY_NAME);
+	}
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +26,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mediumButton.setOnClickListener(this);
         Button hardButton = (Button)findViewById(R.id.hard_game_button);
         hardButton.setOnClickListener(this);
+        
+        //initialize the in-app purchase manager
+        MFInAppPurchaseManager.initialize();
     }
 
 

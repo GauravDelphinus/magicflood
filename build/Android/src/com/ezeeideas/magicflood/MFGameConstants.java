@@ -37,6 +37,20 @@ public class MFGameConstants
 	
 	public static final int GRID_NUM_COLORS = 6;
 	
+	/**
+	 * In-App Purchase Product IDs
+	 */
+	public static final int IAP_ALACARTE_1 = 1;
+	public static final int IAP_ALACARTE_2 = 2;
+	public static final int IAP_ALACARTE_3 = 3;
+	public static final int IAP_ALACARTE_4 = 4;
+	public static final int IAP_ALACARTE_5 = 5;
+	public static final int IAP_ALACARTE_6 = 6;
+	public static final int IAP_COMBO_1 = 7;
+	public static final int IAP_COMBO_2 = 8;
+	public static final int IAP_COMBO_3 = 9;
+	public static final int IAP_COMBO_4 = 10;
+	public static final int IAP_REMOVE_ADS = 11;
 	
 	/* Android specific constants */
 	/**

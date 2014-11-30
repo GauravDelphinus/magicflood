@@ -11,7 +11,9 @@
 #include "MFGrid.h"
 #include "MFObstacle.h"
 #include "MFGridInterface.h"
+#include "MFIAPInterface.h"
 #include <stdio.h>
+#include <vector>
 
 /*************************** Public Functions *****************************
  ***************************************************************************
@@ -261,7 +263,7 @@ void MFGrid::initializeStartPos()
 void MFGrid::initializeGrid()
 {
     
-    MFObstacle *obstacle = new MFObstacle();
+    MFObstacle *obstacle = new MFObstacle(level);
     
     if (level == GAME_LEVEL_EASY)
     {
@@ -278,10 +280,8 @@ void MFGrid::initializeGrid()
     else if (level == GAME_LEVEL_HARD)
     {
         srand(time(0));
-        int shape = random() % NUM_HARD_SHAPES + SHAPE_HARD_C;
         
-        fprintf(stderr, "shape = %d", shape);
-        grid = obstacle->createGrid(shape, gridSize);
+        grid = obstacle->createGrid(selectObstacle(), gridSize);
     }
     
     int prevColor = 1;
@@ -300,6 +300,40 @@ void MFGrid::initializeGrid()
     }
     
     fprintf(stderr, "initializeGridData, created grid = %p\n", grid);
+}
+
+/**
+ Select a random obstacle from the list of available obstacles
+ that may be free or provisioned (bought) by the user.
+ **/
+int MFGrid::selectObstacle()
+{
+    std::vector<int> *obstacles = new std::vector<int>();
+    
+    /**
+     Add the first three hurdles (which are free) by default
+     **/
+    obstacles->push_back(1);
+    obstacles->push_back(2);
+    obstacles->push_back(3);
+    
+    int *provisionedInAppProducts = getProvisionedInAppProducts();
+    int num = getNumProvisionedInAppProducts();
+    for (int i = 0; i < num; i++)
+    {
+        int pid = provisionedInAppProducts[i];
+        int *obstacleIDs = getObstaclesInInAppProduct(pid);
+        int numObstacles = getNumObstaclesInInAppProduct(pid);
+        for (int j = 0; j < numObstacles; j++)
+        {
+            obstacles->push_back(obstacleIDs[j]);
+        }
+    }
+    
+    srand(time(0));
+    int obstacleIndex = random() % obstacles->size();
+    
+    return (*obstacles)[obstacleIndex];
 }
 
 MFGrid::~MFGrid()

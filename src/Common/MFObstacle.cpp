@@ -13,8 +13,9 @@
 #include <string.h>
 #include <stdio.h>
 
-MFObstacle::MFObstacle()
+MFObstacle::MFObstacle(int level)
 {
+    mLevel = level;
 }
 
 bool MFObstacle::gridHasClosedLoop(int **grid, int gridSize)
@@ -116,9 +117,8 @@ bool MFObstacle::gridHasClosedLoop(int **grid, int gridSize)
     return false;
 }
 
-void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom)
+void MFObstacle::setMediumObstacle(int **grid, int gridSize, int shape, bool useRandom)
 {
-    int shapeWidth = 0, shapeHeight = 0, xoffset = 0, yoffset = 0;
     switch (shape)
     {
         case SHAPE_SQUARE:
@@ -243,7 +243,18 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[gridSize/2-1][gridSize/2-1] = GRID_OBSTACLE;
             grid[gridSize/2-1][gridSize/2] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_C:
+        default:
+            break;
+    }
+
+}
+
+void MFObstacle::setHardObstacle(int **grid, int gridSize, int shape, bool useRandom)
+{
+    int shapeWidth = 0, shapeHeight = 0, xoffset = 0, yoffset = 0;
+    switch (shape)
+    {
+        case 1: /* C */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -332,7 +343,7 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 10][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 11][xoffset + 11] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_G:
+        case 2: /* G */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -437,7 +448,7 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 10][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 11][xoffset + 11] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_H:
+        case 3: /* H */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -514,7 +525,7 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 10][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 11][xoffset + 11] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_I:
+        case 4: /* I */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -591,7 +602,7 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 10][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 11][xoffset + 11] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_L:
+        case 5: /* L */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -654,7 +665,7 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 10][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 11][xoffset + 11] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_M:
+        case 6: /* M */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -741,7 +752,7 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 10][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 11][xoffset + 11] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_P:
+        case 7: /* P */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -818,7 +829,7 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 0][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 1][xoffset + 11] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_S:
+        case 8: /* S */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -919,7 +930,7 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 10][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 11][xoffset + 11] = GRID_OBSTACLE;
             break;
-        case SHAPE_HARD_SATHIYA:
+        default: /* 9 = Sathiya */
             shapeWidth = 12;
             shapeHeight = 12;
             if (useRandom)
@@ -1016,10 +1027,20 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
             grid[yoffset + 10][xoffset + 11] = GRID_OBSTACLE;
             grid[yoffset + 11][xoffset + 11] = GRID_OBSTACLE;
             break;
-        default:
-            break;
     }
+    
+}
 
+void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom)
+{
+    if (mLevel == GAME_LEVEL_MEDIUM)
+    {
+        setMediumObstacle(grid, gridSize, shape, useRandom);
+    }
+    else if (mLevel == GAME_LEVEL_HARD)
+    {
+        setHardObstacle(grid, gridSize, shape, useRandom);
+    }
 }
 
 void MFObstacle::resetGrid(int **grid, int gridSize)

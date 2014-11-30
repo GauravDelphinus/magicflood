@@ -65,7 +65,7 @@
         if (self.successAlertView == nil)
         {
             self.successAlertView = [[UIAlertView alloc] initWithTitle:@"Great job!"
-                                                            message:@"Well done - you completed the game!"
+                                                            message:@"Well done - you nailed it!"
                                                            delegate:self
                                                   cancelButtonTitle:@"Next Game"
                                                   otherButtonTitles:@"Menu", nil];

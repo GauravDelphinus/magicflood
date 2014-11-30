@@ -11,4 +11,7 @@
 
 @interface MFViewController : UIViewController
 
+-(void)initializeInAppPurchase;
 @end
+
+
