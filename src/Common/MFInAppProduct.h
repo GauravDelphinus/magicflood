@@ -30,6 +30,7 @@ public:
     std::string getPriceCode();
     bool isProvisioned();
     void setProvisioned(bool isProvisioned);
+    void updateData(const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned);
 };
 
 #endif /* defined(__Magic_Flood__MFInAppProduct__) */

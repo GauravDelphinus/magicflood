@@ -98,7 +98,7 @@ public class MFInAppPurchaseManager implements ServiceConnection
 			} catch (RemoteException e) {
 				return false;
 			}
-			int response = mSkuDetails.getInt("RESPONSE_CODE");
+			int response = mSkuDetails.getInt(MFGameConstants.IAP_RESPONSE_CODE_KEY);
 			if (response == MFGameConstants.BILLING_RESPONSE_RESULT_OK)
 			{
 				return true;
@@ -110,18 +110,25 @@ public class MFInAppPurchaseManager implements ServiceConnection
 		{
 			
 		}
+		
+		/**
+		 * If the query of sku details from the server was successful, extract the
+		 * relevant information and data and update that in the local cache in the C++ code.
+		 */
 		protected void onPostExecute(Boolean result)
 		{
-			if (result == true)
+			if (result == true) //the background task was successful
 			{
-				ArrayList<String> responseList = mSkuDetails.getStringArrayList("DETAILS_LIST");
-
-				
+				//extract details
+				ArrayList<String> responseList = mSkuDetails.getStringArrayList(MFGameConstants.IAP_QUERY_DETAILS_KEY);
+			
 				//add the in-app products
 				for (String thisResponse : responseList) 
 				{
 					JSONObject object;
-					try {
+					try 
+					{
+						//extract details of this SKU
 						object = new JSONObject(thisResponse);
 						String pid = object.getString(MFGameConstants.IAP_PRODUCT_ID);
 						String price = object.getString(MFGameConstants.IAP_PRODUCT_PRICE);
@@ -129,41 +136,49 @@ public class MFInAppPurchaseManager implements ServiceConnection
 						String description = object.getString(MFGameConstants.IAP_PRODUCT_DESCRIPTION);
 						String currencyCode = object.getString(MFGameConstants.IAP_PRODUCT_PRICE_CURRENCY_CODE);
 						
-						//Add this product to the list in the C++ side
+						//Add this product to the list in the C++ side.  Setting purchase/provisioning status as false
+						//by default - this is updated after invoking the second API (below)
 						addInAppProduct(pid, name, description, price, currencyCode, false);
-					} catch (JSONException e) {
+					} catch (JSONException e) 
+					{
 						//something went wrong, so we can't claim we're done synchronizing the iap status
+						clearInAppProducts(); //clear the in-app products cache
+						
 						mIsSynchronizedWithServer = false;
 					}
 				}
 				
 				//now update the provisioning status
 				Bundle ownedItems = null;
-				try {
+				try 
+				{
 					ownedItems = mService.getPurchases(3, MFGameConstants.PACKAGE_NAME, "inapp", null);
-				} catch (RemoteException e1) {
+				} catch (RemoteException e1) 
+				{
 					//something went wrong, so we can't claim we're done synchronizing the iap status
+					clearInAppProducts();
+					
 					mIsSynchronizedWithServer = false;
 				}
 				
-				int response = ownedItems.getInt("RESPONSE_CODE");
-				if (response == MFGameConstants.BILLING_RESPONSE_RESULT_OK) {
-				   ArrayList<String> ownedSkus =
-				      ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
-				   ArrayList<String>  purchaseDataList =
-				      ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
-				   ArrayList<String>  signatureList =
-				      ownedItems.getStringArrayList("INAPP_DATA_SIGNATURE");
+				int response = ownedItems.getInt(MFGameConstants.IAP_RESPONSE_CODE_KEY);
+				if (response == MFGameConstants.BILLING_RESPONSE_RESULT_OK) 
+				{
+				   ArrayList<String>  purchaseDataList = ownedItems.getStringArrayList(MFGameConstants.IAP_PURCHASE_DATA_KEY);
 				    
 				   for (int i = 0; i < purchaseDataList.size(); ++i) 
 				   {
 				      String purchaseData = purchaseDataList.get(i);
 				  
 				      JSONObject object;
-				      try {
+				      try 
+				      {
 				    	  object = new JSONObject(purchaseData);
+				    	  
+				    	  //extract the purchase status and update the native code with status
 				    	  String pid = object.getString(MFGameConstants.IAP_PRODUCT_ID);
 				    	  String purchaseState = object.getString(MFGameConstants.IAP_PURCHASE_STATE);
+				    	  
 				    	  boolean provisioned = false;
 				    	  if (Integer.getInteger(purchaseState) == 0)
 				    	  {
@@ -173,8 +188,12 @@ public class MFInAppPurchaseManager implements ServiceConnection
 
 				    	  //update the provisioning status in the C++ code
 				    	  updateInAppProduct(pid, provisioned);
-				      } catch (JSONException e) {
+				      } catch (JSONException e) 
+				      {
 				    	  //something went wrong, so we can't claim we're done synchronizing the iap status
+				    	  
+				    	  clearInAppProducts();
+				    	  
 				    	  mIsSynchronizedWithServer = false;
 				      }
 				   } 
@@ -196,4 +215,5 @@ public class MFInAppPurchaseManager implements ServiceConnection
 	private native void initializeInAppInterface();
 	private native void addInAppProduct(String id, String name, String description, String price, String priceCode, boolean isProvisioned);
 	private native void updateInAppProduct(String id, boolean isProvisioned);
+	private native void clearInAppProducts();
 };

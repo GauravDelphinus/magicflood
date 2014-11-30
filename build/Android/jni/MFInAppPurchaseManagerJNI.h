@@ -18,10 +18,26 @@ JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_init
 /*
  * Class:     com_ezeeideas_magicflood_MFInAppPurchaseManager
  * Method:    addInAppProduct
- * Signature: (ILjava/lang/String;Ljava/lang/String;Z)V
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
  */
 JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_addInAppProduct
-  (JNIEnv *, jobject, jint, jstring, jstring, jboolean);
+  (JNIEnv *, jobject, jstring, jstring, jstring, jstring, jstring, jboolean);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFInAppPurchaseManager
+ * Method:    updateInAppProduct
+ * Signature: (Ljava/lang/String;Z)V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_updateInAppProduct
+  (JNIEnv *, jobject, jstring, jboolean);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFInAppPurchaseManager
+ * Method:    clearInAppProducts
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_clearInAppProducts
+  (JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }

@@ -52,3 +52,12 @@ void MFInAppProduct::setProvisioned(bool isProvisioned)
 {
     mIsProvisioned = isProvisioned;
 }
+
+void MFInAppProduct::updateData(const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned)
+{
+    mName = name;
+    mDescription = description;
+    mPrice = price;
+    mPriceCode = priceCode;
+    mIsProvisioned = isProvisioned;
+}

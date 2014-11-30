@@ -95,8 +95,24 @@ void initializeInAppInterface()
 
 void addInAppProduct(const char *id, const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned)
 {
-    MFInAppProduct *iap = new MFInAppProduct(id, name, description, price, priceCode, isProvisioned);
-    sInAppProductList.push_back(iap);
+    bool found = false;
+    std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
+    while (iter != sInAppProductList.end())
+    {
+        MFInAppProduct *iap = (MFInAppProduct *) *iter;
+        if (strcmp(iap->getID().c_str(), id) == 0)
+        {
+            iap->updateData(name, description, price, priceCode, isProvisioned);
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found)
+    {
+        MFInAppProduct *iap = new MFInAppProduct(id, name, description, price, priceCode, isProvisioned);
+        sInAppProductList.push_back(iap);
+    }
 }
 
 void updateInAppProduct(const char *id, bool isProvisioned)
@@ -111,6 +127,21 @@ void updateInAppProduct(const char *id, bool isProvisioned)
             break;
         }
     }
+}
+
+void clearInAppProducts()
+{
+    std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
+    while (iter != sInAppProductList.end())
+    {
+        MFInAppProduct *iap = (MFInAppProduct *) *iter;
+        if (iap != NULL)
+        {
+            delete iap;
+        }
+    }
+    
+    sInAppProductList.clear();
 }
 
 int getNumObstaclesInInAppProduct(const char * productID)

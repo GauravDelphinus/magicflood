@@ -67,7 +67,11 @@ public class MFGameConstants
 	public static final String IAP_COMBO_HURDLES_4 = "iap_combo_hurdles_4";
 	public static final String IAP_REMOVE_ADS = "iap_remove_ads";
 	
+	// Bundle Keys
 	public static final String IAP_QUERY_SKUS_KEY = "iap_query_skus_key"; //key used to query the skus from the bundle
+	public static final String IAP_QUERY_DETAILS_KEY = "DETAILS_LIST"; //key used to query details of sku from the bundle
+	public static final String IAP_RESPONSE_CODE_KEY = "RESPONSE_CODE"; // key used to get response code from bundle
+	public static final String IAP_PURCHASE_DATA_KEY = "INAPP_PURCHASE_DATA_LIST"; // key used to query the purchase related data
 	
     // Billing response codes
     public static final int BILLING_RESPONSE_RESULT_OK = 0;
