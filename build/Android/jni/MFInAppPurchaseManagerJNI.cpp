@@ -60,3 +60,60 @@ extern "C" JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseM
 {
 	clearInAppProducts();
 }
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFInAppPurchaseManager
+ * Method:    getProductDetails
+ * Signature: (Ljava/lang/String;)[Ljava/lang/String;
+ */
+extern "C" JNIEXPORT jobjectArray JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_getProductDetails
+  (JNIEnv *env, jobject thisObj, jstring pid)
+{
+	jobjectArray ret;  
+	int i;  
+
+	const char *idStr = env->GetStringUTFChars(pid, 0);
+	char **detailsArray = getInAppProductDetails(idStr);
+
+	char *message[5]= {detailsArray[0],
+			detailsArray[1],
+			detailsArray[2],
+			detailsArray[3],
+			detailsArray[4]};  
+
+	ret= (jobjectArray)env->NewObjectArray(5,  
+			env->FindClass("java/lang/String"),  
+			env->NewStringUTF(""));  
+
+	for(i=0;i<5;i++) 
+	{  
+		env->SetObjectArrayElement(ret, i, env->NewStringUTF(message[i]));  
+	}  
+
+	for (i = 0; i < 5; i++)
+	{
+		free(detailsArray[i]);
+	}
+	free(detailsArray);
+	return(ret); 
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFInAppPurchaseManager
+ * Method:    getProductProvisioned
+ * Signature: (Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_getProductProvisioned
+  (JNIEnv *env, jobject thisObj, jstring pid)
+{
+	const char *idStr = env->GetStringUTFChars(pid, 0);
+
+	bool isProvisioned = getInAppProductProvisioned(idStr);
+
+	if (isProvisioned)
+	{
+		return JNI_TRUE;
+	}
+
+	return JNI_FALSE;
+}

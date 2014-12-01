@@ -28,6 +28,9 @@ public class MainActivity extends Activity implements View.OnClickListener
         Button hardButton = (Button)findViewById(R.id.hard_game_button);
         hardButton.setOnClickListener(this);
         
+        Button storeButton = (Button)findViewById(R.id.store_button_id);
+        storeButton.setOnClickListener(this);
+        
         //set the package name
         MFGameConstants.PACKAGE_NAME = getPackageName();
         
@@ -40,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         bindService(serviceIntent, mIAPManager, Context.BIND_AUTO_CREATE);
         
         //query the available in-app items, and update local cache (here and in C++ code)
-        mIAPManager.queryInAppItems();
+        //mIAPManager.queryInAppItems();
     }
 
     @Override
@@ -95,6 +98,10 @@ public class MainActivity extends Activity implements View.OnClickListener
 	    	i = new Intent(this, MFGameActivity.class); 	
 	    	i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
 	    	startActivity(i);
+			break;
+		case R.id.store_button_id:
+			i = new Intent(this, MFStoreActivity.class);
+			startActivity(i);
 			break;
 		}
 	}

@@ -8,7 +8,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
-#ifdef __ANDROID
+#ifdef __ANDROID__
 #include <android/log.h>
 #endif
 #include "MFNativeLog.h"

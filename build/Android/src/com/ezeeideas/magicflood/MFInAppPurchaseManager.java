@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.android.vending.billing.IInAppBillingService;
 
@@ -49,6 +50,8 @@ public class MFInAppPurchaseManager implements ServiceConnection
 	public void onServiceConnected(ComponentName arg0, IBinder service) 
 	{
 		mService = IInAppBillingService.Stub.asInterface(service);
+		Log.d("magicflood", "onServiceConnected called, mService = " + mService);
+		queryInAppItems();
 	}
 
 	@Override
@@ -68,6 +71,7 @@ public class MFInAppPurchaseManager implements ServiceConnection
 	 */
 	public void queryInAppItems()
 	{
+		Log.d("magicflood", "queryInAppItems, mService = " + mService);
 		mQuerySkuDetailsTask = new QuerySKUDetailsTask();
 		mQuerySkuDetailsTask.execute(0);
 	}
@@ -76,19 +80,25 @@ public class MFInAppPurchaseManager implements ServiceConnection
 	{
 		protected Boolean doInBackground(Integer... args)
 		{
+			Log.d("magicflood", "doInBackground...");
 			ArrayList<String> skuList = new ArrayList<String> ();
 			
-			skuList.add(MFGameConstants.IAP_ALACARTE_HURDLE_1);
-			skuList.add(MFGameConstants.IAP_ALACARTE_HURDLE_2);
-			skuList.add(MFGameConstants.IAP_ALACARTE_HURDLE_3);
-			skuList.add(MFGameConstants.IAP_ALACARTE_HURDLE_4);
-			skuList.add(MFGameConstants.IAP_ALACARTE_HURDLE_5);
-			skuList.add(MFGameConstants.IAP_ALACARTE_HURDLE_6);
-			skuList.add(MFGameConstants.IAP_COMBO_HURDLES_1);
-			skuList.add(MFGameConstants.IAP_COMBO_HURDLES_2);
-			skuList.add(MFGameConstants.IAP_COMBO_HURDLES_3);
-			skuList.add(MFGameConstants.IAP_COMBO_HURDLES_4);
-			skuList.add(MFGameConstants.IAP_REMOVE_ADS);
+			String testPrefix = "";
+			if (MFGameConstants.testingMode)
+			{
+				testPrefix += "test_";
+			}
+			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_1);
+			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_2);
+			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_3);
+			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_4);
+			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_5);
+			//skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_6);
+			//skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_1);
+			//skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_2);
+			//skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_3);
+			//skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_4);
+			//skuList.add(testPrefix + MFGameConstants.IAP_REMOVE_ADS);
 			
 			Bundle querySkus = new Bundle();
 			querySkus.putStringArrayList(MFGameConstants.IAP_QUERY_SKUS_KEY, skuList);
@@ -101,9 +111,11 @@ public class MFInAppPurchaseManager implements ServiceConnection
 			int response = mSkuDetails.getInt(MFGameConstants.IAP_RESPONSE_CODE_KEY);
 			if (response == MFGameConstants.BILLING_RESPONSE_RESULT_OK)
 			{
+				Log.d("magicflood", "called getSkuDetails, and it was successful");
 				return true;
 			}
 			
+			Log.d("magicflood", "called getSkuDetails, and something failed, response = " + response);
 			return false;
 		}
 		protected void onProgressUpdate(Integer... args)
@@ -119,6 +131,7 @@ public class MFInAppPurchaseManager implements ServiceConnection
 		{
 			if (result == true) //the background task was successful
 			{
+				Log.d("magicflood", "onPostExecute...");
 				//extract details
 				ArrayList<String> responseList = mSkuDetails.getStringArrayList(MFGameConstants.IAP_QUERY_DETAILS_KEY);
 			
@@ -138,6 +151,8 @@ public class MFInAppPurchaseManager implements ServiceConnection
 						
 						//Add this product to the list in the C++ side.  Setting purchase/provisioning status as false
 						//by default - this is updated after invoking the second API (below)
+						Log.d("magicflood", "calling addInAppProduct with pid = [" + pid + "], name = [" + name + "], description = [" + 
+									description + "], price = [" + price + "], currencyCode = [" + currencyCode);
 						addInAppProduct(pid, name, description, price, currencyCode, false);
 					} catch (JSONException e) 
 					{
@@ -153,12 +168,14 @@ public class MFInAppPurchaseManager implements ServiceConnection
 				try 
 				{
 					ownedItems = mService.getPurchases(3, MFGameConstants.PACKAGE_NAME, "inapp", null);
+					Log.d("magicflood", "called getPurchases");
 				} catch (RemoteException e1) 
 				{
 					//something went wrong, so we can't claim we're done synchronizing the iap status
 					clearInAppProducts();
 					
 					mIsSynchronizedWithServer = false;
+					Log.d("magicflood", "something went wrong 1");
 				}
 				
 				int response = ownedItems.getInt(MFGameConstants.IAP_RESPONSE_CODE_KEY);
@@ -195,12 +212,16 @@ public class MFInAppPurchaseManager implements ServiceConnection
 				    	  clearInAppProducts();
 				    	  
 				    	  mIsSynchronizedWithServer = false;
+				    	  
+				    	  Log.d("magicflood", "something went wrong 2");
 				      }
 				   } 
 				}
 				
 				//we're now synchronized the iap status in the C++ code
 				mIsSynchronizedWithServer = true;
+				
+				Log.d("magicflood", "at the end of onPostExecute, everything went well");
 			}
 		}
 	}
@@ -216,4 +237,6 @@ public class MFInAppPurchaseManager implements ServiceConnection
 	private native void addInAppProduct(String id, String name, String description, String price, String priceCode, boolean isProvisioned);
 	private native void updateInAppProduct(String id, boolean isProvisioned);
 	private native void clearInAppProducts();
+	public native String[] getProductDetails(String id);
+	public native boolean getProductProvisioned(String id);
 };

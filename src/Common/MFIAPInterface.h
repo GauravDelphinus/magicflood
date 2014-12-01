@@ -17,6 +17,8 @@ void initializeInAppInterface();
 void clearInAppProducts();
 void addInAppProduct(const char *pid, const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned);
 void updateInAppProduct(const char *pid, bool isProvisioned);
+char **getInAppProductDetails(const char *pid);
+bool getInAppProductProvisioned(const char *pid);
 int getNumInAppProducts();
 char **getAllInAppProducts();
 int getNumProvisionedInAppProducts();
