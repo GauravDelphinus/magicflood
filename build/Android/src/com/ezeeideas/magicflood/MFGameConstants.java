@@ -124,4 +124,10 @@ public class MFGameConstants
 	 * Package name
 	 */
 	public static String PACKAGE_NAME;
+	
+	/**
+	 * Preferences.
+	 */
+	public static final String PREFERENCE_KEY = "user_prefs";
+	public static final String PREFERENCE_SOUND = "preference_sound";
 }

@@ -16,6 +16,14 @@
 	    android:layout_height="wrap_content"
 	    android:layout_weight="0"
 	    >
+	    
+	        <Button
+        android:id="@+id/mute_sound_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+	        
     <TextView
         android:id="@+id/moves_label_id"
         android:layout_width="wrap_content"

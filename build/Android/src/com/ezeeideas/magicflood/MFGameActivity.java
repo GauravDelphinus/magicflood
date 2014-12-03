@@ -2,7 +2,10 @@ package com.ezeeideas.magicflood;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
@@ -24,6 +27,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
     	mMovesLabel = (TextView) findViewById(R.id.moves_label_id);
     	mExitButton = (Button) findViewById(R.id.exit_game_button_id);
     	mExitButton.setOnClickListener(this);
+    	
     	mRedButton = (Button) findViewById(R.id.red_button_id);
     	mRedButton.setOnClickListener(this);
     	mGreenButton = (Button) findViewById(R.id.green_button_id);
@@ -83,12 +87,29 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		mGameSuccessSoundID = soundPool.load(this, R.raw.game_success_sound, 1);
 		mGameFailedSoundID = soundPool.load(this, R.raw.game_failed_sound, 1);
 		
+		//read the preference on whether the sound should be muted
+		SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+
+		//get the sharepref
+		mPlaySound = settings.getBoolean(MFGameConstants.PREFERENCE_SOUND, true);
+		
+    	mSoundButton = (Button) findViewById(R.id.mute_sound_id);
+    	mSoundButton.setOnClickListener(this);
+    	if (mPlaySound)
+    	{
+    		mSoundButton.setText("Sound: ON");
+    	}
+    	else
+    	{
+    		mSoundButton.setText("Sound: OFF");
+    	}
 	}
 	
 	public void playSound(int resultType) 
 	{
 		// Is the sound loaded does it already play?
-		if (loaded) 
+		if (loaded && mPlaySound)
 		{
 			int soundID = mButtonClickSoundID;
 			switch (resultType)
@@ -171,6 +192,28 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 
 			return;
 		}	
+		else if (arg0.getId() == R.id.mute_sound_id) //mute/unmute the sound
+		{
+			if (mPlaySound == true)
+			{
+				mPlaySound = false;
+				mSoundButton.setText("Sound: OFF");
+			}
+			else
+			{
+				mPlaySound = true;
+				mSoundButton.setText("Sound: ON");
+			}
+			
+			//set the sharedpref
+			SharedPreferences settings;
+			settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+			Editor editor = settings.edit();
+			editor.putBoolean(MFGameConstants.PREFERENCE_SOUND, mPlaySound);
+			editor.commit();
+			
+			return;
+		}
 		
 		int colorValue = MFGameConstants.GRID_OBSTACLE;
 		switch (arg0.getId())
@@ -324,6 +367,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	private int mLevel;
 	private TextView mMovesLabel; //label that shows the current moves
 	private Button mExitButton;
+	private Button mSoundButton;
 	private Button mRedButton;
 	private Button mBlueButton;
 	private Button mGreenButton;
@@ -342,6 +386,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	boolean loaded = false;
 	float actVolume, maxVolume, volume;
 	AudioManager audioManager;
+	boolean mPlaySound = false;
 
 	
 	private long gridHandle;
