@@ -36,7 +36,7 @@ void initializeInAppInterface()
     obstacles = new std::vector<int>();
     obstacles->push_back(4);
     sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_1] = obstacles;
-    logPrint("magicflood", "initializeInAppInterface, added map for %d", IAP_ALACARTE_1);
+    logPrint("magicflood", "initializeInAppInterface, added map for %s", IAP_ALACARTE_HURDLE_1);
     
     obstacles = new std::vector<int>();
     obstacles->push_back(5);
@@ -204,7 +204,7 @@ bool getInAppProductProvisioned(const char *pid)
 
 int getNumObstaclesInInAppProduct(const char * productID)
 {
-    logPrint("magicflood", "getNumObstaclesInInAppProduct for productID = %d", productID);
+    logPrint("magicflood", "getNumObstaclesInInAppProduct for productID = [%s]", productID);
     std::vector<int> *obstaclesVector = sInAppProductToObstacleMap[productID];
     logPrint("magicflood", "obtaclesVector = %p", obstaclesVector);
     return obstaclesVector->size();

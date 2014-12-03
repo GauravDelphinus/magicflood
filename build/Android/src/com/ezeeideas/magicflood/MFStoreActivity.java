@@ -3,7 +3,9 @@ package com.ezeeideas.magicflood;
 import com.ezeeideas.magicflood.iabutil.IabHelper;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -83,7 +85,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         }   
     }
 	
-    /*
+    
 	// Method to handle touch event like left to right swap and right to left swap
     public boolean onTouchEvent(MotionEvent touchevent) 
     {
@@ -131,7 +133,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
                  }
                  return false;
     }
-    */
+    
     
 	private ViewFlipper mViewFlipper;
 	private float lastX;
@@ -140,7 +142,9 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 	@Override
 	public void onPurchaseFinished(String pid, boolean status) 
 	{
+		Log.d("gaurav", "onPurchaseFinished, pid [" + pid + "], status [" + status + "]");
 		int buttonID = 0;
+		
 		if (pid.equals(MFGameConstants.IAP_ALACARTE_HURDLE_1))
 		{
 			buttonID = R.id.alacarte_button_1_id;
@@ -232,5 +236,22 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 		}
 		
 		mIAPManager.purchaseItem(pid);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
+	{
+		Log.d("gaurav", "onActivityResult(" + requestCode + "," + resultCode + "," + data);
+
+		// Pass on the activity result to the helper for handling
+		if (!mIAPManager.handleActivityResult(requestCode, resultCode, data)) {
+			// not handled, so handle it ourselves (here's where you'd
+			// perform any handling of activity results not related to in-app
+			// billing...
+			super.onActivityResult(requestCode, resultCode, data);
+		}
+		else {
+			Log.d("gaurav", "onActivityResult handled by IABUtil.");
+		}
 	}
 }

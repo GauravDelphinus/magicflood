@@ -9,7 +9,7 @@ package com.ezeeideas.magicflood;
  */
 public class MFGameConstants 
 {
-	public static final boolean testingMode = true;
+	public static final boolean testingMode = false;
 	
 	/**
 	 * Game Levels
@@ -57,6 +57,7 @@ public class MFGameConstants
 	/**
 	 * In-App Purchase Product String IDs.
 	 */
+	/*
 	public static final String IAP_ALACARTE_HURDLE_1 = "iap_alacarte_hurdle_1";
 	public static final String IAP_ALACARTE_HURDLE_2 = "iap_alacarte_hurdle_2";
 	public static final String IAP_ALACARTE_HURDLE_3 = "iap_alacarte_hurdle_3";
@@ -68,6 +69,19 @@ public class MFGameConstants
 	public static final String IAP_COMBO_HURDLES_3 = "iap_combo_hurdles_3";
 	public static final String IAP_COMBO_HURDLES_4 = "iap_combo_hurdles_4";
 	public static final String IAP_REMOVE_ADS = "iap_remove_ads";
+	*/
+	
+	public static final String IAP_ALACARTE_HURDLE_1 = "test_iap_alacarte_hurdle_1";
+	public static final String IAP_ALACARTE_HURDLE_2 = "test_iap_alacarte_hurdle_2";
+	public static final String IAP_ALACARTE_HURDLE_3 = "test_iap_alacarte_hurdle_3";
+	public static final String IAP_ALACARTE_HURDLE_4 = "test_iap_alacarte_hurdle_4";
+	public static final String IAP_ALACARTE_HURDLE_5 = "test_iap_alacarte_hurdle_5";
+	public static final String IAP_ALACARTE_HURDLE_6 = "test_iap_alacarte_hurdle_6";
+	public static final String IAP_COMBO_HURDLES_1 = "test_iap_combo_hurdles_1";
+	public static final String IAP_COMBO_HURDLES_2 = "test_iap_combo_hurdles_2";
+	public static final String IAP_COMBO_HURDLES_3 = "test_iap_combo_hurdles_3";
+	public static final String IAP_COMBO_HURDLES_4 = "test_iap_combo_hurdles_4";
+	public static final String IAP_REMOVE_ADS = "test_iap_remove_ads";
 	
 	// Bundle Keys
 	public static final String IAP_QUERY_SKUS_KEY = "DETAILS_LIST"; //key used to query the skus from the bundle

@@ -46,6 +46,7 @@ bool getIsInAppProductProvisioned(const char * productID);
 /**
  Various IAP Product IDs.
  **/
+/*
 #define IAP_ALACARTE_HURDLE_1   "iap_alacarte_hurdle_1"
 #define IAP_ALACARTE_HURDLE_2   "iap_alacarte_hurdle_2"
 #define IAP_ALACARTE_HURDLE_3   "iap_alacarte_hurdle_3"
@@ -57,5 +58,18 @@ bool getIsInAppProductProvisioned(const char * productID);
 #define IAP_COMBO_HURDLES_3 "iap_combo_hurdles_3"
 #define IAP_COMBO_HURDLES_4 "iap_combo_hurdles_4"
 #define IAP_REMOVE_ADS  "iap_remove_ads"
+ */
+
+#define IAP_ALACARTE_HURDLE_1   "test_iap_alacarte_hurdle_1"
+#define IAP_ALACARTE_HURDLE_2   "test_iap_alacarte_hurdle_2"
+#define IAP_ALACARTE_HURDLE_3   "test_iap_alacarte_hurdle_3"
+#define IAP_ALACARTE_HURDLE_4   "test_iap_alacarte_hurdle_4"
+#define IAP_ALACARTE_HURDLE_5   "test_iap_alacarte_hurdle_5"
+#define IAP_ALACARTE_HURDLE_6   "test_iap_alacarte_hurdle_6"
+#define IAP_COMBO_HURDLES_1 "test_iap_combo_hurdles_1"
+#define IAP_COMBO_HURDLES_2 "test_iap_combo_hurdles_2"
+#define IAP_COMBO_HURDLES_3 "test_iap_combo_hurdles_3"
+#define IAP_COMBO_HURDLES_4 "test_iap_combo_hurdles_4"
+#define IAP_REMOVE_ADS  "test_iap_remove_ads"
 
 #endif /* defined(__Magic_Flood__MFIAPInterface__) */

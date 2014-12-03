@@ -4,16 +4,7 @@ android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical" >
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="#000099"
-            android:textSize="30dp"
-            android:text="View Flipper Demo" />
-
-        <ViewFlipper
+       <ViewFlipper
             android:id="@+id/view_flipper_id"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -77,6 +68,7 @@ android:orientation="vertical" >
         android:layout_height="wrap_content" />
                     
             </LinearLayout>
+
             
              <!--  Layout 2 for 2nd Screen -->
             
