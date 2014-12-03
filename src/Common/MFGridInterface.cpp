@@ -10,10 +10,16 @@
 #include <stdlib.h>
 #include "MFGrid.h"
 
+/**
+ The Grid object.
+ **/
 static MFGrid *mGrid = NULL;
 
 extern "C" {
-    
+
+/**
+ Create/allocate a new Grid.
+ **/
 long createNewGrid(int level)
 {
     if (mGrid == NULL)
@@ -24,6 +30,9 @@ long createNewGrid(int level)
     return (long)mGrid;
 }
 
+/**
+ Delete/free up the grid.
+ **/
 void deleteGrid(long handle)
 {
     if (mGrid != NULL)
@@ -33,6 +42,9 @@ void deleteGrid(long handle)
     }
 }
 
+/**
+ Return the size of the Grid.
+ **/
 int getGridSize(long handle)
 {
     MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
@@ -80,7 +92,10 @@ void freeStartPos(long handle, int *startPos)
         }
     }
 }
-    
+
+/**
+ Return the maximum number of moves for this game.
+ **/
 int getMaxMoves(long handle)
 {
     MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
@@ -91,7 +106,10 @@ int getMaxMoves(long handle)
     
     return -1;
 }
-    
+
+/**
+ Return the current move.
+ **/
 int getCurrMove(long handle)
 {
     MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
@@ -102,7 +120,10 @@ int getCurrMove(long handle)
     
     return -1;
 }
-    
+
+/**
+ Play the move after extracting th MFGrid object.
+ **/
 int playMove(long handle, int color)
 {
     int result = -1;

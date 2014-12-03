@@ -18,16 +18,31 @@
 #include <string.h>
 #include <stdio.h>
 
+/**
+ String comparator used by the map for comparing the in-app product string keys.
+ **/
 struct char_cmp
 {
-bool operator () (const char *a,const char *b) const
-{
-        return strcmp(a,b)<0;}
+    bool operator () (const char *a,const char *b) const
+    {
+        return strcmp(a,b) < 0;
+    }
 };
 
+/**
+ The locally cached In-App Products List.
+ **/
 static std::list<MFInAppProduct *> sInAppProductList;
+
+/**
+ The mapping from the In-App Product ID, to the list of Hurdles in that product.
+ **/
 static std::map<const char *, std::vector<int> *, char_cmp> sInAppProductToObstacleMap;
 
+/**
+ Create a map that maps the In-App Product ID with the list of 
+ Obstacles/Hurdles that this product "contains".
+ **/
 void initializeInAppInterface()
 {
     std::vector<int> *obstacles = NULL;
@@ -93,6 +108,9 @@ void initializeInAppInterface()
     sInAppProductToObstacleMap[IAP_COMBO_HURDLES_4] = obstacles;
 }
 
+/**
+ Add the given In-App product to the local cache.
+ **/
 void addInAppProduct(const char *id, const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned)
 {
     bool found = false;
@@ -116,6 +134,9 @@ void addInAppProduct(const char *id, const char *name, const char *description, 
     }
 }
 
+/**
+ Update the Provisioning Status for the given In-App Product.
+ **/
 void updateInAppProduct(const char *id, bool isProvisioned)
 {
     std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
@@ -131,6 +152,11 @@ void updateInAppProduct(const char *id, bool isProvisioned)
     }
 }
 
+/**
+ Clear the list of cached In-App Products.  This is usually done
+ if fetching the in-app products from the Google/Apple servers failed
+ mid-way due to some reason, and we want to clear and start afresh.
+ **/
 void clearInAppProducts()
 {
     std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
@@ -147,6 +173,15 @@ void clearInAppProducts()
     sInAppProductList.clear();
 }
 
+/**
+ Return an array of 4 char pointers, that contain these strings:
+ 0 -> In-App Product Name/Title
+ 1 -> In-App Product Description
+ 2 -> In-App Product Price
+ 3 -> In-App Product Currency Code
+ 
+ NOTE: The caller must free the array, as well as the individual char arrays.
+ **/
 char **getInAppProductDetails(const char *pid)
 {
     logPrint("magicflood", "getInAppProductDetails, pid = [%s]", pid);
@@ -185,6 +220,10 @@ char **getInAppProductDetails(const char *pid)
     return NULL;
 }
 
+/**
+ Return whether the given in-app product has already been
+ provisioned.
+ **/
 bool getInAppProductProvisioned(const char *pid)
 {
     logPrint("magicflood", "getInAppProductProvisioned, pid = [%s]", pid);
@@ -202,6 +241,10 @@ bool getInAppProductProvisioned(const char *pid)
     return false;
 }
 
+/**
+ Return the number of obstacles that are "contained in"
+ the given in-app product.
+ **/
 int getNumObstaclesInInAppProduct(const char * productID)
 {
     logPrint("magicflood", "getNumObstaclesInInAppProduct for productID = [%s]", productID);
@@ -259,6 +302,9 @@ char **getAllInAppProducts()
     return inAppProductsArray;
 }
 
+/**
+ Return the number of provisioned in-app products.
+ **/
 int getNumProvisionedInAppProducts()
 {
     int size = 0;

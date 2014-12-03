@@ -18,6 +18,17 @@ MFObstacle::MFObstacle(int level)
     mLevel = level;
 }
 
+/**
+ Check if the grid has a closed loop considering the already
+ placed obstacle in the grid, and checking with the boundary
+ walls on all 4 sides.  This is required, as a valid game
+ cannot have a closed loop as the loop will either become in accessible
+ or unescapable.
+ 
+ The logic in this function runs round the periphery of the grid,
+ and in case two sequences of obstacle cells are found, it means a
+ closed loop was found.
+ **/
 bool MFObstacle::gridHasClosedLoop(int **grid, int gridSize)
 {
     bool obstacleStarted = false;
@@ -117,7 +128,10 @@ bool MFObstacle::gridHasClosedLoop(int **grid, int gridSize)
     return false;
 }
 
-void MFObstacle::setMediumObstacle(int **grid, int gridSize, int shape, bool useRandom)
+/**
+ Genereate and place a medium obstacle in the grid, at the center.
+ **/
+void MFObstacle::setMediumObstacle(int **grid, int gridSize, int shape)
 {
     switch (shape)
     {
@@ -249,6 +263,11 @@ void MFObstacle::setMediumObstacle(int **grid, int gridSize, int shape, bool use
 
 }
 
+/**
+ Placed a Hard Obstacle.  The code that is inside each switch/case
+ statement can be auto-generated using the script genHurdleCode in the
+ scripts folder.
+ **/
 void MFObstacle::setHardObstacle(int **grid, int gridSize, int shape, bool useRandom)
 {
     int shapeWidth = 0, shapeHeight = 0, xoffset = 0, yoffset = 0;
@@ -1031,11 +1050,16 @@ void MFObstacle::setHardObstacle(int **grid, int gridSize, int shape, bool useRa
     
 }
 
+/**
+ Place the obstacle/hurdle in the grid.  If useRandom is true,
+ place the hurdle at a random position.  Otherwise, place at a fixed
+ position.
+ **/
 void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom)
 {
     if (mLevel == GAME_LEVEL_MEDIUM)
     {
-        setMediumObstacle(grid, gridSize, shape, useRandom);
+        setMediumObstacle(grid, gridSize, shape);
     }
     else if (mLevel == GAME_LEVEL_HARD)
     {
@@ -1043,6 +1067,9 @@ void MFObstacle::setObstacle(int **grid, int gridSize, int shape, bool useRandom
     }
 }
 
+/**
+ Reset the grid with 0's.
+ **/
 void MFObstacle::resetGrid(int **grid, int gridSize)
 {
     for (int i = 0; i < gridSize; i++)
@@ -1051,6 +1078,9 @@ void MFObstacle::resetGrid(int **grid, int gridSize)
     }
 }
 
+/**
+ Create/Allocate a new grid of the given Shape and Size.
+ **/
 int ** MFObstacle::createGrid(int shape, int gridSize)
 {
     //allocate the grid
@@ -1060,21 +1090,31 @@ int ** MFObstacle::createGrid(int shape, int gridSize)
         grid[i] = (int *)calloc(gridSize, sizeof(int));
     }
     
+    /**
+     Try fixing the hurdle at a random location in the grid.
+     **/
     int count = 1;
     while (count > 0)
     {
         setObstacle(grid, gridSize, shape, true);
+        
+        //check for closed loops
         if (!gridHasClosedLoop(grid, gridSize))
         {
             break;
         }
+        
+        //the grid had closed loop(s), so reset it
         resetGrid(grid, gridSize);
         count --;
     }
     
+    /**
+     Grid had closed loop(s).  Place at a fixed position (see
+     setObstacle for details).
+     **/
     if (count == 0)
     {
-        fprintf(stderr, "in count == 0 case\n");
         setObstacle(grid, gridSize, shape, false);
     }
     

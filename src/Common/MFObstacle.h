@@ -17,7 +17,7 @@ private:
     int getHeight();
     bool gridHasClosedLoop(int **grid, int gridSize);
     void setObstacle(int **grid, int gridSize, int shape, bool useRandom);
-    void setMediumObstacle(int **grid, int gridSize, int shape, bool useRandom);
+    void setMediumObstacle(int **grid, int gridSize, int shape);
     void setHardObstacle(int **grid, int gridSize, int shape, bool useRandom);
     void resetGrid(int **grid, int gridSize);
 
