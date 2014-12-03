@@ -3,6 +3,9 @@ package com.ezeeideas.magicflood;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +41,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
     	mSuccessAlertDialog = null;
     	mFailedAlertDialog = null;
     	
+    	//initialize Sound
+    	setupSound();
+    	
     	mLevel = getIntent().getIntExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
     	startNewGame(mLevel);
     }
@@ -48,6 +54,56 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		super.onDestroy();
 		deleteGrid(gridHandle);
 	}
+	
+	private void setupSound()
+	{
+		// AudioManager audio settings for adjusting the volume
+		audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+		actVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+		maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		volume = actVolume / maxVolume;
+		
+		 
+		//Hardware buttons setting to adjust the media sound
+		this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		
+		// Load the sounds
+		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+		soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() 
+		{
+			@Override
+			public void onLoadComplete(SoundPool soundPool, int sampleId, int status)
+			{
+
+				loaded = true;
+			}
+		});
+
+		mButtonClickSoundID = soundPool.load(this, R.raw.button_press_sound, 1);
+		mGameSuccessSoundID = soundPool.load(this, R.raw.game_success_sound, 1);
+		mGameFailedSoundID = soundPool.load(this, R.raw.game_failed_sound, 1);
+		
+	}
+	
+	public void playSound(int resultType) 
+	{
+		// Is the sound loaded does it already play?
+		if (loaded) 
+		{
+			int soundID = mButtonClickSoundID;
+			switch (resultType)
+			{
+			case MFGameConstants.RESULT_SUCCESS:
+				soundID = mGameSuccessSoundID;
+				break;
+			case MFGameConstants.RESULT_FAILED:
+				soundID = mGameFailedSoundID;
+				break;
+			}
+			soundPool.play(soundID, volume, volume, 1, 0, 1f);
+		}
+	}
+
 	
 	private void startNewGame(int level)
 	{
@@ -181,7 +237,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 			}
 
 			// show it
-			mFailedAlertDialog.show(); 
+			mFailedAlertDialog.show();
+			
+			playSound(MFGameConstants.RESULT_FAILED);
 		}
 		else if (result == MFGameConstants.RESULT_SUCCESS)
 		{
@@ -204,9 +262,14 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 			}
 
 			// show it
-			mSuccessAlertDialog.show(); 
+			mSuccessAlertDialog.show();
+			
+			playSound(MFGameConstants.RESULT_SUCCESS);
 		}
-		
+		else
+		{
+			playSound(MFGameConstants.RESULT_CONTINUE);
+		}
 	}
 
 	@Override
@@ -269,6 +332,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	private Button mCyanButton;
 	
 	private AlertDialog mExitAlertDialog, mSuccessAlertDialog, mFailedAlertDialog;
+	
+	/**
+	 * Sound related
+	 */
+	
+	private SoundPool soundPool;
+	private int mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID;
+	boolean loaded = false;
+	float actVolume, maxVolume, volume;
+	AudioManager audioManager;
+
 	
 	private long gridHandle;
 	private native long createNewGrid(int level);

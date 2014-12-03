@@ -124,6 +124,4 @@ public class MFGameConstants
 	 * Package name
 	 */
 	public static String PACKAGE_NAME;
-	
-	
 }
