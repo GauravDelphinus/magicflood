@@ -106,6 +106,7 @@ void addInAppProduct(const char *id, const char *name, const char *description, 
             found = true;
             break;
         }
+        iter++;
     }
     
     if (!found)
@@ -126,6 +127,7 @@ void updateInAppProduct(const char *id, bool isProvisioned)
             iap->setProvisioned(isProvisioned);
             break;
         }
+        iter++;
     }
 }
 
@@ -139,6 +141,7 @@ void clearInAppProducts()
         {
             delete iap;
         }
+        iter++;
     }
     
     sInAppProductList.clear();
@@ -161,21 +164,22 @@ char **getInAppProductDetails(const char *pid)
             logPrint("magicflood", "0: %s", retArray[0]);
             
             retArray[1] = (char *) malloc (iap->getDescription().length() * sizeof(char) + 1);
-            strcpy(retArray[1], iap->getName().c_str());
+            strcpy(retArray[1], iap->getDescription().c_str());
             logPrint("magicflood", "1: %s", retArray[1]);
             
             retArray[2] = (char *) malloc (iap->getPrice().length() * sizeof(char) + 1);
-            strcpy(retArray[2], iap->getName().c_str());
+            strcpy(retArray[2], iap->getPrice().c_str());
             logPrint("magicflood", "2: %s", retArray[2]);
             
             retArray[3] = (char *) malloc (iap->getPriceCode().length() * sizeof(char) + 1);
-            strcpy(retArray[3], iap->getName().c_str());
+            strcpy(retArray[3], iap->getPriceCode().c_str());
             logPrint("magicflood", "3: %s", retArray[3]);
             
             logPrint("magicflood", "allocated the char pointer array, returning %p", retArray);
             
             return retArray;
         }
+        iter++;
     }
     
     return NULL;
@@ -192,6 +196,7 @@ bool getInAppProductProvisioned(const char *pid)
         {
             return iap->isProvisioned();
         }
+        iter++;
     }
     
     return false;
@@ -349,6 +354,7 @@ bool getIsInAppProductProvisioned(const char * productID)
                 break;
             }
         }
+        iter++;
     }
     
     return false;

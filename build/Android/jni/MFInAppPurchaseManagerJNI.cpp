@@ -1,4 +1,5 @@
 #include <jni.h>
+#include "MFNativeLog.h"
 #include "MFIAPInterface.h"
 
 /*
@@ -75,26 +76,32 @@ extern "C" JNIEXPORT jobjectArray JNICALL Java_com_ezeeideas_magicflood_MFInAppP
 	const char *idStr = env->GetStringUTFChars(pid, 0);
 	char **detailsArray = getInAppProductDetails(idStr);
 
-	char *message[5]= {detailsArray[0],
+	logPrint("gaurav", "after getInAppProductDetails");
+	char *message[4]= {detailsArray[0],
 			detailsArray[1],
 			detailsArray[2],
-			detailsArray[3],
-			detailsArray[4]};  
+			detailsArray[3]};  
 
-	ret= (jobjectArray)env->NewObjectArray(5,  
+	logPrint("gaurav", "before NewObjectArray");
+	ret= (jobjectArray)env->NewObjectArray(4,  
 			env->FindClass("java/lang/String"),  
 			env->NewStringUTF(""));  
 
-	for(i=0;i<5;i++) 
+	logPrint("gaurav", "point 1");
+	for(i=0;i<4;i++) 
 	{  
+		logPrint("gaurav", "i = %d, message [%s]", i, message[i]);
 		env->SetObjectArrayElement(ret, i, env->NewStringUTF(message[i]));  
 	}  
 
-	for (i = 0; i < 5; i++)
+	logPrint("gaurav", "point 2");
+	for (i = 0; i < 4; i++)
 	{
 		free(detailsArray[i]);
 	}
+	logPrint("gaurav", "point 3");
 	free(detailsArray);
+	logPrint("gaurav", "point 4, ret = %x", ret);
 	return(ret); 
 }
 
@@ -103,7 +110,7 @@ extern "C" JNIEXPORT jobjectArray JNICALL Java_com_ezeeideas_magicflood_MFInAppP
  * Method:    getProductProvisioned
  * Signature: (Ljava/lang/String;)Z
  */
-JNIEXPORT jboolean JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_getProductProvisioned
+extern "C" JNIEXPORT jboolean JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_getProductProvisioned
   (JNIEnv *env, jobject thisObj, jstring pid)
 {
 	const char *idStr = env->GetStringUTFChars(pid, 0);

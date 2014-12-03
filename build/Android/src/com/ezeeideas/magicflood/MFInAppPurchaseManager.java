@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,56 +16,51 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import com.android.vending.billing.IInAppBillingService;
+import com.ezeeideas.magicflood.iabutil.IabHelper;
+import com.ezeeideas.magicflood.iabutil.IabResult;
+import com.ezeeideas.magicflood.iabutil.Inventory;
+import com.ezeeideas.magicflood.iabutil.Purchase;
+import com.ezeeideas.magicflood.iabutil.SkuDetails;
 
-public class MFInAppPurchaseManager implements ServiceConnection
+public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListener, IabHelper.QueryInventoryFinishedListener, IabHelper.OnIabPurchaseFinishedListener
 {
-	public MFInAppPurchaseManager()
+	public MFInAppPurchaseManager(Activity context)
 	{
+		mContext = context;
 		
+		initialize();
 	}
 	
-	public static MFInAppPurchaseManager create()
+	public void initialize()
+	{
+		Log.d("gaurav", "MFInAppPurchaseManager.initialize called");
+		String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzFOa2G5Il745oc+Mk4p9acAN49yEaR1yu0b/quHdxQQRNwwKH4ZJWxRTv+O3n/3EhhzqCpYp3DI1rlX/fjIJKYDMpeTofrhW4ySq/PHIJcC5z2ZvXw233CtAP2Bn44OvTcNrd0At5+9TVscRncN033fB+Tk1iX9e3fcwImkynAdYD1Fk+VDW2dKG9t6p9q+sE/tf98iw1aLgHNj8Rn3Dxo79EkbwbAxGk3LqqKJZExDCMnM9N2fb0iWEm+5mYhC1AFevQxjO3i0OFrgTp+EwiHysECvcUa6soY+ZDhBr0jHTW4hvIwiYBl80s2UPtpEMVdGV1nWOKsQ7bt6ogUv68wIDAQAB";
+        // compute your public key and store it in base64EncodedPublicKey
+		
+		mPurchaseInterfaceListeners = new ArrayList<IAPPurchaseInterface>();
+		
+        mHelper = new IabHelper(mContext, base64EncodedPublicKey);
+        mHelper.enableDebugLogging(true);
+        mHelper.startSetup(this);
+        Log.d("gaurav", "at the end of initialize");
+	}
+	
+	public void addPurchaseListener(IAPPurchaseInterface listener)
+	{
+		mPurchaseInterfaceListeners.add(listener);
+	}
+	/*
+	public static MFInAppPurchaseManager create(Context context)
 	{
 		if (sIAPManager == null)
 		{
-			sIAPManager = new MFInAppPurchaseManager();
+			sIAPManager = new MFInAppPurchaseManager(context);
 		}
 		
 		return sIAPManager;
-		/*
-		sIAPManager.initializeInAppInterface();
-		
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_ALACARTE_1, "First A-la-carte Item", "My very first IAP", true);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_ALACARTE_2, "Second A-la-carte item", "My very second IAP", false);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_ALACARTE_3, "Third A-la-carte item", "My very third IAP", false);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_ALACARTE_4, "Fourth A-la-carte item", "My very fourth IAP", false);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_ALACARTE_5, "Fifth A-la-carte item", "My very fifth IAP", false);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_ALACARTE_6, "Sixth A-la-carte item", "My very sixth IAP", false);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_COMBO_1, "Combo: 5 Hurdles!", "My very seventh IAP", false);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_COMBO_2, "Combo: 10 Hurdles!", "My very eighth IAP", false);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_COMBO_3, "Combo: 25 Hurdles!", "My very ninth IAP", false);
-		sIAPManager.addInAppProduct(MFGameConstants.IAP_COMBO_4, "Combo: 50 Hurdles!", "My very tenth IAP", false);
-		*/
-	}
-	
-	@Override
-	public void onServiceConnected(ComponentName arg0, IBinder service) 
-	{
-		mService = IInAppBillingService.Stub.asInterface(service);
-		Log.d("magicflood", "onServiceConnected called, mService = " + mService);
-		queryInAppItems();
-	}
 
-	@Override
-	public void onServiceDisconnected(ComponentName arg0) 
-	{
-		mService = null;		
 	}
-	
-	public boolean isServiceConnected()
-	{
-		return (mService != null);
-	}
+*/
 	
 	/**
 	 * Query the service for available in-app purchase items.  This should
@@ -71,172 +68,232 @@ public class MFInAppPurchaseManager implements ServiceConnection
 	 */
 	public void queryInAppItems()
 	{
-		Log.d("magicflood", "queryInAppItems, mService = " + mService);
-		mQuerySkuDetailsTask = new QuerySKUDetailsTask();
-		mQuerySkuDetailsTask.execute(0);
-	}
-	
-	private class QuerySKUDetailsTask extends AsyncTask<Integer, Integer, Boolean>
-	{
-		protected Boolean doInBackground(Integer... args)
-		{
-			Log.d("magicflood", "doInBackground...");
-			ArrayList<String> skuList = new ArrayList<String> ();
-			
-			String testPrefix = "";
-			if (MFGameConstants.testingMode)
-			{
-				testPrefix += "test_";
-			}
-			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_1);
-			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_2);
-			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_3);
-			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_4);
-			skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_5);
-			//skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_6);
-			//skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_1);
-			//skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_2);
-			//skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_3);
-			//skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_4);
-			//skuList.add(testPrefix + MFGameConstants.IAP_REMOVE_ADS);
-			
-			Bundle querySkus = new Bundle();
-			querySkus.putStringArrayList(MFGameConstants.IAP_QUERY_SKUS_KEY, skuList);
-			
-			try {
-				mSkuDetails = mService.getSkuDetails(3, MFGameConstants.PACKAGE_NAME, "inapp", querySkus);
-			} catch (RemoteException e) {
-				return false;
-			}
-			int response = mSkuDetails.getInt(MFGameConstants.IAP_RESPONSE_CODE_KEY);
-			if (response == MFGameConstants.BILLING_RESPONSE_RESULT_OK)
-			{
-				Log.d("magicflood", "called getSkuDetails, and it was successful");
-				return true;
-			}
-			
-			Log.d("magicflood", "called getSkuDetails, and something failed, response = " + response);
-			return false;
-		}
-		protected void onProgressUpdate(Integer... args)
-		{
-			
-		}
+		Log.d("gaurav", "queryInAppItems");
 		
-		/**
-		 * If the query of sku details from the server was successful, extract the
-		 * relevant information and data and update that in the local cache in the C++ code.
-		 */
-		protected void onPostExecute(Boolean result)
+		ArrayList<String> skuList = new ArrayList<String>();
+		String testPrefix = "";
+		if (MFGameConstants.testingMode)
 		{
-			if (result == true) //the background task was successful
+			testPrefix += "test_";
+		}
+		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_1);
+		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_2);
+		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_3);
+		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_4);
+		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_5);
+		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_6);
+		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_1);
+		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_2);
+		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_3);
+		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_4);
+		skuList.add(testPrefix + MFGameConstants.IAP_REMOVE_ADS);
+				
+		mHelper.queryInventoryAsync(true, skuList, this);
+		Log.d("gaurav", "called queryInventoryAsync");
+		
+		/*new IabHelper.QueryInventoryFinishedListener() 
+		{
+			@Override
+			public void onQueryInventoryFinished(IabResult result, Inventory inv) //for sku details
 			{
-				Log.d("magicflood", "onPostExecute...");
-				//extract details
-				ArrayList<String> responseList = mSkuDetails.getStringArrayList(MFGameConstants.IAP_QUERY_DETAILS_KEY);
-			
-				//add the in-app products
-				for (String thisResponse : responseList) 
+				Log.d("magicflood", "onQueryInventoryFinished called for SKU details, result = " + result);
+				if (result.isFailure()) 
 				{
-					JSONObject object;
-					try 
+					// handle error
+					return;
+				}
+
+				String testPrefix = "";
+				if (MFGameConstants.testingMode)
+				{
+					testPrefix += "test_";
+				}
+				
+				for (int i = 0; i < pidArray.length; i++)
+				{
+					SkuDetails skuDetails = inv.getSkuDetails(testPrefix + pidArray[i]);
+					//Log.d("magicflood", "skuDetails = [" + skuDetails + "]");
+					if (skuDetails != null)
 					{
-						//extract details of this SKU
-						object = new JSONObject(thisResponse);
-						String pid = object.getString(MFGameConstants.IAP_PRODUCT_ID);
-						String price = object.getString(MFGameConstants.IAP_PRODUCT_PRICE);
-						String name = object.getString(MFGameConstants.IAP_PRODUCT_TITLE);
-						String description = object.getString(MFGameConstants.IAP_PRODUCT_DESCRIPTION);
-						String currencyCode = object.getString(MFGameConstants.IAP_PRODUCT_PRICE_CURRENCY_CODE);
+						String price = inv.getSkuDetails(testPrefix + pidArray[i]).getPrice();
+						String name = inv.getSkuDetails(testPrefix + pidArray[i]).getTitle();
+						String description = inv.getSkuDetails(testPrefix + pidArray[i]).getDescription();
+
+						Log.d("magicflood", "calling addInAppProduct for [" + pidArray[i] + "] with name [" + name + "], description [" + description + "], price [" + price + "]");
+						addInAppProduct(MFGameConstants.IAP_ALACARTE_HURDLE_1, name, description, price, "tbd", false);
 						
-						//Add this product to the list in the C++ side.  Setting purchase/provisioning status as false
-						//by default - this is updated after invoking the second API (below)
-						Log.d("magicflood", "calling addInAppProduct with pid = [" + pid + "], name = [" + name + "], description = [" + 
-									description + "], price = [" + price + "], currencyCode = [" + currencyCode);
-						addInAppProduct(pid, name, description, price, currencyCode, false);
-					} catch (JSONException e) 
-					{
-						//something went wrong, so we can't claim we're done synchronizing the iap status
-						clearInAppProducts(); //clear the in-app products cache
-						
-						mIsSynchronizedWithServer = false;
+						boolean isProvisioned = inv.hasPurchase(testPrefix + pidArray[i]); 
+						Log.d("magicflood", "calling updateInAppProduct for [" + pidArray[i] + "] with [" + isProvisioned + "]");
+						updateInAppProduct(pidArray[i], isProvisioned);
 					}
 				}
 				
-				//now update the provisioning status
-				Bundle ownedItems = null;
-				try 
-				{
-					ownedItems = mService.getPurchases(3, MFGameConstants.PACKAGE_NAME, "inapp", null);
-					Log.d("magicflood", "called getPurchases");
-				} catch (RemoteException e1) 
-				{
-					//something went wrong, so we can't claim we're done synchronizing the iap status
-					clearInAppProducts();
-					
-					mIsSynchronizedWithServer = false;
-					Log.d("magicflood", "something went wrong 1");
-				}
-				
-				int response = ownedItems.getInt(MFGameConstants.IAP_RESPONSE_CODE_KEY);
-				if (response == MFGameConstants.BILLING_RESPONSE_RESULT_OK) 
-				{
-				   ArrayList<String>  purchaseDataList = ownedItems.getStringArrayList(MFGameConstants.IAP_PURCHASE_DATA_KEY);
-				    
-				   for (int i = 0; i < purchaseDataList.size(); ++i) 
-				   {
-				      String purchaseData = purchaseDataList.get(i);
-				  
-				      JSONObject object;
-				      try 
-				      {
-				    	  object = new JSONObject(purchaseData);
-				    	  
-				    	  //extract the purchase status and update the native code with status
-				    	  String pid = object.getString(MFGameConstants.IAP_PRODUCT_ID);
-				    	  String purchaseState = object.getString(MFGameConstants.IAP_PURCHASE_STATE);
-				    	  
-				    	  boolean provisioned = false;
-				    	  if (Integer.getInteger(purchaseState) == 0)
-				    	  {
-				    		  //purchased!
-				    		  provisioned = true;
-				    	  }
+				//now that this async operation is completed, start the async query for the provisioning status
+				//mHelper.queryInventoryAsync(this);
 
-				    	  //update the provisioning status in the C++ code
-				    	  updateInAppProduct(pid, provisioned);
-				      } catch (JSONException e) 
-				      {
-				    	  //something went wrong, so we can't claim we're done synchronizing the iap status
-				    	  
-				    	  clearInAppProducts();
-				    	  
-				    	  mIsSynchronizedWithServer = false;
-				    	  
-				    	  Log.d("magicflood", "something went wrong 2");
-				      }
-				   } 
+			}
+		});
+		*/
+		/*
+		mHelper.queryInventoryAsync(new IabHelper.QueryInventoryFinishedListener() //for provisioning status
+		{
+			@Override
+			public void onQueryInventoryFinished(IabResult result, Inventory inventory) 
+			{
+				Log.d("magicflood", "onQueryInventoryFinished called for provisioning status");
+				if (result.isFailure()) 
+				{
+					return;
 				}
 				
-				//we're now synchronized the iap status in the C++ code
-				mIsSynchronizedWithServer = true;
+				String testPrefix = "";
+				if (MFGameConstants.testingMode)
+				{
+					testPrefix += "test_";
+				}
 				
-				Log.d("magicflood", "at the end of onPostExecute, everything went well");
+				// does the user have the premium upgrade?
+				for (int i = 0; i < pidArray.length; i++)
+				{
+					boolean isProvisioned = inventory.hasPurchase(testPrefix + pidArray[i]); 
+					Log.d("magicflood", "calling updateInAppProduct for [" + pidArray[i] + "] with [" + isProvisioned + "]");
+					updateInAppProduct(pidArray[i], isProvisioned);
+				}
+			}
+		});
+		*/
+	}
+	
+	public void purchaseItem(String pid)
+	{
+		Log.d("gaurav", "calling mHelper.launchPurchaseFlow with pid = [" + pid + "]");
+		String testPrefix = "";
+		if (MFGameConstants.testingMode)
+		{
+			testPrefix = "test_";
+		}
+		mHelper.launchPurchaseFlow(mContext, testPrefix + pid, 0, this);
+	}
+	
+	/**
+	 * Called after IAB has been setup.  Now query for all the SKU information.
+	 */
+	@Override
+	public void onIabSetupFinished(IabResult result) 
+	{
+		Log.d("gaurav", "onIabSetupFinished, result = " + result);
+		queryInAppItems();
+		
+	}
+	
+	/**
+	 * Called in onDestroy of parent activity.
+	 */
+	public void unbind()
+	{
+		   if (mHelper != null) mHelper.dispose();
+		   mHelper = null;
+	}
+	
+	
+	@Override
+	public void onQueryInventoryFinished(IabResult result, Inventory inv) //for provisioning status
+	{
+		Log.d("gaurav", "onQueryInventoryFinished called for SKU details, result = " + result);
+		if (result.isFailure()) 
+		{
+			// handle error
+			return;
+		}
+
+		String testPrefix = "";
+		if (MFGameConstants.testingMode)
+		{
+			testPrefix += "test_";
+		}
+		
+		Log.d("gaurav", "pidArray.length = " + pidArray.length);
+		for (int i = 0; i < pidArray.length; i++)
+		{
+			SkuDetails skuDetails = inv.getSkuDetails(testPrefix + pidArray[i]);
+			Log.d("gaurav", "skuDetails = [" + skuDetails + "]");
+			//if (skuDetails != null)
+			{
+				String price = inv.getSkuDetails(testPrefix + pidArray[i]).getPrice();
+				String name = inv.getSkuDetails(testPrefix + pidArray[i]).getTitle();
+				String description = inv.getSkuDetails(testPrefix + pidArray[i]).getDescription();
+				boolean isProvisioned = inv.hasPurchase(testPrefix + pidArray[i]);
+				
+				Log.d("gaurav", "i = " + i + ", calling addInAppProduct for [" + pidArray[i] + "] with name [" + name + "], description [" + description + "], price [" + price + "]");
+				addInAppProduct(pidArray[i], name, description, price, "tbd", isProvisioned);
+						 
+				//Log.d("gaurav", "i = " + i + ", calling updateInAppProduct for [" + pidArray[i] + "] with [" + isProvisioned + "]");
+				//updateInAppProduct(pidArray[i], isProvisioned);
+				Log.d("gaurav","after calling addInAppProduct");
 			}
 		}
+		
+		Log.d("gaurav", "called at the end of onQueryInventoryFinished");
+	}
+
+	@Override
+	public void onIabPurchaseFinished(IabResult result, Purchase info) 
+	{
+		if (result.isFailure()) 
+		{
+			Log.d("gaurav", "Error purchasing: " + result + ", info = " + info + ", mPurchaseInterfaceListeners = " + mPurchaseInterfaceListeners);
+			//successfully purchased.  Update the UI to reflect the changes
+			return;
+		}
+		
+		//successfully purchased.  Update the UI to reflect the changes
+		for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+		{
+			listener.onPurchaseFinished(info.getSku(), true);
+		}
+		
+		//update the provisioning status
+		updateInAppProduct(info.getSku(), true);
+	}
+	
+	/**
+	 * Implement this interface to listen to purchase completed callbacks.
+	 * @author anukrity
+	 *
+	 */
+	interface IAPPurchaseInterface
+	{
+		void onPurchaseFinished(String pid, boolean status);
 	}
 	
 	private static MFInAppPurchaseManager sIAPManager = null;
 	private boolean mIsSynchronizedWithServer = false;
 	private Bundle mSkuDetails; //details of the SKU
-	private QuerySKUDetailsTask mQuerySkuDetailsTask;
+	//private QuerySKUDetailsTask mQuerySkuDetailsTask;
 	
-	private IInAppBillingService mService;
+	//private IInAppBillingService mService;
+	
+	Activity mContext;
+	private IabHelper mHelper;
+	private ArrayList<IAPPurchaseInterface> mPurchaseInterfaceListeners;
 	
 	private native void initializeInAppInterface();
 	private native void addInAppProduct(String id, String name, String description, String price, String priceCode, boolean isProvisioned);
 	private native void updateInAppProduct(String id, boolean isProvisioned);
 	private native void clearInAppProducts();
-	public native String[] getProductDetails(String id);
+	public native String[] getProductDetails(String id); //return 4 strings, for name, description, price and currency code
 	public native boolean getProductProvisioned(String id);
+
+	private String pidArray[] = {MFGameConstants.IAP_ALACARTE_HURDLE_1,
+			MFGameConstants.IAP_ALACARTE_HURDLE_2,
+			MFGameConstants.IAP_ALACARTE_HURDLE_3,
+			MFGameConstants.IAP_ALACARTE_HURDLE_4,
+			MFGameConstants.IAP_ALACARTE_HURDLE_5,
+			MFGameConstants.IAP_ALACARTE_HURDLE_6,
+			MFGameConstants.IAP_COMBO_HURDLES_1,
+			MFGameConstants.IAP_COMBO_HURDLES_2,
+			MFGameConstants.IAP_COMBO_HURDLES_3,
+			MFGameConstants.IAP_COMBO_HURDLES_4,
+			MFGameConstants.IAP_REMOVE_ADS
+	};
 };

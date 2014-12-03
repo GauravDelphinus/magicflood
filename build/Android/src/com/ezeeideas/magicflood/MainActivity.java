@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.ezeeideas.magicflood.iabutil.IabHelper;
+
 public class MainActivity extends Activity implements View.OnClickListener
 {
 	static 
@@ -35,15 +37,17 @@ public class MainActivity extends Activity implements View.OnClickListener
         MFGameConstants.PACKAGE_NAME = getPackageName();
         
         //initialize the in-app purchase manager
-        mIAPManager = MFInAppPurchaseManager.create();
+        mIAPManager = new MFInAppPurchaseManager(this);
         
         //bind the service manager (aka connection service) to Google In-App Billing
-        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
-        serviceIntent.setPackage("com.android.vending");
-        bindService(serviceIntent, mIAPManager, Context.BIND_AUTO_CREATE);
+        //Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+        //serviceIntent.setPackage("com.android.vending");
+        //bindService(serviceIntent, mIAPManager, Context.BIND_AUTO_CREATE);
         
         //query the available in-app items, and update local cache (here and in C++ code)
         //mIAPManager.queryInAppItems();
+        //mIAPManager.initialize();
+        
     }
 
     @Override
@@ -52,9 +56,9 @@ public class MainActivity extends Activity implements View.OnClickListener
         super.onDestroy();
         
         //Unbind the service manager for IAP
-        if (mIAPManager != null && mIAPManager.isServiceConnected()) 
+        if (mIAPManager != null)
         {
-            unbindService(mIAPManager);
+            mIAPManager.unbind();
         }   
     }
     
