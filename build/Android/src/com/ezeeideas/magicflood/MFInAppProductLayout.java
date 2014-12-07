@@ -32,10 +32,27 @@ public class MFInAppProductLayout extends LinearLayout
 		if (isProvisioned)
 		{	
 			imageView.setBackgroundResource(R.drawable.ic_iap_tick);
+			setBackgroundResource(R.drawable.background_iap_provisioned);
 		}
 		else
 		{
 			imageView.setBackgroundResource(R.drawable.ic_iap_lock);
+			setBackgroundResource(R.drawable.background_iap_not_provisioned);
+		}
+	}
+	
+	public void updatedProvisioningStatus(boolean isProvisioned)
+	{
+		ImageView imageView = (ImageView) findViewById(R.id.image_iap_status_id);
+		if (isProvisioned)
+		{	
+			imageView.setBackgroundResource(R.drawable.ic_iap_tick);
+			setBackgroundResource(R.drawable.background_iap_provisioned);
+		}
+		else
+		{
+			imageView.setBackgroundResource(R.drawable.ic_iap_lock);
+			setBackgroundResource(R.drawable.background_iap_not_provisioned);
 		}
 	}
 }

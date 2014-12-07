@@ -131,6 +131,14 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
         iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
+        
+        //Remove Ads IAP
+        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
+        isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_REMOVE_ADS);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.remove_ads_layout_id);
+        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setEnabled(!isProvisioned);
+        iapLayout.setOnClickListener(this);
 	}
 	
     @Override
@@ -144,7 +152,6 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
             mIAPManager.unbind();
         }   
     }
-	
     
 	// Method to handle touch event like left to right swap and right to left swap
     public boolean onTouchEvent(MotionEvent touchevent) 
@@ -261,15 +268,8 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 			buttonID = R.id.combo_layout_4_id;
 		}
 
-		LinearLayout button = (LinearLayout) findViewById(buttonID);
-		if (status == true)
-		{
-			button.setEnabled(false);
-		}
-		else
-		{
-			button.setEnabled(true);
-		}
+		MFInAppProductLayout layout = (MFInAppProductLayout) findViewById(buttonID);
+		layout.updatedProvisioningStatus(status);
 	}
 
 	@Override

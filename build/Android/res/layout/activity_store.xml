@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
+android:background="@color/gray"
 android:orientation="vertical" >
 
        <ViewFlipper
@@ -30,6 +31,11 @@ android:orientation="vertical" >
                         android:textStyle="bold" >
                     </TextView>
 
+                     <View
+                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_width="wrap_content"
+                            />
+                     
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -58,6 +64,11 @@ android:orientation="vertical" >
                         
                     </LinearLayout>
                     
+                     <View
+                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_width="wrap_content"
+                            />
+                     
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -84,6 +95,11 @@ android:orientation="vertical" >
                         
                     </LinearLayout>
                     
+                               <View
+                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_width="wrap_content"
+                            />
+                               
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -132,6 +148,11 @@ android:orientation="vertical" >
                         android:textStyle="bold" >
                     </TextView>
 
+                     <View
+                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_width="wrap_content"
+                            />
+                     
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -154,6 +175,11 @@ android:orientation="vertical" >
                         
                     </LinearLayout>
                     
+                     <View
+                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_width="wrap_content"
+                            />
+                     
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -180,8 +206,52 @@ android:orientation="vertical" >
             </LinearLayout>
 
 
+               <!--  Layout 3 for 3rd Screen -->
+            
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="Other Items"
+                        android:textColor="#191975"
+                        android:textSize="25dp"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                     <View
+                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_width="wrap_content"
+                            />
+                     
+                  <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                        <include layout="@layout/layout_store_product" android:id="@+id/remove_ads_layout_id"
+                                />
+                           
+                      
+                        
+                    </LinearLayout>
+                    
+                     
+                    
+            </LinearLayout>
 
         </ViewFlipper>
+         <View
+                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_width="wrap_content"
+                            />
         <LinearLayout 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
