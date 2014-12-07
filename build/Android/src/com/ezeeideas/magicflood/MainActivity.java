@@ -1,6 +1,8 @@
 package com.ezeeideas.magicflood;
 
 
+import java.util.Vector;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.ezeeideas.magicflood.iabutil.IabHelper;
 
-public class MainActivity extends Activity implements View.OnClickListener
+public class MainActivity extends Activity implements View.OnClickListener, PieButton.PieButtonListener
 {
 	static 
 	{
@@ -23,15 +26,29 @@ public class MainActivity extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        /*
         Button easyButton = (Button)findViewById(R.id.eazy_game_button);
         easyButton.setOnClickListener(this);
         Button mediumButton = (Button)findViewById(R.id.medium_game_button);
         mediumButton.setOnClickListener(this);
         Button hardButton = (Button)findViewById(R.id.hard_game_button);
         hardButton.setOnClickListener(this);
+        */
         
-        Button storeButton = (Button)findViewById(R.id.store_button_id);
+        ImageButton storeButton = (ImageButton)findViewById(R.id.store_button_id);
         storeButton.setOnClickListener(this);
+        
+        ImageButton infoButton = (ImageButton) findViewById(R.id.about_button_id);
+        infoButton.setOnClickListener(this);
+        
+        mGameLevelPieButton = (PieButton) findViewById(R.id.game_level_spinner_button_id);
+        Vector<Integer> buttonPressedResources = new Vector<Integer>();
+        buttonPressedResources.add(R.drawable.pie_button_level_selection_easy);
+        buttonPressedResources.add(R.drawable.pie_button_level_selection_medium);
+        buttonPressedResources.add(R.drawable.pie_button_level_selection_hard);
+        mGameLevelPieButton.setAttributes(30, R.drawable.pie_button_level_selection_normal, buttonPressedResources);
+        
         
         //set the package name
         MFGameConstants.PACKAGE_NAME = getPackageName();
@@ -88,27 +105,42 @@ public class MainActivity extends Activity implements View.OnClickListener
 		Intent i;
 		switch (arg0.getId())
 		{
-		case R.id.eazy_game_button:		
-	    	i = new Intent(this, MFGameActivity.class); 	
-	    	i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
-	    	startActivity(i);
-			break;
-		case R.id.medium_game_button:
-	    	i = new Intent(this, MFGameActivity.class); 	
-	    	i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_MEDIUM);
-	    	startActivity(i);
-			break;
-		case R.id.hard_game_button:
-	    	i = new Intent(this, MFGameActivity.class); 	
-	    	i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
-	    	startActivity(i);
-			break;
 		case R.id.store_button_id:
 			i = new Intent(this, MFStoreActivity.class);
+			startActivity(i);
+			break;
+		case R.id.about_button_id:
+			i = new Intent(this, MFAboutActivity.class);
+			startActivity(i);
+			break;
+		}
+	}
+	
+	@Override
+	public void onPieButtonSelected(PieButton button, int index) 
+	{
+		Intent i;
+		switch (index)
+		{
+		case 0:		
+			i = new Intent(this, MFGameActivity.class); 	
+			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
+			startActivity(i);
+			break;
+		case 1:
+			i = new Intent(this, MFGameActivity.class); 	
+			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_MEDIUM);
+			startActivity(i);
+			break;
+		case 2:
+			i = new Intent(this, MFGameActivity.class); 	
+			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
 			startActivity(i);
 			break;
 		}
 	}
 	
 	private MFInAppPurchaseManager mIAPManager;
+	private PieButton mGameLevelPieButton;
+	
 }

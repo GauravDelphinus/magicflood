@@ -1,11 +1,17 @@
 package com.ezeeideas.magicflood;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdListener;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.LightingColorFilter;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
@@ -13,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MFGameActivity extends Activity implements View.OnClickListener, DialogInterface.OnClickListener {
@@ -25,20 +32,27 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
         
     	mGameView = (MFGameView) findViewById(R.id.game_view_id);
     	mMovesLabel = (TextView) findViewById(R.id.moves_label_id);
-    	mExitButton = (Button) findViewById(R.id.exit_game_button_id);
+    	
+    	//Typeface face = Typeface.createFromAsset(getAssets(),
+        //        "fonts/ArchitectsDaughter.ttf");
+        Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", this);
+    	mMovesLabel.setTypeface(face);
+    
+    	mExitButton = (ImageButton) findViewById(R.id.exit_game_button_id);
     	mExitButton.setOnClickListener(this);
     	
-    	mRedButton = (Button) findViewById(R.id.red_button_id);
+    	mRedButton = (ImageButton) findViewById(R.id.red_button_id);
     	mRedButton.setOnClickListener(this);
-    	mGreenButton = (Button) findViewById(R.id.green_button_id);
+    	//mRedButton.getBackground().setColorFilter(new LightingColorFilter(getResources().getColor(R.color.red_button_color_mul), getResources().getColor(R.color.red_button_color_mul)));
+    	mGreenButton = (ImageButton) findViewById(R.id.green_button_id);
     	mGreenButton.setOnClickListener(this);
-    	mBlueButton = (Button) findViewById(R.id.blue_button_id);
+    	mBlueButton = (ImageButton) findViewById(R.id.blue_button_id);
     	mBlueButton.setOnClickListener(this);
-    	mYellowButton = (Button) findViewById(R.id.yellow_button_id);
+    	mYellowButton = (ImageButton) findViewById(R.id.yellow_button_id);
     	mYellowButton.setOnClickListener(this);
-    	mOrangeButton = (Button) findViewById(R.id.orange_button_id);
+    	mOrangeButton = (ImageButton) findViewById(R.id.orange_button_id);
     	mOrangeButton.setOnClickListener(this);
-    	mCyanButton = (Button) findViewById(R.id.cyan_button_id);
+    	mCyanButton = (ImageButton) findViewById(R.id.cyan_button_id);
     	mCyanButton.setOnClickListener(this);
     	
     	mExitAlertDialog = null;
@@ -47,6 +61,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
     	
     	//initialize Sound
     	setupSound();
+    	
+    	//initialize Ads
+    	setupAds();
     	
     	mLevel = getIntent().getIntExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
     	startNewGame(mLevel);
@@ -94,19 +111,30 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		//get the sharepref
 		mPlaySound = settings.getBoolean(MFGameConstants.PREFERENCE_SOUND, true);
 		
-    	mSoundButton = (Button) findViewById(R.id.mute_sound_id);
+		mSoundButton = (ImageButton) findViewById(R.id.mute_sound_id);
+		if (mPlaySound)
+		{
+			mSoundButton.setBackgroundResource(R.drawable.ic_button_sound_on);
+		}
+		else
+		{
+			mSoundButton.setBackgroundResource(R.drawable.ic_button_sound_off);
+		}
     	mSoundButton.setOnClickListener(this);
-    	if (mPlaySound)
-    	{
-    		mSoundButton.setText("Sound: ON");
-    	}
-    	else
-    	{
-    		mSoundButton.setText("Sound: OFF");
-    	}
 	}
 	
-	public void playSound(int resultType) 
+	private void setupAds()
+	{
+		mAdView = (AdView) findViewById(R.id.banner_ad_id);
+       // mAdView.setAdListener(new AdListener(this));
+        AdRequest adRequest = new AdRequest.Builder()
+        .addTestDevice("D270918A90127FD1558623AC978405DF") //Anu's Samsung Galaxy S3
+        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+        .build();
+        mAdView.loadAd(adRequest);
+	}
+	
+	private void playSound(int resultType) 
 	{
 		// Is the sound loaded does it already play?
 		if (loaded && mPlaySound)
@@ -197,12 +225,12 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 			if (mPlaySound == true)
 			{
 				mPlaySound = false;
-				mSoundButton.setText("Sound: OFF");
+				mSoundButton.setBackgroundResource(R.drawable.ic_button_sound_off);
 			}
 			else
 			{
 				mPlaySound = true;
-				mSoundButton.setText("Sound: ON");
+				mSoundButton.setBackgroundResource(R.drawable.ic_button_sound_on);
 			}
 			
 			//set the sharedpref
@@ -366,14 +394,14 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	private MFGameView mGameView; //the game view
 	private int mLevel;
 	private TextView mMovesLabel; //label that shows the current moves
-	private Button mExitButton;
-	private Button mSoundButton;
-	private Button mRedButton;
-	private Button mBlueButton;
-	private Button mGreenButton;
-	private Button mYellowButton;
-	private Button mOrangeButton;
-	private Button mCyanButton;
+	private ImageButton mExitButton;
+	private ImageButton mSoundButton;
+	private ImageButton mRedButton;
+	private ImageButton mBlueButton;
+	private ImageButton mGreenButton;
+	private ImageButton mYellowButton;
+	private ImageButton mOrangeButton;
+	private ImageButton mCyanButton;
 	
 	private AlertDialog mExitAlertDialog, mSuccessAlertDialog, mFailedAlertDialog;
 	
@@ -388,6 +416,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	AudioManager audioManager;
 	boolean mPlaySound = false;
 
+	AdView mAdView; // banner ad view
 	
 	private long gridHandle;
 	private native long createNewGrid(int level);

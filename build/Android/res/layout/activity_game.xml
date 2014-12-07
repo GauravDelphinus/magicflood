@@ -1,12 +1,13 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_padding"
+    android:paddingLeft="@dimen/activity_horizontal_padding"
+    android:paddingRight="@dimen/activity_horizontal_padding"
+    android:paddingTop="@dimen/activity_vertical_padding"
     tools:context="com.ezeeideas.magicflood.MFGameActivity" >
 
     <!-- Top Bar containing the Moves label and the Exit button -->
@@ -14,39 +15,48 @@
 	    android:id="@+id/top_bar_id"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_weight="0"
+	    android:layout_alignParentTop="true"
 	    >
-	    
-	        <Button
-        android:id="@+id/mute_sound_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"/>
 	        
+		<ImageButton
+    	android:id="@+id/mute_sound_id"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:layout_alignParentLeft="true"
+        android:background="@color/transparent"
+        ></ImageButton>
+		
     <TextView
         android:id="@+id/moves_label_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:text="@string/moves_game_view" />
 
-    <Button
-        android:id="@+id/exit_game_button_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="X" />
+         
+		<ImageButton
+    	android:id="@+id/exit_game_button_id"
+    	android:src="@drawable/ic_button_menu"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:layout_alignParentRight="true"
+    	android:layout_centerVertical="true"
+        android:background="@color/transparent"
+        ></ImageButton>
+ 
     </RelativeLayout>
 	
 	<!-- The View representing the main drawing board -->
 	<com.ezeeideas.magicflood.MFGameView
 	    android:id="@+id/game_view_id"
-	    android:layout_width="fill_parent"
-	    android:layout_height="0dip"
-	    android:layout_weight="2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/top_bar_id"
+	    android:layout_above="@+id/button_bar"
+	    android:layout_marginTop="@dimen/activity_vertical_padding"
 	/>
 	
 	<!-- The button bar that contains the color buttons -->
@@ -55,49 +65,104 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal"
-	    android:layout_weight="0"
+	    android:layout_above="@+id/banner_ad_id"
+	    android:layout_marginTop="@dimen/activity_vertical_padding"
 	    >
-    <Button
-        android:id="@+id/red_button_id"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/red"/>
-
-    <Button
-        android:id="@+id/green_button_id"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/green"/>
-
-    <Button
-        android:id="@+id/blue_button_id"
-        android:layout_width="dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/blue"/>
     
-    <Button
-        android:id="@+id/yellow_button_id"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/yellow"/>
-
-    <Button
-        android:id="@+id/orange_button_id"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/orange"/>
-
-    <Button
-        android:id="@+id/cyan_button_id"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/cyan"/>
+	<ImageButton
+    	android:id="@+id/red_button_id"
+    	android:src="@drawable/ic_button_color_red"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="2"
+        ></ImageButton>
+	
+	<View
+	    android:layout_width="0px"
+	    android:layout_height="1px"
+	    android:layout_weight="1"
+	    ></View>
+	
+	<ImageButton
+    	android:id="@+id/green_button_id"
+    	android:src="@drawable/ic_button_color_green"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="2"
+        ></ImageButton>
+	
+		<View
+	    android:layout_width="0px"
+	    android:layout_height="1px"
+	    android:layout_weight="1"
+	    ></View>
+		
+	<ImageButton
+    	android:id="@+id/blue_button_id"
+    	android:src="@drawable/ic_button_color_blue"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="2"
+        ></ImageButton>
+	
+		<View
+	    android:layout_width="0px"
+	    android:layout_height="1px"
+	    android:layout_weight="1"
+	    ></View>
+		
+	<ImageButton
+    	android:id="@+id/yellow_button_id"
+    	android:src="@drawable/ic_button_color_yellow"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="2"
+        ></ImageButton>
+	
+		<View
+	    android:layout_width="0px"
+	    android:layout_height="1px"
+	    android:layout_weight="1"
+	    ></View>
+		
+	<ImageButton
+    	android:id="@+id/orange_button_id"
+    	android:src="@drawable/ic_button_color_orange"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="2"
+        ></ImageButton>
+	
+		<View
+	    android:layout_width="0px"
+	    android:layout_height="1px"
+	    android:layout_weight="1"
+	    ></View>
+		
+	<ImageButton
+    	android:id="@+id/cyan_button_id"
+    	android:src="@drawable/ic_button_color_purple"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="2"
+        ></ImageButton>
+  
+    
     </LinearLayout>
 
-</LinearLayout>
+	    <com.google.android.gms.ads.AdView
+        android:id="@+id/banner_ad_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        android:layout_marginTop="@dimen/activity_vertical_padding"
+        ads:adUnitId="@string/ad_unit_id"/>
+	    
+</RelativeLayout>

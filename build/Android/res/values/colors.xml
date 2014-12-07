@@ -5,15 +5,18 @@
    <color name="game_background_color">#FFFF9900</color>
    <color name="black">#FF000000</color>
    <color name="rule">#FFFF0000</color>
-   <color name="red">#FFFF0000</color>
-   <color name="green">#FF00FF00</color>
-   <color name="blue">#FF0000FF</color>
-   <color name="orange">#FFFF9900</color>
+   <color name="red">#FFC01E2E</color>
+   <color name="red_button_color_mul">#FFFF0000</color>
+   <color name="red_button_color_add">#FF000000</color>
+   <color name="green">#FF00A651</color>
+   <color name="blue">#FF18b1e7</color>
+   <color name="orange">#FFF1592A</color>
    <color name="white">#FFFFFFFF</color>
-   <color name="cyan">#FF00FFFF</color>
-   <color name="yellow">#FFFFFF00</color>
+   <color name="cyan">#FF932B90</color>
+   <color name="yellow">#FFFED12A</color>
    <color name="lightorange">#FFFFCC00</color>
    <color name="transparent">#00000000</color>
    <color name="gray">#FF696969</color>
- 
+   <color name="store_iap_background">#FF696969</color>
+   <color name="store_iap_text_color">#FFFFFFFF</color>
 </resources>

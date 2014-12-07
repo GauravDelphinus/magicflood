@@ -7,7 +7,8 @@ android:orientation="vertical" >
        <ViewFlipper
             android:id="@+id/view_flipper_id"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
             android:layout_margin="6dip" >
             
         <!--  The child Views/Layout to flip -->
@@ -29,43 +30,86 @@ android:orientation="vertical" >
                         android:textStyle="bold" >
                     </TextView>
 
-                 <Button
-        android:id="@+id/alacarte_button_1_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                        <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_1_id"
+                                />
+                           
+                        
+                        <View
+                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_2_id"/>
+                        
+                        <View
+                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_3_id"/>
+                        
+                        
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_4_id"/>
+                        
+                        <View
+                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_5_id"/>
+                        
+                        <View
+                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_6_id"/>
+                        
+                        
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_7_id"/>
+                        
+                        <View
+                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_8_id"/>
+                        
+                        <View
+                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_9_id"/>
+                        
+                        
+                    </LinearLayout>
                  
-                    <Button
-        android:id="@+id/alacarte_button_2_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                       <Button
-        android:id="@+id/alacarte_button_3_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                          <Button
-        android:id="@+id/alacarte_button_4_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                             <Button
-        android:id="@+id/alacarte_button_5_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                                <Button
-        android:id="@+id/alacarte_button_6_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                                   <Button
-        android:id="@+id/alacarte_button_7_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                                      <Button
-        android:id="@+id/alacarte_button_8_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                                         <Button
-        android:id="@+id/alacarte_button_9_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
                     
             </LinearLayout>
 
@@ -79,35 +123,109 @@ android:orientation="vertical" >
                     android:orientation="vertical" >
 
                     <TextView
-                        android:layout_marginTop="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
                         android:text="Combo Deals"
                         android:textColor="#191975"
                         android:textSize="25dp"
                         android:textStyle="bold" >
                     </TextView>
 
-                  <Button
-        android:id="@+id/combo_button_1_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                   <Button
-        android:id="@+id/combo_button_2_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                    <Button
-        android:id="@+id/combo_button_3_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-                     <Button
-        android:id="@+id/combo_button_4_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                        <include layout="@layout/layout_store_product" android:id="@+id/combo_layout_1_id"
+                                />
+                           
+                        
+                        <View
+                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/combo_layout_2_id"/>
+                        
+                       
+                        
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/combo_layout_3_id"/>
+                        
+                        <View
+                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/combo_layout_4_id"/>
+                        
+                        
+                        
+                    </LinearLayout>
+                    
+                   
+                 
                     
             </LinearLayout>
 
 
+
         </ViewFlipper>
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            >
+            <View
+                android:layout_width="0dip"
+                android:layout_height="1dip"
+                android:layout_weight="1"
+                />
+            <ImageView
+                android:id="@+id/viewflipper_child1_indicator_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_viewflipper_indicator_selected"
+                />
+                       <View
+                android:layout_width="@dimen/activity_horizontal_margin"
+                android:layout_height="1dip"
+                />
+               <ImageView
+                android:id="@+id/viewflipper_child2_indicator_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_viewflipper_indicator_unselected"
+                />
+                          <View
+                android:layout_width="@dimen/activity_horizontal_margin"
+                android:layout_height="1dip"
+                />
+                  <ImageView
+                android:id="@+id/viewflipper_child3_indicator_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_viewflipper_indicator_unselected"
+                />
+                             <View
+                android:layout_width="0dip"
+                android:layout_height="1dip"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
 
 </LinearLayout>
