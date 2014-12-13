@@ -122,13 +122,14 @@ int MFGrid::playMove(int color) //, int ***incrementalGrid)
     */
     currMove ++;
     fprintf(stderr, "curr move = %d", currMove);
-    if (currMove >= maxMoves)
-    {
-        return RESULT_FAILED;
-    }
-    else if (gridCompleted(color))
+    
+    if (gridCompleted(color))
     {
         return RESULT_SUCCESS;
+    }
+    else if (currMove >= maxMoves)
+    {
+        return RESULT_FAILED;
     }
     
     return RESULT_CONTINUE;
@@ -226,8 +227,8 @@ void MFGrid::initializeStartPos()
         int count = 2;
         while (count --)
         {
-            startPos[0] = 1;//rand() % HARDGRIDSIZE;
-            startPos[1] = 1;//rand() % HARDGRIDSIZE;
+            startPos[0] = rand() % HARDGRIDSIZE;
+            startPos[1] = rand() % HARDGRIDSIZE;
             
             if (grid[startPos[0]][startPos[1]] != GRID_OBSTACLE)
                 break;
