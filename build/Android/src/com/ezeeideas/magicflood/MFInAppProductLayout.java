@@ -20,6 +20,15 @@ public class MFInAppProductLayout extends LinearLayout
 		super(context, attrs);
 	}
 	
+	public void setProperties(String title, String price, boolean isProvisioned, int imageId)
+	{
+		//set the iap product image
+		ImageView productImage = (ImageView) findViewById(R.id.image_iap_pic_id);
+		productImage.setBackgroundResource(imageId);
+		
+		setProperties(title, price, isProvisioned);
+	}
+	
 	public void setProperties(String title, String price, boolean isProvisioned)
 	{
 		TextView tvDetail = (TextView) findViewById(R.id.textview_iap_detail_id);
@@ -28,6 +37,7 @@ public class MFInAppProductLayout extends LinearLayout
 		TextView tvPrice = (TextView) findViewById(R.id.textview_price_id);
 		tvPrice.setText(price);
 		
+		/*
 		ImageView imageView = (ImageView) findViewById(R.id.image_iap_status_id);
 		if (isProvisioned)
 		{	
@@ -39,10 +49,12 @@ public class MFInAppProductLayout extends LinearLayout
 			imageView.setBackgroundResource(R.drawable.ic_iap_lock);
 			setBackgroundResource(R.drawable.background_iap_not_provisioned);
 		}
+		*/
 	}
 	
 	public void updatedProvisioningStatus(boolean isProvisioned)
 	{
+		/*
 		ImageView imageView = (ImageView) findViewById(R.id.image_iap_status_id);
 		if (isProvisioned)
 		{	
@@ -54,5 +66,6 @@ public class MFInAppProductLayout extends LinearLayout
 			imageView.setBackgroundResource(R.drawable.ic_iap_lock);
 			setBackgroundResource(R.drawable.background_iap_not_provisioned);
 		}
+		*/
 	}
 }

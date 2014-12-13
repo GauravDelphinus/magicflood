@@ -3,6 +3,7 @@
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:background="@color/gray"
+android:padding="@dimen/store_padding"
 android:orientation="vertical" >
 
        <ViewFlipper
@@ -14,7 +15,7 @@ android:orientation="vertical" >
             
         <!--  The child Views/Layout to flip -->
         
-        <!--  Layout 1 for 1st Screen -->
+        <!--  1st Screen -->
             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -25,14 +26,14 @@ android:orientation="vertical" >
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="A-La-Carte Items"
-                        android:textColor="#191975"
-                        android:textSize="25dp"
+                        android:text="@string/store_screen1_title"
+                        android:textColor="@color/store_iap_text_color"
+                        android:textSize="@dimen/store_title_text_size"
                         android:textStyle="bold" >
                     </TextView>
 
                      <View
-                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_height="@dimen/store_padding"
                             android:layout_width="wrap_content"
                             />
                      
@@ -43,29 +44,112 @@ android:orientation="vertical" >
                         android:layout_weight="1"
                         >
                         
-                        <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_1_id"
+  							<include layout="@layout/layout_store_product" android:id="@+id/remove_ads_layout_id"
                                 />
                            
                         
                         <View
-                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
-                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_2_id"/>
+                            <include layout="@layout/layout_store_product" android:id="@+id/free_product_layout_1_id"/>
+                        
+                      
+                        
+                    </LinearLayout>
+                    
+                     <View
+                            android:layout_height="@dimen/store_padding"
+                            android:layout_width="wrap_content"
+                            />
+                     
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/free_product_layout_2_id"/>
                         
                         <View
-                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_width="@dimen/store_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_1_id"/>
+                        
+                        
+                    </LinearLayout>
+                    
+                    <View
+                            android:layout_height="@dimen/store_padding"
+                            android:layout_width="wrap_content"
+                            />
+                   
+                   <TextView 
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/store_screen1_footer_text"
+                       android:textSize="@dimen/store_footer_text_size"
+                       android:textColor="@color/store_footer_text_color"
+                       android:gravity="center"
+                       />
+                               
+            </LinearLayout>
+
+            
+             
+                    
+
+                 <!--  2nd Screen -->
+            
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/store_screen2_title"
+                        android:textColor="@color/store_iap_text_color"
+                        android:textSize="@dimen/store_title_text_size"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                     <View
+                            android:layout_height="@dimen/store_padding"
+                            android:layout_width="wrap_content"
+                            />
+                     
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                        <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_2_id"
+                                />
+                           
+                        
+                        <View
+                            android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
                             <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_3_id"/>
                         
+                       
                         
                     </LinearLayout>
                     
                      <View
-                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_height="@dimen/store_padding"
                             android:layout_width="wrap_content"
                             />
                      
@@ -79,58 +163,34 @@ android:orientation="vertical" >
                             <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_4_id"/>
                         
                         <View
-                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
                             <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_5_id"/>
                         
-                        <View
-                            android:layout_width="@dimen/activity_horizontal_padding"
-                            android:layout_height="wrap_content"
-                            />
-                        
-                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_6_id"/>
                         
                         
                     </LinearLayout>
                     
-                               <View
-                            android:layout_height="@dimen/activity_horizontal_padding"
+                   <View
+                            android:layout_height="@dimen/store_padding"
                             android:layout_width="wrap_content"
                             />
-                               
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        >
-                        
-                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_7_id"/>
-                        
-                        <View
-                            android:layout_width="@dimen/activity_horizontal_padding"
-                            android:layout_height="wrap_content"
-                            />
-                        
-                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_8_id"/>
-                        
-                        <View
-                            android:layout_width="@dimen/activity_horizontal_padding"
-                            android:layout_height="wrap_content"
-                            />
-                        
-                            <include layout="@layout/layout_store_product" android:id="@+id/alacarte_layout_9_id"/>
-                        
-                        
-                    </LinearLayout>
+                   
+                   <TextView 
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/store_screen2_footer_text"
+                       android:textSize="@dimen/store_footer_text_size"
+                       android:textColor="@color/store_footer_text_color"
+                       android:gravity="center"
+                       />
                  
                     
             </LinearLayout>
-
             
-             <!--  Layout 2 for 2nd Screen -->
+			<!--  3rd Screen -->
             
             <LinearLayout
                     android:layout_width="fill_parent"
@@ -142,14 +202,14 @@ android:orientation="vertical" >
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Combo Deals"
-                        android:textColor="#191975"
-                        android:textSize="25dp"
+                        android:text="@string/store_screen3_title"
+                        android:textColor="@color/store_iap_text_color"
+                        android:textSize="@dimen/store_title_text_size"
                         android:textStyle="bold" >
                     </TextView>
 
                      <View
-                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_height="@dimen/store_padding"
                             android:layout_width="wrap_content"
                             />
                      
@@ -165,7 +225,7 @@ android:orientation="vertical" >
                            
                         
                         <View
-                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
@@ -176,7 +236,7 @@ android:orientation="vertical" >
                     </LinearLayout>
                     
                      <View
-                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_height="@dimen/store_padding"
                             android:layout_width="wrap_content"
                             />
                      
@@ -190,7 +250,7 @@ android:orientation="vertical" >
                             <include layout="@layout/layout_store_product" android:id="@+id/combo_layout_3_id"/>
                         
                         <View
-                            android:layout_width="@dimen/activity_horizontal_padding"
+                            android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
@@ -200,56 +260,28 @@ android:orientation="vertical" >
                         
                     </LinearLayout>
                     
+                  <View
+                            android:layout_height="@dimen/store_padding"
+                            android:layout_width="wrap_content"
+                            />
                    
+                   <TextView 
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/store_screen3_footer_text"
+                       android:textSize="@dimen/store_footer_text_size"
+                       android:textColor="@color/store_footer_text_color"
+                       android:gravity="center"
+                       /> 
                  
                     
             </LinearLayout>
 
-
-               <!--  Layout 3 for 3rd Screen -->
             
-            <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Other Items"
-                        android:textColor="#191975"
-                        android:textSize="25dp"
-                        android:textStyle="bold" >
-                    </TextView>
-
-                     <View
-                            android:layout_height="@dimen/activity_horizontal_padding"
-                            android:layout_width="wrap_content"
-                            />
-                     
-                  <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        >
-                        
-                        <include layout="@layout/layout_store_product" android:id="@+id/remove_ads_layout_id"
-                                />
-                           
-                      
-                        
-                    </LinearLayout>
-                    
-                     
-                    
-            </LinearLayout>
-
+             
         </ViewFlipper>
          <View
-                            android:layout_height="@dimen/activity_horizontal_padding"
+                            android:layout_height="@dimen/store_padding"
                             android:layout_width="wrap_content"
                             />
         <LinearLayout 
@@ -257,8 +289,8 @@ android:orientation="vertical" >
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/store_padding"
+            android:layout_marginBottom="@dimen/store_padding"
             >
             <View
                 android:layout_width="0dip"

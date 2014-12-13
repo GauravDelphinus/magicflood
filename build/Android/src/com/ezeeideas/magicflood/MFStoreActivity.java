@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
@@ -16,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
-public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.IAPPurchaseInterface, View.OnClickListener, AnimationListener
+public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.IAPPurchaseInterface, View.OnClickListener, AnimationListener, OnTouchListener
 {
 	@Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -37,108 +38,97 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         boolean isProvisioned = false;
         MFInAppProductLayout iapLayout;
         
+        //Remove Ads IAP
+        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
+        isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_REMOVE_ADS);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.remove_ads_layout_id);
+        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
+         
         //First Free Product
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_1_id);
-        iapLayout.setProperties(getResources().getString(R.string.free_product_detail_string), getResources().getString(R.string.free_product_price_string), true);
-        iapLayout.setEnabled(false);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.free_product_layout_1_id);
+        iapLayout.setProperties(getResources().getString(R.string.free_product_detail_string), getResources().getString(R.string.free_product_price_string), true, R.drawable.ic_hurdle_free_1);
+        iapLayout.setOnTouchListener(this);
+        iapLayout.setOnClickListener(this);
         
         //Second Free Product
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_2_id);
-        iapLayout.setProperties(getResources().getString(R.string.free_product_detail_string), getResources().getString(R.string.free_product_price_string), true);
-        iapLayout.setEnabled(false);
-        
-        //Third Free Product
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_3_id);
-        iapLayout.setProperties(getResources().getString(R.string.free_product_detail_string), getResources().getString(R.string.free_product_price_string), true);
-        iapLayout.setEnabled(false);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.free_product_layout_2_id);
+        iapLayout.setProperties(getResources().getString(R.string.free_product_detail_string), getResources().getString(R.string.free_product_price_string), true, R.drawable.ic_hurdle_free_2);
+        iapLayout.setOnTouchListener(this);
+        iapLayout.setOnClickListener(this);
         
         //IAP 1
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_1);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_1);
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_4_id);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_1_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
      
         //IAP 2
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_2);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_2);
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_5_id);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_2_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
         
         //IAP 3
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_3);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_3);
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_6_id);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_3_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
         
         //IAP 4
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_4);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_4);
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_7_id);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_4_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
      
         //IAP 5
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_5);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_5);
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_8_id);
+        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_5_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
-        
-        //IAP 6
-        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_6);
-        isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_6);
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_9_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
-        iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
         
         //Combo 1
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_1);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_1);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_1_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
         
         //Combo 2
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_2);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_2);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_2_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
         
         //Combo 3
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_3);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_3);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_3_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
         
         //Combo 4
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_4);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_4);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_4_id);
         iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
         iapLayout.setOnClickListener(this);
-        
-        //Remove Ads IAP
-        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
-        isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_REMOVE_ADS);
-        iapLayout = (MFInAppProductLayout) findViewById(R.id.remove_ads_layout_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
-        iapLayout.setEnabled(!isProvisioned);
-        iapLayout.setOnClickListener(this);
+        iapLayout.setOnTouchListener(this);
 	}
 	
     @Override
@@ -173,10 +163,6 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
     		// if left to right swipe on screen
     		if (lastX < currentX && (currentX - lastX) > SWIPE_DISPLACEMENT_THRESHOLD) 
     		{
-    			// If no more View/Child to flip
-    			if (mViewFlipper.getDisplayedChild() == 0)
-    				break;
-
     			// set the required Animation type to ViewFlipper
     			// The Next screen will come in form Left and current Screen will go OUT from Right 
     			Animation inFromLeftAnimation = AnimationUtils.loadAnimation(this, R.anim.in_from_left);
@@ -190,15 +176,16 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 
     			//mViewFlipper.setInAnimation(this, R.anim.in_from_left);
     			//mViewFlipper.setOutAnimation(this, R.anim.out_to_right);
-    			// Show the next Screen
-    			mViewFlipper.showNext();
+    			// Show the previous Screen
+    			mViewFlipper.showPrevious();
+    			
+    			return true;
     		}
 
     		// if right to left swipe on screen
-    		if (lastX > currentX && (lastX - currentX) > SWIPE_DISPLACEMENT_THRESHOLD)
+    		else if (lastX > currentX && (lastX - currentX) > SWIPE_DISPLACEMENT_THRESHOLD)
     		{
-    			if (mViewFlipper.getDisplayedChild() == 1)
-    				break;
+    			
     			// set the required Animation type to ViewFlipper
     			// The Next screen will come in form Right and current Screen will go OUT from Left 
     			Animation inFromLeftAnimation = AnimationUtils.loadAnimation(this, R.anim.in_from_right);
@@ -212,9 +199,12 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 
     			//mViewFlipper.setInAnimation(this, R.anim.in_from_right);
     			//mViewFlipper.setOutAnimation(this, R.anim.out_to_left);
-    			// Show The Previous Screen
-    			mViewFlipper.showPrevious();
+    			// Show The next Screen
+    			mViewFlipper.showNext();
+    			
+    			return true;
     		}
+
     		break;
     	}
     	}
@@ -229,27 +219,23 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 		
 		if (pid.equals(MFGameConstants.IAP_ALACARTE_HURDLE_1))
 		{
-			buttonID = R.id.alacarte_layout_4_id;
+			buttonID = R.id.alacarte_layout_1_id;
 		}
 		else if (pid.equals(MFGameConstants.IAP_ALACARTE_HURDLE_2))
 		{
-			buttonID = R.id.alacarte_layout_5_id;
+			buttonID = R.id.alacarte_layout_2_id;
 		}
 		else if (pid.equals(MFGameConstants.IAP_ALACARTE_HURDLE_3))
 		{
-			buttonID = R.id.alacarte_layout_6_id;
+			buttonID = R.id.alacarte_layout_3_id;
 		}
 		else if (pid.equals(MFGameConstants.IAP_ALACARTE_HURDLE_4))
 		{
-			buttonID = R.id.alacarte_layout_7_id;
+			buttonID = R.id.alacarte_layout_4_id;
 		}
 		else if (pid.equals(MFGameConstants.IAP_ALACARTE_HURDLE_5))
 		{
-			buttonID = R.id.alacarte_layout_8_id;
-		}
-		else if (pid.equals(MFGameConstants.IAP_ALACARTE_HURDLE_6))
-		{
-			buttonID = R.id.alacarte_layout_9_id;
+			buttonID = R.id.alacarte_layout_5_id;
 		}
 		else if (pid.equals(MFGameConstants.IAP_COMBO_HURDLES_1))
 		{
@@ -273,28 +259,25 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 	}
 
 	@Override
-	public void onClick(View v) 
+	public void onClick(View view) 
 	{
 		String pid = null;
-		switch (v.getId())
+		switch (view.getId())
 		{
-		case R.id.alacarte_layout_4_id:
+		case R.id.alacarte_layout_1_id:
 			pid = MFGameConstants.IAP_ALACARTE_HURDLE_1;
 			break;
-		case R.id.alacarte_layout_5_id:
+		case R.id.alacarte_layout_2_id:
 			pid = MFGameConstants.IAP_ALACARTE_HURDLE_2;
 			break;
-		case R.id.alacarte_layout_6_id:
+		case R.id.alacarte_layout_3_id:
 			pid = MFGameConstants.IAP_ALACARTE_HURDLE_3;
 			break;
-		case R.id.alacarte_layout_7_id:
+		case R.id.alacarte_layout_4_id:
 			pid = MFGameConstants.IAP_ALACARTE_HURDLE_4;
 			break;
-		case R.id.alacarte_layout_8_id:
+		case R.id.alacarte_layout_5_id:
 			pid = MFGameConstants.IAP_ALACARTE_HURDLE_5;
-			break;
-		case R.id.alacarte_layout_9_id:
-			pid = MFGameConstants.IAP_ALACARTE_HURDLE_6;
 			break;
 		case R.id.combo_layout_1_id:
 			pid = MFGameConstants.IAP_COMBO_HURDLES_1;
@@ -370,9 +353,38 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 	
 	private ViewFlipper mViewFlipper;
 	private float lastX;
+	private int mLastTouchViewId;
+	private boolean mDetectClick = false; //detect the last TouchDown+TouchUp combination as a click
 	MFInAppPurchaseManager mIAPManager = null;
 	private static final int SWIPE_DISPLACEMENT_THRESHOLD = 10; //no. of pixels to displace, to recognize a "swipe" gesture
 	
 	private ImageView mFirstChildIndicatorView, mSecondChildIndicatorView, mThirdChildIndicatorView;
+
+	@Override
+	public boolean onTouch(View arg0, MotionEvent arg1) 
+	{
+		if (arg1.getAction() == MotionEvent.ACTION_DOWN)
+		{
+			mLastTouchViewId = arg0.getId();
+			mDetectClick = false;
+		}
+		else if (arg1.getAction() == MotionEvent.ACTION_UP)
+		{
+			if (arg0.getId() == mLastTouchViewId)
+			{
+				mDetectClick = true;
+			}
+			mLastTouchViewId = 0;
+		}
+		
+		if (arg1.getAction() == MotionEvent.ACTION_UP)
+		{
+			MFInAppProductLayout layout = (MFInAppProductLayout) arg0;
+			Log.d("gaurav", "calling refreshDrawableState");
+			layout.refreshDrawableState();
+			layout.invalidate();
+		}
+		return onTouchEvent(arg1);
+	}
 
 }

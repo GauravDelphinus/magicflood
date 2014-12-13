@@ -16,4 +16,11 @@
     <string name="free_product_detail_string">Super Hurdle</string>
     <string name="free_product_price_string">$0</string>
 
+    <!-- Store -->
+    <string name="store_screen1_title">A-la-carte Items</string>
+    <string name="store_screen2_title">A-la-carte Items</string>
+    <string name="store_screen3_title">Combo Deals</string>
+    <string name="store_screen1_footer_text">&lt;- Swipe to see more great deals! -&gt;</string>
+    <string name="store_screen2_footer_text">&lt;- Swipe to see more great deals! -&gt;</string>
+    <string name="store_screen3_footer_text">&lt;- Swipe to see more great deals! -&gt;</string>
 </resources>

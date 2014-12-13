@@ -8,23 +8,30 @@
     >
 
 
-	<LinearLayout
+	<RelativeLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:orientation="horizontal"
+	    android:background="@color/red"
 	    >
-		    <ImageView
-		        android:id="@+id/image_iap_status_id"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        />
-
+		    
+  
 	    <ImageView
 	        android:id="@+id/image_iap_pic_id"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
 	        />
-	</LinearLayout>
+	    
+	      <ImageView
+		        android:id="@+id/image_iap_status_id"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentRight="true"
+		        android:layout_alignParentTop="true"
+		        />
+		       
+	
+	</RelativeLayout>
 	    
 	   	<View
    	    android:id="@+id/rule1"
