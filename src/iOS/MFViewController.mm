@@ -11,6 +11,7 @@
 #import "MFIAPInterface.h"
 
 @interface MFViewController ()
+@property (strong, nonatomic) IBOutlet UIImageView *mLogoImageView;
 
 @end
 
@@ -22,6 +23,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     [self initializeInAppPurchase];
+    
+    UIImage *logoImage = [UIImage imageNamed:@"iOS/iPhone/ic_logo_big"];
+    [self.mLogoImageView initWithImage:logoImage];
 }
 
 -(void)initializeInAppPurchase

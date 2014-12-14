@@ -8,7 +8,8 @@
     <dimen name="store_padding">20dp</dimen>
 	
     <!-- Text Sizes -->
-    <dimen name="iap_price_text_size">25sp</dimen>
+    <dimen name="iap_price_text_size">15sp</dimen>
     <dimen name="store_title_text_size">25sp</dimen>
     <dimen name="store_footer_text_size">10sp</dimen>
+    <dimen name="store_iap_text_size">15sp</dimen>
 </resources>

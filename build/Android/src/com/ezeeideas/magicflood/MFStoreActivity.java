@@ -42,19 +42,19 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_REMOVE_ADS);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.remove_ads_layout_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
          
         //First Free Product
         iapLayout = (MFInAppProductLayout) findViewById(R.id.free_product_layout_1_id);
-        iapLayout.setProperties(getResources().getString(R.string.free_product_detail_string), getResources().getString(R.string.free_product_price_string), true, R.drawable.ic_hurdle_free_1);
+        iapLayout.setProperties(getResources().getString(R.string.store_free_hurdle_1_name), getResources().getString(R.string.free_product_price_string), true, true, R.drawable.ic_hurdle_free_1);
         iapLayout.setOnTouchListener(this);
         iapLayout.setOnClickListener(this);
         
         //Second Free Product
         iapLayout = (MFInAppProductLayout) findViewById(R.id.free_product_layout_2_id);
-        iapLayout.setProperties(getResources().getString(R.string.free_product_detail_string), getResources().getString(R.string.free_product_price_string), true, R.drawable.ic_hurdle_free_2);
+        iapLayout.setProperties(getResources().getString(R.string.store_free_hurdle_2_name), getResources().getString(R.string.free_product_price_string), true, true, R.drawable.ic_hurdle_free_2);
         iapLayout.setOnTouchListener(this);
         iapLayout.setOnClickListener(this);
         
@@ -62,7 +62,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_1);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_1);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_1_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_hurdle_1_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_hurdle_1);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
      
@@ -70,7 +70,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_2);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_2);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_2_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_hurdle_2_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_hurdle_2);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -78,7 +78,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_3);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_3);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_3_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_hurdle_3_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_hurdle_3);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -86,7 +86,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_4);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_4);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_4_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_hurdle_4_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_hurdle_4);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
      
@@ -94,7 +94,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_5);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_ALACARTE_HURDLE_5);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.alacarte_layout_5_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_hurdle_5_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_hurdle_5);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -102,7 +102,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_1);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_1);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_1_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -110,7 +110,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_2);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_2);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_2_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -118,7 +118,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_3);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_3);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_3_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -126,7 +126,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_4);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_4);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_4_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned);
+        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
 	}

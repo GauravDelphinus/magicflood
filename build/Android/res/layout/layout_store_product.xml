@@ -11,22 +11,27 @@
 	<RelativeLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:background="@color/red"
+	    android:layout_weight="1"
 	    >
 		    
-  
+  		<LinearLayout
+  		    android:layout_width="wrap_content"
+  		    android:layout_height="wrap_content"
+  		    android:padding="@dimen/activity_vertical_padding"
+  		    android:layout_centerHorizontal="true"
+  		    >
 	    <ImageView
 	        android:id="@+id/image_iap_pic_id"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
 	        />
+	    </LinearLayout>
 	    
 	      <ImageView
 		        android:id="@+id/image_iap_status_id"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_alignParentRight="true"
+		        android:layout_alignParentLeft="true"
 		        android:layout_alignParentTop="true"
 		        />
 		       
@@ -41,22 +46,19 @@
    	    android:background="@color/white" />
 	   	
 	<LinearLayout
-	    android:layout_width="wrap_content"
+	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal"
+	    android:layout_weight="1"
 	    >
-		<TextView
-		    android:id="@+id/textview_num_hurdles_id"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:textColor="@color/store_iap_text_color"
-		    />
+
 		<TextView
 		    android:id="@+id/textview_iap_detail_id"
-		    android:layout_width="wrap_content"
+		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:gravity="center"
 		    android:textColor="@color/store_iap_text_color"
+		    android:textSize="@dimen/store_iap_text_size"
 		    />
 		</LinearLayout>
 		
@@ -71,6 +73,7 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal"
+	    android:layout_weight="1"
 	    >
 		<TextView
 		    android:id="@+id/textview_pre_price_id"
@@ -83,7 +86,7 @@
 		    android:layout_width="0dip"
 		    android:layout_height="wrap_content"
 		    android:gravity="center"
-		    android:textStyle="bold"
+		    android:textStyle="italic"
 		    android:textSize="@dimen/iap_price_text_size"
 		    android:textColor="@color/store_iap_text_color"
 		    android:layout_weight="1"
