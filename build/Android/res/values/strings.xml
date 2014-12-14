@@ -34,4 +34,8 @@
     <string name="store_iap_hurdle_3_name">The Radiant X Hurdle</string>
     <string name="store_iap_hurdle_4_name">The 4-corner Hurdle</string>
     <string name="store_iap_hurdle_5_name">The Zig-Zaggy S Hurdle</string>
+    <string name="store_iap_combo_1_name">Pack of 5 Hurdles</string>
+    <string name="store_iap_combo_2_name">Bucket of 10 Hurdles</string>
+    <string name="store_iap_combo_3_name">Basket of 25 Hurdles</string>
+    <string name="store_iap_combo_4_name">Tub of 50 Hurdles</string>
 </resources>

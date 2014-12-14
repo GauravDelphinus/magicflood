@@ -102,7 +102,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_1);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_1);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_1_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_combo_1_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_combo_1);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -110,7 +110,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_2);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_2);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_2_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_combo_2_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_combo_2);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -118,7 +118,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_3);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_3);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_3_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_combo_3_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_combo_3);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
         
@@ -126,7 +126,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_COMBO_HURDLES_4);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_COMBO_HURDLES_4);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.combo_layout_4_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
+        iapLayout.setProperties(getResources().getString(R.string.store_iap_combo_4_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_combo_4);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
 	}
