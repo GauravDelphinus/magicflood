@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-	printf("Hello World, %s - %s\n", argv[0], argv[1]);
+	//printf("Hello World, %s - %s\n", argv[0], argv[1]);
 
 	FILE * fp;
 	char str[20][20];
@@ -87,6 +87,7 @@ int main(int argc, char *argv[])
 
 	for (int j = 0; j < outindex; j++)
 		printf("%s", out[j]);
+	printf("break;\n");
 
 	return 0;
 }

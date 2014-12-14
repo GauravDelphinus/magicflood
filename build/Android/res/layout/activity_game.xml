@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_padding"
     android:paddingRight="@dimen/activity_horizontal_padding"
     android:paddingTop="@dimen/activity_vertical_padding"
+    android:background="@color/game_background_color"
     tools:context="com.ezeeideas.magicflood.MFGameActivity" >
 
     <!-- Top Bar containing the Moves label and the Exit button -->

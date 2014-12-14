@@ -42,7 +42,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
         isProvisioned = mIAPManager.getProductProvisioned(MFGameConstants.IAP_REMOVE_ADS);
         iapLayout = (MFInAppProductLayout) findViewById(R.id.remove_ads_layout_id);
-        iapLayout.setProperties(detailsArray[0], detailsArray[2], isProvisioned, false);
+        iapLayout.setProperties(getResources().getString(R.string.store_remove_ads_name), detailsArray[2], isProvisioned, false, R.drawable.ic_iap_remove_ads);
         iapLayout.setOnClickListener(this);
         iapLayout.setOnTouchListener(this);
          

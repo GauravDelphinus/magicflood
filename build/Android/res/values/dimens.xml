@@ -12,4 +12,10 @@
     <dimen name="store_title_text_size">25sp</dimen>
     <dimen name="store_footer_text_size">10sp</dimen>
     <dimen name="store_iap_text_size">15sp</dimen>
+    
+    <!-- Dialogs -->
+    <dimen name="dialog_title_text_size">25sp</dimen>
+    <dimen name="dialog_description_text_size">15sp</dimen>
+    <dimen name="ui_button_text_size">20sp</dimen>
+    <dimen name="dialog_continue_text_size">20sp</dimen>
 </resources>

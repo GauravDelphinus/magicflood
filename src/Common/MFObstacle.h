@@ -55,4 +55,24 @@ public:
 
 #define NUM_HARD_SHAPES 9
 
+/**
+ Hurdles used in Hard Game
+ **/
+/**
+ Hurdle index or ID starts at 1.
+ First two hurdles, IDs 1 and 2, are Free.
+ Next 5 hurdles, Ids 3 to 7, are IAP A-la-carte hurdles.
+ Next 5 hurldes, Ids 8 to 12, are part of IAP combo 1
+ Next 10 hurldes, Ids 13 to 22, are part of IAP combo 2
+ Next 25 hurdles, Ids 23 to 47, are part of IAP combo 3
+ Next 50 hurldes, Ids 48 to 97, are part of IAP combo 4
+ **/
+
+#define NUM_FREE_HURDLES 2
+#define NUM_IAP_ALACARTE_HURDLES    5
+#define NUM_IAP_COMBO1_HURDLES  5
+#define NUM_IAP_COMBO2_HURLDES  10
+#define NUM_IAP_COMBO3_HURDLES  25
+#define NUM_IAP_COMBO4_HURLDES  50
+
 #endif /* defined(__Magic_Flood__MFObstacle__) */

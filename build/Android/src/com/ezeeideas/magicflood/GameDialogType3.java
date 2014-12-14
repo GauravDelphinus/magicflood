@@ -1,0 +1,59 @@
+package com.ezeeideas.magicflood;
+
+import android.content.Context;
+import android.view.View;
+
+/**
+ * Game Dialog Type 3
+ * 
+ * - One Positive button, and one negative button.
+ * - Tap on positive button dismisses the dialog and executes positive action 1
+ * - Tap on negative button dismisses the dialog and executes negative action 1
+ * - Tap anywhere else on the dialog does nothing
+ * - Hardware back dismisses the dialog and executes negative action 1
+ */
+public abstract class GameDialogType3 extends GameDialog
+{
+	public GameDialogType3(Context context)
+	{
+		super(context);
+	}
+
+	protected void setupRequiredViews()
+	{
+		setupRootView();
+		setupPositiveAction1View();
+		setupNegativeAction1View();
+	}
+
+	protected void handleTouch(View v)
+	{	
+		if (v == mPositiveAction1View)
+		{
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1);
+			this.dismiss();
+		}
+		else if (v == mNegativeAction1View)
+		{
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_NEGATIVE_1);
+			this.dismiss();
+		}
+		else if (v == mRootView)
+		{
+			//Do Nothing
+		}
+	}
+
+	protected void handleDismiss()
+	{
+		mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_NEGATIVE_1);
+		this.dismiss();
+	}
+	
+	/**
+	 * Clients must implement these functions.
+	 */
+	protected abstract void setupRootView();
+	protected abstract void setupPositiveAction1View();
+	protected abstract void setupNegativeAction1View();
+}

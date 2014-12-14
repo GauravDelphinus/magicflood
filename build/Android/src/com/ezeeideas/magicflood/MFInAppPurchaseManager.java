@@ -62,7 +62,6 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_3);
 		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_4);
 		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_5);
-		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_6);
 		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_1);
 		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_2);
 		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_3);
@@ -132,6 +131,10 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 				String name = inv.getSkuDetails(testPrefix + pidArray[i]).getTitle();
 				String description = inv.getSkuDetails(testPrefix + pidArray[i]).getDescription();
 				boolean isProvisioned = inv.hasPurchase(testPrefix + pidArray[i]);
+				if (isProvisioned)
+				{
+					mIsAnythingProvisioned = true;
+				}
 				
 				Log.d("gaurav", "i = " + i + ", calling addInAppProduct for [" + pidArray[i] + "] with name [" + name + "], description [" + description + "], price [" + price + "], isProvisioned [" + isProvisioned + "]");
 				addInAppProduct(pidArray[i], name, description, price, "tbd", isProvisioned);
@@ -143,6 +146,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		}
 		
 		Log.d("gaurav", "called at the end of onQueryInventoryFinished");
+		mIsSynchronizedWithServer = true;
 	}
 
 	@Override
@@ -167,6 +171,16 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		updateInAppProduct(info.getSku(), true);
 	}
 	
+	public boolean isSynchronized()
+	{
+		return mIsSynchronizedWithServer;
+	}
+	
+	public boolean isAnyIAPProvisioned()
+	{
+		return mIsAnythingProvisioned;
+	}
+	
 	/**
 	 * Implement this interface to listen to purchase completed callbacks.
 	 * @author anukrity
@@ -179,6 +193,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	
 	private static MFInAppPurchaseManager sIAPManager = null;
 	private boolean mIsSynchronizedWithServer = false;
+	private boolean mIsAnythingProvisioned = false;
 	private Bundle mSkuDetails; //details of the SKU
 	//private QuerySKUDetailsTask mQuerySkuDetailsTask;
 	
@@ -200,7 +215,6 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			MFGameConstants.IAP_ALACARTE_HURDLE_3,
 			MFGameConstants.IAP_ALACARTE_HURDLE_4,
 			MFGameConstants.IAP_ALACARTE_HURDLE_5,
-			MFGameConstants.IAP_ALACARTE_HURDLE_6,
 			MFGameConstants.IAP_COMBO_HURDLES_1,
 			MFGameConstants.IAP_COMBO_HURDLES_2,
 			MFGameConstants.IAP_COMBO_HURDLES_3,

@@ -119,22 +119,33 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 	@Override
 	public void onPieButtonSelected(PieButton button, int index) 
 	{
+		//if the user has never purchased anything, we should try to prompt him to check out the store
+		//once in a while
+		boolean promptUserToStore = false;
+		if (mIAPManager.isSynchronized())
+		{
+			promptUserToStore = true;
+		}
+		
 		Intent i;
 		switch (index)
 		{
 		case 0:		
 			i = new Intent(this, MFGameActivity.class); 	
 			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
+			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
 			startActivity(i);
 			break;
 		case 1:
 			i = new Intent(this, MFGameActivity.class); 	
 			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_MEDIUM);
+			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
 			startActivity(i);
 			break;
 		case 2:
 			i = new Intent(this, MFGameActivity.class); 	
 			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
+			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, promptUserToStore);
 			startActivity(i);
 			break;
 		}

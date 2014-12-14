@@ -1,15 +1,21 @@
 package com.ezeeideas.magicflood;
 
+import java.util.Random;
+
+import com.ezeeideas.magicflood.GameDialog.GameDialogListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdListener;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
 import android.graphics.LightingColorFilter;
 import android.graphics.Typeface;
 import android.media.AudioManager;
@@ -22,7 +28,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class MFGameActivity extends Activity implements View.OnClickListener, DialogInterface.OnClickListener {
+public class MFGameActivity extends Activity implements View.OnClickListener, DialogInterface.OnClickListener, GameDialogListener {
 
 	
 	@Override
@@ -66,6 +72,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
     	setupAds();
     	
     	mLevel = getIntent().getIntExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
+    	mPromptUserToStore = getIntent().getBooleanExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
+    	
     	startNewGame(mLevel);
     }
 	
@@ -197,6 +205,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		if (arg0.getId() ==  R.id.exit_game_button_id)
 		{	
 		
+			/*
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
 			// set title
@@ -217,6 +226,11 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 			}
 			// show it
 			mExitAlertDialog.show(); 
+			*/
+			
+			GameMenuDialog dialog = new GameMenuDialog(this);
+			dialog.setCanceledOnTouchOutside(true);
+			dialog.show();
 
 			return;
 		}	
@@ -289,6 +303,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 
 		if (result == MFGameConstants.RESULT_FAILED)
 		{
+			/*
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
 			// set title
@@ -309,11 +324,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 
 			// show it
 			mFailedAlertDialog.show();
+			*/
+			
+			GameFailedDialog dialog = new GameFailedDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
 			
 			playSound(MFGameConstants.RESULT_FAILED);
 		}
 		else if (result == MFGameConstants.RESULT_SUCCESS)
 		{
+			/*
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
 			// set title
@@ -334,6 +355,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 
 			// show it
 			mSuccessAlertDialog.show();
+			*/
+			
+			if (mPromptUserToStore)
+			{
+				GameSuccessStoreDialog dialog = new GameSuccessStoreDialog(this);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
+			else
+			{
+				GameSuccessDialog dialog = new GameSuccessDialog(this);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
 			
 			playSound(MFGameConstants.RESULT_SUCCESS);
 		}
@@ -391,8 +426,74 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		
 		
 	}
+	
+	@Override
+	public void onDialogOptionSelected(Dialog dialog, int option) 
+	{
+		Log.d("gaurav", "onDialogOptionSelected, class = " + dialog.getClass() + ", option = " + option);
+		if (dialog.getClass() == GameMenuDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Go back to Main Menu
+			{
+				finish();
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Resume current game
+			{
+				dialog.cancel();
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) //Start New Game
+			{
+				dialog.cancel();
+				startNewGame(mLevel);
+			}
+		}	
+		else if (dialog.getClass() == GameFailedDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Start the next game
+			{
+				dialog.cancel();
+				startNewGame(mLevel);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the Main Menu
+			{
+				finish();
+			}
+		}	
+		else if (dialog.getClass() == GameSuccessDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Start the next game
+			{
+				dialog.cancel();
+				startNewGame(mLevel);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the Main Menu
+			{
+				finish();
+			}
+		}
+		else if (dialog.getClass() == GameSuccessStoreDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Take to the store
+			{
+				finish();
+				Intent i = new Intent(this, MFStoreActivity.class);
+				startActivity(i);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) // Start the next game
+			{
+				dialog.cancel();
+				startNewGame(mLevel);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the main menu
+			{
+				finish();
+			}
+		}
+	}
+	
 	private MFGameView mGameView; //the game view
 	private int mLevel;
+	private boolean mPromptUserToStore = false; // whether or not we should prompt the user to check out the store
 	private TextView mMovesLabel; //label that shows the current moves
 	private ImageButton mExitButton;
 	private ImageButton mSoundButton;
@@ -427,5 +528,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	private native int getCurrMove(long handle);
 	private native int playMove(long handle, int color);
 	private native int[] getGridData(long handle);
+
+
 	
 }

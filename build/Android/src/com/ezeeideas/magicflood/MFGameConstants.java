@@ -114,6 +114,7 @@ public class MFGameConstants
 	 * Keys
 	 */
 	public static final String GAME_LEVEL_KEY = "level";
+	public static final String PROMPT_USER_TO_STORE = "prompt_user_to_store";
 	
 	/**
 	 * Names
@@ -130,4 +131,9 @@ public class MFGameConstants
 	 */
 	public static final String PREFERENCE_KEY = "user_prefs";
 	public static final String PREFERENCE_SOUND = "preference_sound";
+	
+	/**
+	 * Game Constants
+	 */
+	public static final int FREQUENCY_OF_PROMPTING_USER_TO_STORE = 1;
 }

@@ -47,37 +47,43 @@ void initializeInAppInterface()
 {
     std::vector<int> *obstacles = NULL;
     
+    int hurdleIndex = 1; //used to track hurdle IDs
+    
+    //Skip free hurdles
+    hurdleIndex += NUM_FREE_HURDLES;
+    
     //A-la-carte items
     obstacles = new std::vector<int>();
-    obstacles->push_back(4);
+    obstacles->push_back(hurdleIndex);
     sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_1] = obstacles;
     logPrint("magicflood", "initializeInAppInterface, added map for %s", IAP_ALACARTE_HURDLE_1);
     
+    hurdleIndex ++;
     obstacles = new std::vector<int>();
-    obstacles->push_back(5);
+    obstacles->push_back(hurdleIndex);
     sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_2] = obstacles;
     
+    hurdleIndex++;
     obstacles = new std::vector<int>();
-    obstacles->push_back(6);
+    obstacles->push_back(hurdleIndex);
     sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_3] = obstacles;
     
+    hurdleIndex++;
     obstacles = new std::vector<int>();
-    obstacles->push_back(7);
+    obstacles->push_back(hurdleIndex);
     sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_4] = obstacles;
 
+    hurdleIndex++;
     obstacles = new std::vector<int>();
-    obstacles->push_back(8);
+    obstacles->push_back(hurdleIndex);
     sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_5] = obstacles;
-    
-    obstacles = new std::vector<int>();
-    obstacles->push_back(9);
-    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_6] = obstacles;
-    
+
     //combo items
+    hurdleIndex ++;
     
     //combo of 5 hurdles
     obstacles = new std::vector<int>();
-    for (int i = 10; i < 15; i++)
+    for (int i = hurdleIndex; i < (hurdleIndex + NUM_IAP_COMBO1_HURDLES); i++)
     {
         obstacles->push_back(i);
     }
@@ -85,7 +91,7 @@ void initializeInAppInterface()
     
     //combo of 10 hurdles
     obstacles = new std::vector<int>();
-    for (int i = 15; i < 25; i++)
+    for (int i = hurdleIndex; i < (hurdleIndex + NUM_IAP_COMBO2_HURLDES); i++)
     {
         obstacles->push_back(i);
     }
@@ -93,7 +99,7 @@ void initializeInAppInterface()
     
     //combo of 25 hurdles
     obstacles = new std::vector<int>();
-    for (int i = 25; i < 50; i++)
+    for (int i = hurdleIndex; i < (hurdleIndex + NUM_IAP_COMBO3_HURDLES); i++)
     {
         obstacles->push_back(i);
     }
@@ -101,7 +107,7 @@ void initializeInAppInterface()
     
     //combo of 50 hurdles
     obstacles = new std::vector<int>();
-    for (int i = 50; i < 100; i++)
+    for (int i = hurdleIndex; i < (hurdleIndex + NUM_IAP_COMBO4_HURLDES); i++)
     {
         obstacles->push_back(i);
     }
