@@ -75,6 +75,10 @@ extern "C" JNIEXPORT jobjectArray JNICALL Java_com_ezeeideas_magicflood_MFInAppP
 
 	const char *idStr = env->GetStringUTFChars(pid, 0);
 	char **detailsArray = getInAppProductDetails(idStr);
+	if (detailsArray == NULL)
+	{
+		return NULL;
+	}
 
 	logPrint("gaurav", "after getInAppProductDetails");
 	char *message[4]= {detailsArray[0],

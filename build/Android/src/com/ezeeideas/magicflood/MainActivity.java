@@ -4,6 +4,7 @@ package com.ezeeideas.magicflood;
 import java.util.Vector;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.ezeeideas.magicflood.GameDialog.GameDialogListener;
 import com.ezeeideas.magicflood.iabutil.IabHelper;
 
-public class MainActivity extends Activity implements View.OnClickListener, PieButton.PieButtonListener
+public class MainActivity extends Activity implements View.OnClickListener, PieButton.PieButtonListener, GameDialogListener
 {
 	static 
 	{
@@ -106,8 +108,16 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 		switch (arg0.getId())
 		{
 		case R.id.store_button_id:
-			i = new Intent(this, MFStoreActivity.class);
-			startActivity(i);
+			if (mIAPManager.isSynchronized())
+			{
+				i = new Intent(this, MFStoreActivity.class);
+				startActivity(i);
+			}
+			else
+			{
+				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
+				dialog.show();
+			}
 			break;
 		case R.id.about_button_id:
 			i = new Intent(this, MFAboutActivity.class);
@@ -151,7 +161,20 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 		}
 	}
 	
+	@Override
+	public void onDialogOptionSelected(Dialog dialog, int option) 
+	{
+		if (dialog.getClass() == StoreNotConnectedDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Go back to Main Menu
+			{
+				dialog.cancel();
+			}
+		}			
+	}
+	
 	private MFInAppPurchaseManager mIAPManager;
 	private PieButton mGameLevelPieButton;
+
 	
 }

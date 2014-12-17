@@ -49,8 +49,7 @@ public class MFGameView extends View
 		startPaint.setStrokeWidth(4);
 		
 		Paint fillPaint = new Paint();
-		fillPaint.setAntiAlias(true);
-		fillPaint.setStyle(Style.FILL);
+
 		
 		for (int i = 0; i < mGridSize; i++)
 		{
@@ -61,9 +60,16 @@ public class MFGameView extends View
 				int right = left + cellSize;
 				int bottom = top + cellSize;
 				
+				fillPaint.reset();
+				fillPaint.setAntiAlias(true);
+				fillPaint.setStyle(Style.FILL);
 				fillPaint.setColor(getColor(mGrid[i][j]));
 				//fillPaint.setShader(new LinearGradient(0, top, 0, bottom, getColor(mGrid[i][j]), Color.WHITE, Shader.TileMode.MIRROR));
-				fillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getSecondaryColor(mGrid[i][j]), getColor(mGrid[i][j]), Shader.TileMode.MIRROR));
+				if (mGrid[i][j] == MFGameConstants.GRID_OBSTACLE) //show a gradient for obstacles
+				{
+					fillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getSecondaryColor(mGrid[i][j]), getColor(mGrid[i][j]), Shader.TileMode.MIRROR));
+				}
+
 				canvas.drawRect(left, top, right, bottom, fillPaint);
 				canvas.drawRect(left,  top, right, bottom, borderPaint);
 			}

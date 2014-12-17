@@ -137,6 +137,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
        // mAdView.setAdListener(new AdListener(this));
         AdRequest adRequest = new AdRequest.Builder()
         .addTestDevice("D270918A90127FD1558623AC978405DF") //Anu's Samsung Galaxy S3
+        .addTestDevice("EDA0579D1B567771CB429E8A84668A3D") //Galax Tab 10.1 "
         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
         .build();
         mAdView.loadAd(adRequest);
@@ -202,32 +203,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	@Override
 	public void onClick(View arg0) {
 		
-		if (arg0.getId() ==  R.id.exit_game_button_id)
+		if (arg0.getId() ==  R.id.exit_game_button_id) //Menu button clicked
 		{	
-		
-			/*
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-			// set title
-			alertDialogBuilder.setTitle("Exit?");
-
-			// set dialog message
-			alertDialogBuilder
-			.setMessage("What would you like to do?")
-			.setCancelable(true);
-
-			// create alert dialog
-			if (mExitAlertDialog == null)
-			{
-				mExitAlertDialog = alertDialogBuilder.create();
-				mExitAlertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Menu", this);
-				mExitAlertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Resume Game", this);
-				mExitAlertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "New Game", this);
-			}
-			// show it
-			mExitAlertDialog.show(); 
-			*/
-			
 			GameMenuDialog dialog = new GameMenuDialog(this);
 			dialog.setCanceledOnTouchOutside(true);
 			dialog.show();
@@ -301,69 +278,23 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		mGameView.updateGameData(gridData);
 		mGameView.invalidate();
 
-		if (result == MFGameConstants.RESULT_FAILED)
-		{
-			/*
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-			// set title
-			alertDialogBuilder.setTitle("Oops!");
-
-			// set dialog message
-			alertDialogBuilder
-			.setMessage("Sorry, you've run out of moves!")
-			.setCancelable(true);
-
-			// create alert dialog
-			if (mFailedAlertDialog == null)
-			{
-				mFailedAlertDialog = alertDialogBuilder.create();
-				mFailedAlertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Menu", this);
-				mFailedAlertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "New Game", this);
-			}
-
-			// show it
-			mFailedAlertDialog.show();
-			*/
-			
+		if (result == MFGameConstants.RESULT_FAILED) //run out of moves
+		{	
 			GameFailedDialog dialog = new GameFailedDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
 			playSound(MFGameConstants.RESULT_FAILED);
 		}
-		else if (result == MFGameConstants.RESULT_SUCCESS)
-		{
-			/*
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-			// set title
-			alertDialogBuilder.setTitle("Great job!");
-
-			// set dialog message
-			alertDialogBuilder
-			.setMessage("Well done - you nailed it!")
-			.setCancelable(true);
-
-			// create alert dialog
-			if (mSuccessAlertDialog == null)
-			{
-				mSuccessAlertDialog = alertDialogBuilder.create();
-				mSuccessAlertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Menu", this);
-				mSuccessAlertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Next Game", this);
-			}
-
-			// show it
-			mSuccessAlertDialog.show();
-			*/
-			
-			if (mPromptUserToStore)
+		else if (result == MFGameConstants.RESULT_SUCCESS) //game successful completed
+		{	
+			if (mPromptUserToStore) //should prompt the user to check out the store
 			{
 				GameSuccessStoreDialog dialog = new GameSuccessStoreDialog(this);
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.show();
 			}
-			else
+			else //show regular success dialog
 			{
 				GameSuccessDialog dialog = new GameSuccessDialog(this);
 				dialog.setCanceledOnTouchOutside(false);
