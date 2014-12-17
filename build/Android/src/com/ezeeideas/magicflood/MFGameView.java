@@ -1,6 +1,8 @@
 package com.ezeeideas.magicflood;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Path;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.util.AttributeSet;
@@ -20,10 +23,19 @@ public class MFGameView extends View
 	int mGridSize;
 	int[] mStartPos;
 	int mMaxMoves;
+	private Timer mAnimationTimer = null;
+	private TimerTask mAnimationTimerTask = null;
+	private int mCurrentAngleOfStartPosition = 0;
+	private static final int ROTATION_STEP_DEGREES = 10;
+	private static final int ROTATION_SPEED_INTERVAL = 100; //milliseconds
 	
-	public MFGameView(Context context, AttributeSet attrs) {
+	public MFGameView(Context context, AttributeSet attrs) 
+	{
 		super(context, attrs);
-		// TODO Auto-generated constructor stub
+		
+		mAnimationTimer = new Timer();
+		mAnimationTimerTask = new AnimationTimerTask(this);
+		mAnimationTimer.scheduleAtFixedRate(mAnimationTimerTask, ROTATION_SPEED_INTERVAL, ROTATION_SPEED_INTERVAL);
 	}
 
 	protected void onDraw(Canvas canvas)
@@ -43,10 +55,11 @@ public class MFGameView extends View
 		borderPaint.setStrokeWidth(2);
 		
 		Paint startPaint = new Paint();
-		startPaint.setARGB(255, 0, 0, 0);
+		startPaint.setARGB(255, 255, 255, 255);
 		startPaint.setAntiAlias(true);
-		startPaint.setStyle(Style.STROKE);
-		startPaint.setStrokeWidth(4);
+		startPaint.setStyle(Style.FILL);
+		startPaint.setAlpha(100);
+		startPaint.setStrokeWidth(0);
 		
 		Paint fillPaint = new Paint();
 
@@ -74,7 +87,30 @@ public class MFGameView extends View
 				canvas.drawRect(left,  top, right, bottom, borderPaint);
 			}
 		}
-		canvas.drawRect(hOffset + mStartPos[0] * cellSize,  vOffset + mStartPos[1] * cellSize, hOffset + mStartPos[0] *cellSize + cellSize, vOffset + mStartPos[1] * cellSize + cellSize, startPaint);
+		
+		//Start Position
+		int l = hOffset + mStartPos[0] * cellSize;
+		int t = vOffset + mStartPos[1] * cellSize;
+		int r = hOffset + mStartPos[0] *cellSize + cellSize;
+		int b = vOffset + mStartPos[1] * cellSize + cellSize;
+		int w = (r - l);
+		int h = (b - t);
+		mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
+		canvas.rotate(mCurrentAngleOfStartPosition % 360, (l + r)/2, (t + b)/2);
+		//canvas.drawRect(l, t, r, b, startPaint);
+		Path starPath = new Path();
+		starPath.reset();
+		starPath.moveTo((l + r)/2, t);
+		starPath.lineTo(l + 2 * w / 3, t + h / 3);
+		starPath.lineTo(r, (t + b)/2);
+		starPath.lineTo(l + 2 * w / 3, t + 2 * h / 3);
+		starPath.lineTo((l + r)/2, b);
+		starPath.lineTo(l + w / 3, t + 2 * h/3);
+		starPath.lineTo(l, (t + b) /2);
+		starPath.lineTo(l + w /3, t + h/3);
+		starPath.lineTo((l + r)/2, t);
+		canvas.drawPath(starPath, startPaint);
+		canvas.restore();
 		
 	}
 
@@ -168,4 +204,21 @@ public class MFGameView extends View
 		
 		return -1;
 	}
+	
+	public class AnimationTimerTask extends TimerTask
+	{
+		private View mView;
+		
+		public AnimationTimerTask(View view)
+		{
+			mView = view;
+		}
+		
+		@Override
+	    public void run()
+		{
+			mView.postInvalidate();
+		}
+	}
+
 }
