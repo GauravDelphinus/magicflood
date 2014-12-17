@@ -4,8 +4,12 @@ import java.util.Random;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.RadialGradient;
+import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +32,8 @@ public class MFGameView extends View
 		int horizontalGap = 20;
 		int vOffset = 80;
 		int screenWidth = this.getWidth();
-		int cellSize = (screenWidth - horizontalGap)/mGridSize;
+		int screenHeight = this.getHeight();
+		int cellSize = (Math.min(screenWidth, screenHeight) - horizontalGap)/mGridSize;
 		int hOffset = horizontalGap / 2;
 		
 		Paint borderPaint = new Paint();
@@ -57,6 +62,8 @@ public class MFGameView extends View
 				int bottom = top + cellSize;
 				
 				fillPaint.setColor(getColor(mGrid[i][j]));
+				//fillPaint.setShader(new LinearGradient(0, top, 0, bottom, getColor(mGrid[i][j]), Color.WHITE, Shader.TileMode.MIRROR));
+				fillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getSecondaryColor(mGrid[i][j]), getColor(mGrid[i][j]), Shader.TileMode.MIRROR));
 				canvas.drawRect(left, top, right, bottom, fillPaint);
 				canvas.drawRect(left,  top, right, bottom, borderPaint);
 			}
@@ -128,6 +135,29 @@ public class MFGameView extends View
 			return getContext().getResources().getColor(R.color.cyan);
 		case MFGameConstants.GRID_OBSTACLE:
 			return getContext().getResources().getColor(R.color.gray);
+		}
+		
+		return -1;
+	}
+	
+	int getSecondaryColor(int colorValue)
+	{
+		switch (colorValue)
+		{
+		case MFGameConstants.GRID_COLOR_RED:
+			return getContext().getResources().getColor(R.color.red2);
+		case MFGameConstants.GRID_COLOR_GREEN:
+			return getContext().getResources().getColor(R.color.green2);
+		case MFGameConstants.GRID_COLOR_BLUE:
+			return getContext().getResources().getColor(R.color.blue2);
+		case MFGameConstants.GRID_COLOR_YELLOW:
+			return getContext().getResources().getColor(R.color.yellow2);
+		case MFGameConstants.GRID_COLOR_ORANGE:
+			return getContext().getResources().getColor(R.color.orange2);
+		case MFGameConstants.GRID_COLOR_CYAN:
+			return getContext().getResources().getColor(R.color.cyan2);
+		case MFGameConstants.GRID_OBSTACLE:
+			return getContext().getResources().getColor(R.color.gray2);
 		}
 		
 		return -1;

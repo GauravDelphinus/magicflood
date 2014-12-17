@@ -35,6 +35,7 @@
         android:layout_centerVertical="true"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/game_moves_label_text_color"
         android:text="@string/moves_game_view" />
 
          
