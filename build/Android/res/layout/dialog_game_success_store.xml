@@ -30,6 +30,11 @@
             android:text="@string/dialog_game_success_store_description_text"
             android:textSize="@dimen/dialog_description_text_size" />
         
+        <View
+            android:layout_height="10sp"
+            android:layout_width="fill_parent"
+            />
+        
               <Button
                   android:id="@+id/store_button"
                   android:layout_width="match_parent"

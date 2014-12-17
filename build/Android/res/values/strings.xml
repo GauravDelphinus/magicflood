@@ -43,17 +43,17 @@
     <!-- Dialogs -->
     <string name="dialog_game_menu_title_text">Options</string>
     <string name="dialog_game_menu_description_text">What would you like to do?</string>
-    <string name="dialog_menu_button_text">Main Menu</string>
-    <string name="new_game_button_text">New Game</string>
-    <string name="next_game_button_text">Next Game</string>
-    <string name="dialog_game_menu_footer_text">Tap anywhere else to resume current game</string>
+    <string name="dialog_menu_button_text">MAIN MENU</string>
+    <string name="new_game_button_text">NEW GAME</string>
+    <string name="next_game_button_text">NEXT GAME</string>
+    <string name="dialog_game_menu_footer_text">Tap anywhere else to resume the current game</string>
     <string name="dialog_game_failed_title_text">Oops!</string>
     <string name="dialog_game_failed_description_text">Sorry, you\'ve run out of moves!</string>
     <string name="dialog_game_success_title_text">Great work!</string>
     <string name="dialog_game_success_description_text">Nice job - you nailed it!</string>
     <string name="dialog_game_success_store_title_text">Great work!</string>
     <string name="dialog_game_success_store_description_text">Nice job - you nailed it!  Bored of the same hurdles?  Make your game more exciting by adding a variety of new hurdles!</string>
-    <string name="dialog_store_button_text">Explore Hurdles</string>
+    <string name="dialog_store_button_text">EXPLORE HURDLES</string>
     <string name="dialog_store_not_connected_title_text">Store not connected</string>
     <string name="dialog_store_not_connected_description_text">It appears you are not connected to the store.  Please try again later.</string>
     <string name="dialog_store_not_connected_footer_text">Tap anywhere to dismiss this dialog</string>
