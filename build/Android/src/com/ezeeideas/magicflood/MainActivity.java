@@ -30,20 +30,14 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        /*
-        Button easyButton = (Button)findViewById(R.id.eazy_game_button);
-        easyButton.setOnClickListener(this);
-        Button mediumButton = (Button)findViewById(R.id.medium_game_button);
-        mediumButton.setOnClickListener(this);
-        Button hardButton = (Button)findViewById(R.id.hard_game_button);
-        hardButton.setOnClickListener(this);
-        */
-        
         ImageButton storeButton = (ImageButton)findViewById(R.id.store_button_id);
         storeButton.setOnClickListener(this);
         
         ImageButton infoButton = (ImageButton) findViewById(R.id.about_button_id);
         infoButton.setOnClickListener(this);
+        
+        ImageButton helpButton = (ImageButton) findViewById(R.id.help_button_id);
+        helpButton.setOnClickListener(this);
         
         mGameLevelPieButton = (PieButton) findViewById(R.id.game_level_spinner_button_id);
         Vector<Integer> buttonPressedResources = new Vector<Integer>();
@@ -116,6 +110,10 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 			break;
 		case R.id.about_button_id:
 			i = new Intent(this, MFAboutActivity.class);
+			startActivity(i);
+			break;
+		case R.id.help_button_id:
+			i = new Intent(this, MFHelpActivity.class);
 			startActivity(i);
 			break;
 		}

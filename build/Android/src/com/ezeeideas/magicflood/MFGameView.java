@@ -58,8 +58,8 @@ public class MFGameView extends View
 		startPaint.setARGB(255, 255, 255, 255);
 		startPaint.setAntiAlias(true);
 		startPaint.setStyle(Style.FILL);
-		startPaint.setAlpha(100);
-		startPaint.setStrokeWidth(0);
+		startPaint.setAlpha(255);
+		startPaint.setStrokeWidth(1);
 		
 		Paint fillPaint = new Paint();
 
@@ -109,6 +109,11 @@ public class MFGameView extends View
 		starPath.lineTo(l, (t + b) /2);
 		starPath.lineTo(l + w /3, t + h/3);
 		starPath.lineTo((l + r)/2, t);
+		
+		//set gradient fill in the paint
+		startPaint.setShader(new RadialGradient((l + r)/2, (t + b)/2, w/2, getColor(mGrid[mStartPos[0]][mStartPos[1]]), getSecondaryColor(mGrid[mStartPos[0]][mStartPos[1]]), Shader.TileMode.MIRROR));
+
+		//finally, draw the star!
 		canvas.drawPath(starPath, startPaint);
 		canvas.restore();
 		

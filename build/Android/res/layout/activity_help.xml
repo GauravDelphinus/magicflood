@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:background="@color/gray"
+android:padding="@dimen/store_padding"
+android:orientation="vertical" >
+
+       <ViewFlipper
+            android:id="@+id/view_flipper_id"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:layout_margin="6dip" >
+            
+        <!--  The child Views/Layout to flip -->
+        
+        <!--  1st Screen -->
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/help_screen1_title"
+                        android:textColor="@color/help_title_text_color"
+                        android:textSize="@dimen/help_title_text_size"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                     <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                     
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/help_image_1"
+                        />
+                   
+                    <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                    
+                   <TextView 
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/help_screen1_description_text"
+                       android:textSize="@dimen/help_description_text_size"
+                       android:textColor="@color/help_description_text_color"
+                       android:gravity="center"
+                       />
+                               
+            </LinearLayout>
+
+            
+             
+                    
+
+                 <!--  2nd Screen -->
+            
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/help_screen2_title"
+                        android:textColor="@color/help_title_text_color"
+                        android:textSize="@dimen/help_title_text_size"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                     <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                     
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/help_image_2"
+                        />
+                   
+                    <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/help_image_2b"
+                        />
+                    <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                    
+                   <TextView 
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/help_screen2_description_text"
+                       android:textSize="@dimen/help_description_text_size"
+                       android:textColor="@color/help_description_text_color"
+                       android:gravity="center"
+                       />
+                 
+                    
+            </LinearLayout>
+            
+			<!--  3rd Screen -->
+            
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/help_screen3_title"
+                        android:textColor="@color/help_title_text_color"
+                        android:textSize="@dimen/help_title_text_size"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                     <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                     
+                     <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/help_image_3"
+                        />
+                   
+                    <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                   
+                   <TextView 
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/help_screen3_description_text"
+                       android:textSize="@dimen/help_description_text_size"
+                       android:textColor="@color/help_description_text_color"
+                       android:gravity="center"
+                       /> 
+                 
+                    
+            </LinearLayout>
+
+            
+             
+        </ViewFlipper>
+         <View
+                            android:layout_height="@dimen/store_padding"
+                            android:layout_width="wrap_content"
+                            />
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/store_padding"
+            android:layout_marginBottom="@dimen/store_padding"
+            >
+            <View
+                android:layout_width="0dip"
+                android:layout_height="1dip"
+                android:layout_weight="1"
+                />
+            <ImageView
+                android:id="@+id/viewflipper_child1_indicator_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_viewflipper_indicator_selected"
+                />
+                       <View
+                android:layout_width="@dimen/activity_horizontal_margin"
+                android:layout_height="1dip"
+                />
+               <ImageView
+                android:id="@+id/viewflipper_child2_indicator_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_viewflipper_indicator_unselected"
+                />
+                          <View
+                android:layout_width="@dimen/activity_horizontal_margin"
+                android:layout_height="1dip"
+                />
+                  <ImageView
+                android:id="@+id/viewflipper_child3_indicator_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_viewflipper_indicator_unselected"
+                />
+                             <View
+                android:layout_width="0dip"
+                android:layout_height="1dip"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+</LinearLayout>

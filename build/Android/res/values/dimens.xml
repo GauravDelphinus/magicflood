@@ -6,6 +6,7 @@
     <dimen name="activity_horizontal_padding">10dp</dimen>
     <dimen name="activity_vertical_padding">10dp</dimen>
     <dimen name="store_padding">20dp</dimen>
+	<dimen name="big_gap">30dp</dimen>
 	
     <!-- Text Sizes -->
     <dimen name="iap_price_text_size">20sp</dimen>
@@ -22,4 +23,9 @@
     <!-- About Screen -->
     <dimen name="about_copyright_text_size">25sp</dimen>
     <dimen name="about_feedback_text_size">25sp</dimen>
+    
+    <!-- Help Screen -->
+    <dimen name="help_title_text_size">25sp</dimen>
+    <dimen name="help_footer_text_size">15sp</dimen>
+    <dimen name="help_description_text_size">20sp</dimen>
 </resources>

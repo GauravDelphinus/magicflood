@@ -10,12 +10,12 @@
    <color name="yellow">#FFFFFF66</color>
    <color name="gray">#FF545454</color>
    
-   <color name="red2">#FFF0B2B2</color>
-    <color name="green2">#FF99FF99</color>
-   <color name="blue2">#FF70DBFF</color>
-   <color name="orange2">#FFFFD2A5</color>
-   <color name="cyan2">#FFE994FF</color>
-   <color name="yellow2">#FFFFFFB2</color>
+   <color name="red2">#FF2E0000</color>
+    <color name="green2">#FF003D00</color>
+   <color name="blue2">#FF0000FF</color>
+   <color name="orange2">#FF662900</color>
+   <color name="cyan2">#FF3D0052</color>
+   <color name="yellow2">#FF665200</color>
    <color name="gray2">#FF878787</color>
    
    <color name="background">#FFFF9900</color>
@@ -40,6 +40,11 @@
    <color name="store_iap_text_color">#FFFFFFFF</color>
    <color name="store_title_text_color">#FFFFFFFF</color>
    <color name="store_footer_text_color">#FFEEEEEE</color>
+   
+   <!-- Help Screen -->
+   <color name="help_title_text_color">#FFFFFFFF</color>
+   <color name="help_footer_text_color">#FFEEEEEE</color>
+   <color name="help_description_text_color">#FFEEEEEE</color>
    
    <!-- Dialogs -->
    <color name="dialog_background">#99000000</color>

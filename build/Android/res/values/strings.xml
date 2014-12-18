@@ -63,4 +63,15 @@
     <string name="about_feedback_text">If you enjoy using Magic Flood, please take a moment to rate the app on Google Play or Like our page on Facebook.  Thanks for your support, and we welcome your feedback!</string>
     <string name="support_email_subject">Feedback related to Magic Flood on Android</string>
     <string name="support_email_title">Share Feedback...</string>
+    
+    <!-- Help Screen -->
+    <string name="help_screen1_title">Identify the Start Position</string>
+    <string name="help_screen2_title">Start filling the grid with colors</string>
+    <string name="help_screen3_title">Look out for hurdles!</string>
+    <string name="help_screen1_description_text">Look for the rotating star.  It could be anywhere on the grid.</string>
+    <string name="help_screen2_description_text">The color buttons are located at the bottom of the game screen.  Tap a color to fill the start position and all neighbors of the same color with the new color.  Continue this until the entire grid is filled with the same color!</string>
+    <string name="help_screen3_description_text">You might encounter hurdles along the way (always in gray color).  Hurdles cannot be colored, but all spaces in and around hurdles must be filled.  So be careful!</string>
+    <string name="help_screen1_footer_text">Swipe to go to the next screen -&gt;</string>
+    <string name="help_screen2_footer_text">Swipe to go to the next screen -&gt;</string>
+    <string name="help_screen3_footer_text">Swipe to go back to the first screen -&gt;</string>
 </resources>
