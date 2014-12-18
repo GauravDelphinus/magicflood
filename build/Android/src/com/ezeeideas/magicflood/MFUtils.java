@@ -3,6 +3,7 @@ package com.ezeeideas.magicflood;
 import java.util.Hashtable;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 
 
@@ -31,6 +32,49 @@ public class MFUtils
 			}
 			return tf;
 		}
+	}
+	
+	/**
+	 * Helper function that returns the current screen size category
+	 * @param context
+	 * @return
+	 */
+	public static String getSizeName(Context context) {
+	    int screenLayout = context.getResources().getConfiguration().screenLayout;
+	    screenLayout &= Configuration.SCREENLAYOUT_SIZE_MASK;
+
+	    switch (screenLayout) {
+	    case Configuration.SCREENLAYOUT_SIZE_SMALL:
+	        return "small";
+	    case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+	        return "normal";
+	    case Configuration.SCREENLAYOUT_SIZE_LARGE:
+	        return "large";
+	    case 4: // Configuration.SCREENLAYOUT_SIZE_XLARGE is API >= 9
+	        return "xlarge";
+	    default:
+	        return "undefined";
+	    }
+	}
+	
+	public static String getDensityName(Context context) {
+	    float density = context.getResources().getDisplayMetrics().density;
+	    if (density >= 4.0) {
+	        return "xxxhdpi";
+	    }
+	    if (density >= 3.0) {
+	        return "xxhdpi";
+	    }
+	    if (density >= 2.0) {
+	        return "xhdpi";
+	    }
+	    if (density >= 1.5) {
+	        return "hdpi";
+	    }
+	    if (density >= 1.0) {
+	        return "mdpi";
+	    }
+	    return "ldpi";
 	}
 
 }

@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,15 +59,9 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
         //initialize the in-app purchase manager
         mIAPManager = new MFInAppPurchaseManager(this);
         
-        //bind the service manager (aka connection service) to Google In-App Billing
-        //Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
-        //serviceIntent.setPackage("com.android.vending");
-        //bindService(serviceIntent, mIAPManager, Context.BIND_AUTO_CREATE);
-        
-        //query the available in-app items, and update local cache (here and in C++ code)
-        //mIAPManager.queryInAppItems();
-        //mIAPManager.initialize();
-        
+        //print screen size category
+        Log.d("gaurav", "screen category: " + MFUtils.getSizeName(this));
+        Log.d("gaurav", "screen density: " + MFUtils.getDensityName(this));
     }
 
     @Override
