@@ -97,8 +97,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		
 		// Load the sounds
-		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-		soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() 
+		mSoundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+		mSoundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() 
 		{
 			@Override
 			public void onLoadComplete(SoundPool soundPool, int sampleId, int status)
@@ -108,9 +108,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 			}
 		});
 
-		mButtonClickSoundID = soundPool.load(this, R.raw.button_press_sound, 1);
-		mGameSuccessSoundID = soundPool.load(this, R.raw.game_success_sound, 1);
-		mGameFailedSoundID = soundPool.load(this, R.raw.game_failed_sound, 1);
+		mButtonClickSoundID = mSoundPool.load(this, R.raw.button_press_sound, 1);
+		mGameSuccessSoundID = mSoundPool.load(this, R.raw.game_success_sound, 1);
+		mGameFailedSoundID = mSoundPool.load(this, R.raw.game_failed_sound, 1);
 		
 		//read the preference on whether the sound should be muted
 		SharedPreferences settings;
@@ -158,7 +158,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 				soundID = mGameFailedSoundID;
 				break;
 			}
-			soundPool.play(soundID, volume, volume, 1, 0, 1f);
+			mCurrentlyPlayingStream = mSoundPool.play(soundID, volume, volume, 1, 0, 1f);
 		}
 	}
 
@@ -362,6 +362,12 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	public void onDialogOptionSelected(Dialog dialog, int option) 
 	{
 		Log.d("gaurav", "onDialogOptionSelected, class = " + dialog.getClass() + ", option = " + option);
+		
+		/**
+		 * If there's a sound playing, stop it!
+		 */
+		mSoundPool.stop(mCurrentlyPlayingStream);
+		
 		if (dialog.getClass() == GameMenuDialog.class)
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Go back to Main Menu
@@ -441,12 +447,13 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	 * Sound related
 	 */
 	
-	private SoundPool soundPool;
+	private SoundPool mSoundPool;
 	private int mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID;
 	boolean loaded = false;
 	float actVolume, maxVolume, volume;
 	AudioManager audioManager;
 	boolean mPlaySound = false;
+	int mCurrentlyPlayingStream = 0; //currently playing stream, used to stop it if still running
 
 	AdView mAdView; // banner ad view
 	
