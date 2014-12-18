@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,31 +6,30 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.ezeeideas.magicflood.MainActivity" >
 
 	<ImageView
 	    android:id="@+id/game_title_id"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_alignParentTop="true"
-	    android:layout_centerHorizontal="true"
 	    android:src="@drawable/ic_logo_big"
+	    android:layout_gravity="center"
 	    />
 	<TextView
 	    android:id="@+id/company_name_id"
-	    android:layout_width="wrap_content"
+	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/game_title_id"
+	    android:gravity="center"
 	    android:text="@string/by_company_text"
-	    android:layout_centerHorizontal="true"
 	    />
 
 	<RelativeLayout
 	    android:id="@+id/spinner_layout_id"
 	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/company_name_id"
+	    android:layout_height="0dip"
 	    android:layout_marginTop="@dimen/activity_vertical_margin"
+	    android:layout_weight="1"
 	    >
 		<com.ezeeideas.magicflood.PieButton
       	    android:id="@+id/game_level_spinner_button_id"
@@ -43,13 +42,11 @@
       	    />
 	</RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/button_row_id"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_layout_id"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         >
 
      
@@ -58,18 +55,31 @@
         android:src="@drawable/ic_button_information"
         android:background="@color/transparent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_height="wrap_content" />
           
+          <View
+              android:layout_width="@dimen/activity_horizontal_margin"
+              android:layout_height="1dp"
+              />
+          
+             <ImageButton
+        android:id="@+id/help_button_id"
+        android:src="@drawable/ic_button_help"
+        android:background="@color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+             
+              <View
+              android:layout_width="@dimen/activity_horizontal_margin"
+              android:layout_height="1dp"
+              />
+              
                <ImageButton
         android:id="@+id/store_button_id"
         android:src="@drawable/ic_button_store"
         android:background="@color/transparent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_height="wrap_content"/>
                 
-	</RelativeLayout>
-</RelativeLayout>
+	</LinearLayout>
+</LinearLayout>

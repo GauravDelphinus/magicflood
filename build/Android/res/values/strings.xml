@@ -57,4 +57,10 @@
     <string name="dialog_store_not_connected_title_text">Store not connected</string>
     <string name="dialog_store_not_connected_description_text">It appears you are not connected to the store.  Please try again later.</string>
     <string name="dialog_store_not_connected_footer_text">Tap anywhere to dismiss this dialog</string>
+    
+    <!-- About Screen -->
+    <string name="about_copyright_text">Copyright (C) 2014 EZEEIDEAS IT SERVICES LLP.  All Rights Reserved.</string>
+    <string name="about_feedback_text">If you enjoy using Magic Flood, please take a moment to rate the app on Google Play or Like our page on Facebook.  Thanks for your support, and we welcome your feedback!</string>
+    <string name="support_email_subject">Feedback related to Magic Flood on Android</string>
+    <string name="support_email_title">Share Feedback...</string>
 </resources>
