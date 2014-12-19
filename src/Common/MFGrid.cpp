@@ -197,7 +197,7 @@ void MFGrid::initializeStartPos()
          Initialize randomly to one of the four corners
          **/
         srand((unsigned int)time(NULL));
-        int randNum = 1;//rand() % 4 + 1;
+        int randNum = rand() % 4 + 1;
         switch (randNum)
         {
             case 1: //top-left corner
