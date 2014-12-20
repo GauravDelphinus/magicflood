@@ -146,7 +146,7 @@
     {
         for (int j = 0; j < gridSize; j++)
         {
-            CGRect rectangle = CGRectMake(hOffset + i*cellSize, vOffset + j*cellSize, cellSize, cellSize);
+            CGRect rectangle = CGRectMake(hOffset + j*cellSize, vOffset + i*cellSize, cellSize, cellSize);
             CGContextAddRect(context, rectangle);
             CGContextStrokePath(context);
             CGContextSetFillColorWithColor(context, [self getColorFromGridForX:i andY:j]);

@@ -6,4 +6,7 @@ public class MFConstants
 	public static final String SUPPORT_EMAIL = "ezeeideas@gmail.com";
 	public static final String FACEBOOK_PAGE_URL = "https://www.facebook.com/pages/Word-Jam/130607287109919";
 	public static final String APP_PNAME = "com.ezeeideas.magicflood";
+	
+	//Google Analytics
+	public static final String APP_ANALYTICS_TRACKING_ID = "UA-46129625-2";
 }

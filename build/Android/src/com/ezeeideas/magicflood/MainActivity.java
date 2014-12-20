@@ -99,20 +99,28 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 		case R.id.store_button_id:
 			if (mIAPManager.isSynchronized())
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_STORE_BUTTON, MFAnalytics.ANALYTICS_VALUE_STORE_SYNCHRONIZED);
+				
 				i = new Intent(this, MFStoreActivity.class);
 				startActivity(i);
 			}
 			else
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_STORE_BUTTON, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_SYNCHRONIZED);
+				
 				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
 				dialog.show();
 			}
 			break;
 		case R.id.about_button_id:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ABOUT_BUTTON);
+			
 			i = new Intent(this, MFAboutActivity.class);
 			startActivity(i);
 			break;
 		case R.id.help_button_id:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_HELP_BUTTON);
+			
 			i = new Intent(this, MFHelpActivity.class);
 			startActivity(i);
 			break;
@@ -133,19 +141,25 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 		Intent i;
 		switch (index)
 		{
-		case 0:		
+		case 0:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_EASY_BUTTON);
+			
 			i = new Intent(this, MFGameActivity.class); 	
 			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
 			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
 			startActivity(i);
 			break;
 		case 1:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MEDIUM_BUTTON);
+			
 			i = new Intent(this, MFGameActivity.class); 	
 			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_MEDIUM);
 			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
 			startActivity(i);
 			break;
 		case 2:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_HARD_BUTTON);
+			
 			i = new Intent(this, MFGameActivity.class); 	
 			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
 			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, promptUserToStore);

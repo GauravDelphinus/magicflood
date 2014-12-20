@@ -28,7 +28,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class MFGameActivity extends Activity implements View.OnClickListener, DialogInterface.OnClickListener, GameDialogListener {
+public class MFGameActivity extends Activity implements View.OnClickListener, GameDialogListener {
 
 	
 	@Override
@@ -162,6 +162,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		}
 	}
 
+	@Override
+	public void onBackPressed() 
+	{
+		MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_BACK_BUTTON);
+		
+		GameMenuDialog dialog = new GameMenuDialog(this);
+		dialog.setCanceledOnTouchOutside(true);
+		dialog.show();	
+	}
 	
 	private void startNewGame(int level)
 	{
@@ -199,12 +208,32 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		mMovesLabel.setText(String.format("Moves %d / %d", currMove, maxMoves));
 	}
 
+	/**
+	 * Get the Analytics game category from the game level
+	 * @return
+	 */
+	private String getAnalyticsCategory()
+	{
+		switch (mLevel)
+		{
+		case MFGameConstants.GAME_LEVEL_EASY:
+			return MFAnalytics.ANALYTICS_CATEGORY_GAME_EASY;
+		case MFGameConstants.GAME_LEVEL_MEDIUM:
+			return MFAnalytics.ANALYTICS_CATEGORY_GAME_MEDIUM;
+		case MFGameConstants.GAME_LEVEL_HARD:
+			return MFAnalytics.ANALYTICS_CATEGORY_GAME_HARD;
+		}
+		
+		return MFAnalytics.ANALYTICS_CATEGORY_GAME_EASY;
+	}
 	
 	@Override
 	public void onClick(View arg0) {
 		
 		if (arg0.getId() ==  R.id.exit_game_button_id) //Menu button clicked
 		{	
+			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MENU_BUTTON);
+			
 			GameMenuDialog dialog = new GameMenuDialog(this);
 			dialog.setCanceledOnTouchOutside(true);
 			dialog.show();
@@ -215,11 +244,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		{
 			if (mPlaySound == true)
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_SOUND_ON);
+				
 				mPlaySound = false;
 				mSoundButton.setBackgroundResource(R.drawable.ic_button_sound_off);
 			}
 			else
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_SOUND_OFF);
+				
 				mPlaySound = true;
 				mSoundButton.setBackgroundResource(R.drawable.ic_button_sound_on);
 			}
@@ -257,6 +290,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 			break;
 		}
 		
+		MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_COLOR_BUTTON);
+		
 		
 		int result = playMove(gridHandle, colorValue);
 		
@@ -280,6 +315,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 
 		if (result == MFGameConstants.RESULT_FAILED) //run out of moves
 		{	
+			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_FAILURE);
+			
 			GameFailedDialog dialog = new GameFailedDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
@@ -288,6 +325,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		}
 		else if (result == MFGameConstants.RESULT_SUCCESS) //game successful completed
 		{	
+			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
+			
 			if (mPromptUserToStore) //should prompt the user to check out the store
 			{
 				GameSuccessStoreDialog dialog = new GameSuccessStoreDialog(this);
@@ -310,55 +349,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 	}
 
 	@Override
-	public void onClick(DialogInterface dialog, int which) {
-		if (dialog == mExitAlertDialog)
-		{
-			switch (which)
-			{
-			case AlertDialog.BUTTON_POSITIVE:
-				finish();
-				break;
-
-			case AlertDialog.BUTTON_NEUTRAL:
-				dialog.cancel();
-				break;
-			case AlertDialog.BUTTON_NEGATIVE:
-				dialog.cancel();
-				startNewGame(mLevel);
-				break;
-			}
-		}
-		else if (dialog == mSuccessAlertDialog)
-		{
-			switch (which)
-			{
-			case AlertDialog.BUTTON_POSITIVE:
-				finish();
-				break;
-			case AlertDialog.BUTTON_NEGATIVE:
-				dialog.cancel();
-				startNewGame(mLevel);
-				break;
-			}
-		}
-		else if (dialog == mFailedAlertDialog)
-		{
-			switch (which)
-			{
-			case AlertDialog.BUTTON_POSITIVE:
-				finish();
-				break;
-			case AlertDialog.BUTTON_NEGATIVE:
-				dialog.cancel();
-				startNewGame(mLevel);
-				break;
-			}
-		}
-		
-		
-	}
-	
-	@Override
 	public void onDialogOptionSelected(Dialog dialog, int option) 
 	{
 		Log.d("gaurav", "onDialogOptionSelected, class = " + dialog.getClass() + ", option = " + option);
@@ -372,14 +362,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Go back to Main Menu
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MAIN_MENU_BUTTON);
+				
 				finish();
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Resume current game
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_RESUME_GAME_BUTTON);
+				
 				dialog.cancel();
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) //Start New Game
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEW_GAME_BUTTON);
+				
 				dialog.cancel();
 				startNewGame(mLevel);
 			}
@@ -388,11 +384,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Start the next game
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEW_GAME_BUTTON);
+				
 				dialog.cancel();
 				startNewGame(mLevel);
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the Main Menu
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MAIN_MENU_BUTTON);
+				
 				finish();
 			}
 		}	
@@ -400,11 +400,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Start the next game
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEXT_GAME_BUTTON);
+				
 				dialog.cancel();
 				startNewGame(mLevel);
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the Main Menu
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MAIN_MENU_BUTTON);
+				
 				finish();
 			}
 		}
@@ -412,17 +416,23 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Di
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Take to the store
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_STORE_BUTTON);
+				
 				finish();
 				Intent i = new Intent(this, MFStoreActivity.class);
 				startActivity(i);
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) // Start the next game
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEXT_GAME_BUTTON);
+				
 				dialog.cancel();
 				startNewGame(mLevel);
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the main menu
 			{
+				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MAIN_MENU_BUTTON);
+				
 				finish();
 			}
 		}

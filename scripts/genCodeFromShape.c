@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 					miny = j;
 				if (j > maxy)
 					maxy = j;
-				sprintf(out[outindex++], "grid[yoffset + %d][xoffset + %d] = GRID_OBSTACLE;\n", k, j);
+				sprintf(out[outindex++], "grid[yoffset + %d][xoffset + %d] = GRID_OBSTACLE;\n", j, k);
 			}
 		}
 	}

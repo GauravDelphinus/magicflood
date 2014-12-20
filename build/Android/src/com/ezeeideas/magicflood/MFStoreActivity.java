@@ -264,6 +264,9 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 		String pid = null;
 		switch (view.getId())
 		{
+		case R.id.remove_ads_layout_id:
+			pid = MFGameConstants.IAP_REMOVE_ADS;
+			break;
 		case R.id.alacarte_layout_1_id:
 			pid = MFGameConstants.IAP_ALACARTE_HURDLE_1;
 			break;

@@ -68,8 +68,8 @@ public class MFGameView extends View
 		{
 			for (int j = 0; j < mGridSize; j++)
 			{
-				int left = hOffset + i * cellSize;
-				int top = vOffset + j * cellSize;
+				int left = hOffset + j * cellSize;
+				int top = vOffset + i * cellSize;
 				int right = left + cellSize;
 				int bottom = top + cellSize;
 				
@@ -89,10 +89,10 @@ public class MFGameView extends View
 		}
 		
 		//Start Position
-		int l = hOffset + mStartPos[0] * cellSize;
-		int t = vOffset + mStartPos[1] * cellSize;
-		int r = hOffset + mStartPos[0] *cellSize + cellSize;
-		int b = vOffset + mStartPos[1] * cellSize + cellSize;
+		int l = hOffset + mStartPos[1] * cellSize;
+		int t = vOffset + mStartPos[0] * cellSize;
+		int r = hOffset + mStartPos[1] *cellSize + cellSize;
+		int b = vOffset + mStartPos[0] * cellSize + cellSize;
 		int w = (r - l);
 		int h = (b - t);
 		mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;

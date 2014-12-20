@@ -74,6 +74,8 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	
 	public void purchaseItem(String pid)
 	{
+		MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_STARTED, pid);
+		
 		Log.d("gaurav", "calling mHelper.launchPurchaseFlow with pid = [" + pid + "]");
 		String testPrefix = "";
 		if (MFGameConstants.testingMode)
@@ -154,10 +156,21 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	{
 		if (result.isFailure()) 
 		{
+			if (result.getResponse() == IabHelper.IABHELPER_USER_CANCELLED) //user cancelled the purchase
+			{
+				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_CANCELLED, info.getSku(), result.getResponse());
+			}
+			else //the purchase failed for some other reason
+			{
+				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_FAILED, info.getSku(), result.getResponse());
+			}
+			
 			Log.d("gaurav", "Error purchasing: " + result + ", info = " + info + ", mPurchaseInterfaceListeners = " + mPurchaseInterfaceListeners);
-			//successfully purchased.  Update the UI to reflect the changes
+			//some failure purchased.  Update the UI to reflect the changes
 			return;
 		}
+		
+		MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_COMPLETED, info.getSku());
 		
 		Log.d("gaurav", "purchase successful, pid = [" + info.getSku() + "]");
 		//successfully purchased.  Update the UI to reflect the changes
