@@ -43,10 +43,10 @@ public class MFGameView extends View
 		mBorderPaint.setStrokeWidth(2);
 		
 		mStartPaint = new Paint();
-		mStartPaint.setARGB(255, 255, 255, 255);
+		mStartPaint.setColor(getResources().getColor(R.color.gray));
 		mStartPaint.setAntiAlias(true);
-		mStartPaint.setStyle(Style.FILL);
-		mStartPaint.setAlpha(255);
+		mStartPaint.setStyle(Style.FILL_AND_STROKE);
+		mStartPaint.setAlpha(150);
 		mStartPaint.setStrokeWidth(1);
 		
 		mFillPaint = new Paint();
@@ -88,10 +88,14 @@ public class MFGameView extends View
 		}
 		
 		//Start Position
-		int l = hOffset + mStartPos[1] * cellSize;
-		int t = vOffset + mStartPos[0] * cellSize;
-		int r = hOffset + mStartPos[1] *cellSize + cellSize;
-		int b = vOffset + mStartPos[0] * cellSize + cellSize;
+		int left = hOffset + mStartPos[1] * cellSize;
+		int top = vOffset + mStartPos[0] * cellSize;
+		int right = hOffset + mStartPos[1] * cellSize + cellSize;
+		int bottom = vOffset + mStartPos[0] * cellSize + cellSize;
+		int l = left + (right - left) / 4;
+		int t = top + (bottom - top) / 4;
+		int r = l + (right - left) / 2;
+		int b = t + (bottom - top) / 2;
 		int w = (r - l);
 		int h = (b - t);
 		mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
@@ -110,7 +114,8 @@ public class MFGameView extends View
 		starPath.lineTo((l + r)/2, t);
 		
 		//set gradient fill in the paint
-		mStartPaint.setShader(new RadialGradient((l + r)/2, (t + b)/2, w/2, getColor(mGrid[mStartPos[0]][mStartPos[1]]), getSecondaryColor(mGrid[mStartPos[0]][mStartPos[1]]), Shader.TileMode.MIRROR));
+		//mStartPaint.setShader(new RadialGradient((l + r)/2, (t + b)/2, w/2, getColor(mGrid[mStartPos[0]][mStartPos[1]]), 
+		//		getResources().getColor(R.color.white), Shader.TileMode.MIRROR));
 
 		//finally, draw the star!
 		canvas.drawPath(starPath, mStartPaint);
