@@ -2,13 +2,9 @@ package com.ezeeideas.magicflood;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.support.v4.app.DialogFragment;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;

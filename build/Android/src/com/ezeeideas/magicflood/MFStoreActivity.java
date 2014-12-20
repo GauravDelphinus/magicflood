@@ -1,7 +1,5 @@
 package com.ezeeideas.magicflood;
 
-import com.ezeeideas.magicflood.iabutil.IabHelper;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +10,7 @@ import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
 public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.IAPPurchaseInterface, View.OnClickListener, AnimationListener, OnTouchListener
@@ -356,8 +352,6 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 	
 	private ViewFlipper mViewFlipper;
 	private float lastX;
-	private int mLastTouchViewId;
-	private boolean mDetectClick = false; //detect the last TouchDown+TouchUp combination as a click
 	MFInAppPurchaseManager mIAPManager = null;
 	private static final int SWIPE_DISPLACEMENT_THRESHOLD = 10; //no. of pixels to displace, to recognize a "swipe" gesture
 	
@@ -365,27 +359,13 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 
 	@Override
 	public boolean onTouch(View arg0, MotionEvent arg1) 
-	{
-		if (arg1.getAction() == MotionEvent.ACTION_DOWN)
-		{
-			mLastTouchViewId = arg0.getId();
-			mDetectClick = false;
-		}
-		else if (arg1.getAction() == MotionEvent.ACTION_UP)
-		{
-			if (arg0.getId() == mLastTouchViewId)
-			{
-				mDetectClick = true;
-			}
-			mLastTouchViewId = 0;
-		}
-		
+	{	
 		if (arg1.getAction() == MotionEvent.ACTION_UP)
 		{
 			MFInAppProductLayout layout = (MFInAppProductLayout) arg0;
 			Log.d("gaurav", "calling refreshDrawableState");
 			layout.refreshDrawableState();
-			layout.invalidate();
+			layout.invalidate();			
 		}
 		return onTouchEvent(arg1);
 	}

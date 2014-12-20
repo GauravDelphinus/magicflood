@@ -4,7 +4,6 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 import android.app.Activity;
-import android.content.Context;
 
 public class MFAnalytics 
 {

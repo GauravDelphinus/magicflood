@@ -6,8 +6,7 @@ import java.util.TimerTask;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
+
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
@@ -36,6 +35,21 @@ public class MFGameView extends View
 		mAnimationTimer = new Timer();
 		mAnimationTimerTask = new AnimationTimerTask(this);
 		mAnimationTimer.scheduleAtFixedRate(mAnimationTimerTask, ROTATION_SPEED_INTERVAL, ROTATION_SPEED_INTERVAL);
+		
+		mBorderPaint = new Paint();
+		mBorderPaint.setARGB(255, 255, 255, 255);
+		mBorderPaint.setAntiAlias(true);
+		mBorderPaint.setStyle(Style.STROKE);
+		mBorderPaint.setStrokeWidth(2);
+		
+		mStartPaint = new Paint();
+		mStartPaint.setARGB(255, 255, 255, 255);
+		mStartPaint.setAntiAlias(true);
+		mStartPaint.setStyle(Style.FILL);
+		mStartPaint.setAlpha(255);
+		mStartPaint.setStrokeWidth(1);
+		
+		mFillPaint = new Paint();
 	}
 
 	protected void onDraw(Canvas canvas)
@@ -47,21 +61,6 @@ public class MFGameView extends View
 		int screenHeight = this.getHeight();
 		int cellSize = (Math.min(screenWidth, screenHeight) - horizontalGap)/mGridSize;
 		int hOffset = horizontalGap / 2;
-		
-		Paint borderPaint = new Paint();
-		borderPaint.setARGB(255, 255, 255, 255);
-		borderPaint.setAntiAlias(true);
-		borderPaint.setStyle(Style.STROKE);
-		borderPaint.setStrokeWidth(2);
-		
-		Paint startPaint = new Paint();
-		startPaint.setARGB(255, 255, 255, 255);
-		startPaint.setAntiAlias(true);
-		startPaint.setStyle(Style.FILL);
-		startPaint.setAlpha(255);
-		startPaint.setStrokeWidth(1);
-		
-		Paint fillPaint = new Paint();
 
 		
 		for (int i = 0; i < mGridSize; i++)
@@ -73,18 +72,18 @@ public class MFGameView extends View
 				int right = left + cellSize;
 				int bottom = top + cellSize;
 				
-				fillPaint.reset();
-				fillPaint.setAntiAlias(true);
-				fillPaint.setStyle(Style.FILL);
-				fillPaint.setColor(getColor(mGrid[i][j]));
+				mFillPaint.reset();
+				mFillPaint.setAntiAlias(true);
+				mFillPaint.setStyle(Style.FILL);
+				mFillPaint.setColor(getColor(mGrid[i][j]));
 				//fillPaint.setShader(new LinearGradient(0, top, 0, bottom, getColor(mGrid[i][j]), Color.WHITE, Shader.TileMode.MIRROR));
 				if (mGrid[i][j] == MFGameConstants.GRID_OBSTACLE) //show a gradient for obstacles
 				{
-					fillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getSecondaryColor(mGrid[i][j]), getColor(mGrid[i][j]), Shader.TileMode.MIRROR));
+					mFillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getSecondaryColor(mGrid[i][j]), getColor(mGrid[i][j]), Shader.TileMode.MIRROR));
 				}
 
-				canvas.drawRect(left, top, right, bottom, fillPaint);
-				canvas.drawRect(left,  top, right, bottom, borderPaint);
+				canvas.drawRect(left, top, right, bottom, mFillPaint);
+				canvas.drawRect(left,  top, right, bottom, mBorderPaint);
 			}
 		}
 		
@@ -111,10 +110,10 @@ public class MFGameView extends View
 		starPath.lineTo((l + r)/2, t);
 		
 		//set gradient fill in the paint
-		startPaint.setShader(new RadialGradient((l + r)/2, (t + b)/2, w/2, getColor(mGrid[mStartPos[0]][mStartPos[1]]), getSecondaryColor(mGrid[mStartPos[0]][mStartPos[1]]), Shader.TileMode.MIRROR));
+		mStartPaint.setShader(new RadialGradient((l + r)/2, (t + b)/2, w/2, getColor(mGrid[mStartPos[0]][mStartPos[1]]), getSecondaryColor(mGrid[mStartPos[0]][mStartPos[1]]), Shader.TileMode.MIRROR));
 
 		//finally, draw the star!
-		canvas.drawPath(starPath, startPaint);
+		canvas.drawPath(starPath, mStartPaint);
 		canvas.restore();
 		
 	}
@@ -226,4 +225,5 @@ public class MFGameView extends View
 		}
 	}
 
+	private Paint mStartPaint, mBorderPaint, mFillPaint;
 }
