@@ -65,7 +65,6 @@ public class MFInAppProductLayout extends LinearLayout
 	
 	public void updatedProvisioningStatus(boolean isProvisioned)
 	{
-		/*
 		ImageView imageView = (ImageView) findViewById(R.id.image_iap_status_id);
 		if (isProvisioned)
 		{	
@@ -77,6 +76,5 @@ public class MFInAppProductLayout extends LinearLayout
 			imageView.setBackgroundResource(R.drawable.ic_iap_lock);
 			setBackgroundResource(R.drawable.background_iap_not_provisioned);
 		}
-		*/
 	}
 }
