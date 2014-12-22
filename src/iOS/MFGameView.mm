@@ -155,7 +155,7 @@
     }
     
     //show the start position
-    CGRect rectangle = CGRectMake(hOffset + startPos[0] * cellSize, vOffset + startPos[1] * cellSize, cellSize, cellSize);
+    CGRect rectangle = CGRectMake(hOffset + startPos[1] * cellSize, vOffset + startPos[0] * cellSize, cellSize, cellSize);
     CGContextAddRect(context, rectangle);
     CGContextSetLineWidth(context, 3.0);
     CGContextStrokePath(context);

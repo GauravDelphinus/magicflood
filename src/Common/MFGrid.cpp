@@ -14,6 +14,7 @@
 #include "MFIAPInterface.h"
 #include <stdio.h>
 #include <vector>
+#include <map>
 
 /*************************** Public Functions *****************************
  ***************************************************************************
@@ -32,8 +33,8 @@ MFGrid::MFGrid (int level)
     initializeGrid();
     
     //now compute the max moves and the start position (accounting for obstacles, if any)
-    computeMaxMoves();
     initializeStartPos();
+    computeMaxMoves();
 }
 
 int MFGrid::getGridSize()
@@ -43,7 +44,7 @@ int MFGrid::getGridSize()
 
 int ** MFGrid::getFullGrid()
 {
-    return grid;
+    return mGameGrid;
 }
 
 int *MFGrid::getStartPos()
@@ -51,39 +52,7 @@ int *MFGrid::getStartPos()
     return startPos;
 }
 
-bool MFGrid::isObstacle(int x, int y)
-{
-    if (x < 0 || y < 0)
-        return true;
-    if (x >= gridSize || y >= gridSize)
-        return true;
-    if (grid[x][y] == GRID_OBSTACLE)
-        return true;
-    return false;
-}
-
-void MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y)
-{
-    //end condition of the recursion
-    if ((isObstacle(x,y)) || (grid[x][y] == newColor) || (grid[x][y] != oldColor))
-    {
-        return;
-    }
-    
-    //update the new color on self, and add to the incremental grid array
-    grid[x][y] = newColor;
-    
-    //updateNeighbors(oldColor, newColor, x-1, y-1, changeList);
-    updateNeighbors(oldColor, newColor, x, y-1);
-    //updateNeighbors(oldColor, newColor, x+1, y-1, changeList);
-    updateNeighbors(oldColor, newColor, x-1, y);
-    updateNeighbors(oldColor, newColor, x+1, y);
-    //updateNeighbors(oldColor, newColor, x-1, y+1, changeList);
-    updateNeighbors(oldColor, newColor, x, y+1);
-    //updateNeighbors(oldColor, newColor, x+1, y+1, changeList);
-}
-
-bool MFGrid::gridCompleted(int color)
+bool MFGrid::gridCompleted(int color, int *grid[])
 {
     for (int i = 0; i < gridSize; i++)
     {
@@ -99,31 +68,21 @@ bool MFGrid::gridCompleted(int color)
     
     return true;
 }
-int MFGrid::playMove(int color) //, int ***incrementalGrid)
+
+/**
+ Play the move for the given color.
+ **/
+int MFGrid::playMove(int color)
 {
-    //TODO
     int startx = startPos[0];
     int starty = startPos[1];
     
-//    std::list<int*> *changeList = new std::list<int*>();
-    updateNeighbors(grid[startx][starty], color, startx, starty);
+    updateNeighbors(mGameGrid[startx][starty], color, startx, starty, mGameGrid);
     
-    //convert the changeList to a incremental Grid (array type)
-   /*
-    *incrementalGrid = (int **)malloc(changeList->size() * sizeof(int *));
-    std::list<int *>::iterator iter = changeList->begin();
-    int i = 0;
-    while (iter != changeList->end())
-    {
-        (*incrementalGrid)[i] = *iter;
-        i++;
-        iter++;
-    }
-    */
     currMove ++;
     fprintf(stderr, "curr move = %d", currMove);
     
-    if (gridCompleted(color))
+    if (gridCompleted(color, mGameGrid))
     {
         return RESULT_SUCCESS;
     }
@@ -161,7 +120,8 @@ void MFGrid::computeSize() {
     }
 }
 
-void MFGrid::computeMaxMoves() {
+void MFGrid::computeMaxMoves()
+{
     if (level == GAME_LEVEL_EASY)
     {
         maxMoves = EASYMAXMOVES;
@@ -172,7 +132,40 @@ void MFGrid::computeMaxMoves() {
     }
     else
     {
-        maxMoves = HARDMAXMOVES;
+        //allocate a temp grid and copy from the game grid
+        mMeasureGrid = (int **)calloc(gridSize, sizeof(int *));
+        for (int i = 0; i < gridSize; i++)
+        {
+            mMeasureGrid[i] = (int *)calloc(gridSize, sizeof(int));
+        }
+        for (int i = 0; i < gridSize; i++)
+        {
+            for (int j = 0; j < gridSize; j++)
+            {
+                mMeasureGrid[i][j] = mGameGrid[i][j];
+            }
+        }
+        
+        int numMoves = 0;
+        srand((unsigned int)time(NULL));
+        while (true)
+        {
+            //int randColor = rand() % GRID_NUM_COLORS + 1;
+            int randColor = findMostDenseColor(mMeasureGrid);
+            
+            updateNeighbors(mMeasureGrid[startPos[0]][startPos[1]], randColor, startPos[0], startPos[1], mMeasureGrid);
+            numMoves ++;
+            
+            if (gridCompleted(randColor, mMeasureGrid))
+            {
+                break;
+            }
+        }
+        
+        maxMoves = numMoves;
+        
+        releaseGrid(mMeasureGrid);
+        mMeasureGrid = NULL;
     }
 }
 
@@ -230,28 +223,28 @@ void MFGrid::initializeStartPos()
             startPos[0] = rand() % HARDGRIDSIZE;
             startPos[1] = rand() % HARDGRIDSIZE;
             
-            if (grid[startPos[0]][startPos[1]] != GRID_OBSTACLE)
+            if (mGameGrid[startPos[0]][startPos[1]] != GRID_OBSTACLE)
                 break;
         }
         
-        if (grid[startPos[0]][startPos[1]] == GRID_OBSTACLE)
+        if (mGameGrid[startPos[0]][startPos[1]] == GRID_OBSTACLE)
         {
-            if (grid[0][0] != GRID_OBSTACLE)
+            if (mGameGrid[0][0] != GRID_OBSTACLE)
             {
                 startPos[0] = 0;
                 startPos[1] = 0;
             }
-            else if (grid[0][gridSize-1] != GRID_OBSTACLE)
+            else if (mGameGrid[0][gridSize-1] != GRID_OBSTACLE)
             {
                 startPos[0] = 0;
                 startPos[1] = gridSize - 1;
             }
-            else if (grid[gridSize-1][gridSize-1] != GRID_OBSTACLE)
+            else if (mGameGrid[gridSize-1][gridSize-1] != GRID_OBSTACLE)
             {
                 startPos[0] = gridSize - 1;
                 startPos[1] = gridSize - 1;
             }
-            else if (grid[gridSize-1][0] != GRID_OBSTACLE)
+            else if (mGameGrid[gridSize-1][0] != GRID_OBSTACLE)
             {
                 startPos[0] = gridSize - 1;
                 startPos[1] = 0;
@@ -268,21 +261,22 @@ void MFGrid::initializeGrid()
     
     if (level == GAME_LEVEL_EASY)
     {
-        grid = obstacle->createGrid(SHAPE_NONE, gridSize);
+        hurdleType = SHAPE_NONE;
+        mGameGrid = obstacle->createGrid(hurdleType, gridSize);
     }
     else if (level == GAME_LEVEL_MEDIUM)
     {
         srand(time(0));
-        int shape = random() % NUM_MEDIUM_SHAPES + 1;
+        hurdleType = random() % NUM_MEDIUM_SHAPES + 1;
 
-        fprintf(stderr, "shape = %d", shape);
-        grid = obstacle->createGrid(shape, gridSize);
+        mGameGrid = obstacle->createGrid(hurdleType, gridSize);
     }
     else if (level == GAME_LEVEL_HARD)
     {
         srand(time(0));
         
-        grid = obstacle->createGrid(selectObstacle(), gridSize);
+        hurdleType = selectObstacle();
+        mGameGrid = obstacle->createGrid(hurdleType, gridSize);
     }
     
     int prevColor = 1;
@@ -292,15 +286,15 @@ void MFGrid::initializeGrid()
     {
         for (int j = 0; j < gridSize; j++)
         {
-            if (grid[i][j] != GRID_OBSTACLE)
+            if (mGameGrid[i][j] != GRID_OBSTACLE)
             {
                 prevColor = random() % GRID_NUM_COLORS + 1;
-                grid[i][j] = prevColor;
+                mGameGrid[i][j] = prevColor;
             }
         }
     }
     
-    fprintf(stderr, "initializeGridData, created grid = %p\n", grid);
+    fprintf(stderr, "initializeGridData, created grid = %p\n", mGameGrid);
 }
 
 /**
@@ -337,9 +331,114 @@ int MFGrid::selectObstacle()
     return (*obstacles)[obstacleIndex];
 }
 
-MFGrid::~MFGrid()
+
+void MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[])
 {
-    fprintf(stderr, "~MFGrid, freeing grid = %p and startPos = %p\n", grid, startPos);
+    //end condition of the recursion
+    if ((isObstacle(x,y, grid)) || (grid[x][y] == newColor) || (grid[x][y] != oldColor))
+    {
+        return;
+    }
+    
+    //update the new color on self, and add to the incremental grid array
+    grid[x][y] = newColor;
+    
+    updateNeighbors(oldColor, newColor, x, y-1, grid);
+    updateNeighbors(oldColor, newColor, x-1, y, grid);
+    updateNeighbors(oldColor, newColor, x+1, y, grid);
+    updateNeighbors(oldColor, newColor, x, y+1, grid);
+}
+
+void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[])
+{
+    if (isObstacle(x, y, grid) || alreadyCheckedFlags[x][y])
+    {
+        return;
+    }
+    
+    alreadyCheckedFlags[x][y] = true;
+    
+    if (grid[x][y] != startColor)
+    {
+        (*map)[grid[x][y]] ++;
+    }
+    else
+    {
+        checkNeighborDensity(startColor, x, y-1, grid, map, alreadyCheckedFlags);
+        checkNeighborDensity(startColor, x, y+1, grid, map, alreadyCheckedFlags);
+        checkNeighborDensity(startColor, x-1, y, grid, map, alreadyCheckedFlags);
+        checkNeighborDensity(startColor, x+1, y, grid, map, alreadyCheckedFlags);
+    }
+}
+
+int MFGrid::findMostDenseColor(int *grid[])
+{
+    /*
+    int **neighborDensityArray = (int **) malloc (GRID_NUM_COLORS * sizeof(int *));
+    for (int i = 0; i < GRID_NUM_COLORS; i++)
+    {
+        neighborDensityArray[i] = (int *) malloc (2 * sizeof(int));
+    }
+     */
+    std::map<int, int> neighborDensityMap;
+    neighborDensityMap[GRID_COLOR_BLUE] = 0;
+    neighborDensityMap[GRID_COLOR_CYAN] = 0;
+    neighborDensityMap[GRID_COLOR_GREEN] = 0;
+    neighborDensityMap[GRID_COLOR_ORANGE] = 0;
+    neighborDensityMap[GRID_COLOR_RED] = 0;
+    neighborDensityMap[GRID_COLOR_YELLOW] = 0;
+    
+    //initialize a 2-d boolean array to mark cells that have already been checked for neighbor density
+    bool **alreadyCheckedFlags = (bool **) calloc (gridSize, sizeof(bool *));
+    for (int i = 0; i < gridSize; i++)
+    {
+        alreadyCheckedFlags[i] = (bool *) calloc (gridSize, sizeof (bool));
+    }
+    
+    int startColor = grid[startPos[0]][startPos[1]];
+    checkNeighborDensity(startColor, startPos[0], startPos[1], grid, &neighborDensityMap, alreadyCheckedFlags);
+    
+    //Free the memroy that's no longer required
+    for (int i = 0; i < gridSize; i++)
+    {
+        free(alreadyCheckedFlags[i]);
+    }
+    free(alreadyCheckedFlags);
+    alreadyCheckedFlags = NULL;
+    
+    //now figure out the neighbor with the highest density
+    int mostDenseColor = -1;
+    int mostDenseColorCount = 0;
+    std::map<int, int>::iterator iter = neighborDensityMap.begin();
+    while (iter != neighborDensityMap.end())
+    {
+        int color = iter->first;
+        int colorCount = iter->second;
+        if (colorCount > mostDenseColorCount)
+        {
+            mostDenseColorCount = colorCount;
+            mostDenseColor = color;
+        }
+        
+        iter++;
+    }
+    
+    return mostDenseColor;
+}
+
+bool MFGrid::isObstacle(int x, int y, int *grid[])
+{
+    if (x < 0 || y < 0)
+        return true;
+    if (x >= gridSize || y >= gridSize)
+        return true;
+    if (grid[x][y] == GRID_OBSTACLE)
+        return true;
+    return false;
+}
+
+void MFGrid::releaseGrid(int *grid[])
+{
     if (grid != NULL)
     {
         for (int i = 0; i < gridSize; i++)
@@ -347,9 +446,16 @@ MFGrid::~MFGrid()
             free(grid[i]);
         }
         free(grid);
-        grid = NULL;
     }
-    
+}
+
+MFGrid::~MFGrid()
+{
+    fprintf(stderr, "~MFGrid, freeing grid = %p and startPos = %p\n", mGameGrid, startPos);
+
+    releaseGrid(mGameGrid);
+    mGameGrid = NULL;
+
     if (startPos != NULL)
     {
         free(startPos);

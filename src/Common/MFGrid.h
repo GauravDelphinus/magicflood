@@ -9,25 +9,32 @@
 #ifndef __Magic_Flood__MFGrid__
 #define __Magic_Flood__MFGrid__
 
+#include <map>
+
 class MFGrid
 {
 private:
-    int **grid;
+    int **mGameGrid;
+    int **mMeasureGrid; //not the real grid for lay, but just used for measurement of moves, etc.
     int gridSize;
     int level;
     int *startPos;
     int maxMoves;
     int currMove;
+    int hurdleType; //type of obstacle/hurdle selected for this grid
     
     void computeSize();
     void initializeStartPos();
     void computeMaxMoves();
     void initializeGrid();
+    void releaseGrid(int *grid[]);
     
-    bool isObstacle(int x, int y);
-    void updateNeighbors(int oldColor, int newColor, int x, int y);
-    bool gridCompleted(int color);
+    bool isObstacle(int x, int y, int *grid[]);
+    bool gridCompleted(int color, int *grid[]);
     int selectObstacle();
+    int playMoveInternal(int color, int *grid[]);
+    void checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[]);
+    int findMostDenseColor(int *grid[]);
     
 public:
     MFGrid (int level);
@@ -37,6 +44,7 @@ public:
     int getMaxMoves();
     int getCurrMoves();
     int playMove(int color);
+    void updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[]);
     ~MFGrid();
 };
 
