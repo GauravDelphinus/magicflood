@@ -2,6 +2,8 @@ package com.ezeeideas.magicflood;
 
 import com.ezeeideas.magicflood.GameDialog.GameDialogListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdView;
 
 import android.app.Activity;
@@ -128,11 +130,19 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	{
 		mAdView = (AdView) findViewById(R.id.banner_ad_id);
        // mAdView.setAdListener(new AdListener(this));
-        AdRequest adRequest = new AdRequest.Builder()
+        AdRequest.Builder builder = new AdRequest.Builder();
+        
+        builder
         .addTestDevice("D270918A90127FD1558623AC978405DF") //Anu's Samsung Galaxy S3
         .addTestDevice("EDA0579D1B567771CB429E8A84668A3D") //Galax Tab 10.1 "
-        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-        .build();
+        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR);
+
+        for (int i = 0; i < MFConstants.ADS_KEYWORDS.length; i++)
+        {
+        	builder.addKeyword(MFConstants.ADS_KEYWORDS[i]);
+        }
+        
+        AdRequest adRequest = builder.build();
         mAdView.loadAd(adRequest);
 	}
 	

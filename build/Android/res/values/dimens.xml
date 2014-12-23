@@ -25,6 +25,7 @@
     
     <!-- About Screen -->
     <dimen name="about_copyright_text_size">25sp</dimen>
+    <dimen name="about_all_rights_text_size">25sp</dimen>
     <dimen name="about_feedback_text_size">25sp</dimen>
     
     <!-- Help Screen -->

@@ -23,6 +23,7 @@
 	    android:layout_height="wrap_content"
 	    android:gravity="center"
 	    android:text="@string/by_company_text"
+	    android:textColor="@color/by_company_text_color"
 	    />
 
 	<RelativeLayout

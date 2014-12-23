@@ -9,4 +9,15 @@ public class MFConstants
 	
 	//Google Analytics
 	public static final String APP_ANALYTICS_TRACKING_ID = "UA-46129625-2";
+	
+	//Google AdMob keywords
+	public static final String[] ADS_KEYWORDS = {
+		"flood",
+		"stone",
+		"stone flood",
+		"color",
+		"game",
+		"board"
+		};
+	
 }
