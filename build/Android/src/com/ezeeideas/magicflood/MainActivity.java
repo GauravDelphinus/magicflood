@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 
 import com.ezeeideas.magicflood.GameDialog.GameDialogListener;
 
-public class MainActivity extends Activity implements View.OnClickListener, PieButton.PieButtonListener, GameDialogListener
+public class MainActivity extends Activity implements View.OnClickListener, GameDialogListener
 {
 	static 
 	{
@@ -36,13 +36,23 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
         ImageButton helpButton = (ImageButton) findViewById(R.id.help_button_id);
         helpButton.setOnClickListener(this);
         
+        /*
         mGameLevelPieButton = (PieButton) findViewById(R.id.game_level_spinner_button_id);
         Vector<Integer> buttonPressedResources = new Vector<Integer>();
         buttonPressedResources.add(R.drawable.pie_button_level_selection_easy);
         buttonPressedResources.add(R.drawable.pie_button_level_selection_medium);
         buttonPressedResources.add(R.drawable.pie_button_level_selection_hard);
         mGameLevelPieButton.setAttributes(30, R.drawable.pie_button_level_selection_normal, buttonPressedResources);
+        */
         
+        mEasyLevelButton = (ImageButton) findViewById(R.id.easy_level_button_id);
+        mEasyLevelButton.setOnClickListener(this);
+        
+        mMediumLevelButton = (ImageButton) findViewById(R.id.medium_level_button_id);
+        mMediumLevelButton.setOnClickListener(this);
+        
+        mHardLevelButton = (ImageButton) findViewById(R.id.hard_level_button_id);
+        mHardLevelButton.setOnClickListener(this);
         
         //set the package name
         MFGameConstants.PACKAGE_NAME = getPackageName();
@@ -121,9 +131,34 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 			i = new Intent(this, MFHelpActivity.class);
 			startActivity(i);
 			break;
+		case R.id.easy_level_button_id:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_EASY_BUTTON);
+			
+			i = new Intent(this, MFGameActivity.class); 	
+			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
+			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
+			startActivity(i);
+			break;
+		case R.id.medium_level_button_id:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MEDIUM_BUTTON);
+			
+			i = new Intent(this, MFGameActivity.class); 	
+			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_MEDIUM);
+			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
+			startActivity(i);
+			break;
+		case R.id.hard_level_button_id:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_HARD_BUTTON);
+			
+			i = new Intent(this, MFGameActivity.class); 	
+			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
+			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, mIAPManager.isSynchronized());
+			startActivity(i);
+			break;
 		}
 	}
 	
+	/*
 	@Override
 	public void onPieButtonSelected(PieButton button, int index) 
 	{
@@ -164,6 +199,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 			break;
 		}
 	}
+	*/
 	
 	@Override
 	public void onDialogOptionSelected(Dialog dialog, int option) 
@@ -178,7 +214,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PieB
 	}
 	
 	private MFInAppPurchaseManager mIAPManager;
-	private PieButton mGameLevelPieButton;
-
+	//private PieButton mGameLevelPieButton;
+	private ImageButton mEasyLevelButton, mMediumLevelButton, mHardLevelButton;
 	
 }

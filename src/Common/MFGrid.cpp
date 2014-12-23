@@ -122,6 +122,7 @@ void MFGrid::computeSize() {
 
 void MFGrid::computeMaxMoves()
 {
+    /*
     if (level == GAME_LEVEL_EASY)
     {
         maxMoves = EASYMAXMOVES;
@@ -132,6 +133,7 @@ void MFGrid::computeMaxMoves()
     }
     else
     {
+     */
         //allocate a temp grid and copy from the game grid
         mMeasureGrid = (int **)calloc(gridSize, sizeof(int *));
         for (int i = 0; i < gridSize; i++)
@@ -166,7 +168,7 @@ void MFGrid::computeMaxMoves()
         
         releaseGrid(mMeasureGrid);
         mMeasureGrid = NULL;
-    }
+    
 }
 
 void MFGrid::initializeStartPos()

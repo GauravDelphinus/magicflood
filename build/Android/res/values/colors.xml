@@ -30,6 +30,8 @@
    <color name="lightorange">#FFFFCC00</color>
    <color name="transparent">#00000000</color>
    
+   <!-- Main Screen -->
+   <color name="main_background_color">#FF696969</color>
    
    <!-- Game Screen -->
    <color name="game_background_color">#FF696969</color>

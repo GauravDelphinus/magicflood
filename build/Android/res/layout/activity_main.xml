@@ -7,6 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@color/main_background_color"
     tools:context="com.ezeeideas.magicflood.MainActivity" >
 
 	<ImageView
@@ -31,15 +32,54 @@
 	    android:layout_marginTop="@dimen/activity_vertical_margin"
 	    android:layout_weight="1"
 	    >
-		<com.ezeeideas.magicflood.PieButton
-      	    android:id="@+id/game_level_spinner_button_id"
+		<RelativeLayout
       	    android:layout_width="wrap_content"
       	    android:layout_height="wrap_content"
-      	    android:layout_centerHorizontal="true"
-      	    android:layout_centerVertical="true"
-      	    android:src="@drawable/pie_button_level_selection_normal"
-      	    android:layout_marginTop="@dimen/activity_vertical_margin"
-      	    />
+      	    android:layout_centerInParent="true"
+      	    android:background="@color/white"
+      	    android:padding="@dimen/main_screen_buttons_margin"
+      	    >
+		<ImageView
+		    android:id="@+id/star_button_id"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/ic_button_star_normal"
+		    android:layout_alignParentLeft="true"
+		    android:layout_alignParentTop="true"
+		    android:layout_margin="@dimen/main_screen_buttons_margin"
+		    android:padding="0px"
+		    />
+		<ImageButton
+		    android:id="@+id/easy_level_button_id"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/ic_button_level_easy"
+		    android:layout_toRightOf="@+id/star_button_id"
+		    android:layout_alignParentTop="true"
+		    android:layout_margin="@dimen/main_screen_buttons_margin"
+		    android:padding="0px"
+		    />
+		<ImageButton
+		    android:id="@+id/medium_level_button_id"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/ic_button_level_medium"
+		    android:layout_alignParentLeft="true"
+		    android:layout_below="@+id/star_button_id"
+		    android:layout_margin="@dimen/main_screen_buttons_margin"
+		    android:padding="0px"
+		    />
+		<ImageButton
+		    android:id="@+id/hard_level_button_id"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/ic_button_level_hard"
+		    android:layout_toRightOf="@+id/medium_level_button_id"
+		    android:layout_below="@+id/easy_level_button_id"
+		    android:layout_margin="@dimen/main_screen_buttons_margin"
+		    android:padding="0px"
+		    />
+		</RelativeLayout>
 	</RelativeLayout>
 
     <LinearLayout

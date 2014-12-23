@@ -8,6 +8,9 @@
     <dimen name="store_padding">20dp</dimen>
 	<dimen name="big_gap">30dp</dimen>
 	
+	<!-- Main Screen -->
+	<dimen name="main_screen_buttons_margin">5dip</dimen>
+	
     <!-- Text Sizes -->
     <dimen name="iap_price_text_size">20sp</dimen>
     <dimen name="store_title_text_size">25sp</dimen>
