@@ -52,6 +52,7 @@
 		F147E7841A29990F002D4DDD /* MFInAppProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFInAppProduct.h; path = ../../src/Common/MFInAppProduct.h; sourceTree = SOURCE_ROOT; };
 		F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFNativeLog.cpp; path = ../../src/Common/MFNativeLog.cpp; sourceTree = SOURCE_ROOT; };
 		F147E7871A2A8DEF002D4DDD /* MFNativeLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNativeLog.h; path = ../../src/Common/MFNativeLog.h; sourceTree = SOURCE_ROOT; };
+		F147E7891A5D79A9002D4DDD /* MFGridData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFGridData.h; path = ../../src/Common/MFGridData.h; sourceTree = SOURCE_ROOT; };
 		F153249D1A2366FD00379773 /* MFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAppDelegate.h; path = iOS/MFAppDelegate.h; sourceTree = "<group>"; };
 		F153249E1A2367EF00379773 /* MFGridInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGridInterface.cpp; path = ../../src/Common/MFGridInterface.cpp; sourceTree = SOURCE_ROOT; };
 		F153249F1A2367EF00379773 /* MFGridInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGridInterface.h; path = Common/MFGridInterface.h; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 				F147E7841A29990F002D4DDD /* MFInAppProduct.h */,
 				F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */,
 				F147E7871A2A8DEF002D4DDD /* MFNativeLog.h */,
+				F147E7891A5D79A9002D4DDD /* MFGridData.h */,
 			);
 			name = Core;
 			path = ../../src;

@@ -8,6 +8,7 @@
 
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 #include "MFGrid.h"
 #include "MFObstacle.h"
 #include "MFGridInterface.h"
@@ -15,6 +16,8 @@
 #include <stdio.h>
 #include <vector>
 #include <map>
+#include "MFGridData.h"
+#include "MFNativeLog.h"
 
 /*************************** Public Functions *****************************
  ***************************************************************************
@@ -26,14 +29,14 @@ MFGrid::MFGrid (int level)
     this->currMove = 0;
     this->startPos = NULL;
  
-    //now compute all the constants for this game, based on the level
-    computeSize();
+    //allocate resources
+    if (startPos == NULL)
+    {
+        startPos = (int *)malloc(2 * sizeof(int));
+    }
     
-    //now initialize the grid
     initializeGrid();
     
-    //now compute the max moves and the start position (accounting for obstacles, if any)
-    initializeStartPos();
     computeMaxMoves();
 }
 
@@ -108,16 +111,115 @@ int MFGrid::getCurrMoves()
 ***************************************************************************
 **************************************************************************/
 
-void MFGrid::computeSize() {
-    if (level == GAME_LEVEL_EASY) {
-        gridSize = EASYGRIDSIZE;
+void MFGrid::initializeGrid()
+{
+    logPrint("gaurav", "MFGrid::initializeGrid *********, level = %d\n", level);
+    
+    numLevels = sizeof(sGridData) / sizeof(const char *);
+    logPrint("gaurav", "numLevels = %d\n", numLevels);
+    
+    logPrint("gaurav", "arg to strtok [%s]\n", sGridData[level-1]);
+    char *inputStr = strdup(sGridData[level - 1]);
+        char *token = strtok(inputStr, "#");
+    logPrint("gaurav", "token is %p\n", token);
+    
+    if (token)
+    {
+        startPos[0] = atoi(token);
+        logPrint("gaurav", "setting the startPos[0] to %d\n", startPos[0]);
+        
+        token = strtok(NULL, "#");
+        if (token)
+        {
+            startPos[1] = atoi(token);
+            logPrint("gaurav", "setting the startPos[1] to %d\n", startPos[1]);
+            
+            token = strtok(NULL, "#");
+            if (token)
+            {
+                gridSize = atoi(token);
+                
+                token = strtok(NULL, "#");
+                if (token)
+                {
+                    int k = 0; //index into the value
+                    //allocate the grid
+                    mGameGrid = (int **)calloc(gridSize, sizeof(int *));
+                    logPrint("gaurav", "setting the gridSize to %d\n", gridSize);
+                    
+                    for (int i = 0; i < gridSize; i++)
+                    {
+                        mGameGrid[i] = (int *)calloc(gridSize, sizeof(int));
+                        for (int j = 0; j < gridSize; j++)
+                        {
+                            mGameGrid[i][j] = token[k] - '0';
+                            logPrint("gaurav", "setting mGameGrid[%d][%d] to value[%d] - '0'\n", i, j, k);
+                            k++;
+                        }
+                    }
+
+                }
+            }
+        }
     }
-    else if (level == GAME_LEVEL_MEDIUM) {
-        gridSize = MEDIUMGRIDSIZE;
-    }
-    else {
-        gridSize = HARDGRIDSIZE;
-    }
+    /*
+        while (token)
+        {
+            logPrint("gaurav", "top of while loop, token [%s]", token);
+            char *key = strtok(token, "=");
+            if (key != NULL && strcmp(key, START_POSX_TOKEN_KEY) == 0)
+            {
+                char *value = strtok(NULL, "=");
+                if (value != NULL)
+                {
+                    startPos[0] = atoi(value);
+                    logPrint("gaurav", "setting the startPos[0] to %d\n", startPos[0]);
+                }
+                value = strtok(NULL, "=");
+            }
+            else if (key != NULL && strcmp(key, START_POSY_TOKEN_KEY) == 0)
+            {
+                char *value = strtok(NULL, "=");
+                if (value != NULL)
+                {
+                    startPos[1] = atoi(value);
+                    logPrint("gaurav", "setting the startPos[1] to %d\n", startPos[1]);
+                }
+            }
+            else if (key != NULL && strcmp(key, GRIDSIZE_TOKEN_KEY) == 0)
+            {
+                char *value = strtok(NULL, "=");
+                if (value != NULL)
+                {
+                    gridSize = atoi(value);
+                    logPrint("gaurav", "setting the gridSize to %d\n", gridSize);
+                }
+            }
+            else if (key != NULL && strcmp(key, GRIDDATA_TOKEN_KEY) == 0)
+            {
+                char *value = strtok(NULL, "=");
+                if (value != NULL)
+                {
+                    int k = 0; //index into the value
+                    //allocate the grid
+                    mGameGrid = (int **)calloc(gridSize, sizeof(int *));
+                    for (int i = 0; i < gridSize; i++)
+                    {
+                        mGameGrid[i] = (int *)calloc(gridSize, sizeof(int));
+                        for (int j = 0; j < gridSize; j++)
+                        {
+                            mGameGrid[i][j] = value[k] - '0';
+                            logPrint("gaurav", "setting mGameGrid[%d][%d] to value[%d] - '0'\n", i, j, k);
+                            k++;
+                        }
+                    }
+                }
+            }
+            token = strtok(NULL, "#");
+        }
+     */
+    
+    free(inputStr);
 }
 
 void MFGrid::computeMaxMoves()
@@ -167,170 +269,6 @@ void MFGrid::computeMaxMoves()
     }
     
 }
-
-void MFGrid::initializeStartPos()
-{
-    if (startPos == NULL)
-    {
-        startPos = (int *)malloc(2 * sizeof(int));
-    }
-    
-    if (level == GAME_LEVEL_EASY)
-    {
-        /**
-         Always initialize to top-left corner
-         **/
-        startPos[0] = 0;
-        startPos[1] = 0;
-    }
-    else if (level == GAME_LEVEL_MEDIUM)
-    {
-        /**
-         Initialize randomly to one of the four corners
-         **/
-        srand((unsigned int)time(NULL));
-        int randNum = rand() % 4 + 1;
-        switch (randNum)
-        {
-            case 1: //top-left corner
-                startPos[0] = 0;
-                startPos[1] = 0;
-                break;
-            case 2: //top-right corner
-                startPos[0] = MEDIUMGRIDSIZE - 1;
-                startPos[1] = 0;
-                break;
-            case 3: //bottom-right corner
-                startPos[0] = MEDIUMGRIDSIZE - 1;
-                startPos[1] = MEDIUMGRIDSIZE - 1;
-                break;
-            case 4: //bottom-left corner
-                startPos[0] = 0;
-                startPos[1] = MEDIUMGRIDSIZE - 1;
-                break;
-        }
-    }
-    else //hard
-    {
-        /**
-         Initialize to a RANDOM cell in the entire array.
-         **/
-        srand((unsigned int)time(NULL));
-        int count = 2;
-        while (count --)
-        {
-            startPos[0] = rand() % HARDGRIDSIZE;
-            startPos[1] = rand() % HARDGRIDSIZE;
-            
-            if (mGameGrid[startPos[0]][startPos[1]] != GRID_OBSTACLE)
-                break;
-        }
-        
-        if (mGameGrid[startPos[0]][startPos[1]] == GRID_OBSTACLE)
-        {
-            if (mGameGrid[0][0] != GRID_OBSTACLE)
-            {
-                startPos[0] = 0;
-                startPos[1] = 0;
-            }
-            else if (mGameGrid[0][gridSize-1] != GRID_OBSTACLE)
-            {
-                startPos[0] = 0;
-                startPos[1] = gridSize - 1;
-            }
-            else if (mGameGrid[gridSize-1][gridSize-1] != GRID_OBSTACLE)
-            {
-                startPos[0] = gridSize - 1;
-                startPos[1] = gridSize - 1;
-            }
-            else if (mGameGrid[gridSize-1][0] != GRID_OBSTACLE)
-            {
-                startPos[0] = gridSize - 1;
-                startPos[1] = 0;
-            }
-        }
-        
-    }
-}
-
-void MFGrid::initializeGrid()
-{
-    
-    MFObstacle *obstacle = new MFObstacle(level);
-    
-    if (level == GAME_LEVEL_EASY)
-    {
-        hurdleType = SHAPE_NONE;
-        mGameGrid = obstacle->createGrid(hurdleType, gridSize);
-    }
-    else if (level == GAME_LEVEL_MEDIUM)
-    {
-        srand(time(0));
-        hurdleType = random() % NUM_MEDIUM_SHAPES + 1;
-
-        mGameGrid = obstacle->createGrid(hurdleType, gridSize);
-    }
-    else if (level == GAME_LEVEL_HARD)
-    {
-        srand(time(0));
-        
-        hurdleType = selectObstacle();
-        mGameGrid = obstacle->createGrid(hurdleType, gridSize);
-    }
-    
-    int prevColor = 1;
-    srand(time(0));
-    
-    for (int i = 0; i < gridSize; i++)
-    {
-        for (int j = 0; j < gridSize; j++)
-        {
-            if (mGameGrid[i][j] != GRID_OBSTACLE)
-            {
-                prevColor = random() % GRID_NUM_COLORS + 1;
-                mGameGrid[i][j] = prevColor;
-            }
-        }
-    }
-    
-    fprintf(stderr, "initializeGridData, created grid = %p\n", mGameGrid);
-}
-
-/**
- Select a random obstacle from the list of available obstacles
- that may be free or provisioned (bought) by the user.
- **/
-int MFGrid::selectObstacle()
-{
-    std::vector<int> *obstacles = new std::vector<int>();
-    
-    /**
-     Add the first two hurdles (which are free) by default
-     **/
-    for (int i = 1; i < 1 + NUM_FREE_HURDLES; i++)
-    {
-        obstacles->push_back(i);
-    }
-    
-    char **provisionedInAppProducts = getProvisionedInAppProducts();
-    int num = getNumProvisionedInAppProducts();
-    for (int i = 0; i < num; i++)
-    {
-        const char *pid = provisionedInAppProducts[i];
-        int *obstacleIDs = getObstaclesInInAppProduct(pid);
-        int numObstacles = getNumObstaclesInInAppProduct(pid);
-        for (int j = 0; j < numObstacles; j++)
-        {
-            obstacles->push_back(obstacleIDs[j]);
-        }
-    }
-    
-    srand(time(0));
-    int obstacleIndex = random() % obstacles->size();
-    
-    return (*obstacles)[obstacleIndex];
-}
-
 
 void MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[])
 {

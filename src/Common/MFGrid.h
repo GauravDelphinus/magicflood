@@ -21,7 +21,7 @@ private:
     int *startPos;
     int maxMoves;
     int currMove;
-    int hurdleType; //type of obstacle/hurdle selected for this grid
+    int numLevels;
     
     void computeSize();
     void initializeStartPos();
