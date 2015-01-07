@@ -45,14 +45,10 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
         //First Free Product
         iapLayout = (MFInAppProductLayout) findViewById(R.id.free_product_layout_1_id);
         iapLayout.setProperties(getResources().getString(R.string.store_free_hurdle_1_name), getResources().getString(R.string.free_product_price_string), true, true, R.drawable.ic_hurdle_free_1);
-        iapLayout.setOnTouchListener(this);
-        iapLayout.setOnClickListener(this);
         
         //Second Free Product
         iapLayout = (MFInAppProductLayout) findViewById(R.id.free_product_layout_2_id);
         iapLayout.setProperties(getResources().getString(R.string.store_free_hurdle_2_name), getResources().getString(R.string.free_product_price_string), true, true, R.drawable.ic_hurdle_free_2);
-        iapLayout.setOnTouchListener(this);
-        iapLayout.setOnClickListener(this);
         
         //IAP 1
         detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_ALACARTE_HURDLE_1);

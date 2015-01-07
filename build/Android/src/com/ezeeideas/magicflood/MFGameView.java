@@ -43,11 +43,11 @@ public class MFGameView extends View
 		mBorderPaint.setStrokeWidth(2);
 		
 		mStartPaint = new Paint();
-		mStartPaint.setColor(getResources().getColor(R.color.white));
 		mStartPaint.setAntiAlias(true);
 		mStartPaint.setStyle(Style.FILL);
 		mStartPaint.setAlpha(255);
 		mStartPaint.setStrokeWidth(1);
+		mStartPaint.setColor(getResources().getColor(R.color.gray));
 		
 		mTestPaint = new Paint();
 		mTestPaint.setColor(getResources().getColor(R.color.black));

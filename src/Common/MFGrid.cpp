@@ -158,8 +158,9 @@ void MFGrid::computeMaxMoves()
             }
         }
         
-        int offset = (numMoves + 10) % 5;
-        maxMoves = (numMoves + 10) - offset;
+        //int offset = (numMoves + 10) % 5;
+        //maxMoves = (numMoves + 10) - offset;
+        maxMoves = numMoves;
         
         releaseGrid(mMeasureGrid);
         mMeasureGrid = NULL;
@@ -304,11 +305,12 @@ int MFGrid::selectObstacle()
     std::vector<int> *obstacles = new std::vector<int>();
     
     /**
-     Add the first three hurdles (which are free) by default
+     Add the first two hurdles (which are free) by default
      **/
-    obstacles->push_back(1);
-    obstacles->push_back(2);
-    obstacles->push_back(3);
+    for (int i = 1; i < 1 + NUM_FREE_HURDLES; i++)
+    {
+        obstacles->push_back(i);
+    }
     
     char **provisionedInAppProducts = getProvisionedInAppProducts();
     int num = getNumProvisionedInAppProducts();

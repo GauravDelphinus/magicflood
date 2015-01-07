@@ -25,11 +25,12 @@
     <string name="store_screen3_footer_text">&lt;- Swipe to see more great deals! -&gt;</string>
     <string name="store_iap_provisioned_text">INCLUDED!</string>
     <string name="store_iap_free_text">FREE!</string>
+    <string name="store_indeterminate_sku_string">Unable to determine SKU</string>
     
     <!-- IAP Names -->
     <string name="store_remove_ads_name">Remove Ads</string>
     <string name="store_free_hurdle_1_name">The Angular Hurdle</string>
-    <string name="store_free_hurdle_2_name">The Super G Hurdle</string>
+    <string name="store_free_hurdle_2_name">The Snake Hurdle</string>
     <string name="store_iap_hurdle_1_name">The 4-sided Hurdle</string>
     <string name="store_iap_hurdle_2_name">The Single-Door Hurdle</string>
     <string name="store_iap_hurdle_3_name">The Radiant X Hurdle</string>

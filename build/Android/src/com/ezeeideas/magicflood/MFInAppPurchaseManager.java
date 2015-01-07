@@ -156,13 +156,18 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	{
 		if (result.isFailure()) 
 		{
+			String sku = mContext.getResources().getString(R.string.store_indeterminate_sku_string);
+			if (info != null)
+			{
+				sku = info.getSku();
+			}
 			if (result.getResponse() == IabHelper.IABHELPER_USER_CANCELLED) //user cancelled the purchase
 			{
-				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_CANCELLED, info.getSku(), result.getResponse());
+				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_CANCELLED, sku, result.getResponse());
 			}
 			else //the purchase failed for some other reason
 			{
-				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_FAILED, info.getSku(), result.getResponse());
+				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_FAILED, sku, result.getResponse());
 			}
 			
 			Log.d("gaurav", "Error purchasing: " + result + ", info = " + info + ", mPurchaseInterfaceListeners = " + mPurchaseInterfaceListeners);
