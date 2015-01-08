@@ -76,4 +76,7 @@
     <string name="help_screen1_footer_text">Swipe to go to the next screen -&gt;</string>
     <string name="help_screen2_footer_text">Swipe to go to the next screen -&gt;</string>
     <string name="help_screen3_footer_text">Swipe to go back to the first screen -&gt;</string>
+    
+    <!-- Levels Screen -->
+    <string name="level_screen_title">Levels</string>
 </resources>

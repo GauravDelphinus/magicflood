@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "MFGrid.h"
+#include "MFGridData.h"
 
 /**
  The Grid object.
@@ -16,6 +17,14 @@
 static MFGrid *mGrid = NULL;
 
 extern "C" {
+
+/**
+ Get the number of levels.
+ **/
+int getNumLevels()
+{
+    return sizeof(sGridData) / sizeof(const char *);
+}
 
 /**
  Create/allocate a new Grid.

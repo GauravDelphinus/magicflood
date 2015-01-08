@@ -115,6 +115,7 @@ public class MFGameConstants
 	 */
 	public static final String GAME_LEVEL_KEY = "level";
 	public static final String PROMPT_USER_TO_STORE = "prompt_user_to_store";
+	public static final String NUM_LEVELS_KEY = "num_levels";
 	
 	/**
 	 * Names

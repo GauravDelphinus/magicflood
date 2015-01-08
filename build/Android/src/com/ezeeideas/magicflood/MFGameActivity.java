@@ -66,7 +66,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
     	//initialize Ads
     	setupAds();
     	
-    	mLevel = 1; //getIntent().getIntExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
+    	mLevel = getIntent().getIntExtra(MFGameConstants.GAME_LEVEL_KEY, 1);
     	mPromptUserToStore = getIntent().getBooleanExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
     	
     	startNewGame(mLevel);

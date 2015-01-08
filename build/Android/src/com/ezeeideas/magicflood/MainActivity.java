@@ -131,12 +131,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
 			i = new Intent(this, MFHelpActivity.class);
 			startActivity(i);
 			break;
-		case R.id.easy_level_button_id:
-			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_EASY_BUTTON);
-			
-			i = new Intent(this, MFGameActivity.class); 	
-			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
-			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
+		case R.id.easy_level_button_id:			
+			i = new Intent(this, MFLevelsActivity.class);
+			i.putExtra(MFGameConstants.NUM_LEVELS_KEY, getNumLevels());
 			startActivity(i);
 			break;
 		case R.id.medium_level_button_id:
@@ -216,5 +213,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
 	private MFInAppPurchaseManager mIAPManager;
 	//private PieButton mGameLevelPieButton;
 	private ImageButton mEasyLevelButton, mMediumLevelButton, mHardLevelButton;
+	
+	private native int getNumLevels();
 	
 }

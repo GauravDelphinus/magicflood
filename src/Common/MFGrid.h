@@ -21,7 +21,6 @@ private:
     int *startPos;
     int maxMoves;
     int currMove;
-    int numLevels;
     
     void computeSize();
     void initializeStartPos();

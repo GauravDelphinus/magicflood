@@ -16,8 +16,9 @@
 #include <stdio.h>
 #include <vector>
 #include <map>
-#include "MFGridData.h"
 #include "MFNativeLog.h"
+
+extern const char *sGridData[];
 
 /*************************** Public Functions *****************************
  ***************************************************************************
@@ -114,10 +115,7 @@ int MFGrid::getCurrMoves()
 void MFGrid::initializeGrid()
 {
     logPrint("gaurav", "MFGrid::initializeGrid *********, level = %d\n", level);
-    
-    numLevels = sizeof(sGridData) / sizeof(const char *);
-    logPrint("gaurav", "numLevels = %d\n", numLevels);
-    
+        
     logPrint("gaurav", "arg to strtok [%s]\n", sGridData[level-1]);
     char *inputStr = strdup(sGridData[level - 1]);
         char *token = strtok(inputStr, "#");

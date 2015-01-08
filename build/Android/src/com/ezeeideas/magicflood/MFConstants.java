@@ -20,4 +20,5 @@ public class MFConstants
 		"board"
 		};
 	
+	public static final int NUM_LEVELS_PER_SCREEN = 9; //number of levels to show per screen of the level selection activity
 }

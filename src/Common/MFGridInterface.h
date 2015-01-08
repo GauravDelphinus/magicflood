@@ -10,6 +10,7 @@
 #define Magic_Flood_MFGridInterface_h
 
 extern "C" {
+int getNumLevels();
 long createNewGrid(int level);
 void deleteGrid(long handle);
 int getGridSize(long handle);
