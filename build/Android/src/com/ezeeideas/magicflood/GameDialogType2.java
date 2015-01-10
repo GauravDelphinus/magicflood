@@ -25,23 +25,29 @@ public abstract class GameDialogType2 extends GameDialog
 		setupPositiveAction2View();
 	}
 
-	protected void handleTouch(View v)
+	protected boolean handleTouch(View v)
 	{	
+		boolean handled = false;
+		
 		if (v == mPositiveAction1View)
 		{
 			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1);
 			this.dismiss();
+			handled = true;
 		}
 		else if (v == mPositiveAction2View)
 		{
 			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_2);
 			this.dismiss();
+			handled = true;
 		}
 		else if (v == mRootView)
 		{
 			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_NEGATIVE_1);
 			this.dismiss();
+			handled = true;
 		}
+		return handled;
 	}
 
 	protected void handleDismiss()

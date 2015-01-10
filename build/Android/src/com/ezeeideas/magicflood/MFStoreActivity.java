@@ -1,5 +1,7 @@
 package com.ezeeideas.magicflood;
 
+import com.ezeeideas.magicflood.iabutil.Purchase;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -204,7 +206,7 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
     }
     
 	@Override
-	public void onPurchaseFinished(String pid, boolean status) 
+	public void onPurchaseFinished(Purchase purchase, String pid, boolean status) 
 	{
 		Log.d("gaurav", "onPurchaseFinished, pid [" + pid + "], status [" + status + "]");
 		int buttonID = 0;
@@ -364,6 +366,12 @@ public class MFStoreActivity extends Activity implements MFInAppPurchaseManager.
 			layout.invalidate();			
 		}
 		return onTouchEvent(arg1);
+	}
+
+	@Override
+	public void onConsumeFinished(String pid, boolean status) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

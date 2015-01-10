@@ -34,6 +34,7 @@ private:
     int playMoveInternal(int color, int *grid[]);
     void checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[]);
     int findMostDenseColor(int *grid[]);
+    int updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[]);
     
 public:
     MFGrid (int level);
@@ -41,9 +42,9 @@ public:
     int ** getFullGrid();
     int * getStartPos();
     int getMaxMoves();
+    void setMaxMoves(int maxMoves);
     int getCurrMoves();
-    int playMove(int color);
-    void updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[]);
+    int* playMove(int color);
     ~MFGrid();
 };
 

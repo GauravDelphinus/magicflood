@@ -53,8 +53,9 @@ public abstract class GameDialog extends Dialog implements OnDismissListener, On
 	 * on the dialog, such as mRootView, mPositiveAction1View,
 	 * mPositiveAction2View, mNegativeAction1View.
 	 * @param v The view that was tapped
+	 * return true if the view handled the touch, false otherwise
 	 */
-	protected abstract void handleTouch(View v);
+	protected abstract boolean handleTouch(View v);
 	
 	/**
 	 * Called when the dialog was dismissed by the user
@@ -92,6 +93,11 @@ public abstract class GameDialog extends Dialog implements OnDismissListener, On
 			mPositiveAction3View.setOnTouchListener(this);
 		}
 		
+		if (mPositiveAction4View != null)
+		{
+			mPositiveAction4View.setOnTouchListener(this);
+		}
+		
 		if (mNegativeAction1View != null)
 		{
 			mNegativeAction1View.setOnTouchListener(this);
@@ -101,10 +107,8 @@ public abstract class GameDialog extends Dialog implements OnDismissListener, On
 	public boolean onTouch(View v, MotionEvent event) 
 	{
 		if (!mHandled)
-		{
-			mHandled = true;
-			
-			handleTouch(v);
+		{			
+			mHandled = handleTouch(v);
 		}
 		
 		return false;
@@ -135,13 +139,15 @@ public abstract class GameDialog extends Dialog implements OnDismissListener, On
 	protected static final int GAME_DIALOG_ACTION_POSITIVE_1 = 1;
 	protected static final int GAME_DIALOG_ACTION_POSITIVE_2 = 2;
 	protected static final int GAME_DIALOG_ACTION_POSITIVE_3 = 3;
-	protected static final int GAME_DIALOG_ACTION_NEGATIVE_1 = 4;
+	protected static final int GAME_DIALOG_ACTION_POSITIVE_4 = 4;
+	protected static final int GAME_DIALOG_ACTION_NEGATIVE_1 = 5;
 	
 	//The Views that all dialogs must implement
 	protected View mRootView = null; //The root view (usually a layout) that listens to the "tap anywhere else" area
 	protected View mPositiveAction1View = null; //View that corresponds to Positive Action 1
 	protected View mPositiveAction2View = null; //View that corresponds to Positive Action 2
 	protected View mPositiveAction3View = null; //View that corresponds to Positive Action 3
+	protected View mPositiveAction4View = null; //View that corresponds to Positive Action 4
 	protected View mNegativeAction1View = null; //View the corresponds to Negative Action 1
 	
 	private Context mContext; //the calling activity context

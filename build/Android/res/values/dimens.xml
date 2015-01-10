@@ -32,4 +32,10 @@
     <dimen name="help_title_text_size">25sp</dimen>
     <dimen name="help_footer_text_size">15sp</dimen>
     <dimen name="help_description_text_size">20sp</dimen>
+    
+    <!-- Add Coins Dialog -->
+    <dimen name="small_deal_text_size">10sp</dimen>
+    <dimen name="medium_deal_text_size">10sp</dimen>
+    <dimen name="large_deal_text_size">10sp</dimen>
+    <dimen name="very_large_deal_text_size">10sp</dimen>
 </resources>

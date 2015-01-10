@@ -1,6 +1,7 @@
 package com.ezeeideas.magicflood;
 
 import com.ezeeideas.magicflood.GameDialog.GameDialogListener;
+import com.ezeeideas.magicflood.iabutil.Purchase;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -20,10 +21,11 @@ import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class MFGameActivity extends Activity implements View.OnClickListener, GameDialogListener {
+public class MFGameActivity extends Activity implements View.OnClickListener, GameDialogListener, MFInAppPurchaseManager.IAPPurchaseInterface {
 
 	
 	@Override
@@ -66,10 +68,42 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
     	//initialize Ads
     	setupAds();
     	
+    	//initialize In-App Purchase
+    	setupIAP();
+    	
     	mLevel = getIntent().getIntExtra(MFGameConstants.GAME_LEVEL_KEY, 1);
     	mPromptUserToStore = getIntent().getBooleanExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
     	
     	startNewGame(mLevel);
+    	
+    	//read system preferences of number of coins, and total points earned so far
+		//get the sharepref
+    	SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+
+		mTotalCoinsEarned = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, MFGameConstants.INITIAL_COINS_ALLOCATED);
+		String addCoinsText = String.format(getResources().getString(R.string.add_coins_text), mTotalCoinsEarned);
+		mAddCoinsButton = (Button) findViewById(R.id.add_coins_button_id);
+		mAddCoinsButton.setText(addCoinsText);
+		mAddCoinsButton.setOnClickListener(this);
+		
+		mAddMovesButton = (Button) findViewById(R.id.add_moves_button_id);
+		mAddMovesButton.setOnClickListener(this);
+		
+		mAddStarsButton = (Button) findViewById(R.id.add_stars_button_id);
+		mAddStarsButton.setOnClickListener(this);
+				
+		mRemoveAdsButton = (Button) findViewById(R.id.remove_ads_button_id);
+		mRemoveAdsButton.setOnClickListener(this);
+		boolean removeAds = settings.getBoolean(MFGameConstants.PREFERENCE_ADS_REMOVED, false);
+		if (removeAds)
+		{
+			mRemoveAdsButton.setVisibility(View.INVISIBLE);
+		}
+		
+		mLevelLabel = (TextView) findViewById(R.id.level_label_id);
+		String levelText = String.format(getResources().getString(R.string.level_text), mLevel);
+		mLevelLabel.setText(levelText);
     }
 	
 	@Override
@@ -146,6 +180,12 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
         mAdView.loadAd(adRequest);
 	}
 	
+	private void setupIAP()
+	{
+		mIAPManager = new MFInAppPurchaseManager(this);
+        mIAPManager.addPurchaseListener(this);
+	}
+	
 	private void playSound(int resultType) 
 	{
 		// Is the sound loaded does it already play?
@@ -207,8 +247,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mGameView.invalidate();
 		
 		//update the moves label
-		
-		mMovesLabel.setText(String.format("Moves %d / %d", currMove, maxMoves));
+		String movesText = String.format(getResources().getString(R.string.moves_remaining_text), (maxMoves - currMove));	
+		mMovesLabel.setText(movesText);
 	}
 
 	/**
@@ -269,6 +309,43 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			return;
 		}
+		else if (arg0.getId() == R.id.add_coins_button_id)
+		{
+			//redeem the coins, show a dialog
+			AddCoinsDialog dialog = new AddCoinsDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+			
+			return;
+		}
+		else if (arg0.getId() == R.id.add_moves_button_id)
+		{
+			AddMovesDialog dialog = new AddMovesDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+			
+			return;
+		}
+		else if (arg0.getId() == R.id.add_stars_button_id)
+		{
+			AddStarDialog dialog = new AddStarDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+			
+			return;
+		}
+		else if (arg0.getId() == R.id.remove_ads_button_id)
+		{
+		    //Remove Ads IAP
+	        String detailsArray[];
+	        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
+	        
+	        RemoveAdsDialog dialog = new RemoveAdsDialog(this, detailsArray[2]);
+	        dialog.setCanceledOnTouchOutside(false);
+	        dialog.show();
+	        
+			return;
+		}
 		
 		int colorValue = MFGameConstants.GRID_OBSTACLE;
 		switch (arg0.getId())
@@ -296,12 +373,13 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_COLOR_BUTTON);
 		
 		
-		int result = playMove(gridHandle, colorValue);
+		int[] result = playMove(gridHandle, colorValue);
+		Log.d("gaurav", "playMove returned 0 = " + result[0] + ", 1 = " + result[1]);
 		
 		int[] gridDataOneD = getGridData(gridHandle);
 		int gridSize = getGridSize(gridHandle);
-		int maxMoves = getMaxMoves(gridHandle);
 		int currMove = getCurrMove(gridHandle);
+		int maxMoves = getMaxMoves(gridHandle);
 		//convert the one-dimensional array passed from C++ back to 2D array for use in the game view in Java
 		int gridData[][] = new int[gridSize][gridSize];
 		for (int i = 0; i < gridDataOneD.length; i++)
@@ -311,12 +389,13 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			gridData[x][y] = gridDataOneD[i];
 		}
 
-		mMovesLabel.setText(String.format("Moves %d / %d", currMove, maxMoves));
+		String movesText = String.format(getResources().getString(R.string.moves_remaining_text), (maxMoves - currMove));	
+		mMovesLabel.setText(movesText);
 		
 		mGameView.updateGameData(gridData);
 		mGameView.invalidate();
 
-		if (result == MFGameConstants.RESULT_FAILED) //run out of moves
+		if (result[0] == MFGameConstants.RESULT_FAILED) //run out of moves
 		{	
 			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_FAILURE);
 			
@@ -326,7 +405,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			playSound(MFGameConstants.RESULT_FAILED);
 		}
-		else if (result == MFGameConstants.RESULT_SUCCESS) //game successful completed
+		else if (result[0] == MFGameConstants.RESULT_SUCCESS) //game successful completed
 		{	
 			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
 			
@@ -344,10 +423,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			
 			playSound(MFGameConstants.RESULT_SUCCESS);
+			
+			/** Update Coins Earned **/			
+			mTotalCoinsEarned += MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (mLevel - 1) * 10 + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES;
+			String coinsText = String.format(getResources().getString(R.string.add_coins_text), mTotalCoinsEarned);
+			mAddCoinsButton.setText(coinsText);
 		}
 		else
 		{
 			playSound(MFGameConstants.RESULT_CONTINUE);
+			
+			/** Update Points and Coins Earned **/
+			mTotalCoinsEarned += result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE;
+			String coinsText = String.format(getResources().getString(R.string.add_coins_text), mTotalCoinsEarned);
+			mAddCoinsButton.setText(coinsText);
 		}
 	}
 
@@ -439,12 +528,184 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				finish();
 			}
 		}
+		else if (dialog.getClass() == RedeemCoinsDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Earn Moves
+			{				
+				finish();
+				Intent i = new Intent(this, MFStoreActivity.class);
+				startActivity(i);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) //Earn Stars
+			{				
+				dialog.cancel();
+				startNewGame(mLevel);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the main menu
+			{				
+				//do nothing
+			}
+		}
+		else if (dialog.getClass() == RemoveAdsDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
+			{
+				Log.d("gaurav", "calling purchaseItem... ");
+				//purchase for Remove Ads IAP requested
+				mIAPManager.purchaseItem(MFGameConstants.IAP_REMOVE_ADS);
+			}
+		}
+		else if (dialog.getClass() == AddCoinsDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //First option
+			{
+				mIAPManager.purchaseItem(MFGameConstants.IAP_COINS_FIRST);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) //Second option
+			{
+				mIAPManager.purchaseItem(MFGameConstants.IAP_COINS_SECOND);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_3) //Third option
+			{
+				mIAPManager.purchaseItem(MFGameConstants.IAP_COINS_THIRD);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_4) //Fourth option
+			{
+				mIAPManager.purchaseItem(MFGameConstants.IAP_COINS_FOURTH);
+			}
+		}
+		else if (dialog.getClass() == AddMovesDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
+			{
+				Log.d("garuav", "AddMovesDialog result, mTotalCoinsEarned = " + mTotalCoinsEarned);
+				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_5_MOVES)
+				{
+					//go ahead and add moves, and adjust coins
+					int maxMoves = getMaxMoves(gridHandle);
+					maxMoves += MFGameConstants.MOVES_ADD_INCREMENT;
+					setMaxMoves(gridHandle, maxMoves);
+					mTotalCoinsEarned -= MFGameConstants.COINS_TO_ADD_5_MOVES;
+					
+					String addCoinsText = String.format(getResources().getString(R.string.add_coins_text), mTotalCoinsEarned);
+					mAddCoinsButton.setText(addCoinsText);
+					
+					int currMove = getCurrMove(gridHandle);
+					String movesText = String.format(getResources().getString(R.string.moves_remaining_text), (maxMoves - currMove));
+					mMovesLabel.setText(movesText);
+				}
+				else
+				{
+					//alert hte user tht he must buy coins
+					//redeem the coins, show a dialog
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this);
+					addCoinsDialog.setCanceledOnTouchOutside(false);
+					addCoinsDialog.show();
+				}
+			}
+		}
 	}
 	
+	@Override
+	public void onPurchaseFinished(Purchase purchase, String pid, boolean status) 
+	{
+		if (pid.equals(MFGameConstants.IAP_REMOVE_ADS))
+		{
+			if (status == true)
+			{
+				//successful purchase
+				//set the sharedpref
+				SharedPreferences settings;
+				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+				Editor editor = settings.edit();
+				editor.putBoolean(MFGameConstants.PREFERENCE_ADS_REMOVED, true);
+				editor.commit();
+				
+				//Hide the Remove Ads button
+				mRemoveAdsButton.setVisibility(View.INVISIBLE);
+			}
+		}
+		else if (pid.equals(MFGameConstants.IAP_COINS_FIRST))
+		{
+			if (status == true)
+			{
+				//purchase successful.  Since these are consumable items, make the consume request
+				mIAPManager.consumeItem(purchase);
+			}
+		}
+		else if (pid.equals(MFGameConstants.IAP_COINS_SECOND))
+		{
+			if (status == true)
+			{
+				//purchase successful.  Since these are consumable items, make the consume request
+				mIAPManager.consumeItem(purchase);
+			}
+		}
+		else if (pid.equals(MFGameConstants.IAP_COINS_THIRD))
+		{
+			if (status == true)
+			{
+				//purchase successful.  Since these are consumable items, make the consume request
+				mIAPManager.consumeItem(purchase);
+			}
+		}
+		else if (pid.equals(MFGameConstants.IAP_COINS_FOURTH))
+		{
+			if (status == true)
+			{
+				//purchase successful.  Since these are consumable items, make the consume request
+				mIAPManager.consumeItem(purchase);
+			}
+		}
+	}
+
+	@Override
+	public void onConsumeFinished(String pid, boolean status) 
+	{
+		//consumed the item, now update the values
+		if (pid.equals(MFGameConstants.IAP_COINS_FIRST))
+		{
+			mTotalCoinsEarned += MFGameConstants.COINS_IAP_COUNT_FIRST;
+		}
+		else if (pid.equals(MFGameConstants.IAP_COINS_SECOND))
+		{
+			mTotalCoinsEarned += MFGameConstants.COINS_IAP_COUNT_SECOND;
+		}
+		else if (pid.equals(MFGameConstants.IAP_COINS_THIRD))
+		{
+			mTotalCoinsEarned += MFGameConstants.COINS_IAP_COUNT_THIRD;
+		}
+		else if (pid.equals(MFGameConstants.IAP_COINS_FOURTH))
+		{
+			mTotalCoinsEarned += MFGameConstants.COINS_IAP_COUNT_FOURTH;
+		}
+		
+		String addCoinsText = String.format(getResources().getString(R.string.add_coins_text), mTotalCoinsEarned);
+		mAddCoinsButton.setText(addCoinsText);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
+	{
+		Log.d("gaurav", "onActivityResult(" + requestCode + "," + resultCode + "," + data);
+
+		// Pass on the activity result to the helper for handling
+		if (!mIAPManager.handleActivityResult(requestCode, resultCode, data)) {
+			// not handled, so handle it ourselves (here's where you'd
+			// perform any handling of activity results not related to in-app
+			// billing...
+			super.onActivityResult(requestCode, resultCode, data);
+		}
+		else {
+			Log.d("gaurav", "onActivityResult handled by IABUtil.");
+		}
+	}
 	private MFGameView mGameView; //the game view
 	private int mLevel;
+	private int mTotalCoinsEarned;
 	private boolean mPromptUserToStore = false; // whether or not we should prompt the user to check out the store
 	private TextView mMovesLabel; //label that shows the current moves
+	private TextView mLevelLabel;
 	private ImageButton mExitButton;
 	private ImageButton mSoundButton;
 	private ImageButton mRedButton;
@@ -453,6 +714,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private ImageButton mYellowButton;
 	private ImageButton mOrangeButton;
 	private ImageButton mCyanButton;
+	
+	private Button mAddCoinsButton, mAddMovesButton, mAddStarsButton, mRemoveAdsButton;
 	
 	private AlertDialog mExitAlertDialog, mSuccessAlertDialog, mFailedAlertDialog;
 	
@@ -468,18 +731,24 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	boolean mPlaySound = false;
 	int mCurrentlyPlayingStream = 0; //currently playing stream, used to stop it if still running
 
+	/**
+	 * IAP related
+	 */
+	private MFInAppPurchaseManager mIAPManager = null;
 	AdView mAdView; // banner ad view
 	
+	/**
+	 * Native Hooks
+	 */
 	private long gridHandle;
 	private native long createNewGrid(int level);
 	private native void deleteGrid(long handle);
 	private native int getGridSize(long handle);
 	private native int[] getStartPos(long handle);
 	private native int getMaxMoves(long handle);
+	private native void setMaxMoves(long handle, int maxMoves);
 	private native int getCurrMove(long handle);
-	private native int playMove(long handle, int color);
+	private native int[] playMove(long handle, int color);
 	private native int[] getGridData(long handle);
 
-
-	
 }

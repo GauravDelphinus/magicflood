@@ -76,31 +76,45 @@ bool MFGrid::gridCompleted(int color, int *grid[])
 /**
  Play the move for the given color.
  **/
-int MFGrid::playMove(int color)
+int* MFGrid::playMove(int color)
 {
+    int *retVal = (int *) malloc (2 * sizeof(int));
+    
     int startx = startPos[0];
     int starty = startPos[1];
     
-    updateNeighbors(mGameGrid[startx][starty], color, startx, starty, mGameGrid);
+    int numUpdated = updateNeighbors(mGameGrid[startx][starty], color, startx, starty, mGameGrid);
     
     currMove ++;
     fprintf(stderr, "curr move = %d", currMove);
     
     if (gridCompleted(color, mGameGrid))
     {
-        return RESULT_SUCCESS;
+        retVal[0] = RESULT_SUCCESS;
+        retVal[1] = 0;
     }
     else if (currMove >= maxMoves)
     {
-        return RESULT_FAILED;
+        retVal[0] = RESULT_FAILED;
+        retVal[1] = 0;
+    }
+    else
+    {
+        retVal[0] = RESULT_CONTINUE;
+        retVal[1] = numUpdated;
     }
     
-    return RESULT_CONTINUE;
+    return retVal;
 }
 
 int MFGrid::getMaxMoves()
 {
     return maxMoves;
+}
+
+void MFGrid::setMaxMoves(int newMaxMoves)
+{
+    maxMoves = newMaxMoves;
 }
 
 int MFGrid::getCurrMoves()
@@ -268,21 +282,30 @@ void MFGrid::computeMaxMoves()
     
 }
 
-void MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[])
+/**
+ Recursively update all neighbors of the current cell with the color.
+ Returns the total number of cells that were updated.
+ **/
+int MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[])
 {
     //end condition of the recursion
     if ((isObstacle(x,y, grid)) || (grid[x][y] == newColor) || (grid[x][y] != oldColor))
     {
-        return;
+        return 0;
     }
+    
+    int numUpdated = 0;
     
     //update the new color on self, and add to the incremental grid array
     grid[x][y] = newColor;
+    numUpdated ++;
     
-    updateNeighbors(oldColor, newColor, x, y-1, grid);
-    updateNeighbors(oldColor, newColor, x-1, y, grid);
-    updateNeighbors(oldColor, newColor, x+1, y, grid);
-    updateNeighbors(oldColor, newColor, x, y+1, grid);
+    numUpdated += updateNeighbors(oldColor, newColor, x, y-1, grid);
+    numUpdated += updateNeighbors(oldColor, newColor, x-1, y, grid);
+    numUpdated += updateNeighbors(oldColor, newColor, x+1, y, grid);
+    numUpdated += updateNeighbors(oldColor, newColor, x, y+1, grid);
+    
+    return numUpdated;
 }
 
 void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[])

@@ -28,7 +28,7 @@ public class MFGameConstants
 	/**
 	 * Color values stored in the Grid
 	 */
-	public static final int GRID_OBSTACLE = -1;
+	public static final int GRID_OBSTACLE = 0;
 	
 	public static final int GRID_COLOR_RED = 1;
 	public static final int GRID_COLOR_GREEN = 2;
@@ -71,6 +71,7 @@ public class MFGameConstants
 	public static final String IAP_REMOVE_ADS = "iap_remove_ads";
 	*/
 	
+	/** Old **/
 	public static final String IAP_ALACARTE_HURDLE_1 = "test_iap_alacarte_hurdle_1";
 	public static final String IAP_ALACARTE_HURDLE_2 = "test_iap_alacarte_hurdle_2";
 	public static final String IAP_ALACARTE_HURDLE_3 = "test_iap_alacarte_hurdle_3";
@@ -81,7 +82,13 @@ public class MFGameConstants
 	public static final String IAP_COMBO_HURDLES_2 = "test_iap_combo_hurdles_2";
 	public static final String IAP_COMBO_HURDLES_3 = "test_iap_combo_hurdles_3";
 	public static final String IAP_COMBO_HURDLES_4 = "test_iap_combo_hurdles_4";
-	public static final String IAP_REMOVE_ADS = "test_iap_remove_ads";
+	
+	//** New **//
+	public static final String IAP_REMOVE_ADS = "test_iap_remove_ads2";
+	public static final String IAP_COINS_FIRST = "test_iap_add_coins_first";
+	public static final String IAP_COINS_SECOND = "test_iap_add_coins_second";
+	public static final String IAP_COINS_THIRD = "test_iap_add_coins_third";
+	public static final String IAP_COINS_FOURTH = "test_iap_add_coins_fourth";
 	
 	// Bundle Keys
 	public static final String IAP_QUERY_SKUS_KEY = "DETAILS_LIST"; //key used to query the skus from the bundle
@@ -132,9 +139,36 @@ public class MFGameConstants
 	 */
 	public static final String PREFERENCE_KEY = "user_prefs";
 	public static final String PREFERENCE_SOUND = "preference_sound";
+	public static final String PREFERENCE_TOTAL_POINTS_EARNED = "total_points_earned";
+	public static final String PREFERENCE_TOTAL_COINS_EARNED = "total_coins_earned";
+	public static final String PREFERENCE_ADS_REMOVED = "ads_removed";
 	
 	/**
 	 * Game Constants
 	 */
 	public static final int FREQUENCY_OF_PROMPTING_USER_TO_STORE = 1;
+	public static final int MOVES_ADD_INCREMENT = 5;
+	public static final int INITIAL_COINS_ALLOCATED = 100;
+	public static final int INITIAL_POINTS_ALLOCATED = 0;
+	public static final int POINTS_EARNED_FACTOR_ON_EACH_MOVE = 20;
+	public static final int POINTS_EARNED_FACTOR_ON_GAME_COMPLETION = 100;
+	public static final int POINTS_EARNED_FACTOR_ON_REMAINING_MOVES = 100;
+	public static final int COINS_EARNED_FACTOR_ON_GAME_COMPLETION = 100;
+	public static final int COINS_EARNED_FACTOR_ON_EACH_MOVE = 10;
+	public static final int COINS_EARNED_FACTOR_ON_REMAINING_MOVES = 10;
+	
+	
+	/**
+	 * Redeeming Coins for Lifelines
+	 */
+	public static final int COINS_TO_ADD_5_MOVES = 500;
+	public static final int COINS_TO_ADD_A_STAR = 1000;
+	
+	/**
+	 * Adding/Buying Coins via IAP
+	 */
+	public static final int COINS_IAP_COUNT_FIRST = 1000;
+	public static final int COINS_IAP_COUNT_SECOND = 2000;
+	public static final int COINS_IAP_COUNT_THIRD = 5000;
+	public static final int COINS_IAP_COUNT_FOURTH = 10000;
 }

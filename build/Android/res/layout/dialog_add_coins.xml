@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/game_dialog_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/dialog_background"
+    android:padding="10dp" >
+
+
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    >
+	    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_add_coins_title_text"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/dialog_title_text_size" />
+	    	<ImageButton
+	    	    android:id="@+id/cancel_button"
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:src="@drawable/ic_button_rate"
+	    	    android:layout_alignParentRight="true"
+	    	    />
+	</RelativeLayout>
+        
+
+        <View
+            android:layout_height="10sp"
+            android:layout_width="fill_parent"
+            />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center"
+            android:text="@string/dialog_add_coins_description_text"
+            android:textSize="@dimen/dialog_description_text_size" />
+        
+              
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10sp" />
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            
+        <include layout="@layout/layout_add_coins_product" android:id="@+id/add_coins_first_product_id"
+                                />
+         
+        
+                <include layout="@layout/layout_add_coins_product" android:id="@+id/add_coins_second_product_id"
+                                />
+              
+                </LinearLayout>
+            
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10sp" />
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            
+        <include layout="@layout/layout_add_coins_product" android:id="@+id/add_coins_third_product_id"
+                                />
+
+        
+                <include layout="@layout/layout_add_coins_product" android:id="@+id/add_coins_fourth_product_id"
+                                />
+              
+                </LinearLayout>
+              
+
+
+</LinearLayout>
+
+
+
+
+    

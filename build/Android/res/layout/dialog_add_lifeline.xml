@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/game_dialog_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/dialog_background"
+    android:padding="10dp" >
+
+
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    >
+	    <TextView
+	        android:id="@+id/dialog_add_lifeline_title_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/dialog_title_text_size" />
+	    	<ImageButton
+	    	    android:id="@+id/cancel_button"
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:src="@drawable/ic_button_rate"
+	    	    android:layout_alignParentRight="true"
+	    	    />
+	</RelativeLayout>
+        
+
+
+        <View
+            android:layout_height="10sp"
+            android:layout_width="fill_parent"
+            />
+        
+        <TextView
+            android:id="@+id/dialog_add_lifeline_description_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center"
+            android:textSize="@dimen/dialog_description_text_size" />
+        
+              
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10sp" />
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        <ImageView
+            android:id="@+id/dialog_add_lifeline_main_image_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            />
+        </RelativeLayout>
+        
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10sp" />
+           
+       
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        <include layout="@layout/layout_add_lifeline_product" android:id="@+id/add_lifeline_button_id"
+                                />
+            </RelativeLayout>
+
+</LinearLayout>
+
+
+
+
+    

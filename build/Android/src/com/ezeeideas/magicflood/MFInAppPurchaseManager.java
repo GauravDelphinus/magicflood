@@ -13,7 +13,7 @@ import com.ezeeideas.magicflood.iabutil.Inventory;
 import com.ezeeideas.magicflood.iabutil.Purchase;
 import com.ezeeideas.magicflood.iabutil.SkuDetails;
 
-public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListener, IabHelper.QueryInventoryFinishedListener, IabHelper.OnIabPurchaseFinishedListener
+public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListener, IabHelper.QueryInventoryFinishedListener, IabHelper.OnIabPurchaseFinishedListener, IabHelper.OnConsumeFinishedListener
 {
 	public MFInAppPurchaseManager(Activity context)
 	{
@@ -83,6 +83,11 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			testPrefix = "test_";
 		}
 		mHelper.launchPurchaseFlow(mContext, testPrefix + pid, 0, this);
+	}
+	
+	public void consumeItem(Purchase purchase)
+	{
+		mHelper.consumeAsync(purchase, this);
 	}
 	
 	/**
@@ -182,7 +187,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
 		{
 			Log.d("gaurav", "calling onPurchaseFinished on each listener");
-			listener.onPurchaseFinished(info.getSku(), true);
+			listener.onPurchaseFinished(info, info.getSku(), true);
 		}
 		
 		//update the provisioning status
@@ -206,7 +211,8 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	 */
 	interface IAPPurchaseInterface
 	{
-		void onPurchaseFinished(String pid, boolean status);
+		void onPurchaseFinished(Purchase purchase, String pid, boolean status);
+		void onConsumeFinished(String pid, boolean status);
 	}
 	
 	private static MFInAppPurchaseManager sIAPManager = null;
@@ -243,5 +249,22 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	public boolean handleActivityResult(int requestCode, int resultCode,
 			Intent data) {
 		return mHelper.handleActivityResult(requestCode, resultCode, data);
+	}
+
+	@Override
+	public void onConsumeFinished(Purchase purchase, IabResult result) 
+	{
+		if (result.isFailure())
+		{
+			//failure in consumption
+		}
+		else
+		{
+			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+			{
+				Log.d("gaurav", "calling onPurchaseFinished on each listener");
+				listener.onConsumeFinished(purchase.getSku(), true);
+			}
+		}
 	}
 };

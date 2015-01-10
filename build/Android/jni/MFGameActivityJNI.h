@@ -99,6 +99,13 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMaxMoves
 
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    setMaxMoves
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_setMaxMoves
+  (JNIEnv *, jobject, jlong, jint);
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    getCurrMove
  * Signature: (J)I
  */
@@ -108,9 +115,9 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getCurrMove
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    playMove
- * Signature: (JI)I
+ * Signature: (JI)[I
  */
-JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_playMove
+JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_playMove
   (JNIEnv *, jobject, jlong, jint);
 
 /*

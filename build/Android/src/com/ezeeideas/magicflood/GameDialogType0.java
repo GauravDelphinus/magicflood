@@ -23,13 +23,17 @@ public abstract class GameDialogType0 extends GameDialog
 		setupRootView(); //no buttons in this view
 	}
 
-	protected void handleTouch(View v)
-	{		
+	protected boolean handleTouch(View v)
+	{	
+		boolean handled = false;
 		if (v == mRootView)
 		{
 			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1);
 			this.dismiss();
+			handled = true;
 		}
+		
+		return handled;
 	}
 
 	protected void handleDismiss()

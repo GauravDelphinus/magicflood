@@ -17,8 +17,10 @@ int getGridSize(long handle);
 int* getStartPos(long handle);
 void freeStartPos(long handle, int *startPos);
 int getMaxMoves(long handle);
+    void setMaxMoves(long handle, int maxMoves);
 int getCurrMove(long handle);
-int playMove(long handle, int color);
+int* playMove(long handle, int color);
+void freePlayMove(long handle, int *result);
 int** getGridData(long handle);
 void freeGridData(long handle, int **gridData);
 

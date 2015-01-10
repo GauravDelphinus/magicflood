@@ -117,6 +117,18 @@ int getMaxMoves(long handle)
 }
 
 /**
+ Set the maximum moves for this game.
+ **/
+void setMaxMoves(long handle, int maxMoves)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
+    if (grid != NULL)
+    {
+        return grid->setMaxMoves(maxMoves);
+    }
+}
+
+/**
  Return the current move.
  **/
 int getCurrMove(long handle)
@@ -132,10 +144,11 @@ int getCurrMove(long handle)
 
 /**
  Play the move after extracting th MFGrid object.
+ NOTE: The returned array must be freed by the caller by calling freePlayMove API.
  **/
-int playMove(long handle, int color)
+int* playMove(long handle, int color)
 {
-    int result = -1;
+    int *result = NULL;
     
     MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
     if (grid != NULL)
@@ -144,6 +157,23 @@ int playMove(long handle, int color)
     }
     
     return result;
+}
+
+/**
+ Free the memory in result that was allocated by a previous
+ playMove API.
+ **/
+void freePlayMove(long handle, int *result)
+{
+    fprintf(stderr, "freePlayMove called with handle = %lx, result = %p\n", handle, result);
+    MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
+    if (grid != NULL)
+    {
+        if (result != NULL)
+        {
+            free(result);
+        }
+    }
 }
   
 /**
