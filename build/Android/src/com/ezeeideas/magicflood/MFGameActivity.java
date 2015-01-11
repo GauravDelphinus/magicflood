@@ -278,7 +278,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MENU_BUTTON);
 			
 			GameMenuDialog dialog = new GameMenuDialog(this);
-			dialog.setCanceledOnTouchOutside(true);
+			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 
 			return;
@@ -409,20 +409,23 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{	
 			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
 			
-			if (mPromptUserToStore) //should prompt the user to check out the store
+			playSound(MFGameConstants.RESULT_SUCCESS);
+
+			//Unlock the next level.
+			SharedPreferences settings;
+			settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+			int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+			if (lastUnlockedLevel <= mLevel)
 			{
-				GameSuccessStoreDialog dialog = new GameSuccessStoreDialog(this);
-				dialog.setCanceledOnTouchOutside(false);
-				dialog.show();
-			}
-			else //show regular success dialog
-			{
-				GameSuccessDialog dialog = new GameSuccessDialog(this);
-				dialog.setCanceledOnTouchOutside(false);
-				dialog.show();
+				lastUnlockedLevel ++;
+				Editor editor = settings.edit();
+				editor.putInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, lastUnlockedLevel);
+				editor.commit();
 			}
 			
-			playSound(MFGameConstants.RESULT_SUCCESS);
+			GameSuccessDialog dialog = new GameSuccessDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
 			
 			/** Update Coins Earned **/			
 			mTotalCoinsEarned += MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (mLevel - 1) * 10 + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES;
@@ -464,7 +467,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				
 				dialog.cancel();
 			}
-			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) //Start New Game
+			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) //Replay Game
 			{
 				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEW_GAME_BUTTON);
 				
@@ -474,20 +477,36 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}	
 		else if (dialog.getClass() == GameFailedDialog.class)
 		{
-			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Start the next game
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Play On
 			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEW_GAME_BUTTON);
-				
 				dialog.cancel();
-				startNewGame(mLevel);
-			}
-			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the Main Menu
-			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MAIN_MENU_BUTTON);
 				
-				finish();
+				/** Prompt the user with adding moves to continue playing the current game. **/
+				AddMovesDialog addMovesDialog = new AddMovesDialog(this);
+				addMovesDialog.setCanceledOnTouchOutside(false);
+				addMovesDialog.show();
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2 || option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // End Game
+			{
+				/** Take the user to the Try Again dialog **/
+				TryAgainDialog tryAgainDialog = new TryAgainDialog(this);
+				tryAgainDialog.setCanceledOnTouchOutside(false);
+				tryAgainDialog.show();
 			}
 		}	
+		else if (dialog.getClass() == TryAgainDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) // Try Again
+			{
+				dialog.cancel();
+				
+				startNewGame(mLevel);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) //go to main menu
+			{
+				finish();
+			}
+		}
 		else if (dialog.getClass() == GameSuccessDialog.class)
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Start the next game
@@ -601,6 +620,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this);
 					addCoinsDialog.setCanceledOnTouchOutside(false);
 					addCoinsDialog.show();
+				}
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
+			{
+				//if the game had failed and the user reached here, then take him to the main menu
+				int currMove = getCurrMove(gridHandle);
+				int maxMoves = getMaxMoves(gridHandle);
+				if (currMove == maxMoves)
+				{
+					finish(); // go back to the main menu
+				}
+				else
+				{
+					dialog.dismiss(); //resume current game
 				}
 			}
 		}

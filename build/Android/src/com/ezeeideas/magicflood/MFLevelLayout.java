@@ -35,8 +35,8 @@ public class MFLevelLayout extends LinearLayout
 		}
 		else
 		{	
-			imageView.setBackgroundResource(R.drawable.ic_iap_tick);
-			setBackgroundResource(R.drawable.background_iap_provisioned);			
+			imageView.setBackgroundResource(R.drawable.ic_iap_lock);
+			setBackgroundResource(R.drawable.background_iap_not_provisioned);			
 		}
 	}
 	

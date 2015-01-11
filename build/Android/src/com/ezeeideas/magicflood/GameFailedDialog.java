@@ -2,7 +2,7 @@ package com.ezeeideas.magicflood;
 
 import android.content.Context;
 
-public class GameFailedDialog extends GameDialogType3 {
+public class GameFailedDialog extends GameDialogType4 {
 
 	public GameFailedDialog(Context context) 
 	{
@@ -27,13 +27,19 @@ public class GameFailedDialog extends GameDialogType3 {
 	@Override
 	protected void setupPositiveAction1View() 
 	{
-		mPositiveAction1View = findViewById(R.id.new_game_button);
+		mPositiveAction1View = findViewById(R.id.play_on_button);
+	}
+	
+	@Override
+	protected void setupPositiveAction2View() 
+	{
+		mPositiveAction2View = findViewById(R.id.end_game_button);
 	}
 
 	@Override
 	protected void setupNegativeAction1View() 
 	{
-		mNegativeAction1View = findViewById(R.id.menu_button);
+		mNegativeAction1View = findViewById(R.id.cancel_button);
 
 	}
 }

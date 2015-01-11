@@ -2,9 +2,9 @@ package com.ezeeideas.magicflood;
 
 import android.content.Context;
 
-public class GameMenuDialog extends GameDialogType4 {
+public class TryAgainDialog extends GameDialogType3 {
 
-	public GameMenuDialog(Context context) 
+	public TryAgainDialog(Context context) 
 	{
 		super(context);
 		
@@ -15,7 +15,7 @@ public class GameMenuDialog extends GameDialogType4 {
 
 	protected void setupViews() 
 	{
-		setContentView(R.layout.dialog_game_menu);
+		setContentView(R.layout.dialog_try_again);
 	}
 
 	@Override
@@ -27,18 +27,12 @@ public class GameMenuDialog extends GameDialogType4 {
 	@Override
 	protected void setupPositiveAction1View() 
 	{
-		mPositiveAction1View = findViewById(R.id.menu_button);
-	}
-	
-	@Override
-	protected void setupPositiveAction2View() 
-	{
-		mPositiveAction2View = findViewById(R.id.replay_game_button);
+		mPositiveAction1View = findViewById(R.id.try_again_button);
 	}
 	
 	@Override
 	protected void setupNegativeAction1View() 
 	{
-		mNegativeAction1View = findViewById(R.id.cancel_button);
+		mPositiveAction2View = findViewById(R.id.cancel_button);
 	}
 }

@@ -1,6 +1,8 @@
 package com.ezeeideas.magicflood;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +20,12 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 	{
         super.onCreate(savedInstanceState, R.layout.activity_levels);
         
-        int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
+        setupViews();
+	}
+	
+	private void setupViews()
+	{
+		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
     	int numScreens = numLevels / MFConstants.NUM_LEVELS_PER_SCREEN; //9 levels per screen
     	int numLevelsOnLastScreen = numLevels % MFConstants.NUM_LEVELS_PER_SCREEN;
     	if (numLevelsOnLastScreen > 0)
@@ -28,19 +35,37 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
     	Log.d("gaurav", "numLevels = " + numLevels + ", numScreens = " + numScreens + ", numLevelsOnLastScreen = " + numLevelsOnLastScreen);
     	ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
     	LayoutInflater inflater = LayoutInflater.from(this);
+    	
+    	SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+
+		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+		
     	int levelNum = 1;
     	for (int i = 0; i < numScreens; i++)
     	{
 	        View inflatedLayout = inflater.inflate(R.layout.layout_level_screen, null, false);
 	        Log.d("gaurav", "infaltedLayout class = " + inflatedLayout.getClass());
 	        
-	        enumerateLevelsAndSetProperties(inflatedLayout, levelNum, numLevels);
+	        levelNum = enumerateLevelsAndSetProperties(inflatedLayout, levelNum, numLevels, lastUnlockedLevel);
 	        
 	        flipper.addView(inflatedLayout);
     	}
 	}
 	
-	private int enumerateLevelsAndSetProperties(View rootView, int levelNum, int numLevels)
+	private void refreshViews()
+	{
+		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
+		SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+
+		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+		
+		ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
+		enumerateLevelsAndSetProperties(flipper, 1, numLevels, lastUnlockedLevel);
+	}
+	
+	private int enumerateLevelsAndSetProperties(View rootView, int levelNum, int numLevels, int lastUnlockedLevel)
 	{
 		int numChildren = ((ViewGroup)rootView).getChildCount();
         for (int j = 0; j < numChildren; j++)
@@ -53,7 +78,14 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
         		if (levelNum <= numLevels)
         		{
 	        		MFLevelLayout levelLayout = (MFLevelLayout)nextChild;
-	        		levelLayout.setProperties(levelNum, true);
+	        		if (levelNum <= lastUnlockedLevel)
+	        		{
+	        			levelLayout.setProperties(levelNum, false); //level is unlocked
+	        		}
+	        		else
+	        		{
+	        			levelLayout.setProperties(levelNum, true); //level is locked
+	        		}
 	        		levelLayout.setOnClickListener(this);
 	        		levelNum++;
         		}
@@ -65,7 +97,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
         	}
         	else if (nextChild instanceof ViewGroup)
         	{
-        		levelNum = enumerateLevelsAndSetProperties(nextChild, levelNum, numLevels);
+        		levelNum = enumerateLevelsAndSetProperties(nextChild, levelNum, numLevels, lastUnlockedLevel);
         	}
         }
         
@@ -84,10 +116,31 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 		Log.d("gaurav", "onClick called");
 		MFLevelLayout layout = (MFLevelLayout) arg0;
 		
+		SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+
+		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
 		
-		Intent i = new Intent(this, MFGameActivity.class); 	
-		i.putExtra(MFGameConstants.GAME_LEVEL_KEY, layout.getLevel());
-		i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
-		startActivity(i);
+		if (layout.getLevel() <= lastUnlockedLevel)
+		{
+			Intent i = new Intent(this, MFGameActivity.class); 	
+			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, layout.getLevel());
+			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
+			startActivityForResult(i, ACTIVITY_RESULT_FROM_GAME_ACTIVITY);
+		}
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
+	{
+		Log.d("gaurav", "onActivityResult, requestCode = " + requestCode + ", resultCode = " + resultCode);
+	    // Check which request we're responding to
+	    if (requestCode == ACTIVITY_RESULT_FROM_GAME_ACTIVITY) 
+	    {
+	            //refresh the status of levels
+	        	refreshViews();
+	    }
+	}
+	
+	private static final int ACTIVITY_RESULT_FROM_GAME_ACTIVITY = 100;
 }

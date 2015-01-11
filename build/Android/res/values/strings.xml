@@ -46,7 +46,8 @@
     <string name="dialog_game_menu_description_text">What would you like to do?</string>
     <string name="dialog_menu_button_text">MAIN MENU</string>
     <string name="new_game_button_text">NEW GAME</string>
-    <string name="next_game_button_text">NEXT GAME</string>
+    <string name="replay_game_button_text">REPLAY LEVEL</string>
+    <string name="next_game_button_text">NEXT LEVEL</string>
     <string name="dialog_game_menu_footer_text">Tap anywhere else to resume the current game</string>
     <string name="dialog_game_failed_title_text">Oops!</string>
     <string name="dialog_game_failed_description_text">Sorry, you\'ve run out of moves!</string>
@@ -58,6 +59,15 @@
     <string name="dialog_store_not_connected_title_text">Store not connected</string>
     <string name="dialog_store_not_connected_description_text">It appears you are not connected to the store.  Please try again later.</string>
     <string name="dialog_store_not_connected_footer_text">Tap anywhere to dismiss this dialog</string>
+    
+    <!-- Game Failed Dialog -->
+    <string name="play_on_button_text">Play On</string>
+    <string name="end_game_button_text">End Game</string>
+    
+    <!-- Try Again Dialog -->
+    <string name="dialog_try_again_title_text">Try Again</string>
+    <string name="dialog_try_again_description_text">Try the current level again</string>
+    <string name="try_again_button_text">Try Again</string>
     
     <!-- About Screen -->
     <string name="about_copyright_text">Copyright (C) 2014 EZEEIDEAS IT SERVICES LLP.</string>
