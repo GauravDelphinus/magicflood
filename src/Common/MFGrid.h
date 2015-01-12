@@ -33,8 +33,11 @@ private:
     int selectObstacle();
     int playMoveInternal(int color, int *grid[]);
     void checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[]);
+    void checkDensity(int color, int x, int y, int *grid[], int *count, bool *alreadyCheckedFlags[]);
+    void checkDensity(int color, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[]);
+    int checkNeighborDensityForColor(int oldColor, int newColor, int x, int y, int *grid[], bool *alreadCheckedFlags[]);
     int findMostDenseColor(int *grid[]);
-    int updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[]);
+    int updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[], bool *alreadyCheckedFlags[]);
     
 public:
     MFGrid (int level);

@@ -83,7 +83,33 @@ int* MFGrid::playMove(int color)
     int startx = startPos[0];
     int starty = startPos[1];
     
-    int numUpdated = updateNeighbors(mGameGrid[startx][starty], color, startx, starty, mGameGrid);
+    //initialize a 2-d boolean array to mark cells that have already been checked for neighbor density
+    bool **alreadyCheckedFlags = (bool **) calloc (gridSize, sizeof(bool *));
+    for (int i = 0; i < gridSize; i++)
+    {
+        alreadyCheckedFlags[i] = (bool *) calloc (gridSize, sizeof (bool));
+    }
+
+    int numUpdated = checkNeighborDensityForColor(mGameGrid[startx][starty], color, startx, starty, mGameGrid, alreadyCheckedFlags);
+    
+    for (int i = 0; i < gridSize; i++)
+    {
+        for (int j = 0; j < gridSize; j++)
+        {
+            alreadyCheckedFlags[i][j] = false;
+        }
+    }
+    updateNeighbors(mGameGrid[startx][starty], color, startx, starty, mGameGrid, alreadyCheckedFlags);
+   
+    
+    
+    //Free the memroy that's no longer required
+    for (int i = 0; i < gridSize; i++)
+    {
+        free(alreadyCheckedFlags[i]);
+    }
+    free(alreadyCheckedFlags);
+    alreadyCheckedFlags = NULL;
     
     currMove ++;
     fprintf(stderr, "curr move = %d", currMove);
@@ -263,7 +289,7 @@ void MFGrid::computeMaxMoves()
             //int randColor = rand() % GRID_NUM_COLORS + 1;
             int randColor = findMostDenseColor(mMeasureGrid);
             
-            updateNeighbors(mMeasureGrid[startPos[0]][startPos[1]], randColor, startPos[0], startPos[1], mMeasureGrid);
+            updateNeighbors(mMeasureGrid[startPos[0]][startPos[1]], randColor, startPos[0], startPos[1], mMeasureGrid, NULL);
             numMoves ++;
             
             if (gridCompleted(randColor, mMeasureGrid))
@@ -272,9 +298,12 @@ void MFGrid::computeMaxMoves()
             }
         }
         
+        
+        
         //int offset = (numMoves + 10) % 5;
         //maxMoves = (numMoves + 10) - offset;
         maxMoves = numMoves;
+        
         
         releaseGrid(mMeasureGrid);
         mMeasureGrid = NULL;
@@ -286,27 +315,111 @@ void MFGrid::computeMaxMoves()
  Recursively update all neighbors of the current cell with the color.
  Returns the total number of cells that were updated.
  **/
-int MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[])
+int MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[], bool *alreadyCheckedFlags[])
 {
-    //end condition of the recursion
-    if ((isObstacle(x,y, grid)) || (grid[x][y] == newColor) || (grid[x][y] != oldColor))
+    int numUpdated = 0;
+    
+    if (isObstacle(x, y, grid))
     {
         return 0;
     }
     
-    int numUpdated = 0;
+    if (grid[x][y] == newColor)
+    {
+        checkDensity(newColor, x, y, grid, &numUpdated, alreadyCheckedFlags);
+        return numUpdated;
+    }
+    
+    //end condition of the recursion
+    if (grid[x][y] != oldColor)
+    {
+        return 0;
+    }
     
     //update the new color on self, and add to the incremental grid array
     grid[x][y] = newColor;
-    numUpdated ++;
     
-    numUpdated += updateNeighbors(oldColor, newColor, x, y-1, grid);
-    numUpdated += updateNeighbors(oldColor, newColor, x-1, y, grid);
-    numUpdated += updateNeighbors(oldColor, newColor, x+1, y, grid);
-    numUpdated += updateNeighbors(oldColor, newColor, x, y+1, grid);
+    numUpdated += updateNeighbors(oldColor, newColor, x, y-1, grid, alreadyCheckedFlags);
+    numUpdated += updateNeighbors(oldColor, newColor, x-1, y, grid, alreadyCheckedFlags);
+    numUpdated += updateNeighbors(oldColor, newColor, x+1, y, grid, alreadyCheckedFlags);
+    numUpdated += updateNeighbors(oldColor, newColor, x, y+1, grid, alreadyCheckedFlags);
     
     return numUpdated;
 }
+
+/**
+ Calculate the number of NEW cells that will be updated if we drop the newColor
+ in the grid at the position x, y.
+ **/
+int MFGrid::checkNeighborDensityForColor(int oldColor, int newColor, int x, int y, int *grid[], bool *alreadyCheckedFlags[])
+{
+    int numUpdated = 0;
+    
+    if (isObstacle(x, y, grid) || alreadyCheckedFlags[x][y])
+    {
+        return 0;
+    }
+    
+    if (grid[x][y] == newColor)
+    {
+        checkDensity(newColor, x, y, grid, &numUpdated, alreadyCheckedFlags);
+        return numUpdated;
+    }
+    
+    //end condition of the recursion
+    if (grid[x][y] != oldColor)
+    {
+        return 0;
+    }
+    
+    alreadyCheckedFlags[x][y] = true;
+    
+    numUpdated += checkNeighborDensityForColor(oldColor, newColor, x, y-1, grid, alreadyCheckedFlags);
+    numUpdated += checkNeighborDensityForColor(oldColor, newColor, x-1, y, grid, alreadyCheckedFlags);
+    numUpdated += checkNeighborDensityForColor(oldColor, newColor, x+1, y, grid, alreadyCheckedFlags);
+    numUpdated += checkNeighborDensityForColor(oldColor, newColor, x, y+1, grid, alreadyCheckedFlags);
+    
+    return numUpdated;
+}
+
+/**
+ Check the density of the given color starting at the position x, y.
+ **/
+void MFGrid::checkDensity(int color, int x, int y, int *grid[], int *count, bool *alreadyCheckedFlags[])
+{
+    if (isObstacle(x, y, grid) || grid[x][y] != color || alreadyCheckedFlags == NULL
+        || alreadyCheckedFlags[x][y])
+    {
+        return;
+    }
+    
+    alreadyCheckedFlags[x][y] = true;
+    (*count) ++;
+    
+    checkDensity(color, x, y-1, grid, count, alreadyCheckedFlags);
+    checkDensity(color, x, y+1, grid, count, alreadyCheckedFlags);
+    checkDensity(color, x-1, y, grid, count, alreadyCheckedFlags);
+    checkDensity(color, x+1, y, grid, count, alreadyCheckedFlags);
+}
+
+/*
+void MFGrid::checkDensity(int color, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[])
+{
+    if (isObstacle(x, y, grid) || grid[x][y] != color || alreadyCheckedFlags == NULL || alreadyCheckedFlags[x][y])
+    {
+        return;
+    }
+    
+    alreadyCheckedFlags[x][y] = true;
+    (*map)[color] ++;
+    logPrint("gaurav", "checkDesntiy, x = %d, y = %d, added value for color %d to %d\n", x, y, color, (*map)[color]);
+    
+    checkDensity(color, x, y-1, grid, map, alreadyCheckedFlags);
+    checkDensity(color, x, y+1, grid, map, alreadyCheckedFlags);
+    checkDensity(color, x-1, y, grid, map, alreadyCheckedFlags);
+    checkDensity(color, x+1, y, grid, map, alreadyCheckedFlags);
+}
+ */
 
 void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[])
 {
@@ -315,19 +428,21 @@ void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std
         return;
     }
     
-    alreadyCheckedFlags[x][y] = true;
-    
     if (grid[x][y] != startColor)
     {
-        (*map)[grid[x][y]] ++;
+        int count = 0;
+        checkDensity(grid[x][y], x, y, grid, &count, alreadyCheckedFlags);
+        (*map)[grid[x][y]] += count;
+        return;
     }
-    else
-    {
-        checkNeighborDensity(startColor, x, y-1, grid, map, alreadyCheckedFlags);
-        checkNeighborDensity(startColor, x, y+1, grid, map, alreadyCheckedFlags);
-        checkNeighborDensity(startColor, x-1, y, grid, map, alreadyCheckedFlags);
-        checkNeighborDensity(startColor, x+1, y, grid, map, alreadyCheckedFlags);
-    }
+    
+    alreadyCheckedFlags[x][y] = true;
+
+    checkNeighborDensity(startColor, x, y-1, grid, map, alreadyCheckedFlags);
+    checkNeighborDensity(startColor, x, y+1, grid, map, alreadyCheckedFlags);
+    checkNeighborDensity(startColor, x-1, y, grid, map, alreadyCheckedFlags);
+    checkNeighborDensity(startColor, x+1, y, grid, map, alreadyCheckedFlags);
+
 }
 
 int MFGrid::findMostDenseColor(int *grid[])
@@ -378,10 +493,11 @@ int MFGrid::findMostDenseColor(int *grid[])
             mostDenseColorCount = colorCount;
             mostDenseColor = color;
         }
-        
+        logPrint("gaurav", "findMostDenseCOlor, color count for %d is %d\n", color, colorCount);
         iter++;
     }
     
+    logPrint("gaurav", "findMostDenseColor returning %d\n", mostDenseColor);
     return mostDenseColor;
 }
 
