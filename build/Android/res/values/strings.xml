@@ -91,9 +91,9 @@
     <string name="level_screen_title">Levels</string>
     
     <!-- Game Screen -->
-    <string name="add_coins_text">Coins: %1$d (+)</string>
+    <string name="coins_earned_text">%1$d</string>
     <string name="level_text">Level %1$d</string>
-    <string name="moves_remaining_text">Moves: %1$d</string>
+    <string name="moves_remaining_text">%1$d</string>
     <string name="add_moves_text">Moves (+5)</string>
     <string name="add_stars_text">Stars (+1)</string>
     <string name="remove_ads_text">R Ads</string>

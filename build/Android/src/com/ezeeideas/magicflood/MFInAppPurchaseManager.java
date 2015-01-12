@@ -19,20 +19,17 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	{
 		mContext = context;
 		
-		initialize();
-		
-		initializeInAppInterface();
+		initialize();		
 	}
 	
 	public void initialize()
 	{
 		Log.d("gaurav", "MFInAppPurchaseManager.initialize called");
-		String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzFOa2G5Il745oc+Mk4p9acAN49yEaR1yu0b/quHdxQQRNwwKH4ZJWxRTv+O3n/3EhhzqCpYp3DI1rlX/fjIJKYDMpeTofrhW4ySq/PHIJcC5z2ZvXw233CtAP2Bn44OvTcNrd0At5+9TVscRncN033fB+Tk1iX9e3fcwImkynAdYD1Fk+VDW2dKG9t6p9q+sE/tf98iw1aLgHNj8Rn3Dxo79EkbwbAxGk3LqqKJZExDCMnM9N2fb0iWEm+5mYhC1AFevQxjO3i0OFrgTp+EwiHysECvcUa6soY+ZDhBr0jHTW4hvIwiYBl80s2UPtpEMVdGV1nWOKsQ7bt6ogUv68wIDAQAB";
         // compute your public key and store it in base64EncodedPublicKey
 		
 		mPurchaseInterfaceListeners = new ArrayList<IAPPurchaseInterface>();
 		
-        mHelper = new IabHelper(mContext, base64EncodedPublicKey);
+        mHelper = new IabHelper(mContext, MFConstants.base64EncodedPublicKey);
         mHelper.enableDebugLogging(true);
         mHelper.startSetup(this);
         Log.d("gaurav", "at the end of initialize");
@@ -52,21 +49,12 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		Log.d("gaurav", "queryInAppItems");
 		
 		ArrayList<String> skuList = new ArrayList<String>();
-		String testPrefix = "";
-		if (MFGameConstants.testingMode)
-		{
-			testPrefix += "test_";
-		}
-		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_1);
-		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_2);
-		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_3);
-		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_4);
-		skuList.add(testPrefix + MFGameConstants.IAP_ALACARTE_HURDLE_5);
-		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_1);
-		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_2);
-		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_3);
-		skuList.add(testPrefix + MFGameConstants.IAP_COMBO_HURDLES_4);
-		skuList.add(testPrefix + MFGameConstants.IAP_REMOVE_ADS);
+
+		skuList.add(MFGameConstants.IAP_COINS_FIRST);
+		skuList.add(MFGameConstants.IAP_COINS_SECOND);
+		skuList.add(MFGameConstants.IAP_COINS_THIRD);
+		skuList.add(MFGameConstants.IAP_COINS_FOURTH);
+		skuList.add(MFGameConstants.IAP_REMOVE_ADS);
 				
 		mHelper.queryInventoryAsync(true, skuList, this);
 		Log.d("gaurav", "called queryInventoryAsync");
@@ -120,27 +108,24 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			// handle error
 			return;
 		}
-
-		String testPrefix = "";
-		if (MFGameConstants.testingMode)
-		{
-			testPrefix += "test_";
-		}
 		
 		Log.d("gaurav", "pidArray.length = " + pidArray.length);
 		for (int i = 0; i < pidArray.length; i++)
 		{
-			SkuDetails skuDetails = inv.getSkuDetails(testPrefix + pidArray[i]);
+			SkuDetails skuDetails = inv.getSkuDetails(pidArray[i]);
 			Log.d("gaurav", "skuDetails = [" + skuDetails + "]");
 			//if (skuDetails != null)
 			{
-				String price = inv.getSkuDetails(testPrefix + pidArray[i]).getPrice();
-				String name = inv.getSkuDetails(testPrefix + pidArray[i]).getTitle();
-				String description = inv.getSkuDetails(testPrefix + pidArray[i]).getDescription();
-				boolean isProvisioned = inv.hasPurchase(testPrefix + pidArray[i]);
+				String price = inv.getSkuDetails(pidArray[i]).getPrice();
+				String name = inv.getSkuDetails(pidArray[i]).getTitle();
+				String description = inv.getSkuDetails(pidArray[i]).getDescription();
+				boolean isProvisioned = inv.hasPurchase(pidArray[i]);
 				if (isProvisioned)
 				{
 					mIsAnythingProvisioned = true;
+					
+					//* for consumable items such as coins, make sure they are consumed if they were provisioned by the user *//
+					consumeItem(inv.getPurchase(pidArray[i]));
 				}
 				
 				Log.d("gaurav", "i = " + i + ", calling addInAppProduct for [" + pidArray[i] + "] with name [" + name + "], description [" + description + "], price [" + price + "], isProvisioned [" + isProvisioned + "]");
@@ -194,6 +179,28 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		updateInAppProduct(info.getSku(), true);
 	}
 	
+	public boolean handleActivityResult(int requestCode, int resultCode,
+			Intent data) {
+		return mHelper.handleActivityResult(requestCode, resultCode, data);
+	}
+
+	@Override
+	public void onConsumeFinished(Purchase purchase, IabResult result) 
+	{
+		if (result.isFailure())
+		{
+			//failure in consumption
+		}
+		else
+		{
+			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+			{
+				Log.d("gaurav", "calling onPurchaseFinished on each listener");
+				listener.onConsumeFinished(purchase.getSku(), true);
+			}
+		}
+	}
+	
 	public boolean isSynchronized()
 	{
 		return mIsSynchronizedWithServer;
@@ -227,44 +234,18 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	private IabHelper mHelper;
 	private ArrayList<IAPPurchaseInterface> mPurchaseInterfaceListeners;
 	
-	private native void initializeInAppInterface();
 	private native void addInAppProduct(String id, String name, String description, String price, String priceCode, boolean isProvisioned);
 	private native void updateInAppProduct(String id, boolean isProvisioned);
 	private native void clearInAppProducts();
 	public native String[] getProductDetails(String id); //return 4 strings, for name, description, price and currency code
 	public native boolean getProductProvisioned(String id);
 
-	private String pidArray[] = {MFGameConstants.IAP_ALACARTE_HURDLE_1,
-			MFGameConstants.IAP_ALACARTE_HURDLE_2,
-			MFGameConstants.IAP_ALACARTE_HURDLE_3,
-			MFGameConstants.IAP_ALACARTE_HURDLE_4,
-			MFGameConstants.IAP_ALACARTE_HURDLE_5,
-			MFGameConstants.IAP_COMBO_HURDLES_1,
-			MFGameConstants.IAP_COMBO_HURDLES_2,
-			MFGameConstants.IAP_COMBO_HURDLES_3,
-			MFGameConstants.IAP_COMBO_HURDLES_4,
+	private String pidArray[] = {MFGameConstants.IAP_COINS_FIRST,
+			MFGameConstants.IAP_COINS_SECOND,
+			MFGameConstants.IAP_COINS_THIRD,
+			MFGameConstants.IAP_COINS_FOURTH,
 			MFGameConstants.IAP_REMOVE_ADS
 	};
 
-	public boolean handleActivityResult(int requestCode, int resultCode,
-			Intent data) {
-		return mHelper.handleActivityResult(requestCode, resultCode, data);
-	}
-
-	@Override
-	public void onConsumeFinished(Purchase purchase, IabResult result) 
-	{
-		if (result.isFailure())
-		{
-			//failure in consumption
-		}
-		else
-		{
-			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
-			{
-				Log.d("gaurav", "calling onPurchaseFinished on each listener");
-				listener.onConsumeFinished(purchase.getSku(), true);
-			}
-		}
-	}
+	
 };

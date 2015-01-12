@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include <vector>
 
-void initializeInAppInterface();
 void clearInAppProducts();
 void addInAppProduct(const char *pid, const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned);
 void updateInAppProduct(const char *pid, bool isProvisioned);
@@ -31,32 +30,10 @@ bool getIsInAppProductProvisioned(const char * productID);
 /**
  Various IAP Product IDs.
  **/
-/*
-#define IAP_ALACARTE_HURDLE_1   "iap_alacarte_hurdle_1"
-#define IAP_ALACARTE_HURDLE_2   "iap_alacarte_hurdle_2"
-#define IAP_ALACARTE_HURDLE_3   "iap_alacarte_hurdle_3"
-#define IAP_ALACARTE_HURDLE_4   "iap_alacarte_hurdle_4"
-#define IAP_ALACARTE_HURDLE_5   "iap_alacarte_hurdle_5"
-#define IAP_ALACARTE_HURDLE_6   "iap_alacarte_hurdle_6"
-#define IAP_COMBO_HURDLES_1 "iap_combo_hurdles_1"
-#define IAP_COMBO_HURDLES_2 "iap_combo_hurdles_2"
-#define IAP_COMBO_HURDLES_3 "iap_combo_hurdles_3"
-#define IAP_COMBO_HURDLES_4 "iap_combo_hurdles_4"
-#define IAP_REMOVE_ADS  "iap_remove_ads"
- */
-
-/**
- Various IAP Test Product IDs.
- **/
-#define IAP_ALACARTE_HURDLE_1   "test_iap_alacarte_hurdle_1"
-#define IAP_ALACARTE_HURDLE_2   "test_iap_alacarte_hurdle_2"
-#define IAP_ALACARTE_HURDLE_3   "test_iap_alacarte_hurdle_3"
-#define IAP_ALACARTE_HURDLE_4   "test_iap_alacarte_hurdle_4"
-#define IAP_ALACARTE_HURDLE_5   "test_iap_alacarte_hurdle_5"
-#define IAP_COMBO_HURDLES_1 "test_iap_combo_hurdles_1"
-#define IAP_COMBO_HURDLES_2 "test_iap_combo_hurdles_2"
-#define IAP_COMBO_HURDLES_3 "test_iap_combo_hurdles_3"
-#define IAP_COMBO_HURDLES_4 "test_iap_combo_hurdles_4"
-#define IAP_REMOVE_ADS  "test_iap_remove_ads"
+#define IAP_REMOVE_ADS  "test_iap_remove_ads2"
+#define IAP_COINS_FIRST "test_iap_add_coins_first"
+#define IAP_COINS_SECOND "test_iap_add_coins_second"
+#define IAP_COINS_THIRD "test_iap_add_coins_third"
+#define IAP_COINS_FOURTH "test_iap_add_coins_fourth"
 
 #endif /* defined(__Magic_Flood__MFIAPInterface__) */

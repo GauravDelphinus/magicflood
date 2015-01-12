@@ -103,22 +103,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
 		Intent i;
 		switch (arg0.getId())
 		{
-		case R.id.store_button_id:
-			if (mIAPManager.isSynchronized())
-			{
-				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_STORE_BUTTON, MFAnalytics.ANALYTICS_VALUE_STORE_SYNCHRONIZED);
-				
-				i = new Intent(this, MFStoreActivity.class);
-				startActivity(i);
-			}
-			else
-			{
-				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_STORE_BUTTON, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_SYNCHRONIZED);
-				
-				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
-				dialog.show();
-			}
-			break;
 		case R.id.about_button_id:
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ABOUT_BUTTON);
 			

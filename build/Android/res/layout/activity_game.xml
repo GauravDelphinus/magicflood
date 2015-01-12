@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -16,7 +16,6 @@
 	    android:id="@+id/top_bar_id"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_alignParentTop="true"
 	    >
 	        
 		<ImageButton
@@ -55,19 +54,34 @@
 	    android:id="@+id/second_bar_id"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/top_bar_id"
 	    >
 		
-    <Button
-        android:id="@+id/add_coins_button_id"
+	    <ImageView
+	        android:id="@+id/coins_image_id"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_coins"
+	        android:layout_alignParentLeft="true"
+	       	/>
+    <TextView
+        android:id="@+id/coins_text_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_toRightOf="@+id/coins_image_id"
         android:layout_centerVertical="true"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/game_moves_label_text_color" />
+        android:textColor="@color/game_moves_label_text_color"
+        android:paddingLeft="@dimen/activity_horizontal_padding" />
 
+    
+      <ImageView
+	        android:id="@+id/moves_image_id"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_moves"
+	        android:layout_toLeftOf="@+id/moves_label_id"
+	       	/>
  <TextView
         android:id="@+id/moves_label_id"
         android:layout_width="wrap_content"
@@ -76,7 +90,9 @@
         android:layout_centerVertical="true"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/game_moves_label_text_color"/>
+        android:textColor="@color/game_moves_label_text_color"
+        android:paddingLeft="@dimen/activity_horizontal_padding"
+        />
     
  
     </RelativeLayout>
@@ -86,36 +102,43 @@
 	    android:id="@+id/game_view_id"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/second_bar_id"
-	    android:layout_above="@+id/lower_bar_id"
-	    android:layout_marginTop="@dimen/activity_vertical_padding"
+	    android:layout_weight="1"
 	/>
 	
 	<RelativeLayout
 	    android:id="@+id/lower_bar_id"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_above="@+id/button_bar"
 	    >
-	<Button
-	    android:id="@+id/add_moves_button_id"
+ 	<ImageButton
+	    android:id="@+id/add_coins_button_id"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentLeft="true"
-	    android:text="@string/add_moves_text"
-	    android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/game_moves_label_text_color"
+	    android:src="@drawable/ic_button_add_coins"
+	    android:background="@color/transparent"
+	    android:paddingLeft="@dimen/activity_horizontal_padding"
+	    android:paddingRight="@dimen/activity_horizontal_padding"
 	    />
-	<Button
+	<ImageButton
+	    android:id="@+id/add_moves_button_id"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/add_coins_button_id"
+	    android:src="@drawable/ic_button_add_moves"
+	    android:background="@color/transparent"
+	    android:paddingLeft="@dimen/activity_horizontal_padding"
+	    android:paddingRight="@dimen/activity_horizontal_padding"
+	    />
+	<ImageButton
 	    android:id="@+id/add_stars_button_id"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_toRightOf="@+id/add_moves_button_id"
-	    android:text="@string/add_stars_text"
-	    android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/game_moves_label_text_color"
+	    android:src="@drawable/ic_button_add_star"
+	    android:background="@color/transparent"
+	    android:paddingLeft="@dimen/activity_horizontal_padding"
+	    android:paddingRight="@dimen/activity_horizontal_padding"
 	    />
 	<Button
 	    android:id="@+id/remove_ads_button_id"
@@ -134,7 +157,6 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal"
-	    android:layout_above="@+id/banner_ad_id"
 	    android:layout_marginTop="@dimen/activity_vertical_padding"
 	    >
     
@@ -230,9 +252,8 @@
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
         android:layout_marginTop="@dimen/activity_vertical_padding"
         ads:adUnitId="@string/ad_unit_id"/>
 	    
-</RelativeLayout>
+</LinearLayout>

@@ -49,6 +49,12 @@ public class MFGameView extends View
 		mStartPaint.setStrokeWidth(1);
 		mStartPaint.setColor(getResources().getColor(R.color.gray));
 		
+		mStartStrokePaint = new Paint();
+		mStartStrokePaint.setARGB(255, 0, 0, 0);
+		mStartStrokePaint.setStyle(Style.STROKE);
+		mStartStrokePaint.setAlpha(255);
+		mStartStrokePaint.setStrokeWidth(1);
+		
 		mTestPaint = new Paint();
 		mTestPaint.setColor(getResources().getColor(R.color.black));
 		mTestPaint.setAlpha(255);
@@ -60,13 +66,29 @@ public class MFGameView extends View
 	protected void onDraw(Canvas canvas)
 	{
 		Log.d("magicfloord", "MFGameView.onDraw called");
-		int horizontalGap = 20;
-		int vOffset = 80;
+		int horizontalGap = 0;
+		
 		int screenWidth = this.getWidth();
 		int screenHeight = this.getHeight();
-		int cellSize = (Math.min(screenWidth, screenHeight) - horizontalGap)/mGridSize;
-		int hOffset = horizontalGap / 2;
-
+		int gridSizePixels = Math.min(screenWidth, screenHeight);
+		
+		int cellSize = gridSizePixels/mGridSize;
+		int hOffset = 0;
+		int vOffset = 0;
+		
+		/**
+		 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
+		 */
+		if (screenHeight > screenWidth)
+		{
+			hOffset = 0;
+			vOffset = (screenHeight - screenWidth) / 2;
+		}
+		else
+		{
+			vOffset = 0;
+			hOffset = (screenWidth - screenHeight) / 2;
+		}
 		
 		for (int i = 0; i < mGridSize; i++)
 		{
@@ -134,7 +156,7 @@ public class MFGameView extends View
 		int x10 = left + r + (int)(s * cosphi);
 		int y10 = top + r + (int)(s * sinphi);
 		
-		canvas.drawPoint(left + r, top + r, mTestPaint);
+		//canvas.drawPoint(left + r, top + r, mTestPaint);
 		
 		mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
 		canvas.rotate(mCurrentAngleOfStartPosition % 360, left + r, top + r);
@@ -154,11 +176,12 @@ public class MFGameView extends View
 		starPath.lineTo(x1, y1);
 		
 		//set gradient fill in the paint
-		//mStartPaint.setShader(new RadialGradient((l + r)/2, (t + b)/2, w/2, getColor(mGrid[mStartPos[0]][mStartPos[1]]), 
-		//		getResources().getColor(R.color.white), Shader.TileMode.MIRROR));
+		mStartPaint.setShader(new RadialGradient(left + r, top + r, r, getResources().getColor(R.color.white), 
+				getResources().getColor(R.color.gray), Shader.TileMode.MIRROR));
 
 		//finally, draw the star!
 		canvas.drawPath(starPath, mStartPaint);
+		canvas.drawPath(starPath, mStartStrokePaint);
 		canvas.restore();
 	}
 	
@@ -269,5 +292,5 @@ public class MFGameView extends View
 		}
 	}
 
-	private Paint mStartPaint, mBorderPaint, mFillPaint, mTestPaint;
+	private Paint mStartPaint, mBorderPaint, mFillPaint, mTestPaint, mStartStrokePaint;
 }

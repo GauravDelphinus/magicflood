@@ -59,8 +59,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		printf("\n dummygrid = %s", output);
+		printf("%s,\n", output);
 	}
-	printf("\n END OF SCRIPT\n");
 	return 0;
 }

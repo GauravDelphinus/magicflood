@@ -4,17 +4,6 @@
 
 /*
  * Class:     com_ezeeideas_magicflood_MFInAppPurchaseManager
- * Method:    initializeInAppInterface
- * Signature: ()V
- */
-extern "C" JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFInAppPurchaseManager_initializeInAppInterface
-  (JNIEnv *env, jobject thisObj)
-{
-	initializeInAppInterface();
-}
-
-/*
- * Class:     com_ezeeideas_magicflood_MFInAppPurchaseManager
  * Method:    addInAppProduct
  * Signature: (ILjava/lang/String;Ljava/lang/String;Z)V
  */

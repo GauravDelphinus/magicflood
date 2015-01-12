@@ -35,86 +35,6 @@ struct char_cmp
 static std::list<MFInAppProduct *> sInAppProductList;
 
 /**
- The mapping from the In-App Product ID, to the list of Hurdles in that product.
- **/
-static std::map<const char *, std::vector<int> *, char_cmp> sInAppProductToObstacleMap;
-
-/**
- Create a map that maps the In-App Product ID with the list of 
- Obstacles/Hurdles that this product "contains".
- **/
-void initializeInAppInterface()
-{
-    std::vector<int> *obstacles = NULL;
-    
-    int hurdleIndex = 1; //used to track hurdle IDs
-    
-    //Skip free hurdles
-    hurdleIndex += NUM_FREE_HURDLES;
-    
-    //A-la-carte items
-    obstacles = new std::vector<int>();
-    obstacles->push_back(hurdleIndex);
-    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_1] = obstacles;
-    logPrint("magicflood", "initializeInAppInterface, added map for %s", IAP_ALACARTE_HURDLE_1);
-    
-    hurdleIndex ++;
-    obstacles = new std::vector<int>();
-    obstacles->push_back(hurdleIndex);
-    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_2] = obstacles;
-    
-    hurdleIndex++;
-    obstacles = new std::vector<int>();
-    obstacles->push_back(hurdleIndex);
-    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_3] = obstacles;
-    
-    hurdleIndex++;
-    obstacles = new std::vector<int>();
-    obstacles->push_back(hurdleIndex);
-    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_4] = obstacles;
-
-    hurdleIndex++;
-    obstacles = new std::vector<int>();
-    obstacles->push_back(hurdleIndex);
-    sInAppProductToObstacleMap[IAP_ALACARTE_HURDLE_5] = obstacles;
-
-    //combo items
-    hurdleIndex ++;
-    
-    //combo of 5 hurdles
-    obstacles = new std::vector<int>();
-    for (int i = hurdleIndex; i < (hurdleIndex + NUM_IAP_COMBO1_HURDLES); i++)
-    {
-        obstacles->push_back(i);
-    }
-    sInAppProductToObstacleMap[IAP_COMBO_HURDLES_1] = obstacles;
-    
-    //combo of 10 hurdles
-    obstacles = new std::vector<int>();
-    for (int i = hurdleIndex; i < (hurdleIndex + NUM_IAP_COMBO2_HURLDES); i++)
-    {
-        obstacles->push_back(i);
-    }
-    sInAppProductToObstacleMap[IAP_COMBO_HURDLES_2] = obstacles;
-    
-    //combo of 25 hurdles
-    obstacles = new std::vector<int>();
-    for (int i = hurdleIndex; i < (hurdleIndex + NUM_IAP_COMBO3_HURDLES); i++)
-    {
-        obstacles->push_back(i);
-    }
-    sInAppProductToObstacleMap[IAP_COMBO_HURDLES_3] = obstacles;
-    
-    //combo of 50 hurdles
-    obstacles = new std::vector<int>();
-    for (int i = hurdleIndex; i < (hurdleIndex + NUM_IAP_COMBO4_HURLDES); i++)
-    {
-        obstacles->push_back(i);
-    }
-    sInAppProductToObstacleMap[IAP_COMBO_HURDLES_4] = obstacles;
-}
-
-/**
  Add the given In-App product to the local cache.
  **/
 void addInAppProduct(const char *id, const char *name, const char *description, const char *price, const char *priceCode, bool isProvisioned)
@@ -245,38 +165,6 @@ bool getInAppProductProvisioned(const char *pid)
     }
     
     return false;
-}
-
-/**
- Return the number of obstacles that are "contained in"
- the given in-app product.
- **/
-int getNumObstaclesInInAppProduct(const char * productID)
-{
-    logPrint("magicflood", "getNumObstaclesInInAppProduct for productID = [%s]", productID);
-    std::vector<int> *obstaclesVector = sInAppProductToObstacleMap[productID];
-    logPrint("magicflood", "obtaclesVector = %p", obstaclesVector);
-    return obstaclesVector->size();
-}
-
-/**
- Return the list of obstacles in this In-App Product.
- NOTE: The caller must free the returned pointer memory.
- **/
-int *getObstaclesInInAppProduct(const char * productID)
-{
-    int *obstacles = NULL;
-    std::vector<int> *obstaclesVector = sInAppProductToObstacleMap[productID];
-    if (obstaclesVector != NULL)
-    {
-        obstacles = (int *) malloc (obstaclesVector->size() * sizeof(int));
-        for (int i = 0; i < obstaclesVector->size(); i++)
-        {
-            obstacles[i] = (*obstaclesVector)[i];
-        }
-    }
-    
-    return obstacles;
 }
 
 int getNumInAppProducts()

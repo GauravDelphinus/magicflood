@@ -15,7 +15,7 @@ public class AddStarDialog extends GameDialogType3 {
 		postSetupViews();
 		
 		AddLifelineProductLayout layout = (AddLifelineProductLayout) mPositiveAction1View;
-		layout.setProperties(MFGameConstants.COINS_TO_ADD_A_STAR, R.drawable.ic_iap_coins_second);
+		layout.setProperties(MFGameConstants.COINS_TO_ADD_A_STAR, R.drawable.ic_coins);
 
 		ImageView iv = (ImageView) findViewById(R.id.dialog_add_lifeline_main_image_id);
 		iv.setBackgroundResource(R.drawable.ic_iap_combo_1);

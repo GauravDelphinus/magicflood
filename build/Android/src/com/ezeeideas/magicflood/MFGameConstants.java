@@ -57,33 +57,6 @@ public class MFGameConstants
 	/**
 	 * In-App Purchase Product String IDs.
 	 */
-	/*
-	public static final String IAP_ALACARTE_HURDLE_1 = "iap_alacarte_hurdle_1";
-	public static final String IAP_ALACARTE_HURDLE_2 = "iap_alacarte_hurdle_2";
-	public static final String IAP_ALACARTE_HURDLE_3 = "iap_alacarte_hurdle_3";
-	public static final String IAP_ALACARTE_HURDLE_4 = "iap_alacarte_hurdle_4";
-	public static final String IAP_ALACARTE_HURDLE_5 = "iap_alacarte_hurdle_5";
-	public static final String IAP_ALACARTE_HURDLE_6 = "iap_alacarte_hurdle_6";
-	public static final String IAP_COMBO_HURDLES_1 = "iap_combo_hurdles_1";
-	public static final String IAP_COMBO_HURDLES_2 = "iap_combo_hurdles_2";
-	public static final String IAP_COMBO_HURDLES_3 = "iap_combo_hurdles_3";
-	public static final String IAP_COMBO_HURDLES_4 = "iap_combo_hurdles_4";
-	public static final String IAP_REMOVE_ADS = "iap_remove_ads";
-	*/
-	
-	/** Old **/
-	public static final String IAP_ALACARTE_HURDLE_1 = "test_iap_alacarte_hurdle_1";
-	public static final String IAP_ALACARTE_HURDLE_2 = "test_iap_alacarte_hurdle_2";
-	public static final String IAP_ALACARTE_HURDLE_3 = "test_iap_alacarte_hurdle_3";
-	public static final String IAP_ALACARTE_HURDLE_4 = "test_iap_alacarte_hurdle_4";
-	public static final String IAP_ALACARTE_HURDLE_5 = "test_iap_alacarte_hurdle_5";
-	public static final String IAP_ALACARTE_HURDLE_6 = "test_iap_alacarte_hurdle_6";
-	public static final String IAP_COMBO_HURDLES_1 = "test_iap_combo_hurdles_1";
-	public static final String IAP_COMBO_HURDLES_2 = "test_iap_combo_hurdles_2";
-	public static final String IAP_COMBO_HURDLES_3 = "test_iap_combo_hurdles_3";
-	public static final String IAP_COMBO_HURDLES_4 = "test_iap_combo_hurdles_4";
-	
-	//** New **//
 	public static final String IAP_REMOVE_ADS = "test_iap_remove_ads2";
 	public static final String IAP_COINS_FIRST = "test_iap_add_coins_first";
 	public static final String IAP_COINS_SECOND = "test_iap_add_coins_second";
@@ -155,9 +128,9 @@ public class MFGameConstants
 	public static final int POINTS_EARNED_FACTOR_ON_EACH_MOVE = 20;
 	public static final int POINTS_EARNED_FACTOR_ON_GAME_COMPLETION = 100;
 	public static final int POINTS_EARNED_FACTOR_ON_REMAINING_MOVES = 100;
-	public static final int COINS_EARNED_FACTOR_ON_GAME_COMPLETION = 100;
-	public static final int COINS_EARNED_FACTOR_ON_EACH_MOVE = 10;
-	public static final int COINS_EARNED_FACTOR_ON_REMAINING_MOVES = 10;
+	public static final int COINS_EARNED_FACTOR_ON_GAME_COMPLETION = 20;
+	public static final int COINS_EARNED_FACTOR_ON_EACH_MOVE = 1;
+	public static final int COINS_EARNED_FACTOR_ON_REMAINING_MOVES = 5;
 	
 	
 	/**
@@ -169,8 +142,8 @@ public class MFGameConstants
 	/**
 	 * Adding/Buying Coins via IAP
 	 */
-	public static final int COINS_IAP_COUNT_FIRST = 1000;
-	public static final int COINS_IAP_COUNT_SECOND = 2000;
-	public static final int COINS_IAP_COUNT_THIRD = 5000;
-	public static final int COINS_IAP_COUNT_FOURTH = 10000;
+	public static final int COINS_IAP_COUNT_FIRST = 100;
+	public static final int COINS_IAP_COUNT_SECOND = 200;
+	public static final int COINS_IAP_COUNT_THIRD = 500;
+	public static final int COINS_IAP_COUNT_FOURTH = 1000;
 }
