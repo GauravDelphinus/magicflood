@@ -45,18 +45,53 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getGridSize
 JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getStartPos
   (JNIEnv *env, jobject thisObj, jlong handle)
 {
-	int *startPosPtr = getStartPos(handle);
-	jint outCArray[] = {startPosPtr[0], startPosPtr[1]};
+	int **startPosPtr = getStartPos(handle);
+	if (startPosPtr == NULL)
+	{
+		return NULL;
+	}
+
+	int numStartPos = getNumStartPos(handle);
+	jint *outCArray = (jint *) malloc (2 * numStartPos * sizeof(jint));
+	for (int i = 0; i < numStartPos; i++)
+	{
+		outCArray[2 * i] = startPosPtr[i][0];
+		outCArray[2 * i + 1] = startPosPtr[i][1];
+	}
 	freeStartPos(handle, startPosPtr);
 
-	jintArray startPosArray = env->NewIntArray(2);
+	jintArray startPosArray = env->NewIntArray(2 * numStartPos);
 	if (NULL == startPosArray)
 	{
 		return NULL;
 	}
 
-	env->SetIntArrayRegion(startPosArray, 0, 2, outCArray);
+	env->SetIntArrayRegion(startPosArray, 0, 2 * numStartPos, outCArray);
+	free(outCArray);
+
 	return startPosArray;
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumStartPos
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumStartPos
+  (JNIEnv *env, jobject thisObj, jlong handle)
+{
+	return getNumStartPos(handle);
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    addStartPos
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_addStartPos
+  (JNIEnv *env, jobject thisObj, jlong handle)
+{
+	addStartPos(handle);
 }
 
 /*

@@ -2,10 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
-android:background="@color/gray"
+android:background="@drawable/bg_sky_blue"
 android:padding="@dimen/store_padding"
 android:orientation="vertical" >
 
+    <TextView
+                        android:id="@+id/levels_title_text_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/level_screen_title"
+                        android:textColor="@color/store_iap_text_color"
+                        android:textSize="@dimen/levels_title_text_size"
+                        android:gravity="center"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                     <View
+                            android:layout_height="@dimen/store_padding"
+                            android:layout_width="wrap_content"
+                            />
        <ViewFlipper
             android:id="@+id/view_flipper_id"
             android:layout_width="fill_parent"

@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@color/main_background_color"
+    android:background="@drawable/bg_sky_blue"
     tools:context="com.ezeeideas.magicflood.MainActivity" >
 
 	<ImageView
@@ -27,100 +27,105 @@
 	    />
 
 	<RelativeLayout
-	    android:id="@+id/spinner_layout_id"
-	    android:layout_width="fill_parent"
-	    android:layout_height="0dip"
-	    android:layout_marginTop="@dimen/activity_vertical_margin"
-	    android:layout_weight="1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
 	    >
-		<RelativeLayout
-      	    android:layout_width="wrap_content"
-      	    android:layout_height="wrap_content"
-      	    android:layout_centerInParent="true"
-      	    android:background="@color/white"
-      	    android:padding="@dimen/main_screen_buttons_margin"
-      	    >
-		<ImageView
-		    android:id="@+id/star_button_id"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:src="@drawable/ic_button_star_normal"
-		    android:layout_alignParentLeft="true"
-		    android:layout_alignParentTop="true"
-		    android:layout_margin="@dimen/main_screen_buttons_margin"
-		    android:padding="0px"
-		    />
-		<ImageButton
-		    android:id="@+id/easy_level_button_id"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:src="@drawable/ic_button_level_easy"
-		    android:layout_toRightOf="@+id/star_button_id"
-		    android:layout_alignParentTop="true"
-		    android:layout_margin="@dimen/main_screen_buttons_margin"
-		    android:padding="0px"
-		    />
-		<ImageButton
-		    android:id="@+id/medium_level_button_id"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:src="@drawable/ic_button_level_medium"
-		    android:layout_alignParentLeft="true"
-		    android:layout_below="@+id/star_button_id"
-		    android:layout_margin="@dimen/main_screen_buttons_margin"
-		    android:padding="0px"
-		    />
-		<ImageButton
-		    android:id="@+id/hard_level_button_id"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:src="@drawable/ic_button_level_hard"
-		    android:layout_toRightOf="@+id/medium_level_button_id"
-		    android:layout_below="@+id/easy_level_button_id"
-		    android:layout_margin="@dimen/main_screen_buttons_margin"
-		    android:padding="0px"
-		    />
-		</RelativeLayout>
-	</RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/button_row_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        >
-
-     
-          <ImageButton
-        android:id="@+id/about_button_id"
-        android:src="@drawable/ic_button_information"
-        android:background="@color/transparent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-          
-          <View
-              android:layout_width="@dimen/activity_horizontal_margin"
-              android:layout_height="1dp"
-              />
-          
-             <ImageButton
-        android:id="@+id/help_button_id"
-        android:src="@drawable/ic_button_help"
-        android:background="@color/transparent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-             
-              <View
-              android:layout_width="@dimen/activity_horizontal_margin"
-              android:layout_height="1dp"
-              />
-              
-               <ImageButton
-        android:id="@+id/store_button_id"
-        android:src="@drawable/ic_button_store"
-        android:background="@color/transparent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-                
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_centerVertical="true"
+	    >
+	<LinearLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:layout_centerHorizontal="true"
+	    >
+	    
+	<LinearLayout
+	    android:id="@+id/play_game_button_id"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="@drawable/bg_button_general"
+	    android:layout_margin="@dimen/activity_vertical_padding"
+	    android:padding="@dimen/activity_horizontal_padding"
+	    >
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_play"
+	        android:layout_margin="@dimen/activity_vertical_padding"
+	        />
+	    <TextView
+	        android:id="@+id/play_game_text_id"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:text="@string/play_game_text"
+	        android:textColor="@color/button_text_color"
+	        android:textSize="@dimen/main_screen_buttons_text_size"
+	        android:gravity="center"
+	        />
+	    
 	</LinearLayout>
+	
+
+		<LinearLayout
+		    android:id="@+id/how_to_play_game_button_id"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="@drawable/bg_button_general"
+	    android:layout_margin="@dimen/activity_vertical_padding"
+	    android:padding="@dimen/activity_horizontal_padding"
+	    >
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_how_to_play"
+	        android:layout_margin="@dimen/activity_vertical_padding"
+	        />
+	    <TextView
+	        android:id="@+id/how_to_play_game_text_id"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:text="@string/how_to_play_game_text"
+	        android:textColor="@color/button_text_color"
+	        android:textSize="@dimen/main_screen_buttons_text_size"
+	        android:gravity="center"
+	        />
+	</LinearLayout>
+	
+			<LinearLayout
+			    android:id="@+id/about_game_button_id"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="@drawable/bg_button_general"
+	    android:layout_margin="@dimen/activity_vertical_padding"
+	    android:padding="@dimen/activity_horizontal_padding"
+	    >
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_about"
+	        android:layout_margin="@dimen/activity_vertical_padding"
+	        />
+	    <TextView
+	        android:id="@+id/about_game_text_id"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:text="@string/about_game_text"
+	        android:textColor="@color/button_text_color"
+	        android:textSize="@dimen/main_screen_buttons_text_size"
+	        android:gravity="center"
+	        />
+	</LinearLayout>
+	</LinearLayout>
+	</RelativeLayout>
+	</RelativeLayout>
+	
 </LinearLayout>

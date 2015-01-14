@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_padding"
     android:paddingRight="@dimen/activity_horizontal_padding"
     android:paddingTop="@dimen/activity_vertical_padding"
-    android:background="@color/game_background_color"
+    android:background="@drawable/bg_sky_blue"
     tools:context="com.ezeeideas.magicflood.MFGameActivity" >
 
     <!-- Top Bar containing the Moves label and the Exit button -->
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:textSize="20sp"
+        android:textSize="@dimen/game_level_text_size"
         android:textStyle="bold"
         android:textColor="@color/game_moves_label_text_color"
         android:text="@string/moves_game_view" />
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/coins_image_id"
         android:layout_centerVertical="true"
-        android:textSize="20sp"
+        android:textSize="@dimen/game_coins_text_size"
         android:textStyle="bold"
         android:textColor="@color/game_moves_label_text_color"
         android:paddingLeft="@dimen/activity_horizontal_padding" />
@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:textSize="20sp"
+        android:textSize="@dimen/game_moves_text_size"
         android:textStyle="bold"
         android:textColor="@color/game_moves_label_text_color"
         android:paddingLeft="@dimen/activity_horizontal_padding"

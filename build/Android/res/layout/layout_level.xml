@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_weight="1"
-    android:background="@drawable/background_iap_not_provisioned" 
+    android:background="@drawable/bg_button_general" 
     android:padding="@dimen/activity_vertical_padding"
     >
 
@@ -58,16 +58,10 @@
 		    android:layout_height="wrap_content"
 		    android:gravity="center"
 		    android:textColor="@color/store_iap_text_color"
-		    android:textSize="@dimen/store_iap_text_size"
+		    android:textSize="@dimen/level_name_text_size"
 		    />
 		</LinearLayout>
 		
-	   	<View
-   	    android:id="@+id/rule2"
-   	    android:layout_width="fill_parent"
-   	    android:layout_height="1dip"
-   	    android:layout_gravity="bottom"
-   	    android:background="@color/white" />
 	   	
 		
 

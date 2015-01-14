@@ -91,6 +91,22 @@ JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getStar
 
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumStartPos
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumStartPos
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    addStartPos
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_addStartPos
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    getMaxMoves
  * Signature: (J)I
  */

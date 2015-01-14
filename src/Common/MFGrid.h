@@ -18,7 +18,8 @@ private:
     int **mMeasureGrid; //not the real grid for lay, but just used for measurement of moves, etc.
     int gridSize;
     int level;
-    int *startPos;
+    int **startPos;
+    int numStartPos;
     int maxMoves;
     int currMove;
     
@@ -38,12 +39,21 @@ private:
     int checkNeighborDensityForColor(int oldColor, int newColor, int x, int y, int *grid[], bool *alreadCheckedFlags[]);
     int findMostDenseColor(int *grid[]);
     int updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[], bool *alreadyCheckedFlags[]);
-    
+    int getQuadrant(int x, int y);
+    void placeStarInQuadrant(int q);
+    void placeStarInGrid();
+    void placeStarInRect(int xmin, int xmax, int ymin, int ymax);
+    bool quadrantContainsStar(int q, int x, int y);
+    int getFartherQuadrant(int q);
+    void shuffleArray(int array[], int size);
+    bool notTooNearAnotherStar(int x, int y);
 public:
     MFGrid (int level);
     int getGridSize();
     int ** getFullGrid();
-    int * getStartPos();
+    int ** getStartPos();
+    int getNumStartPos();
+    void addStartPos();
     int getMaxMoves();
     void setMaxMoves(int maxMoves);
     int getCurrMoves();

@@ -19,6 +19,8 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -302,7 +304,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		int[] gridDataOneD = getGridData(gridHandle);
 		int gridSize = getGridSize(gridHandle);
-		int[] startPos = getStartPos(gridHandle);
+		
 		int maxMoves = getMaxMoves(gridHandle);
 		int currMove = getCurrMove(gridHandle);
 		
@@ -315,8 +317,18 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			gridData[x][y] = gridDataOneD[i];
 		}
 		
+		//convert the one-dimensional array of start positions to 2D array for use in the game view
+		int[] startPos = getStartPos(gridHandle);
+		int numStartPos = getNumStartPos(gridHandle);
+		int startPosArray[][] = new int[numStartPos][2];
+		for (int i = 0; i < numStartPos; i++)
+		{
+			startPosArray[i][0] = startPos[2 * i];
+			startPosArray[i][1] = startPos[2 * i + 1];
+		}
+		
 		//initialize the game view with all the data for it to render the game board
-		mGameView.initializeGameData(gridData, gridSize, startPos, maxMoves);
+		mGameView.initializeGameData(gridData, gridSize, startPosArray, numStartPos, maxMoves);
 		mGameView.invalidate();
 		
 		refreshMovesUI(currMove, maxMoves);
@@ -486,6 +498,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			dialog.show();
 			
 			playSound(MFGameConstants.RESULT_FAILED);
+			
+			/** Update Points and Coins Earned **/
+			updateCoinsEarned(mTotalCoinsEarned + result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE);
 		}
 		else if (result[0] == MFGameConstants.RESULT_SUCCESS) //game successful completed
 		{	
@@ -513,22 +528,77 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
-			/** Update Coins Earned **/			
-			mTotalCoinsEarned += MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES;
-			String coinsText = String.format(getResources().getString(R.string.coins_earned_text), mTotalCoinsEarned);
-			mCoinsEarnedLabel.setText(coinsText);
+			/** Update Coins Earned **/	
+			updateCoinsEarned(mTotalCoinsEarned +  result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE + MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES);
 		}
 		else
 		{
 			playSound(MFGameConstants.RESULT_CONTINUE);
 			
 			/** Update Points and Coins Earned **/
-			mTotalCoinsEarned += result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE;
-			String coinsText = String.format(getResources().getString(R.string.coins_earned_text), mTotalCoinsEarned);
-			mCoinsEarnedLabel.setText(coinsText);			
+			updateCoinsEarned(mTotalCoinsEarned + result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE)	;		
 		}
 	}
 
+	private void updateCoinsEarned(int newValue)
+	{
+		CoinsUpdateHandler handler = new CoinsUpdateHandler(mCoinsEarnedLabel);
+		Thread background = new Thread(new CoinsUpdaterRunnable(mTotalCoinsEarned, newValue, handler));
+        background.start();
+        
+        mTotalCoinsEarned = newValue;
+	}
+	
+	class CoinsUpdateHandler extends Handler
+	{
+		private static final String KEY = "i";
+		private TextView mTextView;
+		public CoinsUpdateHandler(TextView textView)
+		{
+			mTextView = textView;
+		}
+		public void handleMessage(Message msg) 
+		{
+            try {
+                int i= msg.getData().getInt(KEY);
+                
+                String coinsText = String.format(getResources().getString(R.string.coins_earned_text), i);
+                mTextView.setText(coinsText);
+
+            } catch (Exception err) {
+            }
+        }
+	}
+	class CoinsUpdaterRunnable implements Runnable
+	{
+		private static final int FRAME_TIME_MS = 100;
+	    private static final String KEY = "i";
+		private int mFromValue, mToValue;
+		private Handler mHandler;
+		public CoinsUpdaterRunnable(int fromValue, int toValue, Handler handler)
+		{
+			mFromValue = fromValue;
+			mToValue = toValue;
+			mHandler = handler;
+		}
+		
+		public void run() 
+		{
+            try {
+                for (int i = mFromValue; i <= mToValue; i++) {
+                    Thread.sleep(FRAME_TIME_MS);
+                    Bundle data= new Bundle();
+                    data.putInt(KEY, i);
+                    Message message = mHandler.obtainMessage();
+                    message.setData(data);
+                    mHandler.sendMessage(message);
+                }
+            }
+            catch (Throwable t) {
+            }
+        }
+	}
+	
 	@Override
 	public void onDialogOptionSelected(Dialog dialog, int option) 
 	{
@@ -680,6 +750,46 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				}
 			}
 		}
+		else if (dialog.getClass() == AddStarDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
+			{
+				Log.d("garuav", "AddStarDialog result, mTotalCoinsEarned = " + mTotalCoinsEarned);
+				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_A_STAR)
+				{
+					//go ahead and add star, and adjust coins
+					addStartPos(gridHandle);
+					mTotalCoinsEarned -= MFGameConstants.COINS_TO_ADD_A_STAR;
+					
+					String addCoinsText = String.format(getResources().getString(R.string.coins_earned_text), mTotalCoinsEarned);
+					mCoinsEarnedLabel.setText(addCoinsText);
+					
+					//update the game view
+					int[] startPos = getStartPos(gridHandle);
+					int numStartPos = getNumStartPos(gridHandle);
+					int startPosArray[][] = new int[numStartPos][2];
+					for (int i = 0; i < numStartPos; i++)
+					{
+						startPosArray[i][0] = startPos[2 * i];
+						startPosArray[i][1] = startPos[2 * i + 1];
+					}
+					mGameView.updateStartPos(startPosArray, numStartPos);
+					mGameView.invalidate();
+				}
+				else
+				{
+					//alert hte user tht he must buy coins
+					//redeem the coins, show a dialog
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this);
+					addCoinsDialog.setCanceledOnTouchOutside(false);
+					addCoinsDialog.show();
+				}
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
+			{
+				dialog.dismiss(); //resume current game
+			}
+		}
 	}
 	
 	@Override
@@ -828,6 +938,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private native void deleteGrid(long handle);
 	private native int getGridSize(long handle);
 	private native int[] getStartPos(long handle);
+	private native int getNumStartPos(long handle);
+	private native void addStartPos(long handle);
 	private native int getMaxMoves(long handle);
 	private native void setMaxMoves(long handle, int maxMoves);
 	private native int getCurrMove(long handle);

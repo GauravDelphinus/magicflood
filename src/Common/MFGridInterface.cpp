@@ -69,15 +69,20 @@ int getGridSize(long handle)
  Return the start position for this game.
  NOTE: The returned array must be freed by the caller by calling freeStartPos API.
  */
-int* getStartPos(long handle)
+int** getStartPos(long handle)
 {
     MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
     if (grid != NULL)
     {
-        int *internalStartPos = grid->getStartPos();
-        int *startPos = (int *) malloc (2 * sizeof(int));
-        startPos[0] = internalStartPos[0];
-        startPos[1] = internalStartPos[1];
+        int **internalStartPos = grid->getStartPos();
+        int numStartPos = grid->getNumStartPos();
+        int **startPos = (int **) malloc (numStartPos * sizeof(int*));
+        for (int i = 0; i < numStartPos; i++)
+        {
+            startPos[i] = (int *) malloc (2 * sizeof(int));
+            startPos[i][0] = internalStartPos[i][0];
+            startPos[i][1] = internalStartPos[i][1];
+        }
         
         return startPos;
     }
@@ -89,7 +94,7 @@ int* getStartPos(long handle)
  Free the memory in startPos that was allocated by a previous
  getStartPos API.
  **/
-void freeStartPos(long handle, int *startPos)
+void freeStartPos(long handle, int **startPos)
 {
     fprintf(stderr, "freeStartPos called with handle = %lx, startPos = %p\n", handle, startPos);
     MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
@@ -97,8 +102,39 @@ void freeStartPos(long handle, int *startPos)
     {
         if (startPos != NULL)
         {
+            int numStartPos = grid->getNumStartPos();
+            for (int i = 0; i < numStartPos; i++)
+            {
+                free(startPos[i]);
+            }
             free(startPos);
         }
+    }
+}
+    
+/**
+ Return the number of Start Positions in the game.
+ **/
+int getNumStartPos(long handle)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid *>(handle);
+    if (grid != NULL)
+    {
+        return grid->getNumStartPos();
+    }
+    
+    return 0;
+}
+    
+/**
+ Add a start position (STAR) at a new location.
+ **/
+void addStartPos(long handle)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid *>(handle);
+    if (grid != NULL)
+    {
+        return grid->addStartPos();
     }
 }
 

@@ -31,8 +31,9 @@
    <color name="transparent">#00000000</color>
    
    <!-- Main Screen -->
-   <color name="main_background_color">#FF696969</color>
+   <color name="button_background_color">#99000000</color>
    <color name="by_company_text_color">#FFFFFFFF</color>
+   <color name="button_text_color">#FFFFFFFF</color>
    
    <!-- About Screen -->
    <color name="about_screen_background_color">#FF696969</color>
@@ -59,4 +60,5 @@
    <color name="dialog_menu_button_background_color">#FF3366FF</color>
    <color name="dialog_new_game_button_background_color">#FFA30000</color>
    <color name="dialog_store_button_background_color">#FFFFCC00</color>
+   
 </resources>

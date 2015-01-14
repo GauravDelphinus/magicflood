@@ -20,12 +20,13 @@ public class MFGameView extends View
 {
 	int[][] mGrid;
 	int mGridSize;
-	int[] mStartPos;
+	int[][] mStartPos;
+	int mNumStartPos;
 	int mMaxMoves;
 	private Timer mAnimationTimer = null;
 	private TimerTask mAnimationTimerTask = null;
 	private int mCurrentAngleOfStartPosition = 0;
-	private static final int ROTATION_STEP_DEGREES = 10;
+	private static final int ROTATION_STEP_DEGREES = 5;
 	private static final int ROTATION_SPEED_INTERVAL = 100; //milliseconds
 	
 	public MFGameView(Context context, AttributeSet attrs) 
@@ -65,7 +66,6 @@ public class MFGameView extends View
 
 	protected void onDraw(Canvas canvas)
 	{
-		Log.d("magicfloord", "MFGameView.onDraw called");
 		int horizontalGap = 0;
 		
 		int screenWidth = this.getWidth();
@@ -115,14 +115,17 @@ public class MFGameView extends View
 		}
 		
 		//Start Position
-		drawStar(canvas, cellSize, hOffset, vOffset);
+		for (int i = 0; i < mNumStartPos; i++)
+		{
+			drawStar(canvas, cellSize, hOffset, vOffset, mStartPos[i][0], mStartPos[i][1]);
+		}
 		
 	}
 
-	private void drawStar(Canvas canvas, int cellSize, int hOffset, int vOffset)
+	private void drawStar(Canvas canvas, int cellSize, int hOffset, int vOffset, int x, int y)
 	{
-		int left = hOffset + mStartPos[1] * cellSize;
-		int top = vOffset + mStartPos[0] * cellSize;
+		int left = hOffset + y * cellSize;
+		int top = vOffset + x * cellSize;
 		
 		int d = cellSize; //diameter
 		int r = d/2; //radius of star spikes
@@ -159,8 +162,7 @@ public class MFGameView extends View
 		//canvas.drawPoint(left + r, top + r, mTestPaint);
 		
 		mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
-		canvas.rotate(mCurrentAngleOfStartPosition % 360, left + r, top + r);
-		//canvas.drawRect(l, t, r, b, startPaint);
+		//canvas.rotate(mCurrentAngleOfStartPosition % 360, left + r, top + r);
 		Path starPath = new Path();
 		starPath.reset();
 		starPath.moveTo(x1, y1);
@@ -182,12 +184,16 @@ public class MFGameView extends View
 		//finally, draw the star!
 		canvas.drawPath(starPath, mStartPaint);
 		canvas.drawPath(starPath, mStartStrokePaint);
-		canvas.restore();
+		//canvas.restore();
 	}
 	
-	public void initializeGameData(int [][]grid, int size, int[] startPos, int maxMoves)
+	public void initializeGameData(int [][]grid, int size, int[][] startPos, int numStartPos, int maxMoves)
 	{
-		Log.d("magicflood", "initializeGameData");
+		Log.d("gaurav", "initializeGameData, size =" + size + ", numStartPos = " + numStartPos);
+		for (int i = 0; i < numStartPos; i++)
+		{
+			Log.d("gaurav", "startPos index = " + i + ", x = " + startPos[i][0] + ", y = " + startPos[i][1]);
+		}
 		mGrid = new int[size][size];
 		for (int i = 0; i < size; i++)
 		{
@@ -198,9 +204,13 @@ public class MFGameView extends View
 		}
 		mGridSize = size;
 		
-		mStartPos = new int[2];
-		mStartPos[0] = startPos[0];
-		mStartPos[1] = startPos[1];
+		mStartPos = new int[numStartPos][2];
+		for (int i = 0; i < numStartPos; i++)
+		{
+			mStartPos[i][0] = startPos[i][0];
+			mStartPos[i][1] = startPos[i][1];
+		}
+		mNumStartPos = numStartPos;
 		
 		mMaxMoves = maxMoves;
 	}
@@ -215,6 +225,17 @@ public class MFGameView extends View
 			}
 		}
 
+	}
+	
+	public void updateStartPos(int [][]startPos, int numStartPos)
+	{
+		mStartPos = new int[numStartPos][2];
+		for (int i = 0; i < numStartPos; i++)
+		{
+			mStartPos[i][0] = startPos[i][0];
+			mStartPos[i][1] = startPos[i][1];
+		}
+		mNumStartPos = numStartPos;
 	}
 	
 	public static int randInt(int min, int max) {

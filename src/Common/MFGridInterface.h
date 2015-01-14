@@ -14,8 +14,10 @@ int getNumLevels();
 long createNewGrid(int level);
 void deleteGrid(long handle);
 int getGridSize(long handle);
-int* getStartPos(long handle);
-void freeStartPos(long handle, int *startPos);
+    int getNumStartPos(long handle);
+int** getStartPos(long handle);
+void freeStartPos(long handle, int **startPos);
+    void addStartPos(long handle); 
 int getMaxMoves(long handle);
     void setMaxMoves(long handle, int maxMoves);
 int getCurrMove(long handle);
@@ -23,7 +25,6 @@ int* playMove(long handle, int color);
 void freePlayMove(long handle, int *result);
 int** getGridData(long handle);
 void freeGridData(long handle, int **gridData);
-
 }
 
 /**
@@ -45,7 +46,7 @@ void freeGridData(long handle, int **gridData);
  Note that 0 indicates color cannot be filled in that cell.
  Please add colors in increasing order, and update the NUM_COLORS macro.
  **/
-#define GRID_OBSTACLE -1
+#define GRID_OBSTACLE 0
 
 #define GRID_COLOR_RED 1
 #define GRID_COLOR_GREEN 2

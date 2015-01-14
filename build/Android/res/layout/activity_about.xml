@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/big_gap"
     android:orientation="vertical"
-    android:background="@color/about_screen_background_color"
+	android:background="@drawable/bg_sky_blue"
     tools:context="com.ezeeideas.magicflood.MainActivity" >
 
 	<ImageView

@@ -1,6 +1,7 @@
 package com.ezeeideas.magicflood;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,12 +12,14 @@ public class MFLevelLayout extends LinearLayout
 	public MFLevelLayout(Context context) 
 	{
 		super(context);
+		mContext = context;
 		// TODO Auto-generated constructor stub
 	}
 	
 	public MFLevelLayout(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
+		mContext = context;
 	}
 	
 	public void setProperties(int level, boolean isLocked)
@@ -24,19 +27,19 @@ public class MFLevelLayout extends LinearLayout
 		mLevel = level;
 		
 		TextView tvDetail = (TextView) findViewById(R.id.textview_level_name_id);
-		tvDetail.setText("Level " + level);
+		tvDetail.setText(Integer.toString(level));
+		Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", mContext);
+    	tvDetail.setTypeface(face);
 		
 		ImageView imageView = (ImageView) findViewById(R.id.image_level_status_id);
 		
 		if (!isLocked) //set free text if the product is free
 		{
 			imageView.setBackgroundResource(R.drawable.ic_iap_tick);
-			setBackgroundResource(R.drawable.background_iap_provisioned);			
 		}
 		else
 		{	
 			imageView.setBackgroundResource(R.drawable.ic_iap_lock);
-			setBackgroundResource(R.drawable.background_iap_not_provisioned);			
 		}
 	}
 	
@@ -46,12 +49,10 @@ public class MFLevelLayout extends LinearLayout
 		if (!isLocked)
 		{	
 			imageView.setBackgroundResource(R.drawable.ic_iap_tick);
-			setBackgroundResource(R.drawable.background_iap_provisioned);
 		}
 		else
 		{
 			imageView.setBackgroundResource(R.drawable.ic_iap_lock);
-			setBackgroundResource(R.drawable.background_iap_not_provisioned);
 		}
 	}
 	
@@ -61,4 +62,5 @@ public class MFLevelLayout extends LinearLayout
 	}
 	
 	private int mLevel;
+	private Context mContext;
 }

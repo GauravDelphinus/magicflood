@@ -6,12 +6,15 @@ import java.util.Vector;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ezeeideas.magicflood.GameDialog.GameDialogListener;
 
@@ -27,32 +30,25 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        ImageButton storeButton = (ImageButton)findViewById(R.id.store_button_id);
-        storeButton.setOnClickListener(this);
+        mPlayButton = (View)findViewById(R.id.play_game_button_id);
+        mPlayButton.setOnClickListener(this);
         
-        ImageButton infoButton = (ImageButton) findViewById(R.id.about_button_id);
-        infoButton.setOnClickListener(this);
+        mHowToPlayButton = (View)findViewById(R.id.how_to_play_game_button_id);
+        mHowToPlayButton.setOnClickListener(this);
         
-        ImageButton helpButton = (ImageButton) findViewById(R.id.help_button_id);
-        helpButton.setOnClickListener(this);
+        mAboutButton = (View)findViewById(R.id.about_game_button_id);
+        mAboutButton.setOnClickListener(this);
         
-        /*
-        mGameLevelPieButton = (PieButton) findViewById(R.id.game_level_spinner_button_id);
-        Vector<Integer> buttonPressedResources = new Vector<Integer>();
-        buttonPressedResources.add(R.drawable.pie_button_level_selection_easy);
-        buttonPressedResources.add(R.drawable.pie_button_level_selection_medium);
-        buttonPressedResources.add(R.drawable.pie_button_level_selection_hard);
-        mGameLevelPieButton.setAttributes(30, R.drawable.pie_button_level_selection_normal, buttonPressedResources);
-        */
+        //set the typeface
+        Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", this);
+        TextView playGameTV = (TextView) findViewById(R.id.play_game_text_id);
+        playGameTV.setTypeface(face);
         
-        mEasyLevelButton = (ImageButton) findViewById(R.id.easy_level_button_id);
-        mEasyLevelButton.setOnClickListener(this);
+        TextView howToPlayGameTV = (TextView) findViewById(R.id.how_to_play_game_text_id);
+        howToPlayGameTV.setTypeface(face);
         
-        mMediumLevelButton = (ImageButton) findViewById(R.id.medium_level_button_id);
-        mMediumLevelButton.setOnClickListener(this);
-        
-        mHardLevelButton = (ImageButton) findViewById(R.id.hard_level_button_id);
-        mHardLevelButton.setOnClickListener(this);
+        TextView aboutGameTV = (TextView) findViewById(R.id.about_game_text_id);
+        aboutGameTV.setTypeface(face);
         
         //set the package name
         MFGameConstants.PACKAGE_NAME = getPackageName();
@@ -103,84 +99,25 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
 		Intent i;
 		switch (arg0.getId())
 		{
-		case R.id.about_button_id:
+		case R.id.about_game_button_id:
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ABOUT_BUTTON);
 			
 			i = new Intent(this, MFAboutActivity.class);
 			startActivity(i);
 			break;
-		case R.id.help_button_id:
+		case R.id.how_to_play_game_button_id:
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_HELP_BUTTON);
 			
 			i = new Intent(this, MFHelpActivity.class);
 			startActivity(i);
 			break;
-		case R.id.easy_level_button_id:			
+		case R.id.play_game_button_id:			
 			i = new Intent(this, MFLevelsActivity.class);
 			i.putExtra(MFGameConstants.NUM_LEVELS_KEY, getNumLevels());
 			startActivity(i);
 			break;
-		case R.id.medium_level_button_id:
-			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MEDIUM_BUTTON);
-			
-			i = new Intent(this, MFGameActivity.class); 	
-			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_MEDIUM);
-			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
-			startActivity(i);
-			break;
-		case R.id.hard_level_button_id:
-			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_HARD_BUTTON);
-			
-			i = new Intent(this, MFGameActivity.class); 	
-			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
-			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, mIAPManager.isSynchronized());
-			startActivity(i);
-			break;
 		}
 	}
-	
-	/*
-	@Override
-	public void onPieButtonSelected(PieButton button, int index) 
-	{
-		//if the user has never purchased anything, we should try to prompt him to check out the store
-		//once in a while
-		boolean promptUserToStore = false;
-		if (mIAPManager.isSynchronized())
-		{
-			promptUserToStore = true;
-		}
-		
-		Intent i;
-		switch (index)
-		{
-		case 0:
-			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_EASY_BUTTON);
-			
-			i = new Intent(this, MFGameActivity.class); 	
-			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_EASY);
-			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
-			startActivity(i);
-			break;
-		case 1:
-			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MEDIUM_BUTTON);
-			
-			i = new Intent(this, MFGameActivity.class); 	
-			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_MEDIUM);
-			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
-			startActivity(i);
-			break;
-		case 2:
-			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_HARD_BUTTON);
-			
-			i = new Intent(this, MFGameActivity.class); 	
-			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, MFGameConstants.GAME_LEVEL_HARD);
-			i.putExtra(MFGameConstants.PROMPT_USER_TO_STORE, promptUserToStore);
-			startActivity(i);
-			break;
-		}
-	}
-	*/
 	
 	@Override
 	public void onDialogOptionSelected(Dialog dialog, int option) 
@@ -196,7 +133,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
 	
 	private MFInAppPurchaseManager mIAPManager;
 	//private PieButton mGameLevelPieButton;
-	private ImageButton mEasyLevelButton, mMediumLevelButton, mHardLevelButton;
+	private View mPlayButton, mHowToPlayButton, mAboutButton;
 	
 	private native int getNumLevels();
 	

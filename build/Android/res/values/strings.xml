@@ -16,6 +16,10 @@
     <string name="free_product_detail_string">Super Hurdle</string>
     <string name="free_product_price_string">$0</string>
 
+    <!-- Main Screen -->
+    <string name="play_game_text">Play Game</string>
+    <string name="how_to_play_game_text">How to Play</string>
+    <string name="about_game_text">About</string>
     <!-- Store -->
     <string name="store_screen1_title">A-la-carte Items</string>
     <string name="store_screen2_title">A-la-carte Items</string>

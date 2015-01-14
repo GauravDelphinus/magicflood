@@ -3,6 +3,7 @@ package com.ezeeideas.magicflood;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,10 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 	        
 	        flipper.addView(inflatedLayout);
     	}
+    	
+    	TextView titleTV = (TextView) findViewById(R.id.levels_title_text_id);
+    	Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", this);
+    	titleTV.setTypeface(face);
 	}
 	
 	private void refreshViews()

@@ -19,8 +19,12 @@ int main(int argc, char *argv[])
 
 	char dummygrid[150];
 	int strIndex = 0;
-	int xpos = -1;
-	int ypos = -1;
+	int startposCount = 0;
+	int a = 0;
+	//Assuming there will be maximum 10 start points in a game
+	int startposArr[20] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+	//int xpos = -1;
+	//int ypos = -1;
 	for (int j = 0; j < i; j++)
 	{
 		int length = strlen(str[j]);
@@ -43,8 +47,11 @@ int main(int argc, char *argv[])
 				//insert $
 				int num = (rand() % 6 ) + 1;
 				dummygrid[strIndex++] = num + '0';
-				xpos = j;
-				ypos = k;
+				startposArr[a++] = j;
+				startposArr[a++] = k;
+				startposCount++; 
+				//xpos = j;
+				//ypos = k;
 			}
 	
 		}
@@ -52,14 +59,22 @@ int main(int argc, char *argv[])
 	dummygrid[strIndex] = '\0';
 	
 	char output [10000];
-	sprintf(output, "\"%d#%d#%d#%s\"", xpos, ypos, i-1, dummygrid);
-	if (xpos == -1 || ypos == -1)
+	sprintf(output, "\"%d#", startposCount);
+	printf("%s", output);
+	for (int i = 0; i < a; i++)
 	{
-		printf("\n error in string");
+		sprintf(output, "%d#", startposArr[i]);
+		printf("%s", output);
 	}
-	else
-	{
-		printf("%s,\n", output);
-	}
+	sprintf(output, "%d#%s\"", i-1, dummygrid);
+	printf("%s,\n", output);
+	//if (xpos == -1 || ypos == -1)
+	//{
+	//	printf("\n error in string");
+	//}
+	//else
+	//{
+	//	printf("%s,\n", output);
+	//}
 	return 0;
 }
