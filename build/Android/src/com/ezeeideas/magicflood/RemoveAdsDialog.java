@@ -17,8 +17,15 @@ public class RemoveAdsDialog extends GameDialogType3
 		
 		postSetupViews();
 
-		TextView tv = (TextView) findViewById(R.id.dialog_remove_ads_button_price_text_id);
+		TextView titleTV = (TextView) findViewById(R.id.dialog_remove_ads_title_text_id);
+		titleTV.setTypeface(MFUtils.getTextTypeface(context));
+		
+		TextView descriptionTV = (TextView) findViewById(R.id.dialog_remove_ads_description_text_id);
+		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
+		
+		TextView tv = (TextView) findViewById(R.id.remove_ads_price_text_id);
 		tv.setText(price);
+		tv.setTypeface(MFUtils.getTextTypeface(context));
 	}
 
 	protected void setupViews() 

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/game_dialog_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/dialog_background" >
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+        <TextView
+            android:id="@+id/dialog_game_failed_title_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_game_failed_title_text"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center"
+            android:textSize="@dimen/dialog_title_text_size" />
+	<ImageButton
+	    	    android:id="@+id/cancel_button"
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:src="@drawable/ic_button_cancel"
+	    	    android:background="@color/transparent"
+	    	    android:layout_alignParentRight="true"
+	    	    />
+	</RelativeLayout>
+        <View
+            android:layout_height="10sp"
+            android:layout_width="fill_parent"
+            />
+        
+        <TextView
+            android:id="@+id/dialog_game_failed_description_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center"
+            android:text="@string/dialog_game_failed_description_text"
+            android:textSize="@dimen/dialog_description_text_size" />
+        
+              
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10sp" />
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
+            
+            <LinearLayout
+	    android:id="@+id/play_on_button"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="@drawable/bg_button_dialog"
+	    android:layout_margin="@dimen/activity_vertical_padding"
+	    android:padding="@dimen/activity_horizontal_padding"
+	    >
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_play_on"
+	        android:layout_margin="@dimen/activity_vertical_padding"
+	        />
+	    <TextView
+	        android:id="@+id/dialog_play_on_button_text_id"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:text="@string/dialog_play_on_button_text"
+	        android:textColor="@color/button_text_color"
+	        android:textSize="@dimen/dialog_button_text_size"
+	        android:gravity="center"
+	        />
+	    
+	</LinearLayout>
+	
+            <LinearLayout
+	    android:id="@+id/end_game_button"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="@drawable/bg_button_dialog"
+	    android:layout_margin="@dimen/activity_vertical_padding"
+	    android:padding="@dimen/activity_horizontal_padding"
+	    >
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_end_game"
+	        android:layout_margin="@dimen/activity_vertical_padding"
+	        />
+	    <TextView
+	        android:id="@+id/dialog_end_game_button_text_id"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:text="@string/dialog_end_game_button_text"
+	        android:textColor="@color/button_text_color"
+	        android:textSize="@dimen/dialog_button_text_size"
+	        android:gravity="center"
+	        />
+	    
+	</LinearLayout>
+        
+        
+        
+
+         
+                
+                </LinearLayout>
+                </RelativeLayout>
+            
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10sp" />
+        
+
+</LinearLayout>
+
+
+
+
+    

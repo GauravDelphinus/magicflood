@@ -1,6 +1,7 @@
 package com.ezeeideas.magicflood;
 
 import android.content.Context;
+import android.widget.TextView;
 
 public class StoreNotConnectedDialog extends GameDialogType1 {
 
@@ -11,6 +12,12 @@ public class StoreNotConnectedDialog extends GameDialogType1 {
 		setupViews();
 		
 		postSetupViews();
+		
+		TextView titleTV = (TextView) findViewById(R.id.dialog_store_not_connected_title_text_id);
+		titleTV.setTypeface(MFUtils.getTextTypeface(context));
+		
+		TextView descriptionTV = (TextView) findViewById(R.id.dialog_store_not_connected_description_text_id);
+		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
 	}
 
 	protected void setupViews() 

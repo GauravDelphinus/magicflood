@@ -169,7 +169,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		boolean showAds = true;
 		
 		mAdView = (AdView) findViewById(R.id.banner_ad_id);
-		mRemoveAdsButton = (Button) findViewById(R.id.remove_ads_button_id);
+		mRemoveAdsButton = (ImageButton) findViewById(R.id.remove_ads_button_id);
 		
 		SharedPreferences settings;
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
@@ -954,7 +954,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private ImageButton mCyanButton;
 	
 	private ImageButton mAddCoinsButton, mAddMovesButton, mAddStarsButton;
-	private Button mRemoveAdsButton;
+	private ImageButton mRemoveAdsButton;
 	private ImageView mMovesImage;
 	
 	private AlertDialog mExitAlertDialog, mSuccessAlertDialog, mFailedAlertDialog;

@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@color/dialog_background"
-    android:padding="10dp" >
+   >
 
 
 	<RelativeLayout 
@@ -13,6 +13,7 @@
 	    android:layout_height="wrap_content"
 	    >
 	    <TextView
+	        android:id="@+id/dialog_remove_ads_title_text_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
@@ -20,12 +21,12 @@
             android:layout_centerHorizontal="true"
             android:text="@string/dialog_remove_ads_title_text"
             android:textSize="@dimen/dialog_title_text_size" />
-	    
 	    	<ImageButton
 	    	    android:id="@+id/cancel_button"
 	    	    android:layout_width="wrap_content"
 	    	    android:layout_height="wrap_content"
-	    	    android:src="@drawable/ic_button_rate"
+	    	    android:src="@drawable/ic_button_cancel"
+	    	    android:background="@color/transparent"
 	    	    android:layout_alignParentRight="true"
 	    	    />
 	</RelativeLayout>
@@ -38,6 +39,7 @@
             />
         
         <TextView
+            android:id="@+id/dialog_remove_ads_description_text_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
@@ -52,41 +54,59 @@
         
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             >
-        <LinearLayout 
+	    	
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
+        
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10sp" />
+      
+        <LinearLayout
             android:id="@+id/remove_ads_button_id"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/background_iap_not_provisioned" 
+    android:orientation="horizontal"
+    android:background="@drawable/bg_button_dialog" 
     android:layout_margin="@dimen/activity_vertical_padding"
     android:padding="@dimen/activity_horizontal_padding"
-    android:layout_centerHorizontal="true"
     >
     
     
-       
-   <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/store_iap_text_color"
-                    android:textSize="@dimen/dialog_continue_text_size"
-                    android:text="@string/dialog_remove_ads_button_name_text"
-                    android:gravity="center"
-	                    />
+            
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_padding"
+                android:src="@drawable/ic_remove_ads_normal"
+                />
+            
+           
+
                 <TextView
-                    android:id="@+id/dialog_remove_ads_button_price_text_id"
+                    android:id="@+id/remove_ads_price_text_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/store_iap_text_color"
-                    android:textSize="@dimen/dialog_continue_text_size"
+                    android:textColor="@color/button_text_color"
+                    android:textSize="@dimen/dialog_button_text_size"
                     android:gravity="center"
+                    android:singleLine="true"
                     />
                 
   
 </LinearLayout>
-            </RelativeLayout>
+        </LinearLayout>
+        </RelativeLayout>
+        
+           
+       
+        
 
 </LinearLayout>
 

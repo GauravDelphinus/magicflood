@@ -140,15 +140,15 @@
 	    android:paddingLeft="@dimen/activity_horizontal_padding"
 	    android:paddingRight="@dimen/activity_horizontal_padding"
 	    />
-	<Button
+	<ImageButton
 	    android:id="@+id/remove_ads_button_id"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentRight="true"
-	    android:text="@string/remove_ads_text"
-	    android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/game_moves_label_text_color"
+	    android:src="@drawable/ic_button_remove_ads"
+	    android:background="@color/transparent"
+	    android:paddingLeft="@dimen/activity_horizontal_padding"
+	    android:paddingRight="@dimen/activity_horizontal_padding"
 	    />
 	</RelativeLayout>
 	<!-- The button bar that contains the color buttons -->
