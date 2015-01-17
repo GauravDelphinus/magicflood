@@ -48,10 +48,10 @@
     <!-- Dialogs -->
     <string name="dialog_game_menu_title_text">Options</string>
     <string name="dialog_game_menu_description_text">What would you like to do?</string>
-    <string name="dialog_menu_button_text">MAIN MENU</string>
-    <string name="new_game_button_text">NEW GAME</string>
-    <string name="replay_game_button_text">REPLAY LEVEL</string>
-    <string name="next_game_button_text">NEXT LEVEL</string>
+    <string name="dialog_menu_button_text">View Levels</string>
+    <string name="new_game_button_text">New Game</string>
+    <string name="replay_game_button_text">Replay Level</string>
+    <string name="next_game_button_text">Next Level</string>
     <string name="dialog_game_menu_footer_text">Tap anywhere else to resume the current game</string>
     <string name="dialog_game_failed_title_text">Oops!</string>
     <string name="dialog_game_failed_description_text">Sorry, you\'ve run out of moves!</string>
@@ -65,8 +65,8 @@
     <string name="dialog_store_not_connected_footer_text">Tap anywhere to dismiss this dialog</string>
     
     <!-- Game Failed Dialog -->
-    <string name="play_on_button_text">Play On</string>
-    <string name="end_game_button_text">End Game</string>
+    <string name="dialog_play_on_button_text">Play On</string>
+    <string name="dialog_end_game_button_text">End Game</string>
     
     <!-- Try Again Dialog -->
     <string name="dialog_try_again_title_text">Try Again</string>
@@ -111,7 +111,7 @@
     <!-- Add Coins Dialog -->
     <string name="dialog_add_coins_title_text">Add Coins</string>
     <string name="dialog_add_coins_description_text">Add coins to redeem against lifelines!</string>
-    <string name="add_coins_fixed_text">Coins</string>
+    <string name="coins_required_text">%1$d coins</string>
     
     <!-- Add Lifeline Dialog -->
     <string name="dialog_add_lifeline_moves_title_text">Add Moves</string>

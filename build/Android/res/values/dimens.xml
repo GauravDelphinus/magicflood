@@ -28,6 +28,7 @@
     <dimen name="dialog_description_text_size">20sp</dimen>
     <dimen name="ui_button_text_size">20sp</dimen>
     <dimen name="dialog_continue_text_size">20sp</dimen>
+    <dimen name="dialog_button_text_size">25sp</dimen>
     
     <!-- About Screen -->
     <dimen name="about_copyright_text_size">25sp</dimen>

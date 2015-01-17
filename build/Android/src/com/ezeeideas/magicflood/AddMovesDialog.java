@@ -18,13 +18,15 @@ public class AddMovesDialog extends GameDialogType3 {
 		layout.setProperties(MFGameConstants.COINS_TO_ADD_5_MOVES, R.drawable.ic_coins);
 
 		ImageView iv = (ImageView) findViewById(R.id.dialog_add_lifeline_main_image_id);
-		iv.setBackgroundResource(R.drawable.ic_iap_combo_1);
+		iv.setBackgroundResource(R.drawable.ic_add_moves);
 
 		TextView tvTitle = (TextView) findViewById(R.id.dialog_add_lifeline_title_text_id);
 		tvTitle.setText(context.getResources().getString(R.string.dialog_add_lifeline_moves_title_text));
+		tvTitle.setTypeface(MFUtils.getTextTypeface(context));
 
 		TextView tvDescription = (TextView) findViewById(R.id.dialog_add_lifeline_description_text_id);
 		tvDescription.setText(context.getResources().getString(R.string.dialog_add_lifeline_moves_description_text));
+		tvDescription.setTypeface(MFUtils.getTextTypeface(context));
 	}
 
 	protected void setupViews() 
@@ -49,8 +51,4 @@ public class AddMovesDialog extends GameDialogType3 {
 	{
 		mNegativeAction1View = findViewById(R.id.cancel_button);
 	}
-	
-	public static final int ADD_LIFELINE_TYPE_MOVES = 1;
-	public static final int ADD_LIFELINE_TYPE_STARS = 2;
-	
 }

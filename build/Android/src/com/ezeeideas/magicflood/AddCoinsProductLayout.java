@@ -11,25 +11,30 @@ public class AddCoinsProductLayout extends LinearLayout
 	public AddCoinsProductLayout(Context context) 
 	{
 		super(context);
-		// TODO Auto-generated constructor stub
+		mContext = context;
 	}
 	
 	public AddCoinsProductLayout(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
+		mContext = context;
 	}
 	
-	public void setProperties(int count, String price, float size, int imageId)
+	public void setProperties(int count, String price, int imageId)
 	{
 		//set the iap product image
 		ImageView productImage = (ImageView) findViewById(R.id.add_coins_product_image_id);
 		productImage.setBackgroundResource(imageId);
 		
 		TextView tvDetail = (TextView) findViewById(R.id.add_coins_product_count_text_id);
-		tvDetail.setText(Integer.toString(count));
-		tvDetail.setTextSize(size);
+		String coinsText = String.format(getResources().getString(R.string.coins_required_text), count);
+		tvDetail.setText(coinsText);
+		tvDetail.setTypeface(MFUtils.getTextTypeface(mContext));
 		
 		TextView tvPrice = (TextView) findViewById(R.id.add_coins_product_price_text_id);
 		tvPrice.setText(price);
+		tvPrice.setTypeface(MFUtils.getTextTypeface(mContext));
 	}
+	
+	private Context mContext;
 }

@@ -18,13 +18,15 @@ public class AddStarDialog extends GameDialogType3 {
 		layout.setProperties(MFGameConstants.COINS_TO_ADD_A_STAR, R.drawable.ic_coins);
 
 		ImageView iv = (ImageView) findViewById(R.id.dialog_add_lifeline_main_image_id);
-		iv.setBackgroundResource(R.drawable.ic_iap_combo_1);
+		iv.setBackgroundResource(R.drawable.ic_add_star);
 
 		TextView tvTitle = (TextView) findViewById(R.id.dialog_add_lifeline_title_text_id);
 		tvTitle.setText(context.getResources().getString(R.string.dialog_add_lifeline_stars_title_text));
+		tvTitle.setTypeface(MFUtils.getTextTypeface(context));
 
 		TextView tvDescription = (TextView) findViewById(R.id.dialog_add_lifeline_description_text_id);
 		tvDescription.setText(context.getResources().getString(R.string.dialog_add_lifeline_stars_description_text));
+		tvDescription.setTypeface(MFUtils.getTextTypeface(context));
 	}
 
 	protected void setupViews() 

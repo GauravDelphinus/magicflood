@@ -27,34 +27,6 @@ public abstract class GameDialogType4 extends GameDialog
 		setupNegativeAction1View();
 	}
 
-	protected boolean handleTouch(View v)
-	{	
-		boolean handled = false;
-		if (v == mPositiveAction1View)
-		{
-			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1);
-			this.dismiss();
-			handled = true;
-		}
-		else if (v == mPositiveAction2View)
-		{
-			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_2);
-			this.dismiss();
-			handled = true;
-		}
-		else if (v == mNegativeAction1View)
-		{
-			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_NEGATIVE_1);
-			this.dismiss();
-			handled = true;
-		}
-		else if (v == mRootView)
-		{
-			//Do Nothing
-		}
-		return handled;
-	}
-
 	protected void handleDismiss()
 	{
 		mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_NEGATIVE_1);

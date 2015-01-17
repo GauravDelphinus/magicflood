@@ -2,6 +2,8 @@ package com.ezeeideas.magicflood;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -10,7 +12,7 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
 
-public abstract class GameDialog extends Dialog implements OnDismissListener, OnTouchListener
+public abstract class GameDialog extends Dialog implements View.OnClickListener, DialogInterface.OnKeyListener
 {
 	public GameDialog(Context context)
 	{
@@ -49,15 +51,6 @@ public abstract class GameDialog extends Dialog implements OnDismissListener, On
 	protected abstract void setupRequiredViews();
 	
 	/**
-	 * Called when the user selected one of the views
-	 * on the dialog, such as mRootView, mPositiveAction1View,
-	 * mPositiveAction2View, mNegativeAction1View.
-	 * @param v The view that was tapped
-	 * return true if the view handled the touch, false otherwise
-	 */
-	protected abstract boolean handleTouch(View v);
-	
-	/**
 	 * Called when the dialog was dismissed by the user
 	 * by using the hardware back button.  Not called
 	 * if the dismissal was programmatically done after
@@ -70,58 +63,82 @@ public abstract class GameDialog extends Dialog implements OnDismissListener, On
 	 */
 	protected void setupListeners()
 	{
-		//Listen to dismiss events
-		this.setOnDismissListener(this);
-			
-		if (mRootView != null)
-		{
-			mRootView.setOnTouchListener(this);		
-		}
+		//set back key handler
+		this.setOnKeyListener(this);
 		
 		if (mPositiveAction1View != null)
 		{
-			mPositiveAction1View.setOnTouchListener(this);
+			mPositiveAction1View.setOnClickListener(this);
 		}
 		
 		if (mPositiveAction2View != null)
 		{
-			mPositiveAction2View.setOnTouchListener(this);
+			mPositiveAction2View.setOnClickListener(this);
 		}
 		
 		if (mPositiveAction3View != null)
 		{
-			mPositiveAction3View.setOnTouchListener(this);
+			mPositiveAction3View.setOnClickListener(this);
 		}
 		
 		if (mPositiveAction4View != null)
 		{
-			mPositiveAction4View.setOnTouchListener(this);
+			mPositiveAction4View.setOnClickListener(this);
 		}
 		
 		if (mNegativeAction1View != null)
 		{
-			mNegativeAction1View.setOnTouchListener(this);
+			mNegativeAction1View.setOnClickListener(this);
 		}
 	}
 	
-	public boolean onTouch(View v, MotionEvent event) 
+	@Override
+	public void onClick(View view)
 	{
-		if (!mHandled)
-		{			
-			mHandled = handleTouch(v);
+		Log.d("gaurav", "GameDialog.onClick");
+		if (view == mPositiveAction1View)
+		{
+			Log.d("gaurav", "positive action 1 case");
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1);
+			this.dismiss();
 		}
-		
-		return false;
+		else if (view == mPositiveAction2View)
+		{
+			Log.d("gaurav", "positive action 2 case");
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_2);
+			this.dismiss();
+		}
+		else if (view == mPositiveAction3View)
+		{
+			Log.d("gaurav", "positive action 3 case");
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_3);
+			this.dismiss();
+		}
+		else if (view == mPositiveAction4View)
+		{
+			Log.d("gaurav", "positive action 4 case");
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_4);
+			this.dismiss();
+		}
+		else if (view == mNegativeAction1View)
+		{
+			Log.d("gaurav", "negative action 1 case");
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_NEGATIVE_1);
+			this.dismiss();
+		}
 	}
 	
-	public void onDismiss(DialogInterface dialog) 
+
+	@Override
+	public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) 
 	{
-		if (!mHandled)
+		if (keyCode == KeyEvent.KEYCODE_BACK) 
 		{
 			handleDismiss();
-		}
+			return true;
+        }	
 		
-		this.dismiss();
+		return true;
 	}
 
 	/**

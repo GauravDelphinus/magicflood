@@ -2,7 +2,7 @@ package com.ezeeideas.magicflood;
 
 import android.content.Context;
 
-public class StoreNotConnectedDialog extends GameDialogType0 {
+public class StoreNotConnectedDialog extends GameDialogType1 {
 
 	public StoreNotConnectedDialog(Context context) 
 	{
@@ -21,6 +21,12 @@ public class StoreNotConnectedDialog extends GameDialogType0 {
 	@Override
 	protected void setupRootView() 
 	{
-		mRootView = findViewById(R.id.dialog_store_not_connected_root_layout);
+		mRootView = findViewById(R.id.game_dialog_root_layout);
+	}
+
+	@Override
+	protected void setupNegativeAction1View() 
+	{
+		mNegativeAction1View = findViewById(R.id.cancel_button);
 	}
 }

@@ -400,10 +400,28 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		else if (arg0.getId() == R.id.add_coins_button_id)
 		{
 			//redeem the coins, show a dialog
-			AddCoinsDialog dialog = new AddCoinsDialog(this);
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.show();
-			
+			if (mIAPManager.isSynchronized())
+			{
+				String addCoinsPriceList[] = new String[4];
+				String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
+				addCoinsPriceList[0] = details[2];
+				details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
+				addCoinsPriceList[1] = details[2];
+				details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
+				addCoinsPriceList[2] = details[2];
+				details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
+				addCoinsPriceList[3] = details[2];
+				
+				AddCoinsDialog dialog = new AddCoinsDialog(this, addCoinsPriceList);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
+			else
+			{
+				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
 			return;
 		}
 		else if (arg0.getId() == R.id.add_moves_button_id)
@@ -424,13 +442,22 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else if (arg0.getId() == R.id.remove_ads_button_id)
 		{
-		    //Remove Ads IAP
-	        String detailsArray[];
-	        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
-	        
-	        RemoveAdsDialog dialog = new RemoveAdsDialog(this, detailsArray[2]);
-	        dialog.setCanceledOnTouchOutside(false);
-	        dialog.show();
+			if (mIAPManager.isSynchronized())
+			{
+			    //Remove Ads IAP
+		        String detailsArray[];
+		        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
+		        
+		        RemoveAdsDialog dialog = new RemoveAdsDialog(this, detailsArray[2]);
+		        dialog.setCanceledOnTouchOutside(false);
+		        dialog.show();
+			}
+			else
+			{
+				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
 	        
 			return;
 		}
@@ -645,24 +672,11 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2 || option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // End Game
 			{
 				/** Take the user to the Try Again dialog **/
-				TryAgainDialog tryAgainDialog = new TryAgainDialog(this);
+				GameMenuDialog tryAgainDialog = new GameMenuDialog(this);
 				tryAgainDialog.setCanceledOnTouchOutside(false);
 				tryAgainDialog.show();
 			}
 		}	
-		else if (dialog.getClass() == TryAgainDialog.class)
-		{
-			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) // Try Again
-			{
-				dialog.cancel();
-				
-				startNewGame(mLevel);
-			}
-			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) //go to main menu
-			{
-				finish();
-			}
-		}
 		else if (dialog.getClass() == GameSuccessDialog.class)
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Start the next game
@@ -730,9 +744,28 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this);
-					addCoinsDialog.setCanceledOnTouchOutside(false);
-					addCoinsDialog.show();
+					if (mIAPManager.isSynchronized())
+					{
+						String addCoinsPriceList[] = new String[4];
+						String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
+						addCoinsPriceList[0] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
+						addCoinsPriceList[1] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
+						addCoinsPriceList[2] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
+						addCoinsPriceList[3] = details[2];
+						
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList);
+						addCoinsDialog.setCanceledOnTouchOutside(false);
+						addCoinsDialog.show();
+					}
+					else
+					{
+						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
+						notConnectedDialog.setCanceledOnTouchOutside(false);
+						notConnectedDialog.show();
+					}
 				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
@@ -780,9 +813,28 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this);
-					addCoinsDialog.setCanceledOnTouchOutside(false);
-					addCoinsDialog.show();
+					if (mIAPManager.isSynchronized())
+					{
+						String addCoinsPriceList[] = new String[4];
+						String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
+						addCoinsPriceList[0] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
+						addCoinsPriceList[1] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
+						addCoinsPriceList[2] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
+						addCoinsPriceList[3] = details[2];
+						
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList);
+						addCoinsDialog.setCanceledOnTouchOutside(false);
+						addCoinsDialog.show();
+					}
+					else
+					{
+						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
+						notConnectedDialog.setCanceledOnTouchOutside(false);
+						notConnectedDialog.show();
+					}
 				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)

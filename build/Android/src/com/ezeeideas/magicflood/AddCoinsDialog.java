@@ -1,10 +1,11 @@
 package com.ezeeideas.magicflood;
 
 import android.content.Context;
+import android.widget.TextView;
 
 public class AddCoinsDialog extends GameDialogType5 {
 
-	public AddCoinsDialog(Context context) 
+	public AddCoinsDialog(Context context, String priceList[]) 
 	{
 		super(context);
 		
@@ -12,21 +13,23 @@ public class AddCoinsDialog extends GameDialogType5 {
 		
 		postSetupViews();
 		
+		TextView titleTV = (TextView) findViewById(R.id.dialog_add_coins_title_text_id);
+		titleTV.setTypeface(MFUtils.getTextTypeface(context));
+		
+		TextView descriptionTV = (TextView) findViewById(R.id.dialog_add_coins_description_text_id);
+		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
+		
 		AddCoinsProductLayout firstLayout = (AddCoinsProductLayout) mPositiveAction1View;
-		firstLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_FIRST, "$0.99", 
-				context.getResources().getDimension(R.dimen.small_deal_text_size), R.drawable.ic_iap_coins_first);
+		firstLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_FIRST, priceList[0], R.drawable.ic_iap_coins_first);
 		
 		AddCoinsProductLayout secondLayout = (AddCoinsProductLayout) mPositiveAction2View;
-		secondLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_SECOND, "$1.49", 
-				context.getResources().getDimension(R.dimen.medium_deal_text_size), R.drawable.ic_iap_coins_second);
+		secondLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_SECOND, priceList[1], R.drawable.ic_iap_coins_second);
 		
 		AddCoinsProductLayout thirdLayout = (AddCoinsProductLayout) mPositiveAction3View;
-		thirdLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_THIRD, "$2.99", 
-				context.getResources().getDimension(R.dimen.large_deal_text_size), R.drawable.ic_iap_coins_third);
+		thirdLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_THIRD, priceList[2], R.drawable.ic_iap_coins_third);
 		
 		AddCoinsProductLayout fourthLayout = (AddCoinsProductLayout) mPositiveAction4View;
-		fourthLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_FOURTH, "$4.99", 
-				context.getResources().getDimension(R.dimen.very_large_deal_text_size), R.drawable.ic_iap_coins_fourth);
+		fourthLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_FOURTH, priceList[3], R.drawable.ic_iap_coins_fourth);
 	}
 
 	protected void setupViews() 

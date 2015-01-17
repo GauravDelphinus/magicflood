@@ -33,6 +33,6 @@ public class TryAgainDialog extends GameDialogType3 {
 	@Override
 	protected void setupNegativeAction1View() 
 	{
-		mPositiveAction2View = findViewById(R.id.cancel_button);
+		mNegativeAction1View = findViewById(R.id.cancel_button);
 	}
 }

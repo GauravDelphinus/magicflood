@@ -1,6 +1,9 @@
 package com.ezeeideas.magicflood;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.view.KeyEvent;
+import android.widget.TextView;
 
 public class GameFailedDialog extends GameDialogType4 {
 
@@ -11,6 +14,18 @@ public class GameFailedDialog extends GameDialogType4 {
 		setupViews();
 		
 		postSetupViews();
+		
+		TextView titleTV = (TextView) findViewById(R.id.dialog_game_failed_title_text_id);
+		titleTV.setTypeface(MFUtils.getTextTypeface(context));
+		
+		TextView descriptionTV = (TextView) findViewById(R.id.dialog_game_failed_description_text_id);
+		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
+		
+		TextView playOnButtonTV = (TextView) findViewById(R.id.dialog_play_on_button_text_id);
+		playOnButtonTV.setTypeface(MFUtils.getTextTypeface(context));
+		
+		TextView endGameTV = (TextView) findViewById(R.id.dialog_end_game_button_text_id);
+		endGameTV.setTypeface(MFUtils.getTextTypeface(context));
 	}
 
 	protected void setupViews() 

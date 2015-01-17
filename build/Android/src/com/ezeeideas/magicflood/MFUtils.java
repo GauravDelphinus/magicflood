@@ -34,6 +34,11 @@ public class MFUtils
 		}
 	}
 	
+	public static Typeface getTextTypeface(Context context)
+	{
+		Typeface face = FontCache.get("ArchitectsDaughter.ttf", context);;
+		return face;
+	}
 	/**
 	 * Helper function that returns the current screen size category
 	 * @param context
