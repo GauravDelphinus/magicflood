@@ -28,13 +28,6 @@ void freeGridData(long handle, int **gridData);
 }
 
 /**
- Game Levels.
- **/
-#define GAME_LEVEL_EASY 0
-#define GAME_LEVEL_MEDIUM 1
-#define GAME_LEVEL_HARD 2
-
-/**
  Result of a Move
  **/
 #define RESULT_CONTINUE 0

@@ -117,6 +117,10 @@ public class MFGameConstants
 	public static final String PREFERENCE_ADS_REMOVED = "ads_removed";
 	public static final String PREFERENCE_LAST_UNLOCKED_LEVEL = "last_unlocked_level";
 	public static final int DEFAULT_LAST_UNLOCKED_LEVEL = 1;
+	public static final String PREFERENCE_LAST_PLAYED_LEVEL = "last_played_level";
+	public static final int DEFAULT_LAST_PLAYED_LEVEL = 1;
+	public static final String PREFERENCE_LAST_COMPLETED_LEVEL = "last_completed_level";
+	public static final int DEFAULT_LAST_COMPLETED_LEVEL = 0;
 	
 	/**
 	 * Game Constants
@@ -131,7 +135,8 @@ public class MFGameConstants
 	public static final int COINS_EARNED_FACTOR_ON_GAME_COMPLETION = 20;
 	public static final int COINS_EARNED_FACTOR_ON_EACH_MOVE = 1;
 	public static final int COINS_EARNED_FACTOR_ON_REMAINING_MOVES = 5;
-	
+	public static final int LEVEL_INTERVAL_REQUIRING_COIN_REDEMPTION = 5; //interval between levels after which you must redeem coins to move forward
+	public static final int COINS_TO_CROSS_LEVEL_INTERVAL = 200; //200 * stage number
 	
 	/**
 	 * Redeeming Coins for Lifelines

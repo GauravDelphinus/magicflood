@@ -7,10 +7,12 @@ import java.util.TimerTask;
 import android.content.Context;
 import android.graphics.Canvas;
 
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.RadialGradient;
+import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -27,7 +29,8 @@ public class MFGameView extends View
 	private TimerTask mAnimationTimerTask = null;
 	private int mCurrentAngleOfStartPosition = 0;
 	private static final int ROTATION_STEP_DEGREES = 5;
-	private static final int ROTATION_SPEED_INTERVAL = 100; //milliseconds
+	private static final int ROTATION_SPEED_INTERVAL = 200; //milliseconds
+	private static final int SHADOW_THICKNESS = 20;
 	
 	public MFGameView(Context context, AttributeSet attrs) 
 	{
@@ -48,13 +51,22 @@ public class MFGameView extends View
 		mStartPaint.setStyle(Style.FILL);
 		mStartPaint.setAlpha(255);
 		mStartPaint.setStrokeWidth(1);
-		mStartPaint.setColor(getResources().getColor(R.color.gray));
+		mStartPaint.setColor(getResources().getColor(R.color.white));
+		
+		mShadowPaint = new Paint();
+		mShadowPaint.setAntiAlias(true);
+		mShadowPaint.setStyle(Style.FILL);
+		mShadowPaint.setAlpha(255);
+		mShadowPaint.setStrokeWidth(1);
+		mShadowPaint.setColor(getResources().getColor(R.color.game_grid_shadow_color));
 		
 		mStartStrokePaint = new Paint();
 		mStartStrokePaint.setARGB(255, 0, 0, 0);
 		mStartStrokePaint.setStyle(Style.STROKE);
 		mStartStrokePaint.setAlpha(255);
 		mStartStrokePaint.setStrokeWidth(1);
+		
+		mStarPath = new Path();
 		
 		mTestPaint = new Paint();
 		mTestPaint.setColor(getResources().getColor(R.color.black));
@@ -70,12 +82,9 @@ public class MFGameView extends View
 		
 		int screenWidth = this.getWidth();
 		int screenHeight = this.getHeight();
-		int gridSizePixels = Math.min(screenWidth, screenHeight);
 		
-		int cellSize = gridSizePixels/mGridSize;
 		int hOffset = 0;
 		int vOffset = 0;
-		
 		/**
 		 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
 		 */
@@ -89,6 +98,33 @@ public class MFGameView extends View
 			vOffset = 0;
 			hOffset = (screenWidth - screenHeight) / 2;
 		}
+		
+		/**
+		 * Draw a shadown behind the grid to one x and one y direction.  Calculate the size of the grid
+		 * after accounting for the shadow thickness
+		 */
+		int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS;
+		
+		/**
+		 * Draw the shadow rect.
+		 */
+		
+		//bottom shadow
+		Shader shadowShader = new LinearGradient(hOffset, vOffset + gridSizePixels, hOffset, vOffset + gridSizePixels + SHADOW_THICKNESS, getResources().getColor(R.color.grid_background_gradient_start_color), getResources().getColor(R.color.transparent), Shader.TileMode.MIRROR);
+		mShadowPaint.setShader(shadowShader);
+		canvas.drawRect(hOffset + SHADOW_THICKNESS, vOffset + gridSizePixels, hOffset + gridSizePixels, vOffset + gridSizePixels + SHADOW_THICKNESS, mShadowPaint);
+		
+		//right shadow
+		shadowShader = new LinearGradient(hOffset + gridSizePixels, vOffset + SHADOW_THICKNESS, hOffset + gridSizePixels + SHADOW_THICKNESS, vOffset + SHADOW_THICKNESS, getResources().getColor(R.color.grid_background_gradient_start_color), getResources().getColor(R.color.transparent), Shader.TileMode.MIRROR);
+		mShadowPaint.setShader(shadowShader);
+		canvas.drawRect(hOffset + gridSizePixels, vOffset + SHADOW_THICKNESS, hOffset + SHADOW_THICKNESS + gridSizePixels, vOffset + gridSizePixels, mShadowPaint);
+		
+		Shader cornerShader = new RadialGradient(hOffset + gridSizePixels, vOffset + gridSizePixels, SHADOW_THICKNESS, getResources().getColor(R.color.grid_background_gradient_start_color), getResources().getColor(R.color.transparent), Shader.TileMode.MIRROR);
+		mShadowPaint.setShader(cornerShader);
+		RectF rectF = new RectF(hOffset + gridSizePixels - SHADOW_THICKNESS, vOffset + gridSizePixels - SHADOW_THICKNESS, hOffset + gridSizePixels + SHADOW_THICKNESS, vOffset + gridSizePixels + SHADOW_THICKNESS);
+		canvas.drawArc(rectF, 0, 90, true, mShadowPaint);
+		
+		int cellSize = gridSizePixels/mGridSize;
 		
 		for (int i = 0; i < mGridSize; i++)
 		{
@@ -108,7 +144,7 @@ public class MFGameView extends View
 				{
 					mFillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getSecondaryColor(mGrid[i][j]), getColor(mGrid[i][j]), Shader.TileMode.MIRROR));
 				}
-
+				
 				canvas.drawRect(left, top, right, bottom, mFillPaint);
 				canvas.drawRect(left,  top, right, bottom, mBorderPaint);
 			}
@@ -126,7 +162,24 @@ public class MFGameView extends View
 	{
 		int left = hOffset + y * cellSize;
 		int top = vOffset + x * cellSize;
+		int right = left + cellSize;
+		int bottom = top + cellSize;
 		
+		/**
+		 * Draw the background cell with gradient, before you draw the star on it.
+		 */
+		mFillPaint.reset();
+		mFillPaint.setAntiAlias(true);
+		mFillPaint.setStyle(Style.FILL);
+		mFillPaint.setColor(getColor(mGrid[x][y]));
+
+		mFillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getResources().getColor(R.color.star_background_gradient_start_color), getColor(mGrid[x][y]), Shader.TileMode.MIRROR));
+		
+		canvas.drawRect(left, top, right, bottom, mFillPaint);
+		
+		/**
+		 * Now draw the star
+		 */
 		int d = cellSize; //diameter
 		int r = d/2; //radius of star spikes
 		int s = r/2; //radius of star troughs
@@ -162,29 +215,29 @@ public class MFGameView extends View
 		//canvas.drawPoint(left + r, top + r, mTestPaint);
 		
 		mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
-		//canvas.rotate(mCurrentAngleOfStartPosition % 360, left + r, top + r);
-		Path starPath = new Path();
-		starPath.reset();
-		starPath.moveTo(x1, y1);
-		starPath.lineTo(x2, y2);
-		starPath.lineTo(x3, y3);
-		starPath.lineTo(x4, y4);
-		starPath.lineTo(x5, y5);
-		starPath.lineTo(x6, y6);
-		starPath.lineTo(x7, y7);
-		starPath.lineTo(x8, y8);
-		starPath.lineTo(x9, y9);
-		starPath.lineTo(x10, y10);
-		starPath.lineTo(x1, y1);
+		canvas.save();
+		canvas.rotate(mCurrentAngleOfStartPosition % 360, left + r, top + r);
+		mStarPath.reset();
+		mStarPath.moveTo(x1, y1);
+		mStarPath.lineTo(x2, y2);
+		mStarPath.lineTo(x3, y3);
+		mStarPath.lineTo(x4, y4);
+		mStarPath.lineTo(x5, y5);
+		mStarPath.lineTo(x6, y6);
+		mStarPath.lineTo(x7, y7);
+		mStarPath.lineTo(x8, y8);
+		mStarPath.lineTo(x9, y9);
+		mStarPath.lineTo(x10, y10);
+		mStarPath.lineTo(x1, y1);
 		
 		//set gradient fill in the paint
-		mStartPaint.setShader(new RadialGradient(left + r, top + r, r, getResources().getColor(R.color.white), 
-				getResources().getColor(R.color.gray), Shader.TileMode.MIRROR));
+		//mStartPaint.setShader(new RadialGradient(left + r, top + r, r, getResources().getColor(R.color.white), 
+			//	getResources().getColor(R.color.gray), Shader.TileMode.MIRROR));
 
 		//finally, draw the star!
-		canvas.drawPath(starPath, mStartPaint);
-		canvas.drawPath(starPath, mStartStrokePaint);
-		//canvas.restore();
+		canvas.drawPath(mStarPath, mStartPaint);
+		canvas.restore();
+		//canvas.drawPath(starPath, mStartStrokePaint);
 	}
 	
 	public void initializeGameData(int [][]grid, int size, int[][] startPos, int numStartPos, int maxMoves)
@@ -313,5 +366,6 @@ public class MFGameView extends View
 		}
 	}
 
-	private Paint mStartPaint, mBorderPaint, mFillPaint, mTestPaint, mStartStrokePaint;
+	private Paint mStartPaint, mBorderPaint, mFillPaint, mTestPaint, mStartStrokePaint, mShadowPaint;
+	private Path mStarPath;
 }

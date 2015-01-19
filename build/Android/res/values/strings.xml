@@ -55,11 +55,6 @@
     <string name="dialog_game_menu_footer_text">Tap anywhere else to resume the current game</string>
     <string name="dialog_game_failed_title_text">Oops!</string>
     <string name="dialog_game_failed_description_text">Sorry, you\'ve run out of moves!</string>
-    <string name="dialog_game_success_title_text">Great work!</string>
-    <string name="dialog_game_success_description_text">Nice job - you nailed it!</string>
-    <string name="dialog_game_success_store_title_text">Great work!</string>
-    <string name="dialog_game_success_store_description_text">Nice job - you nailed it!  Bored of the same hurdles?  Make your game more exciting by adding a variety of new hurdles!</string>
-    <string name="dialog_store_button_text">EXPLORE HURDLES</string>
     <string name="dialog_store_not_connected_title_text">Store not connected</string>
     <string name="dialog_store_not_connected_description_text">It appears you are not connected to the store.  Please try again later.</string>
     <string name="dialog_store_not_connected_footer_text">Tap anywhere to dismiss this dialog</string>
@@ -72,6 +67,11 @@
     <string name="dialog_try_again_title_text">Try Again</string>
     <string name="dialog_try_again_description_text">Try the current level again</string>
     <string name="try_again_button_text">Try Again</string>
+    
+    <!-- Game Success Dialog -->
+  	<string name="dialog_game_success_title_text">Great work!</string>
+    <string name="dialog_game_success_description_text">Nice job - you nailed it!</string>
+    <string name="dialog_next_level_button_text">Next Level</string>
     
     <!-- About Screen -->
     <string name="about_copyright_text">Copyright (C) 2014 EZEEIDEAS IT SERVICES LLP.</string>

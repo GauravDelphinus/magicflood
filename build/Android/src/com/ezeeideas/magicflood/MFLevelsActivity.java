@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -37,10 +39,15 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
     	ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
     	LayoutInflater inflater = LayoutInflater.from(this);
     	
+    	LinearLayout indicatorRowLayout = (LinearLayout) findViewById(R.id.indicator_row_layout_id);
+    	
     	SharedPreferences settings;
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 
 		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+		int lastPlayedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, MFGameConstants.DEFAULT_LAST_PLAYED_LEVEL);
+		int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
+		int screenToStartWith = (lastPlayedLevel - 1) / MFConstants.NUM_LEVELS_PER_SCREEN;
 		
     	int levelNum = 1;
     	for (int i = 0; i < numScreens; i++)
@@ -48,10 +55,30 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 	        View inflatedLayout = inflater.inflate(R.layout.layout_level_screen, null, false);
 	        Log.d("gaurav", "infaltedLayout class = " + inflatedLayout.getClass());
 	        
-	        levelNum = enumerateLevelsAndSetProperties(inflatedLayout, levelNum, numLevels, lastUnlockedLevel);
+	        levelNum = enumerateLevelsAndSetProperties(inflatedLayout, levelNum, numLevels, lastUnlockedLevel, lastCompletedLevel);
 	        
 	        flipper.addView(inflatedLayout);
+	        
+	        /**
+	         * Add the indicator image (circle) for each screen
+	         */
+	        ImageView indicatorView = new ImageView(this);
+	        if (i == screenToStartWith)
+	        {
+	        	indicatorView.setImageResource(R.drawable.ic_viewflipper_indicator_selected);
+	        }
+	        else
+	        {
+	        	indicatorView.setImageResource(R.drawable.ic_viewflipper_indicator_unselected);
+	        }
+	        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+	        params.setMargins(10, 0, 10, 0);
+	        indicatorView.setLayoutParams(params);
+	        indicatorView.setId(i);
+	        indicatorRowLayout.addView(indicatorView);
     	}
+    	
+    	flipper.setDisplayedChild(screenToStartWith);
     	
     	TextView titleTV = (TextView) findViewById(R.id.levels_title_text_id);
     	Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", this);
@@ -65,12 +92,13 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 
 		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+		int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
 		
 		ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
-		enumerateLevelsAndSetProperties(flipper, 1, numLevels, lastUnlockedLevel);
+		enumerateLevelsAndSetProperties(flipper, 1, numLevels, lastUnlockedLevel, lastCompletedLevel);
 	}
 	
-	private int enumerateLevelsAndSetProperties(View rootView, int levelNum, int numLevels, int lastUnlockedLevel)
+	private int enumerateLevelsAndSetProperties(View rootView, int levelNum, int numLevels, int lastUnlockedLevel, int lastCompletedLevel)
 	{
 		int numChildren = ((ViewGroup)rootView).getChildCount();
         for (int j = 0; j < numChildren; j++)
@@ -83,13 +111,17 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
         		if (levelNum <= numLevels)
         		{
 	        		MFLevelLayout levelLayout = (MFLevelLayout)nextChild;
-	        		if (levelNum <= lastUnlockedLevel)
+	        		if (levelNum <= lastCompletedLevel)
 	        		{
-	        			levelLayout.setProperties(levelNum, false); //level is unlocked
+	        			levelLayout.setProperties(levelNum, MFLevelLayout.LEVEL_STATUS_COMPLETED); //level is unlocked and completed
+	        		}
+	        		else if (levelNum <= lastUnlockedLevel)
+	        		{
+	        			levelLayout.setProperties(levelNum, MFLevelLayout.LEVEL_STATUS_UNLOCKED); //level is unlocked but not yet completed
 	        		}
 	        		else
 	        		{
-	        			levelLayout.setProperties(levelNum, true); //level is locked
+	        			levelLayout.setProperties(levelNum, MFLevelLayout.LEVEL_STATUS_LOCKED); //level is locked
 	        		}
 	        		levelLayout.setOnClickListener(this);
 	        		levelNum++;
@@ -102,7 +134,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
         	}
         	else if (nextChild instanceof ViewGroup)
         	{
-        		levelNum = enumerateLevelsAndSetProperties(nextChild, levelNum, numLevels, lastUnlockedLevel);
+        		levelNum = enumerateLevelsAndSetProperties(nextChild, levelNum, numLevels, lastUnlockedLevel, lastCompletedLevel);
         	}
         }
         

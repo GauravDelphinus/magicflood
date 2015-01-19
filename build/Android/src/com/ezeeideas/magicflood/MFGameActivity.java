@@ -337,6 +337,13 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		String levelText = String.format(getResources().getString(R.string.level_text), mLevel);
 		mLevelLabel.setText(levelText);
 		
+		//since we just started playing this level, update the corresponding preference
+		SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		Editor editor = settings.edit();
+		
+		editor.putInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, mLevel);
+		editor.commit();
 	}
 
 	/**
@@ -535,10 +542,18 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			playSound(MFGameConstants.RESULT_SUCCESS);
 
-			//Unlock the next level.
+			//Update the last completed preference
 			SharedPreferences settings;
 			settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-			Editor editor = settings.edit();
+			Editor editor = settings.edit();			
+			int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
+			if (lastCompletedLevel <= mLevel)
+			{
+				editor.putInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, mLevel);
+				editor.commit();
+			}
+			
+			//Unlock the next level
 			int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
 			if (lastUnlockedLevel <= mLevel)
 			{
@@ -551,12 +566,12 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, mTotalCoinsEarned);
 			editor.commit();
 			
+			/** Update Coins Earned **/	
+			updateCoinsEarned(mTotalCoinsEarned +  result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE + MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES);
+			
 			GameSuccessDialog dialog = new GameSuccessDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
-			
-			/** Update Coins Earned **/	
-			updateCoinsEarned(mTotalCoinsEarned +  result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE + MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES);
 		}
 		else
 		{
@@ -684,6 +699,13 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEXT_GAME_BUTTON);
 				
 				dialog.cancel();
+				
+				/**
+				 * Check if we can eligible to move to the next level
+				 */
+				SharedPreferences settings;
+				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+				
 				startNewGame(mLevel + 1);
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the Main Menu

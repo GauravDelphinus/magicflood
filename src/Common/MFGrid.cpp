@@ -530,58 +530,48 @@ void MFGrid::initializeGrid()
 
 void MFGrid::computeMaxMoves()
 {
-    if (level == GAME_LEVEL_EASY)
+    //allocate a temp grid and copy from the game grid
+    mMeasureGrid = (int **)calloc(gridSize, sizeof(int *));
+    for (int i = 0; i < gridSize; i++)
     {
-        maxMoves = EASYMAXMOVES;
+        mMeasureGrid[i] = (int *)calloc(gridSize, sizeof(int));
     }
-    else
+    for (int i = 0; i < gridSize; i++)
     {
-        //allocate a temp grid and copy from the game grid
-        mMeasureGrid = (int **)calloc(gridSize, sizeof(int *));
-        for (int i = 0; i < gridSize; i++)
+        for (int j = 0; j < gridSize; j++)
         {
-            mMeasureGrid[i] = (int *)calloc(gridSize, sizeof(int));
+            mMeasureGrid[i][j] = mGameGrid[i][j];
         }
-        for (int i = 0; i < gridSize; i++)
-        {
-            for (int j = 0; j < gridSize; j++)
-            {
-                mMeasureGrid[i][j] = mGameGrid[i][j];
-            }
-        }
-        
-        int numMoves = 0;
-        srand((unsigned int)time(NULL));
-        while (true)
-        {
-            //int randColor = rand() % GRID_NUM_COLORS + 1;
-            int randColor = findMostDenseColor(mMeasureGrid);
-            
-            for (int k = 0; k < numStartPos; k++)
-            {
-                int startx = startPos[k][0];
-                int starty = startPos[k][1];
-                updateNeighbors(mMeasureGrid[startx][starty], randColor, startx, starty, mMeasureGrid, NULL);
-            }
-            numMoves ++;
-            
-            if (gridCompleted(randColor, mMeasureGrid))
-            {
-                break;
-            }
-        }
-        
-        
-        
-        //int offset = (numMoves + 10) % 5;
-        //maxMoves = (numMoves + 10) - offset;
-        maxMoves = numMoves;
-        
-        
-        releaseGrid(mMeasureGrid);
-        mMeasureGrid = NULL;
     }
     
+    int numMoves = 0;
+    srand((unsigned int)time(NULL));
+    while (true)
+    {
+        //int randColor = rand() % GRID_NUM_COLORS + 1;
+        int randColor = findMostDenseColor(mMeasureGrid);
+        
+        for (int k = 0; k < numStartPos; k++)
+        {
+            int startx = startPos[k][0];
+            int starty = startPos[k][1];
+            updateNeighbors(mMeasureGrid[startx][starty], randColor, startx, starty, mMeasureGrid, NULL);
+        }
+        numMoves ++;
+        
+        if (gridCompleted(randColor, mMeasureGrid))
+        {
+            break;
+        }
+    }
+    
+    
+    
+    maxMoves = (numMoves + 20); //for testing only
+    //maxMoves = numMoves;
+    
+    releaseGrid(mMeasureGrid);
+    mMeasureGrid = NULL;
 }
 
 /**

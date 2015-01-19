@@ -16,6 +16,7 @@
 	<dimen name="game_level_text_size">30sp</dimen>
 	<dimen name="game_coins_text_size">30sp</dimen>
 	<dimen name="game_moves_text_size">30sp</dimen>
+	<dimen name="drop_shadow_thickness">10dp</dimen>
 	
     <!-- Text Sizes -->
     <dimen name="iap_price_text_size">20sp</dimen>
