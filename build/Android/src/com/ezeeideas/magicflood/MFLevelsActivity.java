@@ -22,67 +22,6 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
     protected void onCreate(Bundle savedInstanceState) 
 	{
         super.onCreate(savedInstanceState, R.layout.activity_levels);
-        
-        setupViews();
-	}
-	
-	private void setupViews()
-	{
-		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
-    	int numScreens = numLevels / MFConstants.NUM_LEVELS_PER_SCREEN; //9 levels per screen
-    	int numLevelsOnLastScreen = numLevels % MFConstants.NUM_LEVELS_PER_SCREEN;
-    	if (numLevelsOnLastScreen > 0)
-    	{
-    		numScreens ++;
-    	}
-    	Log.d("gaurav", "numLevels = " + numLevels + ", numScreens = " + numScreens + ", numLevelsOnLastScreen = " + numLevelsOnLastScreen);
-    	ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
-    	LayoutInflater inflater = LayoutInflater.from(this);
-    	
-    	LinearLayout indicatorRowLayout = (LinearLayout) findViewById(R.id.indicator_row_layout_id);
-    	
-    	SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-
-		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
-		int lastPlayedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, MFGameConstants.DEFAULT_LAST_PLAYED_LEVEL);
-		int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
-		int screenToStartWith = (lastPlayedLevel - 1) / MFConstants.NUM_LEVELS_PER_SCREEN;
-		
-    	int levelNum = 1;
-    	for (int i = 0; i < numScreens; i++)
-    	{
-	        View inflatedLayout = inflater.inflate(R.layout.layout_level_screen, null, false);
-	        Log.d("gaurav", "infaltedLayout class = " + inflatedLayout.getClass());
-	        
-	        levelNum = enumerateLevelsAndSetProperties(inflatedLayout, levelNum, numLevels, lastUnlockedLevel, lastCompletedLevel);
-	        
-	        flipper.addView(inflatedLayout);
-	        
-	        /**
-	         * Add the indicator image (circle) for each screen
-	         */
-	        ImageView indicatorView = new ImageView(this);
-	        if (i == screenToStartWith)
-	        {
-	        	indicatorView.setImageResource(R.drawable.ic_viewflipper_indicator_selected);
-	        }
-	        else
-	        {
-	        	indicatorView.setImageResource(R.drawable.ic_viewflipper_indicator_unselected);
-	        }
-	        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	        params.setMargins(10, 0, 10, 0);
-	        indicatorView.setLayoutParams(params);
-	        indicatorView.setId(i);
-	        indicatorRowLayout.addView(indicatorView);
-    	}
-    	
-    	flipper.setDisplayedChild(screenToStartWith);
-    	
-    	TextView titleTV = (TextView) findViewById(R.id.levels_title_text_id);
-    	Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", this);
-    	titleTV.setTypeface(face);
 	}
 	
 	private void refreshViews()
@@ -94,8 +33,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
 		int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
 		
-		ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
-		enumerateLevelsAndSetProperties(flipper, 1, numLevels, lastUnlockedLevel, lastCompletedLevel);
+		enumerateLevelsAndSetProperties(mViewFlipper, 1, numLevels, lastUnlockedLevel, lastCompletedLevel);
 	}
 	
 	private int enumerateLevelsAndSetProperties(View rootView, int levelNum, int numLevels, int lastUnlockedLevel, int lastCompletedLevel)
@@ -180,4 +118,78 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 	}
 	
 	private static final int ACTIVITY_RESULT_FROM_GAME_ACTIVITY = 100;
+
+	@Override
+	protected ViewFlipper getViewFlipper() 
+	{
+		return (ViewFlipper) findViewById(R.id.view_flipper_id);
+	}
+
+	@Override
+	protected int getNumScreens() 
+	{
+		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
+		int numScreens = numLevels / MFConstants.NUM_LEVELS_PER_SCREEN; //9 levels per screen
+    	int numLevelsOnLastScreen = numLevels % MFConstants.NUM_LEVELS_PER_SCREEN;
+    	if (numLevelsOnLastScreen > 0)
+    	{
+    		numScreens ++;
+    	}
+    	
+    	return numScreens;
+	}
+
+	@Override
+	protected LinearLayout getIndicatorLayout() 
+	{
+		return (LinearLayout) findViewById(R.id.indicator_row_layout_id);
+	}
+
+	@Override
+	protected void setupViewFlipper() 
+	{
+		mNumScreens = getNumScreens();
+		
+		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
+    	ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
+    	LayoutInflater inflater = LayoutInflater.from(this);
+    	
+    	LinearLayout indicatorRowLayout = (LinearLayout) findViewById(R.id.indicator_row_layout_id);
+    	
+    	SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+
+		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+		int lastPlayedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, MFGameConstants.DEFAULT_LAST_PLAYED_LEVEL);
+		int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
+		int screenToStartWith = (lastPlayedLevel - 1) / MFConstants.NUM_LEVELS_PER_SCREEN;
+		
+    	int levelNum = 1;
+    	for (int i = 0; i < mNumScreens; i++)
+    	{
+	        View inflatedLayout = inflater.inflate(R.layout.layout_level_screen, null, false);
+	        Log.d("gaurav", "infaltedLayout class = " + inflatedLayout.getClass());
+	        
+	        levelNum = enumerateLevelsAndSetProperties(inflatedLayout, levelNum, numLevels, lastUnlockedLevel, lastCompletedLevel);
+	        
+	        flipper.addView(inflatedLayout);
+    	}
+    	
+    	flipper.setDisplayedChild(screenToStartWith);
+    	
+    	TextView titleTV = (TextView) findViewById(R.id.levels_title_text_id);
+    	Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", this);
+    	titleTV.setTypeface(face);
+	}
+
+	@Override
+	protected int getStartScreen() 
+	{
+		SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		int lastPlayedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, MFGameConstants.DEFAULT_LAST_PLAYED_LEVEL);
+		int screenToStartWith = (lastPlayedLevel - 1) / MFConstants.NUM_LEVELS_PER_SCREEN;
+		
+		return screenToStartWith;
+	}
 }

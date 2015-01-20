@@ -32,6 +32,12 @@
                         
                             <include layout="@layout/layout_level" android:id="@+id/level_3_id"/>
                         
+                            <View
+                            android:layout_width="@dimen/store_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_level" android:id="@+id/level_4_id"/>
                     </LinearLayout>
                     
                      <View
@@ -46,22 +52,65 @@
                         android:layout_weight="1"
                         >
                         
-                            <include layout="@layout/layout_level" android:id="@+id/level_4_id"/>
+                            <include layout="@layout/layout_level" android:id="@+id/level_5_id"/>
                         
                         <View
                             android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
-                            <include layout="@layout/layout_level" android:id="@+id/level_5_id"/>
+                            <include layout="@layout/layout_level" android:id="@+id/level_6_id"/>
                             
                               <View
                             android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
-                            <include layout="@layout/layout_level" android:id="@+id/level_6_id"/>
+                            <include layout="@layout/layout_level" android:id="@+id/level_7_id"/>
                         
+                        <View
+                            android:layout_width="@dimen/store_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_level" android:id="@+id/level_8_id"/>
+                            
+                    </LinearLayout>
+                    
+                      <View
+                            android:layout_height="@dimen/store_padding"
+                            android:layout_width="wrap_content"
+                            />
+                      
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        >
+                        
+                            <include layout="@layout/layout_level" android:id="@+id/level_9_id"/>
+                        
+                        <View
+                            android:layout_width="@dimen/store_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_level" android:id="@+id/level_10_id"/>
+                            
+                              <View
+                            android:layout_width="@dimen/store_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_level" android:id="@+id/level_11_id"/>
+                        
+                            <View
+                            android:layout_width="@dimen/store_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_level" android:id="@+id/level_12_id"/>
                         
                     </LinearLayout>
                     
@@ -77,24 +126,31 @@
                         android:layout_weight="1"
                         >
                         
-                            <include layout="@layout/layout_level" android:id="@+id/level_7_id"/>
+                            <include layout="@layout/layout_level" android:id="@+id/level_13_id"/>
                         
                         <View
                             android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
-                            <include layout="@layout/layout_level" android:id="@+id/level_8_id"/>
+                            <include layout="@layout/layout_level" android:id="@+id/level_14_id"/>
                             
                               <View
                             android:layout_width="@dimen/store_padding"
                             android:layout_height="wrap_content"
                             />
                         
-                            <include layout="@layout/layout_level" android:id="@+id/level_9_id"/>
+                            <include layout="@layout/layout_level" android:id="@+id/level_15_id"/>
                         
+                            <View
+                            android:layout_width="@dimen/store_padding"
+                            android:layout_height="wrap_content"
+                            />
+                        
+                            <include layout="@layout/layout_level" android:id="@+id/level_16_id"/>
                         
                     </LinearLayout>
+                    
                     
                     <View
                             android:layout_height="@dimen/store_padding"

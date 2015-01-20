@@ -24,7 +24,8 @@ public class RemoveAdsDialog extends GameDialogType3
 		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
 		
 		TextView tv = (TextView) findViewById(R.id.remove_ads_price_text_id);
-		tv.setText(price);
+		String text = String.format(context.getResources().getString(R.string.remove_ads_price_text), price);
+		tv.setText(text);
 		tv.setTypeface(MFUtils.getTextTypeface(context));
 	}
 

@@ -28,6 +28,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MFGameActivity extends Activity implements View.OnClickListener, GameDialogListener, MFInAppPurchaseManager.IAPPurchaseInterface {
@@ -169,7 +170,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		boolean showAds = true;
 		
 		mAdView = (AdView) findViewById(R.id.banner_ad_id);
-		mRemoveAdsButton = (ImageButton) findViewById(R.id.remove_ads_button_id);
+		mRemoveAdsButton = (LinearLayout) findViewById(R.id.remove_ads_button_id);
+		TextView removeAdsTV = (TextView) findViewById(R.id.remove_ads_button_text_id);
+		removeAdsTV.setTypeface(MFUtils.getTextTypeface(this));
 		
 		SharedPreferences settings;
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
@@ -578,17 +581,32 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			playSound(MFGameConstants.RESULT_CONTINUE);
 			
 			/** Update Points and Coins Earned **/
-			updateCoinsEarned(mTotalCoinsEarned + result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE)	;		
+			//updateCoinsEarned(mTotalCoinsEarned + result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE)	;		
+			updateCoinsEarned(mTotalCoinsEarned + 1)	;
 		}
 	}
 
 	private void updateCoinsEarned(int newValue)
 	{
-		CoinsUpdateHandler handler = new CoinsUpdateHandler(mCoinsEarnedLabel);
-		Thread background = new Thread(new CoinsUpdaterRunnable(mTotalCoinsEarned, newValue, handler));
-        background.start();
-        
+		if (newValue > mTotalCoinsEarned)
+		{
+			CoinsUpdateHandler handler = new CoinsUpdateHandler(mCoinsEarnedLabel);
+			Thread background = new Thread(new CoinsUpdaterRunnable(Math.max(mTotalCoinsEarned, newValue - 10), newValue, handler));
+			background.start();
+		}
+		else
+		{
+			String coinsText = String.format(getResources().getString(R.string.coins_earned_text), newValue);
+			mCoinsEarnedLabel.setText(coinsText);
+		}
+		
         mTotalCoinsEarned = newValue;
+        
+        SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		Editor editor = settings.edit();
+		editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, mTotalCoinsEarned);
+		editor.commit();
 	}
 	
 	class CoinsUpdateHandler extends Handler
@@ -613,7 +631,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	}
 	class CoinsUpdaterRunnable implements Runnable
 	{
-		private static final int FRAME_TIME_MS = 100;
+		private static final int FRAME_TIME_MS = 50;
 	    private static final String KEY = "i";
 		private int mFromValue, mToValue;
 		private Handler mHandler;
@@ -663,7 +681,18 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			{
 				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_RESUME_GAME_BUTTON);
 				
-				dialog.cancel();
+				if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
+				{
+					/**
+					 * Came here when the gme was already finished, so go back to the main menu
+					 */
+					finish();
+				}
+				else
+				{
+					//resume the game
+					dialog.cancel();
+				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) //Replay Game
 			{
@@ -742,6 +771,19 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			{
 				mIAPManager.purchaseItem(MFGameConstants.IAP_COINS_FOURTH);
 			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) //cancel purchase
+			{
+				/**
+				 * If the user landed here afer having 'failed' the game,
+				 * show him the game menu dialog again
+				 */
+				if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
+				{
+					GameMenuDialog menuDialog = new GameMenuDialog(this);
+					menuDialog.setCanceledOnTouchOutside(false);
+					menuDialog.show();
+				}
+			}
 		}
 		else if (dialog.getClass() == AddMovesDialog.class)
 		{
@@ -754,10 +796,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					int maxMoves = getMaxMoves(gridHandle);
 					maxMoves += MFGameConstants.MOVES_ADD_INCREMENT;
 					setMaxMoves(gridHandle, maxMoves);
-					mTotalCoinsEarned -= MFGameConstants.COINS_TO_ADD_5_MOVES;
 					
-					String addCoinsText = String.format(getResources().getString(R.string.coins_earned_text), mTotalCoinsEarned);
-					mCoinsEarnedLabel.setText(addCoinsText);
+					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_5_MOVES);
 					
 					int currMove = getCurrMove(gridHandle);
 					refreshMovesUI(currMove, maxMoves);
@@ -814,10 +854,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//go ahead and add star, and adjust coins
 					addStartPos(gridHandle);
-					mTotalCoinsEarned -= MFGameConstants.COINS_TO_ADD_A_STAR;
 					
-					String addCoinsText = String.format(getResources().getString(R.string.coins_earned_text), mTotalCoinsEarned);
-					mCoinsEarnedLabel.setText(addCoinsText);
+					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_A_STAR);
 					
 					//update the game view
 					int[] startPos = getStartPos(gridHandle);
@@ -925,23 +963,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		//consumed the item, now update the values
 		if (pid.equals(MFGameConstants.IAP_COINS_FIRST))
 		{
-			mTotalCoinsEarned += MFGameConstants.COINS_IAP_COUNT_FIRST;
+			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FIRST);
 		}
 		else if (pid.equals(MFGameConstants.IAP_COINS_SECOND))
 		{
-			mTotalCoinsEarned += MFGameConstants.COINS_IAP_COUNT_SECOND;
+			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_SECOND);
 		}
 		else if (pid.equals(MFGameConstants.IAP_COINS_THIRD))
 		{
-			mTotalCoinsEarned += MFGameConstants.COINS_IAP_COUNT_THIRD;
+			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_THIRD);
 		}
 		else if (pid.equals(MFGameConstants.IAP_COINS_FOURTH))
 		{
-			mTotalCoinsEarned += MFGameConstants.COINS_IAP_COUNT_FOURTH;
+			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FOURTH);
 		}
-		
-		String coinsText = String.format(getResources().getString(R.string.coins_earned_text), mTotalCoinsEarned);
-		mCoinsEarnedLabel.setText(coinsText);
 	}
 	
 	@Override
@@ -976,7 +1011,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private ImageButton mCyanButton;
 	
 	private ImageButton mAddCoinsButton, mAddMovesButton, mAddStarsButton;
-	private ImageButton mRemoveAdsButton;
+	private LinearLayout mRemoveAdsButton;
 	private ImageView mMovesImage;
 	
 	private AlertDialog mExitAlertDialog, mSuccessAlertDialog, mFailedAlertDialog;

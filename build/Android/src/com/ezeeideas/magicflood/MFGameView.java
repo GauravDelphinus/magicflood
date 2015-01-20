@@ -119,10 +119,23 @@ public class MFGameView extends View
 		mShadowPaint.setShader(shadowShader);
 		canvas.drawRect(hOffset + gridSizePixels, vOffset + SHADOW_THICKNESS, hOffset + SHADOW_THICKNESS + gridSizePixels, vOffset + gridSizePixels, mShadowPaint);
 		
+		//bottom right corner
 		Shader cornerShader = new RadialGradient(hOffset + gridSizePixels, vOffset + gridSizePixels, SHADOW_THICKNESS, getResources().getColor(R.color.grid_background_gradient_start_color), getResources().getColor(R.color.transparent), Shader.TileMode.MIRROR);
 		mShadowPaint.setShader(cornerShader);
 		RectF rectF = new RectF(hOffset + gridSizePixels - SHADOW_THICKNESS, vOffset + gridSizePixels - SHADOW_THICKNESS, hOffset + gridSizePixels + SHADOW_THICKNESS, vOffset + gridSizePixels + SHADOW_THICKNESS);
 		canvas.drawArc(rectF, 0, 90, true, mShadowPaint);
+		
+		//bottom left corner
+		cornerShader = new RadialGradient(hOffset + SHADOW_THICKNESS, vOffset + gridSizePixels, SHADOW_THICKNESS, getResources().getColor(R.color.grid_background_gradient_start_color), getResources().getColor(R.color.transparent), Shader.TileMode.MIRROR);
+		mShadowPaint.setShader(cornerShader);
+		rectF = new RectF(hOffset, vOffset + gridSizePixels - SHADOW_THICKNESS, hOffset + 2 * SHADOW_THICKNESS, vOffset + gridSizePixels + SHADOW_THICKNESS);
+		canvas.drawArc(rectF, 90, 180, true, mShadowPaint);
+		
+		//top right corner
+		cornerShader = new RadialGradient(hOffset + gridSizePixels, vOffset + SHADOW_THICKNESS, SHADOW_THICKNESS, getResources().getColor(R.color.grid_background_gradient_start_color), getResources().getColor(R.color.transparent), Shader.TileMode.MIRROR);
+		mShadowPaint.setShader(cornerShader);
+		rectF = new RectF(hOffset + gridSizePixels - SHADOW_THICKNESS, vOffset, hOffset + gridSizePixels + SHADOW_THICKNESS, vOffset  + 2 * SHADOW_THICKNESS);
+		canvas.drawArc(rectF, 0, -90, true, mShadowPaint);
 		
 		int cellSize = gridSizePixels/mGridSize;
 		

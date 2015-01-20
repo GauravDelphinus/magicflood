@@ -129,9 +129,6 @@ public class MFGameConstants
 	public static final int MOVES_ADD_INCREMENT = 5;
 	public static final int INITIAL_COINS_ALLOCATED = 100;
 	public static final int INITIAL_POINTS_ALLOCATED = 0;
-	public static final int POINTS_EARNED_FACTOR_ON_EACH_MOVE = 20;
-	public static final int POINTS_EARNED_FACTOR_ON_GAME_COMPLETION = 100;
-	public static final int POINTS_EARNED_FACTOR_ON_REMAINING_MOVES = 100;
 	public static final int COINS_EARNED_FACTOR_ON_GAME_COMPLETION = 20;
 	public static final int COINS_EARNED_FACTOR_ON_EACH_MOVE = 1;
 	public static final int COINS_EARNED_FACTOR_ON_REMAINING_MOVES = 5;
@@ -142,13 +139,13 @@ public class MFGameConstants
 	 * Redeeming Coins for Lifelines
 	 */
 	public static final int COINS_TO_ADD_5_MOVES = 500;
-	public static final int COINS_TO_ADD_A_STAR = 100;
+	public static final int COINS_TO_ADD_A_STAR = 1000;
 	
 	/**
 	 * Adding/Buying Coins via IAP
 	 */
-	public static final int COINS_IAP_COUNT_FIRST = 100;
-	public static final int COINS_IAP_COUNT_SECOND = 200;
-	public static final int COINS_IAP_COUNT_THIRD = 500;
-	public static final int COINS_IAP_COUNT_FOURTH = 1000;
+	public static final int COINS_IAP_COUNT_FIRST = 500;
+	public static final int COINS_IAP_COUNT_SECOND = 1000;
+	public static final int COINS_IAP_COUNT_THIRD = 2500;
+	public static final int COINS_IAP_COUNT_FOURTH = 5000;
 }

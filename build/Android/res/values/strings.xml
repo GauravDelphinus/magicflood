@@ -100,7 +100,7 @@
     <string name="moves_remaining_text">%1$d</string>
     <string name="add_moves_text">Moves (+5)</string>
     <string name="add_stars_text">Stars (+1)</string>
-    <string name="remove_ads_text">R Ads</string>
+    <string name="remove_ads_button_text">Remove Ads</string>
     
     <!-- Redeem Coins Dialog -->
     <string name="dialog_redeem_coins_title_text">Redeem Coins</string>
@@ -122,5 +122,6 @@
     <!-- Remove Ads Dialog -->
     <string name="dialog_remove_ads_title_text">Remove Ads</string>
     <string name="dialog_remove_ads_description_text">Remove All Ads and enhance your play experience!</string>
-    <string name="dialog_remove_ads_button_name_text">Remove All Ads</string>
+    <string name="remove_ads_price_text">Remove Ads for %1$s</string>
+    
 </resources>
