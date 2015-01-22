@@ -43,6 +43,6 @@ public class GameSuccessDialog extends GameDialogType3 {
 	@Override
 	protected void setupNegativeAction1View() 
 	{
-		mNegativeAction1View = findViewById(R.id.menu_button);
+		mNegativeAction1View = findViewById(R.id.cancel_button);
 	}
 }

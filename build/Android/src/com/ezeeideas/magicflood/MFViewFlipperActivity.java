@@ -63,6 +63,7 @@ public abstract class MFViewFlipperActivity extends Activity implements Animatio
     	 /**
          * Add the indicator image (circle) for each screen
          */
+    	Log.d("gaurav", "setupIndicatorLayout, startScreen = " + startScreen + ", mNumScreens = " + mNumScreens);
     	for (int i = 0; i < mNumScreens; i++)
     	{
 	        ImageView indicatorView = new ImageView(this);
@@ -80,6 +81,7 @@ public abstract class MFViewFlipperActivity extends Activity implements Animatio
 	        indicatorView.setLayoutParams(params);
 	        indicatorView.setId(i);
 	        mIndicatorLayout.addView(indicatorView);
+	        Log.d("gaurav", "i = " + i + ", added the indicatoriew");
     	}
     }
     

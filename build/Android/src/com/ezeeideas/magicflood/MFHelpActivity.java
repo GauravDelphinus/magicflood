@@ -2,6 +2,7 @@ package com.ezeeideas.magicflood;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 public class MFHelpActivity extends MFViewFlipperActivity
@@ -21,6 +22,38 @@ public class MFHelpActivity extends MFViewFlipperActivity
 	@Override
 	protected void setupViewFlipper() 
 	{
+		mNumScreens = getNumScreens();
+		
+		//set up typefaces
+		TextView tv = (TextView) findViewById(R.id.help_screen1_title_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen2_title_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen3_title_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen4_title_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen5_title_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen1_description_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen2_description_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen3_description_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen4_description_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen5_description_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
 		
 	}
 
@@ -39,7 +72,7 @@ public class MFHelpActivity extends MFViewFlipperActivity
 	@Override
 	protected int getNumScreens() 
 	{
-		return 3;
+		return 5;
 	}
 
 	@Override

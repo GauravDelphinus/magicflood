@@ -5,19 +5,20 @@
     <dimen name="activity_vertical_margin">10dp</dimen>
     <dimen name="activity_horizontal_padding">10dp</dimen>
     <dimen name="activity_vertical_padding">10dp</dimen>
-    <dimen name="store_padding">20dp</dimen>
+
 	<dimen name="big_gap">30dp</dimen>
 	
 	<!-- Main Screen -->
 	<dimen name="main_screen_buttons_margin">5dip</dimen>
 	<dimen name="main_screen_buttons_text_size">30sp</dimen>
+	<dimen name="company_name_text_size">15sp</dimen>
 	
 	<!-- Game Screen -->
 	<dimen name="game_level_text_size">30sp</dimen>
-	<dimen name="game_coins_text_size">30sp</dimen>
-	<dimen name="game_moves_text_size">30sp</dimen>
+	<dimen name="game_coins_text_size">25sp</dimen>
+	<dimen name="game_moves_text_size">25sp</dimen>
 	<dimen name="drop_shadow_thickness">10dp</dimen>
-	<dimen name="game_screen_buttons_text_size">20sp</dimen>
+	<dimen name="game_screen_buttons_text_size">12sp</dimen>
 	
     <!-- Text Sizes -->
     <dimen name="iap_price_text_size">20sp</dimen>
@@ -26,21 +27,22 @@
     <dimen name="store_iap_text_size">20sp</dimen>
     
     <!-- Dialogs -->
-    <dimen name="dialog_title_text_size">25sp</dimen>
-    <dimen name="dialog_description_text_size">20sp</dimen>
+    <dimen name="dialog_title_text_size">20sp</dimen>
+    <dimen name="dialog_description_text_size">15sp</dimen>
     <dimen name="ui_button_text_size">20sp</dimen>
     <dimen name="dialog_continue_text_size">20sp</dimen>
-    <dimen name="dialog_button_text_size">25sp</dimen>
+    <dimen name="dialog_button_text_size">15sp</dimen>
     
     <!-- About Screen -->
-    <dimen name="about_copyright_text_size">25sp</dimen>
-    <dimen name="about_all_rights_text_size">25sp</dimen>
-    <dimen name="about_feedback_text_size">25sp</dimen>
+    <dimen name="about_copyright_text_size">15sp</dimen>
+    <dimen name="about_all_rights_text_size">15sp</dimen>
+    <dimen name="about_feedback_text_size">15sp</dimen>
+    <dimen name="about_company_name_text_size">15sp</dimen>
     
     <!-- Help Screen -->
     <dimen name="help_title_text_size">25sp</dimen>
     <dimen name="help_footer_text_size">15sp</dimen>
-    <dimen name="help_description_text_size">20sp</dimen>
+    <dimen name="help_description_text_size">15sp</dimen>
     
     <!-- Add Coins Dialog -->
     <dimen name="small_deal_text_size">10sp</dimen>
@@ -49,6 +51,7 @@
     <dimen name="very_large_deal_text_size">10sp</dimen>
     
     <!-- Levels Screen -->
-    <dimen name="level_name_text_size">60sp</dimen>
+    <dimen name="level_name_text_size">30sp</dimen>
     <dimen name="levels_title_text_size">25sp</dimen>
+    <dimen name="store_padding">10dp</dimen>
 </resources>

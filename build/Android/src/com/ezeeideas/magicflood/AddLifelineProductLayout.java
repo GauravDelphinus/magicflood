@@ -28,7 +28,8 @@ public class AddLifelineProductLayout extends LinearLayout
 		productImage.setBackgroundResource(imageId);
 		
 		TextView tvDetail = (TextView) findViewById(R.id.add_lifeline_product_count_text_id);
-		tvDetail.setText(Integer.toString(count));
+		String coinsRequired = String.format(getResources().getString(R.string.coins_required_text), count);
+		tvDetail.setText(coinsRequired);
 		tvDetail.setTypeface(MFUtils.getTextTypeface(mContext));
 	}
 	

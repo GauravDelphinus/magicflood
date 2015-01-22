@@ -40,15 +40,17 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
         mAboutButton.setOnClickListener(this);
         
         //set the typeface
-        Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", this);
+        TextView companyNameTV = (TextView) findViewById(R.id.company_name_id);
+        companyNameTV.setTypeface(MFUtils.getTextTypeface(this));
+        
         TextView playGameTV = (TextView) findViewById(R.id.play_game_text_id);
-        playGameTV.setTypeface(face);
+        playGameTV.setTypeface(MFUtils.getTextTypeface(this));
         
         TextView howToPlayGameTV = (TextView) findViewById(R.id.how_to_play_game_text_id);
-        howToPlayGameTV.setTypeface(face);
+        howToPlayGameTV.setTypeface(MFUtils.getTextTypeface(this));
         
         TextView aboutGameTV = (TextView) findViewById(R.id.about_game_text_id);
-        aboutGameTV.setTypeface(face);
+        aboutGameTV.setTypeface(MFUtils.getTextTypeface(this));
         
         //set the package name
         MFGameConstants.PACKAGE_NAME = getPackageName();

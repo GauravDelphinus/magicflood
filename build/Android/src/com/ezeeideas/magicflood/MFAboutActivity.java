@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MFAboutActivity extends Activity implements OnClickListener
 {
@@ -24,6 +25,18 @@ public class MFAboutActivity extends Activity implements OnClickListener
         
         ImageButton rateButton = (ImageButton) findViewById(R.id.rate_app_button);
         rateButton.setOnClickListener(this);
+        
+        TextView companyNameTV = (TextView) findViewById(R.id.company_name_id);
+        companyNameTV.setTypeface(MFUtils.getTextTypeface(this));
+        
+        TextView copyrightTV = (TextView) findViewById(R.id.about_copyright_text_id);
+        copyrightTV.setTypeface(MFUtils.getTextTypeface(this));
+        
+        TextView allRightsTV = (TextView) findViewById(R.id.about_all_rights_text_id);
+        allRightsTV.setTypeface(MFUtils.getTextTypeface(this));
+        
+        TextView feedbackTV = (TextView) findViewById(R.id.about_feedback_text_id);
+        feedbackTV.setTypeface(MFUtils.getTextTypeface(this));
 	}
 	
     @Override

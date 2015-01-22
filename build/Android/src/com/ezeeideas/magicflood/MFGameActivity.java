@@ -347,6 +347,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		editor.putInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, mLevel);
 		editor.commit();
+		
+		//reenable buttons if they were disabled
+		enableDisableAllButtons(true);
 	}
 
 	/**
@@ -495,6 +498,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			break;
 		}
 		
+		
+		
 		MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_COLOR_BUTTON);
 		
 		
@@ -521,7 +526,16 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 
 		if (result[0] == MFGameConstants.RESULT_FAILED) //run out of moves
 		{	
+			enableDisableAllButtons(false);
+			
+			GameFailedDialog dialog = new GameFailedDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+			
+			playSound(MFGameConstants.RESULT_FAILED);
+			
 			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_FAILURE);
+
 			
 			//update the coins earned
 			SharedPreferences settings;
@@ -530,21 +544,22 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, mTotalCoinsEarned);
 			editor.commit();
 			
-			GameFailedDialog dialog = new GameFailedDialog(this);
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.show();
 			
-			playSound(MFGameConstants.RESULT_FAILED);
 			
 			/** Update Points and Coins Earned **/
-			updateCoinsEarned(mTotalCoinsEarned + result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE);
+			//updateCoinsEarned(mTotalCoinsEarned + 1);
 		}
 		else if (result[0] == MFGameConstants.RESULT_SUCCESS) //game successful completed
 		{	
-			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
+
+			GameSuccessDialog dialog = new GameSuccessDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
 			
 			playSound(MFGameConstants.RESULT_SUCCESS);
-
+			
+			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
+			
 			//Update the last completed preference
 			SharedPreferences settings;
 			settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
@@ -570,11 +585,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			editor.commit();
 			
 			/** Update Coins Earned **/	
-			updateCoinsEarned(mTotalCoinsEarned +  result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE + MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES);
+			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES);
 			
-			GameSuccessDialog dialog = new GameSuccessDialog(this);
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.show();
 		}
 		else
 		{
@@ -582,8 +594,19 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			/** Update Points and Coins Earned **/
 			//updateCoinsEarned(mTotalCoinsEarned + result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE)	;		
-			updateCoinsEarned(mTotalCoinsEarned + 1)	;
+			//updateCoinsEarned(mTotalCoinsEarned + 1)	;
 		}
+		
+	}
+	
+	private void enableDisableAllButtons(boolean enable)
+	{
+		mRedButton.setEnabled(enable);
+		mGreenButton.setEnabled(enable);
+		mBlueButton.setEnabled(enable);
+		mYellowButton.setEnabled(enable);
+		mOrangeButton.setEnabled(enable);
+		mCyanButton.setEnabled(enable);
 	}
 
 	private void updateCoinsEarned(int newValue)
@@ -801,6 +824,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					
 					int currMove = getCurrMove(gridHandle);
 					refreshMovesUI(currMove, maxMoves);
+					
+					enableDisableAllButtons(true);
 				}
 				else
 				{
@@ -976,6 +1001,18 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		else if (pid.equals(MFGameConstants.IAP_COINS_FOURTH))
 		{
 			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FOURTH);
+		}
+		
+		/*
+		 * 
+		 * if you landed here beucase of "play on" after failing the game, then take
+		 * him back to the play on dialog
+		 */
+		if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
+		{
+			AddMovesDialog addMovesDialog = new AddMovesDialog(this);
+			addMovesDialog.setCanceledOnTouchOutside(false);
+			addMovesDialog.show();
 		}
 	}
 	

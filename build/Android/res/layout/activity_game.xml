@@ -118,7 +118,6 @@
 	    android:src="@drawable/ic_button_add_coins"
 	    android:background="@color/transparent"
 	    android:paddingLeft="@dimen/activity_horizontal_padding"
-	    android:paddingRight="@dimen/activity_horizontal_padding"
 	    />
 	<ImageButton
 	    android:id="@+id/add_moves_button_id"
@@ -128,7 +127,6 @@
 	    android:src="@drawable/ic_button_add_moves"
 	    android:background="@color/transparent"
 	    android:paddingLeft="@dimen/activity_horizontal_padding"
-	    android:paddingRight="@dimen/activity_horizontal_padding"
 	    />
 	<ImageButton
 	    android:id="@+id/add_stars_button_id"
@@ -149,6 +147,7 @@
 	    android:layout_margin="@dimen/activity_vertical_padding"
 	    android:padding="@dimen/activity_horizontal_padding"
 	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true"
 	    >
 	    
 	  

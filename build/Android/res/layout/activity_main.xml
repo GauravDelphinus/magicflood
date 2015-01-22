@@ -24,6 +24,7 @@
 	    android:gravity="center"
 	    android:text="@string/by_company_text"
 	    android:textColor="@color/by_company_text_color"
+	    android:textSize="@dimen/company_name_text_size"
 	    />
 
 	<RelativeLayout

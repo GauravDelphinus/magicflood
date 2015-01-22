@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	}
 	fclose(fp);
 
-	char dummygrid[150];
+	char dummygrid[1500];
 	int strIndex = 0;
 	int startposCount = 0;
 	int a = 0;

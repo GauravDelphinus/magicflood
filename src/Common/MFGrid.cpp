@@ -567,8 +567,8 @@ void MFGrid::computeMaxMoves()
     
     
     
-    maxMoves = (numMoves + 20); //for testing only
-    //maxMoves = numMoves;
+    //maxMoves = (numMoves + 20); //for testing only
+    maxMoves = numMoves;
     
     releaseGrid(mMeasureGrid);
     mMeasureGrid = NULL;

@@ -179,16 +179,20 @@ public class MFGameView extends View
 		int bottom = top + cellSize;
 		
 		/**
-		 * Draw the background cell with gradient, before you draw the star on it.
+		 * Draw the background cell with gradient, before you draw the star on it.  Do this
+		 * only for yellow as the star shows up quite well for other colors already.
 		 */
-		mFillPaint.reset();
-		mFillPaint.setAntiAlias(true);
-		mFillPaint.setStyle(Style.FILL);
-		mFillPaint.setColor(getColor(mGrid[x][y]));
-
-		mFillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getResources().getColor(R.color.star_background_gradient_start_color), getColor(mGrid[x][y]), Shader.TileMode.MIRROR));
-		
-		canvas.drawRect(left, top, right, bottom, mFillPaint);
+		if (mGrid[x][y] == MFGameConstants.GRID_COLOR_YELLOW)
+		{
+			mFillPaint.reset();
+			mFillPaint.setAntiAlias(true);
+			mFillPaint.setStyle(Style.FILL);
+			mFillPaint.setColor(getColor(mGrid[x][y]));
+	
+			mFillPaint.setShader(new RadialGradient((left + right)/2, (top + bottom)/2, (int)((right - left) / 2 * Math.sqrt(2)), getResources().getColor(R.color.star_background_gradient_start_color), getColor(mGrid[x][y]), Shader.TileMode.MIRROR));
+			
+			canvas.drawRect(left, top, right, bottom, mFillPaint);
+		}
 		
 		/**
 		 * Now draw the star

@@ -3,31 +3,41 @@
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:background="@drawable/bg_sky_blue"
-android:padding="@dimen/store_padding"
+
 android:orientation="vertical" >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/help_screen_background_color"
+        android:padding="@dimen/activity_vertical_padding"
+        android:orientation="vertical"
+        >
        <ViewFlipper
             android:id="@+id/view_flipper_id"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dip" >
+            android:layout_height="0px"
+            android:layout_weight="1"
+             >
             
         <!--  The child Views/Layout to flip -->
         
-        <!--  1st Screen -->
+        <!--  1st Screen (Objective)-->
             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
-                    android:orientation="vertical" >
+                    android:orientation="vertical" 
+                    >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/help_screen1_title_text_id"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
                         android:text="@string/help_screen1_title"
                         android:textColor="@color/help_title_text_color"
                         android:textSize="@dimen/help_title_text_size"
+                        android:gravity="center"
                         android:textStyle="bold" >
                     </TextView>
 
@@ -39,7 +49,7 @@ android:orientation="vertical" >
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/help_image_1"
+                        android:src="@drawable/help_image_screen_1"
                         />
                    
                     <View
@@ -48,6 +58,7 @@ android:orientation="vertical" >
                             />
                     
                    <TextView 
+                       android:id="@+id/help_screen1_description_text_id"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:text="@string/help_screen1_description_text"
@@ -58,25 +69,22 @@ android:orientation="vertical" >
                                
             </LinearLayout>
 
+            <!-- 2nd Screen -->
             
-             
-                    
-
-                 <!--  2nd Screen -->
-            
-            <LinearLayout
+             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:orientation="vertical" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/help_screen2_title_text_id"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
                         android:text="@string/help_screen2_title"
                         android:textColor="@color/help_title_text_color"
                         android:textSize="@dimen/help_title_text_size"
+                        android:gravity="center"
                         android:textStyle="bold" >
                     </TextView>
 
@@ -88,7 +96,55 @@ android:orientation="vertical" >
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/help_image_2"
+                        android:src="@drawable/help_image_screen_2"
+                        />
+                   
+                    <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                    
+                   <TextView 
+                       android:id="@+id/help_screen2_description_text_id"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/help_screen2_description_text"
+                       android:textSize="@dimen/help_description_text_size"
+                       android:textColor="@color/help_description_text_color"
+                       android:gravity="center"
+                       />
+                               
+            </LinearLayout>
+                    
+
+                 <!--  3rd Screen -->
+            
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/help_screen3_title_text_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/help_screen3_title"
+                        android:textColor="@color/help_title_text_color"
+                        android:textSize="@dimen/help_title_text_size"
+                        android:gravity="center"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                     <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                     
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/help_image_screen_3"
                         />
                    
                     <View
@@ -98,7 +154,7 @@ android:orientation="vertical" >
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/help_image_2b"
+                        android:src="@drawable/help_image_screen_3b"
                         />
                     <View
                             android:layout_height="@dimen/big_gap"
@@ -106,9 +162,10 @@ android:orientation="vertical" >
                             />
                     
                    <TextView 
+                       android:id="@+id/help_screen3_description_text_id"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:text="@string/help_screen2_description_text"
+                       android:text="@string/help_screen3_description_text"
                        android:textSize="@dimen/help_description_text_size"
                        android:textColor="@color/help_description_text_color"
                        android:gravity="center"
@@ -117,7 +174,7 @@ android:orientation="vertical" >
                     
             </LinearLayout>
             
-			<!--  3rd Screen -->
+			<!--  4th Screen -->
             
             <LinearLayout
                     android:layout_width="fill_parent"
@@ -126,12 +183,13 @@ android:orientation="vertical" >
                     android:orientation="vertical" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/help_screen4_title_text_id"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/help_screen3_title"
+                        android:text="@string/help_screen4_title"
                         android:textColor="@color/help_title_text_color"
                         android:textSize="@dimen/help_title_text_size"
+                        android:gravity="center"
                         android:textStyle="bold" >
                     </TextView>
 
@@ -143,7 +201,7 @@ android:orientation="vertical" >
                      <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/help_image_3"
+                        android:src="@drawable/help_image_screen_4"
                         />
                    
                     <View
@@ -152,9 +210,10 @@ android:orientation="vertical" >
                             />
                    
                    <TextView 
+                       android:id="@+id/help_screen4_description_text_id"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:text="@string/help_screen3_description_text"
+                       android:text="@string/help_screen4_description_text"
                        android:textSize="@dimen/help_description_text_size"
                        android:textColor="@color/help_description_text_color"
                        android:gravity="center"
@@ -163,7 +222,53 @@ android:orientation="vertical" >
                     
             </LinearLayout>
 
+            <!--  5th Screen -->
             
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/help_screen5_title_text_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/help_screen5_title"
+                        android:textColor="@color/help_title_text_color"
+                        android:textSize="@dimen/help_title_text_size"
+                        android:gravity="center"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                     <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                     
+                     <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/help_image_screen_5"
+                        />
+                   
+                    <View
+                            android:layout_height="@dimen/big_gap"
+                            android:layout_width="wrap_content"
+                            />
+                   
+                   <TextView 
+                       android:id="@+id/help_screen5_description_text_id"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/help_screen5_description_text"
+                       android:textSize="@dimen/help_description_text_size"
+                       android:textColor="@color/help_description_text_color"
+                       android:gravity="center"
+                       /> 
+                 
+                    
+            </LinearLayout>
              
         </ViewFlipper>
          <View
@@ -174,20 +279,19 @@ android:orientation="vertical" >
 
         <RelativeLayout
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@color/red"
+             android:layout_height="wrap_content"
              >
         <LinearLayout
             android:id="@+id/indicator_row_layout_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_centerHorizontal="true"
-            android:background="@color/green"
+            android:layout_centerInParent="true"
             >
             
            <!-- Fill programatically -->
                             
         </LinearLayout>
         </RelativeLayout>
+        </LinearLayout>
 </LinearLayout>
