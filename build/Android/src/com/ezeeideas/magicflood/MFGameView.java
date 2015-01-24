@@ -160,6 +160,18 @@ public class MFGameView extends View
 				int right = left + cellSize;
 				int bottom = top + cellSize;
 				
+				/**
+				 * Correcting last cell size to compensate for precision
+				 */
+				if (i == mGridSize - 1)
+				{
+					bottom = vOffset + gridSizePixels;
+				}
+				if (j == mGridSize - 1)
+				{
+					right = hOffset + gridSizePixels;
+				}
+				
 				mFillPaint.reset();
 				mFillPaint.setAntiAlias(true);
 				mFillPaint.setStyle(Style.FILL);
