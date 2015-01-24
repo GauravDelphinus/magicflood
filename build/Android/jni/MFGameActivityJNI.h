@@ -144,6 +144,14 @@ JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_playMov
 JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getGridData
   (JNIEnv *, jobject, jlong);
 
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    smashHurdle
+ * Signature: (JII)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_smashHurdle
+  (JNIEnv *, jobject, jlong, jint, jint);
+
 #ifdef __cplusplus
 }
 #endif

@@ -16,9 +16,10 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
-public class MFGameView extends View 
+public class MFGameView extends View implements View.OnTouchListener
 {
 	int[][] mGrid;
 	int mGridSize;
@@ -74,8 +75,58 @@ public class MFGameView extends View
 		mTestPaint.setStrokeWidth(2);
 		
 		mFillPaint = new Paint();
+		
+		setOnTouchListener(this);
 	}
 
+	public void startEndTapDetectionMode(boolean start)
+	{
+		mTapDetectionMode = start;
+	}
+	
+	public boolean onTouch (View v, MotionEvent event)
+	{
+		if (mTapDetectionMode)
+		{
+			Log.d("gaurav", "view's onTouch, x = " + event.getX() + ", y = " + event.getY());
+			int x = (int) event.getX();
+			int y = (int) event.getY();
+			
+			int screenWidth = this.getWidth();
+			int screenHeight = this.getHeight();
+			
+			int hOffset = 0;
+			int vOffset = 0;
+			/**
+			 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
+			 */
+			if (screenHeight > screenWidth)
+			{
+				hOffset = 0;
+				vOffset = (screenHeight - screenWidth) / 2;
+			}
+			else
+			{
+				vOffset = 0;
+				hOffset = (screenWidth - screenHeight) / 2;
+			}
+			
+			int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS;
+			int cellSize = gridSizePixels/mGridSize;
+			
+			int xOffset = x - hOffset;
+			int yOffset = y - vOffset;
+			
+			int gridy = xOffset / cellSize;
+			int gridx = yOffset / cellSize;
+			
+			mTapHandler.handleGameViewTap(gridx, gridy);
+			return true;
+		}
+		
+		return false;
+	}
+	
 	protected void onDraw(Canvas canvas)
 	{
 		int horizontalGap = 0;
@@ -382,7 +433,19 @@ public class MFGameView extends View
 			mView.postInvalidate();
 		}
 	}
+	
+	public void setTapHandler(GameViewTapHandler handler)
+	{
+		mTapHandler = handler;
+	}
+	
+	public interface GameViewTapHandler
+	{
+		public void handleGameViewTap(int x, int y);
+	}
 
+	private GameViewTapHandler mTapHandler;
 	private Paint mStartPaint, mBorderPaint, mFillPaint, mTestPaint, mStartStrokePaint, mShadowPaint;
 	private Path mStarPath;
+	private boolean mTapDetectionMode = false;
 }

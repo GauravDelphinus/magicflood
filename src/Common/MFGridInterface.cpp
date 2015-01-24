@@ -265,4 +265,19 @@ void freeGridData(long handle, int **gridData)
     }
 }
 
+/**
+ Smash the hurdle near the position x, y in the grid.
+ Return 1 in case of success, 0 in case of failure
+ **/
+int smashHurdle(long handle, int x, int y)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
+    if (grid != NULL)
+    {
+        return grid->smashHurdle(x, y);
+    }
+    
+    return 0;
+}
+
 }

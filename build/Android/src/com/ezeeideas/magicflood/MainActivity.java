@@ -102,18 +102,20 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
 		switch (arg0.getId())
 		{
 		case R.id.about_game_button_id:
-			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ABOUT_BUTTON);
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ABOUT_BUTTON);
 			
 			i = new Intent(this, MFAboutActivity.class);
 			startActivity(i);
 			break;
 		case R.id.how_to_play_game_button_id:
-			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_MAIN_VIEW, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_HELP_BUTTON);
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_HELP_BUTTON);
 			
 			i = new Intent(this, MFHelpActivity.class);
 			startActivity(i);
 			break;
-		case R.id.play_game_button_id:			
+		case R.id.play_game_button_id:
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_PLAY_BUTTON);
+			
 			i = new Intent(this, MFLevelsActivity.class);
 			i.putExtra(MFGameConstants.NUM_LEVELS_KEY, getNumLevels());
 			startActivity(i);

@@ -134,12 +134,15 @@ public class MFGameConstants
 	public static final int COINS_EARNED_FACTOR_ON_REMAINING_MOVES = 5;
 	public static final int LEVEL_INTERVAL_REQUIRING_COIN_REDEMPTION = 5; //interval between levels after which you must redeem coins to move forward
 	public static final int COINS_TO_CROSS_LEVEL_INTERVAL = 200; //200 * stage number
+	public static final int MIN_LEVEL_TO_ADD_STARS = 27;
+	public static final int MIN_LEVEL_TO_ADD_HURDLE_SMASHER = 33;
 	
 	/**
 	 * Redeeming Coins for Lifelines
 	 */
 	public static final int COINS_TO_ADD_5_MOVES = 500;
-	public static final int COINS_TO_ADD_A_STAR = 1000;
+	public static final int COINS_TO_ADD_A_STAR = 1500;
+	public static final int COINS_TO_ADD_A_HURDLE_SMASHER = 1;
 	
 	/**
 	 * Adding/Buying Coins via IAP

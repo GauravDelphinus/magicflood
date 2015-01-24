@@ -47,6 +47,10 @@ private:
     int getFartherQuadrant(int q);
     void shuffleArray(int array[], int size);
     bool notTooNearAnotherStar(int x, int y);
+    bool findNearestHurdle(int x, int y, int *hurdleX, int *hurdleY);
+    bool checkNeighboringHurdles(int x, int y, int *hurdleX, int *hurdleY, int depth);
+    void smashThisHurdle(int x, int y);
+    void smashNeighboringHurdles(int x, int y, int depth);
 public:
     MFGrid (int level);
     int getGridSize();
@@ -58,6 +62,7 @@ public:
     void setMaxMoves(int maxMoves);
     int getCurrMoves();
     int* playMove(int color);
+    int smashHurdle(int x, int y);
     ~MFGrid();
 };
 
@@ -75,5 +80,6 @@ public:
 #define MEDIUMMAXMOVES 50
 #define HARDMAXMOVES 80
 
+#define MAX_DEPTH_TO_CHECK_FOR_HURDLES  2
 #endif /* defined(__Magic_Flood__MFGrid__) */
 

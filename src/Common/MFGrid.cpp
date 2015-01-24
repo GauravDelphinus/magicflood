@@ -686,11 +686,13 @@ void MFGrid::checkDensity(int color, int x, int y, int *grid[], std::map<int, in
 
 void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[])
 {
+    logPrint("gaurav", "checkNeighborDensity\n");
     if (isObstacle(x, y, grid) || alreadyCheckedFlags[x][y])
     {
         return;
     }
     
+    logPrint("gaurav", "point x in checkNeighborDensity, startColor = %d, x = %d, y = %d, grid[x][y] = %d\n", startColor, x, y, grid[x][y]);
     if (grid[x][y] != startColor)
     {
         int count = 0;
@@ -717,6 +719,7 @@ int MFGrid::findMostDenseColor(int *grid[])
         neighborDensityArray[i] = (int *) malloc (2 * sizeof(int));
     }
      */
+    logPrint("gaurav", "findMostDenseColor, grid = %p\n", grid);
     std::map<int, int> neighborDensityMap;
     neighborDensityMap[GRID_COLOR_BLUE] = 0;
     neighborDensityMap[GRID_COLOR_CYAN] = 0;
@@ -725,6 +728,7 @@ int MFGrid::findMostDenseColor(int *grid[])
     neighborDensityMap[GRID_COLOR_RED] = 0;
     neighborDensityMap[GRID_COLOR_YELLOW] = 0;
     
+    logPrint("gaurav", "point 1\n");
     //initialize a 2-d boolean array to mark cells that have already been checked for neighbor density
     bool **alreadyCheckedFlags = (bool **) calloc (gridSize, sizeof(bool *));
     for (int i = 0; i < gridSize; i++)
@@ -732,6 +736,7 @@ int MFGrid::findMostDenseColor(int *grid[])
         alreadyCheckedFlags[i] = (bool *) calloc (gridSize, sizeof (bool));
     }
     
+    logPrint("gaurav", "point 2\n");
     for (int k = 0; k < numStartPos; k++)
     {
         int startx = startPos[k][0];
@@ -744,9 +749,11 @@ int MFGrid::findMostDenseColor(int *grid[])
                 alreadyCheckedFlags[i][j] = false;
             }
         }
+        logPrint("gaurav", "going to call checkneighbordsntiy, for numstartpos k = %d\n", k);
         checkNeighborDensity(startColor, startx, starty, grid, &neighborDensityMap, alreadyCheckedFlags);
     }
     
+    logPrint("gaurav", "point 3\n");
     //Free the memroy that's no longer required
     for (int i = 0; i < gridSize; i++)
     {
@@ -755,6 +762,7 @@ int MFGrid::findMostDenseColor(int *grid[])
     free(alreadyCheckedFlags);
     alreadyCheckedFlags = NULL;
     
+    logPrint("gaurav", "point 4\n");
     //now figure out the neighbor with the highest density
     int mostDenseColor = -1;
     int mostDenseColorCount = 0;
@@ -771,6 +779,7 @@ int MFGrid::findMostDenseColor(int *grid[])
         iter++;
     }
     
+    logPrint("gaurav", "returning, mostDenseColor = %d\n", mostDenseColor);
     return mostDenseColor;
 }
 
@@ -809,4 +818,104 @@ MFGrid::~MFGrid()
         free(startPos);
         startPos = NULL;
     }
+}
+
+void MFGrid::smashNeighboringHurdles(int x, int y, int depth)
+{
+    depth ++;
+    
+    if (depth > MAX_DEPTH_TO_CHECK_FOR_HURDLES)
+    {
+        return;
+    }
+    
+    if (x < 0 || y < 0 || x >= gridSize || y >= gridSize)
+    {
+        //reached a boundary.
+        return;
+    }
+    
+    if (mGameGrid[x][y] != GRID_OBSTACLE)
+    {
+        return; //end as soon as you are no longer in the obstacle
+    }
+    
+    //smash this cell by setting to a non-obstacle random color
+    int randColor = rand() % GRID_NUM_COLORS + 1;
+    mGameGrid[x][y] = randColor;
+    
+    smashNeighboringHurdles(x, y+1, depth);
+    smashNeighboringHurdles(x, y-1, depth);
+    smashNeighboringHurdles(x+1, y, depth);
+    smashNeighboringHurdles(x-1, y, depth);
+}
+
+void MFGrid::smashThisHurdle(int x, int y)
+{
+    srand((unsigned int)time(NULL));
+    
+    smashNeighboringHurdles(x, y, 0);
+}
+
+bool MFGrid::checkNeighboringHurdles(int x, int y, int *hurdleX, int *hurdleY, int depth)
+{
+    depth ++;
+    
+    if (depth > MAX_DEPTH_TO_CHECK_FOR_HURDLES)
+    {
+        return false;
+    }
+    
+    if (x < 0 || y < 0 || x >= gridSize || y >= gridSize)
+    {
+        //reached a boundary.
+        return false;
+    }
+    
+    if (mGameGrid[x][y] == GRID_OBSTACLE)
+    {
+        *hurdleX = x;
+        *hurdleY = y;
+        return true;
+    }
+    
+    int found = false;
+    
+    found = checkNeighboringHurdles(x, y-1, hurdleX, hurdleY, depth);
+    if (found)
+        return found;
+    
+    found = checkNeighboringHurdles(x, y+1, hurdleX, hurdleY, depth);
+    if (found)
+        return found;
+    
+    found = checkNeighboringHurdles(x-1, y, hurdleX, hurdleY, depth);
+    if (found)
+        return found;
+    
+    found = checkNeighboringHurdles(x+1, y, hurdleX, hurdleY, depth);
+    if (found)
+        return found;
+}
+
+bool MFGrid::findNearestHurdle(int x, int y, int *hurdleX, int *hurdleY)
+{
+    bool found = checkNeighboringHurdles(x, y, hurdleX, hurdleY, 0);
+    
+    return found;
+}
+
+int MFGrid::smashHurdle(int x, int y)
+{
+    logPrint("gaurav", "MFGrid::smashHurdle called with x = %d, y = %d\n", x, y);
+    int hurdleX, hurdleY;
+    bool found = findNearestHurdle(x, y, &hurdleX, &hurdleY);
+    if (!found)
+    {
+        return 0;
+    }
+    
+    smashThisHurdle(hurdleX, hurdleY);
+    
+    return 1;
 }

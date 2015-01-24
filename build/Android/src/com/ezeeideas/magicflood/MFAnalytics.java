@@ -32,11 +32,8 @@ public class MFAnalytics
 	/**
 	 * Categories
 	 */
-	public static final String ANALYTICS_CATEGORY_GAME_EASY = "easy_game"; // Game Screen
-	public static final String ANALYTICS_CATEGORY_GAME_MEDIUM = "medium_game"; // Game Screen
-	public static final String ANALYTICS_CATEGORY_GAME_HARD = "hard_game"; // Game Screen
-	public static final String ANALYTICS_CATEGORY_MAIN_VIEW = "main_view"; // Main Screen
-	public static final String ANALYTICS_CATEGORY_STORE = "store"; // Store / IAP
+	public static final String ANALYTICS_CATEGORY_GAME = "game_play"; // Game Screen
+	public static final String ANALYTICS_CATEGORY_IAP = "iap"; // Main Screen
 	
 	/**
 	 * Actions
@@ -55,12 +52,9 @@ public class MFAnalytics
 	/**
 	 * Labels - Buttons - Main Screen
 	 */
-	public static final String ANALYTICS_LABEL_EASY_BUTTON = "easy_button";
-	public static final String ANALYTICS_LABEL_MEDIUM_BUTTON = "medium_button";
-	public static final String ANALYTICS_LABEL_HARD_BUTTON = "hard_button";
+	public static final String ANALYTICS_LABEL_PLAY_BUTTON = "play_button";
 	public static final String ANALYTICS_LABEL_ABOUT_BUTTON = "about_button";
 	public static final String ANALYTICS_LABEL_HELP_BUTTON = "help_button";
-	public static final String ANALYTICS_LABEL_STORE_BUTTON = "store_button";
 	
 	/**
 	 * Labels - Buttons - Game Screen
@@ -70,10 +64,16 @@ public class MFAnalytics
 	public static final String ANALYTICS_LABEL_MENU_BUTTON = "menu_button";
 	public static final String ANALYTICS_LABEL_BACK_BUTTON = "back_button";
 	public static final String ANALYTICS_LABEL_COLOR_BUTTON = "color_button";
-	public static final String ANALYTICS_LABEL_MAIN_MENU_BUTTON = "main_menu_button";
+	public static final String ANALYTICS_LABEL_VIEW_LEVELS_BUTTON = "view_levels_button";
 	public static final String ANALYTICS_LABEL_NEW_GAME_BUTTON = "new_game_button";
 	public static final String ANALYTICS_LABEL_NEXT_GAME_BUTTON = "next_game_button";
 	public static final String ANALYTICS_LABEL_RESUME_GAME_BUTTON = "resume_game_button";
+	public static final String ANALYTICS_LABEL_REPLAY_GAME_BUTTON = "replay_game_button";
+	public static final String ANALYTICS_LABEL_ADD_COINS_BUTTON = "add_coins_button";
+	public static final String ANALYTICS_LABEL_ADD_MOVES_BUTTON = "add_moves_button";
+	public static final String ANALYTICS_LABEL_ADD_STAR_BUTTON = "add_star_button";
+	public static final String ANALYTICS_LABEL_ADD_HURDLE_SMASHER_BUTTON = "add_hurdle_smasher_button";
+	public static final String ANALYTICS_LABEL_REMOVE_ADS_BUTTON = "remove_ads_button";
 	
 	/**
 	 * Labels - Game Ended

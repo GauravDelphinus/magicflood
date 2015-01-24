@@ -25,6 +25,7 @@ int* playMove(long handle, int color);
 void freePlayMove(long handle, int *result);
 int** getGridData(long handle);
 void freeGridData(long handle, int **gridData);
+    int smashHurdle(long handle, int x, int y);
 }
 
 /**

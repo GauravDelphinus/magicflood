@@ -184,3 +184,14 @@ JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getGrid
 
 	return gridDataArray;
 }
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    smashHurdle
+ * Signature: (JII)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_smashHurdle
+  (JNIEnv *env, jobject thisObj, jlong handle, jint x, jint y)
+{
+	return smashHurdle(handle, x, y);
+}

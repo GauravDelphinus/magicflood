@@ -98,12 +98,18 @@
     </RelativeLayout>
 	
 	<!-- The View representing the main drawing board -->
-	<com.ezeeideas.magicflood.MFGameView
-	    android:id="@+id/game_view_id"
+	<RelativeLayout
+	    android:id="@+id/game_view_layout_id"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_weight="1"
+	    >
+	<com.ezeeideas.magicflood.MFGameView
+	    android:id="@+id/game_view_id"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
 	/>
+	</RelativeLayout>
 	
 	<RelativeLayout
 	    android:id="@+id/lower_bar_id"
@@ -117,7 +123,6 @@
 	    android:layout_alignParentLeft="true"
 	    android:src="@drawable/ic_button_add_coins"
 	    android:background="@color/transparent"
-	    android:paddingLeft="@dimen/activity_horizontal_padding"
 	    />
 	<ImageButton
 	    android:id="@+id/add_moves_button_id"
@@ -126,7 +131,6 @@
 		android:layout_toRightOf="@+id/add_coins_button_id"
 	    android:src="@drawable/ic_button_add_moves"
 	    android:background="@color/transparent"
-	    android:paddingLeft="@dimen/activity_horizontal_padding"
 	    />
 	<ImageButton
 	    android:id="@+id/add_stars_button_id"
@@ -135,8 +139,14 @@
 	    android:layout_toRightOf="@+id/add_moves_button_id"
 	    android:src="@drawable/ic_button_add_star"
 	    android:background="@color/transparent"
-	    android:paddingLeft="@dimen/activity_horizontal_padding"
-	    android:paddingRight="@dimen/activity_horizontal_padding"
+	    />
+	<ImageButton
+	    android:id="@+id/add_hurdle_smasher_button_id"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@+id/add_stars_button_id"
+	    android:src="@drawable/ic_button_add_hurdle_smasher"
+	    android:background="@color/transparent"
 	    />
 	<LinearLayout
 		    android:id="@+id/remove_ads_button_id"

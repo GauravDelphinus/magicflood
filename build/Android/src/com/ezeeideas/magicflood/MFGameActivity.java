@@ -23,15 +23,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MFGameActivity extends Activity implements View.OnClickListener, GameDialogListener, MFInAppPurchaseManager.IAPPurchaseInterface {
+public class MFGameActivity extends Activity implements View.OnClickListener, GameDialogListener, MFInAppPurchaseManager.IAPPurchaseInterface, MFGameView.GameViewTapHandler {
 
 	
 	@Override
@@ -102,6 +105,25 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		mAddStarsButton = (ImageButton) findViewById(R.id.add_stars_button_id);
 		mAddStarsButton.setOnClickListener(this);
+		if (mLevel < MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
+		{
+			mAddStarsButton.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			mAddStarsButton.setVisibility(View.VISIBLE);
+		}
+		
+		mAddHurdleSmasherButton = (ImageButton) findViewById(R.id.add_hurdle_smasher_button_id);
+		mAddHurdleSmasherButton.setOnClickListener(this);
+		if (mLevel <= MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
+		{
+			mAddHurdleSmasherButton.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			mAddHurdleSmasherButton.setVisibility(View.VISIBLE);
+		}
 		
 		mLevelLabel = (TextView) findViewById(R.id.level_label_id);
 		String levelText = String.format(getResources().getString(R.string.level_text), mLevel);
@@ -145,6 +167,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mButtonClickSoundID = mSoundPool.load(this, R.raw.button_press_sound, 1);
 		mGameSuccessSoundID = mSoundPool.load(this, R.raw.game_success_sound, 1);
 		mGameFailedSoundID = mSoundPool.load(this, R.raw.game_failed_sound, 1);
+		mHurdleSmashedSoundID = mSoundPool.load(this, R.raw.hurdle_smashed_sound, 1);
 		
 		//read the preference on whether the sound should be muted
 		SharedPreferences settings;
@@ -239,25 +262,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mAnimScale = AnimationUtils.loadAnimation(this, R.anim.anim_scale);
 	}
 	
-	private void playSound(int resultType) 
+	private void playSound(int soundID) 
 	{
 		// Is the sound loaded does it already play?
 		if (loaded && mPlaySound)
 		{
-			int soundID = mButtonClickSoundID;
-			switch (resultType)
-			{
-			case MFGameConstants.RESULT_SUCCESS:
-				soundID = mGameSuccessSoundID;
-				break;
-			case MFGameConstants.RESULT_FAILED:
-				soundID = mGameFailedSoundID;
-				break;
-			}
 			mCurrentlyPlayingStream = mSoundPool.play(soundID, volume, volume, 1, 0, 1f);
 		}
 	}
-
+	
 	private void refreshMovesUI(int currMove, int maxMoves)
 	{
 		//update the moves label
@@ -332,6 +345,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		//initialize the game view with all the data for it to render the game board
 		mGameView.initializeGameData(gridData, gridSize, startPosArray, numStartPos, maxMoves);
+		mGameView.setTapHandler(this);
 		mGameView.invalidate();
 		
 		refreshMovesUI(currMove, maxMoves);
@@ -343,6 +357,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		//since we just started playing this level, update the corresponding preference
 		SharedPreferences settings;
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		int lastPlayedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, 0);
 		Editor editor = settings.edit();
 		
 		editor.putInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, mLevel);
@@ -350,25 +365,21 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		//reenable buttons if they were disabled
 		enableDisableAllButtons(true);
-	}
-
-	/**
-	 * Get the Analytics game category from the game level
-	 * @return
-	 */
-	private String getAnalyticsCategory()
-	{
-		switch (mLevel)
-		{
-		case MFGameConstants.GAME_LEVEL_EASY:
-			return MFAnalytics.ANALYTICS_CATEGORY_GAME_EASY;
-		case MFGameConstants.GAME_LEVEL_MEDIUM:
-			return MFAnalytics.ANALYTICS_CATEGORY_GAME_MEDIUM;
-		case MFGameConstants.GAME_LEVEL_HARD:
-			return MFAnalytics.ANALYTICS_CATEGORY_GAME_HARD;
-		}
 		
-		return MFAnalytics.ANALYTICS_CATEGORY_GAME_EASY;
+		//if we are introducing stars or hurdles from this level, and this is the first time
+		//play of this game, then show the introductory dialog
+		if (lastPlayedLevel < mLevel && mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
+		{
+			IntroduceStarsGameDialog dialog = new IntroduceStarsGameDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+		}
+		else if (lastPlayedLevel < mLevel && mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
+		{
+			IntroduceHurdleSmashersDialog dialog = new IntroduceHurdleSmashersDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+		}
 	}
 	
 	@Override
@@ -453,6 +464,14 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			return;
 		}
+		else if (arg0.getId() == R.id.add_hurdle_smasher_button_id)
+		{
+			AddHurdleSmasherDialog dialog = new AddHurdleSmasherDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+			
+			return;
+		}
 		else if (arg0.getId() == R.id.remove_ads_button_id)
 		{
 			if (mIAPManager.isSynchronized())
@@ -532,7 +551,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
-			playSound(MFGameConstants.RESULT_FAILED);
+			playSound(mGameFailedSoundID);
 			
 			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_FAILURE);
 
@@ -556,7 +575,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
-			playSound(MFGameConstants.RESULT_SUCCESS);
+			playSound(mGameSuccessSoundID);
 			
 			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
 			
@@ -590,7 +609,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else
 		{
-			playSound(MFGameConstants.RESULT_CONTINUE);
+			playSound(mButtonClickSoundID);
 			
 			/** Update Points and Coins Earned **/
 			//updateCoinsEarned(mTotalCoinsEarned + result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE)	;		
@@ -927,6 +946,52 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				dialog.dismiss(); //resume current game
 			}
 		}
+		else if (dialog.getClass() == AddHurdleSmasherDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
+			{
+				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_A_HURDLE_SMASHER)
+				{				
+					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_A_HURDLE_SMASHER);
+					
+					Toast.makeText(this, "Tap on a hurdle to make a hole", Toast.LENGTH_LONG).show();
+					mHurdleSmashMode = true;
+					enableDisableAllButtons(false);
+					mGameView.startEndTapDetectionMode(true);
+				}
+				else
+				{
+					//alert hte user tht he must buy coins
+					//redeem the coins, show a dialog
+					if (mIAPManager.isSynchronized())
+					{
+						String addCoinsPriceList[] = new String[4];
+						String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
+						addCoinsPriceList[0] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
+						addCoinsPriceList[1] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
+						addCoinsPriceList[2] = details[2];
+						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
+						addCoinsPriceList[3] = details[2];
+						
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList);
+						addCoinsDialog.setCanceledOnTouchOutside(false);
+						addCoinsDialog.show();
+					}
+					else
+					{
+						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
+						notConnectedDialog.setCanceledOnTouchOutside(false);
+						notConnectedDialog.show();
+					}
+				}
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
+			{
+				dialog.dismiss(); //resume current game
+			}
+		}
 	}
 	
 	@Override
@@ -1032,6 +1097,72 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			Log.d("gaurav", "onActivityResult handled by IABUtil.");
 		}
 	}
+	
+	@Override
+	public void handleGameViewTap(int col, int row) 
+	{
+		int result = smashHurdle(gridHandle, col, row);
+		if (result == 1)
+		{
+			/**
+			 * Show the animation and play a sound!
+			 */
+			/*
+			RelativeLayout rl = (RelativeLayout) findViewById(R.id.game_view_layout_id);
+			ExplodeView explodeView = new ExplodeView(this);
+			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+			params.leftMargin = 50;
+			params.topMargin = 60;
+			rl.addView(explodeView, params);
+			
+			*/
+			
+			playSound(mHurdleSmashedSoundID);
+			
+			//successfuly smashed a hurdle
+			int[] gridDataOneD = getGridData(gridHandle);
+			int gridSize = getGridSize(gridHandle);
+			int currMove = getCurrMove(gridHandle);
+			int maxMoves = getMaxMoves(gridHandle);
+			//convert the one-dimensional array passed from C++ back to 2D array for use in the game view in Java
+			int gridData[][] = new int[gridSize][gridSize];
+			for (int i = 0; i < gridDataOneD.length; i++)
+			{
+				int x = i % gridSize;
+				int y = i / gridSize;
+				gridData[x][y] = gridDataOneD[i];
+			}
+			
+			mGameView.updateGameData(gridData);
+			
+			mGameView.invalidate();
+			
+			mNumHurdleSmashTries = 0;
+			
+			mHurdleSmashMode = false;
+			enableDisableAllButtons(true);
+			mGameView.startEndTapDetectionMode(false);
+		}
+		else
+		{
+			mNumHurdleSmashTries++;
+			if (mNumHurdleSmashTries > MAX_HURDLE_SMASH_TRIES)
+			{
+				//give up!
+				mNumHurdleSmashTries = 0; //reset
+				
+				Toast.makeText(this, "Too many tries", Toast.LENGTH_LONG).show();
+				mHurdleSmashMode = false;
+				enableDisableAllButtons(true);
+				mGameView.startEndTapDetectionMode(false);
+			}
+			else
+			{
+				Toast.makeText(this, "Couldn't detect a hurdle, try again", Toast.LENGTH_LONG).show();
+			}
+		}
+	}
+	
 	private MFGameView mGameView; //the game view
 	private int mLevel;
 	private int mTotalCoinsEarned;
@@ -1047,7 +1178,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private ImageButton mOrangeButton;
 	private ImageButton mCyanButton;
 	
-	private ImageButton mAddCoinsButton, mAddMovesButton, mAddStarsButton;
+	private ImageButton mAddCoinsButton, mAddMovesButton, mAddStarsButton, mAddHurdleSmasherButton;
 	private LinearLayout mRemoveAdsButton;
 	private ImageView mMovesImage;
 	
@@ -1059,11 +1190,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private Animation mAnimScale;
 	
 	/**
+	 * Hurdle SMasher
+	 */
+	private boolean mHurdleSmashMode; //whether we're in the mode where user is selecting a hurdle to smash
+	private int mNumHurdleSmashTries; //number of times the user has tried to unsuccessfully smash the hurdle
+	private static final int MAX_HURDLE_SMASH_TRIES = 3;
+	/**
 	 * Sound related
 	 */
 	
 	private SoundPool mSoundPool;
-	private int mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID;
+	private int mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID;
 	boolean loaded = false;
 	float actVolume, maxVolume, volume;
 	AudioManager audioManager;
@@ -1091,5 +1228,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private native int getCurrMove(long handle);
 	private native int[] playMove(long handle, int color);
 	private native int[] getGridData(long handle);
+	private native int smashHurdle(long handle, int x, int y);
+
+
 
 }
