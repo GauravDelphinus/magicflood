@@ -62,19 +62,15 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	
 	public void purchaseItem(String pid)
 	{
-		MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_STARTED, pid);
-		
-		Log.d("gaurav", "calling mHelper.launchPurchaseFlow with pid = [" + pid + "]");
-		String testPrefix = "";
-		if (MFGameConstants.testingMode)
-		{
-			testPrefix = "test_";
-		}
-		mHelper.launchPurchaseFlow(mContext, testPrefix + pid, 0, this);
+		MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_STARTED, pid);
+	
+		mHelper.launchPurchaseFlow(mContext, pid, 0, this);
 	}
 	
 	public void consumeItem(Purchase purchase)
 	{
+		MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_CONSUME_STARTED, purchase.getSku());
+		
 		mHelper.consumeAsync(purchase, this);
 	}
 	
@@ -84,9 +80,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	@Override
 	public void onIabSetupFinished(IabResult result) 
 	{
-		Log.d("gaurav", "onIabSetupFinished, result = " + result);
-		queryInAppItems();
-		
+		queryInAppItems();		
 	}
 	
 	/**
@@ -102,18 +96,15 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	@Override
 	public void onQueryInventoryFinished(IabResult result, Inventory inv) //for provisioning status
 	{
-		Log.d("gaurav", "onQueryInventoryFinished called for SKU details, result = " + result);
 		if (result.isFailure()) 
 		{
 			// handle error
 			return;
 		}
 		
-		Log.d("gaurav", "pidArray.length = " + pidArray.length);
 		for (int i = 0; i < pidArray.length; i++)
 		{
 			SkuDetails skuDetails = inv.getSkuDetails(pidArray[i]);
-			Log.d("gaurav", "skuDetails = [" + skuDetails + "]");
 			//if (skuDetails != null)
 			{
 				String price = inv.getSkuDetails(pidArray[i]).getPrice();
@@ -128,16 +119,10 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 					consumeItem(inv.getPurchase(pidArray[i]));
 				}
 				
-				Log.d("gaurav", "i = " + i + ", calling addInAppProduct for [" + pidArray[i] + "] with name [" + name + "], description [" + description + "], price [" + price + "], isProvisioned [" + isProvisioned + "]");
 				addInAppProduct(pidArray[i], name, description, price, "tbd", isProvisioned);
-						 
-				//Log.d("gaurav", "i = " + i + ", calling updateInAppProduct for [" + pidArray[i] + "] with [" + isProvisioned + "]");
-				//updateInAppProduct(pidArray[i], isProvisioned);
-				Log.d("gaurav","after calling addInAppProduct");
 			}
 		}
 		
-		Log.d("gaurav", "called at the end of onQueryInventoryFinished");
 		mIsSynchronizedWithServer = true;
 	}
 
@@ -153,11 +138,11 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			}
 			if (result.getResponse() == IabHelper.IABHELPER_USER_CANCELLED) //user cancelled the purchase
 			{
-				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_CANCELLED, sku, result.getResponse());
+				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_CANCELLED, sku, result.getResponse());
 			}
 			else //the purchase failed for some other reason
 			{
-				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_FAILED, sku, result.getResponse());
+				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_FAILED, sku, result.getResponse());
 			}
 			
 			Log.d("gaurav", "Error purchasing: " + result + ", info = " + info + ", mPurchaseInterfaceListeners = " + mPurchaseInterfaceListeners);
@@ -165,13 +150,11 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			return;
 		}
 		
-		MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_STORE, MFAnalytics.ANALYTICS_ACTION_IAP_COMPLETED, info.getSku());
+		MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_COMPLETED, info.getSku());
 		
-		Log.d("gaurav", "purchase successful, pid = [" + info.getSku() + "]");
 		//successfully purchased.  Update the UI to reflect the changes
 		for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
 		{
-			Log.d("gaurav", "calling onPurchaseFinished on each listener");
 			listener.onPurchaseFinished(info, info.getSku(), true);
 		}
 		
@@ -190,12 +173,14 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		if (result.isFailure())
 		{
 			//failure in consumption
+			MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_CONSUME_FAILED, purchase.getSku(), result.getResponse());
 		}
 		else
 		{
+			MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_CONSUME_COMPLETED, purchase.getSku());
+			
 			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
 			{
-				Log.d("gaurav", "calling onPurchaseFinished on each listener");
 				listener.onConsumeFinished(purchase.getSku(), true);
 			}
 		}

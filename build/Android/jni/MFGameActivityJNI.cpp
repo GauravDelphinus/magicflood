@@ -16,6 +16,17 @@ JNIEXPORT jlong JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_createNewGr
 
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumLevels
+ * Signature: ()J
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumLevels
+  (JNIEnv *env, jobject thisObj)
+{
+	return getNumLevels();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    deleteGrid
  * Signature: (J)V
  */

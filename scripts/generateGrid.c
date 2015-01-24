@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 	//printf("Hello World, %s - %s\n", argv[0], argv[1]);
 
 	FILE * fp;
-	char str[20][20];
+	char str[25][25];
 
 	fp = fopen (argv[1], "r");
 	int i = 0;
@@ -61,9 +61,9 @@ int main(int argc, char *argv[])
 	char output [10000];
 	sprintf(output, "\"%d#", startposCount);
 	printf("%s", output);
-	for (int i = 0; i < a; i++)
+	for (int l = 0; l < a; l++)
 	{
-		sprintf(output, "%d#", startposArr[i]);
+		sprintf(output, "%d#", startposArr[l]);
 		printf("%s", output);
 	}
 	sprintf(output, "%d#%s\"", i-1, dummygrid);

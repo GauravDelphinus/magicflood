@@ -440,6 +440,7 @@ void MFGrid::initializeGrid()
             if (!token)
                 return;
             startPos[i][1] = atoi(token);
+            logPrint("startcolor", "startPos[%d] = %d, %d\n", i, startPos[i][0], startPos[i][1]);
         }
         
         token = strtok(NULL, "#");
@@ -461,6 +462,10 @@ void MFGrid::initializeGrid()
                     for (int j = 0; j < gridSize; j++)
                     {
                         mGameGrid[i][j] = token[k] - '0';
+                        if (i == 4 && j == 4)
+                        {
+                            logPrint("startcolor", "in init function, for 4,4 the string character is %c, and value is %d\n", token[k], mGameGrid[i][j]);
+                        }
                         k++;
                     }
                 }
@@ -689,6 +694,7 @@ void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std
     logPrint("gaurav", "checkNeighborDensity\n");
     if (isObstacle(x, y, grid) || alreadyCheckedFlags[x][y])
     {
+        logPrint("gaurav", "returning from checkNeighborDesnity, from isObstacle case\n");
         return;
     }
     
@@ -698,6 +704,7 @@ void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std
         int count = 0;
         checkDensity(grid[x][y], x, y, grid, &count, alreadyCheckedFlags);
         (*map)[grid[x][y]] += count;
+        logPrint("gaurav", "returning from checkNeighborDesnity, from the startcolor case\n");
         return;
     }
     
@@ -707,7 +714,7 @@ void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std
     checkNeighborDensity(startColor, x, y+1, grid, map, alreadyCheckedFlags);
     checkNeighborDensity(startColor, x-1, y, grid, map, alreadyCheckedFlags);
     checkNeighborDensity(startColor, x+1, y, grid, map, alreadyCheckedFlags);
-
+    logPrint("gaurav", "returning from checkNeighborDensity\n");
 }
 
 int MFGrid::findMostDenseColor(int *grid[])
@@ -742,6 +749,7 @@ int MFGrid::findMostDenseColor(int *grid[])
         int startx = startPos[k][0];
         int starty = startPos[k][1];
         int startColor = grid[startx][starty];
+        logPrint("gaurav", "point 3, startx = %d, starty = %d\n", startx, starty);
         for (int i = 0; i < gridSize; i++)
         {
             for (int j = 0; j < gridSize; j++)

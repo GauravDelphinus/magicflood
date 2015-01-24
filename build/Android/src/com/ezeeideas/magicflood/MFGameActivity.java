@@ -72,6 +72,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
     	mSuccessAlertDialog = null;
     	mFailedAlertDialog = null;
     	
+    	
     	//initialize Sound
     	setupSound();
     	
@@ -105,14 +106,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		mAddStarsButton = (ImageButton) findViewById(R.id.add_stars_button_id);
 		mAddStarsButton.setOnClickListener(this);
-		if (mLevel < MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
-		{
-			mAddStarsButton.setVisibility(View.INVISIBLE);
-		}
-		else
-		{
-			mAddStarsButton.setVisibility(View.VISIBLE);
-		}
+
 		
 		mAddHurdleSmasherButton = (ImageButton) findViewById(R.id.add_hurdle_smasher_button_id);
 		mAddHurdleSmasherButton.setOnClickListener(this);
@@ -299,7 +293,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	@Override
 	public void onBackPressed() 
 	{
-		MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_BACK_BUTTON);
+		MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_BACK_BUTTON);
 		
 		GameMenuDialog dialog = new GameMenuDialog(this);
 		dialog.setCanceledOnTouchOutside(true);
@@ -308,11 +302,25 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	
 	private void startNewGame(int level)
 	{
+		MFAnalytics.trackEvent(this,  MFAnalytics.ANALYTICS_CATEGORY_GAME,  MFAnalytics.ANALYTICS_ACTION_GAME_ACTION,  MFAnalytics.ANALYTICS_LABEL_NEW_GAME_BUTTON);
+		
 		Log.d("magicflood", "startNewGame, level = " + level);
 		if (gridHandle != 0)
 		{
 			deleteGrid(gridHandle);
 			gridHandle = 0;
+		}
+		
+		/**
+		 * Check if we've reached the last level!
+		 */
+		if (level > getNumLevels())
+		{
+			//reached the end of the game. Congratulate the user
+			FinishedAllLevelsDialog dialog = new FinishedAllLevelsDialog(this);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+			return;
 		}
 		
 		//create a fresh grid by calling into the native library
@@ -368,17 +376,40 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		//if we are introducing stars or hurdles from this level, and this is the first time
 		//play of this game, then show the introductory dialog
-		if (lastPlayedLevel < mLevel && mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
+		refreshLifelinesUI();
+	}
+	
+	private void refreshLifelinesUI()
+	{
+		if (mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
 		{
 			IntroduceStarsGameDialog dialog = new IntroduceStarsGameDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 		}
-		else if (lastPlayedLevel < mLevel && mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
+		else if (mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
 		{
 			IntroduceHurdleSmashersDialog dialog = new IntroduceHurdleSmashersDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
+		}
+		
+		if (mLevel < MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
+		{
+			mAddStarsButton.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			mAddStarsButton.setVisibility(View.VISIBLE);
+		}
+		
+		if (mLevel < MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
+		{
+			mAddHurdleSmasherButton.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			mAddHurdleSmasherButton.setVisibility(View.VISIBLE);
 		}
 	}
 	
@@ -387,7 +418,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		if (arg0.getId() ==  R.id.exit_game_button_id) //Menu button clicked
 		{	
-			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MENU_BUTTON);
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MENU_BUTTON);
 			
 			GameMenuDialog dialog = new GameMenuDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
@@ -399,14 +430,14 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			if (mPlaySound == true)
 			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_SOUND_ON);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_SOUND_ON);
 				
 				mPlaySound = false;
 				mSoundButton.setBackgroundResource(R.drawable.ic_button_sound_off);
 			}
 			else
 			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_SOUND_OFF);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_SOUND_OFF);
 				
 				mPlaySound = true;
 				mSoundButton.setBackgroundResource(R.drawable.ic_button_sound_on);
@@ -423,6 +454,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else if (arg0.getId() == R.id.add_coins_button_id)
 		{
+			startNewGame(mLevel + 1);
+			/*
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_COINS_BUTTON);
 			//redeem the coins, show a dialog
 			if (mIAPManager.isSynchronized())
 			{
@@ -442,14 +476,18 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_COINS);
+				
 				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.show();
-			}
+			}*/
 			return;
 		}
 		else if (arg0.getId() == R.id.add_moves_button_id)
 		{
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_MOVES_BUTTON);
+			
 			AddMovesDialog dialog = new AddMovesDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
@@ -458,6 +496,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else if (arg0.getId() == R.id.add_stars_button_id)
 		{
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_STAR_BUTTON);
+			
 			AddStarDialog dialog = new AddStarDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
@@ -466,6 +506,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else if (arg0.getId() == R.id.add_hurdle_smasher_button_id)
 		{
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_HURDLE_SMASHER_BUTTON);
+			
 			AddHurdleSmasherDialog dialog = new AddHurdleSmasherDialog(this);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
@@ -474,6 +516,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else if (arg0.getId() == R.id.remove_ads_button_id)
 		{
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REMOVE_ADS_BUTTON);
+			
 			if (mIAPManager.isSynchronized())
 			{
 			    //Remove Ads IAP
@@ -486,6 +530,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_REMOVING_ADS);
+				
 				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.show();
@@ -519,11 +565,10 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		
 		
-		MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_COLOR_BUTTON);
+		MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_COLOR_BUTTON, colorValue);
 		
 		
 		int[] result = playMove(gridHandle, colorValue);
-		Log.d("gaurav", "playMove returned 0 = " + result[0] + ", 1 = " + result[1]);
 		
 		int[] gridDataOneD = getGridData(gridHandle);
 		int gridSize = getGridSize(gridHandle);
@@ -553,7 +598,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			playSound(mGameFailedSoundID);
 			
-			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_FAILURE);
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_FAILURE);
 
 			
 			//update the coins earned
@@ -577,7 +622,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			playSound(mGameSuccessSoundID);
 			
-			MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
+			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
 			
 			//Update the last completed preference
 			SharedPreferences settings;
@@ -609,11 +654,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else
 		{
-			playSound(mButtonClickSoundID);
-			
-			/** Update Points and Coins Earned **/
-			//updateCoinsEarned(mTotalCoinsEarned + result[1] * MFGameConstants.COINS_EARNED_FACTOR_ON_EACH_MOVE)	;		
-			//updateCoinsEarned(mTotalCoinsEarned + 1)	;
+			/** Normal move - didn't win or fail. **/
+			playSound(mButtonClickSoundID);			
 		}
 		
 	}
@@ -703,9 +745,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	
 	@Override
 	public void onDialogOptionSelected(Dialog dialog, int option) 
-	{
-		Log.d("gaurav", "onDialogOptionSelected, class = " + dialog.getClass() + ", option = " + option);
-		
+	{		
 		/**
 		 * If there's a sound playing, stop it!
 		 */
@@ -713,20 +753,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		if (dialog.getClass() == GameMenuDialog.class)
 		{
-			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Go back to Main Menu
+			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Go back to Levels Screen
 			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MAIN_MENU_BUTTON);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_VIEW_LEVELS_BUTTON);
 				
 				finish();
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Resume current game
 			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_RESUME_GAME_BUTTON);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_CANCEL_GAME_MENU_DIALOG);
 				
 				if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
 				{
 					/**
-					 * Came here when the gme was already finished, so go back to the main menu
+					 * Came here when the game was already finished, so go back to the main menu
 					 */
 					finish();
 				}
@@ -738,7 +778,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2) //Replay Game
 			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEW_GAME_BUTTON);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REPLAY_GAME_BUTTON);
 				
 				dialog.cancel();
 				startNewGame(mLevel);
@@ -748,6 +788,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Play On
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_PLAY_ON_BUTTON);
+				
 				dialog.cancel();
 				
 				/** Prompt the user with adding moves to continue playing the current game. **/
@@ -757,6 +799,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2 || option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // End Game
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_END_GAME_BUTTON);
+				
 				/** Take the user to the Try Again dialog **/
 				GameMenuDialog tryAgainDialog = new GameMenuDialog(this);
 				tryAgainDialog.setCanceledOnTouchOutside(false);
@@ -767,21 +811,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1) //Start the next game
 			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEXT_GAME_BUTTON);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_NEXT_GAME_BUTTON);
 				
 				dialog.cancel();
-				
-				/**
-				 * Check if we can eligible to move to the next level
-				 */
-				SharedPreferences settings;
-				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 				
 				startNewGame(mLevel + 1);
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) // Go back to the Main Menu
 			{
-				MFAnalytics.trackEvent(this, getAnalyticsCategory(), MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MAIN_MENU_BUTTON);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_CANCEL_GAME_SUCCESS_DIALOG);
 				
 				finish();
 			}
@@ -790,9 +828,14 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
 			{
-				Log.d("gaurav", "calling purchaseItem... ");
 				//purchase for Remove Ads IAP requested
 				mIAPManager.purchaseItem(MFGameConstants.IAP_REMOVE_ADS);
+			}
+			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
+			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_CANCEL_REMOVE_ADS_DIALOG);
+				
+				dialog.dismiss();
 			}
 		}
 		else if (dialog.getClass() == AddCoinsDialog.class)
@@ -815,6 +858,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1) //cancel purchase
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_CANCEL_ADD_COINS_DIALOG);
+				
 				/**
 				 * If the user landed here afer having 'failed' the game,
 				 * show him the game menu dialog again
@@ -831,7 +876,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
 			{
-				Log.d("garuav", "AddMovesDialog result, mTotalCoinsEarned = " + mTotalCoinsEarned);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_MOVES_BUTTON);
+				
 				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_5_MOVES)
 				{
 					//go ahead and add moves, and adjust coins
@@ -840,6 +886,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					setMaxMoves(gridHandle, maxMoves);
 					
 					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_5_MOVES);
+					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_MOVES);
 					
 					int currMove = getCurrMove(gridHandle);
 					refreshMovesUI(currMove, maxMoves);
@@ -868,6 +915,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					}
 					else
 					{
+						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_MOVES);
+						
 						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
 						notConnectedDialog.setCanceledOnTouchOutside(false);
 						notConnectedDialog.show();
@@ -876,6 +925,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_CANCEL_ADD_MOVES_DIALOG);
+				
 				//if the game had failed and the user reached here, then take him to the main menu
 				int currMove = getCurrMove(gridHandle);
 				int maxMoves = getMaxMoves(gridHandle);
@@ -893,13 +944,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
 			{
-				Log.d("garuav", "AddStarDialog result, mTotalCoinsEarned = " + mTotalCoinsEarned);
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_STAR_BUTTON);
+				
 				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_A_STAR)
 				{
 					//go ahead and add star, and adjust coins
 					addStartPos(gridHandle);
 					
 					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_A_STAR);
+					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_STAR);
 					
 					//update the game view
 					int[] startPos = getStartPos(gridHandle);
@@ -935,6 +988,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					}
 					else
 					{
+						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_STAR);
+						
 						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
 						notConnectedDialog.setCanceledOnTouchOutside(false);
 						notConnectedDialog.show();
@@ -943,6 +998,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_CANCEL_ADD_STAR_DIALOG);
+				
 				dialog.dismiss(); //resume current game
 			}
 		}
@@ -950,14 +1007,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_HURDLE_SMASHER);
+				
 				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_A_HURDLE_SMASHER)
 				{				
 					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_A_HURDLE_SMASHER);
+					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_HURDLE_SMASHER);
 					
-					Toast.makeText(this, "Tap on a hurdle to make a hole", Toast.LENGTH_LONG).show();
+					HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP);
+					hurdleDialog.setCanceledOnTouchOutside(false);
+					hurdleDialog.show();
+					
 					mHurdleSmashMode = true;
 					enableDisableAllButtons(false);
-					mGameView.startEndTapDetectionMode(true);
+					mGameView.setClickable(true);
 				}
 				else
 				{
@@ -981,6 +1044,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					}
 					else
 					{
+						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_HURDLE_SMASHER);
+						
 						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
 						notConnectedDialog.setCanceledOnTouchOutside(false);
 						notConnectedDialog.show();
@@ -989,7 +1054,18 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
 			{
+				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_CANCEL_ADD_HURDLE_SMASHER_DIALOG);
+				
 				dialog.dismiss(); //resume current game
+			}
+		}
+		else if (dialog.getClass() == FinishedAllLevelsDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
+			{
+				//User has already completed ALL levels in the game.  So just finish the activity
+				//and take him back to the main screen.
+				finish();
 			}
 		}
 	}
@@ -1141,7 +1217,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			mHurdleSmashMode = false;
 			enableDisableAllButtons(true);
-			mGameView.startEndTapDetectionMode(false);
+			mGameView.setClickable(false);
 		}
 		else
 		{
@@ -1151,14 +1227,19 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				//give up!
 				mNumHurdleSmashTries = 0; //reset
 				
-				Toast.makeText(this, "Too many tries", Toast.LENGTH_LONG).show();
+				HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_GIVING_UP);
+				hurdleDialog.setCanceledOnTouchOutside(false);
+				hurdleDialog.show();
+				
 				mHurdleSmashMode = false;
 				enableDisableAllButtons(true);
-				mGameView.startEndTapDetectionMode(false);
+				mGameView.setClickable(false);
 			}
 			else
 			{
-				Toast.makeText(this, "Couldn't detect a hurdle, try again", Toast.LENGTH_LONG).show();
+				HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_RETRY);
+				hurdleDialog.setCanceledOnTouchOutside(false);
+				hurdleDialog.show();
 			}
 		}
 	}
@@ -1217,6 +1298,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	 * Native Hooks
 	 */
 	private long gridHandle;
+	private native int getNumLevels();
 	private native long createNewGrid(int level);
 	private native void deleteGrid(long handle);
 	private native int getGridSize(long handle);

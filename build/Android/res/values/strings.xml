@@ -121,8 +121,8 @@
     <string name="dialog_add_lifeline_stars_title_text">Add Stars</string>
     <string name="dialog_add_lifeline_hurdle_smasher_title_text">Smash a Hurdle</string>
     <string name="dialog_add_lifeline_moves_description_text">Add 5 More Moves and save your game!</string>
-    <string name="dialog_add_lifeline_stars_description_text">Add a Star and accelerate the game!</string>
-    <string name="dialog_add_lifeline_hurdle_smasher_description_text">Add a hurdle smasher, and use it to smash a hurdle!</string>
+    <string name="dialog_add_lifeline_stars_description_text">Add a Star and start flooding from additional positions on the board!</string>
+    <string name="dialog_add_lifeline_hurdle_smasher_description_text">Create holes in hurdles by smashing them with a Hurdle Smasher!</string>
     
     <!-- Remove Ads Dialog -->
     <string name="dialog_remove_ads_title_text">Remove Ads</string>
@@ -130,10 +130,25 @@
     <string name="remove_ads_price_text">Remove now for %1$s</string>
     
     <!-- Introduce Stars Dialog -->
-    <string name="dialog_introduce_stars_title_text">Stars</string>
-    <string name="dialog_introduce_stars_description_text">From here on, you can redeem your earned coins against stars, and accelerate your game!</string>
+    <string name="dialog_introduce_stars_title_text">Stars Unlocked</string>
+    <string name="dialog_introduce_stars_description_text">Add additional stars and accelerate your game!</string>
     
     <!-- Introduce Hurdle Smashers -->
-    <string name="dialog_introduce_hurdle_smashers_title_text">Hurdle Smashers</string>
-    <string name="dialog_introduce_hurdle_smashers_description_text">From here on, you can redeem your earned coins against Hurdle Smashers.  Hurdles Smashers are useful weapons that let you smash and create holes in hurdles to help you complete the game!</string>
+    <string name="dialog_introduce_hurdle_smashers_title_text">Hurdle Smashers Unlocked</string>
+    <string name="dialog_introduce_hurdle_smashers_description_text">Use Hurdle Smashers to create holes in hurdles to help you complete the game faster!</string>
+    
+    <!-- Finished All Levels Dialog -->
+    <string name="dialog_finished_all_levels_title_text">Congratulations!</string>
+    <string name="dialog_finished_all_levels_description_text">Congratulations for completing the game.  New levels coming soon!</string>
+    
+    <!-- Hurdle Smasher Info Dialog -->
+    <string name="dialog_hurdle_smasher_info_tap_title_text">Smash a Hurdle</string>
+    <string name="dialog_hurdle_smasher_info_not_detected_title_text">Try Again</string>
+    <string name="dialog_hurdle_smasher_info_tries_title_text">Too many tries</string>
+    <string name="dialog_hurdle_smasher_info_tap_text">Tap on a hurdle to make a hole</string>
+    <string name="dialog_hurdle_smasher_info_not_detected_text">Couldn\'t detect a hurdle.  Please try again.</string>
+    <string name="dialog_hurdle_smasher_info_tries_text">Too many tries.  Giving up.</string>
+    
+    
+    
 </resources>

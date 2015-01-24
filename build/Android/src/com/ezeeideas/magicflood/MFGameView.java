@@ -14,12 +14,14 @@ import android.graphics.Path;
 import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.support.v4.view.GestureDetectorCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.GestureDetector;
 
-public class MFGameView extends View implements View.OnTouchListener
+public class MFGameView extends View
 {
 	int[][] mGrid;
 	int mGridSize;
@@ -76,56 +78,15 @@ public class MFGameView extends View implements View.OnTouchListener
 		
 		mFillPaint = new Paint();
 		
-		setOnTouchListener(this);
-	}
-
-	public void startEndTapDetectionMode(boolean start)
-	{
-		mTapDetectionMode = start;
+		mDetector = new GestureDetectorCompat(context, new MyGestureListener());
 	}
 	
-	public boolean onTouch (View v, MotionEvent event)
-	{
-		if (mTapDetectionMode)
-		{
-			Log.d("gaurav", "view's onTouch, x = " + event.getX() + ", y = " + event.getY());
-			int x = (int) event.getX();
-			int y = (int) event.getY();
-			
-			int screenWidth = this.getWidth();
-			int screenHeight = this.getHeight();
-			
-			int hOffset = 0;
-			int vOffset = 0;
-			/**
-			 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
-			 */
-			if (screenHeight > screenWidth)
-			{
-				hOffset = 0;
-				vOffset = (screenHeight - screenWidth) / 2;
-			}
-			else
-			{
-				vOffset = 0;
-				hOffset = (screenWidth - screenHeight) / 2;
-			}
-			
-			int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS;
-			int cellSize = gridSizePixels/mGridSize;
-			
-			int xOffset = x - hOffset;
-			int yOffset = y - vOffset;
-			
-			int gridy = xOffset / cellSize;
-			int gridx = yOffset / cellSize;
-			
-			mTapHandler.handleGameViewTap(gridx, gridy);
-			return true;
-		}
-		
-		return false;
-	}
+	@Override 
+    public boolean onTouchEvent(MotionEvent event){ 
+		Log.d("gaurav", "onTouchEvent");
+        this.mDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
 	
 	protected void onDraw(Canvas canvas)
 	{
@@ -443,9 +404,62 @@ public class MFGameView extends View implements View.OnTouchListener
 	{
 		public void handleGameViewTap(int x, int y);
 	}
+	
+	class MyGestureListener extends GestureDetector.SimpleOnGestureListener 
+	{        
+		@Override
+		public boolean onDown(MotionEvent event)
+		{
+			Log.d("gaurav", "onDown called");
+			return true;
+		}
+		
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent event) 
+        { 
+        	Log.d("gaurav", "onSingleTapUp");
+    		
+    			Log.d("gaurav", "view's onTouch, x = " + event.getX() + ", y = " + event.getY());
+    			int x = (int) event.getX();
+    			int y = (int) event.getY();
+    			
+    			int screenWidth = getWidth();
+    			int screenHeight = getHeight();
+    			
+    			int hOffset = 0;
+    			int vOffset = 0;
+    			/**
+    			 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
+    			 */
+    			if (screenHeight > screenWidth)
+    			{
+    				hOffset = 0;
+    				vOffset = (screenHeight - screenWidth) / 2;
+    			}
+    			else
+    			{
+    				vOffset = 0;
+    				hOffset = (screenWidth - screenHeight) / 2;
+    			}
+    			
+    			int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS;
+    			int cellSize = gridSizePixels/mGridSize;
+    			
+    			int xOffset = x - hOffset;
+    			int yOffset = y - vOffset;
+    			
+    			int gridy = xOffset / cellSize;
+    			int gridx = yOffset / cellSize;
+    			
+    			mTapHandler.handleGameViewTap(gridx, gridy);
+    			return true;
+    		
+    		
+        }
+    }
 
+	private GestureDetectorCompat mDetector; 
 	private GameViewTapHandler mTapHandler;
 	private Paint mStartPaint, mBorderPaint, mFillPaint, mTestPaint, mStartStrokePaint, mShadowPaint;
 	private Path mStarPath;
-	private boolean mTapDetectionMode = false;
 }

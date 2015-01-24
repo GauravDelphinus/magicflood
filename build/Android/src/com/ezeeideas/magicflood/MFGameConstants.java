@@ -8,9 +8,7 @@ package com.ezeeideas.magicflood;
  *
  */
 public class MFGameConstants 
-{
-	public static final boolean testingMode = false;
-	
+{	
 	/**
 	 * Game Levels
 	 */
@@ -135,7 +133,7 @@ public class MFGameConstants
 	public static final int LEVEL_INTERVAL_REQUIRING_COIN_REDEMPTION = 5; //interval between levels after which you must redeem coins to move forward
 	public static final int COINS_TO_CROSS_LEVEL_INTERVAL = 200; //200 * stage number
 	public static final int MIN_LEVEL_TO_ADD_STARS = 27;
-	public static final int MIN_LEVEL_TO_ADD_HURDLE_SMASHER = 33;
+	public static final int MIN_LEVEL_TO_ADD_HURDLE_SMASHER = 50;
 	
 	/**
 	 * Redeeming Coins for Lifelines

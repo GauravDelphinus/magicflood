@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
             android:gravity="center"
-            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@+id/cancel_button"
             android:textSize="@dimen/dialog_title_text_size" />
 	    	<ImageButton
 	    	    android:id="@+id/cancel_button"

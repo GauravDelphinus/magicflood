@@ -96,7 +96,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 
 		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
-		
+		Log.d("gaurav", "lastUnlockedLeve = " + lastUnlockedLevel);
 		//if (layout.getLevel() <= lastUnlockedLevel)
 		{
 			Intent i = new Intent(this, MFGameActivity.class); 	
