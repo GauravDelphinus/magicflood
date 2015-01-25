@@ -14,10 +14,11 @@ import android.view.Window;
 
 public abstract class GameDialog extends Dialog implements View.OnClickListener, DialogInterface.OnKeyListener
 {
-	public GameDialog(Context context)
+	public GameDialog(Context context, int data)
 	{
 		super(context);
 		mContext = context;
+		mClientData = data;
 		
 		mListener = (GameDialogListener) mContext;
 		
@@ -95,35 +96,29 @@ public abstract class GameDialog extends Dialog implements View.OnClickListener,
 	@Override
 	public void onClick(View view)
 	{
-		Log.d("gaurav", "GameDialog.onClick");
 		if (view == mPositiveAction1View)
 		{
-			Log.d("gaurav", "positive action 1 case");
-			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1);
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1, mClientData);
 			this.dismiss();
 		}
 		else if (view == mPositiveAction2View)
 		{
-			Log.d("gaurav", "positive action 2 case");
-			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_2);
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_2, mClientData);
 			this.dismiss();
 		}
 		else if (view == mPositiveAction3View)
 		{
-			Log.d("gaurav", "positive action 3 case");
-			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_3);
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_3, mClientData);
 			this.dismiss();
 		}
 		else if (view == mPositiveAction4View)
 		{
-			Log.d("gaurav", "positive action 4 case");
-			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_4);
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_4, mClientData);
 			this.dismiss();
 		}
 		else if (view == mNegativeAction1View)
 		{
-			Log.d("gaurav", "negative action 1 case");
-			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_NEGATIVE_1);
+			mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_NEGATIVE_1, mClientData);
 			this.dismiss();
 		}
 	}
@@ -147,7 +142,7 @@ public abstract class GameDialog extends Dialog implements View.OnClickListener,
 	 */
 	public interface GameDialogListener
 	{
-		public void onDialogOptionSelected(Dialog dialog, int option); //One of GAME_DIALOG_ACTION_*
+		public void onDialogOptionSelected(Dialog dialog, int option, int clientData); //One of GAME_DIALOG_ACTION_*
 	}
 	
 	protected GameDialogListener mListener;
@@ -170,4 +165,5 @@ public abstract class GameDialog extends Dialog implements View.OnClickListener,
 	private Context mContext; //the calling activity context
 	private boolean mHandled; //whether we've already handled some user input (to avoid double-dismiss issue)
 	
+	protected int mClientData; //any data that the caller passed to te dialog, and that is passed back in te onDialogOptionSelected listener
 }

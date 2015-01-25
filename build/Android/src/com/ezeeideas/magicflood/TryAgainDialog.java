@@ -4,9 +4,9 @@ import android.content.Context;
 
 public class TryAgainDialog extends GameDialogType3 {
 
-	public TryAgainDialog(Context context) 
+	public TryAgainDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

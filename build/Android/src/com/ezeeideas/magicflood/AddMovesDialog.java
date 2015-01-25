@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 public class AddMovesDialog extends GameDialogType3 {
 
-	public AddMovesDialog(Context context) 
+	public AddMovesDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

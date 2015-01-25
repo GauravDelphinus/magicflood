@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 public class AddCoinsDialog extends GameDialogType5 {
 
-	public AddCoinsDialog(Context context, String priceList[]) 
+	public AddCoinsDialog(Context context, String priceList[], int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

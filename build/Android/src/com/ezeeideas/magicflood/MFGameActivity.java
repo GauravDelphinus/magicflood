@@ -132,6 +132,12 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	{
 		super.onDestroy();
 		deleteGrid(gridHandle);
+		
+		//Unbind the service manager for IAP
+        if (mIAPManager != null)
+        {
+            mIAPManager.unbind();
+        } 
 	}
 	
 	private void setupSound()
@@ -304,19 +310,19 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		 */
 		if (mHurdleSmashMode)
 		{
-			HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_RETRY);
+			HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_RETRY, DIALOG_DATA_NONE);
 			hurdleDialog.setCanceledOnTouchOutside(false);
 			hurdleDialog.show();
 		}
 		else if (mStarPlacementMode)
 		{
-			StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, StarPlacementInfoDialog.TYPE_RETRY);
+			StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, StarPlacementInfoDialog.TYPE_RETRY, DIALOG_DATA_NONE);
 			starDialog.setCanceledOnTouchOutside(false);
 			starDialog.show();
 		}
 		else
 		{
-			GameMenuDialog dialog = new GameMenuDialog(this);
+			GameMenuDialog dialog = new GameMenuDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(true);
 			dialog.show();
 		}
@@ -338,7 +344,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		if (level > getNumLevels())
 		{
 			//reached the end of the game. Congratulate the user
-			FinishedAllLevelsDialog dialog = new FinishedAllLevelsDialog(this);
+			FinishedAllLevelsDialog dialog = new FinishedAllLevelsDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			return;
@@ -404,13 +410,13 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	{
 		if (mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
 		{
-			IntroduceStarsGameDialog dialog = new IntroduceStarsGameDialog(this);
+			IntroduceStarsGameDialog dialog = new IntroduceStarsGameDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 		}
 		else if (mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
 		{
-			IntroduceHurdleSmashersDialog dialog = new IntroduceHurdleSmashersDialog(this);
+			IntroduceHurdleSmashersDialog dialog = new IntroduceHurdleSmashersDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 		}
@@ -441,7 +447,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{	
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_MENU_BUTTON);
 			
-			GameMenuDialog dialog = new GameMenuDialog(this);
+			GameMenuDialog dialog = new GameMenuDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 
@@ -474,9 +480,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			return;
 		}
 		else if (arg0.getId() == R.id.add_coins_button_id)
-		{
-			startNewGame(mLevel + 1);
-			/*
+		{	
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_COINS_BUTTON);
 			//redeem the coins, show a dialog
 			if (mIAPManager.isSynchronized())
@@ -491,7 +495,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
 				addCoinsPriceList[3] = details[2];
 				
-				AddCoinsDialog dialog = new AddCoinsDialog(this, addCoinsPriceList);
+				AddCoinsDialog dialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_NONE);
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.show();
 			}
@@ -499,17 +503,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			{
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_COINS);
 				
-				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
+				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.show();
-			}*/
+			}
 			return;
 		}
 		else if (arg0.getId() == R.id.add_moves_button_id)
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_MOVES_BUTTON);
 			
-			AddMovesDialog dialog = new AddMovesDialog(this);
+			AddMovesDialog dialog = new AddMovesDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
@@ -519,7 +523,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_STAR_BUTTON);
 			
-			AddStarDialog dialog = new AddStarDialog(this);
+			AddStarDialog dialog = new AddStarDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
@@ -529,7 +533,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_HURDLE_SMASHER_BUTTON);
 			
-			AddHurdleSmasherDialog dialog = new AddHurdleSmasherDialog(this);
+			AddHurdleSmasherDialog dialog = new AddHurdleSmasherDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
@@ -545,7 +549,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		        String detailsArray[];
 		        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
 		        
-		        RemoveAdsDialog dialog = new RemoveAdsDialog(this, detailsArray[2]);
+		        RemoveAdsDialog dialog = new RemoveAdsDialog(this, detailsArray[2], DIALOG_DATA_NONE);
 		        dialog.setCanceledOnTouchOutside(false);
 		        dialog.show();
 			}
@@ -553,7 +557,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			{
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_REMOVING_ADS);
 				
-				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this);
+				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.show();
 			}
@@ -613,7 +617,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{	
 			enableDisableAllButtons(false);
 			
-			GameFailedDialog dialog = new GameFailedDialog(this);
+			GameFailedDialog dialog = new GameFailedDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
@@ -628,16 +632,10 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			Editor editor = settings.edit();
 			editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, mTotalCoinsEarned);
 			editor.commit();
-			
-			
-			
-			/** Update Points and Coins Earned **/
-			//updateCoinsEarned(mTotalCoinsEarned + 1);
 		}
 		else if (result[0] == MFGameConstants.RESULT_SUCCESS) //game successful completed
 		{	
-
-			GameSuccessDialog dialog = new GameSuccessDialog(this);
+			GameSuccessDialog dialog = new GameSuccessDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
@@ -670,7 +668,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			editor.commit();
 			
 			/** Update Coins Earned **/	
-			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_EARNED_FACTOR_ON_GAME_COMPLETION + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES);
+			updateCoinsEarned(mTotalCoinsEarned + currMove + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES);
 			
 		}
 		else
@@ -773,7 +771,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	}
 	
 	@Override
-	public void onDialogOptionSelected(Dialog dialog, int option) 
+	public void onDialogOptionSelected(Dialog dialog, int option, int clientdata) 
 	{		
 		/**
 		 * If there's a sound playing, stop it!
@@ -822,7 +820,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				dialog.cancel();
 				
 				/** Prompt the user with adding moves to continue playing the current game. **/
-				AddMovesDialog addMovesDialog = new AddMovesDialog(this);
+				AddMovesDialog addMovesDialog = new AddMovesDialog(this, DIALOG_DATA_NONE);
 				addMovesDialog.setCanceledOnTouchOutside(false);
 				addMovesDialog.show();
 			}
@@ -831,7 +829,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_END_GAME_BUTTON);
 				
 				/** Take the user to the Try Again dialog **/
-				GameMenuDialog tryAgainDialog = new GameMenuDialog(this);
+				GameMenuDialog tryAgainDialog = new GameMenuDialog(this, DIALOG_DATA_NONE);
 				tryAgainDialog.setCanceledOnTouchOutside(false);
 				tryAgainDialog.show();
 			}
@@ -895,7 +893,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				 */
 				if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
 				{
-					GameMenuDialog menuDialog = new GameMenuDialog(this);
+					GameMenuDialog menuDialog = new GameMenuDialog(this, DIALOG_DATA_NONE);
 					menuDialog.setCanceledOnTouchOutside(false);
 					menuDialog.show();
 				}
@@ -938,15 +936,16 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
 						addCoinsPriceList[3] = details[2];
 						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList);
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_MOVES_DIALOG);
 						addCoinsDialog.setCanceledOnTouchOutside(false);
 						addCoinsDialog.show();
+						mLastDialogData = DIALOG_DATA_FROM_ADD_MOVES_DIALOG;
 					}
 					else
 					{
 						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_MOVES);
 						
-						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
+						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
 						notConnectedDialog.setCanceledOnTouchOutside(false);
 						notConnectedDialog.show();
 					}
@@ -957,11 +956,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_CANCEL_ADD_MOVES_DIALOG);
 				
 				//if the game had failed and the user reached here, then take him to the main menu
-				int currMove = getCurrMove(gridHandle);
-				int maxMoves = getMaxMoves(gridHandle);
-				if (currMove == maxMoves)
+				/**
+				 * If the user landed here afer having 'failed' the game,
+				 * show him the game menu dialog again
+				 */
+				if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
 				{
-					finish(); // go back to the main menu
+					GameMenuDialog menuDialog = new GameMenuDialog(this, DIALOG_DATA_NONE);
+					menuDialog.setCanceledOnTouchOutside(false);
+					menuDialog.show();
 				}
 				else
 				{
@@ -981,7 +984,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_STAR);
 					
 					//go ahead and add star, and adjust coins
-					StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP);
+					StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP, DIALOG_DATA_NONE);
 					starDialog.setCanceledOnTouchOutside(false);
 					starDialog.show();
 					
@@ -1005,15 +1008,16 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
 						addCoinsPriceList[3] = details[2];
 						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList);
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_STAR_DIALOG);
 						addCoinsDialog.setCanceledOnTouchOutside(false);
 						addCoinsDialog.show();
+						mLastDialogData = DIALOG_DATA_FROM_ADD_STAR_DIALOG;
 					}
 					else
 					{
 						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_STAR);
 						
-						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
+						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
 						notConnectedDialog.setCanceledOnTouchOutside(false);
 						notConnectedDialog.show();
 					}
@@ -1037,7 +1041,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_A_HURDLE_SMASHER);
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_HURDLE_SMASHER);
 					
-					HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP);
+					HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP, DIALOG_DATA_NONE);
 					hurdleDialog.setCanceledOnTouchOutside(false);
 					hurdleDialog.show();
 					
@@ -1061,15 +1065,16 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
 						addCoinsPriceList[3] = details[2];
 						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList);
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG);
 						addCoinsDialog.setCanceledOnTouchOutside(false);
 						addCoinsDialog.show();
+						mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
 					}
 					else
 					{
 						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_HURDLE_SMASHER);
 						
-						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this);
+						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
 						notConnectedDialog.setCanceledOnTouchOutside(false);
 						notConnectedDialog.show();
 					}
@@ -1089,6 +1094,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				//User has already completed ALL levels in the game.  So just finish the activity
 				//and take him back to the main screen.
 				finish();
+			}
+		}
+		else if (dialog.getClass() == IAPFailedDialog.class)
+		{
+			if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
+			{
+				//purchase failed for some reason.
+				if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
+				{
+					//this happened after failing the game, so go back to the main menu dialog
+					GameMenuDialog menuDialog = new GameMenuDialog(this, DIALOG_DATA_NONE);
+					menuDialog.setCanceledOnTouchOutside(false);
+					menuDialog.show();
+				}
 			}
 		}
 	}
@@ -1112,36 +1131,22 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				hideAds();
 			}
 		}
-		else if (pid.equals(MFGameConstants.IAP_COINS_FIRST))
+		else if (pid.equals(MFGameConstants.IAP_COINS_FIRST)
+				|| pid.equals(MFGameConstants.IAP_COINS_SECOND)
+				|| pid.equals(MFGameConstants.IAP_COINS_THIRD)
+				|| pid.equals(MFGameConstants.IAP_COINS_FOURTH))
 		{
 			if (status == true)
 			{
 				//purchase successful.  Since these are consumable items, make the consume request
 				mIAPManager.consumeItem(purchase);
 			}
-		}
-		else if (pid.equals(MFGameConstants.IAP_COINS_SECOND))
-		{
-			if (status == true)
+			else
 			{
-				//purchase successful.  Since these are consumable items, make the consume request
-				mIAPManager.consumeItem(purchase);
-			}
-		}
-		else if (pid.equals(MFGameConstants.IAP_COINS_THIRD))
-		{
-			if (status == true)
-			{
-				//purchase successful.  Since these are consumable items, make the consume request
-				mIAPManager.consumeItem(purchase);
-			}
-		}
-		else if (pid.equals(MFGameConstants.IAP_COINS_FOURTH))
-		{
-			if (status == true)
-			{
-				//purchase successful.  Since these are consumable items, make the consume request
-				mIAPManager.consumeItem(purchase);
+				//show the "Purchase failed dialog"
+				IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_PURCHASE_FAILED, DIALOG_DATA_NONE);
+				iapFailedDialog.setCanceledOnTouchOutside(false);
+				iapFailedDialog.show();
 			}
 		}
 	}
@@ -1149,34 +1154,65 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	@Override
 	public void onConsumeFinished(String pid, boolean status) 
 	{
-		//consumed the item, now update the values
-		if (pid.equals(MFGameConstants.IAP_COINS_FIRST))
+		if (status == true)
 		{
-			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FIRST);
+			//consumed the item, now update the values
+			if (pid.equals(MFGameConstants.IAP_COINS_FIRST))
+			{
+				updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FIRST);
+			}
+			else if (pid.equals(MFGameConstants.IAP_COINS_SECOND))
+			{
+				updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_SECOND);
+			}
+			else if (pid.equals(MFGameConstants.IAP_COINS_THIRD))
+			{
+				updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_THIRD);
+			}
+			else if (pid.equals(MFGameConstants.IAP_COINS_FOURTH))
+			{
+				updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FOURTH);
+			}
+			
+			/**
+			 * Now check to see if the purchase was started for a specific workflow (e.g. AddMoves,
+			 * AddStar, AddHurdleSmasher, or if it was started standalone (via AddCoinsDialog)
+			 */
+			if (mLastDialogData == DIALOG_DATA_FROM_ADD_MOVES_DIALOG)
+			{
+				mLastDialogData = DIALOG_DATA_NONE;
+				
+				//user landed here after starting the Add Moves.  So, show up the Add Moves dialog again
+				AddMovesDialog addMovesDialog = new AddMovesDialog(this, DIALOG_DATA_NONE);
+				addMovesDialog.setCanceledOnTouchOutside(false);
+				addMovesDialog.show();		
+			}
+			else if (mLastDialogData == DIALOG_DATA_FROM_ADD_STAR_DIALOG)
+			{
+				mLastDialogData = DIALOG_DATA_NONE;
+				
+				//user landed here after starting the Add Star workflow.
+				AddStarDialog addStarDialog = new AddStarDialog(this, DIALOG_DATA_NONE);
+				addStarDialog.setCanceledOnTouchOutside(false);
+				addStarDialog.show();
+			}
+			else if (mLastDialogData == DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG)
+			{
+				mLastDialogData = DIALOG_DATA_NONE;
+				
+				//user landed here after starting the Add Hurdle Smasher workflow
+				AddHurdleSmasherDialog hurdleDialog = new AddHurdleSmasherDialog(this, DIALOG_DATA_NONE);
+				hurdleDialog.setCanceledOnTouchOutside(false);
+				hurdleDialog.show();
+			}
 		}
-		else if (pid.equals(MFGameConstants.IAP_COINS_SECOND))
+		else
 		{
-			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_SECOND);
-		}
-		else if (pid.equals(MFGameConstants.IAP_COINS_THIRD))
-		{
-			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_THIRD);
-		}
-		else if (pid.equals(MFGameConstants.IAP_COINS_FOURTH))
-		{
-			updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FOURTH);
-		}
-		
-		/*
-		 * 
-		 * if you landed here beucase of "play on" after failing the game, then take
-		 * him back to the play on dialog
-		 */
-		if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
-		{
-			AddMovesDialog addMovesDialog = new AddMovesDialog(this);
-			addMovesDialog.setCanceledOnTouchOutside(false);
-			addMovesDialog.show();
+			//consume failed!
+			//show the "Consume failed dialog"
+			IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_CONSUME_FAILED, DIALOG_DATA_NONE);
+			iapFailedDialog.setCanceledOnTouchOutside(false);
+			iapFailedDialog.show();
 		}
 	}
 	
@@ -1239,7 +1275,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			else
 			{
-				HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_RETRY);
+				HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_RETRY, DIALOG_DATA_NONE);
 				hurdleDialog.setCanceledOnTouchOutside(false);
 				hurdleDialog.show();
 			}
@@ -1271,7 +1307,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			else
 			{
 				//retry
-				StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, StarPlacementInfoDialog.TYPE_RETRY);
+				StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, StarPlacementInfoDialog.TYPE_RETRY, DIALOG_DATA_NONE);
 				starDialog.setCanceledOnTouchOutside(false);
 				starDialog.show();
 			}
@@ -1350,6 +1386,12 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private native int[] getGridData(long handle);
 	private native int smashHurdle(long handle, int x, int y);
 
-
-
+	/**
+	 * Dialog data that is used to control workflow
+	 */
+	private static final int DIALOG_DATA_NONE = 0;
+	private static final int DIALOG_DATA_FROM_ADD_STAR_DIALOG = 1;
+	private static final int DIALOG_DATA_FROM_ADD_MOVES_DIALOG = 2;
+	private static final int DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG = 3;
+	private int mLastDialogData = DIALOG_DATA_NONE;
 }

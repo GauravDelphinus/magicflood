@@ -120,7 +120,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
 	}
 	
 	@Override
-	public void onDialogOptionSelected(Dialog dialog, int option) 
+	public void onDialogOptionSelected(Dialog dialog, int option, int clientdata) 
 	{
 		if (dialog.getClass() == StoreNotConnectedDialog.class)
 		{

@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 public class FinishedAllLevelsDialog extends GameDialogType1 {
 
-	public FinishedAllLevelsDialog(Context context) 
+	public FinishedAllLevelsDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 public class GameMenuDialog extends GameDialogType4 {
 
-	public GameMenuDialog(Context context) 
+	public GameMenuDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

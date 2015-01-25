@@ -3,11 +3,12 @@ package com.ezeeideas.magicflood;
 import android.content.Context;
 import android.widget.TextView;
 
-public class StoreNotConnectedDialog extends GameDialogType1 {
+public class StoreNotConnectedDialog extends GameDialogType1 
+{
 
-	public StoreNotConnectedDialog(Context context) 
+	public StoreNotConnectedDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

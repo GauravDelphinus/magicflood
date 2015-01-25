@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 public class HurdleSmasherInfoDialog extends GameDialogType1 {
 
-	public HurdleSmasherInfoDialog(Context context, int type) 
+	public HurdleSmasherInfoDialog(Context context, int type, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

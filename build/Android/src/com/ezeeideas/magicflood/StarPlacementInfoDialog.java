@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 public class StarPlacementInfoDialog extends GameDialogType1 {
 
-	public StarPlacementInfoDialog(Context context, int type) 
+	public StarPlacementInfoDialog(Context context, int type, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

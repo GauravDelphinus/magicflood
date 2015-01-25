@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 public class RemoveAdsDialog extends GameDialogType3
 {
-	public RemoveAdsDialog(Activity context, String price) 
+	public RemoveAdsDialog(Activity context, String price, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 
 		setupViews();
 		

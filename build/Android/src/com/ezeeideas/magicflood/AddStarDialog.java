@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 public class AddStarDialog extends GameDialogType3 {
 
-	public AddStarDialog(Context context) 
+	public AddStarDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

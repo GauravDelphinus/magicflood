@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 public class AddLifelineDialog extends GameDialogType3 {
 
-	public AddLifelineDialog(Context context, int type) 
+	public AddLifelineDialog(Context context, int type, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

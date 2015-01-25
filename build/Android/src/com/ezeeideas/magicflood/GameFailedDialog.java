@@ -7,9 +7,9 @@ import android.widget.TextView;
 
 public class GameFailedDialog extends GameDialogType4 {
 
-	public GameFailedDialog(Context context) 
+	public GameFailedDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

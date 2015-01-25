@@ -139,6 +139,12 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_FAILED, sku, result.getResponse());
 			}
 			
+			//successfully purchased.  Update the UI to reflect the changes
+			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+			{
+				listener.onPurchaseFinished(info, sku, false);
+			}
+			
 			//some failure purchased.  Update the UI to reflect the changes
 			return;
 		}
@@ -167,6 +173,11 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		{
 			//failure in consumption
 			MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_CONSUME_FAILED, purchase.getSku(), result.getResponse());
+			
+			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+			{
+				listener.onConsumeFinished(purchase.getSku(), false);
+			}
 		}
 		else
 		{

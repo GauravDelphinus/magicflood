@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 public class GameSuccessDialog extends GameDialogType3 {
 
-	public GameSuccessDialog(Context context) 
+	public GameSuccessDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

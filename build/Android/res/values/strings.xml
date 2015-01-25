@@ -130,13 +130,13 @@
     <string name="remove_ads_price_text">Remove now for %1$s</string>
     
     <!-- Introduce Stars Dialog -->
-    <string name="dialog_introduce_stars_title_text">Stars Unlocked</string>
-    <string name="dialog_introduce_stars_description_text">Add additional stars and accelerate your game!</string>
+    <string name="dialog_introduce_stars_title_text">Stars Unlocked!</string>
+    <string name="dialog_introduce_stars_description_text">Congratulations! You can now add additional stars to your game and accelerate the speed!</string>
     <string name="dialog_introduce_lifeline_positive_button_text">Got it!</string>
     
     <!-- Introduce Hurdle Smashers -->
-    <string name="dialog_introduce_hurdle_smashers_title_text">Hurdle Smashers Unlocked</string>
-    <string name="dialog_introduce_hurdle_smashers_description_text">Use Hurdle Smashers to create holes in hurdles to help you complete the game faster!</string>
+    <string name="dialog_introduce_hurdle_smashers_title_text">Hurdle Smashers Unlocked!</string>
+    <string name="dialog_introduce_hurdle_smashers_description_text">Super!  You can now use Hurdle Smashers to create holes in hurdles to help you complete the game faster!</string>
     
     <!-- Finished All Levels Dialog -->
     <string name="dialog_finished_all_levels_title_text">Congratulations!</string>
@@ -153,5 +153,11 @@
     <string name="dialog_star_placement_info_not_detected_title_text">Try Again</string>
     <string name="dialog_star_placement_info_tap_text">Excellent! Now that you have an additional Star, place it anywhere on the grid by tapping your finger on the desired location.</string>
     <string name="dialog_star_placement_info_not_detected_text">Couldn\'t detect a valid location.  Please try again, by tapping on any location (outside a hurdle).</string>
+    
+    <!-- IAP Failed Dialog -->
+    <string name="dialog_iap_failed_purchase_title_text">Something\s not right</string>
+    <string name="dialog_iap_failed_purchase_text">There was an error in completing the purchase.  Please try again later.</string>
+    <string name="dialog_iap_failed_consume_title_text">Something\s not right</string>
+    <string name="dialog_iap_failed_consume_text">While the purchase succeeded, there was a problem in synchronizing the purchase.  This problem should get resolved automatically - try relaunching the App.</string>
     
 </resources>

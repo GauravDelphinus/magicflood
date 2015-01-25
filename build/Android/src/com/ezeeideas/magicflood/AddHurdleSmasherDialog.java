@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 public class AddHurdleSmasherDialog extends GameDialogType3 {
 
-	public AddHurdleSmasherDialog(Context context) 
+	public AddHurdleSmasherDialog(Context context, int clientdata) 
 	{
-		super(context);
+		super(context, clientdata);
 		
 		setupViews();
 		

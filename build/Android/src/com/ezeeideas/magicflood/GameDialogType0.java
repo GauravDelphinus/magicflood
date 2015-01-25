@@ -13,9 +13,9 @@ import android.view.View;
  */
 public abstract class GameDialogType0 extends GameDialog
 {
-	public GameDialogType0(Context context)
+	public GameDialogType0(Context context, int clientdata)
 	{
-		super(context);
+		super(context, clientdata);
 	}
 
 	protected void setupRequiredViews()
@@ -25,7 +25,7 @@ public abstract class GameDialogType0 extends GameDialog
 
 	protected void handleDismiss()
 	{
-		mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1);	
+		mListener.onDialogOptionSelected(this, GAME_DIALOG_ACTION_POSITIVE_1, mClientData);	
 		this.dismiss();
 	}
 	
