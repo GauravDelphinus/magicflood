@@ -57,7 +57,7 @@ public:
     int ** getFullGrid();
     int ** getStartPos();
     int getNumStartPos();
-    void addStartPos();
+    int addStartPos(int x, int y);
     int getMaxMoves();
     void setMaxMoves(int maxMoves);
     int getCurrMoves();

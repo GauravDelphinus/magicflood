@@ -145,9 +145,13 @@
     <!-- Hurdle Smasher Info Dialog -->
     <string name="dialog_hurdle_smasher_info_tap_title_text">Smash a Hurdle</string>
     <string name="dialog_hurdle_smasher_info_not_detected_title_text">Try Again</string>
-    <string name="dialog_hurdle_smasher_info_tries_title_text">Too many tries</string>
     <string name="dialog_hurdle_smasher_info_tap_text">Super! Now that you have a Hurdle Smasher, use it to make a hole in a hurdle by tapping your finger on the hurdle.</string>
-    <string name="dialog_hurdle_smasher_info_not_detected_text">Couldn\'t detect a hurdle.  Please try again.</string>
-    <string name="dialog_hurdle_smasher_info_tries_text">Too many tries.  Giving up.</string>
-        
+    <string name="dialog_hurdle_smasher_info_not_detected_text">Couldn\'t detect a hurdle.  Please try again, by tapping on any hurdle.</string>
+
+    <!-- Star Placement Info Dialog -->
+    <string name="dialog_star_placement_info_tap_title_text">Place the Star</string>
+    <string name="dialog_star_placement_info_not_detected_title_text">Try Again</string>
+    <string name="dialog_star_placement_info_tap_text">Excellent! Now that you have an additional Star, place it anywhere on the grid by tapping your finger on the desired location.</string>
+    <string name="dialog_star_placement_info_not_detected_text">Couldn\'t detect a valid location.  Please try again, by tapping on any location (outside a hurdle).</string>
+    
 </resources>

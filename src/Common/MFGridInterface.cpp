@@ -126,16 +126,15 @@ int getNumStartPos(long handle)
     return 0;
 }
     
-/**
- Add a start position (STAR) at a new location.
- **/
-void addStartPos(long handle)
+int addStartPos(long handle, int x, int y)
 {
-    MFGrid *grid = reinterpret_cast<MFGrid *>(handle);
+    MFGrid *grid = reinterpret_cast<MFGrid*>(handle);
     if (grid != NULL)
     {
-        return grid->addStartPos();
+        return grid->addStartPos(x, y);
     }
+    
+    return 0;
 }
 
 /**

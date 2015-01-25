@@ -55,44 +55,40 @@ int MFGrid::getNumStartPos()
     return numStartPos;
 }
 
-void MFGrid::addStartPos()
+int MFGrid::addStartPos(int x, int y)
 {
-    logPrint("gaurav", "addStartPos");
-    int quadrants[4] = {1, 2, 3, 4};
-    shuffleArray(quadrants, 4);
-    
-    int selectedQuadrant = -1;
-    for (int i = 0; i < 4; i++)
+    if (mGameGrid[x][y] == GRID_OBSTACLE)
     {
-        logPrint("gaurav", "in for loop, i = %d, quadrants[i] = %d\n", i, quadrants[i]);
-        bool foundStar = false;
-        for (int j = 0; j < numStartPos; j++)
-        {
-            if (quadrantContainsStar(quadrants[i], startPos[j][0], startPos[j][1]))
-            {
-                foundStar = true;
-                break;
-            }
-        }
+        return 0; //invalid selection
+    }
+    
+    int selectedX = x;
+    int selectedY = y;
+    
+    int newNumStartPos = numStartPos + 1;
+    int **newStartPosArray = (int **) malloc (newNumStartPos * sizeof(int *));
+    for (int i = 0; i < newNumStartPos; i++)
+    {
+        newStartPosArray[i] = (int *) malloc (2 * sizeof(int));
+    }
+    
+    for (int i = 0; i < numStartPos; i++)
+    {
+        newStartPosArray[i][0] = startPos[i][0];
+        newStartPosArray[i][1] = startPos[i][1];
         
-        if (!foundStar)
-        {
-            selectedQuadrant = quadrants[i];
-            break;
-        }
+        free(startPos[i]);
     }
+    free(startPos);
+    startPos = NULL;
     
-    if (selectedQuadrant != -1)
-    {
-        logPrint("gaurav", "found quadrant = %d\n", selectedQuadrant);
-        placeStarInQuadrant(selectedQuadrant);
-    }
-    else
-    {
-        logPrint("gaurav", "couldn't find any quadrant, so adding to the grid");
-        //place the star at a random location anywhere on the grid
-        placeStarInGrid();
-    }
+    newStartPosArray[numStartPos][0] = selectedX;
+    newStartPosArray[numStartPos][1] = selectedY;
+    
+    startPos = newStartPosArray;
+    numStartPos = newNumStartPos;
+    
+    return 1;
 }
 
 bool MFGrid::gridCompleted(int color, int *grid[])

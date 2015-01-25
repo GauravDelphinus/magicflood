@@ -139,7 +139,7 @@ public class MFGameConstants
 	 * Redeeming Coins for Lifelines
 	 */
 	public static final int COINS_TO_ADD_5_MOVES = 500;
-	public static final int COINS_TO_ADD_A_STAR = 1500;
+	public static final int COINS_TO_ADD_A_STAR = 1;
 	public static final int COINS_TO_ADD_A_HURDLE_SMASHER = 1;
 	
 	/**

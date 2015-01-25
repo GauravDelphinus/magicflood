@@ -162,6 +162,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mGameSuccessSoundID = mSoundPool.load(this, R.raw.game_success_sound, 1);
 		mGameFailedSoundID = mSoundPool.load(this, R.raw.game_failed_sound, 1);
 		mHurdleSmashedSoundID = mSoundPool.load(this, R.raw.hurdle_smashed_sound, 1);
+		mStarPlacedSoundID = mSoundPool.load(this, R.raw.star_placed_sound, 1);
 		
 		//read the preference on whether the sound should be muted
 		SharedPreferences settings;
@@ -295,9 +296,30 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	{
 		MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_BACK_BUTTON);
 		
-		GameMenuDialog dialog = new GameMenuDialog(this);
-		dialog.setCanceledOnTouchOutside(true);
-		dialog.show();	
+		/**
+		 * Check to see if we're in the mode where the hurdle smasher or a star
+		 * needs to be placed, and hence waiting for user to tap on the screen.
+		 * 
+		 * If so, alert the user
+		 */
+		if (mHurdleSmashMode)
+		{
+			HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_RETRY);
+			hurdleDialog.setCanceledOnTouchOutside(false);
+			hurdleDialog.show();
+		}
+		else if (mStarPlacementMode)
+		{
+			StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, StarPlacementInfoDialog.TYPE_RETRY);
+			starDialog.setCanceledOnTouchOutside(false);
+			starDialog.show();
+		}
+		else
+		{
+			GameMenuDialog dialog = new GameMenuDialog(this);
+			dialog.setCanceledOnTouchOutside(true);
+			dialog.show();
+		}
 	}
 	
 	private void startNewGame(int level)
@@ -668,6 +690,14 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mYellowButton.setEnabled(enable);
 		mOrangeButton.setEnabled(enable);
 		mCyanButton.setEnabled(enable);
+		
+		mExitButton.setEnabled(enable);
+		mSoundButton.setEnabled(enable);
+		mAddCoinsButton.setEnabled(enable);
+		mAddMovesButton.setEnabled(enable);
+		mAddStarsButton.setEnabled(enable);
+		mAddHurdleSmasherButton.setEnabled(enable);
+		mRemoveAdsButton.setEnabled(enable);
 	}
 
 	private void updateCoinsEarned(int newValue)
@@ -948,23 +978,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				
 				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_A_STAR)
 				{
-					//go ahead and add star, and adjust coins
-					addStartPos(gridHandle);
-					
 					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_A_STAR);
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_STAR);
 					
-					//update the game view
-					int[] startPos = getStartPos(gridHandle);
-					int numStartPos = getNumStartPos(gridHandle);
-					int startPosArray[][] = new int[numStartPos][2];
-					for (int i = 0; i < numStartPos; i++)
-					{
-						startPosArray[i][0] = startPos[2 * i];
-						startPosArray[i][1] = startPos[2 * i + 1];
-					}
-					mGameView.updateStartPos(startPosArray, numStartPos);
-					mGameView.invalidate();
+					//go ahead and add star, and adjust coins
+					StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP);
+					starDialog.setCanceledOnTouchOutside(false);
+					starDialog.show();
+					
+					mStarPlacementMode = true;
+					enableDisableAllButtons(false);
+					mGameView.setClickable(true);
 				}
 				else
 				{
@@ -1177,61 +1201,45 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	@Override
 	public void handleGameViewTap(int col, int row) 
 	{
-		int result = smashHurdle(gridHandle, col, row);
-		if (result == 1)
+		if (mHurdleSmashMode)
 		{
-			/**
-			 * Show the animation and play a sound!
-			 */
-			/*
-			RelativeLayout rl = (RelativeLayout) findViewById(R.id.game_view_layout_id);
-			ExplodeView explodeView = new ExplodeView(this);
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-			params.leftMargin = 50;
-			params.topMargin = 60;
-			rl.addView(explodeView, params);
-			
-			*/
-			
-			playSound(mHurdleSmashedSoundID);
-			
-			//successfuly smashed a hurdle
-			int[] gridDataOneD = getGridData(gridHandle);
-			int gridSize = getGridSize(gridHandle);
-			int currMove = getCurrMove(gridHandle);
-			int maxMoves = getMaxMoves(gridHandle);
-			//convert the one-dimensional array passed from C++ back to 2D array for use in the game view in Java
-			int gridData[][] = new int[gridSize][gridSize];
-			for (int i = 0; i < gridDataOneD.length; i++)
+			int result = smashHurdle(gridHandle, col, row);
+			if (result == 1)
 			{
-				int x = i % gridSize;
-				int y = i / gridSize;
-				gridData[x][y] = gridDataOneD[i];
-			}
-			
-			mGameView.updateGameData(gridData);
-			
-			mGameView.invalidate();
-			
-			mNumHurdleSmashTries = 0;
-			
-			mHurdleSmashMode = false;
-			enableDisableAllButtons(true);
-			mGameView.setClickable(false);
-		}
-		else
-		{
-			mNumHurdleSmashTries++;
-			if (mNumHurdleSmashTries > MAX_HURDLE_SMASH_TRIES)
-			{
-				//give up!
-				mNumHurdleSmashTries = 0; //reset
-				
-				HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_GIVING_UP);
-				hurdleDialog.setCanceledOnTouchOutside(false);
-				hurdleDialog.show();
-				
 				mHurdleSmashMode = false;
+				
+				/**
+				 * Show the animation and play a sound!
+				 */
+				/*
+				RelativeLayout rl = (RelativeLayout) findViewById(R.id.game_view_layout_id);
+				ExplodeView explodeView = new ExplodeView(this);
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+				params.leftMargin = 50;
+				params.topMargin = 60;
+				rl.addView(explodeView, params);
+				
+				*/
+				
+				playSound(mHurdleSmashedSoundID);
+				
+				//successfuly smashed a hurdle
+				int[] gridDataOneD = getGridData(gridHandle);
+				int gridSize = getGridSize(gridHandle);
+				int currMove = getCurrMove(gridHandle);
+				int maxMoves = getMaxMoves(gridHandle);
+				//convert the one-dimensional array passed from C++ back to 2D array for use in the game view in Java
+				int gridData[][] = new int[gridSize][gridSize];
+				for (int i = 0; i < gridDataOneD.length; i++)
+				{
+					int x = i % gridSize;
+					int y = i / gridSize;
+					gridData[x][y] = gridDataOneD[i];
+				}
+				
+				mGameView.updateGameData(gridData);				
+				mGameView.invalidate();		
+				
 				enableDisableAllButtons(true);
 				mGameView.setClickable(false);
 			}
@@ -1240,6 +1248,38 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_RETRY);
 				hurdleDialog.setCanceledOnTouchOutside(false);
 				hurdleDialog.show();
+			}
+		}
+		else if (mStarPlacementMode)
+		{
+			int result = addStartPos(gridHandle, col, row);
+			if (result == 1)
+			{
+				mStarPlacementMode = false;
+				playSound(mStarPlacedSoundID);
+				
+				//successfully placed the star
+				enableDisableAllButtons(true);
+				mGameView.setClickable(false);
+				
+				//update the game view
+				int[] startPos = getStartPos(gridHandle);
+				int numStartPos = getNumStartPos(gridHandle);
+				int startPosArray[][] = new int[numStartPos][2];
+				for (int i = 0; i < numStartPos; i++)
+				{
+					startPosArray[i][0] = startPos[2 * i];
+					startPosArray[i][1] = startPos[2 * i + 1];
+				}
+				mGameView.updateStartPos(startPosArray, numStartPos);
+				mGameView.invalidate();
+			}
+			else
+			{
+				//retry
+				StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, StarPlacementInfoDialog.TYPE_RETRY);
+				starDialog.setCanceledOnTouchOutside(false);
+				starDialog.show();
 			}
 		}
 	}
@@ -1271,17 +1311,21 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private Animation mAnimScale;
 	
 	/**
+	 * Placing a Star
+	 */
+	private boolean mStarPlacementMode; //whether we're in the mode where user is selecting a cell to place the star on
+	
+	/**
 	 * Hurdle SMasher
 	 */
 	private boolean mHurdleSmashMode; //whether we're in the mode where user is selecting a hurdle to smash
-	private int mNumHurdleSmashTries; //number of times the user has tried to unsuccessfully smash the hurdle
-	private static final int MAX_HURDLE_SMASH_TRIES = 3;
+
 	/**
 	 * Sound related
 	 */
 	
 	private SoundPool mSoundPool;
-	private int mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID;
+	private int mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
 	boolean loaded = false;
 	float actVolume, maxVolume, volume;
 	AudioManager audioManager;
@@ -1304,7 +1348,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private native int getGridSize(long handle);
 	private native int[] getStartPos(long handle);
 	private native int getNumStartPos(long handle);
-	private native void addStartPos(long handle);
+	private native int addStartPos(long handle, int x, int y);
 	private native int getMaxMoves(long handle);
 	private native void setMaxMoves(long handle, int maxMoves);
 	private native int getCurrMove(long handle);

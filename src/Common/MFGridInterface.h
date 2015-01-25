@@ -17,7 +17,7 @@ int getGridSize(long handle);
     int getNumStartPos(long handle);
 int** getStartPos(long handle);
 void freeStartPos(long handle, int **startPos);
-    void addStartPos(long handle); 
+    int addStartPos(long handle, int x, int y);
 int getMaxMoves(long handle);
     void setMaxMoves(long handle, int maxMoves);
 int getCurrMove(long handle);

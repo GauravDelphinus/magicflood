@@ -3,9 +3,9 @@ package com.ezeeideas.magicflood;
 import android.content.Context;
 import android.widget.TextView;
 
-public class HurdleSmasherInfoDialog extends GameDialogType1 {
+public class StarPlacementInfoDialog extends GameDialogType1 {
 
-	public HurdleSmasherInfoDialog(Context context, int type) 
+	public StarPlacementInfoDialog(Context context, int type) 
 	{
 		super(context);
 		
@@ -13,10 +13,10 @@ public class HurdleSmasherInfoDialog extends GameDialogType1 {
 		
 		postSetupViews();
 		
-		TextView titleTV = (TextView) findViewById(R.id.dialog_hurdle_smasher_info_title_text_id);
+		TextView titleTV = (TextView) findViewById(R.id.dialog_star_placement_info_title_text_id);
 		titleTV.setTypeface(MFUtils.getTextTypeface(context));
 		
-		TextView descriptionTV = (TextView) findViewById(R.id.dialog_hurdle_smasher_info_description_text_id);
+		TextView descriptionTV = (TextView) findViewById(R.id.dialog_star_placement_info_description_text_id);
 		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
 		
 		TextView positiveButtonTV = (TextView) findViewById(R.id.dialog_introduce_lifeline_positive_button_id);
@@ -25,12 +25,12 @@ public class HurdleSmasherInfoDialog extends GameDialogType1 {
 		switch (type)
 		{
 		case TYPE_TAP:
-			titleTV.setText(context.getResources().getString(R.string.dialog_hurdle_smasher_info_tap_title_text));
-			descriptionTV.setText(context.getResources().getString(R.string.dialog_hurdle_smasher_info_tap_text));
+			titleTV.setText(context.getResources().getString(R.string.dialog_star_placement_info_tap_title_text));
+			descriptionTV.setText(context.getResources().getString(R.string.dialog_star_placement_info_tap_text));
 			break;
 		case TYPE_RETRY:
-			titleTV.setText(context.getResources().getString(R.string.dialog_hurdle_smasher_info_not_detected_title_text));
-			descriptionTV.setText(context.getResources().getString(R.string.dialog_hurdle_smasher_info_not_detected_text));
+			titleTV.setText(context.getResources().getString(R.string.dialog_star_placement_info_not_detected_title_text));
+			descriptionTV.setText(context.getResources().getString(R.string.dialog_star_placement_info_not_detected_text));
 			break;
 		}
 		
@@ -38,7 +38,7 @@ public class HurdleSmasherInfoDialog extends GameDialogType1 {
 
 	protected void setupViews() 
 	{
-		setContentView(R.layout.dialog_hurdle_smasher_info);
+		setContentView(R.layout.dialog_star_placement_info);
 	}
 
 	@Override

@@ -99,10 +99,10 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumStartP
  * Method:    addStartPos
  * Signature: (J)V
  */
-JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_addStartPos
-  (JNIEnv *env, jobject thisObj, jlong handle)
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_addStartPos
+  (JNIEnv *env, jobject thisObj, jlong handle, jint x, jint y)
 {
-	addStartPos(handle);
+	return addStartPos(handle, x, y);
 }
 
 /*
