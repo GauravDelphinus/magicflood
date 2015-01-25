@@ -1141,13 +1141,14 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				//purchase successful.  Since these are consumable items, make the consume request
 				mIAPManager.consumeItem(purchase);
 			}
-			else
-			{
-				//show the "Purchase failed dialog"
-				IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_PURCHASE_FAILED, DIALOG_DATA_NONE);
-				iapFailedDialog.setCanceledOnTouchOutside(false);
-				iapFailedDialog.show();
-			}
+		}
+		
+		if (status == false)
+		{
+			//show the "Purchase failed dialog"
+			IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_PURCHASE_FAILED, DIALOG_DATA_NONE);
+			iapFailedDialog.setCanceledOnTouchOutside(false);
+			iapFailedDialog.show();
 		}
 	}
 

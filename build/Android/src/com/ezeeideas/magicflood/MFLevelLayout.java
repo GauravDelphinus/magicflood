@@ -88,7 +88,6 @@ public class MFLevelLayout extends LinearLayout implements OnTouchListener
 	@Override
 	public boolean onTouch(View v, MotionEvent event) 
 	{
-		Log.d("gaurav", "MFLevelLayout's onTouch called");
 		return false;
 	}
 	

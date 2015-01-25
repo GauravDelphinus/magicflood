@@ -155,9 +155,9 @@
     <string name="dialog_star_placement_info_not_detected_text">Couldn\'t detect a valid location.  Please try again, by tapping on any location (outside a hurdle).</string>
     
     <!-- IAP Failed Dialog -->
-    <string name="dialog_iap_failed_purchase_title_text">Something\s not right</string>
+    <string name="dialog_iap_failed_purchase_title_text">Something\'s not right</string>
     <string name="dialog_iap_failed_purchase_text">There was an error in completing the purchase.  Please try again later.</string>
-    <string name="dialog_iap_failed_consume_title_text">Something\s not right</string>
+    <string name="dialog_iap_failed_consume_title_text">Something\'s not right</string>
     <string name="dialog_iap_failed_consume_text">While the purchase succeeded, there was a problem in synchronizing the purchase.  This problem should get resolved automatically - try relaunching the App.</string>
     
 </resources>

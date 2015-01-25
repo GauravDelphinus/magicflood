@@ -127,13 +127,15 @@ public abstract class GameDialog extends Dialog implements View.OnClickListener,
 	@Override
 	public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) 
 	{
-		if (keyCode == KeyEvent.KEYCODE_BACK) 
+		Log.d("gaurav", "GameDialog.onKey, keyCode = " + keyCode);
+
+		if ((event.getAction() == KeyEvent.ACTION_UP) && (keyCode == KeyEvent.KEYCODE_BACK)) 
 		{
 			handleDismiss();
 			return true;
         }	
 		
-		return true;
+		return false;
 	}
 
 	/**
