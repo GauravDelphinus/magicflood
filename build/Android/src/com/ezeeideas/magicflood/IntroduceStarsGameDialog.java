@@ -18,6 +18,9 @@ public class IntroduceStarsGameDialog extends GameDialogType1 {
 		
 		TextView descriptionTV = (TextView) findViewById(R.id.dialog_introduce_stars_description_text_id);
 		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
+		
+		TextView positiveButtonTV = (TextView) findViewById(R.id.dialog_introduce_lifeline_positive_button_id);
+		positiveButtonTV.setTypeface(MFUtils.getTextTypeface(context));
 	}
 
 	protected void setupViews() 

@@ -18,17 +18,9 @@
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
             android:gravity="center"
-            android:layout_toLeftOf="@+id/cancel_button"
             android:text="@string/dialog_introduce_hurdle_smashers_title_text"
             android:textSize="@dimen/dialog_title_text_size" />
-	    	<ImageButton
-	    	    android:id="@+id/cancel_button"
-	    	    android:layout_width="wrap_content"
-	    	    android:layout_height="wrap_content"
-	    	    android:src="@drawable/ic_button_cancel"
-	    	    android:background="@color/transparent"
-	    	    android:layout_alignParentRight="true"
-	    	    />
+	    	
 	</RelativeLayout>
         
 
@@ -72,7 +64,25 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="10sp" />
-      
+      <LinearLayout 
+            android:id="@+id/cancel_button"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_positive_button_dialog"
+    android:layout_margin="@dimen/activity_vertical_padding"
+    android:padding="@dimen/activity_horizontal_padding"
+    >
+    <TextView
+        android:id="@+id/dialog_introduce_lifeline_positive_button_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/dialog_introduce_lifeline_positive_button_text"
+        android:textSize="@dimen/dialog_positive_button_text_size"
+        android:textColor="@color/dialog_button_text_color"
+        android:gravity="center"
+        />
+    </LinearLayout>
         
         </LinearLayout>
         </RelativeLayout>

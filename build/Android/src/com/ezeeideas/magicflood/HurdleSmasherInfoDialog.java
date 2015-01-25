@@ -19,6 +19,9 @@ public class HurdleSmasherInfoDialog extends GameDialogType1 {
 		TextView descriptionTV = (TextView) findViewById(R.id.dialog_hurdle_smasher_info_description_text_id);
 		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
 		
+		TextView positiveButtonTV = (TextView) findViewById(R.id.dialog_introduce_lifeline_positive_button_id);
+		positiveButtonTV.setTypeface(MFUtils.getTextTypeface(context));
+		
 		switch (type)
 		{
 		case TYPE_TAP:
