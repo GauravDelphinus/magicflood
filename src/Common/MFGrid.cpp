@@ -330,7 +330,6 @@ bool MFGrid::notTooNearAnotherStar(int x, int y)
     
     for (int i = 0; i < numStartPos; i++)
     {
-        logPrint("gaurav", "notTooNear function, startx = %d, x = %d, starty = %d, y = %d\n", startPos[i][0], x, startPos[i][1], y);
         if (abs(startPos[i][0] - x) < minDistance && abs(startPos[i][1] - y) < minDistance)
         {
             return false;
@@ -342,41 +341,35 @@ bool MFGrid::notTooNearAnotherStar(int x, int y)
 
 bool MFGrid::quadrantContainsStar(int q, int x, int y)
 {
-    logPrint("gaurav", "quandrantContainsStar, q = %d, x = %d, y = %d, gridSize = %d\n", q, x, y, gridSize);
     switch (q)
     {
         case 1:
             if (x >= 0 && x <= gridSize/2-1 && y >= gridSize/2 && y <= gridSize-1)
             {
-                logPrint("gaurav", "returning true, case 1\n");
                 return true;
             }
             break;
         case 2:
             if (x >= 0 && x <= gridSize/2-1 && y >= 0 && y <= gridSize/2-1)
             {
-                logPrint("gaurav", "returning true, case 2\n");
                 return true;
             }
             break;
         case 3:
             if (x >= gridSize/2 && x <= gridSize-1 && y >= 0 && y <= gridSize/2-1)
             {
-                logPrint("gaurav", "returning true, case 3\n");
                 return true;
             }
             break;
         case 4:
             if (x >= gridSize/2 && x <= gridSize-1 && y >= gridSize/2 && y <= gridSize-1)
             {
-                logPrint("gaurav", "returning true, case 4\n");
                 return true;
             }
             break;
             
     }
     
-    logPrint("gaurav", "quadrantContainsStar returning false\n");
     return false;
 }
 
@@ -436,7 +429,6 @@ void MFGrid::initializeGrid()
             if (!token)
                 return;
             startPos[i][1] = atoi(token);
-            logPrint("startcolor", "startPos[%d] = %d, %d\n", i, startPos[i][0], startPos[i][1]);
         }
         
         token = strtok(NULL, "#");
@@ -458,10 +450,6 @@ void MFGrid::initializeGrid()
                     for (int j = 0; j < gridSize; j++)
                     {
                         mGameGrid[i][j] = token[k] - '0';
-                        if (i == 4 && j == 4)
-                        {
-                            logPrint("startcolor", "in init function, for 4,4 the string character is %c, and value is %d\n", token[k], mGameGrid[i][j]);
-                        }
                         k++;
                     }
                 }
@@ -469,62 +457,6 @@ void MFGrid::initializeGrid()
             }
         }
     }
-    /*
-        while (token)
-        {
-            logPrint("gaurav", "top of while loop, token [%s]", token);
-            char *key = strtok(token, "=");
-            if (key != NULL && strcmp(key, START_POSX_TOKEN_KEY) == 0)
-            {
-                char *value = strtok(NULL, "=");
-                if (value != NULL)
-                {
-                    startPos[0] = atoi(value);
-                    logPrint("gaurav", "setting the startPos[0] to %d\n", startPos[0]);
-                }
-                value = strtok(NULL, "=");
-            }
-            else if (key != NULL && strcmp(key, START_POSY_TOKEN_KEY) == 0)
-            {
-                char *value = strtok(NULL, "=");
-                if (value != NULL)
-                {
-                    startPos[1] = atoi(value);
-                    logPrint("gaurav", "setting the startPos[1] to %d\n", startPos[1]);
-                }
-            }
-            else if (key != NULL && strcmp(key, GRIDSIZE_TOKEN_KEY) == 0)
-            {
-                char *value = strtok(NULL, "=");
-                if (value != NULL)
-                {
-                    gridSize = atoi(value);
-                    logPrint("gaurav", "setting the gridSize to %d\n", gridSize);
-                }
-            }
-            else if (key != NULL && strcmp(key, GRIDDATA_TOKEN_KEY) == 0)
-            {
-                char *value = strtok(NULL, "=");
-                if (value != NULL)
-                {
-                    int k = 0; //index into the value
-                    //allocate the grid
-                    mGameGrid = (int **)calloc(gridSize, sizeof(int *));
-                    for (int i = 0; i < gridSize; i++)
-                    {
-                        mGameGrid[i] = (int *)calloc(gridSize, sizeof(int));
-                        for (int j = 0; j < gridSize; j++)
-                        {
-                            mGameGrid[i][j] = value[k] - '0';
-                            logPrint("gaurav", "setting mGameGrid[%d][%d] to value[%d] - '0'\n", i, j, k);
-                            k++;
-                        }
-                    }
-                }
-            }
-            token = strtok(NULL, "#");
-        }
-     */
     
     free(inputStr);
 }
@@ -566,10 +498,11 @@ void MFGrid::computeMaxMoves()
         }
     }
     
-    
-    
-    //maxMoves = (numMoves + 20); //for testing only
     maxMoves = numMoves;
+    if (level <= GRACE_MOVES_TILL_LEVEL)
+    {
+        maxMoves += NUM_GRACE_MOVES;
+    }
     
     releaseGrid(mMeasureGrid);
     mMeasureGrid = NULL;
@@ -666,41 +599,18 @@ void MFGrid::checkDensity(int color, int x, int y, int *grid[], int *count, bool
     checkDensity(color, x+1, y, grid, count, alreadyCheckedFlags);
 }
 
-/*
-void MFGrid::checkDensity(int color, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[])
-{
-    if (isObstacle(x, y, grid) || grid[x][y] != color || alreadyCheckedFlags == NULL || alreadyCheckedFlags[x][y])
-    {
-        return;
-    }
-    
-    alreadyCheckedFlags[x][y] = true;
-    (*map)[color] ++;
-    logPrint("gaurav", "checkDesntiy, x = %d, y = %d, added value for color %d to %d\n", x, y, color, (*map)[color]);
-    
-    checkDensity(color, x, y-1, grid, map, alreadyCheckedFlags);
-    checkDensity(color, x, y+1, grid, map, alreadyCheckedFlags);
-    checkDensity(color, x-1, y, grid, map, alreadyCheckedFlags);
-    checkDensity(color, x+1, y, grid, map, alreadyCheckedFlags);
-}
- */
-
 void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[])
 {
-    logPrint("gaurav", "checkNeighborDensity\n");
     if (isObstacle(x, y, grid) || alreadyCheckedFlags[x][y])
     {
-        logPrint("gaurav", "returning from checkNeighborDesnity, from isObstacle case\n");
         return;
     }
     
-    logPrint("gaurav", "point x in checkNeighborDensity, startColor = %d, x = %d, y = %d, grid[x][y] = %d\n", startColor, x, y, grid[x][y]);
     if (grid[x][y] != startColor)
     {
         int count = 0;
         checkDensity(grid[x][y], x, y, grid, &count, alreadyCheckedFlags);
         (*map)[grid[x][y]] += count;
-        logPrint("gaurav", "returning from checkNeighborDesnity, from the startcolor case\n");
         return;
     }
     
@@ -710,19 +620,10 @@ void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std
     checkNeighborDensity(startColor, x, y+1, grid, map, alreadyCheckedFlags);
     checkNeighborDensity(startColor, x-1, y, grid, map, alreadyCheckedFlags);
     checkNeighborDensity(startColor, x+1, y, grid, map, alreadyCheckedFlags);
-    logPrint("gaurav", "returning from checkNeighborDensity\n");
 }
 
 int MFGrid::findMostDenseColor(int *grid[])
 {
-    /*
-    int **neighborDensityArray = (int **) malloc (GRID_NUM_COLORS * sizeof(int *));
-    for (int i = 0; i < GRID_NUM_COLORS; i++)
-    {
-        neighborDensityArray[i] = (int *) malloc (2 * sizeof(int));
-    }
-     */
-    logPrint("gaurav", "findMostDenseColor, grid = %p\n", grid);
     std::map<int, int> neighborDensityMap;
     neighborDensityMap[GRID_COLOR_BLUE] = 0;
     neighborDensityMap[GRID_COLOR_CYAN] = 0;
@@ -731,7 +632,6 @@ int MFGrid::findMostDenseColor(int *grid[])
     neighborDensityMap[GRID_COLOR_RED] = 0;
     neighborDensityMap[GRID_COLOR_YELLOW] = 0;
     
-    logPrint("gaurav", "point 1\n");
     //initialize a 2-d boolean array to mark cells that have already been checked for neighbor density
     bool **alreadyCheckedFlags = (bool **) calloc (gridSize, sizeof(bool *));
     for (int i = 0; i < gridSize; i++)
@@ -739,13 +639,11 @@ int MFGrid::findMostDenseColor(int *grid[])
         alreadyCheckedFlags[i] = (bool *) calloc (gridSize, sizeof (bool));
     }
     
-    logPrint("gaurav", "point 2\n");
     for (int k = 0; k < numStartPos; k++)
     {
         int startx = startPos[k][0];
         int starty = startPos[k][1];
         int startColor = grid[startx][starty];
-        logPrint("gaurav", "point 3, startx = %d, starty = %d\n", startx, starty);
         for (int i = 0; i < gridSize; i++)
         {
             for (int j = 0; j < gridSize; j++)
@@ -753,11 +651,9 @@ int MFGrid::findMostDenseColor(int *grid[])
                 alreadyCheckedFlags[i][j] = false;
             }
         }
-        logPrint("gaurav", "going to call checkneighbordsntiy, for numstartpos k = %d\n", k);
         checkNeighborDensity(startColor, startx, starty, grid, &neighborDensityMap, alreadyCheckedFlags);
     }
     
-    logPrint("gaurav", "point 3\n");
     //Free the memroy that's no longer required
     for (int i = 0; i < gridSize; i++)
     {
@@ -766,7 +662,6 @@ int MFGrid::findMostDenseColor(int *grid[])
     free(alreadyCheckedFlags);
     alreadyCheckedFlags = NULL;
     
-    logPrint("gaurav", "point 4\n");
     //now figure out the neighbor with the highest density
     int mostDenseColor = -1;
     int mostDenseColorCount = 0;
@@ -783,7 +678,6 @@ int MFGrid::findMostDenseColor(int *grid[])
         iter++;
     }
     
-    logPrint("gaurav", "returning, mostDenseColor = %d\n", mostDenseColor);
     return mostDenseColor;
 }
 
@@ -812,8 +706,6 @@ void MFGrid::releaseGrid(int *grid[])
 
 MFGrid::~MFGrid()
 {
-    fprintf(stderr, "~MFGrid, freeing grid = %p and startPos = %p\n", mGameGrid, startPos);
-
     releaseGrid(mGameGrid);
     mGameGrid = NULL;
 
@@ -911,7 +803,6 @@ bool MFGrid::findNearestHurdle(int x, int y, int *hurdleX, int *hurdleY)
 
 int MFGrid::smashHurdle(int x, int y)
 {
-    logPrint("gaurav", "MFGrid::smashHurdle called with x = %d, y = %d\n", x, y);
     int hurdleX, hurdleY;
     bool found = findNearestHurdle(x, y, &hurdleX, &hurdleY);
     if (!found)

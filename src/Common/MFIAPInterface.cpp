@@ -110,33 +110,25 @@ void clearInAppProducts()
  **/
 char **getInAppProductDetails(const char *pid)
 {
-    logPrint("magicflood", "getInAppProductDetails, pid = [%s]", pid);
     std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
     while (iter != sInAppProductList.end())
     {
         MFInAppProduct *iap = (MFInAppProduct *) *iter;
         if (strcmp(iap->getID().c_str(), pid) == 0)
         {
-            logPrint("magicflood", "inside the if check");
             char **retArray = (char **) malloc (4 * sizeof(char *));
             
             retArray[0] = (char *) malloc (iap->getName().length() * sizeof(char) + 1);
             strcpy(retArray[0], iap->getName().c_str());
-            logPrint("magicflood", "0: %s", retArray[0]);
             
             retArray[1] = (char *) malloc (iap->getDescription().length() * sizeof(char) + 1);
             strcpy(retArray[1], iap->getDescription().c_str());
-            logPrint("magicflood", "1: %s", retArray[1]);
             
             retArray[2] = (char *) malloc (iap->getPrice().length() * sizeof(char) + 1);
             strcpy(retArray[2], iap->getPrice().c_str());
-            logPrint("magicflood", "2: %s", retArray[2]);
             
             retArray[3] = (char *) malloc (iap->getPriceCode().length() * sizeof(char) + 1);
             strcpy(retArray[3], iap->getPriceCode().c_str());
-            logPrint("magicflood", "3: %s", retArray[3]);
-            
-            logPrint("magicflood", "allocated the char pointer array, returning %p", retArray);
             
             return retArray;
         }
@@ -152,7 +144,6 @@ char **getInAppProductDetails(const char *pid)
  **/
 bool getInAppProductProvisioned(const char *pid)
 {
-    logPrint("magicflood", "getInAppProductProvisioned, pid = [%s]", pid);
     std::list<MFInAppProduct *>::iterator iter = sInAppProductList.begin();
     while (iter != sInAppProductList.end())
     {

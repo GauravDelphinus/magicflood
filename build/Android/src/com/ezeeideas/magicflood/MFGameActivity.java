@@ -326,7 +326,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	{
 		MFAnalytics.trackEvent(this,  MFAnalytics.ANALYTICS_CATEGORY_GAME,  MFAnalytics.ANALYTICS_ACTION_GAME_ACTION,  MFAnalytics.ANALYTICS_LABEL_NEW_GAME_BUTTON);
 		
-		Log.d("magicflood", "startNewGame, level = " + level);
 		if (gridHandle != 0)
 		{
 			deleteGrid(gridHandle);
@@ -1184,17 +1183,12 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
 	{
-		Log.d("gaurav", "onActivityResult(" + requestCode + "," + resultCode + "," + data);
-
 		// Pass on the activity result to the helper for handling
 		if (!mIAPManager.handleActivityResult(requestCode, resultCode, data)) {
 			// not handled, so handle it ourselves (here's where you'd
 			// perform any handling of activity results not related to in-app
 			// billing...
 			super.onActivityResult(requestCode, resultCode, data);
-		}
-		else {
-			Log.d("gaurav", "onActivityResult handled by IABUtil.");
 		}
 	}
 	

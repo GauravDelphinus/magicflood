@@ -81,5 +81,7 @@ public:
 #define HARDMAXMOVES 80
 
 #define MAX_DEPTH_TO_CHECK_FOR_HURDLES  2
+#define GRACE_MOVES_TILL_LEVEL 4
+#define NUM_GRACE_MOVES 3
 #endif /* defined(__Magic_Flood__MFGrid__) */
 

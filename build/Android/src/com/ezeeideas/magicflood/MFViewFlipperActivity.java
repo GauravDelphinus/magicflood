@@ -63,7 +63,6 @@ public abstract class MFViewFlipperActivity extends Activity implements Animatio
     	 /**
          * Add the indicator image (circle) for each screen
          */
-    	Log.d("gaurav", "setupIndicatorLayout, startScreen = " + startScreen + ", mNumScreens = " + mNumScreens);
     	for (int i = 0; i < mNumScreens; i++)
     	{
 	        ImageView indicatorView = new ImageView(this);
@@ -81,7 +80,6 @@ public abstract class MFViewFlipperActivity extends Activity implements Animatio
 	        indicatorView.setLayoutParams(params);
 	        indicatorView.setId(i);
 	        mIndicatorLayout.addView(indicatorView);
-	        Log.d("gaurav", "i = " + i + ", added the indicatoriew");
     	}
     }
     
@@ -120,20 +118,17 @@ public abstract class MFViewFlipperActivity extends Activity implements Animatio
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent touchevent) 
 	{
-		Log.d("gaurav", "dispatchTouchEvent called for Activity");
 		switch (touchevent.getAction())
     	{
     	// when user first touches the screen to swap
     	case MotionEvent.ACTION_DOWN: 
     	{
-    		Log.d("gaurav", "dispatchTouchEvent, ACTION_DOWN");
     		lastX = touchevent.getX();
     		break;
     	}
     	case MotionEvent.ACTION_UP: 
     	{
     		float currentX = touchevent.getX();
-    		Log.d("gaurav", "dispatchTouchEvent, lastX = " + lastX + ", currentX = " + currentX);
 
     		// if left to right swipe on screen
     		if (lastX < currentX && (currentX - lastX) > SWIPE_DISPLACEMENT_THRESHOLD) 
@@ -148,7 +143,6 @@ public abstract class MFViewFlipperActivity extends Activity implements Animatio
 	
 	    			Animation outToRightAnimation = AnimationUtils.loadAnimation(this, R.anim.out_to_right);
 	    			outToRightAnimation.setAnimationListener(this);
-	    			Log.d("gaurav", "set the animation listener 1");
 	    			mViewFlipper.setOutAnimation(outToRightAnimation);
 	
 	    			// Show the previous Screen
@@ -171,7 +165,6 @@ public abstract class MFViewFlipperActivity extends Activity implements Animatio
 	
 	    			Animation outToRightAnimation = AnimationUtils.loadAnimation(this, R.anim.out_to_left);
 	    			outToRightAnimation.setAnimationListener(this);
-	    			Log.d("gaurav", "set the animation listener 2");
 	    			mViewFlipper.setOutAnimation(outToRightAnimation);
 	
 	

@@ -24,15 +24,12 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	
 	public void initialize()
 	{
-		Log.d("gaurav", "MFInAppPurchaseManager.initialize called");
         // compute your public key and store it in base64EncodedPublicKey
-		
 		mPurchaseInterfaceListeners = new ArrayList<IAPPurchaseInterface>();
 		
         mHelper = new IabHelper(mContext, MFConstants.base64EncodedPublicKey);
         mHelper.enableDebugLogging(true);
         mHelper.startSetup(this);
-        Log.d("gaurav", "at the end of initialize");
 	}
 	
 	public void addPurchaseListener(IAPPurchaseInterface listener)
@@ -45,9 +42,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	 * be done in a separate thread given that it's a network request.
 	 */
 	public void queryInAppItems()
-	{
-		Log.d("gaurav", "queryInAppItems");
-		
+	{		
 		ArrayList<String> skuList = new ArrayList<String>();
 
 		skuList.add(MFGameConstants.IAP_COINS_FIRST);
@@ -57,7 +52,6 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		skuList.add(MFGameConstants.IAP_REMOVE_ADS);
 				
 		mHelper.queryInventoryAsync(true, skuList, this);
-		Log.d("gaurav", "called queryInventoryAsync");
 	}
 	
 	public void purchaseItem(String pid)
@@ -145,7 +139,6 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_FAILED, sku, result.getResponse());
 			}
 			
-			Log.d("gaurav", "Error purchasing: " + result + ", info = " + info + ", mPurchaseInterfaceListeners = " + mPurchaseInterfaceListeners);
 			//some failure purchased.  Update the UI to reflect the changes
 			return;
 		}

@@ -57,10 +57,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
         
         //initialize the in-app purchase manager
         mIAPManager = new MFInAppPurchaseManager(this);
-        
-        //print screen size category
-        Log.d("gaurav", "screen category: " + MFUtils.getSizeName(this));
-        Log.d("gaurav", "screen density: " + MFUtils.getDensityName(this));
     }
 
     @Override

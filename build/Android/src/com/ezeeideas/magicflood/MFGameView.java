@@ -83,7 +83,6 @@ public class MFGameView extends View
 	
 	@Override 
     public boolean onTouchEvent(MotionEvent event){ 
-		Log.d("gaurav", "onTouchEvent");
         this.mDetector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
@@ -283,11 +282,6 @@ public class MFGameView extends View
 	
 	public void initializeGameData(int [][]grid, int size, int[][] startPos, int numStartPos, int maxMoves)
 	{
-		Log.d("gaurav", "initializeGameData, size =" + size + ", numStartPos = " + numStartPos);
-		for (int i = 0; i < numStartPos; i++)
-		{
-			Log.d("gaurav", "startPos index = " + i + ", x = " + startPos[i][0] + ", y = " + startPos[i][1]);
-		}
 		mGrid = new int[size][size];
 		for (int i = 0; i < size; i++)
 		{
@@ -422,16 +416,12 @@ public class MFGameView extends View
 		@Override
 		public boolean onDown(MotionEvent event)
 		{
-			Log.d("gaurav", "onDown called");
 			return true;
 		}
 		
         @Override
         public boolean onSingleTapConfirmed(MotionEvent event) 
-        { 
-        	Log.d("gaurav", "onSingleTapUp");
-    		
-    			Log.d("gaurav", "view's onTouch, x = " + event.getX() + ", y = " + event.getY());
+        {     		
     			int x = (int) event.getX();
     			int y = (int) event.getY();
     			
