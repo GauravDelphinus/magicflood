@@ -3,8 +3,6 @@ package com.ezeeideas.magicflood;
 import com.ezeeideas.magicflood.GameDialog.GameDialogListener;
 import com.ezeeideas.magicflood.iabutil.Purchase;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdView;
 
 import android.app.Activity;
@@ -21,18 +19,13 @@ import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MFGameActivity extends Activity implements View.OnClickListener, GameDialogListener, MFInAppPurchaseManager.IAPPurchaseInterface, MFGameView.GameViewTapHandler {
 
@@ -392,7 +385,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		//since we just started playing this level, update the corresponding preference
 		SharedPreferences settings;
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-		int lastPlayedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, 0);
 		Editor editor = settings.edit();
 		
 		editor.putInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, mLevel);
@@ -1258,8 +1250,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				//successfuly smashed a hurdle
 				int[] gridDataOneD = getGridData(gridHandle);
 				int gridSize = getGridSize(gridHandle);
-				int currMove = getCurrMove(gridHandle);
-				int maxMoves = getMaxMoves(gridHandle);
+
 				//convert the one-dimensional array passed from C++ back to 2D array for use in the game view in Java
 				int gridData[][] = new int[gridSize][gridSize];
 				for (int i = 0; i < gridDataOneD.length; i++)

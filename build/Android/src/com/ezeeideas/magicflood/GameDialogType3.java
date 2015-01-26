@@ -1,7 +1,6 @@
 package com.ezeeideas.magicflood;
 
 import android.content.Context;
-import android.view.View;
 
 /**
  * Game Dialog Type 3

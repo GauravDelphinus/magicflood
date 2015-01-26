@@ -4,11 +4,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
 
@@ -165,7 +162,6 @@ public abstract class GameDialog extends Dialog implements View.OnClickListener,
 	protected View mNegativeAction1View = null; //View the corresponds to Negative Action 1
 	
 	private Context mContext; //the calling activity context
-	private boolean mHandled; //whether we've already handled some user input (to avoid double-dismiss issue)
 	
 	protected int mClientData; //any data that the caller passed to te dialog, and that is passed back in te onDialogOptionSelected listener
 }

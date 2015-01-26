@@ -16,7 +16,6 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.GestureDetector;
@@ -88,9 +87,7 @@ public class MFGameView extends View
     }
 	
 	protected void onDraw(Canvas canvas)
-	{
-		int horizontalGap = 0;
-		
+	{		
 		int screenWidth = this.getWidth();
 		int screenHeight = this.getHeight();
 		

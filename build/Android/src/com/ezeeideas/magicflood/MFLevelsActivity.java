@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -150,9 +147,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
     	ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
     	LayoutInflater inflater = LayoutInflater.from(this);
-    	
-    	LinearLayout indicatorRowLayout = (LinearLayout) findViewById(R.id.indicator_row_layout_id);
-    	
+    	    	
     	SharedPreferences settings;
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 

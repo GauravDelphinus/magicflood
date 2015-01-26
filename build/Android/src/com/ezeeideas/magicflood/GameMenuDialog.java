@@ -2,8 +2,6 @@ package com.ezeeideas.magicflood;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.TextView;
 
 public class GameMenuDialog extends GameDialogType4 {

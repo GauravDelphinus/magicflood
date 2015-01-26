@@ -1,10 +1,6 @@
 package com.ezeeideas.magicflood;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RemoveAdsDialog extends GameDialogType3

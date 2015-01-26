@@ -1,8 +1,6 @@
 package com.ezeeideas.magicflood;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.view.KeyEvent;
 import android.widget.TextView;
 
 public class GameFailedDialog extends GameDialogType4 {

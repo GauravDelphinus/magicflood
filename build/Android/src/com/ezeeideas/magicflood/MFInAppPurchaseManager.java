@@ -5,13 +5,11 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.ezeeideas.magicflood.iabutil.IabHelper;
 import com.ezeeideas.magicflood.iabutil.IabResult;
 import com.ezeeideas.magicflood.iabutil.Inventory;
 import com.ezeeideas.magicflood.iabutil.Purchase;
-import com.ezeeideas.magicflood.iabutil.SkuDetails;
 
 public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListener, IabHelper.QueryInventoryFinishedListener, IabHelper.OnIabPurchaseFinishedListener, IabHelper.OnConsumeFinishedListener
 {
@@ -98,23 +96,19 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		
 		for (int i = 0; i < pidArray.length; i++)
 		{
-			SkuDetails skuDetails = inv.getSkuDetails(pidArray[i]);
-			//if (skuDetails != null)
+			String price = inv.getSkuDetails(pidArray[i]).getPrice();
+			String name = inv.getSkuDetails(pidArray[i]).getTitle();
+			String description = inv.getSkuDetails(pidArray[i]).getDescription();
+			boolean isProvisioned = inv.hasPurchase(pidArray[i]);
+			if (isProvisioned)
 			{
-				String price = inv.getSkuDetails(pidArray[i]).getPrice();
-				String name = inv.getSkuDetails(pidArray[i]).getTitle();
-				String description = inv.getSkuDetails(pidArray[i]).getDescription();
-				boolean isProvisioned = inv.hasPurchase(pidArray[i]);
-				if (isProvisioned)
-				{
-					mIsAnythingProvisioned = true;
-					
-					//* for consumable items such as coins, make sure they are consumed if they were provisioned by the user *//
-					consumeItem(inv.getPurchase(pidArray[i]));
-				}
-				
-				addInAppProduct(pidArray[i], name, description, price, "tbd", isProvisioned);
+				mIsAnythingProvisioned = true;
+
+				//* for consumable items such as coins, make sure they are consumed if they were provisioned by the user *//
+				consumeItem(inv.getPurchase(pidArray[i]));
 			}
+
+			addInAppProduct(pidArray[i], name, description, price, "tbd", isProvisioned);
 		}
 		
 		mIsSynchronizedWithServer = true;
