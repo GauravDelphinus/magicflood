@@ -120,7 +120,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 	}
 
 	@Override
-	protected int getNumScreens() 
+	protected int getNumScreens()
 	{
 		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
 		int numScreens = numLevels / MFConstants.NUM_LEVELS_PER_SCREEN; //9 levels per screen

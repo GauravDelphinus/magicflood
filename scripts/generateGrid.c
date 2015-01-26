@@ -60,8 +60,13 @@ int main(int argc, char *argv[])
 	}
 	dummygrid[strIndex] = '\0';
 	
+	char levelstr[10];
+	strcpy(levelstr, argv[1]);
+	char *p = strchr(levelstr, '.');
+	*p = '\0';
+
 	char output [10000];
-	sprintf(output, "\"%d#", startposCount);
+	sprintf(output, "\"%s#%d#", levelstr, startposCount);
 	printf("%s", output);
 	for (int l = 0; l < a; l++)
 	{

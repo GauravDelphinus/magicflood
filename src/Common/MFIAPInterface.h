@@ -30,10 +30,10 @@ bool getIsInAppProductProvisioned(const char * productID);
 /**
  Various IAP Product IDs.
  **/
-#define IAP_REMOVE_ADS  "test_iap_remove_ads2"
-#define IAP_COINS_FIRST "test_iap_add_coins_first"
-#define IAP_COINS_SECOND "test_iap_add_coins_second"
-#define IAP_COINS_THIRD "test_iap_add_coins_third"
-#define IAP_COINS_FOURTH "test_iap_add_coins_fourth"
+#define IAP_REMOVE_ADS  "iap_remove_ads"
+#define IAP_COINS_FIRST "iap_add_coins_first"
+#define IAP_COINS_SECOND "iap_add_coins_second"
+#define IAP_COINS_THIRD "iap_add_coins_third"
+#define IAP_COINS_FOURTH "iap_add_coins_fourth"
 
 #endif /* defined(__Magic_Flood__MFIAPInterface__) */

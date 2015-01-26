@@ -55,11 +55,11 @@ public class MFGameConstants
 	/**
 	 * In-App Purchase Product String IDs.
 	 */
-	public static final String IAP_REMOVE_ADS = "test_iap_remove_ads2";
-	public static final String IAP_COINS_FIRST = "test_iap_add_coins_first";
-	public static final String IAP_COINS_SECOND = "test_iap_add_coins_second";
-	public static final String IAP_COINS_THIRD = "test_iap_add_coins_third";
-	public static final String IAP_COINS_FOURTH = "test_iap_add_coins_fourth";
+	public static final String IAP_REMOVE_ADS = "iap_remove_ads";
+	public static final String IAP_COINS_FIRST = "iap_add_coins_first";
+	public static final String IAP_COINS_SECOND = "iap_add_coins_second";
+	public static final String IAP_COINS_THIRD = "iap_add_coins_third";
+	public static final String IAP_COINS_FOURTH = "iap_add_coins_fourth";
 	
 	// Bundle Keys
 	public static final String IAP_QUERY_SKUS_KEY = "DETAILS_LIST"; //key used to query the skus from the bundle

@@ -415,6 +415,9 @@ void MFGrid::initializeGrid()
     
     if (token)
     {
+        //move on to skip the level #
+        token = strtok(NULL, "#");
+        
         numStartPos = atoi(token);
         startPos = (int **) malloc (numStartPos * sizeof(int *));
         for (int i = 0; i < numStartPos; i++)

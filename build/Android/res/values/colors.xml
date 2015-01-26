@@ -56,7 +56,7 @@
    <color name="help_title_text_color">#FFFFFFFF</color>
    <color name="help_footer_text_color">#FFEEEEEE</color>
    <color name="help_description_text_color">#FFEEEEEE</color>
-   <color name="help_screen_background_color">#77000000</color>
+   <color name="help_screen_background_color">#55000000</color>
    
    <!-- Dialogs -->
    <color name="dialog_background">#99000000</color>
