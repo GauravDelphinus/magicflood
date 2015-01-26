@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<string name="facebook_app_id">1534261376855083</string>
     <string name="app_name">Magic Flood</string>
     <string name="by_company_text">by EZEEIDEAS</string>
     <string name="ad_unit_id">ca-app-pub-2920007706450104/5915753674</string>
