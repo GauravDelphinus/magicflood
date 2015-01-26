@@ -40,6 +40,15 @@ public class MFHelpActivity extends MFViewFlipperActivity
 		tv = (TextView) findViewById(R.id.help_screen5_title_text_id);
 		tv.setTypeface(MFUtils.getTextTypeface(this));
 		
+		tv = (TextView) findViewById(R.id.help_screen6_title_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen7_title_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen8_title_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
 		tv = (TextView) findViewById(R.id.help_screen1_description_text_id);
 		tv.setTypeface(MFUtils.getTextTypeface(this));
 		
@@ -55,6 +64,14 @@ public class MFHelpActivity extends MFViewFlipperActivity
 		tv = (TextView) findViewById(R.id.help_screen5_description_text_id);
 		tv.setTypeface(MFUtils.getTextTypeface(this));
 		
+		tv = (TextView) findViewById(R.id.help_screen6_description_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen7_description_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
+		
+		tv = (TextView) findViewById(R.id.help_screen8_description_text_id);
+		tv.setTypeface(MFUtils.getTextTypeface(this));
 	}
 
 	@Override
@@ -72,7 +89,7 @@ public class MFHelpActivity extends MFViewFlipperActivity
 	@Override
 	protected int getNumScreens() 
 	{
-		return 5;
+		return 8;
 	}
 
 	@Override

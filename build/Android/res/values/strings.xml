@@ -87,11 +87,17 @@
     <string name="help_screen3_title">Start filling the grid with colors</string>
     <string name="help_screen4_title">Look out for hurdles!</string>
     <string name="help_screen5_title">Earn and Redeem Coins!</string>
+    <string name="help_screen6_title">Add Moves</string>
+    <string name="help_screen7_title">Additional Stars</string>
+    <string name="help_screen8_title">Hurdle Smashers</string>
     <string name="help_screen1_description_text">The objective of the game is to fill the entire grid with the same color.</string>
     <string name="help_screen2_description_text">Look for the rotating star.  It could be anywhere on the grid.  There could be multiple stars in the game as well!</string>
     <string name="help_screen3_description_text">The color buttons are located at the bottom of the game screen.  Tap a color to fill the start position and all neighbors of the same color with the new color.</string>
     <string name="help_screen4_description_text">You might encounter hurdles along the way.  Hurdles cannot be colored, but all spaces in and around hurdles must be filled.  So be careful!</string>
-    <string name="help_screen5_description_text">You earn coins as you continue to play and complete games, and you can redeem coins against lifelines such as bonus moves and additional stars!</string>
+    <string name="help_screen5_description_text">Accumulate coins as you complete levels, and redeem them for lifelines such as bonus moves, additional stars and hurdle smashers!  Swipe to the following screens to learn more.</string>
+    <string name="help_screen6_description_text">When you\'re running out of moves, add bonus moves and save your game!</string>
+    <string name="help_screen7_description_text">Add additional stars on the game grid to accelerate the speed of the game! Note: This lifeline is unlocked only after a certain level.</string>
+    <string name="help_screen8_description_text">Use Hurdle Smashers to make holes in the hurdles and create new paths to complete the game!  Note: This lifeline is unlocked only after a certain level. </string>
 
     
     <!-- Levels Screen -->
