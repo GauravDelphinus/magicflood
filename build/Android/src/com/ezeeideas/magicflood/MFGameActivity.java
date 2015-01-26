@@ -566,29 +566,30 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		
 		int colorValue = MFGameConstants.GRID_OBSTACLE;
-		switch (arg0.getId())
+		if (arg0.getId() == R.id.red_button_id)
 		{
-		case R.id.red_button_id:
 			colorValue = MFGameConstants.GRID_COLOR_RED;
-			break;
-		case R.id.blue_button_id:
-			colorValue = MFGameConstants.GRID_COLOR_BLUE;
-			break;
-		case R.id.green_button_id:
-			colorValue = MFGameConstants.GRID_COLOR_GREEN;
-			break;
-		case R.id.yellow_button_id:
-			colorValue = MFGameConstants.GRID_COLOR_YELLOW;
-			break;
-		case R.id.orange_button_id:
-			colorValue = MFGameConstants.GRID_COLOR_ORANGE;
-			break;
-		case R.id.cyan_button_id:
-			colorValue = MFGameConstants.GRID_COLOR_CYAN;
-			break;
 		}
-		
-		
+		else if (arg0.getId() == R.id.blue_button_id)
+		{
+			colorValue = MFGameConstants.GRID_COLOR_BLUE;
+		}
+		else if (arg0.getId() == R.id.green_button_id)
+		{
+			colorValue = MFGameConstants.GRID_COLOR_GREEN;
+		}
+		else if (arg0.getId() == R.id.yellow_button_id)
+		{
+			colorValue = MFGameConstants.GRID_COLOR_YELLOW;
+		}
+		else if (arg0.getId() == R.id.orange_button_id)
+		{
+			colorValue = MFGameConstants.GRID_COLOR_ORANGE;
+		}
+		else if (arg0.getId() == R.id.cyan_button_id)
+		{
+			colorValue = MFGameConstants.GRID_COLOR_CYAN;
+		}
 		
 		MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_COLOR_BUTTON, colorValue);
 		
