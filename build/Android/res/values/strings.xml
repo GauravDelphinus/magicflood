@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Magic Flood</string>
     <string name="by_company_text">by EZEEIDEAS</string>
-    <string name="ad_unit_id">ca-app-pub-2920007706450104/5915753674</string>
+    <string name="ad_unit_id">ca-app-pub-9934841711722055/8538320921</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="easy_button_label_name">Easy</string>
@@ -162,5 +162,7 @@
     <string name="dialog_iap_failed_purchase_text">There was an error in completing the purchase.  Please try again later.</string>
     <string name="dialog_iap_failed_consume_title_text">Something\'s not right</string>
     <string name="dialog_iap_failed_consume_text">While the purchase succeeded, there was a problem in synchronizing the purchase.  This problem should get resolved automatically - try relaunching the App.</string>
+    <string name="dialog_iap_failed_query_title_text">Something\'s not right</string>
+    <string name="dialog_iap_failed_query_text">There was an error in communicating with the Google Play server.  Please try again later.</string>
     
 </resources>

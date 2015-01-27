@@ -32,6 +32,10 @@ public class IAPFailedDialog extends GameDialogType1 {
 			titleTV.setText(context.getResources().getString(R.string.dialog_iap_failed_consume_title_text));
 			descriptionTV.setText(context.getResources().getString(R.string.dialog_iap_failed_consume_text));
 			break;
+		case TYPE_QUERY_FAILED:
+			titleTV.setText(context.getResources().getString(R.string.dialog_iap_failed_query_title_text));
+			descriptionTV.setText(context.getResources().getString(R.string.dialog_iap_failed_query_text));
+			break;
 		}
 		
 	}
@@ -55,4 +59,5 @@ public class IAPFailedDialog extends GameDialogType1 {
 	
 	public static final int TYPE_PURCHASE_FAILED = 1;
 	public static final int TYPE_CONSUME_FAILED = 2;
+	public static final int TYPE_QUERY_FAILED = 3;
 }

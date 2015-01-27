@@ -10,6 +10,7 @@ import com.ezeeideas.magicflood.iabutil.IabHelper;
 import com.ezeeideas.magicflood.iabutil.IabResult;
 import com.ezeeideas.magicflood.iabutil.Inventory;
 import com.ezeeideas.magicflood.iabutil.Purchase;
+import com.ezeeideas.magicflood.iabutil.SkuDetails;
 
 public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListener, IabHelper.QueryInventoryFinishedListener, IabHelper.OnIabPurchaseFinishedListener, IabHelper.OnConsumeFinishedListener
 {
@@ -91,11 +92,29 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		if (result.isFailure()) 
 		{
 			// handle error
+			MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_QUERY_FAILED, MFAnalytics.ANALYTICS_VALUE_IAP_QUERY_FAILED_RESULT_FAILURE, result.getResponse());
+			
+			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+			{
+				listener.onQueryFinished(false);
+			}
 			return;
 		}
 		
 		for (int i = 0; i < pidArray.length; i++)
 		{
+			SkuDetails skuDetails = inv.getSkuDetails(pidArray[i]);
+			if (skuDetails == null)
+			{
+				//handle error.  Let user know.
+				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_QUERY_FAILED, MFAnalytics.ANALYTICS_VALUE_IAP_QUERY_FAILED_SKU_NULL, i);
+				
+				for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+				{
+					listener.onQueryFinished(false);
+				}
+				return;
+			}
 			String price = inv.getSkuDetails(pidArray[i]).getPrice();
 			String name = inv.getSkuDetails(pidArray[i]).getTitle();
 			String description = inv.getSkuDetails(pidArray[i]).getDescription();
@@ -203,6 +222,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	{
 		void onPurchaseFinished(Purchase purchase, String pid, boolean status);
 		void onConsumeFinished(String pid, boolean status);
+		void onQueryFinished(boolean status);
 	}
 	
 	private static MFInAppPurchaseManager sIAPManager = null;

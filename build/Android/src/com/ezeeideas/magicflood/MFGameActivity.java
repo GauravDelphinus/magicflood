@@ -1093,6 +1093,13 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
 			{
+				if (clientdata == DIALOG_DATA_EXIT)
+				{
+					//IAP isnt' working (query failed).  Exit
+					finish();
+					return;
+				}
+				
 				//purchase failed for some reason.
 				if (getCurrMove(gridHandle) == getMaxMoves(gridHandle))
 				{
@@ -1205,6 +1212,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			//consume failed!
 			//show the "Consume failed dialog"
 			IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_CONSUME_FAILED, DIALOG_DATA_NONE);
+			iapFailedDialog.setCanceledOnTouchOutside(false);
+			iapFailedDialog.show();
+		}
+	}
+	
+	@Override
+	public void onQueryFinished(boolean status) 
+	{
+		if (status == false)
+		{
+			IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_QUERY_FAILED, DIALOG_DATA_EXIT);
 			iapFailedDialog.setCanceledOnTouchOutside(false);
 			iapFailedDialog.show();
 		}
@@ -1386,5 +1404,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private static final int DIALOG_DATA_FROM_ADD_STAR_DIALOG = 1;
 	private static final int DIALOG_DATA_FROM_ADD_MOVES_DIALOG = 2;
 	private static final int DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG = 3;
+	private static final int DIALOG_DATA_EXIT = 4;
 	private int mLastDialogData = DIALOG_DATA_NONE;
+
 }

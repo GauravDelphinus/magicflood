@@ -53,6 +53,9 @@ public class MFAnalytics
 	public static final String ANALYTICS_ACTION_IAP_CONSUME_STARTED = "iap_consume_started";
 	public static final String ANALYTICS_ACTION_IAP_CONSUME_FAILED = "iap_consume_failed";
 	public static final String ANALYTICS_ACTION_IAP_CONSUME_COMPLETED = "iap_consume_completed";
+	public static final String ANALYTICS_ACTION_IAP_QUERY_STARTED = "iap_query_started";
+	public static final String ANALYTICS_ACTION_IAP_QUERY_FAILED = "iap_query_failed";
+	public static final String ANALYTICS_ACTION_IAP_QUERY_COMPLETED = "iap_query_completed";
 	
 	/**
 	 * Labels - Buttons - Main Screen
@@ -115,4 +118,10 @@ public class MFAnalytics
 	public static final String ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_STAR = "iap_not_connected_while_adding_star";
 	public static final String ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_HURDLE_SMASHER = "iap_not_connected_while_adding_hurdle_smasher";
 	public static final String ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_REMOVING_ADS = "iap_not_connected_while_removing_ads";
+	
+	/**
+	 * Labels - IAP
+	 */
+	public static final String ANALYTICS_VALUE_IAP_QUERY_FAILED_RESULT_FAILURE = "iap_query_failed_result_failure";
+	public static final String ANALYTICS_VALUE_IAP_QUERY_FAILED_SKU_NULL = "iap_query_failed_sku_null";
 }
