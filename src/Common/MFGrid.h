@@ -83,5 +83,7 @@ public:
 #define MAX_DEPTH_TO_CHECK_FOR_HURDLES  2
 #define GRACE_MOVES_TILL_LEVEL 4
 #define NUM_GRACE_MOVES 3
+#define REDUCE_MOVES_FROM_LEVEL 16
+#define NUM_REDUCED_MOVES 1
 #endif /* defined(__Magic_Flood__MFGrid__) */
 

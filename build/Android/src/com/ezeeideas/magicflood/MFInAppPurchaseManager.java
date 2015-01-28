@@ -73,7 +73,10 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	@Override
 	public void onIabSetupFinished(IabResult result) 
 	{
-		queryInAppItems();		
+		if (result.isSuccess())
+		{
+			queryInAppItems();
+		}
 	}
 	
 	/**
@@ -94,10 +97,12 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			// handle error
 			MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_QUERY_FAILED, MFAnalytics.ANALYTICS_VALUE_IAP_QUERY_FAILED_RESULT_FAILURE, result.getResponse());
 			
+			/*
 			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
 			{
 				listener.onQueryFinished(false);
 			}
+			*/
 			return;
 		}
 		
@@ -109,10 +114,12 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 				//handle error.  Let user know.
 				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_QUERY_FAILED, MFAnalytics.ANALYTICS_VALUE_IAP_QUERY_FAILED_SKU_NULL, i);
 				
+				/*
 				for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
 				{
 					listener.onQueryFinished(false);
 				}
+				*/
 				return;
 			}
 			String price = inv.getSkuDetails(pidArray[i]).getPrice();
