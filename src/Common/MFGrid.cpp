@@ -196,183 +196,6 @@ int MFGrid::getCurrMoves()
 ***************************************************************************
 **************************************************************************/
 
-/**
- Return one of 1, 2, 3 or 4 depending on the quadrant of the
- given point in the grid.  Quadrant 1 starts at horizontal axes
- through the centre of the grid, up to vertical axis anti-clockwise
- ----------------
- |  Q2  |   Q1  |
- |--------------|
- |  Q3  |   Q4  |
- -----------------
- **/
-int MFGrid::getQuadrant(int x, int y)
-{
-    if (x < gridSize / 2)
-    {
-        //one of Q2 or Q1
-        if (y < gridSize / 2)
-        {
-            //Q2
-            return 2;
-        }
-        else
-        {
-            return 1;
-        }
-    }
-    else
-    {
-        if (y < gridSize / 2)
-        {
-            return 3;
-        }
-        else
-        {
-            return 4;
-        }
-    }
-}
-
-void MFGrid::placeStarInQuadrant(int q)
-{
-    int xmin = 0, ymin = 0, xmax = gridSize-1, ymax = gridSize-1;
-    
-    switch (q)
-    {
-        case 1:
-            xmin = 0;
-            xmax = gridSize/2-1;
-            ymin = gridSize/2;
-            ymax = gridSize-1;
-            break;
-        case 2:
-            xmin = 0;
-            xmax = gridSize/2-1;
-            ymin = 0;
-            ymax = gridSize/2-1;
-            break;
-        case 3:
-            xmin = gridSize/2;
-            xmax = gridSize-1;
-            ymin = 0;
-            ymax = gridSize/2-1;
-            break;
-        case 4:
-            xmin = gridSize/2;
-            xmax = gridSize-1;
-            ymin = gridSize/2;
-            ymax = gridSize-1;
-            break;
-    }
-    
-    placeStarInRect(xmin, xmax, ymin, ymax);
-}
-
-void MFGrid::placeStarInGrid()
-{
-    placeStarInRect(0, gridSize-1, 0, gridSize-1);
-}
-
-void MFGrid::placeStarInRect(int xmin, int xmax, int ymin, int ymax)
-{
-    srand((unsigned int)time(NULL));
-    
-    int selectedX = 0;
-    int selectedY = 0;
-    int numNearnessChecks = 0;
-    int maxNearnessChecks = 4;
-    while (true)
-    {
-        int x = rand() % (xmax - xmin) + xmin;
-        int y = rand() % (ymax - ymin) + ymin;
-        
-        /** Check for nearness not more than 4 times to avoid infinite loop **/
-        if (!isObstacle(x, y, mGameGrid) && (numNearnessChecks++ > maxNearnessChecks || notTooNearAnotherStar(x, y)))
-        {
-            selectedX = x;
-            selectedY = y;
-            break;
-        }
-    }
-    
-    int newNumStartPos = numStartPos + 1;
-    int **newStartPosArray = (int **) malloc (newNumStartPos * sizeof(int *));
-    for (int i = 0; i < newNumStartPos; i++)
-    {
-        newStartPosArray[i] = (int *) malloc (2 * sizeof(int));
-    }
-    
-    for (int i = 0; i < numStartPos; i++)
-    {
-        newStartPosArray[i][0] = startPos[i][0];
-        newStartPosArray[i][1] = startPos[i][1];
-        
-        free(startPos[i]);
-    }
-    free(startPos);
-    startPos = NULL;
-    
-    newStartPosArray[numStartPos][0] = selectedX;
-    newStartPosArray[numStartPos][1] = selectedY;
-    
-    startPos = newStartPosArray;
-    numStartPos = newNumStartPos;
-}
-
-/**
- Check to make sure that hte placed star isn't too near
- any existing star in the grid.
- **/
-bool MFGrid::notTooNearAnotherStar(int x, int y)
-{
-    int minDistance = 3;
-    
-    for (int i = 0; i < numStartPos; i++)
-    {
-        if (abs(startPos[i][0] - x) < minDistance && abs(startPos[i][1] - y) < minDistance)
-        {
-            return false;
-        }
-    }
-    
-    return true;
-}
-
-bool MFGrid::quadrantContainsStar(int q, int x, int y)
-{
-    switch (q)
-    {
-        case 1:
-            if (x >= 0 && x <= gridSize/2-1 && y >= gridSize/2 && y <= gridSize-1)
-            {
-                return true;
-            }
-            break;
-        case 2:
-            if (x >= 0 && x <= gridSize/2-1 && y >= 0 && y <= gridSize/2-1)
-            {
-                return true;
-            }
-            break;
-        case 3:
-            if (x >= gridSize/2 && x <= gridSize-1 && y >= 0 && y <= gridSize/2-1)
-            {
-                return true;
-            }
-            break;
-        case 4:
-            if (x >= gridSize/2 && x <= gridSize-1 && y >= gridSize/2 && y <= gridSize-1)
-            {
-                return true;
-            }
-            break;
-            
-    }
-    
-    return false;
-}
-
 void MFGrid::shuffleArray(int array[], int size)
 {
     srand((unsigned int)time(NULL));
@@ -385,26 +208,6 @@ void MFGrid::shuffleArray(int array[], int size)
         int temp = array[i];
         array[i] = array[randIndex];
         array[randIndex] = temp;
-    }
-}
-
-int MFGrid::getFartherQuadrant(int q)
-{
-    if (q == 1)
-    {
-        return 3;
-    }
-    else if (q == 2)
-    {
-        return 4;
-    }
-    else if (q == 3)
-    {
-        return 1;
-    }
-    else if (q == 4)
-    {
-        return 2;
     }
 }
 
@@ -799,6 +602,8 @@ bool MFGrid::checkNeighboringHurdles(int x, int y, int *hurdleX, int *hurdleY, i
     found = checkNeighboringHurdles(x+1, y, hurdleX, hurdleY, depth);
     if (found)
         return found;
+    
+    return false;
 }
 
 bool MFGrid::findNearestHurdle(int x, int y, int *hurdleX, int *hurdleY)
