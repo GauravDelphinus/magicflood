@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */; };
 		F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F147C5FA1A2364EF00CBCE83 /* Images.xcassets */; };
 		F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7771A236C23002D4DDD /* Main_iPad.storyboard */; };
 		F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGlobalInterface.cpp; path = ../../src/Common/MFGlobalInterface.cpp; sourceTree = SOURCE_ROOT; };
+		F11D21D21A7CBD19006A4086 /* MFGlobalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGlobalInterface.h; path = ../../src/Common/MFGlobalInterface.h; sourceTree = SOURCE_ROOT; };
 		F147C5FA1A2364EF00CBCE83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../resources/iOS/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F147E7781A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		F147E77A1A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */,
 				F147E7871A2A8DEF002D4DDD /* MFNativeLog.h */,
 				F147E7891A5D79A9002D4DDD /* MFGridData.h */,
+				F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */,
+				F11D21D21A7CBD19006A4086 /* MFGlobalInterface.h */,
 			);
 			name = Core;
 			path = ../../src;
@@ -325,6 +330,7 @@
 				F147E7821A2996AC002D4DDD /* MFIAPInterface.cpp in Sources */,
 				F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */,
 				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
+				F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */,
 				F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */,
 				F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */,
 				F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */,

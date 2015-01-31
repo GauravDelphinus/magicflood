@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MFGameView.h"
 
-@interface MFGameViewController : UIViewController <UIAlertViewDelegate>
+@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler>
 
 @property int gameLevel; //set by the calling MFViewController
+@property BOOL mStarPlacementMode;
+@property BOOL mHurdleSmasherMode;
+
 -(int)GetColorCodeFromUIColor:(UIColor *)color;
 -(void)startNewGame;
+-(void)updateCoinsLabel:(int)numCoins;
 
-@property UIAlertView *failAlertView, *successAlertView, *exitAlertView;
+@property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView;
 
 @property long gridHandle; //handle to the grid object in C++ code
 @end

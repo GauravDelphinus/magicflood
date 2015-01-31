@@ -39,7 +39,7 @@
  startpos: integer array with two elements, the x and y coordinates of the start position of the game
  maxmoves: the maximum number of moves allowed for this game
  **/
--(void)initializeGameData:(int **)grid WithSize:(int)size WithStartPos:(int *)startpos WithMaxMoves:(int)maxmoves
+-(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves
 {
     //allocate a local data structure, if not already present
     if (myGrid == NULL)
@@ -64,8 +64,14 @@
     gridSize = size;
     maxMoves = maxmoves;
     
-    startPos[0] = startpos[0];
-    startPos[1] = startpos[1];
+    mNumStartPos = numStartPos;
+    startPos = (int **) malloc (numStartPos * sizeof(int *));
+    for (int i = 0; i < numStartPos; i++)
+    {
+        startPos[i] = (int *) malloc (2 * sizeof(int));
+        startPos[i][0] = startpos[i][0];
+        startPos[i][1] = startpos[i][1];
+    }
     
     [self setNeedsDisplay];
 }
@@ -87,6 +93,27 @@
     [self setNeedsDisplay];
 }
 
+-(void)updateStartPos:(int **)startpos withNum:(int)numStartPos
+{
+    //free existing array
+    for (int i = 0; i < mNumStartPos; i++)
+    {
+        free(startPos[i]);
+    }
+    free(startPos);
+    
+    //allocate new and update the array
+    mNumStartPos = numStartPos;
+    startPos = (int **) malloc (numStartPos * sizeof(int *));
+    for (int i = 0; i < numStartPos; i++)
+    {
+        startPos[i] = (int *) malloc (2 * sizeof(int));
+        startPos[i][0] = startpos[i][0];
+        startPos[i][1] = startpos[i][1];
+    }
+    
+    [self setNeedsDisplay];
+}
 
 /**
  Retrun the CGColorRef value of the particular cell in the grid.
@@ -155,10 +182,59 @@
     }
     
     //show the start position
-    CGRect rectangle = CGRectMake(hOffset + startPos[1] * cellSize, vOffset + startPos[0] * cellSize, cellSize, cellSize);
+    for (int i = 0; i < mNumStartPos; i++)
+    {
+        [self drawStarWithLeft:hOffset + startPos[i][1] * cellSize WithTop:vOffset + startPos[i][0] * cellSize WithSize:cellSize];
+    }
+}
+
+-(void)drawStarWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect rectangle = CGRectMake(left, top, cellSize, cellSize);
     CGContextAddRect(context, rectangle);
     CGContextSetLineWidth(context, 3.0);
     CGContextStrokePath(context);
+}
+
+-(void)enableDisableTouchInput:(BOOL)enable
+{
+    if (enable == YES)
+    {
+        [self setMultipleTouchEnabled:YES];
+    }
+    else
+    {
+        [self setMultipleTouchEnabled:NO];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint location = [touch locationInView:touch.view];
+    NSLog(@"touchesEnded called with x = %d, y = %d", (int)location.x, (int)location.y);
+
+    CGRect screenBound = [self bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width ;
+    
+    //NSLog(@"screenWidth = %f, screenHeight = %f, scale= %f", screenWidth, screenHeight, scale);
+    
+    int horizontalGap = 20;
+    int vOffset = 80;
+    int cellSize = (screenWidth - horizontalGap)/gridSize;
+    
+    
+    int hOffset = horizontalGap / 2;
+    
+    int xOffset = (int)location.x - hOffset;
+    int yOffset = (int)location.y - vOffset;
+    
+    int gridx = xOffset / cellSize;
+    int gridy = yOffset / cellSize;
+    
+    [self.delegate handleGameViewTapAtX:gridy andY:gridx];
 }
 
 @end
