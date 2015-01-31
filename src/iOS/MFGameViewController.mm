@@ -8,8 +8,11 @@
 
 #import "MFGameViewController.h"
 #import "MFGlobalInterface.h"
+#import "MFIAPInterface.h"
 #import "MFGameView.h"
 #import "MFGridInterface.h"
+ #import <StoreKit/StoreKit.h>
+#import <StoreKit/SKPaymentQueue.h>
 
 @interface MFGameViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *coinsLabel;
@@ -46,9 +49,124 @@
     [self.addStarAlertView dismissWithClickedButtonIndex:0 animated:YES];
     [self.addStarAlertView show];
 }
-- (IBAction)addCoins:(id)sender {
+
+- (IBAction)addCoins:(id)sender
+{
+    if ([SKPaymentQueue canMakePayments])
+    {
+        SKProductsRequest *productsRequest = [[SKProductsRequest alloc]
+                                              initWithProductIdentifiers:[NSSet setWithArray:self.products]];
+        productsRequest.delegate = self;
+        [productsRequest start];
+    }
+    else
+    {
+        UIAlertView *notConnectedView = [[UIAlertView alloc] initWithTitle:@"Oh Shoot!"
+                                                           message:@"It appears you are not connected to the iTunes Store.  Please come back later!"
+                                                          delegate:self
+                                                 cancelButtonTitle:@"Cancel"
+                                                 otherButtonTitles:nil];
+        
+        [notConnectedView dismissWithClickedButtonIndex:0 animated:YES];
+        [notConnectedView show];
+    }
+
+    
+    
+}
+
+// SKProductsRequestDelegate protocol method
+- (void)productsRequest:(SKProductsRequest *)request
+     didReceiveResponse:(SKProductsResponse *)response
+{
+    BOOL allIsWell = YES;
+    
+    //self.products = response.products;
+    
+    for (NSString *invalidIdentifier in response.invalidProductIdentifiers) {
+        for (int i = 0; i < [self.products count]; i++)
+        {
+            if ([[self.products objectAtIndex:i] isEqualToString:invalidIdentifier])
+            {
+                //something's wrong
+                allIsWell = NO;
+                break;
+            }
+        }
+        
+        if (!allIsWell)
+        {
+            break;
+        }
+    }
+    
+    if (!allIsWell)
+    {
+        UIAlertView *notConnectedView = [[UIAlertView alloc] initWithTitle:@"Oh Shoot!"
+                                                                   message:@"There was some problem getting the product information from iTunes Store.  Please come back later!"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Cancel"
+                                                         otherButtonTitles:nil];
+        
+        [notConnectedView dismissWithClickedButtonIndex:0 animated:YES];
+        [notConnectedView show];
+
+        return;
+    }
+    
+    SKProduct *product0 = [response.products objectAtIndex:0];
+    SKProduct *product1 = [response.products objectAtIndex:1];
+    SKProduct *product2 = [response.products objectAtIndex:2];
+    SKProduct *product3 = [response.products objectAtIndex:3];
+
+    NSString *formattedPrice0 = [self formatIAPPrice:product0.price WithLocale:product0.priceLocale];
+    NSString *iap_first_price = @"Add 500 Coins";
+    iap_first_price = [iap_first_price stringByAppendingString:formattedPrice0];
+    
+    NSString *formattedPrice1 = [self formatIAPPrice:product0.price WithLocale:product1.priceLocale];
+    NSString *iap_second_price = @"Add 1000 Coins";
+    iap_second_price = [iap_second_price stringByAppendingString:formattedPrice1];
+    
+    NSString *formattedPrice2 = [self formatIAPPrice:product0.price WithLocale:product2.priceLocale];
+    NSString *iap_third_price = @"Add 2500 Coins";
+    iap_third_price = [iap_third_price stringByAppendingString:formattedPrice2];
+    
+    NSString *formattedPrice3 = [self formatIAPPrice:product0.price WithLocale:product3.priceLocale];
+    NSString *iap_fourth_price = @"Add 5000 Coins";
+    iap_fourth_price = [iap_fourth_price stringByAppendingString:formattedPrice3];
+    
+    if (self.addCoinsAlertView == nil)
+    {
+        self.addCoinsAlertView = [[UIAlertView alloc] initWithTitle:@"Add Coins"
+                                                                    message:@"Add Coins"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Cancel"
+                                                          otherButtonTitles:iap_first_price, iap_second_price,
+                                  iap_third_price, iap_fourth_price, nil];
+    }
+    [self.addCoinsAlertView dismissWithClickedButtonIndex:0 animated:YES];
+    [self.addCoinsAlertView show];
+    
+}
+
+-(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setLocale:locale];
+    NSString *formattedPrice = [numberFormatter stringFromNumber:price];
+    
+    return formattedPrice;
 
 }
+
+- (void)request:(SKRequest *)request
+didFailWithError:(NSError *)error
+{
+    NSLog(@"request didFailWithError called");
+}
+
 - (IBAction)addMoves:(id)sender {
     //ask the user what he wants to do next
     if (self.addMovesAlertView == nil)
@@ -154,6 +272,15 @@
     
     //set self as delegate for the tap protocol in the MFGameView
     self.gameView.delegate = self;
+    
+    //load the bundled product list
+    NSString *id_iap_remove_ads = @IAP_REMOVE_ADS;
+    NSString *id_iap_coins_first = @ IAP_COINS_FIRST;
+    NSString *id_iap_coins_second = @ IAP_COINS_SECOND;
+    NSString *id_iap_coins_third = @ IAP_COINS_THIRD;
+    NSString *id_iap_coins_fourth = @ IAP_COINS_FOURTH;
+    self.products = [NSArray arrayWithObjects: id_iap_remove_ads, id_iap_coins_first, id_iap_coins_second,
+                     id_iap_coins_third, id_iap_coins_fourth, nil];
 }
 
 /**
@@ -352,6 +479,22 @@
                     [self.gameView enableDisableTouchInput:YES];
                     self.mHurdleSmasherMode = YES;
                 }
+                break;
+            }
+        }
+    }
+    else if (alertView == self.addCoinsAlertView) //shown when the user clicks on the Add Coins button
+    {
+        switch (buttonIndex)
+        {
+            case 1: //Add 500 Coins
+            {
+                SKProduct *product = [self.products objectAtIndex:0];
+                SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
+                payment.quantity = 1;
+                
+                [[SKPaymentQueue defaultQueue] addPayment:payment];
+
                 break;
             }
         }

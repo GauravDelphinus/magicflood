@@ -8,16 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "MFGameView.h"
+#import <StoreKit/StoreKit.h>
 
-@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler>
+@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, SKProductsRequestDelegate>
+{
+}
 
 @property int gameLevel; //set by the calling MFViewController
 @property BOOL mStarPlacementMode;
 @property BOOL mHurdleSmasherMode;
+@property NSArray *products;
 
 -(int)GetColorCodeFromUIColor:(UIColor *)color;
 -(void)startNewGame;
 -(void)updateCoinsLabel:(int)numCoins;
+-(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale;
 
 @property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView;
 

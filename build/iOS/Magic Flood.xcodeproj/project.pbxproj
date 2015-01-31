@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */; };
+		F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */ = {isa = PBXBuildFile; fileRef = F11D21D41A7D0F8D006A4086 /* product_ids.plist */; };
+		F11D21D71A7D1C4C006A4086 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11D21D61A7D1C4C006A4086 /* StoreKit.framework */; };
 		F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F147C5FA1A2364EF00CBCE83 /* Images.xcassets */; };
 		F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7771A236C23002D4DDD /* Main_iPad.storyboard */; };
 		F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGlobalInterface.cpp; path = ../../src/Common/MFGlobalInterface.cpp; sourceTree = SOURCE_ROOT; };
 		F11D21D21A7CBD19006A4086 /* MFGlobalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGlobalInterface.h; path = ../../src/Common/MFGlobalInterface.h; sourceTree = SOURCE_ROOT; };
+		F11D21D41A7D0F8D006A4086 /* product_ids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = product_ids.plist; path = ../../resources/iOS/product_ids.plist; sourceTree = SOURCE_ROOT; };
+		F11D21D61A7D1C4C006A4086 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F147C5FA1A2364EF00CBCE83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../resources/iOS/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F147E7781A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		F147E77A1A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11D21D71A7D1C4C006A4086 /* StoreKit.framework in Frameworks */,
 				F1A2F2DD1A1D7F1C000DD4E7 /* CoreGraphics.framework in Frameworks */,
 				F1A2F2DF1A1D7F1C000DD4E7 /* UIKit.framework in Frameworks */,
 				F1A2F2DB1A1D7F1C000DD4E7 /* Foundation.framework in Frameworks */,
@@ -118,6 +123,7 @@
 				F1A2F2E81A1D7F1C000DD4E7 /* Magic Flood-Prefix.pch */,
 				F1A2F2E21A1D7F1C000DD4E7 /* Magic Flood-Info.plist */,
 				F147C5FA1A2364EF00CBCE83 /* Images.xcassets */,
+				F11D21D41A7D0F8D006A4086 /* product_ids.plist */,
 			);
 			name = Resources;
 			path = ../../resources;
@@ -145,6 +151,7 @@
 		F1A2F2D91A1D7F1C000DD4E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F11D21D61A7D1C4C006A4086 /* StoreKit.framework */,
 				F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */,
 				F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */,
 				F1A2F2DE1A1D7F1C000DD4E7 /* UIKit.framework */,
@@ -301,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */,
 				F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */,
 				F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */,
 				F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */,
