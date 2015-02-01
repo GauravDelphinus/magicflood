@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include "MFGrid.h"
 #include "MFGridData.h"
+#include "MFGridInterface.h"
 
 /**
  The Grid object.

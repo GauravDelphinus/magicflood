@@ -15,6 +15,7 @@
 #import <StoreKit/SKPaymentQueue.h>
 
 @interface MFGameViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *mLevelsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coinsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *movesLable; //UILabel that displays the Moves header
 @property (strong, nonatomic) IBOutlet MFGameView *gameView; //UIView that renders the actual game board
@@ -266,7 +267,7 @@ didFailWithError:(NSError *)error
 {
     [super viewDidLoad];
     
-    self.gridHandle = 0;
+    //self.gridHandle = 0;
     
     [self startNewGame];
     
@@ -283,13 +284,22 @@ didFailWithError:(NSError *)error
                      id_iap_coins_third, id_iap_coins_fourth, nil];
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    if (self.gridHandle != 0)
+    {
+        deleteGrid(self.gridHandle);
+        self.gridHandle = 0;
+    }
+}
+
 /**
  Start a new game.
  **/
 -(void)startNewGame
 {
     //clear the handle if a game was already underway
-    NSLog(@"startNewGame, gridHandle = %lx", self.gridHandle);
+    NSLog(@"startNewGame, level = %d, gridHandle = %lx", self.gameLevel, self.gridHandle);
     if (self.gridHandle != 0)
     {
         deleteGrid(self.gridHandle);
@@ -319,6 +329,9 @@ didFailWithError:(NSError *)error
     //update the coins label
     NSString *coinsLabel = [NSString stringWithFormat:@"%d", getCoins()];
     [self.coinsLabel setText:coinsLabel];
+    
+    NSString *levelLabel = [NSString stringWithFormat:@"Level %d", self.gameLevel];
+    [self.mLevelsLabel setText:levelLabel];
 }
 
 - (void)didReceiveMemoryWarning

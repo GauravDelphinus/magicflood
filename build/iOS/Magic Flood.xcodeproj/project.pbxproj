@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10A8E061A7D34BC00A31AEA /* MFLevelsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F10A8E051A7D34BC00A31AEA /* MFLevelsViewController.mm */; };
 		F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */; };
 		F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */ = {isa = PBXBuildFile; fileRef = F11D21D41A7D0F8D006A4086 /* product_ids.plist */; };
 		F11D21D71A7D1C4C006A4086 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11D21D61A7D1C4C006A4086 /* StoreKit.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F10A8E041A7D34BC00A31AEA /* MFLevelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFLevelsViewController.h; path = ../../src/iOS/MFLevelsViewController.h; sourceTree = SOURCE_ROOT; };
+		F10A8E051A7D34BC00A31AEA /* MFLevelsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFLevelsViewController.mm; path = ../../src/iOS/MFLevelsViewController.mm; sourceTree = SOURCE_ROOT; };
 		F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGlobalInterface.cpp; path = ../../src/Common/MFGlobalInterface.cpp; sourceTree = SOURCE_ROOT; };
 		F11D21D21A7CBD19006A4086 /* MFGlobalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGlobalInterface.h; path = ../../src/Common/MFGlobalInterface.h; sourceTree = SOURCE_ROOT; };
 		F11D21D41A7D0F8D006A4086 /* product_ids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = product_ids.plist; path = ../../resources/iOS/product_ids.plist; sourceTree = SOURCE_ROOT; };
@@ -214,6 +217,8 @@
 		F1C4EEF31A235C2400322C1E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F10A8E041A7D34BC00A31AEA /* MFLevelsViewController.h */,
+				F10A8E051A7D34BC00A31AEA /* MFLevelsViewController.mm */,
 				F153249D1A2366FD00379773 /* MFAppDelegate.h */,
 				F1A2F2E61A1D7F1C000DD4E7 /* main.m */,
 				F1C4EEF61A235C3500322C1E /* MFAppDelegate.m */,
@@ -342,6 +347,7 @@
 				F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */,
 				F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */,
 				F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */,
+				F10A8E061A7D34BC00A31AEA /* MFLevelsViewController.mm in Sources */,
 				F1A2F2E71A1D7F1C000DD4E7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

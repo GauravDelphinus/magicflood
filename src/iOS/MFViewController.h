@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MFGameViewController.h"
 
-@interface MFViewController : UIViewController
-
+@interface MFViewController : UIViewController <UIPageViewControllerDataSource>
+- (IBAction)startWalkthrough:(id)sender;
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+@property int numLevels;
 -(void)initializeInAppPurchase;
 @end
 

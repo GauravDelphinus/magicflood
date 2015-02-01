@@ -42,4 +42,9 @@ extern "C" {
 #define COINS_TO_ADD_A_STAR 1000
 #define COINS_TO_ADD_A_HURDLE_SMASHER 1500
 
+/**
+ General
+ **/
+#define NUM_LEVELS_PER_SCREEN 16
+
 #endif /* defined(__Magic_Flood__MFGlobalInterface__) */

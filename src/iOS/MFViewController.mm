@@ -9,6 +9,9 @@
 #import "MFViewController.h"
 #import "MFGameViewController.h"
 #import "MFIAPInterface.h"
+#import "MFGridInterface.h"
+#import "MFLevelsViewController.h"
+#import "MFGlobalInterface.h"
 
 @interface MFViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *mLogoImageView;
@@ -16,6 +19,9 @@
 @end
 
 @implementation MFViewController
+- (IBAction)launchGame:(id)sender {
+    [self launchLevelsViewController];
+}
 
 - (void)viewDidLoad
 {
@@ -26,6 +32,39 @@
     
     UIImage *logoImage = [UIImage imageNamed:@"iOS/iPhone/ic_logo_big"];
     [self.mLogoImageView initWithImage:logoImage];
+    
+    self.numLevels = getNumLevels();
+
+    //[self launchLevelsViewController];
+}
+
+-(void)launchLevelsViewController
+{
+    // Create page view controller
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+    self.pageViewController.dataSource = self;
+    
+    MFLevelsViewController *startingViewController = [self viewControllerAtIndex:0];
+    NSArray *viewControllers = @[startingViewController];
+    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    // Change the size of page view controller
+    NSLog(@"launchLevels, width = %d, height = %d", self.view.frame.size.width, self.view.frame.size.height);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
+    
+    [self presentViewController:self.pageViewController animated:YES completion:nil];
+    
+    /*
+    [self addChildViewController:_pageViewController];
+    [self.view addSubview:_pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
+     */
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor whiteColor];
+
 }
 
 -(void)initializeInAppPurchase
@@ -49,10 +88,81 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UIButton *button = (UIButton *)sender;
+    if (button.tag == 100)
+    {
+        [self launchLevelsViewController];
+    }
+    else{
     MFGameViewController *controller = (MFGameViewController *)segue.destinationViewController;
     
     //controller.gameLevel = button.tag;
     controller.gameLevel = 33;
+    }
+   
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NSUInteger index = ((MFLevelsViewController *) viewController).pageIndex;
+    NSLog(@"\nbefore view controller, got index %d", index);
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
+    }
+    
+    
+    index--;
+    NSLog(@"returning index %d", index);
+    return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    NSUInteger index = ((MFLevelsViewController*) viewController).pageIndex;
+    NSLog(@"\nafter view controller, got index %d", index);
+    
+    if (index == NSNotFound) {
+        return nil;
+    }
+    
+    int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
+    NSLog(@"numScreens = %d", numScreens);
+    index++;
+    if (index == numScreens) {
+        return nil;
+    }
+    NSLog(@"returning index %d", index);
+    return [self viewControllerAtIndex:index];
+}
+
+- (MFLevelsViewController *)viewControllerAtIndex:(NSUInteger)index
+{
+    NSLog(@"viewControllerAtIndex %d", index);
+    int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
+    if (index >= numScreens || index < 0) {
+        return nil;
+    }
+    
+    // Create a new view controller and pass suitable data.
+    MFLevelsViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    
+    NSString *titleText = [NSString stringWithFormat:@"Level %d", index + 1];
+    
+    pageContentViewController.titleText = titleText;
+    pageContentViewController.pageIndex = index;
+    pageContentViewController.numLevels = self.numLevels;
+    
+    return pageContentViewController;
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+    int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
+    return numScreens;
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 0;
 }
 
 @end
