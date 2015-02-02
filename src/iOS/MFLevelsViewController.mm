@@ -11,8 +11,73 @@
 #import "MFGlobalInterface.h"
 #import "MFGameViewController.h"
 
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
+#define UIColorFromARGB(argbValue) \
+[UIColor colorWithRed:((float)((argbValue & 0x00FF0000) >> 16))/255.0 \
+green:((float)((argbValue & 0x0000FF00) >>  8))/255.0 \
+blue:((float)((argbValue & 0x000000FF) >>  0))/255.0 \
+alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
+
 @interface MFLevelsViewController ()
+
 @property (strong, nonatomic) IBOutlet UILabel *mTitleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *mBackButton;
+
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton1;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton2;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton3;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton4;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton5;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton6;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton7;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton8;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton9;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton10;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton11;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton12;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton13;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton14;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton15;
+@property (strong, nonatomic) IBOutlet UIButton *mLevelButton16;
+
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel1;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel2;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel3;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel4;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel5;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel6;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel7;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel8;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel9;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel10;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel11;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel12;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel13;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel14;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel15;
+@property (strong, nonatomic) IBOutlet UILabel *mLevelLabel16;
+
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView1;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView2;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView3;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView4;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView5;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView6;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView7;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView8;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView9;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView10;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView11;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView12;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView13;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView14;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView15;
+@property (strong, nonatomic) IBOutlet UIImageView *mLevelImageView16;
 
 @end
 
@@ -62,6 +127,14 @@
                      self.mLevelButton5, self.mLevelButton6, self.mLevelButton7, self.mLevelButton8,
                      self.mLevelButton9, self.mLevelButton10, self.mLevelButton11, self.mLevelButton12,
                      self.mLevelButton13, self.mLevelButton14, self.mLevelButton15, self.mLevelButton16, nil];
+    mLevelLabels = [NSArray arrayWithObjects:self.mLevelLabel1, self.mLevelLabel2, self.mLevelLabel3, self.mLevelLabel4,
+                                       self.mLevelLabel5, self.mLevelLabel6, self.mLevelLabel7, self.mLevelLabel8,
+                                       self.mLevelLabel9, self.mLevelLabel10, self.mLevelLabel11, self.mLevelLabel12,
+                    self.mLevelLabel13, self.mLevelLabel14, self.mLevelLabel15, self.mLevelLabel16, nil];
+    mLevelImageViews = [NSArray arrayWithObjects:self.mLevelImageView1, self.mLevelImageView2, self.mLevelImageView3, self.mLevelImageView4,
+                                           self.mLevelImageView5, self.mLevelImageView6, self.mLevelImageView7, self.mLevelImageView8,
+                                           self.mLevelImageView9, self.mLevelImageView10, self.mLevelImageView11, self.mLevelImageView12,
+                        self.mLevelImageView13, self.mLevelImageView14, self.mLevelImageView15, self.mLevelImageView16, nil];
     
     int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
     int numLevelsOnThisScreen = 0;
@@ -81,19 +154,89 @@
         }
     }
     
+    UIImage *lockImage = [UIImage imageNamed:@"ic_iap_lock.png"];
+    UIImage *completedImage = [UIImage imageNamed:@"ic_iap_tick.png"];
+    UIImage *playedImage = [UIImage imageNamed:@"ic_iap_unlocked.png"];
+    
+    [self.mTitleLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
+    [self.mBackButton.titleLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
+    
+    int lastPlayedLevel = 10;
+    int lastCompletedLevel = 9;
+    
     for (int i = 1 ; i <= NUM_LEVELS_PER_SCREEN; i++)
     {
         UIButton *button = [mLevelButtons objectAtIndex:i-1];
+        UILabel *label = [mLevelLabels objectAtIndex:i-1];
+        UIImageView *imageView = [mLevelImageViews objectAtIndex:i-1];
+        
+        int thisLevel = self.pageIndex * NUM_LEVELS_PER_SCREEN + i;
+        
         if (i <= numLevelsOnThisScreen)
         {
             button.hidden = NO;
-            button.titleLabel.text = [NSString stringWithFormat:@"%d", (self.pageIndex * NUM_LEVELS_PER_SCREEN + i)];
+            //button.titleLabel.text = [NSString stringWithFormat:@"%d", (self.pageIndex * NUM_LEVELS_PER_SCREEN + i)];
+            label.text = [NSString stringWithFormat:@"%d", thisLevel];
+            label.textColor = [UIColor whiteColor];
+            [label setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:25]];
+            
+            //check for lock status
+            if (thisLevel <= lastCompletedLevel)
+            {
+                [imageView setImage:completedImage];
+                
+                button.userInteractionEnabled = YES;
+                [self addGestureRecogniser:button];
+            }
+            else if (thisLevel <= lastPlayedLevel)
+            {
+                [imageView setImage:playedImage];
+                
+                button.userInteractionEnabled = YES;
+                [self addGestureRecogniser:button];
+            }
+            else
+            {
+                [imageView setImage:lockImage];
+                
+                /*
+                for (UIGestureRecognizer *recognizer in button.gestureRecognizers)
+                {
+                    if([recognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+                        [button removeGestureRecognizer:recognizer];
+                    }
+                }
+                 */
+                button.userInteractionEnabled = NO;
+            }
+            
+            //some visual touch-ups
+            button.layer.cornerRadius = 5;
+            button.layer.masksToBounds = YES;
+            [button setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
+            
         }
         else
         {
             button.hidden = YES;
         }
     }
+    
+    
+    //[self.mTestLabel setText:@"hello"];
+    //[self.mTestImage setImage:lockImage];
+    
+    //[self addGestureRecogniser:self.mTestView];
+    
+    //add background image
+    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
+    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
+    
+    _backGroundView.frame = self.view.frame;
+    _backGroundView.contentMode = UIViewContentModeScaleToFill;
+    
+    [self.view addSubview:_backGroundView];
+    [self.view sendSubviewToBack:_backGroundView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,5 +255,59 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)addGestureRecogniser:(UIView *)touchView{
+    
+    UITapGestureRecognizer *singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnButton:)];
+    [touchView addGestureRecognizer:singleTap];
+    
+    //UILongPressGestureRecognizer *longPress=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPressOnButton:)];
+    //longPress.minimumPressDuration = 0.001;
+    //[touchView addGestureRecognizer:longPress];
+    
+
+
+}
+-(void)changecolor{
+    
+    // do something
+    //[self.mTestView setBackgroundColor:[UIColor greenColor]];
+    
+}
+
+- (void) handleTapOnButton: (UITapGestureRecognizer *)recognizer
+{
+    //Code to handle the gesture
+    MFGameViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
+    UIButton *button = (UIButton *)recognizer.view;
+    controller.gameLevel = self.pageIndex * NUM_LEVELS_PER_SCREEN + button.tag;
+    
+    //[button setBackgroundColor:[UIColor yellowColor]];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void) handleLongPressOnButton: (UITapGestureRecognizer *)recognizer
+{
+    UIButton *button = (UIButton *)recognizer.view;
+    
+    //Code to handle the gesture
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+    {
+        [button setBackgroundColor:UIColorFromARGB(0x99FFCC00)];
+    }
+    else
+    {
+        [button setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
+        MFGameViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
+    
+        controller.gameLevel = self.pageIndex * NUM_LEVELS_PER_SCREEN + button.tag;
+    
+    
+    
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+}
+
 
 @end

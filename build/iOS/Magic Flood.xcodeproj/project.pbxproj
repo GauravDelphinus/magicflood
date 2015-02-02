@@ -18,6 +18,7 @@
 		F147E7851A29990F002D4DDD /* MFInAppProduct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7831A29990F002D4DDD /* MFInAppProduct.cpp */; };
 		F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */; };
 		F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153249E1A2367EF00379773 /* MFGridInterface.cpp */; };
+		F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */; };
 		F1A2F2DB1A1D7F1C000DD4E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */; };
 		F1A2F2DD1A1D7F1C000DD4E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */; };
 		F1A2F2DF1A1D7F1C000DD4E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DE1A1D7F1C000DD4E7 /* UIKit.framework */; };
@@ -34,6 +35,11 @@
 		F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */; };
 		F1C4EF071A235C3500322C1E /* MFViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF001A235C3500322C1E /* MFViewController.mm */; };
 		F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */; };
+		F1E64C001A7E1AAB0042D466 /* bg_sky_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64BFF1A7E1AAB0042D466 /* bg_sky_blue.png */; };
+		F1E64C051A7E1AEC0042D466 /* ic_iap_lock.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C021A7E1AEC0042D466 /* ic_iap_lock.png */; };
+		F1E64C061A7E1AEC0042D466 /* ic_iap_tick.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C031A7E1AEC0042D466 /* ic_iap_tick.png */; };
+		F1E64C071A7E1AEC0042D466 /* ic_iap_unlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C041A7E1AEC0042D466 /* ic_iap_unlocked.png */; };
+		F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C081A7E6DBB0042D466 /* ic_logo_big.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +72,7 @@
 		F153249D1A2366FD00379773 /* MFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAppDelegate.h; path = iOS/MFAppDelegate.h; sourceTree = "<group>"; };
 		F153249E1A2367EF00379773 /* MFGridInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGridInterface.cpp; path = ../../src/Common/MFGridInterface.cpp; sourceTree = SOURCE_ROOT; };
 		F153249F1A2367EF00379773 /* MFGridInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGridInterface.h; path = Common/MFGridInterface.h; sourceTree = "<group>"; };
+		F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArchitectsDaughter.ttf; path = ../../resources/iOS/Fonts/ArchitectsDaughter.ttf; sourceTree = SOURCE_ROOT; };
 		F1A2F2D71A1D7F1C000DD4E7 /* Magic Flood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Flood.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,6 +97,11 @@
 		F1C4EF001A235C3500322C1E /* MFViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFViewController.mm; path = ../../src/iOS/MFViewController.mm; sourceTree = SOURCE_ROOT; };
 		F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFObstacle.cpp; path = ../../src/Common/MFObstacle.cpp; sourceTree = SOURCE_ROOT; };
 		F1C4EF091A235C6E00322C1E /* MFObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFObstacle.h; path = ../../src/Common/MFObstacle.h; sourceTree = SOURCE_ROOT; };
+		F1E64BFF1A7E1AAB0042D466 /* bg_sky_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_sky_blue.png; path = ../../resources/iOS/Backgrounds/bg_sky_blue.png; sourceTree = "<group>"; };
+		F1E64C021A7E1AEC0042D466 /* ic_iap_lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_iap_lock.png; path = ../../resources/iOS/Icons/ic_iap_lock.png; sourceTree = SOURCE_ROOT; };
+		F1E64C031A7E1AEC0042D466 /* ic_iap_tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_iap_tick.png; path = ../../resources/iOS/Icons/ic_iap_tick.png; sourceTree = SOURCE_ROOT; };
+		F1E64C041A7E1AEC0042D466 /* ic_iap_unlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_iap_unlocked.png; path = ../../resources/iOS/Icons/ic_iap_unlocked.png; sourceTree = SOURCE_ROOT; };
+		F1E64C081A7E6DBB0042D466 /* ic_logo_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_logo_big.png; path = ../../resources/iOS/Icons/ic_logo_big.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +132,9 @@
 		F14B00AD1A2363AA0039637B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F18396681A7FA1C100D08FF3 /* Fonts */,
+				F1E64C011A7E1ADF0042D466 /* Icons */,
+				F1E64BFE1A7E1A980042D466 /* Backgrounds */,
 				F147E7771A236C23002D4DDD /* Main_iPad.storyboard */,
 				F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */,
 				F1A2F2E31A1D7F1C000DD4E7 /* InfoPlist.strings */,
@@ -130,6 +145,14 @@
 			);
 			name = Resources;
 			path = ../../resources;
+			sourceTree = "<group>";
+		};
+		F18396681A7FA1C100D08FF3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		F1A2F2CE1A1D7F1C000DD4E7 = {
@@ -233,6 +256,26 @@
 			path = ../../src;
 			sourceTree = "<group>";
 		};
+		F1E64BFE1A7E1A980042D466 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				F1E64BFF1A7E1AAB0042D466 /* bg_sky_blue.png */,
+			);
+			name = Backgrounds;
+			sourceTree = "<group>";
+		};
+		F1E64C011A7E1ADF0042D466 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				F1E64C081A7E6DBB0042D466 /* ic_logo_big.png */,
+				F1E64C021A7E1AEC0042D466 /* ic_iap_lock.png */,
+				F1E64C031A7E1AEC0042D466 /* ic_iap_tick.png */,
+				F1E64C041A7E1AEC0042D466 /* ic_iap_unlocked.png */,
+			);
+			name = Icons;
+			path = ../../resources/iOS/Icons;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -313,9 +356,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E64C001A7E1AAB0042D466 /* bg_sky_blue.png in Resources */,
+				F1E64C061A7E1AEC0042D466 /* ic_iap_tick.png in Resources */,
+				F1E64C071A7E1AEC0042D466 /* ic_iap_unlocked.png in Resources */,
 				F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */,
 				F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */,
+				F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */,
 				F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */,
+				F1E64C051A7E1AEC0042D466 /* ic_iap_lock.png in Resources */,
+				F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */,
 				F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */,
 				F1A2F2E51A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */,
 			);

@@ -36,6 +36,16 @@
     self.numLevels = getNumLevels();
 
     //[self launchLevelsViewController];
+    
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_sky_blue.png"]]];
+    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
+    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
+    
+    _backGroundView.frame = self.view.frame;
+    _backGroundView.contentMode = UIViewContentModeScaleToFill;
+    
+    [self.view addSubview:_backGroundView];
+    [self.view sendSubviewToBack:_backGroundView];
 }
 
 -(void)launchLevelsViewController
@@ -145,7 +155,7 @@
     // Create a new view controller and pass suitable data.
     MFLevelsViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     
-    NSString *titleText = [NSString stringWithFormat:@"Level %d", index + 1];
+    NSString *titleText = [NSString stringWithFormat:@"Levels"];
     
     pageContentViewController.titleText = titleText;
     pageContentViewController.pageIndex = index;

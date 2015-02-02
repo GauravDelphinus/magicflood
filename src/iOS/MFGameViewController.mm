@@ -282,6 +282,16 @@ didFailWithError:(NSError *)error
     NSString *id_iap_coins_fourth = @ IAP_COINS_FOURTH;
     self.products = [NSArray arrayWithObjects: id_iap_remove_ads, id_iap_coins_first, id_iap_coins_second,
                      id_iap_coins_third, id_iap_coins_fourth, nil];
+    
+    //add background image
+    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
+    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
+    
+    _backGroundView.frame = self.view.frame;
+    _backGroundView.contentMode = UIViewContentModeScaleToFill;
+    
+    [self.view addSubview:_backGroundView];
+    [self.view sendSubviewToBack:_backGroundView];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
