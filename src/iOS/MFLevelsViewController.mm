@@ -10,6 +10,7 @@
 #import "MFGridInterface.h"
 #import "MFGlobalInterface.h"
 #import "MFGameViewController.h"
+#import "MFGameConstants.h"
 
 #define UIColorFromRGB(rgbValue) \
 [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -161,8 +162,13 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
     [self.mTitleLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
     [self.mBackButton.titleLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
     
-    int lastPlayedLevel = 10;
-    int lastCompletedLevel = 9;
+    /**
+     Read preferences to get the last played level and the last completed level
+     **/
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    int lastUnlockedLevel = [defaults integerForKey:@PREFERENCE_LAST_UNLOCKED_LEVEL];
+    int lastCompletedLevel = [defaults integerForKey:@PREFERENCE_LAST_COMPLETED_LEVEL];
+    
     
     for (int i = 1 ; i <= NUM_LEVELS_PER_SCREEN; i++)
     {
@@ -188,7 +194,7 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
                 button.userInteractionEnabled = YES;
                 [self addGestureRecogniser:button];
             }
-            else if (thisLevel <= lastPlayedLevel)
+            else if (thisLevel <= lastUnlockedLevel)
             {
                 [imageView setImage:playedImage];
                 

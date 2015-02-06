@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "MFGameView.h"
 #import <StoreKit/StoreKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, SKProductsRequestDelegate>
 {
+   SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
+    NSString *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mStarPlacedSoundURL;
 }
 
 @property int gameLevel; //set by the calling MFViewController
@@ -19,12 +22,14 @@
 @property BOOL mHurdleSmasherMode;
 @property NSArray *products;
 
--(int)GetColorCodeFromUIColor:(UIColor *)color;
+-(int)GetColorCodeFromUIButton:(UIButton *)button;
 -(void)startNewGame;
 -(void)updateCoinsLabel:(int)numCoins;
 -(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale;
+-(void)setupSound;
+-(void)playSound:(SystemSoundID)soundID;
 
-@property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView;
+@property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
 
 @property long gridHandle; //handle to the grid object in C++ code
 @end

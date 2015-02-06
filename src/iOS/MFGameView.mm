@@ -8,6 +8,17 @@
 
 #import "MFGameView.h"
 #import "MFGridInterface.h"
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
+#define UIColorFromARGB(argbValue) \
+[UIColor colorWithRed:((float)((argbValue & 0x00FF0000) >> 16))/255.0 \
+green:((float)((argbValue & 0x0000FF00) >>  8))/255.0 \
+blue:((float)((argbValue & 0x000000FF) >>  0))/255.0 \
+alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
 
 @implementation MFGameView
 
@@ -41,6 +52,18 @@
  **/
 -(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves
 {
+    //free old grid, if present
+    if (myGrid != NULL)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            free(myGrid[i]);
+        }
+        
+        free(myGrid);
+        myGrid = NULL;
+    }
+    
     //allocate a local data structure, if not already present
     if (myGrid == NULL)
     {
@@ -124,22 +147,22 @@
     switch (gridColor)
     {
         case GRID_COLOR_RED:
-            return [UIColor redColor].CGColor;
+            return UIColorFromRGB(0xDB4D4D).CGColor;
             break;
         case GRID_COLOR_GREEN:
-            return [UIColor greenColor].CGColor;
+            return UIColorFromRGB(0x7ACC7A).CGColor;
             break;
         case GRID_COLOR_BLUE:
-            return [UIColor blueColor].CGColor;
+            return UIColorFromRGB(0x33CCFF).CGColor;
             break;
         case GRID_COLOR_YELLOW:
-            return [UIColor yellowColor].CGColor;
+            return UIColorFromRGB(0xFFFF66).CGColor;
             break;
         case GRID_COLOR_ORANGE:
-            return [UIColor orangeColor].CGColor;
+            return UIColorFromRGB(0xFFA347).CGColor;
             break;
         case GRID_COLOR_CYAN:
-            return [UIColor cyanColor].CGColor;
+            return UIColorFromRGB(0xDB4DFF).CGColor;
             break;
         case GRID_OBSTACLE: //obstacle
             return [UIColor grayColor].CGColor;
@@ -157,11 +180,17 @@
     CGRect screenBound = [self bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width ;
+    CGFloat screenHeight = screenSize.height;
+    
+    int gap = 0;
+    int gridlength = MIN(screenSize.height, screenWidth) - gap;
     
     //NSLog(@"screenWidth = %f, screenHeight = %f, scale= %f", screenWidth, screenHeight, scale);
     
-    int horizontalGap = 20;
-    int vOffset = 80;
+    int horizontalGap = screenWidth - gridlength;
+    
+    int vOffset = (screenHeight - gridlength)/2;
+    
     int cellSize = (screenWidth - horizontalGap)/gridSize;
     
     CGContextRef context = UIGraphicsGetCurrentContext();

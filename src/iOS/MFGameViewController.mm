@@ -11,8 +11,10 @@
 #import "MFIAPInterface.h"
 #import "MFGameView.h"
 #import "MFGridInterface.h"
+#import "MFGameConstants.h"
  #import <StoreKit/StoreKit.h>
 #import <StoreKit/SKPaymentQueue.h>
+
 
 @interface MFGameViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *mLevelsLabel;
@@ -22,6 +24,10 @@
 @end
 
 @implementation MFGameViewController
+- (IBAction)soundButtonPressed:(id)sender
+{
+    
+}
 - (IBAction)removeAds:(id)sender {
 }
 - (IBAction)addHurdleSmasher:(id)sender {
@@ -82,7 +88,6 @@
 {
     BOOL allIsWell = YES;
     
-    //self.products = response.products;
     
     for (NSString *invalidIdentifier in response.invalidProductIdentifiers) {
         for (int i = 0; i < [self.products count]; i++)
@@ -115,11 +120,18 @@
         return;
     }
     
-    SKProduct *product0 = [response.products objectAtIndex:0];
-    SKProduct *product1 = [response.products objectAtIndex:1];
-    SKProduct *product2 = [response.products objectAtIndex:2];
-    SKProduct *product3 = [response.products objectAtIndex:3];
+    self.products = response.products;
 
+    [self addCoins];
+}
+
+-(void)addCoins
+{
+    SKProduct *product0 = [self.products objectAtIndex:0];
+    SKProduct *product1 = [self.products objectAtIndex:1];
+    SKProduct *product2 = [self.products objectAtIndex:2];
+    SKProduct *product3 = [self.products objectAtIndex:3];
+    
     NSString *formattedPrice0 = [self formatIAPPrice:product0.price WithLocale:product0.priceLocale];
     NSString *iap_first_price = @"Add 500 Coins";
     iap_first_price = [iap_first_price stringByAppendingString:formattedPrice0];
@@ -139,15 +151,14 @@
     if (self.addCoinsAlertView == nil)
     {
         self.addCoinsAlertView = [[UIAlertView alloc] initWithTitle:@"Add Coins"
-                                                                    message:@"Add Coins"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"Cancel"
-                                                          otherButtonTitles:iap_first_price, iap_second_price,
+                                                            message:@"Add Coins"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:iap_first_price, iap_second_price,
                                   iap_third_price, iap_fourth_price, nil];
     }
     [self.addCoinsAlertView dismissWithClickedButtonIndex:0 animated:YES];
     [self.addCoinsAlertView show];
-    
 }
 
 -(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale
@@ -192,8 +203,8 @@ didFailWithError:(NSError *)error
         self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
                                                         message:@"What would you like to do?"
                                                        delegate:self
-                                              cancelButtonTitle:@"New Game"
-                                              otherButtonTitles:@"Menu", @"Resume Game", nil];
+                                              cancelButtonTitle:@"Resume Game"
+                                              otherButtonTitles:@"View Levels", @"Replay Level", nil];
     }
     [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
     [self.exitAlertView show];
@@ -206,8 +217,10 @@ didFailWithError:(NSError *)error
 {
     //extract the color that was played
     UIButton *button = (UIButton *)sender;
-    int colorValue = [self GetColorCodeFromUIColor:button.backgroundColor];
+    int colorValue = [self GetColorCodeFromUIButton:button];
 
+    [self playSound:mButtonClickSoundID];
+    
     //play the move with the new color, and look for result
     int *result = playMove(self.gridHandle, colorValue);
     
@@ -222,33 +235,52 @@ didFailWithError:(NSError *)error
     [[self gameView] updateGameData:gridData];
     freeGridData(self.gridHandle, gridData);
     gridData = NULL;
-
+    
     if (result[0] == RESULT_SUCCESS) //success
     {
+        [self playSound:mGameSuccessSoundID];
+        
         setCoins(getCoins());
         
-    updateCoinsLabel:getCoins();
+        updateCoinsLabel:getCoins();
+        
+        //update last completed preference
+        int lastCompletedLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_LAST_COMPLETED_LEVEL];
+        if (lastCompletedLevel <= self.gameLevel)
+        {
+            [[NSUserDefaults standardUserDefaults] setInteger:self.gameLevel forKey: @PREFERENCE_LAST_COMPLETED_LEVEL];
+        }
+        
+        //unlock the next level
+        int lastUnlockedLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_LAST_UNLOCKED_LEVEL];
+        if (lastUnlockedLevel <= self.gameLevel)
+        {
+            lastUnlockedLevel ++;
+            [[NSUserDefaults standardUserDefaults] setInteger:lastUnlockedLevel forKey: @PREFERENCE_LAST_UNLOCKED_LEVEL];
+        }
         
         if (self.successAlertView == nil)
         {
             self.successAlertView = [[UIAlertView alloc] initWithTitle:@"Great job!"
                                                             message:@"Well done - you nailed it!"
                                                            delegate:self
-                                                  cancelButtonTitle:@"Next Game"
-                                                  otherButtonTitles:@"Menu", nil];
+                                                  cancelButtonTitle:@"View Levels"
+                                                  otherButtonTitles:@"Next Game", nil];
         }
         [self.successAlertView show];
     }
     else if (result[0] == RESULT_FAILED) //failed
     {
+        [self playSound:mGameFailedSoundID];
+        
         //end game (failed)
         if (self.failAlertView == nil)
         {
             self.failAlertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
                                                           message:@"Sorry, you ran out of moves."
                                                          delegate:self
-                                                cancelButtonTitle:@"New Game"
-                                                otherButtonTitles:@"Menu", nil];
+                                                cancelButtonTitle:@"End Game"
+                                                otherButtonTitles:@"Play On", nil];
         }
         [self.failAlertView show];
     }
@@ -269,7 +301,7 @@ didFailWithError:(NSError *)error
     
     //self.gridHandle = 0;
     
-    [self startNewGame];
+    [self startNewGame:self.gameLevel];
     
     //set self as delegate for the tap protocol in the MFGameView
     self.gameView.delegate = self;
@@ -283,6 +315,11 @@ didFailWithError:(NSError *)error
     self.products = [NSArray arrayWithObjects: id_iap_remove_ads, id_iap_coins_first, id_iap_coins_second,
                      id_iap_coins_third, id_iap_coins_fourth, nil];
     
+    //set font typefaces
+    [self.mLevelsLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
+    [self.coinsLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
+    [self.movesLable setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
+    
     //add background image
     UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
     UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
@@ -292,6 +329,37 @@ didFailWithError:(NSError *)error
     
     [self.view addSubview:_backGroundView];
     [self.view sendSubviewToBack:_backGroundView];
+    
+    //setup sound
+    [self setupSound];
+}
+
+-(void)setupSound
+{
+    NSString *buttonPressPath = [[NSBundle mainBundle]
+                            pathForResource:@"button_press_sound" ofType:@"wav"];
+    mButtonClickSoundURL = [NSURL fileURLWithPath:buttonPressPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mButtonClickSoundURL, &mButtonClickSoundID);
+    
+    NSString *gameFailedPath = [[NSBundle mainBundle]
+                                 pathForResource:@"game_failed_sound" ofType:@"wav"];
+    mGameFailedSoundURL = [NSURL fileURLWithPath:gameFailedPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameFailedSoundURL, &mGameFailedSoundID);
+   
+    NSString *gameSuccessPath = [[NSBundle mainBundle]
+                                 pathForResource:@"game_success_sound" ofType:@"wav"];
+    mGameSuccessSoundURL = [NSURL fileURLWithPath:gameSuccessPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameSuccessSoundURL, &mGameSuccessSoundID);
+   
+    NSString *hurdleSmashedPath = [[NSBundle mainBundle]
+                                 pathForResource:@"hurdle_smashed_sound" ofType:@"wav"];
+    mHurdleSmashedSoundURL = [NSURL fileURLWithPath:hurdleSmashedPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
+   
+    NSString *starPlacedPath = [[NSBundle mainBundle]
+                                 pathForResource:@"star_placed_sound" ofType:@"wav"];
+    mStarPlacedSoundURL = [NSURL fileURLWithPath:starPlacedPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mStarPlacedSoundURL, &mStarPlacedSoundID);
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -306,7 +374,7 @@ didFailWithError:(NSError *)error
 /**
  Start a new game.
  **/
--(void)startNewGame
+-(void)startNewGame: (int)level
 {
     //clear the handle if a game was already underway
     NSLog(@"startNewGame, level = %d, gridHandle = %lx", self.gameLevel, self.gridHandle);
@@ -316,6 +384,25 @@ didFailWithError:(NSError *)error
         self.gridHandle = 0;
     }
     
+    /**
+     Check if we've reached the last level!
+     **/
+    if (level  > getNumLevels())
+    {
+        if (self.finishedAllLevelsView == nil)
+        {
+            self.finishedAllLevelsView = [[UIAlertView alloc] initWithTitle:@"Superio!"
+                                                                message:@"You have finished all levels!"
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                    otherButtonTitles:@"Got it!", nil
+                                                      ];
+        }
+        [self.finishedAllLevelsView dismissWithClickedButtonIndex:0 animated:YES];
+        [self.finishedAllLevelsView show];
+    }
+    
+    self.gameLevel = level;
     //initialize a new game grid
     self.gridHandle = createNewGrid(self.gameLevel);
     NSLog(@"startNewGame, created new gridHandle = %lx", self.gridHandle);
@@ -363,33 +450,30 @@ didFailWithError:(NSError *)error
 /**
  Extract the integral color code from the UIColor
  **/
--(int)GetColorCodeFromUIColor:(UIColor *)color
+-(int)GetColorCodeFromUIButton:(UIButton *)button
 {
-    if ([color isEqual:[UIColor redColor]])
+    int tag = button.tag;
+    switch (tag)
     {
-        return GRID_COLOR_RED;
+        case 1:
+            return GRID_COLOR_RED;
+            
+        case 2:
+            return GRID_COLOR_GREEN;
+            
+        case 3:
+            return GRID_COLOR_BLUE;
+            
+        case 4:
+            return GRID_COLOR_YELLOW;
+            
+        case 5:
+            return GRID_COLOR_ORANGE;
+            
+        case 6:
+            return GRID_COLOR_CYAN;
     }
-    else if ([color isEqual:[UIColor greenColor]])
-    {
-        return GRID_COLOR_GREEN;
-    }
-    else if ([color isEqual:[UIColor blueColor]])
-    {
-        return GRID_COLOR_BLUE;
-    }
-    else if ([color isEqual:[UIColor yellowColor]])
-    {
-        return GRID_COLOR_YELLOW;
-    }
-    else if ([color isEqual:[UIColor orangeColor]])
-    {
-        return GRID_COLOR_ORANGE;
-    }
-    else if ([color isEqual:[UIColor cyanColor]])
-    {
-        return GRID_COLOR_CYAN;
-    }
-
+    
     return GRID_OBSTACLE;
 }
 
@@ -399,15 +483,41 @@ didFailWithError:(NSError *)error
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     //NSLog(@"buttonIndex = %d", buttonIndex);
+
+    //stop any sound that might be playing
+    [self stopSound];
+    
     if (alertView == self.failAlertView) // show when the user fails the game
     {
         switch (buttonIndex)
         {
-            case 0: //New Game
-                [self startNewGame];
+            case 0: //End Game
+                //take to the exit menu
+                if (self.exitAlertView == nil)
+                {
+                    self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
+                                                                    message:@"What would you like to do?"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Resume Game"
+                                                          otherButtonTitles:@"View Levels", @"Replay Level", nil];
+                }
+                [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
+                [self.exitAlertView show];
+                
                 break;
-            case 1: //Menu
-                [self dismissViewControllerAnimated:NO completion:nil];
+            case 1: //Play On
+                //ask the user what he wants to do next
+                if (self.addMovesAlertView == nil)
+                {
+                    self.addMovesAlertView = [[UIAlertView alloc] initWithTitle:@"Add Moves"
+                                                                        message:@"Redeem 500 Coins for 5 Moves"
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"Cancel"
+                                                              otherButtonTitles:@"Add Moves", nil];
+                }
+                [self.addMovesAlertView dismissWithClickedButtonIndex:0 animated:YES];
+                [self.addMovesAlertView show];
+                
                 break;
         }
     }
@@ -415,20 +525,21 @@ didFailWithError:(NSError *)error
     {
         switch (buttonIndex)
         {
-            case 0: //New Game
-                [self startNewGame];
-                break;
-            case 1: //Menu
+            case 0: //View Levels
                 [self dismissViewControllerAnimated:NO completion:nil];
+                break;
+            case 1: //Next Game
+                [self startNewGame:(self.gameLevel + 1)];
                 break;
         }
     }
     else if (alertView == self.exitAlertView) //shown when the user clicks on the X button
     {
+        NSLog(@"buttonIndex = %d", buttonIndex);
         switch (buttonIndex)
         {
-            case 0: //New Game
-                [self startNewGame];
+            case 2: //Replay
+                [self startNewGame:self.gameLevel];
                 break;
             case 1: //Menu
                 [self dismissViewControllerAnimated:NO completion:nil];
@@ -456,7 +567,32 @@ didFailWithError:(NSError *)error
                     //update moves label
                     [self updateMovesLabel:(getMaxMoves(self.gridHandle) - getCurrMove(self.gridHandle))];
                 }
+                else
+                {
+                    //show the add coins dialog
+                    [self addCoins];
+                }
                 break;
+            }
+            case 0: //cancel
+            {
+                /**
+                 if the user landed here after having "failed" the game,
+                 show him the game menu dialog again.
+                 **/
+                if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
+                {
+                    if (self.exitAlertView == nil)
+                    {
+                        self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
+                                                                        message:@"What would you like to do?"
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"Resume Game"
+                                                              otherButtonTitles:@"View Levels", @"Replay Level", nil];
+                    }
+                    [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
+                    [self.exitAlertView show];
+                }
             }
         }
     }
@@ -479,8 +615,13 @@ didFailWithError:(NSError *)error
                     [self.gameView enableDisableTouchInput:YES];
                     self.mStarPlacementMode = YES;
                 }
+                else
+                {
+                    [self addCoins];
+                }
                 break;
             }
+          
         }
     }
     else if (alertView == self.addHurdleSmasherAlertView) //shown when the user clicks on the Add Hurdle Smasher button
@@ -502,6 +643,10 @@ didFailWithError:(NSError *)error
                     [self.gameView enableDisableTouchInput:YES];
                     self.mHurdleSmasherMode = YES;
                 }
+                else
+                {
+                    [self addCoins];
+                }
                 break;
             }
         }
@@ -519,6 +664,26 @@ didFailWithError:(NSError *)error
                 [[SKPaymentQueue defaultQueue] addPayment:payment];
 
                 break;
+            }
+            case 0: //cancel
+            {
+                /**
+                 if the user landed here after having "failed" the game,
+                 show him the game menu dialog again.
+                 **/
+                if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
+                {
+                    if (self.exitAlertView == nil)
+                    {
+                        self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
+                                                                        message:@"What would you like to do?"
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"Resume Game"
+                                                              otherButtonTitles:@"View Levels", @"Replay Level", nil];
+                    }
+                    [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
+                    [self.exitAlertView show];
+                }
             }
         }
     }
@@ -558,6 +723,8 @@ didFailWithError:(NSError *)error
         int result = addStartPos(self.gridHandle, x, y);
         if (result == 1)
         {
+            [self playSound:mStarPlacedSoundID];
+            
             self.mStarPlacementMode = NO;
             
             int **startPos = getStartPos(self.gridHandle);
@@ -581,6 +748,8 @@ didFailWithError:(NSError *)error
         int result = smashHurdle(self.gridHandle, x, y);
         if (result == 1)
         {
+            [self playSound:mHurdleSmashedSoundID];
+            
             self.mHurdleSmasherMode = NO;
             
             int **gridData = getGridData(self.gridHandle);
@@ -602,6 +771,39 @@ didFailWithError:(NSError *)error
 -(void) enableDisableAllButtons:(BOOL)enable
 {
     
+}
+
+-(void) playSound:(SystemSoundID)soundID
+{
+    //[self stopSound];
+    AudioServicesPlaySystemSound(soundID);
+    mCurrentlyPlayingSound = soundID;
+}
+
+-(void) stopSound
+{
+   AudioServicesDisposeSystemSoundID(mCurrentlyPlayingSound);
+   if (mCurrentlyPlayingSound == mButtonClickSoundID)
+   {
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mButtonClickSoundURL, &mButtonClickSoundID);
+   }
+    else if (mCurrentlyPlayingSound == mGameFailedSoundID)
+    {
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameFailedSoundURL, &mGameFailedSoundID);
+    }
+    else if (mCurrentlyPlayingSound == mGameSuccessSoundID)
+    {
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameSuccessSoundURL, &mGameSuccessSoundID);
+    }
+    else if (mCurrentlyPlayingSound == mStarPlacedSoundID)
+    {
+        
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mStarPlacedSoundURL, &mStarPlacedSoundID);
+    }
+    else if (mCurrentlyPlayingSound == mHurdleSmashedSoundID)
+    {
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
+    }
 }
 
 @end

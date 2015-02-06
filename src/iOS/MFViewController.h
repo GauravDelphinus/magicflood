@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property int numLevels;
 -(void)initializeInAppPurchase;
+-(void)initializePreferences;
 @end
 
 

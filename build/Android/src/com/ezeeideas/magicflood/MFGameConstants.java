@@ -110,7 +110,6 @@ public class MFGameConstants
 	 */
 	public static final String PREFERENCE_KEY = "user_prefs";
 	public static final String PREFERENCE_SOUND = "preference_sound";
-	public static final String PREFERENCE_TOTAL_POINTS_EARNED = "total_points_earned";
 	public static final String PREFERENCE_TOTAL_COINS_EARNED = "total_coins_earned";
 	public static final String PREFERENCE_ADS_REMOVED = "ads_removed";
 	public static final String PREFERENCE_LAST_UNLOCKED_LEVEL = "last_unlocked_level";

@@ -12,6 +12,7 @@
 #import "MFGridInterface.h"
 #import "MFLevelsViewController.h"
 #import "MFGlobalInterface.h"
+#import "MFGameConstants.h"
 
 @interface MFViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *mLogoImageView;
@@ -30,6 +31,8 @@
     
     [self initializeInAppPurchase];
     
+    [self initializePreferences];
+    
     UIImage *logoImage = [UIImage imageNamed:@"iOS/iPhone/ic_logo_big"];
     [self.mLogoImageView initWithImage:logoImage];
     
@@ -46,6 +49,13 @@
     
     [self.view addSubview:_backGroundView];
     [self.view sendSubviewToBack:_backGroundView];
+}
+
+-(void)initializePreferences
+{
+    NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@PREFERENCE_KEY ofType:@"plist"];
+    NSDictionary *defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:defaultPrefsFile];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
 }
 
 -(void)launchLevelsViewController

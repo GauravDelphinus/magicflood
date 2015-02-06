@@ -19,6 +19,24 @@
 		F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */; };
 		F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153249E1A2367EF00379773 /* MFGridInterface.cpp */; };
 		F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */; };
+		F183966C1A80F35F00D08FF3 /* ic_coins.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966B1A80F35F00D08FF3 /* ic_coins.png */; };
+		F18396751A80F3F100D08FF3 /* ic_add_coins_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */; };
+		F18396761A80F3F100D08FF3 /* ic_add_coins_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966E1A80F3F100D08FF3 /* ic_add_coins_pressed.png */; };
+		F18396771A80F3F100D08FF3 /* ic_add_hurdle_smasher_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966F1A80F3F100D08FF3 /* ic_add_hurdle_smasher_normal.png */; };
+		F18396781A80F3F100D08FF3 /* ic_add_hurdle_smasher_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F18396701A80F3F100D08FF3 /* ic_add_hurdle_smasher_pressed.png */; };
+		F18396791A80F3F100D08FF3 /* ic_add_moves_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F18396711A80F3F100D08FF3 /* ic_add_moves_normal.png */; };
+		F183967A1A80F3F100D08FF3 /* ic_add_moves_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F18396721A80F3F100D08FF3 /* ic_add_moves_pressed.png */; };
+		F183967B1A80F3F100D08FF3 /* ic_add_star_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F18396731A80F3F100D08FF3 /* ic_add_star_normal.png */; };
+		F183967C1A80F3F100D08FF3 /* ic_add_star_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F18396741A80F3F100D08FF3 /* ic_add_star_pressed.png */; };
+		F183967E1A80F41400D08FF3 /* ic_moves.png in Resources */ = {isa = PBXBuildFile; fileRef = F183967D1A80F41400D08FF3 /* ic_moves.png */; };
+		F19285A01A825BCE00628DE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F192859F1A825BCE00628DE2 /* Localizable.strings */; };
+		F19285A31A826CBF00628DE2 /* user_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = F19285A21A826CBF00628DE2 /* user_prefs.plist */; };
+		F19285B81A84E82900628DE2 /* button_press_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F19285B31A84E82900628DE2 /* button_press_sound.mp3 */; };
+		F19285B91A84E82900628DE2 /* game_failed_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F19285B41A84E82900628DE2 /* game_failed_sound.mp3 */; };
+		F19285BA1A84E82900628DE2 /* game_success_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F19285B51A84E82900628DE2 /* game_success_sound.mp3 */; };
+		F19285BB1A84E82900628DE2 /* hurdle_smashed_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F19285B61A84E82900628DE2 /* hurdle_smashed_sound.mp3 */; };
+		F19285BC1A84E82900628DE2 /* star_placed_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F19285B71A84E82900628DE2 /* star_placed_sound.mp3 */; };
+		F19285BD1A84ECF800628DE2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19285A71A84170D00628DE2 /* AudioToolbox.framework */; };
 		F1A2F2DB1A1D7F1C000DD4E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */; };
 		F1A2F2DD1A1D7F1C000DD4E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */; };
 		F1A2F2DF1A1D7F1C000DD4E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DE1A1D7F1C000DD4E7 /* UIKit.framework */; };
@@ -35,6 +53,23 @@
 		F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */; };
 		F1C4EF071A235C3500322C1E /* MFViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF001A235C3500322C1E /* MFViewController.mm */; };
 		F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */; };
+		F1E5A40E1A81114A006AC218 /* ic_button_color_blue_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4021A81114A006AC218 /* ic_button_color_blue_normal.png */; };
+		F1E5A40F1A81114A006AC218 /* ic_button_color_blue_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4031A81114A006AC218 /* ic_button_color_blue_pressed.png */; };
+		F1E5A4101A81114A006AC218 /* ic_button_color_green_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4041A81114A006AC218 /* ic_button_color_green_normal.png */; };
+		F1E5A4111A81114A006AC218 /* ic_button_color_green_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4051A81114A006AC218 /* ic_button_color_green_pressed.png */; };
+		F1E5A4121A81114A006AC218 /* ic_button_color_orange_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4061A81114A006AC218 /* ic_button_color_orange_normal.png */; };
+		F1E5A4131A81114A006AC218 /* ic_button_color_orange_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4071A81114A006AC218 /* ic_button_color_orange_pressed.png */; };
+		F1E5A4141A81114A006AC218 /* ic_button_color_purple_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4081A81114A006AC218 /* ic_button_color_purple_normal.png */; };
+		F1E5A4151A81114A006AC218 /* ic_button_color_purple_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4091A81114A006AC218 /* ic_button_color_purple_pressed.png */; };
+		F1E5A4161A81114A006AC218 /* ic_button_color_red_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A40A1A81114A006AC218 /* ic_button_color_red_normal.png */; };
+		F1E5A4171A81114A006AC218 /* ic_button_color_red_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A40B1A81114A006AC218 /* ic_button_color_red_pressed.png */; };
+		F1E5A4181A81114A006AC218 /* ic_button_color_yellow_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A40C1A81114A006AC218 /* ic_button_color_yellow_normal.png */; };
+		F1E5A4191A81114A006AC218 /* ic_button_color_yellow_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A40D1A81114A006AC218 /* ic_button_color_yellow_pressed.png */; };
+		F1E5A41F1A817CAE006AC218 /* ic_button_menu_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A41A1A817CAE006AC218 /* ic_button_menu_normal.png */; };
+		F1E5A4201A817CAE006AC218 /* ic_button_menu_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A41B1A817CAE006AC218 /* ic_button_menu_pressed.png */; };
+		F1E5A4211A817CAE006AC218 /* ic_button_sound_off_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A41C1A817CAE006AC218 /* ic_button_sound_off_normal.png */; };
+		F1E5A4221A817CAE006AC218 /* ic_button_sound_on_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A41D1A817CAE006AC218 /* ic_button_sound_on_normal.png */; };
+		F1E5A4231A817CAE006AC218 /* ic_button_sound_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A41E1A817CAE006AC218 /* ic_button_sound_pressed.png */; };
 		F1E64C001A7E1AAB0042D466 /* bg_sky_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64BFF1A7E1AAB0042D466 /* bg_sky_blue.png */; };
 		F1E64C051A7E1AEC0042D466 /* ic_iap_lock.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C021A7E1AEC0042D466 /* ic_iap_lock.png */; };
 		F1E64C061A7E1AEC0042D466 /* ic_iap_tick.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C031A7E1AEC0042D466 /* ic_iap_tick.png */; };
@@ -73,6 +108,26 @@
 		F153249E1A2367EF00379773 /* MFGridInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGridInterface.cpp; path = ../../src/Common/MFGridInterface.cpp; sourceTree = SOURCE_ROOT; };
 		F153249F1A2367EF00379773 /* MFGridInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGridInterface.h; path = Common/MFGridInterface.h; sourceTree = "<group>"; };
 		F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArchitectsDaughter.ttf; path = ../../resources/iOS/Fonts/ArchitectsDaughter.ttf; sourceTree = SOURCE_ROOT; };
+		F183966B1A80F35F00D08FF3 /* ic_coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_coins.png; sourceTree = "<group>"; };
+		F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_coins_normal.png; sourceTree = "<group>"; };
+		F183966E1A80F3F100D08FF3 /* ic_add_coins_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_coins_pressed.png; sourceTree = "<group>"; };
+		F183966F1A80F3F100D08FF3 /* ic_add_hurdle_smasher_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_hurdle_smasher_normal.png; sourceTree = "<group>"; };
+		F18396701A80F3F100D08FF3 /* ic_add_hurdle_smasher_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_hurdle_smasher_pressed.png; sourceTree = "<group>"; };
+		F18396711A80F3F100D08FF3 /* ic_add_moves_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_moves_normal.png; sourceTree = "<group>"; };
+		F18396721A80F3F100D08FF3 /* ic_add_moves_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_moves_pressed.png; sourceTree = "<group>"; };
+		F18396731A80F3F100D08FF3 /* ic_add_star_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_star_normal.png; sourceTree = "<group>"; };
+		F18396741A80F3F100D08FF3 /* ic_add_star_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_star_pressed.png; sourceTree = "<group>"; };
+		F183967D1A80F41400D08FF3 /* ic_moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_moves.png; sourceTree = "<group>"; };
+		F192859F1A825BCE00628DE2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../../resources/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		F19285A11A826A6600628DE2 /* MFGameConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFGameConstants.h; path = ../../src/iOS/MFGameConstants.h; sourceTree = SOURCE_ROOT; };
+		F19285A21A826CBF00628DE2 /* user_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = user_prefs.plist; path = ../../resources/iOS/user_prefs.plist; sourceTree = SOURCE_ROOT; };
+		F19285A71A84170D00628DE2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F19285B11A84E4B400628DE2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F19285B31A84E82900628DE2 /* button_press_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = button_press_sound.mp3; path = ../../resources/iOS/Sounds/button_press_sound.mp3; sourceTree = SOURCE_ROOT; };
+		F19285B41A84E82900628DE2 /* game_failed_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = game_failed_sound.mp3; path = ../../resources/iOS/Sounds/game_failed_sound.mp3; sourceTree = SOURCE_ROOT; };
+		F19285B51A84E82900628DE2 /* game_success_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = game_success_sound.mp3; path = ../../resources/iOS/Sounds/game_success_sound.mp3; sourceTree = SOURCE_ROOT; };
+		F19285B61A84E82900628DE2 /* hurdle_smashed_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = hurdle_smashed_sound.mp3; path = ../../resources/iOS/Sounds/hurdle_smashed_sound.mp3; sourceTree = SOURCE_ROOT; };
+		F19285B71A84E82900628DE2 /* star_placed_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = star_placed_sound.mp3; path = ../../resources/iOS/Sounds/star_placed_sound.mp3; sourceTree = SOURCE_ROOT; };
 		F1A2F2D71A1D7F1C000DD4E7 /* Magic Flood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Flood.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,6 +152,23 @@
 		F1C4EF001A235C3500322C1E /* MFViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFViewController.mm; path = ../../src/iOS/MFViewController.mm; sourceTree = SOURCE_ROOT; };
 		F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFObstacle.cpp; path = ../../src/Common/MFObstacle.cpp; sourceTree = SOURCE_ROOT; };
 		F1C4EF091A235C6E00322C1E /* MFObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFObstacle.h; path = ../../src/Common/MFObstacle.h; sourceTree = SOURCE_ROOT; };
+		F1E5A4021A81114A006AC218 /* ic_button_color_blue_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_blue_normal.png; sourceTree = "<group>"; };
+		F1E5A4031A81114A006AC218 /* ic_button_color_blue_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_blue_pressed.png; sourceTree = "<group>"; };
+		F1E5A4041A81114A006AC218 /* ic_button_color_green_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_green_normal.png; sourceTree = "<group>"; };
+		F1E5A4051A81114A006AC218 /* ic_button_color_green_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_green_pressed.png; sourceTree = "<group>"; };
+		F1E5A4061A81114A006AC218 /* ic_button_color_orange_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_orange_normal.png; sourceTree = "<group>"; };
+		F1E5A4071A81114A006AC218 /* ic_button_color_orange_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_orange_pressed.png; sourceTree = "<group>"; };
+		F1E5A4081A81114A006AC218 /* ic_button_color_purple_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_purple_normal.png; sourceTree = "<group>"; };
+		F1E5A4091A81114A006AC218 /* ic_button_color_purple_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_purple_pressed.png; sourceTree = "<group>"; };
+		F1E5A40A1A81114A006AC218 /* ic_button_color_red_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_red_normal.png; sourceTree = "<group>"; };
+		F1E5A40B1A81114A006AC218 /* ic_button_color_red_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_red_pressed.png; sourceTree = "<group>"; };
+		F1E5A40C1A81114A006AC218 /* ic_button_color_yellow_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_yellow_normal.png; sourceTree = "<group>"; };
+		F1E5A40D1A81114A006AC218 /* ic_button_color_yellow_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_yellow_pressed.png; sourceTree = "<group>"; };
+		F1E5A41A1A817CAE006AC218 /* ic_button_menu_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_menu_normal.png; sourceTree = "<group>"; };
+		F1E5A41B1A817CAE006AC218 /* ic_button_menu_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_menu_pressed.png; sourceTree = "<group>"; };
+		F1E5A41C1A817CAE006AC218 /* ic_button_sound_off_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_sound_off_normal.png; sourceTree = "<group>"; };
+		F1E5A41D1A817CAE006AC218 /* ic_button_sound_on_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_sound_on_normal.png; sourceTree = "<group>"; };
+		F1E5A41E1A817CAE006AC218 /* ic_button_sound_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_sound_pressed.png; sourceTree = "<group>"; };
 		F1E64BFF1A7E1AAB0042D466 /* bg_sky_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_sky_blue.png; path = ../../resources/iOS/Backgrounds/bg_sky_blue.png; sourceTree = "<group>"; };
 		F1E64C021A7E1AEC0042D466 /* ic_iap_lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_iap_lock.png; path = ../../resources/iOS/Icons/ic_iap_lock.png; sourceTree = SOURCE_ROOT; };
 		F1E64C031A7E1AEC0042D466 /* ic_iap_tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_iap_tick.png; path = ../../resources/iOS/Icons/ic_iap_tick.png; sourceTree = SOURCE_ROOT; };
@@ -109,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19285BD1A84ECF800628DE2 /* AudioToolbox.framework in Frameworks */,
 				F11D21D71A7D1C4C006A4086 /* StoreKit.framework in Frameworks */,
 				F1A2F2DD1A1D7F1C000DD4E7 /* CoreGraphics.framework in Frameworks */,
 				F1A2F2DF1A1D7F1C000DD4E7 /* UIKit.framework in Frameworks */,
@@ -132,6 +205,7 @@
 		F14B00AD1A2363AA0039637B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F19285A41A84166300628DE2 /* Sounds */,
 				F18396681A7FA1C100D08FF3 /* Fonts */,
 				F1E64C011A7E1ADF0042D466 /* Icons */,
 				F1E64BFE1A7E1A980042D466 /* Backgrounds */,
@@ -142,6 +216,8 @@
 				F1A2F2E21A1D7F1C000DD4E7 /* Magic Flood-Info.plist */,
 				F147C5FA1A2364EF00CBCE83 /* Images.xcassets */,
 				F11D21D41A7D0F8D006A4086 /* product_ids.plist */,
+				F192859F1A825BCE00628DE2 /* Localizable.strings */,
+				F19285A21A826CBF00628DE2 /* user_prefs.plist */,
 			);
 			name = Resources;
 			path = ../../resources;
@@ -153,6 +229,18 @@
 				F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		F19285A41A84166300628DE2 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F19285B31A84E82900628DE2 /* button_press_sound.mp3 */,
+				F19285B41A84E82900628DE2 /* game_failed_sound.mp3 */,
+				F19285B51A84E82900628DE2 /* game_success_sound.mp3 */,
+				F19285B61A84E82900628DE2 /* hurdle_smashed_sound.mp3 */,
+				F19285B71A84E82900628DE2 /* star_placed_sound.mp3 */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		F1A2F2CE1A1D7F1C000DD4E7 = {
@@ -177,6 +265,8 @@
 		F1A2F2D91A1D7F1C000DD4E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F19285B11A84E4B400628DE2 /* AVFoundation.framework */,
+				F19285A71A84170D00628DE2 /* AudioToolbox.framework */,
 				F11D21D61A7D1C4C006A4086 /* StoreKit.framework */,
 				F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */,
 				F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */,
@@ -251,6 +341,7 @@
 				F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */,
 				F1C4EEFF1A235C3500322C1E /* MFViewController.h */,
 				F1C4EF001A235C3500322C1E /* MFViewController.mm */,
+				F19285A11A826A6600628DE2 /* MFGameConstants.h */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -267,6 +358,33 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F1E5A41A1A817CAE006AC218 /* ic_button_menu_normal.png */,
+				F1E5A41B1A817CAE006AC218 /* ic_button_menu_pressed.png */,
+				F1E5A41C1A817CAE006AC218 /* ic_button_sound_off_normal.png */,
+				F1E5A41D1A817CAE006AC218 /* ic_button_sound_on_normal.png */,
+				F1E5A41E1A817CAE006AC218 /* ic_button_sound_pressed.png */,
+				F1E5A4021A81114A006AC218 /* ic_button_color_blue_normal.png */,
+				F1E5A4031A81114A006AC218 /* ic_button_color_blue_pressed.png */,
+				F1E5A4041A81114A006AC218 /* ic_button_color_green_normal.png */,
+				F1E5A4051A81114A006AC218 /* ic_button_color_green_pressed.png */,
+				F1E5A4061A81114A006AC218 /* ic_button_color_orange_normal.png */,
+				F1E5A4071A81114A006AC218 /* ic_button_color_orange_pressed.png */,
+				F1E5A4081A81114A006AC218 /* ic_button_color_purple_normal.png */,
+				F1E5A4091A81114A006AC218 /* ic_button_color_purple_pressed.png */,
+				F1E5A40A1A81114A006AC218 /* ic_button_color_red_normal.png */,
+				F1E5A40B1A81114A006AC218 /* ic_button_color_red_pressed.png */,
+				F1E5A40C1A81114A006AC218 /* ic_button_color_yellow_normal.png */,
+				F1E5A40D1A81114A006AC218 /* ic_button_color_yellow_pressed.png */,
+				F183967D1A80F41400D08FF3 /* ic_moves.png */,
+				F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */,
+				F183966E1A80F3F100D08FF3 /* ic_add_coins_pressed.png */,
+				F183966F1A80F3F100D08FF3 /* ic_add_hurdle_smasher_normal.png */,
+				F18396701A80F3F100D08FF3 /* ic_add_hurdle_smasher_pressed.png */,
+				F18396711A80F3F100D08FF3 /* ic_add_moves_normal.png */,
+				F18396721A80F3F100D08FF3 /* ic_add_moves_pressed.png */,
+				F18396731A80F3F100D08FF3 /* ic_add_star_normal.png */,
+				F18396741A80F3F100D08FF3 /* ic_add_star_pressed.png */,
+				F183966B1A80F35F00D08FF3 /* ic_coins.png */,
 				F1E64C081A7E6DBB0042D466 /* ic_logo_big.png */,
 				F1E64C021A7E1AEC0042D466 /* ic_iap_lock.png */,
 				F1E64C031A7E1AEC0042D466 /* ic_iap_tick.png */,
@@ -356,17 +474,51 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E5A4131A81114A006AC218 /* ic_button_color_orange_pressed.png in Resources */,
 				F1E64C001A7E1AAB0042D466 /* bg_sky_blue.png in Resources */,
+				F1E5A4211A817CAE006AC218 /* ic_button_sound_off_normal.png in Resources */,
+				F19285BA1A84E82900628DE2 /* game_success_sound.mp3 in Resources */,
+				F18396751A80F3F100D08FF3 /* ic_add_coins_normal.png in Resources */,
 				F1E64C061A7E1AEC0042D466 /* ic_iap_tick.png in Resources */,
+				F18396761A80F3F100D08FF3 /* ic_add_coins_pressed.png in Resources */,
+				F1E5A4121A81114A006AC218 /* ic_button_color_orange_normal.png in Resources */,
+				F19285BC1A84E82900628DE2 /* star_placed_sound.mp3 in Resources */,
+				F1E5A4191A81114A006AC218 /* ic_button_color_yellow_pressed.png in Resources */,
 				F1E64C071A7E1AEC0042D466 /* ic_iap_unlocked.png in Resources */,
+				F19285BB1A84E82900628DE2 /* hurdle_smashed_sound.mp3 in Resources */,
+				F1E5A4111A81114A006AC218 /* ic_button_color_green_pressed.png in Resources */,
 				F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */,
+				F18396781A80F3F100D08FF3 /* ic_add_hurdle_smasher_pressed.png in Resources */,
+				F18396791A80F3F100D08FF3 /* ic_add_moves_normal.png in Resources */,
+				F1E5A4151A81114A006AC218 /* ic_button_color_purple_pressed.png in Resources */,
+				F1E5A4161A81114A006AC218 /* ic_button_color_red_normal.png in Resources */,
+				F183967E1A80F41400D08FF3 /* ic_moves.png in Resources */,
+				F1E5A40F1A81114A006AC218 /* ic_button_color_blue_pressed.png in Resources */,
 				F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */,
+				F183967B1A80F3F100D08FF3 /* ic_add_star_normal.png in Resources */,
 				F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */,
+				F1E5A40E1A81114A006AC218 /* ic_button_color_blue_normal.png in Resources */,
+				F183966C1A80F35F00D08FF3 /* ic_coins.png in Resources */,
+				F19285A01A825BCE00628DE2 /* Localizable.strings in Resources */,
+				F1E5A4181A81114A006AC218 /* ic_button_color_yellow_normal.png in Resources */,
 				F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */,
+				F1E5A41F1A817CAE006AC218 /* ic_button_menu_normal.png in Resources */,
+				F1E5A4101A81114A006AC218 /* ic_button_color_green_normal.png in Resources */,
 				F1E64C051A7E1AEC0042D466 /* ic_iap_lock.png in Resources */,
 				F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */,
+				F19285A31A826CBF00628DE2 /* user_prefs.plist in Resources */,
+				F1E5A4201A817CAE006AC218 /* ic_button_menu_pressed.png in Resources */,
 				F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */,
+				F1E5A4231A817CAE006AC218 /* ic_button_sound_pressed.png in Resources */,
+				F183967C1A80F3F100D08FF3 /* ic_add_star_pressed.png in Resources */,
+				F1E5A4141A81114A006AC218 /* ic_button_color_purple_normal.png in Resources */,
+				F19285B81A84E82900628DE2 /* button_press_sound.mp3 in Resources */,
+				F1E5A4221A817CAE006AC218 /* ic_button_sound_on_normal.png in Resources */,
+				F18396771A80F3F100D08FF3 /* ic_add_hurdle_smasher_normal.png in Resources */,
 				F1A2F2E51A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */,
+				F183967A1A80F3F100D08FF3 /* ic_add_moves_pressed.png in Resources */,
+				F1E5A4171A81114A006AC218 /* ic_button_color_red_pressed.png in Resources */,
+				F19285B91A84E82900628DE2 /* game_failed_sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
