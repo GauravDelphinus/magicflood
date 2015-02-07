@@ -15,6 +15,7 @@
 #import "MFGameConstants.h"
  #import <StoreKit/StoreKit.h>
 #import <StoreKit/SKPaymentQueue.h>
+#import "MFGameDialogController.h"
 
 @interface MFGameViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *mSoundButton;
@@ -201,6 +202,44 @@ didFailWithError:(NSError *)error
 }
 
 - (IBAction)addMoves:(id)sender {
+    
+    MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"GameDialogController"];
+    UIButton *button = (UIButton *)sender;
+    if (button.tag == 1)
+    {
+        controller.dialogType = 1;
+    }
+    //[controller setModalPresentationStyle:UIModalPresentationCurrentContext];
+    //[self presentViewController:controller animated:YES completion:nil];
+    
+    
+    UIViewController *dst = controller;
+    UIViewController *src = self;
+    
+    [src addChildViewController:dst];
+    [src.view addSubview:dst.view];
+    [src.view bringSubviewToFront:dst.view];
+    
+    CGRect frame;
+    
+    frame.size.height = src.view.frame.size.height;
+    frame.size.width = src.view.frame.size.width;
+    
+    frame.origin.x = src.view.bounds.origin.x;
+    frame.origin.y = src.view.bounds.origin.y;
+    
+    dst.view.frame = frame;
+    
+    
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        
+        //dst.view.alpha = 0.5f;
+        dst.view.alpha = 1.0f;
+        
+        NSLog(@"%@", NSStringFromCGRect(dst.view.frame));
+    }];
+    /*
     //ask the user what he wants to do next
     if (self.addMovesAlertView == nil)
     {
@@ -212,6 +251,7 @@ didFailWithError:(NSError *)error
     }
    [self.addMovesAlertView dismissWithClickedButtonIndex:0 animated:YES];
     [self.addMovesAlertView show];
+     */
 }
 
 /**

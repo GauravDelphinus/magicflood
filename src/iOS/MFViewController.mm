@@ -49,6 +49,19 @@
     
     [self.view addSubview:_backGroundView];
     [self.view sendSubviewToBack:_backGroundView];
+    
+    //some visual touch-ups
+    self.mPlayButton.layer.cornerRadius = 5;
+    self.mPlayButton.layer.masksToBounds = YES;
+    [self.mPlayButton setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
+    
+    self.mHowToPlayButton.layer.cornerRadius = 5;
+    self.mHowToPlayButton.layer.masksToBounds = YES;
+    [self.mHowToPlayButton setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
+    
+    self.mAboutButton.layer.cornerRadius = 5;
+    self.mAboutButton.layer.masksToBounds = YES;
+    [self.mAboutButton setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
 }
 
 -(void)initializePreferences

@@ -83,6 +83,10 @@
 		F1E64C061A7E1AEC0042D466 /* ic_iap_tick.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C031A7E1AEC0042D466 /* ic_iap_tick.png */; };
 		F1E64C071A7E1AEC0042D466 /* ic_iap_unlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C041A7E1AEC0042D466 /* ic_iap_unlocked.png */; };
 		F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E64C081A7E6DBB0042D466 /* ic_logo_big.png */; };
+		F1FDCE891A85C3E9005444EF /* ic_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F1FDCE861A85C3E9005444EF /* ic_about.png */; };
+		F1FDCE8A1A85C3E9005444EF /* ic_how_to_play.png in Resources */ = {isa = PBXBuildFile; fileRef = F1FDCE871A85C3E9005444EF /* ic_how_to_play.png */; };
+		F1FDCE8B1A85C3E9005444EF /* ic_play.png in Resources */ = {isa = PBXBuildFile; fileRef = F1FDCE881A85C3E9005444EF /* ic_play.png */; };
+		F1FDCE911A85DE00005444EF /* MFGameDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDCE901A85DE00005444EF /* MFGameDialogController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +193,11 @@
 		F1E64C031A7E1AEC0042D466 /* ic_iap_tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_iap_tick.png; path = ../../resources/iOS/Icons/ic_iap_tick.png; sourceTree = SOURCE_ROOT; };
 		F1E64C041A7E1AEC0042D466 /* ic_iap_unlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_iap_unlocked.png; path = ../../resources/iOS/Icons/ic_iap_unlocked.png; sourceTree = SOURCE_ROOT; };
 		F1E64C081A7E6DBB0042D466 /* ic_logo_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_logo_big.png; path = ../../resources/iOS/Icons/ic_logo_big.png; sourceTree = SOURCE_ROOT; };
+		F1FDCE861A85C3E9005444EF /* ic_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_about.png; path = ../../resources/iOS/Icons/ic_about.png; sourceTree = SOURCE_ROOT; };
+		F1FDCE871A85C3E9005444EF /* ic_how_to_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_how_to_play.png; sourceTree = "<group>"; };
+		F1FDCE881A85C3E9005444EF /* ic_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play.png; sourceTree = "<group>"; };
+		F1FDCE8F1A85DE00005444EF /* MFGameDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGameDialogController.h; path = ../../src/iOS/MFGameDialogController.h; sourceTree = SOURCE_ROOT; };
+		F1FDCE901A85DE00005444EF /* MFGameDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFGameDialogController.m; path = ../../src/iOS/MFGameDialogController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +381,8 @@
 				F1C4EEFF1A235C3500322C1E /* MFViewController.h */,
 				F1C4EF001A235C3500322C1E /* MFViewController.mm */,
 				F19285A11A826A6600628DE2 /* MFGameConstants.h */,
+				F1FDCE8F1A85DE00005444EF /* MFGameDialogController.h */,
+				F1FDCE901A85DE00005444EF /* MFGameDialogController.m */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -388,6 +399,9 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F1FDCE861A85C3E9005444EF /* ic_about.png */,
+				F1FDCE871A85C3E9005444EF /* ic_how_to_play.png */,
+				F1FDCE881A85C3E9005444EF /* ic_play.png */,
 				F1E5A41A1A817CAE006AC218 /* ic_button_menu_normal.png */,
 				F1E5A41B1A817CAE006AC218 /* ic_button_menu_pressed.png */,
 				F1E5A41C1A817CAE006AC218 /* ic_button_sound_off_normal.png */,
@@ -523,6 +537,7 @@
 				F183967E1A80F41400D08FF3 /* ic_moves.png in Resources */,
 				F1E5A40F1A81114A006AC218 /* ic_button_color_blue_pressed.png in Resources */,
 				F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */,
+				F1FDCE8A1A85C3E9005444EF /* ic_how_to_play.png in Resources */,
 				F183967B1A80F3F100D08FF3 /* ic_add_star_normal.png in Resources */,
 				F153119D1A8577C700F16C1E /* button_press_sound.wav in Resources */,
 				F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */,
@@ -534,6 +549,7 @@
 				F1E5A41F1A817CAE006AC218 /* ic_button_menu_normal.png in Resources */,
 				F1E5A4101A81114A006AC218 /* ic_button_color_green_normal.png in Resources */,
 				F1E64C051A7E1AEC0042D466 /* ic_iap_lock.png in Resources */,
+				F1FDCE8B1A85C3E9005444EF /* ic_play.png in Resources */,
 				F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */,
 				F19285A31A826CBF00628DE2 /* user_prefs.plist in Resources */,
 				F1E5A4201A817CAE006AC218 /* ic_button_menu_pressed.png in Resources */,
@@ -547,6 +563,7 @@
 				F1A2F2E51A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */,
 				F153119F1A8577C700F16C1E /* game_success_sound.wav in Resources */,
 				F183967A1A80F3F100D08FF3 /* ic_add_moves_pressed.png in Resources */,
+				F1FDCE891A85C3E9005444EF /* ic_about.png in Resources */,
 				F1E5A4171A81114A006AC218 /* ic_button_color_red_pressed.png in Resources */,
 				F15311A11A8577C700F16C1E /* star_placed_sound.wav in Resources */,
 			);
@@ -567,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1FDCE911A85DE00005444EF /* MFGameDialogController.m in Sources */,
 				F1C4EF031A235C3500322C1E /* MFGameView.mm in Sources */,
 				F147E7851A29990F002D4DDD /* MFInAppProduct.cpp in Sources */,
 				F1C4EF071A235C3500322C1E /* MFViewController.mm in Sources */,
