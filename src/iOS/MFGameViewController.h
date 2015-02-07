@@ -35,6 +35,7 @@
 -(void)playSound:(SystemSoundID)soundID;
 -(void) gameDialogOptionSelected:(int)dialogType WithOption:(int) option;
 -(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType withData:(int)data;
+-(void)showDialogOfType:(int)dialogType;
 
 @property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
 

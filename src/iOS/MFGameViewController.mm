@@ -57,36 +57,10 @@
 - (IBAction)addHurdleSmasher:(id)sender {
     //ask the user what he wants to do next
     [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER];
-    
-    /*
-    if (self.addHurdleSmasherAlertView == nil)
-    {
-        self.addHurdleSmasherAlertView = [[UIAlertView alloc] initWithTitle:@"Add Hurdle Smasher"
-                                                           message:@"Redeem 1500 Coins for a Hurdle Smasher"
-                                                          delegate:self
-                                                 cancelButtonTitle:@"Cancel"
-                                                 otherButtonTitles:@"Add Hurdle Smasher", nil];
-    }
-    [self.addHurdleSmasherAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    [self.addHurdleSmasherAlertView show];
-     */
 }
 - (IBAction)addStar:(id)sender {
     //ask the user what he wants to do next
     [self showDialogOfType:DIALOG_TYPE_ADD_STAR];
-    
-    /*
-    if (self.addStarAlertView == nil)
-    {
-        self.addStarAlertView = [[UIAlertView alloc] initWithTitle:@"Add Star"
-                                                            message:@"Redeem 1000 Coins for a Star"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:@"Add Star", nil];
-    }
-    [self.addStarAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    [self.addStarAlertView show];
-     */
 }
 
 - (IBAction)addCoins:(id)sender
@@ -101,17 +75,6 @@
     else
     {
         [self showDialogOfType:DIALOG_TYPE_NOT_CONNECTED];
-         
-        /*
-        UIAlertView *notConnectedView = [[UIAlertView alloc] initWithTitle:@"Oh Shoot!"
-                                                           message:@"It appears you are not connected to the iTunes Store.  Please come back later!"
-                                                          delegate:self
-                                                 cancelButtonTitle:@"Cancel"
-                                                 otherButtonTitles:nil];
-        
-        [notConnectedView dismissWithClickedButtonIndex:0 animated:YES];
-        [notConnectedView show];
-         */
     }
 
     
@@ -145,16 +108,6 @@
     if (!allIsWell)
     {
         [self showDialogOfType:DIALOG_TYPE_NOT_CONNECTED];
-        /*
-        UIAlertView *notConnectedView = [[UIAlertView alloc] initWithTitle:@"Oh Shoot!"
-                                                                   message:@"There was some problem getting the product information from iTunes Store.  Please come back later!"
-                                                                  delegate:self
-                                                         cancelButtonTitle:@"Cancel"
-                                                         otherButtonTitles:nil];
-        
-        [notConnectedView dismissWithClickedButtonIndex:0 animated:YES];
-        [notConnectedView show];
-         */
         
         return;
     }
@@ -189,20 +142,6 @@
     
     
     [self showDialogOfType:DIALOG_TYPE_ADD_COINS];
-    
-    /*
-    if (self.addCoinsAlertView == nil)
-    {
-        self.addCoinsAlertView = [[UIAlertView alloc] initWithTitle:@"Add Coins"
-                                                            message:@"Add Coins"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:iap_first_price, iap_second_price,
-                                  iap_third_price, iap_fourth_price, nil];
-    }
-    [self.addCoinsAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    [self.addCoinsAlertView show];
-     */
 }
 
 -(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale
@@ -318,46 +257,14 @@ didFailWithError:(NSError *)error
 
 }
 - (IBAction)addMoves:(id)sender {
-    //[controller setModalPresentationStyle:UIModalPresentationCurrentContext];
-    //[self presentViewController:controller animated:YES completion:nil];
-    
     [self showDialogOfType:DIALOG_TYPE_ADD_MOVES];
-    
-        /*
-    //ask the user what he wants to do next
-    if (self.addMovesAlertView == nil)
-    {
-        self.addMovesAlertView = [[UIAlertView alloc] initWithTitle:@"Add Moves"
-                                              message:@"Redeem 500 Coins for 5 Moves"
-                                             delegate:self
-                                    cancelButtonTitle:@"Cancel"
-                                    otherButtonTitles:@"Add Moves", nil];
-    }
-   [self.addMovesAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    [self.addMovesAlertView show];
-     */
 }
 
 /**
  Handler of the "X" button on the game board.
  **/
 - (IBAction)handleExit:(id)sender {
-
     [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
-    
-    //ask the user what he wants to do next
-    /*
-    if (self.exitAlertView == nil)
-    {
-        self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
-                                                        message:@"What would you like to do?"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Resume Game"
-                                              otherButtonTitles:@"View Levels", @"Replay Level", nil];
-    }
-    [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
-    [self.exitAlertView show];
-     */
 }
 
 /**
@@ -410,38 +317,12 @@ didFailWithError:(NSError *)error
         }
         
         [self showDialogOfType:DIALOG_TYPE_GAME_SUCCESS];
-        
-        /*
-        if (self.successAlertView == nil)
-        {
-            self.successAlertView = [[UIAlertView alloc] initWithTitle:@"Great job!"
-                                                            message:@"Well done - you nailed it!"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"View Levels"
-                                                  otherButtonTitles:@"Next Game", nil];
-        }
-        [self.successAlertView show];
-         */
-        
     }
     else if (result[0] == RESULT_FAILED) //failed
     {
         [self playSound:mGameFailedSoundID];
         
         [self showDialogOfType:DIALOG_TYPE_GAME_FAILED];
-        
-        /*
-        //end game (failed)
-        if (self.failAlertView == nil)
-        {
-            self.failAlertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                          message:@"Sorry, you ran out of moves."
-                                                         delegate:self
-                                                cancelButtonTitle:@"End Game"
-                                                otherButtonTitles:@"Play On", nil];
-        }
-        [self.failAlertView show];
-         */
     }
     else
     {
@@ -579,21 +460,9 @@ didFailWithError:(NSError *)error
      **/
     if (level  > getNumLevels())
     {
-        /*
-        if (self.finishedAllLevelsView == nil)
-        {
-            self.finishedAllLevelsView = [[UIAlertView alloc] initWithTitle:@"Superio!"
-                                                                message:@"You have finished all levels!"
-                                                               delegate:self
-                                                      cancelButtonTitle:nil
-                                                    otherButtonTitles:@"Got it!", nil
-                                                      ];
-        }
-        [self.finishedAllLevelsView dismissWithClickedButtonIndex:0 animated:YES];
-        [self.finishedAllLevelsView show];
-         */
-        
         [self showDialogOfType:DIALOG_TYPE_GAME_FINISHED];
+        
+        return;
     }
     
     self.gameLevel = level;
@@ -671,219 +540,6 @@ didFailWithError:(NSError *)error
     return GRID_OBSTACLE;
 }
 
-/**
- Various Alert View handlers.
- **/
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    //NSLog(@"buttonIndex = %d", buttonIndex);
-
-    //stop any sound that might be playing
-    [self stopSound];
-    
-    if (alertView == self.failAlertView) // show when the user fails the game
-    {
-        switch (buttonIndex)
-        {
-            case 0: //End Game
-                //take to the exit menu
-                if (self.exitAlertView == nil)
-                {
-                    self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
-                                                                    message:@"What would you like to do?"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"Resume Game"
-                                                          otherButtonTitles:@"View Levels", @"Replay Level", nil];
-                }
-                [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
-                [self.exitAlertView show];
-                
-                break;
-            case 1: //Play On
-                //ask the user what he wants to do next
-                if (self.addMovesAlertView == nil)
-                {
-                    self.addMovesAlertView = [[UIAlertView alloc] initWithTitle:@"Add Moves"
-                                                                        message:@"Redeem 500 Coins for 5 Moves"
-                                                                       delegate:self
-                                                              cancelButtonTitle:@"Cancel"
-                                                              otherButtonTitles:@"Add Moves", nil];
-                }
-                [self.addMovesAlertView dismissWithClickedButtonIndex:0 animated:YES];
-                [self.addMovesAlertView show];
-                
-                break;
-        }
-    }
-    else if (alertView == self.successAlertView) //shown on successful completion of the game
-    {
-        switch (buttonIndex)
-        {
-            case 0: //View Levels
-                [self dismissViewControllerAnimated:NO completion:nil];
-                break;
-            case 1: //Next Game
-                [self startNewGame:(self.gameLevel + 1)];
-                break;
-        }
-    }
-    else if (alertView == self.exitAlertView) //shown when the user clicks on the X button
-    {
-        NSLog(@"buttonIndex = %d", buttonIndex);
-        switch (buttonIndex)
-        {
-            case 2: //Replay
-                [self startNewGame:self.gameLevel];
-                break;
-            case 1: //Menu
-                [self dismissViewControllerAnimated:NO completion:nil];
-                break;
-        }
-    }
-    else if (alertView == self.addMovesAlertView) //shown when the user clicks on the Add Moves button
-    {
-        switch (buttonIndex)
-        {
-            case 1: //Add Moves
-            {
-                int numCoins = getCoins();
-                int numCoinsForMoves = getNumCoinsForMoves();
-                if (numCoins >= numCoinsForMoves)
-                {
-                    numCoins -= numCoinsForMoves;
-                    setCoins(numCoins);
-                    
-                    [self updateCoinsLabel:(numCoins)];
-                    
-                    int maxMoves = getMaxMoves(self.gridHandle);
-                    maxMoves += 5;
-                    setMaxMoves(self.gridHandle, maxMoves);
-                    //update moves label
-                    [self updateMovesLabel:(getMaxMoves(self.gridHandle) - getCurrMove(self.gridHandle))];
-                }
-                else
-                {
-                    //show the add coins dialog
-                    [self addCoins];
-                }
-                break;
-            }
-            case 0: //cancel
-            {
-                /**
-                 if the user landed here after having "failed" the game,
-                 show him the game menu dialog again.
-                 **/
-                if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
-                {
-                    if (self.exitAlertView == nil)
-                    {
-                        self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
-                                                                        message:@"What would you like to do?"
-                                                                       delegate:self
-                                                              cancelButtonTitle:@"Resume Game"
-                                                              otherButtonTitles:@"View Levels", @"Replay Level", nil];
-                    }
-                    [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
-                    [self.exitAlertView show];
-                }
-            }
-        }
-    }
-    else if (alertView == self.addStarAlertView) //shown when the user clicks on the Add Star button
-    {
-        switch (buttonIndex)
-        {
-            case 1: //Add Star
-            {
-                int numCoins = getCoins();
-                int numCoinsForStar = getNumCoinsForStar();
-                if (numCoins >= numCoinsForStar)
-                {
-                    numCoins -= numCoinsForStar;
-                    setCoins(numCoins);
-                    
-                    [self updateCoinsLabel:(numCoins)];
-                    
-                    //enter state where game view detects tap on a specific cell
-                    [self.gameView enableDisableTouchInput:YES];
-                    self.mStarPlacementMode = YES;
-                }
-                else
-                {
-                    [self addCoins];
-                }
-                break;
-            }
-          
-        }
-    }
-    else if (alertView == self.addHurdleSmasherAlertView) //shown when the user clicks on the Add Hurdle Smasher button
-    {
-        switch (buttonIndex)
-        {
-            case 1: //Add Hurdle Smasher
-            {
-                int numCoins = getCoins();
-                int numCoinsForHurdleSmasher = getNumCoinsForHurdleSmasher();
-                if (numCoins >= numCoinsForHurdleSmasher)
-                {
-                    numCoins -= numCoinsForHurdleSmasher;
-                    setCoins(numCoins);
-                    
-                    [self updateCoinsLabel:(numCoins)];
-                    
-                    //enter state where game view detects tap on a specific cell
-                    [self.gameView enableDisableTouchInput:YES];
-                    self.mHurdleSmasherMode = YES;
-                }
-                else
-                {
-                    [self addCoins];
-                }
-                break;
-            }
-        }
-    }
-    else if (alertView == self.addCoinsAlertView) //shown when the user clicks on the Add Coins button
-    {
-        switch (buttonIndex)
-        {
-            case 1: //Add 500 Coins
-            {
-                SKProduct *product = [self.products objectAtIndex:0];
-                SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
-                payment.quantity = 1;
-                
-                [[SKPaymentQueue defaultQueue] addPayment:payment];
-
-                break;
-            }
-            case 0: //cancel
-            {
-                /**
-                 if the user landed here after having "failed" the game,
-                 show him the game menu dialog again.
-                 **/
-                if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
-                {
-                    if (self.exitAlertView == nil)
-                    {
-                        self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
-                                                                        message:@"What would you like to do?"
-                                                                       delegate:self
-                                                              cancelButtonTitle:@"Resume Game"
-                                                              otherButtonTitles:@"View Levels", @"Replay Level", nil];
-                    }
-                    [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
-                    [self.exitAlertView show];
-                }
-            }
-        }
-    }
-
-}
-
 -(void)updateCoinsLabel:(int)numCoins
 {
     //update the UI to reflect the total coins
@@ -931,14 +587,6 @@ didFailWithError:(NSError *)error
         else
         {
             [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN];
-            
-            /*
-            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Try Again"
-                                                                        message:@"Couldn't detect a start position, please try again."
-                                                                       delegate:self
-                                                              cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
-            [errorView show];
-             */
         }
     }
     else if (self.mHurdleSmasherMode == YES)
@@ -958,13 +606,6 @@ didFailWithError:(NSError *)error
         else
         {
             [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN];
-            /*
-            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Try Again"
-                                                                message:@"Couldn't detect a hurdle, please try again."
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
-            [errorView show];
-             */
         }
     }
 }
