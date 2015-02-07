@@ -34,6 +34,7 @@
 -(void)setupSound;
 -(void)playSound:(SystemSoundID)soundID;
 -(void) gameDialogOptionSelected:(int)dialogType WithOption:(int) option;
+-(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType withData:(int)data;
 
 @property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
 
@@ -47,7 +48,15 @@
 #define DIALOG_TYPE_GAME_SUCCESS    6
 #define DIALOG_TYPE_GAME_FAILED 7
 #define DIALOG_TYPE_GAME_FINISHED   8
-#define DIALOG_TYPE_PLAY_ON 9
-#define DIALOG_TYPE_GAME_MENU   10
+#define DIALOG_TYPE_GAME_MENU   9
+#define DIALOG_TYPE_NOT_CONNECTED   10
+#define DIALOG_TYPE_STAR_PLACEMENT_INFO 11
+#define DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN 12
+#define DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO 13
+#define DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN 14
+#define DIALOG_TYPE_IAP_PURCHASE_FAILED  15
+#define DIALOG_TYPE_IAP_CONSUME_FAILED 16
+#define DIALOG_TYPE_IAP_QUERY_FAILED 17
+
 
 @end

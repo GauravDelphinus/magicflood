@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *mNegativeAction1Button;
 
 @property int dialogType;
+@property int data; // additional data used by a dialog, if required
 @property id delegate; //dialog option selected delegate
 @end
 
@@ -28,4 +29,7 @@
 #define GAME_DIALOG_POSITIVE_ACTION_5   5
 #define GAME_DIALOG_NEGATIVE_ACTION_1   11
 #define GAME_DIALOG_NEGATIVE_ACTION_2   12
+#define GAME_DIALOG_NEGATIVE_ACTION_3   13
+#define GAME_DIALOG_NEGATIVE_ACTION_4   14
+#define GAME_DIALOG_NEGATIVE_ACTION_5   15
 @end

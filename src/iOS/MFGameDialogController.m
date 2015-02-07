@@ -17,24 +17,54 @@
 - (IBAction)positiveAction1ButtonPressed:(id)sender {
     MFGameViewController *controller = self.delegate;
     [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_POSITIVE_ACTION_1];
+    [self dismiss];
+}
+- (IBAction)positiveAction2ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_POSITIVE_ACTION_2];
+    [self dismiss];
+}
+- (IBAction)positiveAction3ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_POSITIVE_ACTION_3];
+    [self dismiss];
+}
+- (IBAction)positiveAction4ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_POSITIVE_ACTION_4];
+    [self dismiss];
+}
+- (IBAction)positiveAction5ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_POSITIVE_ACTION_5];
+    [self dismiss];
 }
 - (IBAction)negativeAction1ButtonPressed:(id)sender {
     MFGameViewController *controller = self.delegate;
     [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_NEGATIVE_ACTION_1];
     [self dismiss];
 }
-- (IBAction)positiveAction1Pressed:(id)sender {
-    NSLog(@"positive action 1");
+- (IBAction)negativeAction2ButtonPressed:(id)sender {
     MFGameViewController *controller = self.delegate;
-    [controller gameDialogOptionSelected:self WithOption:1];
-}
-- (IBAction)positiveAction2Pressed:(id)sender {
-    NSLog(@"positive action 2");
-    MFGameViewController *controller = self.delegate;
-    [controller gameDialogOptionSelected:self WithOption:2];
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_NEGATIVE_ACTION_2];
     [self dismiss];
-   
 }
+- (IBAction)negativeAction3ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_NEGATIVE_ACTION_3];
+    [self dismiss];
+}
+- (IBAction)negativeAction4ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_NEGATIVE_ACTION_4];
+    [self dismiss];
+}
+- (IBAction)negativeAction5ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_NEGATIVE_ACTION_5];
+    [self dismiss];
+}
+
 
 -(void)dismiss
 {

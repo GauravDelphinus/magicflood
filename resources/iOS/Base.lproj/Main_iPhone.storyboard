@@ -62,6 +62,18 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1128,7 +1140,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="AFM-Xf-HEn">
             <objects>
-                <viewController storyboardIdentifier="AddHurdleSmasherDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BWK-2j-cfy" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddCoinsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BWK-2j-cfy" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FI5-Ay-uWL"/>
                         <viewControllerLayoutGuide type="bottom" id="Spp-uk-6K1"/>
@@ -1287,7 +1299,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="Hqx-dN-a6L">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hlt-PF-6Sb" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemoveAdsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hlt-PF-6Sb" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IeA-W1-HKQ"/>
                         <viewControllerLayoutGuide type="bottom" id="qyx-jn-xli"/>
@@ -1357,7 +1369,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="jEc-Uy-evB">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YMp-Jp-VOb" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YMp-Jp-VOb" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kfn-Ht-AWN"/>
                         <viewControllerLayoutGuide type="bottom" id="56f-Td-0rw"/>
@@ -1388,7 +1400,7 @@
                                         </state>
                                         <state key="highlighted" image="ic_button_cancel_pressed.png"/>
                                         <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="iJk-se-1cd"/>
+                                            <action selector="negativeAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="8iQ-Wb-gTw"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OWT-nu-5Rc" customClass="UIButton">
@@ -1409,7 +1421,7 @@
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="CBH-vE-hOv"/>
+                                            <action selector="positiveAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="H7P-aC-5sA"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USA-C9-7eC" customClass="UIButton">
@@ -1430,7 +1442,7 @@
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="xgr-Ld-Mdf"/>
+                                            <action selector="negativeAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="Huj-sJ-pdi"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -1451,7 +1463,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="AA9-5C-6ff">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eFa-6C-ADw" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameMenuDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eFa-6C-ADw" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zaZ-jd-jVt"/>
                         <viewControllerLayoutGuide type="bottom" id="xkt-7c-5dp"/>
@@ -1503,7 +1515,7 @@
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="UW2-xg-2c2"/>
+                                            <action selector="positiveAction1ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="woA-Rr-s8Z"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wny-e7-lKQ" customClass="UIButton">
@@ -1524,7 +1536,7 @@
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="Jxn-ch-uJM"/>
+                                            <action selector="positiveAction2ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="DtM-pW-Hhu"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -1545,7 +1557,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="Nb3-Y9-xm8">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L8R-Xh-uXg" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameSuccessDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L8R-Xh-uXg" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pwQ-wm-6IC"/>
                         <viewControllerLayoutGuide type="bottom" id="roO-0r-3sQ"/>
@@ -1576,7 +1588,7 @@
                                         </state>
                                         <state key="highlighted" image="ic_button_cancel_pressed.png"/>
                                         <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="L8R-Xh-uXg" eventType="touchUpInside" id="5Ib-ti-Z2a"/>
+                                            <action selector="negativeAction1ButtonPressed:" destination="L8R-Xh-uXg" eventType="touchUpInside" id="xqj-nz-rGS"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6M-bP-zGO" customClass="UIButton">
@@ -1597,7 +1609,7 @@
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="L8R-Xh-uXg" eventType="touchUpInside" id="MGG-qm-MvQ"/>
+                                            <action selector="positiveAction1ButtonPressed:" destination="L8R-Xh-uXg" eventType="touchUpInside" id="R28-JV-lfU"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -1618,7 +1630,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="l8G-5Z-8Uh">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iWd-EV-yb8" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameFinishedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iWd-EV-yb8" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ki3-ro-gpI"/>
                         <viewControllerLayoutGuide type="bottom" id="tAx-fm-VNr"/>
@@ -1643,7 +1655,7 @@
                                         </state>
                                         <state key="highlighted" image="ic_button_cancel_pressed.png"/>
                                         <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="iWd-EV-yb8" eventType="touchUpInside" id="AJf-Xb-k3W"/>
+                                            <action selector="negativeAction1ButtonPressed:" destination="iWd-EV-yb8" eventType="touchUpInside" id="U53-i7-O7I"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eA-I4-Rbp">
@@ -1670,7 +1682,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="BoZ-hh-6oq">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gvA-X1-oFt" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IntroduceStarsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gvA-X1-oFt" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NO6-CV-X4u"/>
                         <viewControllerLayoutGuide type="bottom" id="Af6-ev-NlX"/>
@@ -1743,7 +1755,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="QZh-SB-wQg">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Lh-iR-Pfk" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IntroduceHurdleSmashersDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Lh-iR-Pfk" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="379-Fv-7Cu"/>
                         <viewControllerLayoutGuide type="bottom" id="Im8-ey-Qtn"/>
@@ -1816,7 +1828,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="PR8-n5-nsg">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FIt-QF-f8v" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StarPlacementInfoDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FIt-QF-f8v" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vEK-0i-GXl"/>
                         <viewControllerLayoutGuide type="bottom" id="eAE-7J-LcA"/>
@@ -1889,7 +1901,7 @@
         <!--Game Dialog Controller-->
         <scene sceneID="mfb-M1-yRS">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uyv-5B-u4r" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HurdleSmasherPlacementInfoDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uyv-5B-u4r" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vKh-Ga-tHC"/>
                         <viewControllerLayoutGuide type="bottom" id="5hP-b5-zre"/>
@@ -1957,12 +1969,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lZ-Rp-yWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1850" y="2629"/>
+            <point key="canvasLocation" x="2204" y="2639"/>
         </scene>
         <!--Game Dialog Controller-->
         <scene sceneID="DDX-LT-XW0">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mjK-zp-gaE" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IAPPurchaseFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mjK-zp-gaE" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wYG-4L-xKz"/>
                         <viewControllerLayoutGuide type="bottom" id="SLz-EF-Za6"/>
@@ -2030,12 +2042,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Af4-Ei-8fJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2227" y="2629"/>
+            <point key="canvasLocation" x="2926" y="2629"/>
         </scene>
         <!--Game Dialog Controller-->
         <scene sceneID="vJh-Vq-aBa">
             <objects>
-                <viewController storyboardIdentifier="AddMovesDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F6J-gi-eoc" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoreNotConnectedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F6J-gi-eoc" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2uz-ys-N3c"/>
                         <viewControllerLayoutGuide type="bottom" id="JDI-T3-eik"/>
@@ -2104,6 +2116,299 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Em-bI-Fw9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2204" y="2071"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="CpK-s6-Od1">
+            <objects>
+                <viewController storyboardIdentifier="StarPlacementTryAgainDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dzR-5v-l5f" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="shB-Oh-kZP"/>
+                        <viewControllerLayoutGuide type="bottom" id="9e3-yd-Zba"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="0He-gH-lqB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fT-Bt-TkS">
+                                <rect key="frame" x="28" y="59" width="265" height="381"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Couldn't detect a valid location.  Please try again, by tapping on any location (outside a hurdle)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="In4-Vz-Q8B">
+                                        <rect key="frame" x="8" y="45" width="249" height="114"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDY-Ob-R83">
+                                        <rect key="frame" x="30" y="8" width="206" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhP-HA-vfU">
+                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="dzR-5v-l5f" eventType="touchUpInside" id="jVI-Mc-bnE"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7JZ-wa-0fV" customClass="UIButton">
+                                        <rect key="frame" x="61" y="302" width="142" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a21-JD-byJ">
+                                                <rect key="frame" x="5" y="0.0" width="132" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="dzR-5v-l5f" eventType="touchUpInside" id="arQ-T0-TTW"/>
+                                        </connections>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_star_placement_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="GPX-js-3Qo">
+                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="mDescriptionLabel" destination="In4-Vz-Q8B" id="WEe-Pf-0E5"/>
+                        <outlet property="mTitleLabel" destination="QDY-Ob-R83" id="lKH-I4-Fk7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ist-GS-2lY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1850" y="2629"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="IOQ-ew-55q">
+            <objects>
+                <viewController storyboardIdentifier="HurdleSmasherPlacementTryAgainDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L7R-cV-VE8" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5ij-sd-POX"/>
+                        <viewControllerLayoutGuide type="bottom" id="sON-6U-eRM"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="nhP-xg-ndg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KDq-Xk-b9K">
+                                <rect key="frame" x="28" y="59" width="265" height="381"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Couldn't detect a hurdle.  Please try again, by tapping on any hurdle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-Mb-BCW">
+                                        <rect key="frame" x="8" y="45" width="249" height="114"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re4-2O-UMN">
+                                        <rect key="frame" x="30" y="8" width="206" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oy-uJ-sCZ">
+                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="L7R-cV-VE8" eventType="touchUpInside" id="tzK-dd-a0l"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4or-e0-Ncy" customClass="UIButton">
+                                        <rect key="frame" x="61" y="302" width="142" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZg-yU-hSB">
+                                                <rect key="frame" x="5" y="0.0" width="132" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="L7R-cV-VE8" eventType="touchUpInside" id="trN-3m-uJz"/>
+                                        </connections>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_hurdle_smasher_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="iYe-i7-ltf">
+                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="mDescriptionLabel" destination="Vn7-Mb-BCW" id="jIK-pw-NHe"/>
+                        <outlet property="mTitleLabel" destination="re4-2O-UMN" id="jqc-Av-EGD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZfX-R2-GWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2569" y="2639"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="QSw-Zb-iLi">
+            <objects>
+                <viewController storyboardIdentifier="IAPConsumeFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rRm-BN-bxV" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yII-a8-Obv"/>
+                        <viewControllerLayoutGuide type="bottom" id="8lF-du-vkA"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="B2G-fY-MgA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxn-VB-wJ6">
+                                <rect key="frame" x="28" y="59" width="265" height="381"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdk-Hy-Ewr">
+                                        <rect key="frame" x="8" y="45" width="249" height="114"/>
+                                        <string key="text">While the purchase succeeded, there was a problem in synchronizing the purchase.  This problem should get resolved automatically - try relaunching the App.</string>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Something's not right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s34-EH-6TM">
+                                        <rect key="frame" x="30" y="8" width="206" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HqK-Tg-Bmk">
+                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="rRm-BN-bxV" eventType="touchUpInside" id="gmq-sQ-eO1"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qCK-ZC-9aE" customClass="UIButton">
+                                        <rect key="frame" x="61" y="302" width="142" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsO-QE-rSV">
+                                                <rect key="frame" x="5" y="0.0" width="132" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="rRm-BN-bxV" eventType="touchUpInside" id="rev-0R-tpS"/>
+                                        </connections>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_failed.png" translatesAutoresizingMaskIntoConstraints="NO" id="gwX-sB-uqm">
+                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="mDescriptionLabel" destination="Mdk-Hy-Ewr" id="M7y-qQ-nmd"/>
+                        <outlet property="mTitleLabel" destination="s34-EH-6TM" id="9mS-iP-LVt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A8C-P4-iWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3282" y="2629"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="KVZ-nW-x65">
+            <objects>
+                <viewController storyboardIdentifier="IAPQueryFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VqF-LE-X6B" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R3P-6G-7Ae"/>
+                        <viewControllerLayoutGuide type="bottom" id="GJz-tL-GT4"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="DUs-bQ-S7u">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9zL-6r-RzA">
+                                <rect key="frame" x="28" y="59" width="265" height="381"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was an error in communicating with the Google Play server.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJN-Hm-wBJ">
+                                        <rect key="frame" x="8" y="45" width="249" height="114"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Something's not right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ES2-bM-4Dr">
+                                        <rect key="frame" x="30" y="8" width="206" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-Rq-c1z">
+                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="VqF-LE-X6B" eventType="touchUpInside" id="cA7-fX-Qed"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHT-NS-w0n" customClass="UIButton">
+                                        <rect key="frame" x="61" y="302" width="142" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vu1-Qe-aIf">
+                                                <rect key="frame" x="5" y="0.0" width="132" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="VqF-LE-X6B" eventType="touchUpInside" id="GgW-0M-xZm"/>
+                                        </connections>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_failed.png" translatesAutoresizingMaskIntoConstraints="NO" id="HVS-Tm-4Bq">
+                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="mDescriptionLabel" destination="fJN-Hm-wBJ" id="HDd-Ev-Hd5"/>
+                        <outlet property="mTitleLabel" destination="ES2-bM-4Dr" id="u6I-xy-7TC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CD7-GG-Dcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3642" y="2629"/>
         </scene>
     </scenes>
     <resources>

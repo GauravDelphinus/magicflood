@@ -50,10 +50,15 @@
         [button setImage:btnImage forState:UIControlStateNormal];
     }
 }
+
 - (IBAction)removeAds:(id)sender {
 }
+
 - (IBAction)addHurdleSmasher:(id)sender {
     //ask the user what he wants to do next
+    [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER];
+    
+    /*
     if (self.addHurdleSmasherAlertView == nil)
     {
         self.addHurdleSmasherAlertView = [[UIAlertView alloc] initWithTitle:@"Add Hurdle Smasher"
@@ -64,9 +69,13 @@
     }
     [self.addHurdleSmasherAlertView dismissWithClickedButtonIndex:0 animated:YES];
     [self.addHurdleSmasherAlertView show];
+     */
 }
 - (IBAction)addStar:(id)sender {
     //ask the user what he wants to do next
+    [self showDialogOfType:DIALOG_TYPE_ADD_STAR];
+    
+    /*
     if (self.addStarAlertView == nil)
     {
         self.addStarAlertView = [[UIAlertView alloc] initWithTitle:@"Add Star"
@@ -77,6 +86,7 @@
     }
     [self.addStarAlertView dismissWithClickedButtonIndex:0 animated:YES];
     [self.addStarAlertView show];
+     */
 }
 
 - (IBAction)addCoins:(id)sender
@@ -90,6 +100,9 @@
     }
     else
     {
+        [self showDialogOfType:DIALOG_TYPE_NOT_CONNECTED];
+         
+        /*
         UIAlertView *notConnectedView = [[UIAlertView alloc] initWithTitle:@"Oh Shoot!"
                                                            message:@"It appears you are not connected to the iTunes Store.  Please come back later!"
                                                           delegate:self
@@ -98,6 +111,7 @@
         
         [notConnectedView dismissWithClickedButtonIndex:0 animated:YES];
         [notConnectedView show];
+         */
     }
 
     
@@ -130,6 +144,8 @@
     
     if (!allIsWell)
     {
+        [self showDialogOfType:DIALOG_TYPE_NOT_CONNECTED];
+        /*
         UIAlertView *notConnectedView = [[UIAlertView alloc] initWithTitle:@"Oh Shoot!"
                                                                    message:@"There was some problem getting the product information from iTunes Store.  Please come back later!"
                                                                   delegate:self
@@ -138,7 +154,8 @@
         
         [notConnectedView dismissWithClickedButtonIndex:0 animated:YES];
         [notConnectedView show];
-
+         */
+        
         return;
     }
     
@@ -170,6 +187,10 @@
     NSString *iap_fourth_price = @"Add 5000 Coins";
     iap_fourth_price = [iap_fourth_price stringByAppendingString:formattedPrice3];
     
+    
+    [self showDialogOfType:DIALOG_TYPE_ADD_COINS];
+    
+    /*
     if (self.addCoinsAlertView == nil)
     {
         self.addCoinsAlertView = [[UIAlertView alloc] initWithTitle:@"Add Coins"
@@ -181,6 +202,7 @@
     }
     [self.addCoinsAlertView dismissWithClickedButtonIndex:0 animated:YES];
     [self.addCoinsAlertView show];
+     */
 }
 
 -(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale
@@ -201,12 +223,73 @@ didFailWithError:(NSError *)error
     NSLog(@"request didFailWithError called");
 }
 
--(void)showDialog:(MFGameDialogController *)dialog
+-(void)showDialogOfType:(int)dialogType
 {
-    //set the delegate
-    dialog.delegate = self;
+    switch (dialogType)
+    {
+        case DIALOG_TYPE_ADD_MOVES:
+            [self showDialog:@"AddMovesDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_ADD_STAR:
+            [self showDialog:@"AddStarDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_ADD_HURDLE_SMASHER:
+            [self showDialog:@"AddHurdleSmasherDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_ADD_COINS:
+            [self showDialog:@"AddCoinsDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_REMOVE_ADS:
+            [self showDialog:@"RemoveAdsDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_GAME_SUCCESS:
+            [self showDialog:@"GameSuccessDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_GAME_FAILED:
+            [self showDialog:@"GameFailedDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_GAME_FINISHED:
+            [self showDialog:@"GameFinishedDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_GAME_MENU:
+            [self showDialog:@"GameMenuDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_NOT_CONNECTED:
+            [self showDialog:@"NotConnectedDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_STAR_PLACEMENT_INFO:
+            [self showDialog:@"StarPlacementInfoDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN:
+            [self showDialog:@"StarPlacementTryAgainDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO:
+            [self showDialog:@"HurdleSmasherPlacementInfoDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN:
+            [self showDialog:@"HurdleSmasherPlacementTryAgainDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_IAP_PURCHASE_FAILED:
+            [self showDialog:@"IAPPurchaseFailedDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_IAP_CONSUME_FAILED:
+            [self showDialog:@"IAPConsumeFailedDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_IAP_QUERY_FAILED:
+            [self showDialog:@"IAPQueryFailedDialog" withDialogType:dialogType];
+            break;
+    }
+}
 
-    UIViewController *dst = dialog;
+-(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType
+{
+    MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardID];
+    controller.dialogType = dialogType;
+    
+    //set the delegate
+    controller.delegate = self;
+
+    UIViewController *dst = controller;
     UIViewController *src = self;
  
     [src addChildViewController:dst];
@@ -235,15 +318,10 @@ didFailWithError:(NSError *)error
 
 }
 - (IBAction)addMoves:(id)sender {
-    
-    MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AddMovesDialog"];
-    UIButton *button = (UIButton *)sender;
-    controller.dialogType = DIALOG_TYPE_ADD_MOVES;
-    
     //[controller setModalPresentationStyle:UIModalPresentationCurrentContext];
     //[self presentViewController:controller animated:YES completion:nil];
     
-    [self showDialog:controller];
+    [self showDialogOfType:DIALOG_TYPE_ADD_MOVES];
     
         /*
     //ask the user what he wants to do next
@@ -264,7 +342,11 @@ didFailWithError:(NSError *)error
  Handler of the "X" button on the game board.
  **/
 - (IBAction)handleExit:(id)sender {
+
+    [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
+    
     //ask the user what he wants to do next
+    /*
     if (self.exitAlertView == nil)
     {
         self.exitAlertView = [[UIAlertView alloc] initWithTitle:@"Exit?"
@@ -275,6 +357,7 @@ didFailWithError:(NSError *)error
     }
     [self.exitAlertView dismissWithClickedButtonIndex:2 animated:YES];
     [self.exitAlertView show];
+     */
 }
 
 /**
@@ -326,6 +409,9 @@ didFailWithError:(NSError *)error
             [[NSUserDefaults standardUserDefaults] setInteger:lastUnlockedLevel forKey: @PREFERENCE_LAST_UNLOCKED_LEVEL];
         }
         
+        [self showDialogOfType:DIALOG_TYPE_GAME_SUCCESS];
+        
+        /*
         if (self.successAlertView == nil)
         {
             self.successAlertView = [[UIAlertView alloc] initWithTitle:@"Great job!"
@@ -335,11 +421,16 @@ didFailWithError:(NSError *)error
                                                   otherButtonTitles:@"Next Game", nil];
         }
         [self.successAlertView show];
+         */
+        
     }
     else if (result[0] == RESULT_FAILED) //failed
     {
         [self playSound:mGameFailedSoundID];
         
+        [self showDialogOfType:DIALOG_TYPE_GAME_FAILED];
+        
+        /*
         //end game (failed)
         if (self.failAlertView == nil)
         {
@@ -350,6 +441,7 @@ didFailWithError:(NSError *)error
                                                 otherButtonTitles:@"Play On", nil];
         }
         [self.failAlertView show];
+         */
     }
     else
     {
@@ -487,6 +579,7 @@ didFailWithError:(NSError *)error
      **/
     if (level  > getNumLevels())
     {
+        /*
         if (self.finishedAllLevelsView == nil)
         {
             self.finishedAllLevelsView = [[UIAlertView alloc] initWithTitle:@"Superio!"
@@ -498,6 +591,9 @@ didFailWithError:(NSError *)error
         }
         [self.finishedAllLevelsView dismissWithClickedButtonIndex:0 animated:YES];
         [self.finishedAllLevelsView show];
+         */
+        
+        [self showDialogOfType:DIALOG_TYPE_GAME_FINISHED];
     }
     
     self.gameLevel = level;
@@ -834,11 +930,15 @@ didFailWithError:(NSError *)error
         }
         else
         {
+            [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN];
+            
+            /*
             UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Try Again"
                                                                         message:@"Couldn't detect a start position, please try again."
                                                                        delegate:self
                                                               cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
             [errorView show];
+             */
         }
     }
     else if (self.mHurdleSmasherMode == YES)
@@ -857,11 +957,14 @@ didFailWithError:(NSError *)error
         }
         else
         {
+            [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN];
+            /*
             UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Try Again"
                                                                 message:@"Couldn't detect a hurdle, please try again."
                                                                delegate:self
                                                       cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
             [errorView show];
+             */
         }
     }
 }
@@ -944,8 +1047,130 @@ didFailWithError:(NSError *)error
 
 -(void) gameDialogOptionSelected:(int)dialogType WithOption:(int) option
 {
-    NSLog(@"gameDialogOptionSelected, dialogType = %d, option = %d", dialogType, option);
+    //stop any sound that might be playing
+    [self stopSound];
     
+    NSLog(@"gameDialogOptionSelected, dialogType = %d, option = %d", dialogType, option);
+    if (dialogType == DIALOG_TYPE_ADD_MOVES)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Add Moves selected
+        {
+            int numCoins = getCoins();
+            int numCoinsForMoves = getNumCoinsForMoves();
+            if (numCoins >= numCoinsForMoves)
+            {
+                numCoins -= numCoinsForMoves;
+                setCoins(numCoins);
+                
+                [self updateCoinsLabel:(numCoins)];
+                
+                int maxMoves = getMaxMoves(self.gridHandle);
+                maxMoves += 5;
+                setMaxMoves(self.gridHandle, maxMoves);
+                //update moves label
+                [self updateMovesLabel:(getMaxMoves(self.gridHandle) - getCurrMove(self.gridHandle))];
+            }
+            else
+            {
+                //show the add coins dialog
+                [self addCoins];
+            }
+        }
+        else if (option == GAME_DIALOG_NEGATIVE_ACTION_1)
+        {
+            /**
+             if the user landed here after having "failed" the game,
+             show him the game menu dialog again.
+             **/
+            if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
+            {
+                [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
+            }
+        }
+    }
+    else if (dialogType == DIALOG_TYPE_GAME_MENU) // Game Menu / Exit dialog
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) // Replay Level
+        {
+            [self startNewGame:self.gameLevel];
+        }
+        else if (option == GAME_DIALOG_POSITIVE_ACTION_2) // View Levels
+        {
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }
+    }
+    else if (dialogType == DIALOG_TYPE_GAME_SUCCESS)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) // Next Game
+        {
+            [self startNewGame:(self.gameLevel + 1)];
+        }
+        else if (option == GAME_DIALOG_NEGATIVE_ACTION_1) //View Levels
+        {
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }
+    }
+    else if (dialogType == DIALOG_TYPE_GAME_FAILED)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) // Play On
+        {
+            [self showDialogOfType:DIALOG_TYPE_ADD_MOVES];
+        }
+        else if (option == GAME_DIALOG_NEGATIVE_ACTION_1) // End Game
+        {
+            [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
+        }
+    }
+    else if (dialogType == DIALOG_TYPE_ADD_STAR)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) // Add Star
+        {
+            int numCoins = getCoins();
+            int numCoinsForStar = getNumCoinsForStar();
+            if (numCoins >= numCoinsForStar)
+            {
+                numCoins -= numCoinsForStar;
+                setCoins(numCoins);
+                
+                [self updateCoinsLabel:(numCoins)];
+                
+                //enter state where game view detects tap on a specific cell
+                [self.gameView enableDisableTouchInput:YES];
+                self.mStarPlacementMode = YES;
+                
+                [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO];
+            }
+            else
+            {
+                [self addCoins];
+            }
+        }
+    }
+    else if (dialogType == DIALOG_TYPE_ADD_HURDLE_SMASHER)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Add Hurdle Smasher
+        {
+            int numCoins = getCoins();
+            int numCoinsForHurdleSmasher = getNumCoinsForHurdleSmasher();
+            if (numCoins >= numCoinsForHurdleSmasher)
+            {
+                numCoins -= numCoinsForHurdleSmasher;
+                setCoins(numCoins);
+                
+                [self updateCoinsLabel:(numCoins)];
+                
+                //enter state where game view detects tap on a specific cell
+                [self.gameView enableDisableTouchInput:YES];
+                self.mHurdleSmasherMode = YES;
+                
+                [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO];
+            }
+            else
+            {
+                [self addCoins];
+            }
+        }
+    }
 }
 
 @end
