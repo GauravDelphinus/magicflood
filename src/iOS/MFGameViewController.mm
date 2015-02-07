@@ -201,21 +201,14 @@ didFailWithError:(NSError *)error
     NSLog(@"request didFailWithError called");
 }
 
-- (IBAction)addMoves:(id)sender {
-    
-    MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"GameDialogController"];
-    UIButton *button = (UIButton *)sender;
-    if (button.tag == 1)
-    {
-        controller.dialogType = 1;
-    }
-    //[controller setModalPresentationStyle:UIModalPresentationCurrentContext];
-    //[self presentViewController:controller animated:YES completion:nil];
-    
-    
-    UIViewController *dst = controller;
+-(void)showDialog:(MFGameDialogController *)dialog
+{
+    //set the delegate
+    dialog.delegate = self;
+
+    UIViewController *dst = dialog;
     UIViewController *src = self;
-    
+ 
     [src addChildViewController:dst];
     [src.view addSubview:dst.view];
     [src.view bringSubviewToFront:dst.view];
@@ -239,7 +232,20 @@ didFailWithError:(NSError *)error
         
         NSLog(@"%@", NSStringFromCGRect(dst.view.frame));
     }];
-    /*
+
+}
+- (IBAction)addMoves:(id)sender {
+    
+    MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AddMovesDialog"];
+    UIButton *button = (UIButton *)sender;
+    controller.dialogType = DIALOG_TYPE_ADD_MOVES;
+    
+    //[controller setModalPresentationStyle:UIModalPresentationCurrentContext];
+    //[self presentViewController:controller animated:YES completion:nil];
+    
+    [self showDialog:controller];
+    
+        /*
     //ask the user what he wants to do next
     if (self.addMovesAlertView == nil)
     {
@@ -934,6 +940,12 @@ didFailWithError:(NSError *)error
         
         self.mAdBannerVisible = NO;
     }
+}
+
+-(void) gameDialogOptionSelected:(int)dialogType WithOption:(int) option
+{
+    NSLog(@"gameDialogOptionSelected, dialogType = %d, option = %d", dialogType, option);
+    
 }
 
 @end

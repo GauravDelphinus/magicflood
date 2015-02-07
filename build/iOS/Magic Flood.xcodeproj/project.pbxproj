@@ -11,6 +11,23 @@
 		F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */; };
 		F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */ = {isa = PBXBuildFile; fileRef = F11D21D41A7D0F8D006A4086 /* product_ids.plist */; };
 		F11D21D71A7D1C4C006A4086 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11D21D61A7D1C4C006A4086 /* StoreKit.framework */; };
+		F122F9631A85F5A600B99B92 /* ic_add_moves.png in Resources */ = {isa = PBXBuildFile; fileRef = F122F9621A85F5A600B99B92 /* ic_add_moves.png */; };
+		F122F9661A85FD1A00B99B92 /* ic_button_cancel_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F122F9641A85FD1A00B99B92 /* ic_button_cancel_normal.png */; };
+		F122F9671A85FD1A00B99B92 /* ic_button_cancel_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F122F9651A85FD1A00B99B92 /* ic_button_cancel_pressed.png */; };
+		F125FDBB1A864215008D7E1E /* ic_add_hurdle_smasher.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDB91A864215008D7E1E /* ic_add_hurdle_smasher.png */; };
+		F125FDBC1A864215008D7E1E /* ic_add_star.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDBA1A864215008D7E1E /* ic_add_star.png */; };
+		F125FDC11A8643CE008D7E1E /* ic_iap_coins_first.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDBD1A8643CE008D7E1E /* ic_iap_coins_first.png */; };
+		F125FDC21A8643CE008D7E1E /* ic_iap_coins_fourth.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDBE1A8643CE008D7E1E /* ic_iap_coins_fourth.png */; };
+		F125FDC31A8643CE008D7E1E /* ic_iap_coins_second.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDBF1A8643CE008D7E1E /* ic_iap_coins_second.png */; };
+		F125FDC41A8643CE008D7E1E /* ic_iap_coins_third.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDC01A8643CE008D7E1E /* ic_iap_coins_third.png */; };
+		F125FDC61A86501E008D7E1E /* ic_end_game.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDC51A86501E008D7E1E /* ic_end_game.png */; };
+		F125FDC91A865133008D7E1E /* ic_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDC71A865132008D7E1E /* ic_levels.png */; };
+		F125FDCA1A865133008D7E1E /* ic_replay.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDC81A865132008D7E1E /* ic_replay.png */; };
+		F125FDCC1A8651F6008D7E1E /* ic_next_level.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDCB1A8651F6008D7E1E /* ic_next_level.png */; };
+		F125FDCF1A865B5B008D7E1E /* ic_hurdle_smasher_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDCD1A865B5B008D7E1E /* ic_hurdle_smasher_info.png */; };
+		F125FDD01A865B5B008D7E1E /* ic_star_placement_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDCE1A865B5B008D7E1E /* ic_star_placement_info.png */; };
+		F125FDD21A865DBB008D7E1E /* ic_iap_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDD11A865DBB008D7E1E /* ic_iap_failed.png */; };
+		F125FDD41A865E38008D7E1E /* ic_not_connected.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDD31A865E38008D7E1E /* ic_not_connected.png */; };
 		F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F147C5FA1A2364EF00CBCE83 /* Images.xcassets */; };
 		F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7771A236C23002D4DDD /* Main_iPad.storyboard */; };
 		F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */; };
@@ -106,6 +123,23 @@
 		F11D21D21A7CBD19006A4086 /* MFGlobalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGlobalInterface.h; path = ../../src/Common/MFGlobalInterface.h; sourceTree = SOURCE_ROOT; };
 		F11D21D41A7D0F8D006A4086 /* product_ids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = product_ids.plist; path = ../../resources/iOS/product_ids.plist; sourceTree = SOURCE_ROOT; };
 		F11D21D61A7D1C4C006A4086 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F122F9621A85F5A600B99B92 /* ic_add_moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_moves.png; sourceTree = "<group>"; };
+		F122F9641A85FD1A00B99B92 /* ic_button_cancel_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_cancel_normal.png; sourceTree = "<group>"; };
+		F122F9651A85FD1A00B99B92 /* ic_button_cancel_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_cancel_pressed.png; sourceTree = "<group>"; };
+		F125FDB91A864215008D7E1E /* ic_add_hurdle_smasher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_hurdle_smasher.png; sourceTree = "<group>"; };
+		F125FDBA1A864215008D7E1E /* ic_add_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_star.png; sourceTree = "<group>"; };
+		F125FDBD1A8643CE008D7E1E /* ic_iap_coins_first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_iap_coins_first.png; sourceTree = "<group>"; };
+		F125FDBE1A8643CE008D7E1E /* ic_iap_coins_fourth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_iap_coins_fourth.png; sourceTree = "<group>"; };
+		F125FDBF1A8643CE008D7E1E /* ic_iap_coins_second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_iap_coins_second.png; sourceTree = "<group>"; };
+		F125FDC01A8643CE008D7E1E /* ic_iap_coins_third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_iap_coins_third.png; sourceTree = "<group>"; };
+		F125FDC51A86501E008D7E1E /* ic_end_game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_end_game.png; sourceTree = "<group>"; };
+		F125FDC71A865132008D7E1E /* ic_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_levels.png; sourceTree = "<group>"; };
+		F125FDC81A865132008D7E1E /* ic_replay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_replay.png; sourceTree = "<group>"; };
+		F125FDCB1A8651F6008D7E1E /* ic_next_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_next_level.png; sourceTree = "<group>"; };
+		F125FDCD1A865B5B008D7E1E /* ic_hurdle_smasher_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hurdle_smasher_info.png; sourceTree = "<group>"; };
+		F125FDCE1A865B5B008D7E1E /* ic_star_placement_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star_placement_info.png; sourceTree = "<group>"; };
+		F125FDD11A865DBB008D7E1E /* ic_iap_failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_iap_failed.png; sourceTree = "<group>"; };
+		F125FDD31A865E38008D7E1E /* ic_not_connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_not_connected.png; sourceTree = "<group>"; };
 		F147C5FA1A2364EF00CBCE83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../resources/iOS/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F147E7781A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		F147E77A1A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -399,6 +433,23 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F125FDD31A865E38008D7E1E /* ic_not_connected.png */,
+				F125FDD11A865DBB008D7E1E /* ic_iap_failed.png */,
+				F125FDCD1A865B5B008D7E1E /* ic_hurdle_smasher_info.png */,
+				F125FDCE1A865B5B008D7E1E /* ic_star_placement_info.png */,
+				F125FDCB1A8651F6008D7E1E /* ic_next_level.png */,
+				F125FDC71A865132008D7E1E /* ic_levels.png */,
+				F125FDC81A865132008D7E1E /* ic_replay.png */,
+				F125FDC51A86501E008D7E1E /* ic_end_game.png */,
+				F125FDBD1A8643CE008D7E1E /* ic_iap_coins_first.png */,
+				F125FDBE1A8643CE008D7E1E /* ic_iap_coins_fourth.png */,
+				F125FDBF1A8643CE008D7E1E /* ic_iap_coins_second.png */,
+				F125FDC01A8643CE008D7E1E /* ic_iap_coins_third.png */,
+				F125FDB91A864215008D7E1E /* ic_add_hurdle_smasher.png */,
+				F125FDBA1A864215008D7E1E /* ic_add_star.png */,
+				F122F9641A85FD1A00B99B92 /* ic_button_cancel_normal.png */,
+				F122F9651A85FD1A00B99B92 /* ic_button_cancel_pressed.png */,
+				F122F9621A85F5A600B99B92 /* ic_add_moves.png */,
 				F1FDCE861A85C3E9005444EF /* ic_about.png */,
 				F1FDCE871A85C3E9005444EF /* ic_how_to_play.png */,
 				F1FDCE881A85C3E9005444EF /* ic_play.png */,
@@ -529,9 +580,14 @@
 				F1E5A4191A81114A006AC218 /* ic_button_color_yellow_pressed.png in Resources */,
 				F1E64C071A7E1AEC0042D466 /* ic_iap_unlocked.png in Resources */,
 				F1E5A4111A81114A006AC218 /* ic_button_color_green_pressed.png in Resources */,
+				F122F9631A85F5A600B99B92 /* ic_add_moves.png in Resources */,
+				F125FDCA1A865133008D7E1E /* ic_replay.png in Resources */,
+				F125FDD41A865E38008D7E1E /* ic_not_connected.png in Resources */,
+				F125FDC21A8643CE008D7E1E /* ic_iap_coins_fourth.png in Resources */,
 				F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */,
 				F18396781A80F3F100D08FF3 /* ic_add_hurdle_smasher_pressed.png in Resources */,
 				F18396791A80F3F100D08FF3 /* ic_add_moves_normal.png in Resources */,
+				F125FDBC1A864215008D7E1E /* ic_add_star.png in Resources */,
 				F1E5A4151A81114A006AC218 /* ic_button_color_purple_pressed.png in Resources */,
 				F1E5A4161A81114A006AC218 /* ic_button_color_red_normal.png in Resources */,
 				F183967E1A80F41400D08FF3 /* ic_moves.png in Resources */,
@@ -542,26 +598,38 @@
 				F153119D1A8577C700F16C1E /* button_press_sound.wav in Resources */,
 				F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */,
 				F1E5A40E1A81114A006AC218 /* ic_button_color_blue_normal.png in Resources */,
+				F125FDBB1A864215008D7E1E /* ic_add_hurdle_smasher.png in Resources */,
 				F183966C1A80F35F00D08FF3 /* ic_coins.png in Resources */,
+				F125FDC31A8643CE008D7E1E /* ic_iap_coins_second.png in Resources */,
 				F19285A01A825BCE00628DE2 /* Localizable.strings in Resources */,
 				F1E5A4181A81114A006AC218 /* ic_button_color_yellow_normal.png in Resources */,
+				F125FDC11A8643CE008D7E1E /* ic_iap_coins_first.png in Resources */,
+				F122F9661A85FD1A00B99B92 /* ic_button_cancel_normal.png in Resources */,
 				F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */,
+				F125FDC41A8643CE008D7E1E /* ic_iap_coins_third.png in Resources */,
 				F1E5A41F1A817CAE006AC218 /* ic_button_menu_normal.png in Resources */,
 				F1E5A4101A81114A006AC218 /* ic_button_color_green_normal.png in Resources */,
+				F125FDCC1A8651F6008D7E1E /* ic_next_level.png in Resources */,
 				F1E64C051A7E1AEC0042D466 /* ic_iap_lock.png in Resources */,
 				F1FDCE8B1A85C3E9005444EF /* ic_play.png in Resources */,
 				F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */,
+				F125FDCF1A865B5B008D7E1E /* ic_hurdle_smasher_info.png in Resources */,
 				F19285A31A826CBF00628DE2 /* user_prefs.plist in Resources */,
+				F125FDD21A865DBB008D7E1E /* ic_iap_failed.png in Resources */,
 				F1E5A4201A817CAE006AC218 /* ic_button_menu_pressed.png in Resources */,
 				F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */,
 				F1E5A4231A817CAE006AC218 /* ic_button_sound_pressed.png in Resources */,
 				F183967C1A80F3F100D08FF3 /* ic_add_star_pressed.png in Resources */,
 				F153119E1A8577C700F16C1E /* game_failed_sound.wav in Resources */,
 				F1E5A4141A81114A006AC218 /* ic_button_color_purple_normal.png in Resources */,
+				F125FDC91A865133008D7E1E /* ic_levels.png in Resources */,
+				F122F9671A85FD1A00B99B92 /* ic_button_cancel_pressed.png in Resources */,
+				F125FDD01A865B5B008D7E1E /* ic_star_placement_info.png in Resources */,
 				F1E5A4221A817CAE006AC218 /* ic_button_sound_on_normal.png in Resources */,
 				F18396771A80F3F100D08FF3 /* ic_add_hurdle_smasher_normal.png in Resources */,
 				F1A2F2E51A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */,
 				F153119F1A8577C700F16C1E /* game_success_sound.wav in Resources */,
+				F125FDC61A86501E008D7E1E /* ic_end_game.png in Resources */,
 				F183967A1A80F3F100D08FF3 /* ic_add_moves_pressed.png in Resources */,
 				F1FDCE891A85C3E9005444EF /* ic_about.png in Resources */,
 				F1E5A4171A81114A006AC218 /* ic_button_color_red_pressed.png in Resources */,

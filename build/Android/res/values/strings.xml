@@ -55,6 +55,8 @@
     <string name="dialog_game_menu_footer_text">Tap anywhere else to resume the current game</string>
     <string name="dialog_game_failed_title_text">Oops!</string>
     <string name="dialog_game_failed_description_text">Sorry, you\'ve run out of moves!</string>
+    
+    <!-- Store not connected dialog -->
     <string name="dialog_store_not_connected_title_text">Store not connected</string>
     <string name="dialog_store_not_connected_description_text">It appears you are not connected to the store.  Please try again later.</string>
     <string name="dialog_store_not_connected_footer_text">Tap anywhere to dismiss this dialog</string>

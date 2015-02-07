@@ -7,18 +7,37 @@
 //
 
 #import "MFGameDialogController.h"
+#import "MFGameViewController.h"
 
 @interface MFGameDialogController ()
 
 @end
 
 @implementation MFGameDialogController
+- (IBAction)positiveAction1ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_POSITIVE_ACTION_1];
+}
+- (IBAction)negativeAction1ButtonPressed:(id)sender {
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self.dialogType WithOption:GAME_DIALOG_NEGATIVE_ACTION_1];
+    [self dismiss];
+}
 - (IBAction)positiveAction1Pressed:(id)sender {
     NSLog(@"positive action 1");
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self WithOption:1];
 }
 - (IBAction)positiveAction2Pressed:(id)sender {
     NSLog(@"positive action 2");
-    
+    MFGameViewController *controller = self.delegate;
+    [controller gameDialogOptionSelected:self WithOption:2];
+    [self dismiss];
+   
+}
+
+-(void)dismiss
+{
     [UIView animateWithDuration:0.3f animations:^{
         self.view.alpha = 0.0f;
     } completion:^(BOOL finished) {
@@ -26,7 +45,6 @@
         [self removeFromParentViewController];
     }];
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -46,5 +64,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end
