@@ -10,8 +10,9 @@
 #import "MFGameView.h"
 #import <StoreKit/StoreKit.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <iAd/iAd.h>
 
-@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, SKProductsRequestDelegate>
+@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, SKProductsRequestDelegate, ADBannerViewDelegate>
 {
    SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
     NSString *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mStarPlacedSoundURL;
@@ -21,6 +22,9 @@
 @property BOOL mStarPlacementMode;
 @property BOOL mHurdleSmasherMode;
 @property NSArray *products;
+@property BOOL mEnableSound;
+@property (strong, nonatomic) IBOutlet ADBannerView *mAdBannerView;
+@property BOOL mAdBannerVisible;
 
 -(int)GetColorCodeFromUIButton:(UIButton *)button;
 -(void)startNewGame;

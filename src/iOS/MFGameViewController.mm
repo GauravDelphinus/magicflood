@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 EzeeIdeas. All rights reserved.
 //
 
+
 #import "MFGameViewController.h"
 #import "MFGlobalInterface.h"
 #import "MFIAPInterface.h"
@@ -15,8 +16,8 @@
  #import <StoreKit/StoreKit.h>
 #import <StoreKit/SKPaymentQueue.h>
 
-
 @interface MFGameViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *mSoundButton;
 @property (strong, nonatomic) IBOutlet UILabel *mLevelsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coinsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *movesLable; //UILabel that displays the Moves header
@@ -26,7 +27,27 @@
 @implementation MFGameViewController
 - (IBAction)soundButtonPressed:(id)sender
 {
+    self.mEnableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_SOUND];
+
+    self.mEnableSound = !self.mEnableSound;
+    [[NSUserDefaults standardUserDefaults] setBool:self.mEnableSound forKey:@PREFERENCE_SOUND];
     
+    UIButton *button = (UIButton *)sender;
+    [self refreshSoundButton:button];
+}
+
+-(void)refreshSoundButton:(UIButton *)button
+{
+    if (self.mEnableSound)
+    {
+        UIImage *btnImage = [UIImage imageNamed:@"ic_button_sound_on_normal"];
+        [button setImage:btnImage forState:UIControlStateNormal];
+    }
+    else
+    {
+        UIImage *btnImage = [UIImage imageNamed:@"ic_button_sound_off_normal"];
+        [button setImage:btnImage forState:UIControlStateNormal];
+    }
 }
 - (IBAction)removeAds:(id)sender {
 }
@@ -219,7 +240,7 @@ didFailWithError:(NSError *)error
     UIButton *button = (UIButton *)sender;
     int colorValue = [self GetColorCodeFromUIButton:button];
 
-    [self playSound:mButtonClickSoundID];
+    
     
     //play the move with the new color, and look for result
     int *result = playMove(self.gridHandle, colorValue);
@@ -283,6 +304,10 @@ didFailWithError:(NSError *)error
                                                 otherButtonTitles:@"Play On", nil];
         }
         [self.failAlertView show];
+    }
+    else
+    {
+        [self playSound:mButtonClickSoundID];
     }
 }
 
@@ -360,6 +385,27 @@ didFailWithError:(NSError *)error
                                  pathForResource:@"star_placed_sound" ofType:@"wav"];
     mStarPlacedSoundURL = [NSURL fileURLWithPath:starPlacedPath];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)mStarPlacedSoundURL, &mStarPlacedSoundID);
+    
+    //preference
+    self.mEnableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_SOUND];
+    [self refreshSoundButton:self.mSoundButton];
+}
+
+-(void)setupAds
+{
+    //[self.mAdBannerView removeFromSuperview];
+   //self.mAdBannerView.frame = CGRectOffset(self.mAdBannerView.frame, 0, -self.mAdBannerView.frame.size.height);
+    //[self.view addSubview:self.mAdBannerView];
+    
+    //[self.view addSubview:adView];
+    
+    //self.mAdBannerVisible = YES;
+    
+    self.mAdBannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
+    //self.mAdBannerView.frame = CGRectMake(0, self.view.frame.size.height, 320, 50);
+
+    [self.view addSubview:self.mAdBannerView];
+    self.mAdBannerView.delegate = self;
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -369,6 +415,12 @@ didFailWithError:(NSError *)error
         deleteGrid(self.gridHandle);
         self.gridHandle = 0;
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self setupAds];
 }
 
 /**
@@ -775,13 +827,19 @@ didFailWithError:(NSError *)error
 
 -(void) playSound:(SystemSoundID)soundID
 {
+    if (self.mEnableSound)
+    {
     //[self stopSound];
-    AudioServicesPlaySystemSound(soundID);
-    mCurrentlyPlayingSound = soundID;
+        AudioServicesPlaySystemSound(soundID);
+        mCurrentlyPlayingSound = soundID;
+    }
 }
 
 -(void) stopSound
 {
+    if (!self.mEnableSound)
+        return;
+    
    AudioServicesDisposeSystemSoundID(mCurrentlyPlayingSound);
    if (mCurrentlyPlayingSound == mButtonClickSoundID)
    {
@@ -803,6 +861,38 @@ didFailWithError:(NSError *)error
     else if (mCurrentlyPlayingSound == mHurdleSmashedSoundID)
     {
             AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
+    }
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    if (!self.mAdBannerVisible)
+    {
+        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        
+        // Assumes the banner view is just off the bottom of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        self.mAdBannerVisible = YES;
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"Failed to retrieve ad");
+    
+    if (self.mAdBannerVisible)
+    {
+        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+        
+        // Assumes the banner view is placed at the bottom of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        self.mAdBannerVisible = NO;
     }
 }
 
