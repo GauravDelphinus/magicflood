@@ -813,7 +813,7 @@
                             <constraint firstItem="bN1-e5-1bq" firstAttribute="width" secondItem="e5g-Ry-Ie1" secondAttribute="width" id="V86-HT-c0b"/>
                             <constraint firstItem="eme-ej-egX" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="5" id="YVq-wG-vLy"/>
                             <constraint firstItem="f4b-5Z-cdg" firstAttribute="centerY" secondItem="bcP-25-JvC" secondAttribute="centerY" constant="-4" id="YnE-43-PVS"/>
-                            <constraint firstAttribute="trailing" secondItem="npt-AJ-Nn3" secondAttribute="trailing" constant="10" id="Zb0-zi-XRI"/>
+                            <constraint firstAttribute="trailing" secondItem="npt-AJ-Nn3" secondAttribute="trailing" constant="3" id="Zb0-zi-XRI"/>
                             <constraint firstItem="SfQ-IJ-GvZ" firstAttribute="leading" secondItem="6gi-an-pCq" secondAttribute="trailing" id="a3j-UT-yXy"/>
                             <constraint firstItem="YJs-Ar-JU0" firstAttribute="leading" secondItem="e5g-Ry-Ie1" secondAttribute="trailing" id="aSp-Wt-XuB"/>
                             <constraint firstAttribute="trailing" secondItem="kc1-ib-Y7T" secondAttribute="trailing" constant="10" id="c2V-Hi-VtX"/>
@@ -823,7 +823,7 @@
                             <constraint firstItem="E0k-Ah-qHM" firstAttribute="top" secondItem="npt-AJ-Nn3" secondAttribute="bottom" constant="2" id="gOB-P1-Iv0"/>
                             <constraint firstItem="ewe-cm-q1z" firstAttribute="centerY" secondItem="fPd-JK-E5i" secondAttribute="centerY" constant="0.5" id="geA-i4-RuN"/>
                             <constraint firstItem="4Yp-VV-HRH" firstAttribute="centerY" secondItem="ewe-cm-q1z" secondAttribute="centerY" constant="-0.5" id="lNB-Wf-uO4"/>
-                            <constraint firstItem="npt-AJ-Nn3" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="10" id="lRW-QK-b1L"/>
+                            <constraint firstItem="npt-AJ-Nn3" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="3" id="lRW-QK-b1L"/>
                             <constraint firstItem="1QK-83-fmP" firstAttribute="leading" secondItem="anV-qw-AJc" secondAttribute="trailing" id="lgs-Zo-daj"/>
                             <constraint firstItem="f4b-5Z-cdg" firstAttribute="leading" secondItem="MCf-mR-EJ4" secondAttribute="trailing" constant="5" id="mvJ-Vq-Y01"/>
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="centerY" secondItem="4Yp-VV-HRH" secondAttribute="centerY" constant="0.5" id="o1k-2S-SJF"/>
@@ -850,64 +850,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bg-tn-Rek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="742" y="437"/>
-        </scene>
-        <!--Game Dialog Controller-->
-        <scene sceneID="L11-uL-4yL">
-            <objects>
-                <viewController restorationIdentifier="GameDialogController" storyboardIdentifier="GameDialogController" id="I85-ZN-gTE" customClass="MFGameDialogController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CUx-ve-RJt"/>
-                        <viewControllerLayoutGuide type="bottom" id="390-eO-16M"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" alpha="0.5" contentMode="scaleToFill" id="rjP-sf-hKs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZg-4Z-wIK">
-                                <rect key="frame" x="16" y="46" width="288" height="332"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOq-ni-a1d">
-                                        <rect key="frame" x="13" y="196" width="115" height="75"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="OK">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="positiveAction1Pressed:" destination="I85-ZN-gTE" eventType="touchUpInside" id="AfL-kh-j2F"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="At3-rH-xqb">
-                                        <rect key="frame" x="160" y="196" width="115" height="75"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="positiveAction2Pressed:" destination="I85-ZN-gTE" eventType="touchUpInside" id="bPK-yy-GLc"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dialog description text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kty-WT-eYV">
-                                        <rect key="frame" x="63" y="126" width="173" height="71"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dialog Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txz-bj-BdB">
-                                        <rect key="frame" x="80" y="35" width="129" height="43"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.54000000000000004" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hds-Q0-ctW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1123" y="386"/>
         </scene>
         <!--Game Dialog Controller-->
         <scene sceneID="Ndd-II-abP">

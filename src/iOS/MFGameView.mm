@@ -24,6 +24,8 @@ blue:((float)((argbValue & 0x000000FF) >>  0))/255.0 \
 alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
 
 #define SHADOW_THICKNESS 10
+#define ROTATION_STEP_DEGREES 20
+#define ROTATION_SPEED_INTERVAL 0.2 //seconds
 
 @implementation MFGameView
 
@@ -101,7 +103,27 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
         startPos[i][1] = startpos[i][1];
     }
     
+    [self setupTimer];
+    
     [self setNeedsDisplay];
+}
+
+-(void)setupTimer
+{
+    [NSTimer scheduledTimerWithTimeInterval:ROTATION_SPEED_INTERVAL
+                                     target:self
+                                   selector:@selector(timerCallback:)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+-(void)timerCallback:(NSTimer *)timer
+{
+    mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
+    mCurrentAngleOfStartPosition = mCurrentAngleOfStartPosition % 360;
+    NSLog(@"timerCallback, current angle = %d", mCurrentAngleOfStartPosition);
+    [self setNeedsDisplay];
+    //change to setNeedsDisplayInRect
 }
 
 /**
@@ -395,6 +417,7 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
     CGContextStrokePath(context);
      */
     CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
     
     int d = cellSize; //diameter
     int r = d/2; //radius of star spikes
@@ -442,6 +465,13 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
     double cosphi = cos(phi);
     double sintheta = sin(theta);
     double sinphi = sin(phi);
+    
+    
+    // Move to the center of the rectangle:
+    CGContextTranslateCTM(context, left + r, top + r);
+    // Rotate:
+    CGContextRotateCTM(context, mCurrentAngleOfStartPosition);
+    CGContextTranslateCTM(context, -(left + r), -(top + r));
     
     int x1 = left + d;
     int y1 = top + r;
@@ -495,6 +525,10 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
     }
     
     CGPathRelease(pathRef);
+    
+    
+    
+    CGContextRestoreGState(context);
 }
 
 -(void)enableDisableTouchInput:(BOOL)enable

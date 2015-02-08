@@ -22,6 +22,7 @@
     int mNumStartPos; //number of start positions
     int **startPos; //array of start positions, each array has 2 integers. 0 = x, 1 = y
     int maxMoves; // max number of moves in this game
+    int mCurrentAngleOfStartPosition; //current rotation angle
     id <GameViewTapHandler> _delegate;
 }
 
