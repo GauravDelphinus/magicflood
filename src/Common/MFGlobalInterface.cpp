@@ -33,3 +33,13 @@ extern "C" int getNumCoinsForHurdleSmasher()
 {
     return COINS_TO_ADD_A_HURDLE_SMASHER;
 }
+
+extern "C" int getMinLevelToAddStars()
+{
+    return MIN_LEVEL_TO_ADD_STARS;
+}
+
+extern "C" int getMinLevelToAddHurdleSmasher()
+{
+    return MIN_LEVEL_TO_ADD_HURDLE_SMASHER;
+}

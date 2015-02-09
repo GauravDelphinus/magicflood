@@ -48,6 +48,7 @@
 		F15311A01A8577C700F16C1E /* hurdle_smashed_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F153119B1A8577C700F16C1E /* hurdle_smashed_sound.wav */; };
 		F15311A11A8577C700F16C1E /* star_placed_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F153119C1A8577C700F16C1E /* star_placed_sound.wav */; };
 		F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153249E1A2367EF00379773 /* MFGridInterface.cpp */; };
+		F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = F164C1281A8745F600CBB5EC /* MFUIButton.mm */; };
 		F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */; };
 		F183966C1A80F35F00D08FF3 /* ic_coins.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966B1A80F35F00D08FF3 /* ic_coins.png */; };
 		F18396751A80F3F100D08FF3 /* ic_add_coins_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */; };
@@ -165,6 +166,8 @@
 		F153249D1A2366FD00379773 /* MFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAppDelegate.h; path = iOS/MFAppDelegate.h; sourceTree = "<group>"; };
 		F153249E1A2367EF00379773 /* MFGridInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGridInterface.cpp; path = ../../src/Common/MFGridInterface.cpp; sourceTree = SOURCE_ROOT; };
 		F153249F1A2367EF00379773 /* MFGridInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGridInterface.h; path = Common/MFGridInterface.h; sourceTree = "<group>"; };
+		F164C1271A8745F600CBB5EC /* MFUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFUIButton.h; path = ../../src/iOS/MFUIButton.h; sourceTree = SOURCE_ROOT; };
+		F164C1281A8745F600CBB5EC /* MFUIButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFUIButton.mm; path = ../../src/iOS/MFUIButton.mm; sourceTree = SOURCE_ROOT; };
 		F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArchitectsDaughter.ttf; path = ../../resources/iOS/Fonts/ArchitectsDaughter.ttf; sourceTree = SOURCE_ROOT; };
 		F183966B1A80F35F00D08FF3 /* ic_coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_coins.png; sourceTree = "<group>"; };
 		F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_coins_normal.png; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				F19285A11A826A6600628DE2 /* MFGameConstants.h */,
 				F1FDCE8F1A85DE00005444EF /* MFGameDialogController.h */,
 				F1FDCE901A85DE00005444EF /* MFGameDialogController.m */,
+				F164C1271A8745F600CBB5EC /* MFUIButton.h */,
+				F164C1281A8745F600CBB5EC /* MFUIButton.mm */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -659,6 +664,7 @@
 				F1C4EEF21A235C1300322C1E /* MFGrid.cpp in Sources */,
 				F147E7821A2996AC002D4DDD /* MFIAPInterface.cpp in Sources */,
 				F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */,
+				F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */,
 				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
 				F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */,
 				F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */,

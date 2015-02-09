@@ -26,6 +26,18 @@
 @property BOOL mEnableSound;
 @property (strong, nonatomic) IBOutlet ADBannerView *mAdBannerView;
 @property BOOL mAdBannerVisible;
+@property (strong, nonatomic) IBOutlet UIButton *mAddStarButton;
+@property (strong, nonatomic) IBOutlet UIButton *mAddHurdleSmasherButton;
+@property (strong, nonatomic) IBOutlet UIButton *mAddCoinsButton;
+@property (strong, nonatomic) IBOutlet UIButton *mAddMovesButton;
+@property (strong, nonatomic) IBOutlet UIButton *mRemoveAdsButton;
+@property (strong, nonatomic) IBOutlet UIButton *mMenuButton;
+@property (strong, nonatomic) IBOutlet UIButton *mRedButton;
+@property (strong, nonatomic) IBOutlet UIButton *mGreenButton;
+@property (strong, nonatomic) IBOutlet UIButton *mBlueButton;
+@property (strong, nonatomic) IBOutlet UIButton *mYellowButton;
+@property (strong, nonatomic) IBOutlet UIButton *mOrangeButton;
+@property (strong, nonatomic) IBOutlet UIButton *mCyanButton;
 
 -(int)GetColorCodeFromUIButton:(UIButton *)button;
 -(void)startNewGame;
@@ -58,6 +70,8 @@
 #define DIALOG_TYPE_IAP_PURCHASE_FAILED  15
 #define DIALOG_TYPE_IAP_CONSUME_FAILED 16
 #define DIALOG_TYPE_IAP_QUERY_FAILED 17
+#define DIALOG_TYPE_INTRODUCE_STARS 18
+#define DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS 19
 
 
 @end

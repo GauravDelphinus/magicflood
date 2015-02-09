@@ -21,7 +21,7 @@ alpha:1.0]
 [UIColor colorWithRed:((float)((argbValue & 0x00FF0000) >> 16))/255.0 \
 green:((float)((argbValue & 0x0000FF00) >>  8))/255.0 \
 blue:((float)((argbValue & 0x000000FF) >>  0))/255.0 \
-alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
+alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
 
 #define SHADOW_THICKNESS 10
 #define ROTATION_STEP_DEGREES 20
@@ -221,8 +221,6 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
     int horizontalGap = screenWidth - gridlength - SHADOW_THICKNESS;
     
     int vOffset = (screenHeight - gridlength - SHADOW_THICKNESS)/2;
-    
-    
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0);
@@ -551,24 +549,37 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
 
     CGRect screenBound = [self bounds];
     CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width ;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    int gap = 0;
+    int gridlength = MIN(screenSize.height, screenWidth) - gap - SHADOW_THICKNESS;
+    int cellSize = gridlength/gridSize;
+    
+    //adjusted gridlength (reduced due to rounding off of each cell)
+    gridlength = gridSize * cellSize;
     
     //NSLog(@"screenWidth = %f, screenHeight = %f, scale= %f", screenWidth, screenHeight, scale);
     
-    int horizontalGap = 20;
-    int vOffset = 80;
-    int cellSize = (screenWidth - horizontalGap)/gridSize;
+    int horizontalGap = screenWidth - gridlength - SHADOW_THICKNESS;
     
+    int vOffset = (screenHeight - gridlength - SHADOW_THICKNESS)/2;
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 1.0);
     
     int hOffset = horizontalGap / 2;
-    
+
     int xOffset = (int)location.x - hOffset;
     int yOffset = (int)location.y - vOffset;
     
     int gridx = xOffset / cellSize;
     int gridy = yOffset / cellSize;
     
-    [self.delegate handleGameViewTapAtX:gridy andY:gridx];
+    if (gridx >= 0 && gridx < gridSize && gridy >= 0 && gridy < gridSize)
+    {
+        [self.delegate handleGameViewTapAtX:gridy andY:gridx];
+    }
 }
 
 @end

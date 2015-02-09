@@ -217,6 +217,12 @@ didFailWithError:(NSError *)error
         case DIALOG_TYPE_IAP_QUERY_FAILED:
             [self showDialog:@"IAPQueryFailedDialog" withDialogType:dialogType];
             break;
+        case DIALOG_TYPE_INTRODUCE_STARS:
+            [self showDialog:@"IntroduceStarsDialog" withDialogType:dialogType];
+            break;
+        case DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS:
+            [self showDialog:@"IntroduceHurdleSmashersDialog" withDialogType:dialogType];
+            break;
     }
 }
 
@@ -492,6 +498,56 @@ didFailWithError:(NSError *)error
     
     NSString *levelLabel = [NSString stringWithFormat:@"Level %d", self.gameLevel];
     [self.mLevelsLabel setText:levelLabel];
+    
+    [self refreshLifelinesUI];
+}
+
+-(void)refreshLifelinesUI
+{
+    if (self.gameLevel == getMinLevelToAddStars())
+    {
+        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_STARS];
+    }
+    else if (self.gameLevel == getMinLevelToAddHurdleSmasher())
+    {
+        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS];
+    }
+    
+    if (self.gameLevel < getMinLevelToAddStars())
+    {
+        self.mAddStarButton.hidden = YES;
+    }
+    else
+    {
+        self.mAddStarButton.hidden = NO;
+    }
+    
+    if (self.gameLevel < getMinLevelToAddHurdleSmasher())
+    {
+        self.mAddHurdleSmasherButton.hidden = YES;
+    }
+    else
+    {
+        self.mAddHurdleSmasherButton.hidden = NO;
+    }
+}
+
+-(void) enableDisableAllButtons:(BOOL)enable
+{
+    self.mRedButton.enabled = enable;
+    self.mGreenButton.enabled = enable;
+    self.mBlueButton.enabled = enable;
+    self.mYellowButton.enabled = enable;
+    self.mOrangeButton.enabled = enable;
+    self.mCyanButton.enabled = enable;
+    
+    self.mMenuButton.enabled = enable;
+    self.mSoundButton.enabled = enable;
+    self.mAddCoinsButton.enabled = enable;
+    self.mAddMovesButton.enabled = enable;
+    self.mAddStarButton.enabled = enable;
+    self.mAddHurdleSmasherButton.enabled = enable;
+    self.mRemoveAdsButton.enabled = enable;
 }
 
 - (void)didReceiveMemoryWarning
@@ -583,6 +639,8 @@ didFailWithError:(NSError *)error
             [[self gameView] updateStartPos:startPos withNum:numStartPos];
             freeStartPos(self.gridHandle, startPos);
             startPos = NULL;
+            
+            [self enableDisableAllButtons:YES];
         }
         else
         {
@@ -602,17 +660,14 @@ didFailWithError:(NSError *)error
             [[self gameView] updateGameData:gridData];
             freeGridData(self.gridHandle, gridData);
             gridData = NULL;
+            
+            [self enableDisableAllButtons:YES];
         }
         else
         {
             [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN];
         }
     }
-}
-
--(void) enableDisableAllButtons:(BOOL)enable
-{
-    
 }
 
 -(void) playSound:(SystemSoundID)soundID
@@ -780,6 +835,8 @@ didFailWithError:(NSError *)error
                 self.mStarPlacementMode = YES;
                 
                 [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO];
+                
+                [self enableDisableAllButtons:NO];
             }
             else
             {
@@ -805,6 +862,8 @@ didFailWithError:(NSError *)error
                 self.mHurdleSmasherMode = YES;
                 
                 [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO];
+                
+                [self enableDisableAllButtons:NO];
             }
             else
             {
