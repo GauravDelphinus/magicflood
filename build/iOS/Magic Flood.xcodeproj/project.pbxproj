@@ -49,6 +49,14 @@
 		F15311A11A8577C700F16C1E /* star_placed_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F153119C1A8577C700F16C1E /* star_placed_sound.wav */; };
 		F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153249E1A2367EF00379773 /* MFGridInterface.cpp */; };
 		F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = F164C1281A8745F600CBB5EC /* MFUIButton.mm */; };
+		F164C12C1A8B7E1400CBB5EC /* MFHelpScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F164C12B1A8B7E1400CBB5EC /* MFHelpScreenViewController.m */; };
+		F164C1341A8B926400CBB5EC /* help_image_screen_1.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C12D1A8B926400CBB5EC /* help_image_screen_1.png */; };
+		F164C1351A8B926400CBB5EC /* help_image_screen_2.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C12E1A8B926400CBB5EC /* help_image_screen_2.png */; };
+		F164C1361A8B926400CBB5EC /* help_image_screen_3.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C12F1A8B926400CBB5EC /* help_image_screen_3.png */; };
+		F164C1371A8B926400CBB5EC /* help_image_screen_3b.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1301A8B926400CBB5EC /* help_image_screen_3b.png */; };
+		F164C1381A8B926400CBB5EC /* help_image_screen_4.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1311A8B926400CBB5EC /* help_image_screen_4.png */; };
+		F164C1391A8B926400CBB5EC /* help_image_screen_5.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1321A8B926400CBB5EC /* help_image_screen_5.png */; };
+		F164C13A1A8B926400CBB5EC /* help_image_screen_8.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1331A8B926400CBB5EC /* help_image_screen_8.png */; };
 		F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */; };
 		F183966C1A80F35F00D08FF3 /* ic_coins.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966B1A80F35F00D08FF3 /* ic_coins.png */; };
 		F18396751A80F3F100D08FF3 /* ic_add_coins_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */; };
@@ -168,6 +176,15 @@
 		F153249F1A2367EF00379773 /* MFGridInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGridInterface.h; path = Common/MFGridInterface.h; sourceTree = "<group>"; };
 		F164C1271A8745F600CBB5EC /* MFUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFUIButton.h; path = ../../src/iOS/MFUIButton.h; sourceTree = SOURCE_ROOT; };
 		F164C1281A8745F600CBB5EC /* MFUIButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFUIButton.mm; path = ../../src/iOS/MFUIButton.mm; sourceTree = SOURCE_ROOT; };
+		F164C12A1A8B7E1400CBB5EC /* MFHelpScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHelpScreenViewController.h; path = ../../src/iOS/MFHelpScreenViewController.h; sourceTree = SOURCE_ROOT; };
+		F164C12B1A8B7E1400CBB5EC /* MFHelpScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHelpScreenViewController.m; path = ../../src/iOS/MFHelpScreenViewController.m; sourceTree = SOURCE_ROOT; };
+		F164C12D1A8B926400CBB5EC /* help_image_screen_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_1.png; sourceTree = "<group>"; };
+		F164C12E1A8B926400CBB5EC /* help_image_screen_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_2.png; sourceTree = "<group>"; };
+		F164C12F1A8B926400CBB5EC /* help_image_screen_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_3.png; sourceTree = "<group>"; };
+		F164C1301A8B926400CBB5EC /* help_image_screen_3b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_3b.png; sourceTree = "<group>"; };
+		F164C1311A8B926400CBB5EC /* help_image_screen_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_4.png; sourceTree = "<group>"; };
+		F164C1321A8B926400CBB5EC /* help_image_screen_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_5.png; sourceTree = "<group>"; };
+		F164C1331A8B926400CBB5EC /* help_image_screen_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_8.png; sourceTree = "<group>"; };
 		F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArchitectsDaughter.ttf; path = ../../resources/iOS/Fonts/ArchitectsDaughter.ttf; sourceTree = SOURCE_ROOT; };
 		F183966B1A80F35F00D08FF3 /* ic_coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_coins.png; sourceTree = "<group>"; };
 		F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_coins_normal.png; sourceTree = "<group>"; };
@@ -422,6 +439,8 @@
 				F1FDCE901A85DE00005444EF /* MFGameDialogController.m */,
 				F164C1271A8745F600CBB5EC /* MFUIButton.h */,
 				F164C1281A8745F600CBB5EC /* MFUIButton.mm */,
+				F164C12A1A8B7E1400CBB5EC /* MFHelpScreenViewController.h */,
+				F164C12B1A8B7E1400CBB5EC /* MFHelpScreenViewController.m */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -438,6 +457,13 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F164C12D1A8B926400CBB5EC /* help_image_screen_1.png */,
+				F164C12E1A8B926400CBB5EC /* help_image_screen_2.png */,
+				F164C12F1A8B926400CBB5EC /* help_image_screen_3.png */,
+				F164C1301A8B926400CBB5EC /* help_image_screen_3b.png */,
+				F164C1311A8B926400CBB5EC /* help_image_screen_4.png */,
+				F164C1321A8B926400CBB5EC /* help_image_screen_5.png */,
+				F164C1331A8B926400CBB5EC /* help_image_screen_8.png */,
 				F125FDD31A865E38008D7E1E /* ic_not_connected.png */,
 				F125FDD11A865DBB008D7E1E /* ic_iap_failed.png */,
 				F125FDCD1A865B5B008D7E1E /* ic_hurdle_smasher_info.png */,
@@ -577,6 +603,7 @@
 				F15311A01A8577C700F16C1E /* hurdle_smashed_sound.wav in Resources */,
 				F1E5A4131A81114A006AC218 /* ic_button_color_orange_pressed.png in Resources */,
 				F1E64C001A7E1AAB0042D466 /* bg_sky_blue.png in Resources */,
+				F164C13A1A8B926400CBB5EC /* help_image_screen_8.png in Resources */,
 				F1E5A4211A817CAE006AC218 /* ic_button_sound_off_normal.png in Resources */,
 				F18396751A80F3F100D08FF3 /* ic_add_coins_normal.png in Resources */,
 				F1E64C061A7E1AEC0042D466 /* ic_iap_tick.png in Resources */,
@@ -585,6 +612,7 @@
 				F1E5A4191A81114A006AC218 /* ic_button_color_yellow_pressed.png in Resources */,
 				F1E64C071A7E1AEC0042D466 /* ic_iap_unlocked.png in Resources */,
 				F1E5A4111A81114A006AC218 /* ic_button_color_green_pressed.png in Resources */,
+				F164C1351A8B926400CBB5EC /* help_image_screen_2.png in Resources */,
 				F122F9631A85F5A600B99B92 /* ic_add_moves.png in Resources */,
 				F125FDCA1A865133008D7E1E /* ic_replay.png in Resources */,
 				F125FDD41A865E38008D7E1E /* ic_not_connected.png in Resources */,
@@ -610,6 +638,7 @@
 				F1E5A4181A81114A006AC218 /* ic_button_color_yellow_normal.png in Resources */,
 				F125FDC11A8643CE008D7E1E /* ic_iap_coins_first.png in Resources */,
 				F122F9661A85FD1A00B99B92 /* ic_button_cancel_normal.png in Resources */,
+				F164C1371A8B926400CBB5EC /* help_image_screen_3b.png in Resources */,
 				F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */,
 				F125FDC41A8643CE008D7E1E /* ic_iap_coins_third.png in Resources */,
 				F1E5A41F1A817CAE006AC218 /* ic_button_menu_normal.png in Resources */,
@@ -628,6 +657,8 @@
 				F153119E1A8577C700F16C1E /* game_failed_sound.wav in Resources */,
 				F1E5A4141A81114A006AC218 /* ic_button_color_purple_normal.png in Resources */,
 				F125FDC91A865133008D7E1E /* ic_levels.png in Resources */,
+				F164C1341A8B926400CBB5EC /* help_image_screen_1.png in Resources */,
+				F164C1381A8B926400CBB5EC /* help_image_screen_4.png in Resources */,
 				F122F9671A85FD1A00B99B92 /* ic_button_cancel_pressed.png in Resources */,
 				F125FDD01A865B5B008D7E1E /* ic_star_placement_info.png in Resources */,
 				F1E5A4221A817CAE006AC218 /* ic_button_sound_on_normal.png in Resources */,
@@ -638,6 +669,8 @@
 				F183967A1A80F3F100D08FF3 /* ic_add_moves_pressed.png in Resources */,
 				F1FDCE891A85C3E9005444EF /* ic_about.png in Resources */,
 				F1E5A4171A81114A006AC218 /* ic_button_color_red_pressed.png in Resources */,
+				F164C1391A8B926400CBB5EC /* help_image_screen_5.png in Resources */,
+				F164C1361A8B926400CBB5EC /* help_image_screen_3.png in Resources */,
 				F15311A11A8577C700F16C1E /* star_placed_sound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -659,6 +692,7 @@
 			files = (
 				F1FDCE911A85DE00005444EF /* MFGameDialogController.m in Sources */,
 				F1C4EF031A235C3500322C1E /* MFGameView.mm in Sources */,
+				F164C12C1A8B7E1400CBB5EC /* MFHelpScreenViewController.m in Sources */,
 				F147E7851A29990F002D4DDD /* MFInAppProduct.cpp in Sources */,
 				F1C4EF071A235C3500322C1E /* MFViewController.mm in Sources */,
 				F1C4EEF21A235C1300322C1E /* MFGrid.cpp in Sources */,

@@ -24,4 +24,6 @@
 #define PREFERENCE_LAST_COMPLETED_LEVEL "last_completed_level"
 #define DEFAULT_LAST_COMPLETED_LEVEL 0
 
+#define NUM_HELP_SCREENS    8
+
 #endif
