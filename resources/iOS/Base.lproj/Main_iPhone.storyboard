@@ -90,6 +90,10 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -613,6 +617,94 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVE-BO-lAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="327" y="1877"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="f6L-PF-K9h">
+            <objects>
+                <viewController storyboardIdentifier="AboutViewController" id="QYG-3M-wNY" customClass="MFAboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eeV-it-QLT"/>
+                        <viewControllerLayoutGuide type="bottom" id="SPe-Mb-W3a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4sd-oB-1dl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_small.png" translatesAutoresizingMaskIntoConstraints="NO" id="UdX-Jd-o2Y">
+                                <rect key="frame" x="52" y="-6" width="217" height="124"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by EZEEIDEAS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-IK-e5l">
+                                <rect key="frame" x="76" y="104" width="169" height="21"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyright (c) 2015 EZEEIDEAS IT SERVICES LLP" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rki-Op-0Fa">
+                                <rect key="frame" x="36" y="139" width="248" height="66"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Rights Reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AF-oo-rrf">
+                                <rect key="frame" x="36" y="198" width="248" height="21"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKX-Lg-pod">
+                                <rect key="frame" x="26" y="236" width="258" height="153"/>
+                                <string key="text">If you enjoy using Magic Flood, please take a moment to rate the app on the iTunes Store or Like our page on Facebook.  Thanks for your support, and we welcome your feedback!</string>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTH-No-oWX">
+                                <rect key="frame" x="70" y="403" width="48" height="48"/>
+                                <state key="normal" image="ic_button_facebook_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_facebook_pressed.png"/>
+                                <connections>
+                                    <action selector="launchFacebook:" destination="QYG-3M-wNY" eventType="touchUpInside" id="5dp-Ie-0v9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jl2-3a-fWr">
+                                <rect key="frame" x="136" y="403" width="48" height="48"/>
+                                <state key="normal" image="ic_button_rate_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_rate_pressed.png"/>
+                                <connections>
+                                    <action selector="launchItunesStore:" destination="QYG-3M-wNY" eventType="touchUpInside" id="eYN-7T-Slk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTn-NE-kX4">
+                                <rect key="frame" x="202" y="403" width="48" height="48"/>
+                                <state key="normal" image="ic_button_feedback_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_feedback_pressed.png"/>
+                                <connections>
+                                    <action selector="launchEmailFeedback:" destination="QYG-3M-wNY" eventType="touchUpInside" id="5Qq-5c-pCT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLD-8J-q62">
+                                <rect key="frame" x="280" y="20" width="24" height="24"/>
+                                <state key="normal" image="ic_button_cancel_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                <connections>
+                                    <action selector="dismissScreen:" destination="QYG-3M-wNY" eventType="touchUpInside" id="cU0-NF-nrG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHO-nF-5fW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="2512"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="RwJ-Fw-n6Z">
@@ -2712,8 +2804,14 @@
         <image name="ic_button_color_red_pressed.png" width="48" height="48"/>
         <image name="ic_button_color_yellow_normal.png" width="48" height="48"/>
         <image name="ic_button_color_yellow_pressed.png" width="48" height="48"/>
+        <image name="ic_button_facebook_normal.png" width="48" height="48"/>
+        <image name="ic_button_facebook_pressed.png" width="48" height="48"/>
+        <image name="ic_button_feedback_normal.png" width="48" height="48"/>
+        <image name="ic_button_feedback_pressed.png" width="48" height="48"/>
         <image name="ic_button_menu_normal.png" width="32" height="32"/>
         <image name="ic_button_menu_pressed.png" width="32" height="32"/>
+        <image name="ic_button_rate_normal.png" width="48" height="48"/>
+        <image name="ic_button_rate_pressed.png" width="48" height="48"/>
         <image name="ic_button_sound_on_normal.png" width="32" height="32"/>
         <image name="ic_button_sound_pressed.png" width="32" height="32"/>
         <image name="ic_coins.png" width="48" height="48"/>
@@ -2724,6 +2822,7 @@
         <image name="ic_iap_failed.png" width="96" height="96"/>
         <image name="ic_levels.png" width="48" height="48"/>
         <image name="ic_logo_big.png" width="231" height="171"/>
+        <image name="ic_logo_small.png" width="116" height="86"/>
         <image name="ic_moves.png" width="48" height="48"/>
         <image name="ic_next_level.png" width="48" height="48"/>
         <image name="ic_not_connected.png" width="96" height="96"/>

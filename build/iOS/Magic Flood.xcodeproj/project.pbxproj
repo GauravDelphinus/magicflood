@@ -57,6 +57,14 @@
 		F164C1381A8B926400CBB5EC /* help_image_screen_4.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1311A8B926400CBB5EC /* help_image_screen_4.png */; };
 		F164C1391A8B926400CBB5EC /* help_image_screen_5.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1321A8B926400CBB5EC /* help_image_screen_5.png */; };
 		F164C13A1A8B926400CBB5EC /* help_image_screen_8.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1331A8B926400CBB5EC /* help_image_screen_8.png */; };
+		F164C13C1A8BF5C800CBB5EC /* ic_logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C13B1A8BF5C800CBB5EC /* ic_logo_small.png */; };
+		F164C1431A8BF88800CBB5EC /* ic_button_facebook_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C13D1A8BF88800CBB5EC /* ic_button_facebook_normal.png */; };
+		F164C1441A8BF88800CBB5EC /* ic_button_facebook_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C13E1A8BF88800CBB5EC /* ic_button_facebook_pressed.png */; };
+		F164C1451A8BF88800CBB5EC /* ic_button_feedback_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C13F1A8BF88800CBB5EC /* ic_button_feedback_normal.png */; };
+		F164C1461A8BF88800CBB5EC /* ic_button_feedback_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1401A8BF88800CBB5EC /* ic_button_feedback_pressed.png */; };
+		F164C1471A8BF88800CBB5EC /* ic_button_rate_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1411A8BF88800CBB5EC /* ic_button_rate_normal.png */; };
+		F164C1481A8BF88800CBB5EC /* ic_button_rate_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1421A8BF88800CBB5EC /* ic_button_rate_pressed.png */; };
+		F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */; };
 		F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */; };
 		F183966C1A80F35F00D08FF3 /* ic_coins.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966B1A80F35F00D08FF3 /* ic_coins.png */; };
 		F18396751A80F3F100D08FF3 /* ic_add_coins_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */; };
@@ -185,6 +193,15 @@
 		F164C1311A8B926400CBB5EC /* help_image_screen_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_4.png; sourceTree = "<group>"; };
 		F164C1321A8B926400CBB5EC /* help_image_screen_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_5.png; sourceTree = "<group>"; };
 		F164C1331A8B926400CBB5EC /* help_image_screen_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_image_screen_8.png; sourceTree = "<group>"; };
+		F164C13B1A8BF5C800CBB5EC /* ic_logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_logo_small.png; sourceTree = "<group>"; };
+		F164C13D1A8BF88800CBB5EC /* ic_button_facebook_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_facebook_normal.png; sourceTree = "<group>"; };
+		F164C13E1A8BF88800CBB5EC /* ic_button_facebook_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_facebook_pressed.png; sourceTree = "<group>"; };
+		F164C13F1A8BF88800CBB5EC /* ic_button_feedback_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_feedback_normal.png; sourceTree = "<group>"; };
+		F164C1401A8BF88800CBB5EC /* ic_button_feedback_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_feedback_pressed.png; sourceTree = "<group>"; };
+		F164C1411A8BF88800CBB5EC /* ic_button_rate_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_rate_normal.png; sourceTree = "<group>"; };
+		F164C1421A8BF88800CBB5EC /* ic_button_rate_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_rate_pressed.png; sourceTree = "<group>"; };
+		F164C1491A8BFA0900CBB5EC /* MFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAboutViewController.h; path = ../../src/iOS/MFAboutViewController.h; sourceTree = SOURCE_ROOT; };
+		F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAboutViewController.m; path = ../../src/iOS/MFAboutViewController.m; sourceTree = SOURCE_ROOT; };
 		F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArchitectsDaughter.ttf; path = ../../resources/iOS/Fonts/ArchitectsDaughter.ttf; sourceTree = SOURCE_ROOT; };
 		F183966B1A80F35F00D08FF3 /* ic_coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_coins.png; sourceTree = "<group>"; };
 		F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_coins_normal.png; sourceTree = "<group>"; };
@@ -441,6 +458,8 @@
 				F164C1281A8745F600CBB5EC /* MFUIButton.mm */,
 				F164C12A1A8B7E1400CBB5EC /* MFHelpScreenViewController.h */,
 				F164C12B1A8B7E1400CBB5EC /* MFHelpScreenViewController.m */,
+				F164C1491A8BFA0900CBB5EC /* MFAboutViewController.h */,
+				F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -457,6 +476,13 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F164C13D1A8BF88800CBB5EC /* ic_button_facebook_normal.png */,
+				F164C13E1A8BF88800CBB5EC /* ic_button_facebook_pressed.png */,
+				F164C13F1A8BF88800CBB5EC /* ic_button_feedback_normal.png */,
+				F164C1401A8BF88800CBB5EC /* ic_button_feedback_pressed.png */,
+				F164C1411A8BF88800CBB5EC /* ic_button_rate_normal.png */,
+				F164C1421A8BF88800CBB5EC /* ic_button_rate_pressed.png */,
+				F164C13B1A8BF5C800CBB5EC /* ic_logo_small.png */,
 				F164C12D1A8B926400CBB5EC /* help_image_screen_1.png */,
 				F164C12E1A8B926400CBB5EC /* help_image_screen_2.png */,
 				F164C12F1A8B926400CBB5EC /* help_image_screen_3.png */,
@@ -613,6 +639,7 @@
 				F1E64C071A7E1AEC0042D466 /* ic_iap_unlocked.png in Resources */,
 				F1E5A4111A81114A006AC218 /* ic_button_color_green_pressed.png in Resources */,
 				F164C1351A8B926400CBB5EC /* help_image_screen_2.png in Resources */,
+				F164C1481A8BF88800CBB5EC /* ic_button_rate_pressed.png in Resources */,
 				F122F9631A85F5A600B99B92 /* ic_add_moves.png in Resources */,
 				F125FDCA1A865133008D7E1E /* ic_replay.png in Resources */,
 				F125FDD41A865E38008D7E1E /* ic_not_connected.png in Resources */,
@@ -620,6 +647,7 @@
 				F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */,
 				F18396781A80F3F100D08FF3 /* ic_add_hurdle_smasher_pressed.png in Resources */,
 				F18396791A80F3F100D08FF3 /* ic_add_moves_normal.png in Resources */,
+				F164C1461A8BF88800CBB5EC /* ic_button_feedback_pressed.png in Resources */,
 				F125FDBC1A864215008D7E1E /* ic_add_star.png in Resources */,
 				F1E5A4151A81114A006AC218 /* ic_button_color_purple_pressed.png in Resources */,
 				F1E5A4161A81114A006AC218 /* ic_button_color_red_normal.png in Resources */,
@@ -628,6 +656,8 @@
 				F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */,
 				F1FDCE8A1A85C3E9005444EF /* ic_how_to_play.png in Resources */,
 				F183967B1A80F3F100D08FF3 /* ic_add_star_normal.png in Resources */,
+				F164C1431A8BF88800CBB5EC /* ic_button_facebook_normal.png in Resources */,
+				F164C1471A8BF88800CBB5EC /* ic_button_rate_normal.png in Resources */,
 				F153119D1A8577C700F16C1E /* button_press_sound.wav in Resources */,
 				F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */,
 				F1E5A40E1A81114A006AC218 /* ic_button_color_blue_normal.png in Resources */,
@@ -646,6 +676,7 @@
 				F125FDCC1A8651F6008D7E1E /* ic_next_level.png in Resources */,
 				F1E64C051A7E1AEC0042D466 /* ic_iap_lock.png in Resources */,
 				F1FDCE8B1A85C3E9005444EF /* ic_play.png in Resources */,
+				F164C1441A8BF88800CBB5EC /* ic_button_facebook_pressed.png in Resources */,
 				F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */,
 				F125FDCF1A865B5B008D7E1E /* ic_hurdle_smasher_info.png in Resources */,
 				F19285A31A826CBF00628DE2 /* user_prefs.plist in Resources */,
@@ -653,6 +684,7 @@
 				F1E5A4201A817CAE006AC218 /* ic_button_menu_pressed.png in Resources */,
 				F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */,
 				F1E5A4231A817CAE006AC218 /* ic_button_sound_pressed.png in Resources */,
+				F164C1451A8BF88800CBB5EC /* ic_button_feedback_normal.png in Resources */,
 				F183967C1A80F3F100D08FF3 /* ic_add_star_pressed.png in Resources */,
 				F153119E1A8577C700F16C1E /* game_failed_sound.wav in Resources */,
 				F1E5A4141A81114A006AC218 /* ic_button_color_purple_normal.png in Resources */,
@@ -660,6 +692,7 @@
 				F164C1341A8B926400CBB5EC /* help_image_screen_1.png in Resources */,
 				F164C1381A8B926400CBB5EC /* help_image_screen_4.png in Resources */,
 				F122F9671A85FD1A00B99B92 /* ic_button_cancel_pressed.png in Resources */,
+				F164C13C1A8BF5C800CBB5EC /* ic_logo_small.png in Resources */,
 				F125FDD01A865B5B008D7E1E /* ic_star_placement_info.png in Resources */,
 				F1E5A4221A817CAE006AC218 /* ic_button_sound_on_normal.png in Resources */,
 				F18396771A80F3F100D08FF3 /* ic_add_hurdle_smasher_normal.png in Resources */,
@@ -700,6 +733,7 @@
 				F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */,
 				F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */,
 				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
+				F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */,
 				F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */,
 				F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */,
 				F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */,

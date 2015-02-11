@@ -68,7 +68,21 @@
 }
 
 - (IBAction)launchAboutScreen:(id)sender {
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
     
+    //[button setBackgroundColor:[UIColor yellowColor]];
+    //add background image
+    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
+    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
+    
+    _backGroundView.frame = self.view.frame;
+    _backGroundView.contentMode = UIViewContentModeScaleToFill;
+    
+    [controller.view addSubview:_backGroundView];
+    [controller.view sendSubviewToBack:_backGroundView];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+
 }
 
 - (void)viewDidLoad
