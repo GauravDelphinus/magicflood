@@ -110,13 +110,24 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
 
 -(void)setupTimer
 {
-    [NSTimer scheduledTimerWithTimeInterval:ROTATION_SPEED_INTERVAL
+    self.mStarRotationTimer = [NSTimer scheduledTimerWithTimeInterval:ROTATION_SPEED_INTERVAL
                                      target:self
                                    selector:@selector(timerCallback:)
                                    userInfo:nil
                                     repeats:YES];
 }
 
+-(void)dealloc
+{
+    NSLog(@"MFGameView dealloc");
+}
+
+-(void)removeFromSuperview
+{
+    [super removeFromSuperview];
+    
+    [self.mStarRotationTimer invalidate];
+}
 -(void)timerCallback:(NSTimer *)timer
 {
     mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;

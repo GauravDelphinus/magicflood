@@ -384,6 +384,13 @@ didFailWithError:(NSError *)error
     [self setupSound];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"viewWillDisappear");
+    [self.gameView removeFromSuperview];
+    self.gameView = nil;
+}
+
 -(void)setupSound
 {
     NSString *buttonPressPath = [[NSBundle mainBundle]

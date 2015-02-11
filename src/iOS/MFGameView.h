@@ -27,6 +27,7 @@
 }
 
 @property (nonatomic,strong) id delegate;
+@property NSTimer *mStarRotationTimer;
 
 -(CGColorRef)getColorFromGridForX:(int)x andY:(int)y;
 -(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves;
@@ -34,5 +35,6 @@
 -(void)updateStartPos:(int **)startPos withNum:(int)numStartPos;
 -(void)drawStarWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize WithX:(int)x WithY:(int)y;
 -(void)enableDisableTouchInput:(BOOL)enable;
+
 @end
 
