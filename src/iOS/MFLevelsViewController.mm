@@ -235,6 +235,7 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
     //[self addGestureRecogniser:self.mTestView];
     
     //add background image
+    /*
     UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
     UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
     
@@ -243,6 +244,7 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
     
     [self.view addSubview:_backGroundView];
     [self.view sendSubviewToBack:_backGroundView];
+     */
 }
 
 - (void)didReceiveMemoryWarning

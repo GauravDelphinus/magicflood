@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F10A8E061A7D34BC00A31AEA /* MFLevelsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F10A8E051A7D34BC00A31AEA /* MFLevelsViewController.mm */; };
+		F11B479E1A8C03BA00536CAB /* MFHelpRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B479D1A8C03BA00536CAB /* MFHelpRootViewController.m */; };
 		F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */; };
 		F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */ = {isa = PBXBuildFile; fileRef = F11D21D41A7D0F8D006A4086 /* product_ids.plist */; };
 		F11D21D71A7D1C4C006A4086 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11D21D61A7D1C4C006A4086 /* StoreKit.framework */; };
@@ -65,6 +66,7 @@
 		F164C1471A8BF88800CBB5EC /* ic_button_rate_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1411A8BF88800CBB5EC /* ic_button_rate_normal.png */; };
 		F164C1481A8BF88800CBB5EC /* ic_button_rate_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1421A8BF88800CBB5EC /* ic_button_rate_pressed.png */; };
 		F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */; };
+		F176C0701A8EB71A009D1206 /* MFLevelsRootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F176C06F1A8EB71A009D1206 /* MFLevelsRootViewController.mm */; };
 		F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */; };
 		F183966C1A80F35F00D08FF3 /* ic_coins.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966B1A80F35F00D08FF3 /* ic_coins.png */; };
 		F18396751A80F3F100D08FF3 /* ic_add_coins_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */; };
@@ -136,6 +138,8 @@
 /* Begin PBXFileReference section */
 		F10A8E041A7D34BC00A31AEA /* MFLevelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFLevelsViewController.h; path = ../../src/iOS/MFLevelsViewController.h; sourceTree = SOURCE_ROOT; };
 		F10A8E051A7D34BC00A31AEA /* MFLevelsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFLevelsViewController.mm; path = ../../src/iOS/MFLevelsViewController.mm; sourceTree = SOURCE_ROOT; };
+		F11B479C1A8C03BA00536CAB /* MFHelpRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHelpRootViewController.h; path = ../../src/iOS/MFHelpRootViewController.h; sourceTree = SOURCE_ROOT; };
+		F11B479D1A8C03BA00536CAB /* MFHelpRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHelpRootViewController.m; path = ../../src/iOS/MFHelpRootViewController.m; sourceTree = SOURCE_ROOT; };
 		F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGlobalInterface.cpp; path = ../../src/Common/MFGlobalInterface.cpp; sourceTree = SOURCE_ROOT; };
 		F11D21D21A7CBD19006A4086 /* MFGlobalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGlobalInterface.h; path = ../../src/Common/MFGlobalInterface.h; sourceTree = SOURCE_ROOT; };
 		F11D21D41A7D0F8D006A4086 /* product_ids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = product_ids.plist; path = ../../resources/iOS/product_ids.plist; sourceTree = SOURCE_ROOT; };
@@ -202,6 +206,8 @@
 		F164C1421A8BF88800CBB5EC /* ic_button_rate_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_rate_pressed.png; sourceTree = "<group>"; };
 		F164C1491A8BFA0900CBB5EC /* MFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAboutViewController.h; path = ../../src/iOS/MFAboutViewController.h; sourceTree = SOURCE_ROOT; };
 		F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAboutViewController.m; path = ../../src/iOS/MFAboutViewController.m; sourceTree = SOURCE_ROOT; };
+		F176C06E1A8EB71A009D1206 /* MFLevelsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFLevelsRootViewController.h; path = ../../src/iOS/MFLevelsRootViewController.h; sourceTree = SOURCE_ROOT; };
+		F176C06F1A8EB71A009D1206 /* MFLevelsRootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFLevelsRootViewController.mm; path = ../../src/iOS/MFLevelsRootViewController.mm; sourceTree = SOURCE_ROOT; };
 		F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArchitectsDaughter.ttf; path = ../../resources/iOS/Fonts/ArchitectsDaughter.ttf; sourceTree = SOURCE_ROOT; };
 		F183966B1A80F35F00D08FF3 /* ic_coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_coins.png; sourceTree = "<group>"; };
 		F183966D1A80F3F100D08FF3 /* ic_add_coins_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_coins_normal.png; sourceTree = "<group>"; };
@@ -460,6 +466,10 @@
 				F164C12B1A8B7E1400CBB5EC /* MFHelpScreenViewController.m */,
 				F164C1491A8BFA0900CBB5EC /* MFAboutViewController.h */,
 				F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */,
+				F11B479C1A8C03BA00536CAB /* MFHelpRootViewController.h */,
+				F11B479D1A8C03BA00536CAB /* MFHelpRootViewController.m */,
+				F176C06E1A8EB71A009D1206 /* MFLevelsRootViewController.h */,
+				F176C06F1A8EB71A009D1206 /* MFLevelsRootViewController.mm */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -732,6 +742,7 @@
 				F147E7821A2996AC002D4DDD /* MFIAPInterface.cpp in Sources */,
 				F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */,
 				F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */,
+				F176C0701A8EB71A009D1206 /* MFLevelsRootViewController.mm in Sources */,
 				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
 				F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */,
 				F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */,
@@ -739,6 +750,7 @@
 				F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */,
 				F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */,
 				F10A8E061A7D34BC00A31AEA /* MFLevelsViewController.mm in Sources */,
+				F11B479E1A8C03BA00536CAB /* MFHelpRootViewController.m in Sources */,
 				F1A2F2E71A1D7F1C000DD4E7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

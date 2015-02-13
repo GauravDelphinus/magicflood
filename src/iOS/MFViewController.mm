@@ -26,22 +26,11 @@
 }
 
 - (IBAction)launchHelpScreens:(id)sender {
-    // Create page view controller
-    self.helpPageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpPageViewController"];
-    self.helpPageViewController.dataSource = self;
     
-    MFHelpScreenViewController *startingViewController = [self helpViewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.helpPageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpRootViewController"];
     
-    // Change the size of page view controller
-    //self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
-    self.helpPageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    //self.pageViewController.view.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5f];
-    //self.pageViewController.view.backgroundColor = [UIColor blueColor];
-    
-    [self presentViewController:self.helpPageViewController animated:YES completion:nil];
-    
+    [self presentViewController:controller animated:YES completion:nil];
+        
     /*
      [self addChildViewController:_pageViewController];
      [self.view addSubview:_pageViewController.view];
@@ -134,6 +123,10 @@
 
 -(void)launchLevelsViewController
 {
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"LevelsRootViewController"];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+    /*
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
@@ -150,7 +143,7 @@
     
     
     [self presentViewController:self.pageViewController animated:YES completion:nil];
-    
+    */
     /*
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
@@ -216,7 +209,7 @@
     }
     else if ([viewController isKindOfClass:MFHelpScreenViewController.class])
     {
-        NSUInteger index = ((MFLevelsViewController*) viewController).pageIndex;
+        NSUInteger index = ((MFHelpScreenViewController*) viewController).pageIndex;
         
         if ((index == 0) || (index == NSNotFound)) {
             return nil;
@@ -252,7 +245,7 @@
     }
     else if ([viewController isKindOfClass:MFHelpScreenViewController.class])
     {
-        NSUInteger index = ((MFLevelsViewController*) viewController).pageIndex;
+        NSUInteger index = ((MFHelpScreenViewController*) viewController).pageIndex;
         
         index ++;
         if (index == NUM_HELP_SCREENS)
@@ -310,10 +303,7 @@
         int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
         return numScreens;
     }
-    else if (pageViewController == self.helpPageViewController)
-    {
-        return NUM_HELP_SCREENS;
-    }
+
     
     return 0;
 }

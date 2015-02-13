@@ -94,6 +94,7 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -195,6 +196,46 @@
             </objects>
             <point key="canvasLocation" x="327" y="1157"/>
         </scene>
+        <!--Levels Root View Controller-->
+        <scene sceneID="bNa-r8-xYa">
+            <objects>
+                <viewController storyboardIdentifier="LevelsRootViewController" id="8CR-cC-PpR" customClass="MFLevelsRootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dRX-Ob-5Ey"/>
+                        <viewControllerLayoutGuide type="bottom" id="v2s-8V-pHD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gyT-k7-Tgw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ph-ux-MCe">
+                                <rect key="frame" x="280" y="20" width="24" height="24"/>
+                                <state key="normal" image="ic_button_cancel_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                <connections>
+                                    <action selector="dismissScreen:" destination="8CR-cC-PpR" eventType="touchUpInside" id="XzW-je-ScX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Levels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0i-jC-BKX">
+                                <rect key="frame" x="96" y="15" width="129" height="29"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mCancelButton" destination="7ph-ux-MCe" id="APE-d8-O4Q"/>
+                        <outlet property="mTitleLabel" destination="b0i-jC-BKX" id="5O0-Gi-wS4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jae-Bd-h5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-39" y="1157"/>
+        </scene>
         <!--Levels View Controller-->
         <scene sceneID="tdq-33-Urt">
             <objects>
@@ -207,21 +248,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNu-Nx-3a2">
-                                <rect key="frame" x="126" y="16" width="68" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YP-oT-F2i">
-                                <rect key="frame" x="20" y="20" width="67" height="30"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="handleBackButton:" destination="h0P-OV-3GW" eventType="touchUpInside" id="dY9-Ob-Cca"/>
-                                </connections>
-                            </button>
                             <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xf5-xL-enK" customClass="MFUIButton">
                                 <rect key="frame" x="20" y="79" width="61" height="92"/>
                                 <subviews>
@@ -559,10 +585,9 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="mBackButton" destination="0YP-oT-F2i" id="gtC-N2-sbq"/>
                         <outlet property="mLevelButton1" destination="xf5-xL-enK" id="ziH-Cp-RtL"/>
                         <outlet property="mLevelButton10" destination="e5s-td-2FZ" id="7Xl-uQ-9XV"/>
                         <outlet property="mLevelButton11" destination="5sw-4o-OsV" id="PLg-bW-YD3"/>
@@ -611,7 +636,6 @@
                         <outlet property="mLevelLabel7" destination="VcB-eA-BOs" id="gUo-4k-M6G"/>
                         <outlet property="mLevelLabel8" destination="0My-zT-f1c" id="CF9-gL-UEQ"/>
                         <outlet property="mLevelLabel9" destination="SC2-XF-Wnr" id="6nw-t7-QJD"/>
-                        <outlet property="mTitleLabel" destination="QNu-Nx-3a2" id="edI-nN-STa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVE-BO-lAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -706,6 +730,39 @@
             </objects>
             <point key="canvasLocation" x="330" y="2512"/>
         </scene>
+        <!--Help Root View Controller-->
+        <scene sceneID="2xe-eo-pvh">
+            <objects>
+                <viewController storyboardIdentifier="HelpRootViewController" id="027-9F-iia" customClass="MFHelpRootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4qF-8S-Uzf"/>
+                        <viewControllerLayoutGuide type="bottom" id="d6k-KM-lnd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QnC-EG-Nhs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meA-TM-5jq">
+                                <rect key="frame" x="280" y="20" width="24" height="24"/>
+                                <state key="normal" image="ic_button_cancel_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                <connections>
+                                    <action selector="dismissScreen:" destination="027-9F-iia" eventType="touchUpInside" id="mHl-8t-LCZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mCancelButton" destination="meA-TM-5jq" id="vqC-ve-zqd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yzq-hk-6yg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-155" y="3258"/>
+        </scene>
         <!--Page View Controller-->
         <scene sceneID="RwJ-Fw-n6Z">
             <objects>
@@ -726,12 +783,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Objective" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEq-Il-Int">
-                                <rect key="frame" x="28" y="35" width="254" height="55"/>
-                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The objective of the game is to fill the entire grid with the same color." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK4-6N-yPr">
                                 <rect key="frame" x="28" y="320" width="264" height="88"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
@@ -739,10 +790,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="nf3-rz-Iic">
-                                <rect key="frame" x="40" y="138" width="240" height="128"/>
+                                <rect key="frame" x="40" y="160" width="240" height="128"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Objective" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEq-Il-Int">
+                                <rect key="frame" x="33" y="55" width="254" height="55"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9wD-ge-tsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2534,7 +2591,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Identify the Start Position" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXw-8B-f8y">
-                                <rect key="frame" x="27" y="34" width="254" height="61"/>
+                                <rect key="frame" x="33" y="65" width="254" height="61"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2546,10 +2603,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="CqD-ch-SF3">
-                                <rect key="frame" x="39" y="136" width="240" height="128"/>
+                                <rect key="frame" x="40" y="161" width="240" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPD-fl-UFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2569,7 +2626,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start filling the grid with colors" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rz-eZ-3EI">
-                                <rect key="frame" x="33" y="28" width="254" height="69"/>
+                                <rect key="frame" x="33" y="61" width="254" height="69"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2581,13 +2638,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_3.png" translatesAutoresizingMaskIntoConstraints="NO" id="GtT-tZ-MVY">
-                                <rect key="frame" x="45" y="126" width="240" height="128"/>
+                                <rect key="frame" x="45" y="150" width="240" height="128"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_3b.png" translatesAutoresizingMaskIntoConstraints="NO" id="P3O-3w-dC8">
-                                <rect key="frame" x="40" y="269" width="240" height="64"/>
+                                <rect key="frame" x="40" y="287" width="240" height="64"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jnr-DJ-mNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2606,12 +2663,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look out for hurdles!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgk-2N-6VO">
-                                <rect key="frame" x="28" y="37" width="254" height="55"/>
-                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look out for hurdles, and work your way around them!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E02-d2-LMn">
                                 <rect key="frame" x="28" y="322" width="264" height="88"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
@@ -2619,10 +2670,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_4.png" translatesAutoresizingMaskIntoConstraints="NO" id="T2x-X1-nLY">
-                                <rect key="frame" x="40" y="140" width="240" height="128"/>
+                                <rect key="frame" x="40" y="156" width="240" height="128"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look out for hurdles!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgk-2N-6VO">
+                                <rect key="frame" x="33" y="57" width="254" height="55"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zK9-Sj-Wjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2642,7 +2699,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Earn and Redeem Coins!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSg-At-qm1">
-                                <rect key="frame" x="33" y="39" width="254" height="55"/>
+                                <rect key="frame" x="33" y="64" width="254" height="55"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2654,10 +2711,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="veh-7s-VX1">
-                                <rect key="frame" x="45" y="142" width="240" height="128"/>
+                                <rect key="frame" x="45" y="161" width="240" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hj-Gt-n98" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2677,7 +2734,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Moves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fc-gq-sue">
-                                <rect key="frame" x="35" y="38" width="254" height="55"/>
+                                <rect key="frame" x="35" y="62" width="254" height="55"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2689,10 +2746,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_add_moves.png" translatesAutoresizingMaskIntoConstraints="NO" id="B5p-AF-KbG">
-                                <rect key="frame" x="47" y="141" width="240" height="128"/>
+                                <rect key="frame" x="47" y="158" width="240" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vem-JR-d9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2712,7 +2769,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Additional Stars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR8-8d-6fg">
-                                <rect key="frame" x="35" y="34" width="254" height="55"/>
+                                <rect key="frame" x="35" y="59" width="254" height="55"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2724,10 +2781,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_star_placement_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="gFm-EO-MKw">
-                                <rect key="frame" x="47" y="137" width="240" height="128"/>
+                                <rect key="frame" x="47" y="162" width="240" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apV-IJ-k7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2747,7 +2804,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hurdle Smashers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqX-uc-Grg">
-                                <rect key="frame" x="33" y="28" width="254" height="55"/>
+                                <rect key="frame" x="33" y="57" width="254" height="55"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2759,10 +2816,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_8.png" translatesAutoresizingMaskIntoConstraints="NO" id="kpN-Co-S0D">
-                                <rect key="frame" x="45" y="131" width="240" height="128"/>
+                                <rect key="frame" x="45" y="155" width="240" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMA-9N-kO8" userLabel="First Responder" sceneMemberID="firstResponder"/>

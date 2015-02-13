@@ -15,7 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *mPlayButton;
 - (IBAction)startWalkthrough:(id)sender;
 @property (strong, nonatomic) UIPageViewController *pageViewController;
-@property (strong, nonatomic) UIPageViewController *helpPageViewController;
+
 @property int numLevels;
 -(void)initializeInAppPurchase;
 -(void)initializePreferences;

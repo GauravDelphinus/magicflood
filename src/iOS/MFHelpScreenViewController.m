@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view.
     
     //add background image
+    /*
     UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
     UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
     
@@ -27,6 +28,7 @@
     
     [self.view addSubview:_backGroundView];
     [self.view sendSubviewToBack:_backGroundView];
+     */
 }
 
 - (void)didReceiveMemoryWarning {
