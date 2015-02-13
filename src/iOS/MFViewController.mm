@@ -30,30 +30,14 @@
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpRootViewController"];
     
     [self presentViewController:controller animated:YES completion:nil];
-        
-    /*
-     [self addChildViewController:_pageViewController];
-     [self.view addSubview:_pageViewController.view];
-     [self.pageViewController didMoveToParentViewController:self];
-     */
     
-    //find the UIPageControl and set the number of pages
     /*
-    NSArray *subviews = self.helpPageViewController.view.subviews;
-    UIPageControl *thisControl = nil;
-    for (int i=0; i<[subviews count]; i++) {
-        if ([[subviews objectAtIndex:i] isKindOfClass:[UIPageControl class]]) {
-            thisControl = (UIPageControl *)[subviews objectAtIndex:i];
-            
-            thisControl.numberOfPages = NUM_HELP_SCREENS;
-        }
-    }
-    */
     
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
     pageControl.backgroundColor = [UIColor clearColor];
+     */
 }
 
 - (IBAction)launchAboutScreen:(id)sender {
@@ -126,36 +110,6 @@
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"LevelsRootViewController"];
     
     [self presentViewController:controller animated:YES completion:nil];
-    /*
-    // Create page view controller
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
-    self.pageViewController.dataSource = self;
-    
-    MFLevelsViewController *startingViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    // Change the size of page view controller
-    NSLog(@"launchLevels, width = %d, height = %d", self.view.frame.size.width, self.view.frame.size.height);
-    //self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    //self.pageViewController.view.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5f];
-    
-    
-    [self presentViewController:self.pageViewController animated:YES completion:nil];
-    */
-    /*
-    [self addChildViewController:_pageViewController];
-    [self.view addSubview:_pageViewController.view];
-    [self.pageViewController didMoveToParentViewController:self];
-     */
-    
-    //page control's color
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    pageControl.backgroundColor = [UIColor clearColor];
-
 }
 
 -(void)initializeInAppPurchase
@@ -192,125 +146,5 @@
    
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
-{
-    if ([viewController isKindOfClass:MFLevelsViewController.class])
-    {
-    NSUInteger index = ((MFLevelsViewController *) viewController).pageIndex;
-    NSLog(@"\nbefore view controller, got index %d", index);
-    if ((index == 0) || (index == NSNotFound)) {
-        return nil;
-    }
-    
-    
-    index--;
-    NSLog(@"returning index %d", index);
-    return [self viewControllerAtIndex:index];
-    }
-    else if ([viewController isKindOfClass:MFHelpScreenViewController.class])
-    {
-        NSUInteger index = ((MFHelpScreenViewController*) viewController).pageIndex;
-        
-        if ((index == 0) || (index == NSNotFound)) {
-            return nil;
-        }
-
-        index --;
-        
-        return [self helpViewControllerAtIndex:index];
-    }
-    
-    return nil;
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
-{
-    if ([viewController isKindOfClass:MFLevelsViewController.class])
-    {
-        NSUInteger index = ((MFLevelsViewController*) viewController).pageIndex;
-        NSLog(@"\nafter view controller, got index %d", index);
-        
-        if (index == NSNotFound) {
-            return nil;
-        }
-        
-        int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
-        NSLog(@"numScreens = %d", numScreens);
-        index++;
-        if (index == numScreens) {
-            return nil;
-        }
-        NSLog(@"returning index %d", index);
-        return [self viewControllerAtIndex:index];
-    }
-    else if ([viewController isKindOfClass:MFHelpScreenViewController.class])
-    {
-        NSUInteger index = ((MFHelpScreenViewController*) viewController).pageIndex;
-        
-        index ++;
-        if (index == NUM_HELP_SCREENS)
-        {
-            return nil;
-        }
-        
-        return [self helpViewControllerAtIndex:index];
-    }
-    
-    return nil;
-}
-
-- (MFLevelsViewController *)viewControllerAtIndex:(NSUInteger)index
-{
-    NSLog(@"viewControllerAtIndex %d", index);
-    int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
-    if (index >= numScreens || index < 0) {
-        return nil;
-    }
-    
-    // Create a new view controller and pass suitable data.
-    MFLevelsViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    
-    NSString *titleText = [NSString stringWithFormat:@"Levels"];
-    
-    pageContentViewController.titleText = titleText;
-    pageContentViewController.pageIndex = index;
-    pageContentViewController.numLevels = self.numLevels;
-    
-    return pageContentViewController;
-}
-
-
-- (MFHelpScreenViewController *)helpViewControllerAtIndex:(NSUInteger)index
-{
-    NSLog(@"viewControllerAtIndex %d", index);
-    if (index >= NUM_HELP_SCREENS || index < 0) {
-        return nil;
-    }
-    
-    // Create a new view controller and pass suitable data.
-    NSString *boardID = [NSString stringWithFormat:@"HelpScreenViewController%d", index + 1];
-    MFHelpScreenViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:boardID];
-    pageContentViewController.pageIndex = index;
-    
-    return pageContentViewController;
-}
-
-
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
-{
-    if (pageViewController == self.pageViewController)
-    {
-        int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
-        return numScreens;
-    }
-
-    
-    return 0;
-}
-
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
-{
-    return 0;
-}
 
 @end

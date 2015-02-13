@@ -56,6 +56,19 @@
     [self.view bringSubviewToFront:self.mCancelButton];
     
     //[self presentViewController:self.helpPageViewController animated:YES completion:nil];
+    
+    //page control's color
+    NSArray *subviews = self.helpPageViewController.view.subviews;
+    UIPageControl *pageControl = nil;
+    for (int i=0; i<[subviews count]; i++) {
+        if ([[subviews objectAtIndex:i] isKindOfClass:[UIPageControl class]]) {
+            pageControl = (UIPageControl *)[subviews objectAtIndex:i];
+            
+            pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+            pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+            pageControl.backgroundColor = [UIColor clearColor];
+        }
+    }
 
 }
 

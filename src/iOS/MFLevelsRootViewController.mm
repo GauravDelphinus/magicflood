@@ -60,6 +60,19 @@
     //now bring the cancel button and title label to the front, so we can SEE them!
     [self.view bringSubviewToFront:self.mCancelButton];
     [self.view bringSubviewToFront:self.mTitleLabel];
+    
+    //page control's color
+    NSArray *subviews = self.pageViewController.view.subviews;
+    UIPageControl *pageControl = nil;
+    for (int i=0; i<[subviews count]; i++) {
+        if ([[subviews objectAtIndex:i] isKindOfClass:[UIPageControl class]]) {
+            pageControl = (UIPageControl *)[subviews objectAtIndex:i];
+            
+            pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+            pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+            pageControl.backgroundColor = [UIColor clearColor];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
