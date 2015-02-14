@@ -12,6 +12,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <iAd/iAd.h>
 #import "MFGameDialogController.h"
+#import "MFAddCoinsDialog.h"
 
 @interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, SKProductsRequestDelegate, ADBannerViewDelegate, GameDialogOptionSelectedDelegate>
 {

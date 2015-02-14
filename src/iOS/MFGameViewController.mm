@@ -231,6 +231,20 @@ didFailWithError:(NSError *)error
     MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardID];
     controller.dialogType = dialogType;
     
+    if ([controller isKindOfClass:[MFAddCoinsDialog class]])
+    {
+        MFAddCoinsDialog *addCoinsDialog = (MFAddCoinsDialog *)controller;
+        SKProduct *firstProduct = [self.products objectAtIndex:0];
+        SKProduct *secondProduct = [self.products objectAtIndex:1];
+        SKProduct *thirdProduct = [self.products objectAtIndex:2];
+        SKProduct *fourthProduct = [self.products objectAtIndex:3];
+        
+        addCoinsDialog.mPrice500Coins = [self formatIAPPrice:firstProduct.price WithLocale:firstProduct.priceLocale];
+        addCoinsDialog.mPrice1000Coins = [self formatIAPPrice:secondProduct.price WithLocale:secondProduct.priceLocale];
+        addCoinsDialog.mPrice2500Coins = [self formatIAPPrice:thirdProduct.price WithLocale:thirdProduct.priceLocale];
+        addCoinsDialog.mPrice5000Coins = [self formatIAPPrice:fourthProduct.price WithLocale:fourthProduct.priceLocale];
+    }
+    
     //set the delegate
     controller.delegate = self;
 

@@ -1305,10 +1305,10 @@
             </objects>
             <point key="canvasLocation" x="2196" y="386"/>
         </scene>
-        <!--Game Dialog Controller-->
+        <!--Add Coins Dialog-->
         <scene sceneID="AFM-Xf-HEn">
             <objects>
-                <viewController storyboardIdentifier="AddCoinsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BWK-2j-cfy" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddCoinsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BWK-2j-cfy" customClass="MFAddCoinsDialog" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FI5-Ay-uWL"/>
                         <viewControllerLayoutGuide type="bottom" id="Spp-uk-6K1"/>
@@ -1457,6 +1457,10 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="mPrice1000CoinsLabel" destination="XXA-I3-bBN" id="O1V-Ac-ngQ"/>
+                        <outlet property="mPrice2500CoinsLabel" destination="f9o-FH-aUw" id="TAJ-3V-qSz"/>
+                        <outlet property="mPrice5000CoinsLabel" destination="hzb-mx-c8g" id="7tO-BM-j2f"/>
+                        <outlet property="mPrice500CoinsLabel" destination="5LP-NN-Tjs" id="lJW-wQ-V4w"/>
                         <outlet property="mTitleLabel" destination="566-ZK-ZLv" id="YWf-Zf-rCr"/>
                     </connections>
                 </viewController>
