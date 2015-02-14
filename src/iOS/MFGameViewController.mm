@@ -65,60 +65,12 @@
 
 - (IBAction)addCoins:(id)sender
 {
-    if ([SKPaymentQueue canMakePayments])
-    {
-        SKProductsRequest *productsRequest = [[SKProductsRequest alloc]
-                                              initWithProductIdentifiers:[NSSet setWithArray:self.products]];
-        productsRequest.delegate = self;
-        [productsRequest start];
-    }
-    else
-    {
-        [self showDialogOfType:DIALOG_TYPE_NOT_CONNECTED];
-    }
-
-    
-    
-}
-
-// SKProductsRequestDelegate protocol method
-- (void)productsRequest:(SKProductsRequest *)request
-     didReceiveResponse:(SKProductsResponse *)response
-{
-    BOOL allIsWell = YES;
-    
-    
-    for (NSString *invalidIdentifier in response.invalidProductIdentifiers) {
-        for (int i = 0; i < [self.products count]; i++)
-        {
-            if ([[self.products objectAtIndex:i] isEqualToString:invalidIdentifier])
-            {
-                //something's wrong
-                allIsWell = NO;
-                break;
-            }
-        }
-        
-        if (!allIsWell)
-        {
-            break;
-        }
-    }
-    
-    if (!allIsWell)
-    {
-        [self showDialogOfType:DIALOG_TYPE_NOT_CONNECTED];
-        
-        return;
-    }
-    
-    self.products = response.products;
-
     [self addCoins];
 }
 
 -(void)addCoins
 {
+    /*
     SKProduct *product0 = [self.products objectAtIndex:0];
     SKProduct *product1 = [self.products objectAtIndex:1];
     SKProduct *product2 = [self.products objectAtIndex:2];
@@ -139,22 +91,12 @@
     NSString *formattedPrice3 = [self formatIAPPrice:product0.price WithLocale:product3.priceLocale];
     NSString *iap_fourth_price = @"Add 5000 Coins";
     iap_fourth_price = [iap_fourth_price stringByAppendingString:formattedPrice3];
-    
+    */
     
     [self showDialogOfType:DIALOG_TYPE_ADD_COINS];
 }
 
--(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale
-{
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [numberFormatter setLocale:locale];
-    NSString *formattedPrice = [numberFormatter stringFromNumber:price];
-    
-    return formattedPrice;
 
-}
 
 - (void)request:(SKRequest *)request
 didFailWithError:(NSError *)error
@@ -234,15 +176,35 @@ didFailWithError:(NSError *)error
     if ([controller isKindOfClass:[MFAddCoinsDialog class]])
     {
         MFAddCoinsDialog *addCoinsDialog = (MFAddCoinsDialog *)controller;
-        SKProduct *firstProduct = [self.products objectAtIndex:0];
-        SKProduct *secondProduct = [self.products objectAtIndex:1];
-        SKProduct *thirdProduct = [self.products objectAtIndex:2];
-        SKProduct *fourthProduct = [self.products objectAtIndex:3];
-        
-        addCoinsDialog.mPrice500Coins = [self formatIAPPrice:firstProduct.price WithLocale:firstProduct.priceLocale];
-        addCoinsDialog.mPrice1000Coins = [self formatIAPPrice:secondProduct.price WithLocale:secondProduct.priceLocale];
-        addCoinsDialog.mPrice2500Coins = [self formatIAPPrice:thirdProduct.price WithLocale:thirdProduct.priceLocale];
-        addCoinsDialog.mPrice5000Coins = [self formatIAPPrice:fourthProduct.price WithLocale:fourthProduct.priceLocale];
+        /*
+        if ([SKPaymentQueue canMakePayments] && self.mIAPManager.mIsSynchronized)
+        {
+            addCoinsDialog.mIsConnected = YES;
+            
+            SKProduct *firstProduct = [self.products objectAtIndex:0];
+            SKProduct *secondProduct = [self.products objectAtIndex:1];
+            SKProduct *thirdProduct = [self.products objectAtIndex:2];
+            SKProduct *fourthProduct = [self.products objectAtIndex:3];
+            
+            addCoinsDialog.mPrice500Coins = [self formatIAPPrice:firstProduct.price WithLocale:firstProduct.priceLocale];
+            addCoinsDialog.mPrice1000Coins = [self formatIAPPrice:secondProduct.price WithLocale:secondProduct.priceLocale];
+            addCoinsDialog.mPrice2500Coins = [self formatIAPPrice:thirdProduct.price WithLocale:thirdProduct.priceLocale];
+            addCoinsDialog.mPrice5000Coins = [self formatIAPPrice:fourthProduct.price WithLocale:fourthProduct.priceLocale];
+        }
+        else
+        {
+            addCoinsDialog.mIsConnected = NO;
+        }
+         */
+        addCoinsDialog.mIAPManager = self.mIAPManager;
+        /*
+        for (int i = 0; i < 5; i++)
+        {
+            SKProduct *product = [self.mIAPManager.products objectAtIndex:i];
+            SKProduct *p2 = [addCoinsDialog.mIAPManager.products objectAtIndex:i];
+            NSLog(@"self.mIAPManager = %p, addCoinsDialog.mIAPManager = %p, product = %p, p2 = %p", self.mIAPManager, addCoinsDialog.mIAPManager,  product, p2);
+        }
+         */
     }
     
     //set the delegate
@@ -370,15 +332,6 @@ didFailWithError:(NSError *)error
     //set self as delegate for the tap protocol in the MFGameView
     self.gameView.delegate = self;
     
-    //load the bundled product list
-    NSString *id_iap_remove_ads = @IAP_REMOVE_ADS;
-    NSString *id_iap_coins_first = @ IAP_COINS_FIRST;
-    NSString *id_iap_coins_second = @ IAP_COINS_SECOND;
-    NSString *id_iap_coins_third = @ IAP_COINS_THIRD;
-    NSString *id_iap_coins_fourth = @ IAP_COINS_FOURTH;
-    self.products = [NSArray arrayWithObjects: id_iap_remove_ads, id_iap_coins_first, id_iap_coins_second,
-                     id_iap_coins_third, id_iap_coins_fourth, nil];
-    
     //set font typefaces
     [self.mLevelsLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
     [self.coinsLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
@@ -396,6 +349,9 @@ didFailWithError:(NSError *)error
     
     //setup sound
     [self setupSound];
+    
+    //set up IAP
+    [self setupIAP];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -403,6 +359,12 @@ didFailWithError:(NSError *)error
     NSLog(@"viewWillDisappear");
     [self.gameView removeFromSuperview];
     self.gameView = nil;
+}
+
+-(void) setupIAP
+{
+    self.mIAPManager = [[MFIAPManager alloc] init];
+    [self.mIAPManager initialize];
 }
 
 -(void)setupSound

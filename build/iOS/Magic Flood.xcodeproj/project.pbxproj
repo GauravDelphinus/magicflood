@@ -66,6 +66,7 @@
 		F164C1471A8BF88800CBB5EC /* ic_button_rate_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1411A8BF88800CBB5EC /* ic_button_rate_normal.png */; };
 		F164C1481A8BF88800CBB5EC /* ic_button_rate_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F164C1421A8BF88800CBB5EC /* ic_button_rate_pressed.png */; };
 		F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */; };
+		F16F2DF61A8F426800CB0678 /* MFIAPManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = F16F2DF51A8F426800CB0678 /* MFIAPManager.mm */; };
 		F176C0701A8EB71A009D1206 /* MFLevelsRootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F176C06F1A8EB71A009D1206 /* MFLevelsRootViewController.mm */; };
 		F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */; };
 		F183966C1A80F35F00D08FF3 /* ic_coins.png in Resources */ = {isa = PBXBuildFile; fileRef = F183966B1A80F35F00D08FF3 /* ic_coins.png */; };
@@ -78,7 +79,7 @@
 		F183967B1A80F3F100D08FF3 /* ic_add_star_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F18396731A80F3F100D08FF3 /* ic_add_star_normal.png */; };
 		F183967C1A80F3F100D08FF3 /* ic_add_star_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F18396741A80F3F100D08FF3 /* ic_add_star_pressed.png */; };
 		F183967E1A80F41400D08FF3 /* ic_moves.png in Resources */ = {isa = PBXBuildFile; fileRef = F183967D1A80F41400D08FF3 /* ic_moves.png */; };
-		F18448C81A8F1E22000D105A /* MFAddCoinsDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F18448C71A8F1E22000D105A /* MFAddCoinsDialog.m */; };
+		F18448C81A8F1E22000D105A /* MFAddCoinsDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = F18448C71A8F1E22000D105A /* MFAddCoinsDialog.mm */; };
 		F19285A01A825BCE00628DE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F192859F1A825BCE00628DE2 /* Localizable.strings */; };
 		F19285A31A826CBF00628DE2 /* user_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = F19285A21A826CBF00628DE2 /* user_prefs.plist */; };
 		F19285BD1A84ECF800628DE2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19285A71A84170D00628DE2 /* AudioToolbox.framework */; };
@@ -207,6 +208,8 @@
 		F164C1421A8BF88800CBB5EC /* ic_button_rate_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_rate_pressed.png; sourceTree = "<group>"; };
 		F164C1491A8BFA0900CBB5EC /* MFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAboutViewController.h; path = ../../src/iOS/MFAboutViewController.h; sourceTree = SOURCE_ROOT; };
 		F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAboutViewController.m; path = ../../src/iOS/MFAboutViewController.m; sourceTree = SOURCE_ROOT; };
+		F16F2DF41A8F426800CB0678 /* MFIAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFIAPManager.h; path = ../../src/iOS/MFIAPManager.h; sourceTree = SOURCE_ROOT; };
+		F16F2DF51A8F426800CB0678 /* MFIAPManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFIAPManager.mm; path = ../../src/iOS/MFIAPManager.mm; sourceTree = SOURCE_ROOT; };
 		F176C06E1A8EB71A009D1206 /* MFLevelsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFLevelsRootViewController.h; path = ../../src/iOS/MFLevelsRootViewController.h; sourceTree = SOURCE_ROOT; };
 		F176C06F1A8EB71A009D1206 /* MFLevelsRootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFLevelsRootViewController.mm; path = ../../src/iOS/MFLevelsRootViewController.mm; sourceTree = SOURCE_ROOT; };
 		F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArchitectsDaughter.ttf; path = ../../resources/iOS/Fonts/ArchitectsDaughter.ttf; sourceTree = SOURCE_ROOT; };
@@ -221,7 +224,7 @@
 		F18396741A80F3F100D08FF3 /* ic_add_star_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add_star_pressed.png; sourceTree = "<group>"; };
 		F183967D1A80F41400D08FF3 /* ic_moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_moves.png; sourceTree = "<group>"; };
 		F18448C61A8F1E22000D105A /* MFAddCoinsDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAddCoinsDialog.h; path = ../../src/iOS/MFAddCoinsDialog.h; sourceTree = SOURCE_ROOT; };
-		F18448C71A8F1E22000D105A /* MFAddCoinsDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAddCoinsDialog.m; path = ../../src/iOS/MFAddCoinsDialog.m; sourceTree = SOURCE_ROOT; };
+		F18448C71A8F1E22000D105A /* MFAddCoinsDialog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFAddCoinsDialog.mm; path = ../../src/iOS/MFAddCoinsDialog.mm; sourceTree = SOURCE_ROOT; };
 		F192859F1A825BCE00628DE2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../../resources/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		F19285A11A826A6600628DE2 /* MFGameConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFGameConstants.h; path = ../../src/iOS/MFGameConstants.h; sourceTree = SOURCE_ROOT; };
 		F19285A21A826CBF00628DE2 /* user_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = user_prefs.plist; path = ../../resources/iOS/user_prefs.plist; sourceTree = SOURCE_ROOT; };
@@ -474,7 +477,9 @@
 				F176C06E1A8EB71A009D1206 /* MFLevelsRootViewController.h */,
 				F176C06F1A8EB71A009D1206 /* MFLevelsRootViewController.mm */,
 				F18448C61A8F1E22000D105A /* MFAddCoinsDialog.h */,
-				F18448C71A8F1E22000D105A /* MFAddCoinsDialog.m */,
+				F18448C71A8F1E22000D105A /* MFAddCoinsDialog.mm */,
+				F16F2DF41A8F426800CB0678 /* MFIAPManager.h */,
+				F16F2DF51A8F426800CB0678 /* MFIAPManager.mm */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -747,7 +752,7 @@
 				F147E7821A2996AC002D4DDD /* MFIAPInterface.cpp in Sources */,
 				F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */,
 				F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */,
-				F18448C81A8F1E22000D105A /* MFAddCoinsDialog.m in Sources */,
+				F18448C81A8F1E22000D105A /* MFAddCoinsDialog.mm in Sources */,
 				F176C0701A8EB71A009D1206 /* MFLevelsRootViewController.mm in Sources */,
 				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
 				F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */,
@@ -755,6 +760,7 @@
 				F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */,
 				F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */,
 				F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */,
+				F16F2DF61A8F426800CB0678 /* MFIAPManager.mm in Sources */,
 				F10A8E061A7D34BC00A31AEA /* MFLevelsViewController.mm in Sources */,
 				F11B479E1A8C03BA00536CAB /* MFHelpRootViewController.m in Sources */,
 				F1A2F2E71A1D7F1C000DD4E7 /* main.m in Sources */,

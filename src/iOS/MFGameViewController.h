@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MFGameView.h"
-#import <StoreKit/StoreKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <iAd/iAd.h>
 #import "MFGameDialogController.h"
 #import "MFAddCoinsDialog.h"
+#import "MFIAPManager.h"
 
-@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, SKProductsRequestDelegate, ADBannerViewDelegate, GameDialogOptionSelectedDelegate>
+@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, ADBannerViewDelegate, GameDialogOptionSelectedDelegate>
 {
    SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
     NSURL *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mStarPlacedSoundURL;
@@ -23,7 +23,6 @@
 @property int gameLevel; //set by the calling MFViewController
 @property BOOL mStarPlacementMode;
 @property BOOL mHurdleSmasherMode;
-@property NSArray *products;
 @property BOOL mEnableSound;
 @property (strong, nonatomic) IBOutlet ADBannerView *mAdBannerView;
 @property BOOL mAdBannerVisible;
@@ -39,6 +38,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *mYellowButton;
 @property (strong, nonatomic) IBOutlet UIButton *mOrangeButton;
 @property (strong, nonatomic) IBOutlet UIButton *mCyanButton;
+@property MFIAPManager *mIAPManager;
 
 -(int)GetColorCodeFromUIButton:(UIButton *)button;
 -(void)startNewGame;

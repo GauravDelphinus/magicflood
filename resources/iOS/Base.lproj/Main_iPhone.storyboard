@@ -95,6 +95,7 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1318,7 +1319,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfv-gU-YPv">
-                                <rect key="frame" x="11" y="94" width="302" height="352"/>
+                                <rect key="frame" x="11" y="65" width="302" height="371"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gab-bA-lfd">
                                         <rect key="frame" x="276" y="0.0" width="24" height="24"/>
@@ -1450,6 +1451,13 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was a problem connecting to the iTunes Store.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdJ-LA-mwF">
+                                        <rect key="frame" x="14" y="326" width="274" height="42"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="11"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                             </view>
@@ -1457,6 +1465,11 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="m1000CoinsButton" destination="jC5-pk-g5M" id="eD3-aV-By9"/>
+                        <outlet property="m2500CoinsButton" destination="ZR2-Sk-nYs" id="GFb-yj-z8r"/>
+                        <outlet property="m5000CoinsButton" destination="XhK-tB-TqU" id="Csp-RJ-ies"/>
+                        <outlet property="m500CoinsButton" destination="UO7-fY-cao" id="qe2-K9-nF2"/>
+                        <outlet property="mConnectionProblemLabel" destination="WdJ-LA-mwF" id="Axq-uJ-5SX"/>
                         <outlet property="mPrice1000CoinsLabel" destination="XXA-I3-bBN" id="O1V-Ac-ngQ"/>
                         <outlet property="mPrice2500CoinsLabel" destination="f9o-FH-aUw" id="TAJ-3V-qSz"/>
                         <outlet property="mPrice5000CoinsLabel" destination="hzb-mx-c8g" id="7tO-BM-j2f"/>
