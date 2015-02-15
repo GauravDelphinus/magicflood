@@ -292,6 +292,7 @@ didFailWithError:(NSError *)error
 
 - (void)viewDidLoad
 {
+    NSLog(@"gameviewcontroller, viewdidload started");
     [super viewDidLoad];
     
     //self.gridHandle = 0;
@@ -321,6 +322,9 @@ didFailWithError:(NSError *)error
     
     //set up IAP
     [self setupIAP];
+    
+    NSLog(@"gameviewcontroller, viewdidload finished");
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated

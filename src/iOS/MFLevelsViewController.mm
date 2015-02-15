@@ -86,29 +86,16 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
 - (IBAction)handleBackButton:(id)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
 }
-- (IBAction)launchGame:(id)sender {
-    //MFGameViewController *controller = (MFGameViewController *)segue.destinationViewController;
-    MFGameViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
-    UIButton *button = (UIButton *)sender;
-    controller.gameLevel = self.pageIndex * NUM_LEVELS_PER_SCREEN + button.tag;
-    
-    [self presentViewController:controller animated:YES completion:nil];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self initialize];
     }
     return self;
 }
 
--(void) initialize
-{
-
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -192,27 +179,17 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
                 [imageView setImage:completedImage];
                 
                 button.userInteractionEnabled = YES;
-                [self addGestureRecogniser:button];
             }
             else if (thisLevel <= lastUnlockedLevel)
             {
                 [imageView setImage:playedImage];
                 
                 button.userInteractionEnabled = YES;
-                [self addGestureRecogniser:button];
             }
             else
             {
                 [imageView setImage:lockImage];
                 
-                /*
-                for (UIGestureRecognizer *recognizer in button.gestureRecognizers)
-                {
-                    if([recognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-                        [button removeGestureRecognizer:recognizer];
-                    }
-                }
-                 */
                 button.userInteractionEnabled = NO;
             }
             
@@ -227,24 +204,6 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
             button.hidden = YES;
         }
     }
-    
-    
-    //[self.mTestLabel setText:@"hello"];
-    //[self.mTestImage setImage:lockImage];
-    
-    //[self addGestureRecogniser:self.mTestView];
-    
-    //add background image
-    /*
-    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
-    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
-    
-    _backGroundView.frame = self.view.frame;
-    _backGroundView.contentMode = UIViewContentModeScaleToFill;
-    
-    [self.view addSubview:_backGroundView];
-    [self.view sendSubviewToBack:_backGroundView];
-     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -253,69 +212,15 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
--(void)addGestureRecogniser:(UIView *)touchView{
-    
-    UITapGestureRecognizer *singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapOnButton:)];
-    [touchView addGestureRecognizer:singleTap];
-    
-    //UILongPressGestureRecognizer *longPress=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPressOnButton:)];
-    //longPress.minimumPressDuration = 0.001;
-    //[touchView addGestureRecognizer:longPress];
-    
-
-
-}
--(void)changecolor{
-    
-    // do something
-    //[self.mTestView setBackgroundColor:[UIColor greenColor]];
-    
-}
-
-- (void) handleTapOnButton: (UITapGestureRecognizer *)recognizer
-{
-    //Code to handle the gesture
+- (IBAction)startLevel:(id)sender {
+    UIButton *button = (UIButton *)sender;
     MFGameViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
-    UIButton *button = (UIButton *)recognizer.view;
     controller.gameLevel = self.pageIndex * NUM_LEVELS_PER_SCREEN + button.tag;
     
     //[button setBackgroundColor:[UIColor yellowColor]];
     
     [self presentViewController:controller animated:YES completion:nil];
+    NSLog(@"startLevel, finished");
 }
-
-- (void) handleLongPressOnButton: (UITapGestureRecognizer *)recognizer
-{
-    UIButton *button = (UIButton *)recognizer.view;
-    
-    //Code to handle the gesture
-    if (recognizer.state == UIGestureRecognizerStateBegan)
-    {
-        [button setBackgroundColor:UIColorFromARGB(0x99FFCC00)];
-    }
-    else
-    {
-        [button setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
-        MFGameViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
-    
-        controller.gameLevel = self.pageIndex * NUM_LEVELS_PER_SCREEN + button.tag;
-    
-    
-    
-        [self presentViewController:controller animated:YES completion:nil];
-    }
-}
-
 
 @end

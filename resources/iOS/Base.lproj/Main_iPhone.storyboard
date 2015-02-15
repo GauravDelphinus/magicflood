@@ -268,7 +268,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="Hoo-WJ-8HT"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="7zD-fF-YpJ"/>
                                 </connections>
                             </view>
                             <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iyQ-9g-p8F" customClass="MFUIButton">
@@ -289,7 +289,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="hWx-G0-8J9"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="Cxa-NZ-SVo"/>
                                 </connections>
                             </view>
                             <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLr-80-7n7" customClass="MFUIButton">
@@ -310,7 +310,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="yva-mb-Wzd"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="5PE-Zy-5Ka"/>
                                 </connections>
                             </view>
                             <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b98-ul-CTx" customClass="MFUIButton">
@@ -331,7 +331,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="KWI-f4-d97"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="VYA-IR-4ay"/>
                                 </connections>
                             </view>
                             <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Opw-c7-zKb" customClass="MFUIButton">
@@ -352,7 +352,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="yAJ-Vz-2tg"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="I9G-el-22r"/>
                                 </connections>
                             </view>
                             <view tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVa-2C-dI0" customClass="MFUIButton">
@@ -373,7 +373,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="IQN-3b-9Mi"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="qST-nk-VhS"/>
                                 </connections>
                             </view>
                             <view tag="7" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6N7-dR-DWs" customClass="MFUIButton">
@@ -394,7 +394,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="4Ll-SI-orD"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="dHB-ka-QYa"/>
                                 </connections>
                             </view>
                             <view tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3n-Q3-NVE" customClass="MFUIButton">
@@ -415,7 +415,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="92h-Dp-rPR"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="XS5-bO-fHb"/>
                                 </connections>
                             </view>
                             <view tag="9" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0CW-8G-srq" customClass="MFUIButton">
@@ -436,7 +436,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="MEB-33-rCn"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="JFm-4p-tSQ"/>
                                 </connections>
                             </view>
                             <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e5s-td-2FZ" customClass="MFUIButton">
@@ -457,7 +457,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="ls2-TW-LeG"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="Gx6-5g-o8T"/>
                                 </connections>
                             </view>
                             <view tag="11" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sw-4o-OsV" customClass="MFUIButton">
@@ -478,7 +478,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="Aq5-5r-C3z"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="28N-6V-vGn"/>
                                 </connections>
                             </view>
                             <view tag="12" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWq-Ba-oeB" customClass="MFUIButton">
@@ -499,7 +499,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="Ysq-p6-Wzu"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="o3E-b0-VEq"/>
                                 </connections>
                             </view>
                             <view tag="13" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wb0-7y-KO7" customClass="MFUIButton">
@@ -520,7 +520,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="bnE-Ki-HQC"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="n4O-x7-ZtB"/>
                                 </connections>
                             </view>
                             <view tag="14" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzc-1H-L4N" customClass="MFUIButton">
@@ -541,7 +541,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="ugc-8O-uBf"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="z9D-aC-QXS"/>
                                 </connections>
                             </view>
                             <view tag="15" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MW3-47-7Ok" customClass="MFUIButton">
@@ -562,7 +562,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="0eK-F8-8Qy"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="z9A-LU-oe9"/>
                                 </connections>
                             </view>
                             <view tag="16" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rcn-Oo-Jxi" customClass="MFUIButton">
@@ -583,7 +583,7 @@
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <action selector="launchGame:" destination="h0P-OV-3GW" eventType="valueChanged" id="Ysz-MN-yZ6"/>
+                                    <action selector="startLevel:" destination="h0P-OV-3GW" eventType="touchUpInside" id="AoN-hn-R7h"/>
                                 </connections>
                             </view>
                         </subviews>
