@@ -96,6 +96,7 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1481,10 +1482,10 @@
             </objects>
             <point key="canvasLocation" x="1476" y="951"/>
         </scene>
-        <!--Game Dialog Controller-->
+        <!--Remove Ads Dialog View Controller-->
         <scene sceneID="Hqx-dN-a6L">
             <objects>
-                <viewController storyboardIdentifier="RemoveAdsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hlt-PF-6Sb" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemoveAdsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hlt-PF-6Sb" customClass="MFRemoveAdsDialogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IeA-W1-HKQ"/>
                         <viewControllerLayoutGuide type="bottom" id="qyx-jn-xli"/>
@@ -1494,7 +1495,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-Ip-aKa">
-                                <rect key="frame" x="28" y="94" width="265" height="301"/>
+                                <rect key="frame" x="28" y="94" width="265" height="276"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Permanently remove all ads and enhance your play experience!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiM-Ol-V72">
                                         <rect key="frame" x="8" y="45" width="249" height="91"/>
@@ -1518,11 +1519,17 @@
                                             <action selector="negativeAction1ButtonPressed:" destination="Hlt-PF-6Sb" eventType="touchUpInside" id="MMa-YE-J3K"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was a problem connecting to the iTunes Store.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBe-LJ-hdl">
+                                        <rect key="frame" x="26" y="213" width="216" height="58"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="11"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQJ-5F-LwF" customClass="MFUIButton">
-                                        <rect key="frame" x="26" y="151" width="216" height="52"/>
+                                        <rect key="frame" x="80" y="151" width="104" height="52"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove now for $1.49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-qJ-Ncz">
-                                                <rect key="frame" x="8" y="8" width="200" height="38"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$1.49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-qJ-Ncz">
+                                                <rect key="frame" x="17" y="7" width="71" height="38"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1544,6 +1551,9 @@
                     </view>
                     <connections>
                         <outlet property="mDescriptionLabel" destination="TiM-Ol-V72" id="jcx-XW-1wm"/>
+                        <outlet property="mNotConnectedLabel" destination="gBe-LJ-hdl" id="dFd-Kr-1xT"/>
+                        <outlet property="mRemoveAdsButton" destination="pQJ-5F-LwF" id="USB-AQ-WcT"/>
+                        <outlet property="mRemoveAdsButtonLabel" destination="3xj-qJ-Ncz" id="dAB-Dt-Hyf"/>
                         <outlet property="mTitleLabel" destination="bYE-So-uhz" id="Sst-Sy-UaY"/>
                     </connections>
                 </viewController>

@@ -99,6 +99,7 @@
 		F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEFA1A235C3500322C1E /* MFGameViewController.mm */; };
 		F1C4EF071A235C3500322C1E /* MFViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF001A235C3500322C1E /* MFViewController.mm */; };
 		F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */; };
+		F1D39E4E1A90498A008B7001 /* MFRemoveAdsDialogViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1D39E4D1A90498A008B7001 /* MFRemoveAdsDialogViewController.mm */; };
 		F1E5A40E1A81114A006AC218 /* ic_button_color_blue_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4021A81114A006AC218 /* ic_button_color_blue_normal.png */; };
 		F1E5A40F1A81114A006AC218 /* ic_button_color_blue_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4031A81114A006AC218 /* ic_button_color_blue_pressed.png */; };
 		F1E5A4101A81114A006AC218 /* ic_button_color_green_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A4041A81114A006AC218 /* ic_button_color_green_normal.png */; };
@@ -254,6 +255,8 @@
 		F1C4EF001A235C3500322C1E /* MFViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFViewController.mm; path = ../../src/iOS/MFViewController.mm; sourceTree = SOURCE_ROOT; };
 		F1C4EF081A235C6E00322C1E /* MFObstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFObstacle.cpp; path = ../../src/Common/MFObstacle.cpp; sourceTree = SOURCE_ROOT; };
 		F1C4EF091A235C6E00322C1E /* MFObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFObstacle.h; path = ../../src/Common/MFObstacle.h; sourceTree = SOURCE_ROOT; };
+		F1D39E4C1A90498A008B7001 /* MFRemoveAdsDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFRemoveAdsDialogViewController.h; path = ../../src/iOS/MFRemoveAdsDialogViewController.h; sourceTree = SOURCE_ROOT; };
+		F1D39E4D1A90498A008B7001 /* MFRemoveAdsDialogViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFRemoveAdsDialogViewController.mm; path = ../../src/iOS/MFRemoveAdsDialogViewController.mm; sourceTree = SOURCE_ROOT; };
 		F1E5A4021A81114A006AC218 /* ic_button_color_blue_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_blue_normal.png; sourceTree = "<group>"; };
 		F1E5A4031A81114A006AC218 /* ic_button_color_blue_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_blue_pressed.png; sourceTree = "<group>"; };
 		F1E5A4041A81114A006AC218 /* ic_button_color_green_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_color_green_normal.png; sourceTree = "<group>"; };
@@ -480,6 +483,8 @@
 				F18448C71A8F1E22000D105A /* MFAddCoinsDialog.mm */,
 				F16F2DF41A8F426800CB0678 /* MFIAPManager.h */,
 				F16F2DF51A8F426800CB0678 /* MFIAPManager.mm */,
+				F1D39E4C1A90498A008B7001 /* MFRemoveAdsDialogViewController.h */,
+				F1D39E4D1A90498A008B7001 /* MFRemoveAdsDialogViewController.mm */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -749,6 +754,7 @@
 				F147E7851A29990F002D4DDD /* MFInAppProduct.cpp in Sources */,
 				F1C4EF071A235C3500322C1E /* MFViewController.mm in Sources */,
 				F1C4EEF21A235C1300322C1E /* MFGrid.cpp in Sources */,
+				F1D39E4E1A90498A008B7001 /* MFRemoveAdsDialogViewController.mm in Sources */,
 				F147E7821A2996AC002D4DDD /* MFIAPInterface.cpp in Sources */,
 				F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */,
 				F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MFIAPManager.h"
 
 @interface MFGameDialogController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *mTitleLabel;
@@ -17,6 +18,7 @@
 @property int dialogType;
 @property int data; // additional data used by a dialog, if required
 @property id delegate; //dialog option selected delegate
+@property MFIAPManager *mIAPManager;
 @end
 
 @protocol GameDialogOptionSelectedDelegate

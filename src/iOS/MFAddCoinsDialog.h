@@ -13,6 +13,6 @@
 @interface MFAddCoinsDialog : MFGameDialogController
 
 //@property NSString *mPrice500Coins, *mPrice1000Coins, *mPrice2500Coins, *mPrice5000Coins;
-@property MFIAPManager *mIAPManager;
+
 
 @end
