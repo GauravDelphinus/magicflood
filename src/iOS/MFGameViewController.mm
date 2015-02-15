@@ -898,7 +898,7 @@ didFailWithError:(NSError *)error
     }
     else //purchase failed or canceled
     {
-        [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED];
+        //[self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED];
     }
 }
 

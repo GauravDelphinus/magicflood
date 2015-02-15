@@ -127,14 +127,23 @@
             case SKPaymentTransactionStateFailed:
                 NSLog(@"Failed");
                 [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:NO];
+                
+                //finish the transaction
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"Purchase Successful!");
                 [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES];
+                
+                //finish the transaction
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStateRestored:
                 NSLog(@"Purchase Restored");
                 [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES];
+                
+                //finish the transaction
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             default:
                 // For debugging

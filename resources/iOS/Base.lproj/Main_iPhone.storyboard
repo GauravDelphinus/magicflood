@@ -1383,7 +1383,7 @@
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="BWK-2j-cfy" eventType="touchUpInside" id="wk6-Ku-PLX"/>
+                                            <action selector="positiveAction2ButtonPressed:" destination="BWK-2j-cfy" eventType="touchUpInside" id="Yej-JN-t7L"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZR2-Sk-nYs" customClass="MFUIButton">
@@ -1410,7 +1410,7 @@
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="BWK-2j-cfy" eventType="touchUpInside" id="Tre-5s-5A7"/>
+                                            <action selector="positiveAction3ButtonPressed:" destination="BWK-2j-cfy" eventType="touchUpInside" id="6xO-1L-rW8"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XhK-tB-TqU" customClass="MFUIButton">
@@ -1437,18 +1437,12 @@
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="BWK-2j-cfy" eventType="touchUpInside" id="HYT-AC-A0b"/>
+                                            <action selector="positiveAction4ButtonPressed:" destination="BWK-2j-cfy" eventType="touchUpInside" id="3NB-5K-uhx"/>
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="566-ZK-ZLv">
                                         <rect key="frame" x="65" y="8" width="168" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add coins to redeem against lifelines!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVT-Lm-ymr">
-                                        <rect key="frame" x="25" y="48" width="252" height="56"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1458,6 +1452,12 @@
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="11"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add coins to redeem against lifelines!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVT-Lm-ymr">
+                                        <rect key="frame" x="25" y="48" width="252" height="56"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
