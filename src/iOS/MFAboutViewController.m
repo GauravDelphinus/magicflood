@@ -7,6 +7,7 @@
 //
 
 #import "MFAboutViewController.h"
+#import "MFIAPManager.h"
 
 @interface MFAboutViewController ()
 
@@ -25,6 +26,11 @@
 }
 - (IBAction)dismissScreen:(id)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+- (IBAction)restorePurchases:(id)sender {
+    MFIAPManager *iapManager = [[MFIAPManager alloc] init];
+    
+    
 }
 - (IBAction)launchFacebook:(id)sender {
     NSURL *facebookURL = [NSURL URLWithString:@"fb://profile/1410732689221094"];

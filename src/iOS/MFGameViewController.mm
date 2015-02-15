@@ -323,6 +323,8 @@ didFailWithError:(NSError *)error
     //set up IAP
     [self setupIAP];
     
+    //set up Ads
+    [self setupAds];
     NSLog(@"gameviewcontroller, viewdidload finished");
 
 }
@@ -383,11 +385,82 @@ didFailWithError:(NSError *)error
     
     //self.mAdBannerVisible = YES;
     
-    self.mAdBannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
-    //self.mAdBannerView.frame = CGRectMake(0, self.view.frame.size.height, 320, 50);
+    self.mAdsRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_ADS_REMOVED];
+    if (!self.mAdsRemoved)
+    {
+        if (self.mAdBannerView == nil)
+        {
+            self.mAdBannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
+            [self.view addSubview:self.mAdBannerView];
+        }
+        else
+        {
+            self.mAdBannerView.frame = CGRectMake(0, self.view.frame.size.height, 320, 50);
+        }
+        
+        self.mAdBannerView.delegate = self;
+        self.mRemoveAdsButton.hidden = NO;
+    }
+    else
+    {
+        self.mRemoveAdsButton.hidden = YES;
+    }
+}
 
-    [self.view addSubview:self.mAdBannerView];
-    self.mAdBannerView.delegate = self;
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"bannerViewDidLoadAd, mAdBannerVisible = %d", self.mAdBannerVisible);
+    
+    if (!self.mAdBannerVisible)
+    {
+        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        
+        // Assumes the banner view is just off the bottom of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        self.mAdBannerVisible = YES;
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"Failed to retrieve ad, mAdBannerVisible = %d", self.mAdBannerVisible);
+    
+    if (self.mAdBannerVisible)
+    {
+        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+        
+        // Assumes the banner view is placed at the bottom of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        self.mAdBannerVisible = NO;
+    }
+}
+
+-(void) hideAds
+{
+    if (self.mAdBannerVisible)
+    {
+        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+        
+        // Assumes the banner view is placed at the bottom of the screen.
+        self.mAdBannerView.frame = CGRectOffset(self.mAdBannerView.frame, 0, self.mAdBannerView.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        self.mAdBannerVisible = NO;
+    }
+    
+    //set the preference to not load ads going forward
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_ADS_REMOVED];
+    self.mAdsRemoved = YES;
+    
+    //also, hide the "Remove Ads" button
+    self.mRemoveAdsButton.hidden = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -402,7 +475,7 @@ didFailWithError:(NSError *)error
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self setupAds];
+    //[self setupAds];
 }
 
 /**
@@ -669,37 +742,7 @@ didFailWithError:(NSError *)error
     }
 }
 
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-{
-    if (!self.mAdBannerVisible)
-    {
-        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
-        
-        // Assumes the banner view is just off the bottom of the screen.
-        banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
-        
-        [UIView commitAnimations];
-        
-        self.mAdBannerVisible = YES;
-    }
-}
 
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    NSLog(@"Failed to retrieve ad");
-    
-    if (self.mAdBannerVisible)
-    {
-        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
-        
-        // Assumes the banner view is placed at the bottom of the screen.
-        banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
-        
-        [UIView commitAnimations];
-        
-        self.mAdBannerVisible = NO;
-    }
-}
 
 -(void) gameDialogOptionSelected:(int)dialogType WithOption:(int) option
 {
@@ -887,10 +930,7 @@ didFailWithError:(NSError *)error
     [[NSUserDefaults standardUserDefaults] setInteger:coins forKey: @PREFERENCE_TOTAL_COINS_EARNED];
 }
 
--(void) hideAds
-{
-    
-}
+
 
 -(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status
 {

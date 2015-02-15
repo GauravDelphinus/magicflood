@@ -27,6 +27,7 @@
 @property BOOL mEnableSound;
 @property (strong, nonatomic) IBOutlet ADBannerView *mAdBannerView;
 @property BOOL mAdBannerVisible;
+@property BOOL mAdsRemoved; //whether ads are removed by user
 @property (strong, nonatomic) IBOutlet UIButton *mAddStarButton;
 @property (strong, nonatomic) IBOutlet UIButton *mAddHurdleSmasherButton;
 @property (strong, nonatomic) IBOutlet UIButton *mAddCoinsButton;

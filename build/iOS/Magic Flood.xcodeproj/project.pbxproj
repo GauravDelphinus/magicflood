@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F10A8E061A7D34BC00A31AEA /* MFLevelsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F10A8E051A7D34BC00A31AEA /* MFLevelsViewController.mm */; };
+		F1136C551A909ABE00338A38 /* ic_button_restore_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F1136C531A909ABE00338A38 /* ic_button_restore_normal.png */; };
+		F1136C561A909ABE00338A38 /* ic_button_restore_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F1136C541A909ABE00338A38 /* ic_button_restore_pressed.png */; };
 		F11B479E1A8C03BA00536CAB /* MFHelpRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B479D1A8C03BA00536CAB /* MFHelpRootViewController.m */; };
 		F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */; };
 		F11D21D51A7D0F8D006A4086 /* product_ids.plist in Resources */ = {isa = PBXBuildFile; fileRef = F11D21D41A7D0F8D006A4086 /* product_ids.plist */; };
@@ -141,6 +143,8 @@
 /* Begin PBXFileReference section */
 		F10A8E041A7D34BC00A31AEA /* MFLevelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFLevelsViewController.h; path = ../../src/iOS/MFLevelsViewController.h; sourceTree = SOURCE_ROOT; };
 		F10A8E051A7D34BC00A31AEA /* MFLevelsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFLevelsViewController.mm; path = ../../src/iOS/MFLevelsViewController.mm; sourceTree = SOURCE_ROOT; };
+		F1136C531A909ABE00338A38 /* ic_button_restore_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_restore_normal.png; sourceTree = "<group>"; };
+		F1136C541A909ABE00338A38 /* ic_button_restore_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_restore_pressed.png; sourceTree = "<group>"; };
 		F11B479C1A8C03BA00536CAB /* MFHelpRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHelpRootViewController.h; path = ../../src/iOS/MFHelpRootViewController.h; sourceTree = SOURCE_ROOT; };
 		F11B479D1A8C03BA00536CAB /* MFHelpRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHelpRootViewController.m; path = ../../src/iOS/MFHelpRootViewController.m; sourceTree = SOURCE_ROOT; };
 		F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGlobalInterface.cpp; path = ../../src/Common/MFGlobalInterface.cpp; sourceTree = SOURCE_ROOT; };
@@ -501,6 +505,8 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F1136C531A909ABE00338A38 /* ic_button_restore_normal.png */,
+				F1136C541A909ABE00338A38 /* ic_button_restore_pressed.png */,
 				F164C13D1A8BF88800CBB5EC /* ic_button_facebook_normal.png */,
 				F164C13E1A8BF88800CBB5EC /* ic_button_facebook_pressed.png */,
 				F164C13F1A8BF88800CBB5EC /* ic_button_feedback_normal.png */,
@@ -700,6 +706,7 @@
 				F1E5A4101A81114A006AC218 /* ic_button_color_green_normal.png in Resources */,
 				F125FDCC1A8651F6008D7E1E /* ic_next_level.png in Resources */,
 				F1E64C051A7E1AEC0042D466 /* ic_iap_lock.png in Resources */,
+				F1136C551A909ABE00338A38 /* ic_button_restore_normal.png in Resources */,
 				F1FDCE8B1A85C3E9005444EF /* ic_play.png in Resources */,
 				F164C1441A8BF88800CBB5EC /* ic_button_facebook_pressed.png in Resources */,
 				F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */,
@@ -723,6 +730,7 @@
 				F18396771A80F3F100D08FF3 /* ic_add_hurdle_smasher_normal.png in Resources */,
 				F1A2F2E51A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */,
 				F153119F1A8577C700F16C1E /* game_success_sound.wav in Resources */,
+				F1136C561A909ABE00338A38 /* ic_button_restore_pressed.png in Resources */,
 				F125FDC61A86501E008D7E1E /* ic_end_game.png in Resources */,
 				F183967A1A80F3F100D08FF3 /* ic_add_moves_pressed.png in Resources */,
 				F1FDCE891A85C3E9005444EF /* ic_about.png in Resources */,

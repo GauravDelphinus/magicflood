@@ -16,12 +16,6 @@
     // Override point for customization after application launch.
     [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Backgrounds/bg_sky_blue.png"]]];
     
-    
-#define DEFAULT_LAST_UNLOCKED_LEVEL 1
-#define DEFAULT_LAST_PLAYED_LEVEL 1
-#define DEFAULT_LAST_COMPLETED_LEVEL 0
-#define INITIAL_COINS_ALLOCATED 100
-    
     // set defaults
     NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                           [NSNumber numberWithInt:DEFAULT_LAST_UNLOCKED_LEVEL], @PREFERENCE_LAST_UNLOCKED_LEVEL,
@@ -29,6 +23,7 @@
                                           [NSNumber numberWithInt:DEFAULT_LAST_COMPLETED_LEVEL], @PREFERENCE_LAST_COMPLETED_LEVEL,
                                           [NSNumber numberWithInt:INITIAL_COINS_ALLOCATED], @PREFERENCE_TOTAL_COINS_EARNED,
                                           [NSNumber numberWithBool:YES], @PREFERENCE_SOUND,
+                                          [NSNumber numberWithBool:NO], @PREFERENCE_ADS_REMOVED,
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
     return YES;

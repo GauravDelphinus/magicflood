@@ -685,7 +685,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTH-No-oWX">
-                                <rect key="frame" x="70" y="403" width="48" height="48"/>
+                                <rect key="frame" x="46" y="403" width="48" height="48"/>
                                 <state key="normal" image="ic_button_facebook_normal.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -694,18 +694,8 @@
                                     <action selector="launchFacebook:" destination="QYG-3M-wNY" eventType="touchUpInside" id="5dp-Ie-0v9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jl2-3a-fWr">
-                                <rect key="frame" x="136" y="403" width="48" height="48"/>
-                                <state key="normal" image="ic_button_rate_normal.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="ic_button_rate_pressed.png"/>
-                                <connections>
-                                    <action selector="launchItunesStore:" destination="QYG-3M-wNY" eventType="touchUpInside" id="eYN-7T-Slk"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTn-NE-kX4">
-                                <rect key="frame" x="202" y="403" width="48" height="48"/>
+                                <rect key="frame" x="168" y="403" width="48" height="48"/>
                                 <state key="normal" image="ic_button_feedback_normal.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -722,6 +712,26 @@
                                 <state key="highlighted" image="ic_button_cancel_pressed.png"/>
                                 <connections>
                                     <action selector="dismissScreen:" destination="QYG-3M-wNY" eventType="touchUpInside" id="cU0-NF-nrG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zS5-JH-zz1">
+                                <rect key="frame" x="229" y="403" width="48" height="48"/>
+                                <state key="normal" image="ic_button_restore_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_restore_pressed.png"/>
+                                <connections>
+                                    <action selector="restorePurchases:" destination="QYG-3M-wNY" eventType="touchUpInside" id="6st-nA-FLw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jl2-3a-fWr">
+                                <rect key="frame" x="107" y="403" width="48" height="48"/>
+                                <state key="normal" image="ic_button_rate_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_rate_pressed.png"/>
+                                <connections>
+                                    <action selector="launchItunesStore:" destination="QYG-3M-wNY" eventType="touchUpInside" id="eYN-7T-Slk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2896,6 +2906,8 @@
         <image name="ic_button_menu_pressed.png" width="32" height="32"/>
         <image name="ic_button_rate_normal.png" width="48" height="48"/>
         <image name="ic_button_rate_pressed.png" width="48" height="48"/>
+        <image name="ic_button_restore_normal.png" width="48" height="48"/>
+        <image name="ic_button_restore_pressed.png" width="48" height="48"/>
         <image name="ic_button_sound_on_normal.png" width="32" height="32"/>
         <image name="ic_button_sound_pressed.png" width="32" height="32"/>
         <image name="ic_coins.png" width="48" height="48"/>

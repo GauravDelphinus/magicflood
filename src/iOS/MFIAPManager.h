@@ -18,6 +18,7 @@
 -(void)initialize;
 -(void)startPurchase:(NSString *)pid;
 -(SKProduct *)getProductFromPID:(NSString *)pid;
+-(void)restorePurchases;
 
 @property BOOL mIsSynchronized; //synchronized with server
 @property NSArray *products;

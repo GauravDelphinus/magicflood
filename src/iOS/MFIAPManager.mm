@@ -8,6 +8,7 @@
 
 #import "MFIAPManager.h"
 #import "MFIAPInterface.h"
+#import "MFGameConstants.h"
 
 @implementation MFIAPManager
 
@@ -149,6 +150,26 @@
                 // For debugging
                 NSLog(@"Unexpected transaction state %@", @(transaction.transactionState));
                 break;
+        }
+    }
+}
+
+-(void)restorePurchases
+{
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
+//Then this delegate Function Will be fired
+- (void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
+{
+    NSLog(@"received restored transactions: %i", queue.transactions.count);
+    for (SKPaymentTransaction *transaction in queue.transactions)
+    {
+        NSString *productID = transaction.payment.productIdentifier;
+        if ([productID isEqualToString:@IAP_REMOVE_ADS])
+        {
+            //remove ads has been restored.  Update the preference
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_ADS_REMOVED];
         }
     }
 }
