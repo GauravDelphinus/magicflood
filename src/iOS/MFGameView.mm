@@ -132,7 +132,7 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
 {
     mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
     mCurrentAngleOfStartPosition = mCurrentAngleOfStartPosition % 360;
-    NSLog(@"timerCallback, current angle = %d", mCurrentAngleOfStartPosition);
+    //NSLog(@"timerCallback, current angle = %d", mCurrentAngleOfStartPosition);
     [self setNeedsDisplay];
     //change to setNeedsDisplayInRect
 }

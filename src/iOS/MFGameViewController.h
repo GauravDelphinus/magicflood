@@ -14,7 +14,8 @@
 #import "MFAddCoinsDialog.h"
 #import "MFIAPManager.h"
 
-@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, ADBannerViewDelegate, GameDialogOptionSelectedDelegate>
+@interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, ADBannerViewDelegate, GameDialogOptionSelectedDelegate,
+                    IAPPurchaseHandler>
 {
    SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
     NSURL *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mStarPlacedSoundURL;

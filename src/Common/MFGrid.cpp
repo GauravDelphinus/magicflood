@@ -165,7 +165,7 @@ int* MFGrid::playMove(int color)
         retVal[1] = numUpdated;
         int currCoins = getCoins();
         currCoins += currMove + (maxMoves-currMove)*COINS_EARNED_FACTOR_ON_REMAINING_MOVES;
-        setCoins(currCoins);
+       // setCoins(currCoins);
     }
     else if (currMove >= maxMoves)
     {

@@ -17,25 +17,30 @@
 extern "C" {
     void setCoins(int coins);
     int getCoins();
+    int getNumCoinsIAPFirst();
+    int getNumCoinsIAPSecond();
+    int getNumCoinsIAPThird();
+    int getNumCoinsIAPFourth();
     int getNumCoinsForMoves();
     int getNumCoinsForStar();
     int getNumCoinsForHurdleSmasher();
     int getMinLevelToAddStars();
     int getMinLevelToAddHurdleSmasher();
+    int getNumCoinsForSuccessfulGame(int currMove, int maxMoves);
 }
 
 
 #define FREQUENCY_OF_PROMPTING_USER_TO_STORE 1
 #define MOVES_ADD_INCREMENT 5
-#define INITIAL_COINS_ALLOCATED 10000
-#define INITIAL_POINTS_ALLOCATED 0
+
 #define COINS_EARNED_FACTOR_ON_GAME_COMPLETION 20
 #define COINS_EARNED_FACTOR_ON_EACH_MOVE 1
 #define COINS_EARNED_FACTOR_ON_REMAINING_MOVES 5
 #define LEVEL_INTERVAL_REQUIRING_COIN_REDEMPTION 5 //interval between levels after which you must redeem coins to move forward
-#define COINS_TO_CROSS_LEVEL_INTERVAL 200 //200 * stage number
 #define MIN_LEVEL_TO_ADD_STARS 27
 #define MIN_LEVEL_TO_ADD_HURDLE_SMASHER 48
+
+
 
 /**
  * Redeeming Coins for Lifelines

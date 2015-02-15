@@ -16,6 +16,7 @@
  #import <StoreKit/StoreKit.h>
 #import <StoreKit/SKPaymentQueue.h>
 #import "MFGameDialogController.h"
+#import "MFIAPInterface.h"
 
 @interface MFGameViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *mSoundButton;
@@ -279,9 +280,9 @@ didFailWithError:(NSError *)error
     {
         [self playSound:mGameSuccessSoundID];
         
-        setCoins(getCoins());
-        
-        updateCoinsLabel:getCoins();
+        int numCoins = getCoins();
+        numCoins += getNumCoinsForSuccessfulGame(getCurrMove(self.gridHandle), getMaxMoves(self.gridHandle));
+        [self updateCoinsEarned:numCoins];
         
         //update last completed preference
         int lastCompletedLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_LAST_COMPLETED_LEVEL];
@@ -365,6 +366,7 @@ didFailWithError:(NSError *)error
 {
     self.mIAPManager = [[MFIAPManager alloc] init];
     [self.mIAPManager initialize];
+    self.mIAPManager.mPurchaseDelegate = self;
 }
 
 -(void)setupSound
@@ -476,6 +478,9 @@ didFailWithError:(NSError *)error
 
     
     //update the coins label
+    int numCoins = [[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_COINS_EARNED];
+    setCoins(numCoins);
+    
     NSString *coinsLabel = [NSString stringWithFormat:@"%d", getCoins()];
     [self.coinsLabel setText:coinsLabel];
     
@@ -739,9 +744,7 @@ didFailWithError:(NSError *)error
             if (numCoins >= numCoinsForMoves)
             {
                 numCoins -= numCoinsForMoves;
-                setCoins(numCoins);
-                
-                [self updateCoinsLabel:(numCoins)];
+                [self updateCoinsEarned:numCoins];
                 
                 int maxMoves = getMaxMoves(self.gridHandle);
                 maxMoves += 5;
@@ -809,9 +812,7 @@ didFailWithError:(NSError *)error
             if (numCoins >= numCoinsForStar)
             {
                 numCoins -= numCoinsForStar;
-                setCoins(numCoins);
-                
-                [self updateCoinsLabel:(numCoins)];
+                [self updateCoinsEarned:numCoins];
                 
                 //enter state where game view detects tap on a specific cell
                 [self.gameView enableDisableTouchInput:YES];
@@ -836,9 +837,7 @@ didFailWithError:(NSError *)error
             if (numCoins >= numCoinsForHurdleSmasher)
             {
                 numCoins -= numCoinsForHurdleSmasher;
-                setCoins(numCoins);
-                
-                [self updateCoinsLabel:(numCoins)];
+                [self updateCoinsEarned:numCoins];
                 
                 //enter state where game view detects tap on a specific cell
                 [self.gameView enableDisableTouchInput:YES];
@@ -853,6 +852,81 @@ didFailWithError:(NSError *)error
                 [self addCoins];
             }
         }
+    }
+    else if (dialogType == DIALOG_TYPE_ADD_COINS)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Add 500 Coins
+        {
+            [self.mIAPManager startPurchase:@ IAP_COINS_FIRST];
+        }
+        else if (option == GAME_DIALOG_POSITIVE_ACTION_2)
+        {
+            [self.mIAPManager startPurchase:@ IAP_COINS_SECOND];
+        }
+        else if (option == GAME_DIALOG_POSITIVE_ACTION_3)
+        {
+            [self.mIAPManager startPurchase:@ IAP_COINS_THIRD];
+        }
+        else if (option == GAME_DIALOG_POSITIVE_ACTION_4)
+        {
+            [self.mIAPManager startPurchase:@ IAP_COINS_FOURTH];
+        }
+    }
+    else if (dialogType == DIALOG_TYPE_IAP_PURCHASE_FAILED)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1)
+        {
+            //do nothing beyond dismissing the dialog
+        }
+    }
+}
+
+-(void)updateCoinsEarned:(int)coins
+{
+    setCoins(coins);
+    [self updateCoinsLabel:coins];
+    
+    //now also udpate the preference
+    [[NSUserDefaults standardUserDefaults] setInteger:coins forKey: @PREFERENCE_TOTAL_COINS_EARNED];
+}
+
+-(void) hideAds
+{
+    
+}
+
+-(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status
+{
+    if (status == YES) //purchase successful!
+    {
+        if ([pid isEqualToString:@IAP_REMOVE_ADS])
+        {
+            [self hideAds];
+        }
+        else
+        {
+            int numCoins = getCoins();
+            if ([pid isEqualToString:@IAP_COINS_FIRST])
+            {
+                [self updateCoinsEarned:(numCoins + getNumCoinsIAPFirst())];
+            }
+            else if ([pid isEqualToString:@IAP_COINS_SECOND])
+            {
+                [self updateCoinsEarned:(numCoins + getNumCoinsIAPSecond())];
+            }
+            else if ([pid isEqualToString:@IAP_COINS_THIRD])
+            {
+                [self updateCoinsEarned:(numCoins + getNumCoinsIAPThird())];
+            }
+            else if ([pid isEqualToString:@IAP_COINS_FOURTH])
+            {
+                [self updateCoinsEarned:(numCoins + getNumCoinsIAPFourth())];
+            }
+        }
+    }
+    else //purchase failed or canceled
+    {
+        [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED];
     }
 }
 

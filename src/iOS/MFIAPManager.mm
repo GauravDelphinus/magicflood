@@ -13,6 +13,9 @@
 
 -(void)initialize
 {
+    //register as observe for payment requests
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    
     //load the bundled product list
     NSString *id_iap_remove_ads = @IAP_REMOVE_ADS;
     NSString *id_iap_coins_first = @ IAP_COINS_FIRST;
@@ -82,6 +85,63 @@
     }
      */
     self.mIsSynchronized = YES;
+}
+-(void)startPurchase:(NSString *)pid
+{
+    SKProduct *product = [self getProductFromPID:pid];
+    if (product != nil)
+    {
+        SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
+        payment.quantity = 1;
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    }
+}
+
+-(SKProduct *)getProductFromPID:(NSString *)pid
+{
+    int numProducts = [self.products count];
+    for (int i = 0; i < numProducts; i++)
+    {
+        SKProduct *product = [self.products objectAtIndex:i];
+        if ([product.productIdentifier isEqualToString: pid])
+        {
+            return product;
+        }
+    }
+    
+    return nil;
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue
+ updatedTransactions:(NSArray *)transactions
+{
+    for (SKPaymentTransaction *transaction in transactions) {
+        switch (transaction.transactionState) {
+                // Call the appropriate custom method for the transaction state.
+            case SKPaymentTransactionStatePurchasing:
+                NSLog(@"Purchasing...");
+                break;
+            case SKPaymentTransactionStateDeferred:
+                NSLog(@"State Deferred...");
+                break;
+            case SKPaymentTransactionStateFailed:
+                NSLog(@"Failed");
+                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:NO];
+                break;
+            case SKPaymentTransactionStatePurchased:
+                NSLog(@"Purchase Successful!");
+                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES];
+                break;
+            case SKPaymentTransactionStateRestored:
+                NSLog(@"Purchase Restored");
+                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES];
+                break;
+            default:
+                // For debugging
+                NSLog(@"Unexpected transaction state %@", @(transaction.transactionState));
+                break;
+        }
+    }
 }
 
 @end

@@ -9,10 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 
+@protocol IAPPurchaseHandler
+@required
+-(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status;
+@end
 
-@interface MFIAPManager : NSObject <SKProductsRequestDelegate>
+@interface MFIAPManager : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 -(void)initialize;
+-(void)startPurchase:(NSString *)pid;
+-(SKProduct *)getProductFromPID:(NSString *)pid;
 
 @property BOOL mIsSynchronized; //synchronized with server
 @property NSArray *products;
+@property id <IAPPurchaseHandler> mPurchaseDelegate;
+
 @end
+
