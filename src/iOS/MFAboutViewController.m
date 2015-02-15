@@ -29,6 +29,7 @@
 }
 - (IBAction)restorePurchases:(id)sender {
     MFIAPManager *iapManager = [[MFIAPManager alloc] init];
+    [iapManager restorePurchases];
     
     
 }
