@@ -752,6 +752,16 @@ didFailWithError:(NSError *)error
         {
             [self dismissViewControllerAnimated:NO completion:nil];
         }
+        else if (option == GAME_DIALOG_NEGATIVE_ACTION_1)
+        {
+            /** If hte uesr landed here after having failed the game,
+             then take him back to the levels screen.
+             **/
+            if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
+            {
+                [self dismissViewControllerAnimated:NO completion:nil];
+            }
+        }
     }
     else if (dialogType == DIALOG_TYPE_GAME_SUCCESS)
     {
@@ -842,6 +852,17 @@ didFailWithError:(NSError *)error
         else if (option == GAME_DIALOG_POSITIVE_ACTION_4)
         {
             [self.mIAPManager startPurchase:@ IAP_COINS_FOURTH];
+        }
+        else if (option == GAME_DIALOG_NEGATIVE_ACTION_1)
+        {
+            /**
+             if the user landed here after having "failed" the game,
+             show him the game menu dialog again.
+             **/
+            if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
+            {
+                [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
+            }
         }
     }
     else if (dialogType == DIALOG_TYPE_IAP_PURCHASE_FAILED)
