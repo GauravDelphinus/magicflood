@@ -831,16 +831,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6b-Lj-6dR">
-                                <rect key="frame" x="7" y="452" width="48" height="48"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="ic_button_color_red_normal.png"/>
-                                <state key="highlighted" image="ic_button_color_red_pressed.png"/>
-                                <connections>
-                                    <action selector="colorButtonPressed:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="dno-nE-zgt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfQ-IJ-GvZ">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfQ-IJ-GvZ">
                                 <rect key="frame" x="56" y="452" width="48" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="ic_button_color_green_normal.png">
@@ -851,7 +842,7 @@
                                     <action selector="colorButtonPressed:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="CqT-u8-erO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QK-83-fmP">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QK-83-fmP">
                                 <rect key="frame" x="104" y="452" width="48" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="ic_button_color_blue_normal.png">
@@ -862,7 +853,7 @@
                                     <action selector="colorButtonPressed:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="QVD-Qd-IXa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-Ar-JU0">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-Ar-JU0">
                                 <rect key="frame" x="205" y="452" width="48" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="ic_button_color_orange_normal.png">
@@ -873,7 +864,7 @@
                                     <action selector="colorButtonPressed:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="AM1-Rr-UbM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC1-RL-jdM">
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC1-RL-jdM">
                                 <rect key="frame" x="255" y="452" width="48" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="ic_button_color_purple_normal.png">
@@ -890,7 +881,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npt-AJ-Nn3" customClass="MFGameView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npt-AJ-Nn3" customClass="MFGameView">
                                 <rect key="frame" x="12" y="101" width="297" height="172"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -900,7 +891,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0k-Ah-qHM">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0k-Ah-qHM">
                                 <rect key="frame" x="12" y="402" width="43" height="36"/>
                                 <state key="normal" image="ic_add_coins_normal.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -910,7 +901,7 @@
                                     <action selector="addCoins:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="BHF-Sy-pq5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCf-mR-EJ4">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCf-mR-EJ4">
                                 <rect key="frame" x="57" y="397" width="48" height="48"/>
                                 <state key="normal" image="ic_add_moves_normal.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -920,7 +911,7 @@
                                     <action selector="addMoves:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="Eur-5z-ORs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4b-5Z-cdg">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4b-5Z-cdg">
                                 <rect key="frame" x="99" y="393" width="54" height="48"/>
                                 <state key="normal" image="ic_add_star_normal.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -930,7 +921,7 @@
                                     <action selector="addStar:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="EDg-Ad-7SH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcP-25-JvC">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcP-25-JvC">
                                 <rect key="frame" x="155" y="397" width="48" height="48"/>
                                 <state key="normal" image="ic_add_hurdle_smasher_normal.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -940,7 +931,7 @@
                                     <action selector="addHurdleSmasher:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="C2a-9b-54M"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kc1-ib-Y7T" customClass="MFUIButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kc1-ib-Y7T" customClass="MFUIButton">
                                 <rect key="frame" x="220" y="402" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="10"/>
@@ -1007,7 +998,7 @@
                                 <rect key="frame" x="99" y="452" width="11" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBG-1s-2JC">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBG-1s-2JC">
                                 <rect key="frame" x="155" y="452" width="48" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="ic_button_color_yellow_normal.png">
@@ -1018,29 +1009,47 @@
                                     <action selector="colorButtonPressed:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="NkK-bQ-wl6"/>
                                 </connections>
                             </button>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1oR-fm-sF1">
+                                <rect key="frame" x="0.0" y="510" width="320" height="50"/>
+                            </adBannerView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6b-Lj-6dR">
+                                <rect key="frame" x="7" y="452" width="48" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="ic_button_color_red_normal.png"/>
+                                <state key="highlighted" image="ic_button_color_red_pressed.png"/>
+                                <connections>
+                                    <action selector="colorButtonPressed:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="dno-nE-zgt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1oR-fm-sF1" firstAttribute="top" secondItem="m6b-Lj-6dR" secondAttribute="bottom" constant="5" id="0Y9-yI-ON0"/>
                             <constraint firstItem="bcP-25-JvC" firstAttribute="centerY" secondItem="kc1-ib-Y7T" secondAttribute="centerY" constant="4" id="2Ou-Nb-j4g"/>
+                            <constraint firstItem="anV-qw-AJc" firstAttribute="width" secondItem="6gi-an-pCq" secondAttribute="width" id="3W7-uU-4Cf"/>
                             <constraint firstItem="fPd-JK-E5i" firstAttribute="leading" secondItem="ewe-cm-q1z" secondAttribute="trailing" constant="10" id="3YT-UG-Lp6"/>
                             <constraint firstItem="E0k-Ah-qHM" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="10" id="47M-0z-C5z"/>
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="10" id="5c8-Ao-Y6Y"/>
                             <constraint firstItem="bN1-e5-1bq" firstAttribute="width" secondItem="anV-qw-AJc" secondAttribute="width" id="6A4-Wh-uvi"/>
+                            <constraint firstItem="dXw-mP-eYt" firstAttribute="top" secondItem="1oR-fm-sF1" secondAttribute="bottom" constant="-50" id="6xR-WC-pKU"/>
                             <constraint firstItem="m6b-Lj-6dR" firstAttribute="top" secondItem="E0k-Ah-qHM" secondAttribute="bottom" constant="5" id="75w-Jh-LMe"/>
                             <constraint firstItem="bN1-e5-1bq" firstAttribute="leading" secondItem="1QK-83-fmP" secondAttribute="trailing" id="79E-Qh-44w"/>
                             <constraint firstItem="AC1-RL-jdM" firstAttribute="leading" secondItem="9xU-qi-Myu" secondAttribute="trailing" id="8IS-uC-hHw"/>
+                            <constraint firstItem="anV-qw-AJc" firstAttribute="width" secondItem="e5g-Ry-Ie1" secondAttribute="width" id="9xv-6I-5MI"/>
                             <constraint firstItem="bcP-25-JvC" firstAttribute="leading" secondItem="f4b-5Z-cdg" secondAttribute="trailing" constant="5" id="9zY-yM-LAa"/>
                             <constraint firstItem="anV-qw-AJc" firstAttribute="leading" secondItem="SfQ-IJ-GvZ" secondAttribute="trailing" id="AgL-1t-ATw"/>
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="top" secondItem="uY9-Me-CMQ" secondAttribute="bottom" constant="5" id="B9k-xP-2eq"/>
                             <constraint firstItem="6gi-an-pCq" firstAttribute="leading" secondItem="m6b-Lj-6dR" secondAttribute="trailing" id="BWT-dL-itQ"/>
                             <constraint firstAttribute="trailing" secondItem="wlr-cU-due" secondAttribute="trailing" constant="5" id="Dhe-Gg-tJM"/>
                             <constraint firstItem="m6b-Lj-6dR" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="10" id="IxQ-9Q-5IH"/>
+                            <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="AC1-RL-jdM" secondAttribute="centerY" id="Lqc-5s-LGc"/>
                             <constraint firstItem="e5g-Ry-Ie1" firstAttribute="leading" secondItem="cBG-1s-2JC" secondAttribute="trailing" id="NBn-Gb-Y7M"/>
                             <constraint firstAttribute="trailing" secondItem="AC1-RL-jdM" secondAttribute="trailing" constant="10" id="OZR-LL-htg"/>
                             <constraint firstItem="f4b-5Z-cdg" firstAttribute="centerY" secondItem="MCf-mR-EJ4" secondAttribute="centerY" constant="-4" id="Tl1-hd-2wc"/>
                             <constraint firstAttribute="trailing" secondItem="fPd-JK-E5i" secondAttribute="trailing" constant="10" id="TxQ-I0-6kI"/>
                             <constraint firstItem="bN1-e5-1bq" firstAttribute="width" secondItem="e5g-Ry-Ie1" secondAttribute="width" id="V86-HT-c0b"/>
                             <constraint firstItem="eme-ej-egX" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="5" id="YVq-wG-vLy"/>
+                            <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="SfQ-IJ-GvZ" secondAttribute="centerY" id="Yhq-WC-vAe"/>
                             <constraint firstItem="f4b-5Z-cdg" firstAttribute="centerY" secondItem="bcP-25-JvC" secondAttribute="centerY" constant="-4" id="YnE-43-PVS"/>
                             <constraint firstAttribute="trailing" secondItem="npt-AJ-Nn3" secondAttribute="trailing" constant="3" id="Zb0-zi-XRI"/>
                             <constraint firstItem="SfQ-IJ-GvZ" firstAttribute="leading" secondItem="6gi-an-pCq" secondAttribute="trailing" id="a3j-UT-yXy"/>
@@ -1050,10 +1059,13 @@
                             <constraint firstItem="uY9-Me-CMQ" firstAttribute="top" secondItem="axt-aD-MoQ" secondAttribute="bottom" constant="5" id="c85-61-vGe"/>
                             <constraint firstItem="MCf-mR-EJ4" firstAttribute="leading" secondItem="E0k-Ah-qHM" secondAttribute="trailing" constant="5" id="ejj-8Z-Y7y"/>
                             <constraint firstItem="E0k-Ah-qHM" firstAttribute="top" secondItem="npt-AJ-Nn3" secondAttribute="bottom" constant="2" id="gOB-P1-Iv0"/>
+                            <constraint firstItem="anV-qw-AJc" firstAttribute="width" secondItem="bN1-e5-1bq" secondAttribute="width" id="gSx-lm-Ud4"/>
                             <constraint firstItem="ewe-cm-q1z" firstAttribute="centerY" secondItem="fPd-JK-E5i" secondAttribute="centerY" constant="0.5" id="geA-i4-RuN"/>
+                            <constraint firstItem="anV-qw-AJc" firstAttribute="width" secondItem="9xU-qi-Myu" secondAttribute="width" id="iWp-F5-eBf"/>
                             <constraint firstItem="4Yp-VV-HRH" firstAttribute="centerY" secondItem="ewe-cm-q1z" secondAttribute="centerY" constant="-0.5" id="lNB-Wf-uO4"/>
                             <constraint firstItem="npt-AJ-Nn3" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="3" id="lRW-QK-b1L"/>
                             <constraint firstItem="1QK-83-fmP" firstAttribute="leading" secondItem="anV-qw-AJc" secondAttribute="trailing" id="lgs-Zo-daj"/>
+                            <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="m6b-Lj-6dR" secondAttribute="centerY" id="mln-Bo-sEX"/>
                             <constraint firstItem="f4b-5Z-cdg" firstAttribute="leading" secondItem="MCf-mR-EJ4" secondAttribute="trailing" constant="5" id="mvJ-Vq-Y01"/>
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="centerY" secondItem="4Yp-VV-HRH" secondAttribute="centerY" constant="0.5" id="o1k-2S-SJF"/>
                             <constraint firstItem="bN1-e5-1bq" firstAttribute="width" secondItem="6gi-an-pCq" secondAttribute="width" id="qmw-hM-Qv1"/>
@@ -1064,6 +1076,8 @@
                             <constraint firstItem="cBG-1s-2JC" firstAttribute="leading" secondItem="bN1-e5-1bq" secondAttribute="trailing" id="xRd-Cc-CTi"/>
                             <constraint firstItem="9xU-qi-Myu" firstAttribute="leading" secondItem="YJs-Ar-JU0" secondAttribute="trailing" id="yTC-Kn-Rp1"/>
                             <constraint firstItem="4Yp-VV-HRH" firstAttribute="leading" secondItem="dTR-V6-YVc" secondAttribute="trailing" constant="10" id="yjx-HX-qm1"/>
+                            <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="cBG-1s-2JC" secondAttribute="centerY" id="z2r-Fx-GOf"/>
+                            <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="1QK-83-fmP" secondAttribute="centerY" id="zWm-ie-eje"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t4p-2Y-8dc"/>
@@ -1071,11 +1085,13 @@
                     <connections>
                         <outlet property="coinsLabel" destination="4Yp-VV-HRH" id="cdj-tZ-Ndh"/>
                         <outlet property="gameView" destination="npt-AJ-Nn3" id="JQt-wm-X2L"/>
+                        <outlet property="mAdBannerView" destination="1oR-fm-sF1" id="Bdg-xK-oZn"/>
                         <outlet property="mAddCoinsButton" destination="E0k-Ah-qHM" id="y9F-Zc-gfv"/>
                         <outlet property="mAddHurdleSmasherButton" destination="bcP-25-JvC" id="65V-Jt-oOU"/>
                         <outlet property="mAddMovesButton" destination="MCf-mR-EJ4" id="H9w-Jh-rf1"/>
                         <outlet property="mAddStarButton" destination="f4b-5Z-cdg" id="1xb-pA-j5B"/>
                         <outlet property="mBlueButton" destination="1QK-83-fmP" id="RtL-0I-fT2"/>
+                        <outlet property="mColorButtonBottomConstaints" destination="6xR-WC-pKU" id="EGv-7Z-Yph"/>
                         <outlet property="mCyanButton" destination="AC1-RL-jdM" id="pLQ-bm-vgV"/>
                         <outlet property="mGreenButton" destination="SfQ-IJ-GvZ" id="hTk-4l-tOl"/>
                         <outlet property="mLevelsLabel" destination="uY9-Me-CMQ" id="7e7-kL-U89"/>

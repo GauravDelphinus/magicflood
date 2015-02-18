@@ -21,6 +21,7 @@
     NSURL *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mStarPlacedSoundURL;
 }
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mColorButtonBottomConstaints;
 @property int gameLevel; //set by the calling MFViewController
 @property BOOL mStarPlacementMode;
 @property BOOL mHurdleSmasherMode;

@@ -292,7 +292,7 @@ didFailWithError:(NSError *)error
 
 - (void)viewDidLoad
 {
-    NSLog(@"gameviewcontroller, viewdidload started");
+    NSLog(@"gameviewcontroller, viewdidload started, mAddBannerVisible = %d", self.mAdBannerVisible);
     [super viewDidLoad];
     
     //self.gridHandle = 0;
@@ -325,7 +325,7 @@ didFailWithError:(NSError *)error
     
     //set up Ads
     [self setupAds];
-    NSLog(@"gameviewcontroller, viewdidload finished");
+    //NSLog(@"gameviewcontroller, viewdidload finished");
 
 }
 
@@ -377,14 +377,6 @@ didFailWithError:(NSError *)error
 
 -(void)setupAds
 {
-    //[self.mAdBannerView removeFromSuperview];
-   //self.mAdBannerView.frame = CGRectOffset(self.mAdBannerView.frame, 0, -self.mAdBannerView.frame.size.height);
-    //[self.view addSubview:self.mAdBannerView];
-    
-    //[self.view addSubview:adView];
-    
-    //self.mAdBannerVisible = YES;
-    
     self.mAdsRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_ADS_REMOVED];
     if (!self.mAdsRemoved)
     {
@@ -395,11 +387,21 @@ didFailWithError:(NSError *)error
         }
         else
         {
-            self.mAdBannerView.frame = CGRectMake(0, self.view.frame.size.height, 320, 50);
+            [self.view removeConstraint: self.mColorButtonBottomConstaints];
+            self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+                                         attribute:NSLayoutAttributeBottom
+                                         relatedBy:NSLayoutRelationEqual
+                                            toItem:self.bottomLayoutGuide
+                                         attribute:NSLayoutAttributeBottom
+                                        multiplier:1.0
+                                          constant:self.mAdBannerView.frame.size.height];
+            [self.view addConstraint:self.mColorButtonBottomConstaints];
+            
+            [self.view setNeedsLayout];
         }
         
         self.mAdBannerView.delegate = self;
-        self.mRemoveAdsButton.hidden = NO;
+        self.mRemoveAdsButton.hidden = YES;
     }
     else
     {
@@ -409,35 +411,52 @@ didFailWithError:(NSError *)error
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    NSLog(@"bannerViewDidLoadAd, mAdBannerVisible = %d", self.mAdBannerVisible);
+    NSLog(@"bannerViewDidLoadAd, mAdBannerVisible = %s", self.mAdBannerVisible ? "YES" : "NO");
     
     if (!self.mAdBannerVisible)
     {
-        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.0
+                                                                          constant:0.0];
+        [self.view addConstraint:self.mColorButtonBottomConstaints];
         
-        // Assumes the banner view is just off the bottom of the screen.
-        banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
-        
-        [UIView commitAnimations];
+        [self.view setNeedsLayout];
         
         self.mAdBannerVisible = YES;
+        self.mRemoveAdsButton.hidden = NO;
+        NSLog(@"setting mAdBannerVisible to %s", self.mAdBannerVisible ? "YES": "NO");
+
     }
+    
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-    NSLog(@"Failed to retrieve ad, mAdBannerVisible = %d", self.mAdBannerVisible);
+    NSLog(@"Failed to retrieve ad, mAdBannerVisible = %s", self.mAdBannerVisible ? "YES" : "NO");
     
     if (self.mAdBannerVisible)
     {
-        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeTop
+                                                                        multiplier:1.0
+                                                                          constant:self.mAdBannerView.frame.size.height];
+        [self.view addConstraint:self.mColorButtonBottomConstaints];
         
-        // Assumes the banner view is placed at the bottom of the screen.
-        banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
-        
-        [UIView commitAnimations];
+        [self.view setNeedsLayout];
+        [self.view setNeedsDisplay];
         
         self.mAdBannerVisible = NO;
+        self.mRemoveAdsButton.hidden = YES;
+        NSLog(@"setting mAdBannerVisible to %s", self.mAdBannerVisible ? "YES" : "NO");
     }
 }
 
@@ -445,12 +464,17 @@ didFailWithError:(NSError *)error
 {
     if (self.mAdBannerVisible)
     {
-        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.0
+                                                                          constant:self.mAdBannerView.frame.size.height];
+        [self.view addConstraint:self.mColorButtonBottomConstaints];
         
-        // Assumes the banner view is placed at the bottom of the screen.
-        self.mAdBannerView.frame = CGRectOffset(self.mAdBannerView.frame, 0, self.mAdBannerView.frame.size.height);
-        
-        [UIView commitAnimations];
+        [self.view setNeedsLayout];
         
         self.mAdBannerVisible = NO;
     }
@@ -470,12 +494,6 @@ didFailWithError:(NSError *)error
         deleteGrid(self.gridHandle);
         self.gridHandle = 0;
     }
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    //[self setupAds];
 }
 
 /**
@@ -647,7 +665,7 @@ didFailWithError:(NSError *)error
  **/
 -(void)dealloc
 {
-    NSLog(@"dealloc, gridHandle = %lx", self.gridHandle);
+    //NSLog(@"dealloc, gridHandle = %lx", self.gridHandle);
     if (self.gridHandle != 0)
     {
         deleteGrid(self.gridHandle);
@@ -963,7 +981,7 @@ didFailWithError:(NSError *)error
     }
     else //purchase failed or canceled
     {
-        //[self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED];
+        [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED];
     }
 }
 
