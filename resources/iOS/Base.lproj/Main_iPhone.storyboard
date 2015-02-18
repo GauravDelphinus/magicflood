@@ -184,9 +184,9 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="mAboutButton" destination="CUN-ig-jfV" id="X0R-7G-NQa"/>
-                        <outlet property="mHowToPlayButton" destination="j3w-iS-oKs" id="x5K-Tc-Xcc"/>
-                        <outlet property="mPlayButton" destination="cyL-nP-byu" id="utS-uC-e9U"/>
+                        <outlet property="mAboutButtonLabel" destination="DzV-fc-7yO" id="GkM-NK-vSZ"/>
+                        <outlet property="mHowToPlayButtonLabel" destination="8l3-Sp-e8T" id="PiN-PS-JIL"/>
+                        <outlet property="mPlayGameButtonLabel" destination="JC5-DI-QIT" id="ZPb-8X-YTr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -5,3 +5,9 @@
   Created by Anukrity Jain on 4/2/15.
   Copyright (c) 2015 EzeeIdeas. All rights reserved.
 */
+
+/* Home Screen */
+"play_game_text"="Play Game";
+"how_to_play_game_text"="How to Play";
+"about_game_text"="About";
+

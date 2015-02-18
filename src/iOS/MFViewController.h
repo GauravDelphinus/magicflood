@@ -9,15 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "MFGameViewController.h"
 
+/**
+ The Home Screen
+ **/
 @interface MFViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIButton *mAboutButton;
-@property (strong, nonatomic) IBOutlet UIButton *mHowToPlayButton;
-@property (strong, nonatomic) IBOutlet UIButton *mPlayButton;
-- (IBAction)startWalkthrough:(id)sender;
 
-@property int numLevels;
--(void)initializeInAppPurchase;
--(void)initializePreferences;
 @end
 
 

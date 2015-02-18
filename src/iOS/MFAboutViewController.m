@@ -17,7 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    [self setupBackground];
+}
+
+-(void)setupBackground
+{
+    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
+    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
+    
+    _backGroundView.frame = self.view.frame;
+    _backGroundView.contentMode = UIViewContentModeScaleToFill;
+    
+    [self.view addSubview:_backGroundView];
+    [self.view sendSubviewToBack:_backGroundView];
 }
 
 - (void)didReceiveMemoryWarning {

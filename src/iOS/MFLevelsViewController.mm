@@ -174,7 +174,7 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
             [label setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:25]];
             
             //check for lock status
-            if (true) //(thisLevel <= lastCompletedLevel)
+            if (thisLevel <= lastCompletedLevel)
             {
                 [imageView setImage:completedImage];
                 

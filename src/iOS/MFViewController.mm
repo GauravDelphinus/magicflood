@@ -7,74 +7,66 @@
 //
 
 #import "MFViewController.h"
-#import "MFGameViewController.h"
-#import "MFIAPInterface.h"
-#import "MFGridInterface.h"
-#import "MFLevelsViewController.h"
-#import "MFGlobalInterface.h"
 #import "MFGameConstants.h"
-#import "MFHelpScreenViewController.h"
 
 @interface MFViewController ()
-@property (strong, nonatomic) IBOutlet UIImageView *mLogoImageView;
+
+@property (strong, nonatomic) IBOutlet UILabel *mPlayGameButtonLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mHowToPlayButtonLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mAboutButtonLabel;
 
 @end
 
 @implementation MFViewController
-- (IBAction)launchGame:(id)sender {
-    [self launchLevelsViewController];
-}
 
-- (IBAction)launchHelpScreens:(id)sender {
-    
-    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpRootViewController"];
-    
-    [self presentViewController:controller animated:YES completion:nil];
-    
-    /*
-    
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    pageControl.backgroundColor = [UIColor clearColor];
-     */
-}
-
-- (IBAction)launchAboutScreen:(id)sender {
-    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
-    
-    //[button setBackgroundColor:[UIColor yellowColor]];
-    //add background image
-    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
-    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
-    
-    _backGroundView.frame = self.view.frame;
-    _backGroundView.contentMode = UIViewContentModeScaleToFill;
-    
-    [controller.view addSubview:_backGroundView];
-    [controller.view sendSubviewToBack:_backGroundView];
-    
-    [self presentViewController:controller animated:YES completion:nil];
-
-}
+/*********************  Init / Setup Routines **************************/
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    [self initializeInAppPurchase];
     
     [self initializePreferences];
     
-    UIImage *logoImage = [UIImage imageNamed:@"iOS/iPhone/ic_logo_big"];
-    [self.mLogoImageView initWithImage:logoImage];
+    [self setupStrings];
     
-    self.numLevels = getNumLevels();
+    [self setupBackground];
+}
 
-    //[self launchLevelsViewController];
+/**
+ Set the DEFAULT preferences, for use when there's nothing
+ set.  Picked from MFGameConstants.h
+ **/
+-(void)initializePreferences
+{
+    // set defaults
+    NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          [NSNumber numberWithInt:DEFAULT_LAST_UNLOCKED_LEVEL], @PREFERENCE_LAST_UNLOCKED_LEVEL,
+                                          [NSNumber numberWithInt:DEFAULT_LAST_PLAYED_LEVEL], @PREFERENCE_LAST_PLAYED_LEVEL,
+                                          [NSNumber numberWithInt:DEFAULT_LAST_COMPLETED_LEVEL], @PREFERENCE_LAST_COMPLETED_LEVEL,
+                                          [NSNumber numberWithInt:INITIAL_COINS_ALLOCATED], @PREFERENCE_TOTAL_COINS_EARNED,
+                                          [NSNumber numberWithBool:YES], @PREFERENCE_SOUND,
+                                          [NSNumber numberWithBool:NO], @PREFERENCE_ADS_REMOVED,
+                                          nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
+}
+
+-(void)setupStrings
+{
+    NSString *playGameButtonText = NSLocalizedStringFromTable (@"play_game_text", nil, @"");
+    [self.mPlayGameButtonLabel setText:playGameButtonText];
     
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_sky_blue.png"]]];
+    NSString *howToPlayButtonText = NSLocalizedStringFromTable (@"how_to_play_game_text", nil, @"");
+    [self.mPlayGameButtonLabel setText:howToPlayButtonText];
+    
+    NSString *aboutButtonText = NSLocalizedStringFromTable (@"about_game_text", nil, @"");
+    [self.mPlayGameButtonLabel setText:aboutButtonText];
+}
+
+/**
+ Set the background image.
+ **/
+-(void)setupBackground
+{
     UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
     UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
     
@@ -83,43 +75,40 @@
     
     [self.view addSubview:_backGroundView];
     [self.view sendSubviewToBack:_backGroundView];
-    
-    //some visual touch-ups
-    self.mPlayButton.layer.cornerRadius = 5;
-    self.mPlayButton.layer.masksToBounds = YES;
-    [self.mPlayButton setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
-    
-    self.mHowToPlayButton.layer.cornerRadius = 5;
-    self.mHowToPlayButton.layer.masksToBounds = YES;
-    [self.mHowToPlayButton setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
-    
-    self.mAboutButton.layer.cornerRadius = 5;
-    self.mAboutButton.layer.masksToBounds = YES;
-    [self.mAboutButton setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5f]];
 }
 
--(void)initializePreferences
-{
-    NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@PREFERENCE_KEY ofType:@"plist"];
-    NSDictionary *defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:defaultPrefsFile];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
-}
+/*********************  User Actions **************************/
 
--(void)launchLevelsViewController
-{
+/**
+ Launch the Levels Screen to start the game play.
+ **/
+- (IBAction)launchGame:(id)sender {
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"LevelsRootViewController"];
     
     [self presentViewController:controller animated:YES completion:nil];
 }
 
--(void)initializeInAppPurchase
-{
-    addInAppProduct(IAP_REMOVE_ADS, "Remove Ads", "Remove Ads", "0", "0", false);
-    addInAppProduct(IAP_COINS_FIRST, "Add 500 Coins", "Add 500 Coins", "0", "0",  false);
-    addInAppProduct(IAP_COINS_SECOND, "Add 1000 Coins", "Add 1000 Coins", "0", "0",  false);
-    addInAppProduct(IAP_COINS_THIRD, "Add 2500 Coins", "Add 2500 Coins", "0", "0",  false);
-    addInAppProduct(IAP_COINS_FOURTH, "Add 5000 Coins", "Add 5000 Coins", "0", "0",  false);
+/**
+ Launch the How to Play Screen.
+ **/
+- (IBAction)launchHelpScreens:(id)sender {
+    
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpRootViewController"];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
+
+/**
+ Launch the About Screen.
+ **/
+- (IBAction)launchAboutScreen:(id)sender {
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+
+}
+
+/*********************  System Callbacks **************************/
 
 - (void)didReceiveMemoryWarning
 {
@@ -127,27 +116,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-/**
- Called when the view controller is about to load the MFGameViewController
- **/
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    UIButton *button = (UIButton *)sender;
-    if (button.tag == 100)
-    {
-        [self launchLevelsViewController];
-    }
-    else{
-    MFGameViewController *controller = (MFGameViewController *)segue.destinationViewController;
-    
-    //controller.gameLevel = button.tag;
-    controller.gameLevel = 33;
-    }
-   
-}
-
 //hide status bar
-- (BOOL)prefersStatusBarHidden {
+- (BOOL)prefersStatusBarHidden
+{
     return YES;
 }
 

@@ -84,7 +84,6 @@
 		F183967E1A80F41400D08FF3 /* ic_moves.png in Resources */ = {isa = PBXBuildFile; fileRef = F183967D1A80F41400D08FF3 /* ic_moves.png */; };
 		F18448C81A8F1E22000D105A /* MFAddCoinsDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = F18448C71A8F1E22000D105A /* MFAddCoinsDialog.mm */; };
 		F19285A01A825BCE00628DE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F192859F1A825BCE00628DE2 /* Localizable.strings */; };
-		F19285A31A826CBF00628DE2 /* user_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = F19285A21A826CBF00628DE2 /* user_prefs.plist */; };
 		F19285BD1A84ECF800628DE2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19285A71A84170D00628DE2 /* AudioToolbox.framework */; };
 		F1A2F2DB1A1D7F1C000DD4E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */; };
 		F1A2F2DD1A1D7F1C000DD4E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */; };
@@ -234,7 +233,6 @@
 		F18448C71A8F1E22000D105A /* MFAddCoinsDialog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFAddCoinsDialog.mm; path = ../../src/iOS/MFAddCoinsDialog.mm; sourceTree = SOURCE_ROOT; };
 		F192859F1A825BCE00628DE2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../../resources/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		F19285A11A826A6600628DE2 /* MFGameConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFGameConstants.h; path = ../../src/iOS/MFGameConstants.h; sourceTree = SOURCE_ROOT; };
-		F19285A21A826CBF00628DE2 /* user_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = user_prefs.plist; path = ../../resources/iOS/user_prefs.plist; sourceTree = SOURCE_ROOT; };
 		F19285A71A84170D00628DE2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F19285B11A84E4B400628DE2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F1A2F2D71A1D7F1C000DD4E7 /* Magic Flood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Flood.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -341,7 +339,6 @@
 				F147C5FA1A2364EF00CBCE83 /* Images.xcassets */,
 				F11D21D41A7D0F8D006A4086 /* product_ids.plist */,
 				F192859F1A825BCE00628DE2 /* Localizable.strings */,
-				F19285A21A826CBF00628DE2 /* user_prefs.plist */,
 			);
 			name = Resources;
 			path = ../../resources;
@@ -715,7 +712,6 @@
 				F164C1441A8BF88800CBB5EC /* ic_button_facebook_pressed.png in Resources */,
 				F1E64C091A7E6DBB0042D466 /* ic_logo_big.png in Resources */,
 				F125FDCF1A865B5B008D7E1E /* ic_hurdle_smasher_info.png in Resources */,
-				F19285A31A826CBF00628DE2 /* user_prefs.plist in Resources */,
 				F125FDD21A865DBB008D7E1E /* ic_iap_failed.png in Resources */,
 				F1E5A4201A817CAE006AC218 /* ic_button_menu_pressed.png in Resources */,
 				F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */,

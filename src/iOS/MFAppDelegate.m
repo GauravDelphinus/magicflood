@@ -14,21 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Backgrounds/bg_sky_blue.png"]]];
-    
-    // set defaults
-    NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                          [NSNumber numberWithInt:DEFAULT_LAST_UNLOCKED_LEVEL], @PREFERENCE_LAST_UNLOCKED_LEVEL,
-                                          [NSNumber numberWithInt:DEFAULT_LAST_PLAYED_LEVEL], @PREFERENCE_LAST_PLAYED_LEVEL,
-                                          [NSNumber numberWithInt:DEFAULT_LAST_COMPLETED_LEVEL], @PREFERENCE_LAST_COMPLETED_LEVEL,
-                                          [NSNumber numberWithInt:INITIAL_COINS_ALLOCATED], @PREFERENCE_TOTAL_COINS_EARNED,
-                                          [NSNumber numberWithBool:YES], @PREFERENCE_SOUND,
-                                          [NSNumber numberWithBool:NO], @PREFERENCE_ADS_REMOVED,
-                                          nil];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
-    
-    //set full screen views for all controllers
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+
     return YES;
 }
 							
