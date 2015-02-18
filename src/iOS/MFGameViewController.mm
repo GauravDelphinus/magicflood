@@ -935,7 +935,10 @@ didFailWithError:(NSError *)error
     }
     else if (dialogType == DIALOG_TYPE_REMOVE_ADS)
     {
-        [self.mIAPManager startPurchase:@ IAP_REMOVE_ADS];
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1)
+        {
+            [self.mIAPManager startPurchase:@ IAP_REMOVE_ADS];
+        }
     }
 }
 
