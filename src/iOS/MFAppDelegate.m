@@ -26,6 +26,9 @@
                                           [NSNumber numberWithBool:NO], @PREFERENCE_ADS_REMOVED,
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
+    
+    //set full screen views for all controllers
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     return YES;
 }
 							

@@ -169,5 +169,9 @@
     return 0;
 }
 
+//hide status bar
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
 @end

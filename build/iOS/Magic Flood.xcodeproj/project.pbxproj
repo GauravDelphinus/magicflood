@@ -31,6 +31,7 @@
 		F125FDD01A865B5B008D7E1E /* ic_star_placement_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDCE1A865B5B008D7E1E /* ic_star_placement_info.png */; };
 		F125FDD21A865DBB008D7E1E /* ic_iap_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDD11A865DBB008D7E1E /* ic_iap_failed.png */; };
 		F125FDD41A865E38008D7E1E /* ic_not_connected.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDD31A865E38008D7E1E /* ic_not_connected.png */; };
+		F13B143E1A94A6B400130409 /* ic_hot_deal.png in Resources */ = {isa = PBXBuildFile; fileRef = F13B143D1A94A6B400130409 /* ic_hot_deal.png */; };
 		F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F147C5FA1A2364EF00CBCE83 /* Images.xcassets */; };
 		F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7771A236C23002D4DDD /* Main_iPad.storyboard */; };
 		F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */; };
@@ -168,6 +169,7 @@
 		F125FDCE1A865B5B008D7E1E /* ic_star_placement_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star_placement_info.png; sourceTree = "<group>"; };
 		F125FDD11A865DBB008D7E1E /* ic_iap_failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_iap_failed.png; sourceTree = "<group>"; };
 		F125FDD31A865E38008D7E1E /* ic_not_connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_not_connected.png; sourceTree = "<group>"; };
+		F13B143D1A94A6B400130409 /* ic_hot_deal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hot_deal.png; sourceTree = "<group>"; };
 		F147C5FA1A2364EF00CBCE83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../resources/iOS/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F147E7781A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		F147E77A1A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F13B143D1A94A6B400130409 /* ic_hot_deal.png */,
 				F1136C531A909ABE00338A38 /* ic_button_restore_normal.png */,
 				F1136C541A909ABE00338A38 /* ic_button_restore_pressed.png */,
 				F164C13D1A8BF88800CBB5EC /* ic_button_facebook_normal.png */,
@@ -702,6 +705,7 @@
 				F164C1371A8B926400CBB5EC /* help_image_screen_3b.png in Resources */,
 				F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */,
 				F125FDC41A8643CE008D7E1E /* ic_iap_coins_third.png in Resources */,
+				F13B143E1A94A6B400130409 /* ic_hot_deal.png in Resources */,
 				F1E5A41F1A817CAE006AC218 /* ic_button_menu_normal.png in Resources */,
 				F1E5A4101A81114A006AC218 /* ic_button_color_green_normal.png in Resources */,
 				F125FDCC1A8651F6008D7E1E /* ic_next_level.png in Resources */,

@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *mRemoveAdsButtonLabel;
 @property (strong, nonatomic) IBOutlet MFUIButton *mRemoveAdsButton;
 @property (strong, nonatomic) IBOutlet UILabel *mNotConnectedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mNotePermanentLabel;
 
 @end
 
@@ -42,6 +43,7 @@
         self.mRemoveAdsButton.enabled = YES;
         
         self.mNotConnectedLabel.hidden = YES;
+        self.mNotePermanentLabel.hidden = NO;
     }
     else
     {
@@ -50,6 +52,7 @@
         self.mRemoveAdsButton.enabled = NO;
         
         self.mNotConnectedLabel.hidden = NO;
+        self.mNotePermanentLabel.hidden = YES;
     }
 
 }

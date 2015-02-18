@@ -146,5 +146,10 @@
    
 }
 
+//hide status bar
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 
 @end

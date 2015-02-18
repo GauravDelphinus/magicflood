@@ -985,4 +985,9 @@ didFailWithError:(NSError *)error
     }
 }
 
+//hide status bar during game play
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 @end

@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet MFUIButton *m2500CoinsButton;
 @property (strong, nonatomic) IBOutlet MFUIButton *m5000CoinsButton;
 @property (strong, nonatomic) IBOutlet UILabel *mConnectionProblemLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mConsumableNoteLabel;
 
 @end
 
@@ -66,6 +67,7 @@
         self.m5000CoinsButton.enabled = YES;
         
         self.mConnectionProblemLabel.hidden = YES;
+        self.mConsumableNoteLabel.hidden = NO;
     }
     else
     {
@@ -80,6 +82,7 @@
         self.m5000CoinsButton.enabled = NO;
         
         self.mConnectionProblemLabel.hidden = NO;
+        self.mConsumableNoteLabel.hidden = YES;
     }
 }
 
