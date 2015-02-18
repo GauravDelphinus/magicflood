@@ -32,6 +32,7 @@
 		F125FDD21A865DBB008D7E1E /* ic_iap_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDD11A865DBB008D7E1E /* ic_iap_failed.png */; };
 		F125FDD41A865E38008D7E1E /* ic_not_connected.png in Resources */ = {isa = PBXBuildFile; fileRef = F125FDD31A865E38008D7E1E /* ic_not_connected.png */; };
 		F13B143E1A94A6B400130409 /* ic_hot_deal.png in Resources */ = {isa = PBXBuildFile; fileRef = F13B143D1A94A6B400130409 /* ic_hot_deal.png */; };
+		F13B14401A95370200130409 /* MFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F13B143F1A95370200130409 /* MFUtils.m */; };
 		F147C5FB1A2364EF00CBCE83 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F147C5FA1A2364EF00CBCE83 /* Images.xcassets */; };
 		F147E77B1A236C23002D4DDD /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7771A236C23002D4DDD /* Main_iPad.storyboard */; };
 		F147E77C1A236C23002D4DDD /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F147E7791A236C23002D4DDD /* Main_iPhone.storyboard */; };
@@ -169,6 +170,8 @@
 		F125FDD11A865DBB008D7E1E /* ic_iap_failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_iap_failed.png; sourceTree = "<group>"; };
 		F125FDD31A865E38008D7E1E /* ic_not_connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_not_connected.png; sourceTree = "<group>"; };
 		F13B143D1A94A6B400130409 /* ic_hot_deal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hot_deal.png; sourceTree = "<group>"; };
+		F13B143F1A95370200130409 /* MFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFUtils.m; path = ../../src/iOS/MFUtils.m; sourceTree = SOURCE_ROOT; };
+		F13B14411A9537CF00130409 /* MFUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFUtils.h; path = ../../src/iOS/MFUtils.h; sourceTree = SOURCE_ROOT; };
 		F147C5FA1A2364EF00CBCE83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../resources/iOS/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F147E7781A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		F147E77A1A236C23002D4DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../resources/iOS/Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -488,6 +491,8 @@
 				F16F2DF51A8F426800CB0678 /* MFIAPManager.mm */,
 				F1D39E4C1A90498A008B7001 /* MFRemoveAdsDialogViewController.h */,
 				F1D39E4D1A90498A008B7001 /* MFRemoveAdsDialogViewController.mm */,
+				F13B143F1A95370200130409 /* MFUtils.m */,
+				F13B14411A9537CF00130409 /* MFUtils.h */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -771,6 +776,7 @@
 				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
 				F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */,
 				F11D21D31A7CBD19006A4086 /* MFGlobalInterface.cpp in Sources */,
+				F13B14401A95370200130409 /* MFUtils.m in Sources */,
 				F1C4EF041A235C3500322C1E /* MFGameViewController.mm in Sources */,
 				F1C4EF0A1A235C6E00322C1E /* MFObstacle.cpp in Sources */,
 				F15324A01A2367EF00379773 /* MFGridInterface.cpp in Sources */,

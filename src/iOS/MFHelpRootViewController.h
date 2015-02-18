@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFHelpRootViewController : UIViewController <UIPageViewControllerDataSource>
+/**
+ The Root View Controller that contains the
+ Help PageViewController.
+ **/
 
-@property (strong, nonatomic) UIPageViewController *helpPageViewController;
+@interface MFHelpRootViewController : UIViewController <UIPageViewControllerDataSource>
 @end

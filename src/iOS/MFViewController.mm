@@ -8,6 +8,7 @@
 
 #import "MFViewController.h"
 #import "MFGameConstants.h"
+#import "MFUtils.h"
 
 @interface MFViewController ()
 
@@ -56,10 +57,10 @@
     [self.mPlayGameButtonLabel setText:playGameButtonText];
     
     NSString *howToPlayButtonText = NSLocalizedStringFromTable (@"how_to_play_game_text", nil, @"");
-    [self.mPlayGameButtonLabel setText:howToPlayButtonText];
+    [self.mHowToPlayButtonLabel setText:howToPlayButtonText];
     
     NSString *aboutButtonText = NSLocalizedStringFromTable (@"about_game_text", nil, @"");
-    [self.mPlayGameButtonLabel setText:aboutButtonText];
+    [self.mAboutButtonLabel setText:aboutButtonText];
 }
 
 /**
@@ -67,12 +68,7 @@
  **/
 -(void)setupBackground
 {
-    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
-    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
-    
-    _backGroundView.frame = self.view.frame;
-    _backGroundView.contentMode = UIViewContentModeScaleToFill;
-    
+    UIImageView* _backGroundView = [MFUtils getBackgroundImage:self];
     [self.view addSubview:_backGroundView];
     [self.view sendSubviewToBack:_backGroundView];
 }
@@ -109,12 +105,6 @@
 }
 
 /*********************  System Callbacks **************************/
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 //hide status bar
 - (BOOL)prefersStatusBarHidden

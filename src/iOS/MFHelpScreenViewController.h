@@ -10,7 +10,6 @@
 
 @interface MFHelpScreenViewController : UIViewController
 
-
-@property NSUInteger pageIndex;
+@property NSUInteger pageIndex; //the page index of this page (starting from 0)
 
 @end
