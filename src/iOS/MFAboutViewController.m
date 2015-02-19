@@ -9,6 +9,7 @@
 #import "MFAboutViewController.h"
 #import "MFIAPManager.h"
 #import "MFUtils.h"
+#import "MFGameConstants.h"
 
 @interface MFAboutViewController ()
 @end
@@ -44,19 +45,21 @@
  The Facebook buttonw as pressed.
  **/
 - (IBAction)launchFacebook:(id)sender {
-    NSURL *facebookURL = [NSURL URLWithString:@"fb://profile/1410732689221094"];
+    NSURL *facebookURL = [NSURL URLWithString:@FACEBOOK_APP_URL];
     if ([[UIApplication sharedApplication] canOpenURL:facebookURL]) {
+        //show the page in the Facebook App on the device
         [[UIApplication sharedApplication] openURL:facebookURL];
     } else {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://facebook.com/magicfloodgame"]];
+        //show the facebook page in a web browser
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@FACEBOOK_PAGE_URL]];
     }
 }
 
 /**
- The Ratings button was pressed.
+ The Ratings button was pressed.  Launch iTunes App Store with the game page opened.
  **/
 - (IBAction)launchItunesStore:(id)sender {
-    NSString *iTunesLink = @"itms://itunes.apple.com/us/app/apple-store/id469337564?mt=8f";
+    NSString *iTunesLink = @ITUNES_APP_URL;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
 }
 
@@ -67,15 +70,19 @@
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
         [composeViewController setMailComposeDelegate:self];
-        [composeViewController setToRecipients:@[@"ezeeideas@gmail.com"]];
+        [composeViewController setToRecipients:@[@FEEDBACK_EMAIL]];
+        NSString *subject = nil;
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         {
-            [composeViewController setSubject:@"Feedback related to MagicFlood on iPad"];
+            
+            subject = [NSString stringWithFormat:NSLocalizedString(@"feedback_email_subject", @""), "iPad"];
         }
         else
         {
-            [composeViewController setSubject:@"Feedback related to MagicFlood on iPhone"];
+            subject = [NSString stringWithFormat:NSLocalizedString(@"feedback_email_subject", @""), "iPhone"];
         }
+        [composeViewController setSubject:subject];
+        
         [self presentViewController:composeViewController animated:YES completion:nil];
     }
 }

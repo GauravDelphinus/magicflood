@@ -10,5 +10,9 @@
 
 IB_DESIGNABLE
 
+/**
+ A custom UIButton that shows a different color
+ background on 'presssed' state.
+ **/
 @interface MFUIButton : UIButton
 @end
