@@ -30,6 +30,10 @@
     [self queryItems];
 }
 
+/**
+ Query the iTunes Store for the list of products available
+ for IAP in this app.
+ **/
 -(void)queryItems
 {
     SKProductsRequest *productsRequest = [[SKProductsRequest alloc]
@@ -37,7 +41,11 @@
     productsRequest.delegate = self;
     [productsRequest start];
 }
-// SKProductsRequestDelegate protocol method
+
+/**
+ Called when a product request is processed. 
+ SKProductsRequestDelegate protocol method
+ **/
 - (void)productsRequest:(SKProductsRequest *)request
      didReceiveResponse:(SKProductsResponse *)response
 {
@@ -64,29 +72,16 @@
     {
         return;
     }
-    
-    //NSLog(@"response.products = %p, count = %d", response.products, [response.products count]);
-    /*
-    for (int i = 0; i < 5; i++)
-    {
-                SKProduct *product = [response.products objectAtIndex:i];
-        NSLog(@"%d: SKProduct = %p, product = %p", i, [response.products objectAtIndex:i], product);
 
-    }
-    NSArray *newArray = response.products;
-     */
     self.products = nil;
     self.products = [response.products copy];
-    /*
-    for (int i = 0; i < 5; i++)
-    {
-        SKProduct *product = [self.products objectAtIndex:i];
-        NSLog(@"%d: SKProduct = %p, product = %p", i, [self.products objectAtIndex:i], product);
-        
-    }
-     */
+
     self.mIsSynchronized = YES;
 }
+
+/**
+ Call iTunes API to start a purchase workflow
+ **/
 -(void)startPurchase:(NSString *)pid
 {
     SKProduct *product = [self getProductFromPID:pid];
@@ -98,6 +93,9 @@
     }
 }
 
+/**
+ Revert a product from a PID in the list of products.
+ **/
 -(SKProduct *)getProductFromPID:(NSString *)pid
 {
     int numProducts = [self.products count];
@@ -113,6 +111,10 @@
     return nil;
 }
 
+/**
+ Callback called by the IAP subsystem on a change in status
+ of an ongoing transaction.
+ **/
 - (void)paymentQueue:(SKPaymentQueue *)queue
  updatedTransactions:(NSArray *)transactions
 {
@@ -120,27 +122,22 @@
         switch (transaction.transactionState) {
                 // Call the appropriate custom method for the transaction state.
             case SKPaymentTransactionStatePurchasing:
-                NSLog(@"Purchasing...");
                 break;
             case SKPaymentTransactionStateDeferred:
-                NSLog(@"State Deferred...");
                 break;
             case SKPaymentTransactionStateFailed:
-                NSLog(@"Failed");
                 [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:NO];
                 
                 //finish the transaction
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStatePurchased:
-                NSLog(@"Purchase Successful!");
                 [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES];
                 
                 //finish the transaction
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStateRestored:
-                NSLog(@"Purchase Restored");
                 [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES];
                 
                 //finish the transaction
@@ -148,28 +145,44 @@
                 break;
             default:
                 // For debugging
-                NSLog(@"Unexpected transaction state %@", @(transaction.transactionState));
                 break;
         }
     }
 }
 
+/**
+ Restore any existing purchases on this user's Apple ID
+ **/
 -(void)restorePurchases
 {
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
-//Then this delegate Function Will be fired
+/**
+ Callback when a restore purchase transaction changes status.
+ **/
 - (void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
-    NSLog(@"received restored transactions: %i", queue.transactions.count);
     for (SKPaymentTransaction *transaction in queue.transactions)
     {
         NSString *productID = transaction.payment.productIdentifier;
         if ([productID isEqualToString:@IAP_REMOVE_ADS])
         {
-            //remove ads has been restored.  Update the preference
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_ADS_REMOVED];
+            switch (transaction.transactionState) {
+                case SKPaymentTransactionStateFailed:
+                    [self.mPurchaseDelegate onPurchaseRestored:transaction.payment.productIdentifier WithStatus:NO];
+                    break;
+                case SKPaymentTransactionStatePurchased:
+                case SKPaymentTransactionStateRestored:
+                    //finish the transaction
+                    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                    
+                    //remove ads has been restored.  Update the preference
+                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_ADS_REMOVED];
+                    
+                    [self.mPurchaseDelegate onPurchaseRestored:transaction.payment.productIdentifier WithStatus:YES];
+                    break;
+            }
         }
     }
 }

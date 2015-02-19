@@ -9,6 +9,7 @@
 #import "MFRemoveAdsDialogViewController.h"
 #import "MFIAPInterface.h"
 #import "MFUIButton.h"
+#import "MFUtils.h"
 
 @interface MFRemoveAdsDialogViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *mRemoveAdsButtonLabel;
@@ -22,12 +23,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    [self setupUI];
+}
+
+-(void)setupUI
+{
     if ([SKPaymentQueue canMakePayments] && self.mIAPManager.mIsSynchronized)
     {
         SKProduct *product = nil;
-        int numProducts = [self.mIAPManager.products count];
+        int numProducts = (int)[self.mIAPManager.products count];
         for (int i = 0; i < numProducts; i++)
         {
             SKProduct *p = [self.mIAPManager.products objectAtIndex:i];
@@ -37,7 +42,9 @@
             }
         }
         
-        [self.mRemoveAdsButtonLabel setText:[self formatIAPPrice:product.price WithLocale:product.priceLocale]];
+        NSString *priceStr = [MFUtils formatIAPPrice:product.price WithLocale:product.priceLocale];
+        NSString *description = [NSString stringWithFormat:NSLocalizedString(@"remove_ads_description", @""), priceStr.UTF8String];
+        [self.mRemoveAdsButtonLabel setText:description];
         
         self.mRemoveAdsButtonLabel.enabled = YES;
         self.mRemoveAdsButton.enabled = YES;
@@ -48,40 +55,12 @@
     else
     {
         [self.mRemoveAdsButtonLabel setText:@"??"];
-     
+        
         self.mRemoveAdsButton.enabled = NO;
         
         self.mNotConnectedLabel.hidden = NO;
         self.mNotePermanentLabel.hidden = YES;
     }
-
 }
-
--(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale
-{
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [numberFormatter setLocale:locale];
-    NSString *formattedPrice = [numberFormatter stringFromNumber:price];
-    
-    return formattedPrice;
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

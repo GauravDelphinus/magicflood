@@ -12,6 +12,7 @@
 @protocol IAPPurchaseHandler
 @required
 -(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status;
+-(void)onPurchaseRestored:(NSString *)pid WithStatus:(BOOL)status;
 @end
 
 @interface MFIAPManager : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver>

@@ -283,6 +283,24 @@
     }
 }
 
+/**
+ Called when a restore transaction is triggered.
+ **/
+-(void)onPurchaseRestored:(NSString *)pid WithStatus:(BOOL)status
+{
+    if (status == YES) //purchase successful!
+    {
+        if ([pid isEqualToString:@IAP_REMOVE_ADS])
+        {
+            [self hideAds];
+        }
+    }
+    else
+    {
+        [self showDialogOfType:DIALOG_TYPE_IAP_RESTORE_FAILED withData:0];
+    }
+}
+
 /*********************  Ads (iAd) Related **************************/
 
 /**
@@ -830,6 +848,9 @@
             break;
         case DIALOG_TYPE_IAP_QUERY_FAILED:
             [self showDialog:@"IAPQueryFailedDialog" withDialogType:dialogType withData:data];
+            break;
+        case DIALOG_TYPE_IAP_RESTORE_FAILED:
+            [self showDialog:@"IAPRestoreFailedDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_INTRODUCE_STARS:
             [self showDialog:@"IntroduceStarsDialog" withDialogType:dialogType withData:data];
