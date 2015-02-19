@@ -203,6 +203,7 @@
     MFGameViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewController"];
     controller.gameLevel = (int)self.pageIndex * NUM_LEVELS_PER_SCREEN + (int)button.tag;
     
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller animated:YES completion:nil];
 }
 

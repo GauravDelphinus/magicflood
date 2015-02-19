@@ -57,6 +57,7 @@
 - (IBAction)launchGame:(id)sender {
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"LevelsRootViewController"];
     
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller animated:YES completion:nil];
 }
 
@@ -67,6 +68,7 @@
     
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpRootViewController"];
     
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller animated:YES completion:nil];
 }
 
@@ -76,6 +78,7 @@
 - (IBAction)launchAboutScreen:(id)sender {
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
     
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller animated:YES completion:nil];
 
 }
