@@ -30,7 +30,7 @@
     
     [self setupStrings];
     
-    [self setupBackground];
+    [MFUtils setBackgroundImage:self];
 }
 
 /**
@@ -61,16 +61,6 @@
     
     NSString *aboutButtonText = NSLocalizedStringFromTable (@"about_game_text", nil, @"");
     [self.mAboutButtonLabel setText:aboutButtonText];
-}
-
-/**
- Set the background image.
- **/
--(void)setupBackground
-{
-    UIImageView* _backGroundView = [MFUtils getBackgroundImage:self];
-    [self.view addSubview:_backGroundView];
-    [self.view sendSubviewToBack:_backGroundView];
 }
 
 /*********************  User Actions **************************/

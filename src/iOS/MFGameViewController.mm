@@ -17,16 +17,148 @@
 #import <StoreKit/SKPaymentQueue.h>
 #import "MFGameDialogController.h"
 #import "MFIAPInterface.h"
+#import "MFUtils.h"
 
 @interface MFGameViewController ()
+{
+    SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
+    NSURL *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mStarPlacedSoundURL;
+}
+@property (strong, nonatomic) IBOutlet UIButton *mAddStarButton;
+@property (strong, nonatomic) IBOutlet UIButton *mAddHurdleSmasherButton;
+@property (strong, nonatomic) IBOutlet UIButton *mAddCoinsButton;
+@property (strong, nonatomic) IBOutlet UIButton *mAddMovesButton;
+@property (strong, nonatomic) IBOutlet UIButton *mRemoveAdsButton;
+@property (strong, nonatomic) IBOutlet UIButton *mMenuButton;
+@property (strong, nonatomic) IBOutlet UIButton *mRedButton;
+@property (strong, nonatomic) IBOutlet UIButton *mGreenButton;
+@property (strong, nonatomic) IBOutlet UIButton *mBlueButton;
+@property (strong, nonatomic) IBOutlet UIButton *mYellowButton;
+@property (strong, nonatomic) IBOutlet UIButton *mOrangeButton;
+@property (strong, nonatomic) IBOutlet UIButton *mCyanButton;
 @property (strong, nonatomic) IBOutlet UIButton *mSoundButton;
 @property (strong, nonatomic) IBOutlet UILabel *mLevelsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coinsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *movesLable; //UILabel that displays the Moves header
 @property (strong, nonatomic) IBOutlet MFGameView *gameView; //UIView that renders the actual game board
+@property BOOL mStarPlacementMode;
+@property BOOL mHurdleSmasherMode;
+@property BOOL mEnableSound;
+@property (strong, nonatomic) IBOutlet ADBannerView *mAdBannerView;
+@property BOOL mAdBannerVisible;
+@property BOOL mAdsRemoved; //whether ads are removed by user
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mColorButtonBottomConstaints;
+@property MFIAPManager *mIAPManager; //The In-App Purchase Manager
+@property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
+@property long gridHandle; //handle to the grid object in C++ code
+
 @end
 
 @implementation MFGameViewController
+
+- (void)viewDidLoad
+{
+    NSLog(@"gameviewcontroller, viewdidload started, mAddBannerVisible = %d", self.mAdBannerVisible);
+    [super viewDidLoad];
+    
+    [MFUtils setBackgroundImage:self];
+
+    //set self as delegate for the tap protocol in the MFGameView
+    self.gameView.delegate = self;
+   
+    //setup sound
+    [self setupSound];
+    
+    //set up IAP
+    [self setupIAP];
+    
+    //set up Ads
+    [self setupAds];
+    
+    //let the game begin!
+    [self startNewGame:self.gameLevel];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    /**
+     Removing the MFGameView object from this controller is essential to
+     avoid memory leaks.
+     **/
+    [self.gameView removeFromSuperview];
+    self.gameView = nil;
+    
+    /**
+     Get rid of ad banner.
+     **/
+    [self.mAdBannerView removeFromSuperview];
+    self.mAdBannerView.delegate = nil;
+    self.mAdBannerView = nil;
+}
+
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    if (self.gridHandle != 0)
+    {
+        deleteGrid(self.gridHandle);
+        self.gridHandle = 0;
+    }
+}
+
+/**
+ Called when the view controller is about to unload.  Clear resources here.
+ **/
+-(void)dealloc
+{
+    //NSLog(@"dealloc, gridHandle = %lx", self.gridHandle);
+    if (self.gridHandle != 0)
+    {
+        deleteGrid(self.gridHandle);
+        self.gridHandle = 0;
+    }
+}
+
+/*********************  Sound Related **************************/
+
+/**
+ Load sounds into the cache for later use.
+ **/
+-(void)setupSound
+{
+    NSString *buttonPressPath = [[NSBundle mainBundle]
+                                 pathForResource:@"button_press_sound" ofType:@"wav"];
+    mButtonClickSoundURL = [NSURL fileURLWithPath:buttonPressPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mButtonClickSoundURL, &mButtonClickSoundID);
+    
+    NSString *gameFailedPath = [[NSBundle mainBundle]
+                                pathForResource:@"game_failed_sound" ofType:@"wav"];
+    mGameFailedSoundURL = [NSURL fileURLWithPath:gameFailedPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameFailedSoundURL, &mGameFailedSoundID);
+    
+    NSString *gameSuccessPath = [[NSBundle mainBundle]
+                                 pathForResource:@"game_success_sound" ofType:@"wav"];
+    mGameSuccessSoundURL = [NSURL fileURLWithPath:gameSuccessPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameSuccessSoundURL, &mGameSuccessSoundID);
+    
+    NSString *hurdleSmashedPath = [[NSBundle mainBundle]
+                                   pathForResource:@"hurdle_smashed_sound" ofType:@"wav"];
+    mHurdleSmashedSoundURL = [NSURL fileURLWithPath:hurdleSmashedPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
+    
+    NSString *starPlacedPath = [[NSBundle mainBundle]
+                                pathForResource:@"star_placed_sound" ofType:@"wav"];
+    mStarPlacedSoundURL = [NSURL fileURLWithPath:starPlacedPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mStarPlacedSoundURL, &mStarPlacedSoundID);
+    
+    //preference
+    self.mEnableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_SOUND];
+    [self refreshSoundButton:self.mSoundButton];
+}
+
+/**
+ The Sound button was pressed.  Toggle it.
+ **/
 - (IBAction)soundButtonPressed:(id)sender
 {
     self.mEnableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_SOUND];
@@ -38,6 +170,9 @@
     [self refreshSoundButton:button];
 }
 
+/**
+ Update the Sound Button to show the On/Off state.
+ **/
 -(void)refreshSoundButton:(UIButton *)button
 {
     if (self.mEnableSound)
@@ -52,59 +187,594 @@
     }
 }
 
-- (IBAction)removeAds:(id)sender {
-        [self showDialogOfType:DIALOG_TYPE_REMOVE_ADS];
+/**
+ Actually play the supplied sound.
+ **/
+-(void) playSound:(SystemSoundID)soundID
+{
+    if (self.mEnableSound)
+    {
+        //[self stopSound];
+        AudioServicesPlaySystemSound(soundID);
+        mCurrentlyPlayingSound = soundID;
+    }
 }
 
+/**
+ Stop sound if something is already playing.  Also, due to 
+ a limitation in the way AudioServices Sounds work, we need
+ to recache/reload the sounds for next time use.
+ **/
+-(void) stopSound
+{
+    if (!self.mEnableSound)
+        return;
+    
+    AudioServicesDisposeSystemSoundID(mCurrentlyPlayingSound);
+    if (mCurrentlyPlayingSound == mButtonClickSoundID)
+    {
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)mButtonClickSoundURL, &mButtonClickSoundID);
+    }
+    else if (mCurrentlyPlayingSound == mGameFailedSoundID)
+    {
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameFailedSoundURL, &mGameFailedSoundID);
+    }
+    else if (mCurrentlyPlayingSound == mGameSuccessSoundID)
+    {
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameSuccessSoundURL, &mGameSuccessSoundID);
+    }
+    else if (mCurrentlyPlayingSound == mStarPlacedSoundID)
+    {
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)mStarPlacedSoundURL, &mStarPlacedSoundID);
+    }
+    else if (mCurrentlyPlayingSound == mHurdleSmashedSoundID)
+    {
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
+    }
+}
+
+/*********************  IAP (In-App Purchase) Related **************************/
+
+/**
+ Initialize the In-App Purchase manager.
+ **/
+-(void) setupIAP
+{
+    self.mIAPManager = [[MFIAPManager alloc] init];
+    [self.mIAPManager initialize];
+    self.mIAPManager.mPurchaseDelegate = self;
+}
+
+/**
+ This is called by the IAP Manager on purchase event.
+ **/
+-(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status
+{
+    if (status == YES) //purchase successful!
+    {
+        if ([pid isEqualToString:@IAP_REMOVE_ADS])
+        {
+            [self hideAds];
+        }
+        else
+        {
+            int numCoins = getCoins();
+            if ([pid isEqualToString:@IAP_COINS_FIRST])
+            {
+                [self updateCoinsEarned:(numCoins + getNumCoinsIAPFirst())];
+            }
+            else if ([pid isEqualToString:@IAP_COINS_SECOND])
+            {
+                [self updateCoinsEarned:(numCoins + getNumCoinsIAPSecond())];
+            }
+            else if ([pid isEqualToString:@IAP_COINS_THIRD])
+            {
+                [self updateCoinsEarned:(numCoins + getNumCoinsIAPThird())];
+            }
+            else if ([pid isEqualToString:@IAP_COINS_FOURTH])
+            {
+                [self updateCoinsEarned:(numCoins + getNumCoinsIAPFourth())];
+            }
+        }
+    }
+    else //purchase failed or canceled
+    {
+        [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED];
+    }
+}
+
+/*********************  Ads (iAd) Related **************************/
+
+/**
+ Set up Ads (iAd) framework.
+ **/
+-(void)setupAds
+{
+    /**
+     Check the preference.  If the preference is set to YES (Ads Removed), it means the
+     user has actually bought the IAP to remove ads, so we should NOT show
+     ads if that's the case.
+     **/
+    self.mAdsRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_ADS_REMOVED];
+    if (!self.mAdsRemoved)
+    {
+        /**
+         The NSLayoutConstraint that sits between the mAdBannerView and the botton layout guide
+         and helps adjust the ad banner in or out of view by popping it below the bottom of the screen
+         by adjusting the Y position.
+         **/
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.0
+                                                                          constant:self.mAdBannerView.frame.size.height];
+        [self.view addConstraint:self.mColorButtonBottomConstaints];
+        
+        [self.view setNeedsLayout];
+        
+        /**
+         Start listening to the iAd callbacks
+         **/
+        self.mAdBannerView.delegate = self;
+    }
+    else //Ads are removed, so get rid of the Ad Banner view
+    {
+        [self.mAdBannerView removeFromSuperview];
+        self.mAdBannerView.delegate = nil;
+        self.mAdBannerView = nil;
+        
+        /**
+         Reset the layout constraint to now work between the color button and the
+         bottom layout guide.
+         **/
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mRedButton
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.0
+                                                                          constant:-5.0]; //keep the color button 5.0 points above the screen edge
+        [self.view addConstraint:self.mColorButtonBottomConstaints];
+        
+        [self.view setNeedsLayout];
+
+    }
+
+    self.mRemoveAdsButton.hidden = YES;
+    self.mAdBannerVisible = NO;
+}
+
+/**
+ An Ad was successfully loaded in the banner view.
+ Adjust the layout constraint to pop the ad banner back into view
+ (if currently not visible)
+ **/
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    if (!self.mAdBannerVisible)
+    {
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.0
+                                                                          constant:0.0]; //0.0 ensures the bottom of the Ad View aligns with the bottom layout guide
+        [self.view addConstraint:self.mColorButtonBottomConstaints];
+        
+        [self.view setNeedsLayout];
+        
+        self.mAdBannerVisible = YES;
+        self.mRemoveAdsButton.hidden = NO;
+    }
+}
+
+/**
+ An Ad failed to load in the banner view.
+ Adjust the layout constraint to pop the ad banner out of the view
+ (if currently visible).
+ **/
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    if (self.mAdBannerVisible)
+    {
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeTop
+                                                                        multiplier:1.0
+                                                                          constant:self.mAdBannerView.frame.size.height]; //the banner height ensures the bottom of the Ad View is exactly this much below the bottom layout guide (just hanging below the screen edge)
+        [self.view addConstraint:self.mColorButtonBottomConstaints];
+        
+        [self.view setNeedsLayout];
+        [self.view setNeedsDisplay];
+        
+        self.mAdBannerVisible = NO;
+        self.mRemoveAdsButton.hidden = YES;
+    }
+}
+
+- (IBAction)removeAds:(id)sender {
+    [self showDialogOfType:DIALOG_TYPE_REMOVE_ADS];
+}
+
+/**
+ The user just made an IAP to remove ads.  We must hide the ad banner
+ and also set the preference to stop loading ads going forward.
+ **/
+-(void) hideAds
+{
+
+    
+    /**
+     get rid of the ad banner view completely.
+     **/
+    [self.mAdBannerView removeFromSuperview];
+    self.mAdBannerView.delegate = nil;
+    self.mAdBannerView = nil;
+    
+    /**
+     Update the constraints to now hook the color button with the bottom layout guide
+     instead of the ad banner view and the bottom layout guide.
+     **/
+    [self.view removeConstraint: self.mColorButtonBottomConstaints];
+    self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mRedButton
+                                                                     attribute:NSLayoutAttributeBottom
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.bottomLayoutGuide
+                                                                     attribute:NSLayoutAttributeBottom
+                                                                    multiplier:1.0
+                                                                      constant:-5.0]; //keep the color button 5.0 points above the screen edge
+    [self.view addConstraint:self.mColorButtonBottomConstaints];
+    
+    [self.view setNeedsLayout];
+        
+    self.mAdBannerVisible = NO;
+    
+    //set the preference to not load ads going forward
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_ADS_REMOVED];
+    self.mAdsRemoved = YES;
+    
+    //also, hide the "Remove Ads" button
+    self.mRemoveAdsButton.hidden = YES;
+    
+}
+
+/*********************  Game Logic **************************/
+
+/**
+ Start a new game.  This can be called without having to reload the view controller.
+ **/
+-(void)startNewGame: (int)level
+{
+    //clear the handle if a game was already underway
+    if (self.gridHandle != 0)
+    {
+        deleteGrid(self.gridHandle);
+        self.gridHandle = 0;
+    }
+    
+    /**
+     Check if we've reached the last level!
+     **/
+    if (level > getNumLevels())
+    {
+        [self showDialogOfType:DIALOG_TYPE_GAME_FINISHED];
+        
+        return;
+    }
+    
+    self.gameLevel = level;
+    //initialize a new game grid
+    self.gridHandle = createNewGrid(self.gameLevel);
+    
+    //extract data for the game, and then pass on to the UIView for rendering
+    int **startPos = getStartPos(self.gridHandle);
+    int numStartPos = getNumStartPos(self.gridHandle);
+    int **gridData = getGridData(self.gridHandle);
+    
+    [[self gameView] initializeGameData:gridData WithSize:getGridSize(self.gridHandle) WithNumStartPos:numStartPos WithStartPos:startPos WithMaxMoves:getMaxMoves(self.gridHandle)];
+    
+    freeGridData(self.gridHandle, gridData);
+    freeStartPos(self.gridHandle, startPos);
+    gridData = NULL;
+    startPos = NULL;
+
+    // initialize the current coins tally
+    int numCoins = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_COINS_EARNED];
+    setCoins(numCoins);
+    
+    // update the various UI elements
+    [self updateCoinsLabel:getCoins()];
+    [self updateLevelLabel:self.gameLevel];
+    [self refreshLifelinesUI];
+    [self updateMovesLabel:(getMaxMoves(self.gridHandle) - getCurrMove(self.gridHandle))];
+}
+
+/**
+ The Add Moves button was pressed.
+ **/
+- (IBAction)addMoves:(id)sender {
+    [self showDialogOfType:DIALOG_TYPE_ADD_MOVES];
+}
+
+/**
+ The Add Hurdle Smasher button was pressed.
+ **/
 - (IBAction)addHurdleSmasher:(id)sender {
-    //ask the user what he wants to do next
     [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER];
 }
+
+/**
+ The Add Star button was pressed.
+ **/
 - (IBAction)addStar:(id)sender {
-    //ask the user what he wants to do next
     [self showDialogOfType:DIALOG_TYPE_ADD_STAR];
 }
 
+/**
+ The Add Coins button was pressed.
+ **/
 - (IBAction)addCoins:(id)sender
 {
     [self addCoins];
 }
 
+/**
+ Add Coins - can be called if you run out of coins to
+ add lifelines.
+ **/
 -(void)addCoins
 {
-    /*
-    SKProduct *product0 = [self.products objectAtIndex:0];
-    SKProduct *product1 = [self.products objectAtIndex:1];
-    SKProduct *product2 = [self.products objectAtIndex:2];
-    SKProduct *product3 = [self.products objectAtIndex:3];
-    
-    NSString *formattedPrice0 = [self formatIAPPrice:product0.price WithLocale:product0.priceLocale];
-    NSString *iap_first_price = @"Add 500 Coins";
-    iap_first_price = [iap_first_price stringByAppendingString:formattedPrice0];
-    
-    NSString *formattedPrice1 = [self formatIAPPrice:product0.price WithLocale:product1.priceLocale];
-    NSString *iap_second_price = @"Add 1000 Coins";
-    iap_second_price = [iap_second_price stringByAppendingString:formattedPrice1];
-    
-    NSString *formattedPrice2 = [self formatIAPPrice:product0.price WithLocale:product2.priceLocale];
-    NSString *iap_third_price = @"Add 2500 Coins";
-    iap_third_price = [iap_third_price stringByAppendingString:formattedPrice2];
-    
-    NSString *formattedPrice3 = [self formatIAPPrice:product0.price WithLocale:product3.priceLocale];
-    NSString *iap_fourth_price = @"Add 5000 Coins";
-    iap_fourth_price = [iap_fourth_price stringByAppendingString:formattedPrice3];
-    */
-    
     [self showDialogOfType:DIALOG_TYPE_ADD_COINS];
 }
 
-
-
-- (void)request:(SKRequest *)request
-didFailWithError:(NSError *)error
-{
-    NSLog(@"request didFailWithError called");
+/**
+ Handler of the menu button on the game board.
+ **/
+- (IBAction)handleExit:(id)sender {
+    [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
 }
+
+/**
+ One of the color buttons was pressed, so play the next move.
+ **/
+- (IBAction)colorButtonPressed:(id)sender
+{
+    //extract the color that was played
+    UIButton *button = (UIButton *)sender;
+    int colorValue = [self GetColorCodeFromUIButton:button];
+    
+    //play the move with the new color, and look for result
+    int *result = playMove(self.gridHandle, colorValue);
+    
+    //update moves label
+    [self updateMovesLabel:(getMaxMoves(self.gridHandle) - getCurrMove(self.gridHandle))];
+    
+    /**
+     Pass the game data to the game view so it can draw/refresh
+     the board with the updated colors.
+     **/
+    int **gridData = getGridData(self.gridHandle);
+    [[self gameView] updateGameData:gridData];
+    freeGridData(self.gridHandle, gridData);
+    gridData = NULL;
+    
+    if (result[0] == RESULT_SUCCESS) //success
+    {
+        [self playSound:mGameSuccessSoundID];
+        
+        int numCoins = getCoins();
+        numCoins += getNumCoinsForSuccessfulGame(getCurrMove(self.gridHandle), getMaxMoves(self.gridHandle));
+        [self updateCoinsEarned:numCoins];
+        
+        //update last completed preference
+        int lastCompletedLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_LAST_COMPLETED_LEVEL];
+        if (lastCompletedLevel <= self.gameLevel)
+        {
+            [[NSUserDefaults standardUserDefaults] setInteger:self.gameLevel forKey: @PREFERENCE_LAST_COMPLETED_LEVEL];
+        }
+        
+        //unlock the next level
+        int lastUnlockedLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_LAST_UNLOCKED_LEVEL];
+        if (lastUnlockedLevel <= self.gameLevel)
+        {
+            lastUnlockedLevel ++;
+            [[NSUserDefaults standardUserDefaults] setInteger:lastUnlockedLevel forKey: @PREFERENCE_LAST_UNLOCKED_LEVEL];
+        }
+        
+        [self showDialogOfType:DIALOG_TYPE_GAME_SUCCESS];
+    }
+    else if (result[0] == RESULT_FAILED) //failed
+    {
+        [self playSound:mGameFailedSoundID];
+        
+        [self showDialogOfType:DIALOG_TYPE_GAME_FAILED];
+    }
+    else
+    {
+        [self playSound:mButtonClickSoundID];
+    }
+}
+
+/**
+ Extract the integral color code from the UIColor
+ **/
+-(int)GetColorCodeFromUIButton:(UIButton *)button
+{
+    NSInteger tag = button.tag;
+    switch (tag)
+    {
+        case 1:
+            return GRID_COLOR_RED;
+            
+        case 2:
+            return GRID_COLOR_GREEN;
+            
+        case 3:
+            return GRID_COLOR_BLUE;
+            
+        case 4:
+            return GRID_COLOR_YELLOW;
+            
+        case 5:
+            return GRID_COLOR_ORANGE;
+            
+        case 6:
+            return GRID_COLOR_CYAN;
+    }
+    
+    return GRID_OBSTACLE;
+}
+
+-(void)updateCoinsEarned:(int)coins
+{
+    setCoins(coins);
+    
+    [self updateCoinsLabel:coins];
+    
+    //now also udpate the preference
+    [[NSUserDefaults standardUserDefaults] setInteger:coins forKey: @PREFERENCE_TOTAL_COINS_EARNED];
+}
+
+/*********************  UI Updates **************************/
+
+/**
+ Logic to show/hide the Star or Hurdle Smasher capabilities.
+ **/
+-(void)refreshLifelinesUI
+{
+    if (self.gameLevel == getMinLevelToAddStars())
+    {
+        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_STARS];
+    }
+    else if (self.gameLevel == getMinLevelToAddHurdleSmasher())
+    {
+        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS];
+    }
+    
+    if (self.gameLevel < getMinLevelToAddStars())
+    {
+        self.mAddStarButton.hidden = YES;
+    }
+    else
+    {
+        self.mAddStarButton.hidden = NO;
+    }
+    
+    if (self.gameLevel < getMinLevelToAddHurdleSmasher())
+    {
+        self.mAddHurdleSmasherButton.hidden = YES;
+    }
+    else
+    {
+        self.mAddHurdleSmasherButton.hidden = NO;
+    }
+}
+
+/**
+ Enable or Disable all buttons.  Used when the user
+ is in selection mode to place a star or hurdle smasher.
+ **/
+-(void) enableDisableAllButtons:(BOOL)enable
+{
+    self.mRedButton.enabled = enable;
+    self.mGreenButton.enabled = enable;
+    self.mBlueButton.enabled = enable;
+    self.mYellowButton.enabled = enable;
+    self.mOrangeButton.enabled = enable;
+    self.mCyanButton.enabled = enable;
+    
+    self.mMenuButton.enabled = enable;
+    self.mSoundButton.enabled = enable;
+    self.mAddCoinsButton.enabled = enable;
+    self.mAddMovesButton.enabled = enable;
+    self.mAddStarButton.enabled = enable;
+    self.mAddHurdleSmasherButton.enabled = enable;
+    self.mRemoveAdsButton.enabled = enable;
+}
+
+-(void)updateCoinsLabel:(int)numCoins
+{
+    //update the UI to reflect the total coins
+    NSString *labeltext = [NSString stringWithFormat:@"%d", numCoins];
+    [self.coinsLabel setText:labeltext];
+}
+
+-(void)updateMovesLabel:(int)numMoves
+{
+    NSString *labeltext = [NSString stringWithFormat:@"%d",
+                           numMoves];
+    [self.movesLable setText:labeltext];
+}
+
+-(void)updateLevelLabel:(int)level
+{
+    NSString *levelLabel = [NSString stringWithFormat:@"Level %d", level];
+    [self.mLevelsLabel setText:levelLabel];
+}
+
+/*********************  MFGameView Protocol Handlers **************************/
+
+/**
+ The user tapped on the game grid at position x,y.
+ **/
+-(void)handleGameViewTapAtX:(int)x andY:(int)y
+{
+    if (self.mStarPlacementMode == YES)
+    {
+        int result = addStartPos(self.gridHandle, x, y);
+        if (result == 1) //successfully added a star.  Update the view to reflect this
+        {
+            [self playSound:mStarPlacedSoundID];
+            
+            self.mStarPlacementMode = NO;
+            
+            int **startPos = getStartPos(self.gridHandle);
+            int numStartPos = getNumStartPos(self.gridHandle);
+            
+            [[self gameView] updateStartPos:startPos withNum:numStartPos];
+            freeStartPos(self.gridHandle, startPos);
+            startPos = NULL;
+            
+            [self enableDisableAllButtons:YES];
+        }
+        else //couldn't place the star, so keep trying
+        {
+            [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN];
+        }
+    }
+    else if (self.mHurdleSmasherMode == YES)
+    {
+        int result = smashHurdle(self.gridHandle, x, y);
+        if (result == 1) //successfully used the smasher to crack a hurdle.  Update the view to reflect this
+        {
+            [self playSound:mHurdleSmashedSoundID];
+            
+            self.mHurdleSmasherMode = NO;
+            
+            int **gridData = getGridData(self.gridHandle);
+            [[self gameView] updateGameData:gridData];
+            freeGridData(self.gridHandle, gridData);
+            gridData = NULL;
+            
+            [self enableDisableAllButtons:YES];
+        }
+        else //couldn't find a hurdle.  So keep trying
+        {
+            [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN];
+        }
+    }
+}
+
+/*********************  Dialog Handling **************************/
 
 -(void)showDialogOfType:(int)dialogType
 {
@@ -170,6 +840,9 @@ didFailWithError:(NSError *)error
     }
 }
 
+/**
+ Show the specific dialog using the storyBoardID.
+ **/
 -(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType
 {
     MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardID];
@@ -178,10 +851,13 @@ didFailWithError:(NSError *)error
     //set the delegate
     controller.delegate = self;
     controller.mIAPManager = self.mIAPManager;
-
+    
+    /**
+     Show the dialog view on top of the current view as an overlay
+     **/
     UIViewController *dst = controller;
     UIViewController *src = self;
- 
+    
     [src addChildViewController:dst];
     [src.view addSubview:dst.view];
     [src.view bringSubviewToFront:dst.view];
@@ -196,8 +872,9 @@ didFailWithError:(NSError *)error
     
     dst.view.frame = frame;
     
-    
-    
+    /**
+     Animate the dialog view to show, to give a nice effect.
+     **/
     [UIView animateWithDuration:0.3f animations:^{
         
         //dst.view.alpha = 0.5f;
@@ -205,569 +882,17 @@ didFailWithError:(NSError *)error
         
         NSLog(@"%@", NSStringFromCGRect(dst.view.frame));
     }];
-
-}
-- (IBAction)addMoves:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_ADD_MOVES];
+    
 }
 
 /**
- Handler of the "X" button on the game board.
+ Called when a dialog button was selected (and dialog was dismissed).
  **/
-- (IBAction)handleExit:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
-}
-
-/**
- One of the color buttons was pressed, so play the next move.
- **/
-- (IBAction)colorButtonPressed:(id)sender
-{
-    //extract the color that was played
-    UIButton *button = (UIButton *)sender;
-    int colorValue = [self GetColorCodeFromUIButton:button];
-
-    
-    
-    //play the move with the new color, and look for result
-    int *result = playMove(self.gridHandle, colorValue);
-    
-    //update moves label
-    [self updateMovesLabel:(getMaxMoves(self.gridHandle) - getCurrMove(self.gridHandle))];
-
-    /**
-     Pass the game data to the game view so it can draw/refresh
-     the board with the updated colors.
-     **/
-    int **gridData = getGridData(self.gridHandle);
-    [[self gameView] updateGameData:gridData];
-    freeGridData(self.gridHandle, gridData);
-    gridData = NULL;
-    
-    if (result[0] == RESULT_SUCCESS) //success
-    {
-        [self playSound:mGameSuccessSoundID];
-        
-        int numCoins = getCoins();
-        numCoins += getNumCoinsForSuccessfulGame(getCurrMove(self.gridHandle), getMaxMoves(self.gridHandle));
-        [self updateCoinsEarned:numCoins];
-        
-        //update last completed preference
-        int lastCompletedLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_LAST_COMPLETED_LEVEL];
-        if (lastCompletedLevel <= self.gameLevel)
-        {
-            [[NSUserDefaults standardUserDefaults] setInteger:self.gameLevel forKey: @PREFERENCE_LAST_COMPLETED_LEVEL];
-        }
-        
-        //unlock the next level
-        int lastUnlockedLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_LAST_UNLOCKED_LEVEL];
-        if (lastUnlockedLevel <= self.gameLevel)
-        {
-            lastUnlockedLevel ++;
-            [[NSUserDefaults standardUserDefaults] setInteger:lastUnlockedLevel forKey: @PREFERENCE_LAST_UNLOCKED_LEVEL];
-        }
-        
-        [self showDialogOfType:DIALOG_TYPE_GAME_SUCCESS];
-    }
-    else if (result[0] == RESULT_FAILED) //failed
-    {
-        [self playSound:mGameFailedSoundID];
-        
-        [self showDialogOfType:DIALOG_TYPE_GAME_FAILED];
-    }
-    else
-    {
-        [self playSound:mButtonClickSoundID];
-    }
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    NSLog(@"gameviewcontroller, viewdidload started, mAddBannerVisible = %d", self.mAdBannerVisible);
-    [super viewDidLoad];
-    
-    //self.gridHandle = 0;
-    
-    [self startNewGame:self.gameLevel];
-    
-    //set self as delegate for the tap protocol in the MFGameView
-    self.gameView.delegate = self;
-    
-    //set font typefaces
-    [self.mLevelsLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
-    [self.coinsLabel setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
-    [self.movesLable setFont:[UIFont fontWithName:@"ArchitectsDaughter" size:15]];
-    
-    //add background image
-    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
-    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
-    
-    _backGroundView.frame = self.view.frame;
-    _backGroundView.contentMode = UIViewContentModeScaleToFill;
-    
-    [self.view addSubview:_backGroundView];
-    [self.view sendSubviewToBack:_backGroundView];
-    
-    //setup sound
-    [self setupSound];
-    
-    //set up IAP
-    [self setupIAP];
-    
-    //set up Ads
-    [self setupAds];
-    //NSLog(@"gameviewcontroller, viewdidload finished");
-
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    NSLog(@"viewWillDisappear");
-    [self.gameView removeFromSuperview];
-    self.gameView = nil;
-}
-
--(void) setupIAP
-{
-    self.mIAPManager = [[MFIAPManager alloc] init];
-    [self.mIAPManager initialize];
-    self.mIAPManager.mPurchaseDelegate = self;
-}
-
--(void)setupSound
-{
-    NSString *buttonPressPath = [[NSBundle mainBundle]
-                            pathForResource:@"button_press_sound" ofType:@"wav"];
-    mButtonClickSoundURL = [NSURL fileURLWithPath:buttonPressPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mButtonClickSoundURL, &mButtonClickSoundID);
-    
-    NSString *gameFailedPath = [[NSBundle mainBundle]
-                                 pathForResource:@"game_failed_sound" ofType:@"wav"];
-    mGameFailedSoundURL = [NSURL fileURLWithPath:gameFailedPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameFailedSoundURL, &mGameFailedSoundID);
-   
-    NSString *gameSuccessPath = [[NSBundle mainBundle]
-                                 pathForResource:@"game_success_sound" ofType:@"wav"];
-    mGameSuccessSoundURL = [NSURL fileURLWithPath:gameSuccessPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameSuccessSoundURL, &mGameSuccessSoundID);
-   
-    NSString *hurdleSmashedPath = [[NSBundle mainBundle]
-                                 pathForResource:@"hurdle_smashed_sound" ofType:@"wav"];
-    mHurdleSmashedSoundURL = [NSURL fileURLWithPath:hurdleSmashedPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
-   
-    NSString *starPlacedPath = [[NSBundle mainBundle]
-                                 pathForResource:@"star_placed_sound" ofType:@"wav"];
-    mStarPlacedSoundURL = [NSURL fileURLWithPath:starPlacedPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mStarPlacedSoundURL, &mStarPlacedSoundID);
-    
-    //preference
-    self.mEnableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_SOUND];
-    [self refreshSoundButton:self.mSoundButton];
-}
-
--(void)setupAds
-{
-    self.mAdsRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_ADS_REMOVED];
-    if (!self.mAdsRemoved)
-    {
-        if (self.mAdBannerView == nil)
-        {
-            self.mAdBannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
-            [self.view addSubview:self.mAdBannerView];
-        }
-        else
-        {
-            [self.view removeConstraint: self.mColorButtonBottomConstaints];
-            self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
-                                         attribute:NSLayoutAttributeBottom
-                                         relatedBy:NSLayoutRelationEqual
-                                            toItem:self.bottomLayoutGuide
-                                         attribute:NSLayoutAttributeBottom
-                                        multiplier:1.0
-                                          constant:self.mAdBannerView.frame.size.height];
-            [self.view addConstraint:self.mColorButtonBottomConstaints];
-            
-            [self.view setNeedsLayout];
-        }
-        
-        self.mAdBannerView.delegate = self;
-        self.mRemoveAdsButton.hidden = YES;
-    }
-    else
-    {
-        self.mRemoveAdsButton.hidden = YES;
-    }
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-{
-    NSLog(@"bannerViewDidLoadAd, mAdBannerVisible = %s", self.mAdBannerVisible ? "YES" : "NO");
-    
-    if (!self.mAdBannerVisible)
-    {
-        [self.view removeConstraint: self.mColorButtonBottomConstaints];
-        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
-                                                                         attribute:NSLayoutAttributeBottom
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.bottomLayoutGuide
-                                                                         attribute:NSLayoutAttributeBottom
-                                                                        multiplier:1.0
-                                                                          constant:0.0];
-        [self.view addConstraint:self.mColorButtonBottomConstaints];
-        
-        [self.view setNeedsLayout];
-        
-        self.mAdBannerVisible = YES;
-        self.mRemoveAdsButton.hidden = NO;
-        NSLog(@"setting mAdBannerVisible to %s", self.mAdBannerVisible ? "YES": "NO");
-
-    }
-    
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    NSLog(@"Failed to retrieve ad, mAdBannerVisible = %s", self.mAdBannerVisible ? "YES" : "NO");
-    
-    if (self.mAdBannerVisible)
-    {
-        [self.view removeConstraint: self.mColorButtonBottomConstaints];
-        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
-                                                                         attribute:NSLayoutAttributeBottom
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.bottomLayoutGuide
-                                                                         attribute:NSLayoutAttributeTop
-                                                                        multiplier:1.0
-                                                                          constant:self.mAdBannerView.frame.size.height];
-        [self.view addConstraint:self.mColorButtonBottomConstaints];
-        
-        [self.view setNeedsLayout];
-        [self.view setNeedsDisplay];
-        
-        self.mAdBannerVisible = NO;
-        self.mRemoveAdsButton.hidden = YES;
-        NSLog(@"setting mAdBannerVisible to %s", self.mAdBannerVisible ? "YES" : "NO");
-    }
-}
-
--(void) hideAds
-{
-    if (self.mAdBannerVisible)
-    {
-        [self.view removeConstraint: self.mColorButtonBottomConstaints];
-        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
-                                                                         attribute:NSLayoutAttributeBottom
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.bottomLayoutGuide
-                                                                         attribute:NSLayoutAttributeBottom
-                                                                        multiplier:1.0
-                                                                          constant:self.mAdBannerView.frame.size.height];
-        [self.view addConstraint:self.mColorButtonBottomConstaints];
-        
-        [self.view setNeedsLayout];
-        
-        self.mAdBannerVisible = NO;
-    }
-    
-    //set the preference to not load ads going forward
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_ADS_REMOVED];
-    self.mAdsRemoved = YES;
-    
-    //also, hide the "Remove Ads" button
-    self.mRemoveAdsButton.hidden = YES;
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    if (self.gridHandle != 0)
-    {
-        deleteGrid(self.gridHandle);
-        self.gridHandle = 0;
-    }
-}
-
-/**
- Start a new game.
- **/
--(void)startNewGame: (int)level
-{
-    //clear the handle if a game was already underway
-    NSLog(@"startNewGame, level = %d, gridHandle = %lx", self.gameLevel, self.gridHandle);
-    if (self.gridHandle != 0)
-    {
-        deleteGrid(self.gridHandle);
-        self.gridHandle = 0;
-    }
-    
-    /**
-     Check if we've reached the last level!
-     **/
-    if (level  > getNumLevels())
-    {
-        [self showDialogOfType:DIALOG_TYPE_GAME_FINISHED];
-        
-        return;
-    }
-    
-    self.gameLevel = level;
-    //initialize a new game grid
-    self.gridHandle = createNewGrid(self.gameLevel);
-    NSLog(@"startNewGame, created new gridHandle = %lx", self.gridHandle);
-    
-    //extract data for the game, and then pass on to the UIView for rendering
-    int **startPos = getStartPos(self.gridHandle);
-    int numStartPos = getNumStartPos(self.gridHandle);
-    int **gridData = getGridData(self.gridHandle);
-    
-    [[self gameView] initializeGameData:gridData WithSize:getGridSize(self.gridHandle) WithNumStartPos:numStartPos WithStartPos:startPos WithMaxMoves:getMaxMoves(self.gridHandle)];
-    
-    freeGridData(self.gridHandle, gridData);
-    freeStartPos(self.gridHandle, startPos);
-    gridData = NULL;
-    startPos = NULL;
-    
-    //update the UI to reflect the game moves
-    [self updateMovesLabel:(getMaxMoves(self.gridHandle) - getCurrMove(self.gridHandle))];
-
-    
-    //update the coins label
-    int numCoins = [[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_COINS_EARNED];
-    setCoins(numCoins);
-    
-    NSString *coinsLabel = [NSString stringWithFormat:@"%d", getCoins()];
-    [self.coinsLabel setText:coinsLabel];
-    
-    NSString *levelLabel = [NSString stringWithFormat:@"Level %d", self.gameLevel];
-    [self.mLevelsLabel setText:levelLabel];
-    
-    [self refreshLifelinesUI];
-}
-
--(void)refreshLifelinesUI
-{
-    if (self.gameLevel == getMinLevelToAddStars())
-    {
-        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_STARS];
-    }
-    else if (self.gameLevel == getMinLevelToAddHurdleSmasher())
-    {
-        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS];
-    }
-    
-    if (self.gameLevel < getMinLevelToAddStars())
-    {
-        self.mAddStarButton.hidden = YES;
-    }
-    else
-    {
-        self.mAddStarButton.hidden = NO;
-    }
-    
-    if (self.gameLevel < getMinLevelToAddHurdleSmasher())
-    {
-        self.mAddHurdleSmasherButton.hidden = YES;
-    }
-    else
-    {
-        self.mAddHurdleSmasherButton.hidden = NO;
-    }
-}
-
--(void) enableDisableAllButtons:(BOOL)enable
-{
-    self.mRedButton.enabled = enable;
-    self.mGreenButton.enabled = enable;
-    self.mBlueButton.enabled = enable;
-    self.mYellowButton.enabled = enable;
-    self.mOrangeButton.enabled = enable;
-    self.mCyanButton.enabled = enable;
-    
-    self.mMenuButton.enabled = enable;
-    self.mSoundButton.enabled = enable;
-    self.mAddCoinsButton.enabled = enable;
-    self.mAddMovesButton.enabled = enable;
-    self.mAddStarButton.enabled = enable;
-    self.mAddHurdleSmasherButton.enabled = enable;
-    self.mRemoveAdsButton.enabled = enable;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-/**
- Extract the integral color code from the UIColor
- **/
--(int)GetColorCodeFromUIButton:(UIButton *)button
-{
-    int tag = button.tag;
-    switch (tag)
-    {
-        case 1:
-            return GRID_COLOR_RED;
-            
-        case 2:
-            return GRID_COLOR_GREEN;
-            
-        case 3:
-            return GRID_COLOR_BLUE;
-            
-        case 4:
-            return GRID_COLOR_YELLOW;
-            
-        case 5:
-            return GRID_COLOR_ORANGE;
-            
-        case 6:
-            return GRID_COLOR_CYAN;
-    }
-    
-    return GRID_OBSTACLE;
-}
-
--(void)updateCoinsLabel:(int)numCoins
-{
-    //update the UI to reflect the total coins
-    NSString *labeltext = [NSString stringWithFormat:@"%d", numCoins];
-    [self.coinsLabel setText:labeltext];
-}
-
--(void)updateMovesLabel:(int)numMoves
-{
-    NSString *labeltext = [NSString stringWithFormat:@"%d",
-                           numMoves];
-    [self.movesLable setText:labeltext];
-}
-/**
- Called when the view controller is about to unload.  Clear resources here.
- **/
--(void)dealloc
-{
-    //NSLog(@"dealloc, gridHandle = %lx", self.gridHandle);
-    if (self.gridHandle != 0)
-    {
-        deleteGrid(self.gridHandle);
-        self.gridHandle = 0;
-    }
-}
-
--(void)handleGameViewTapAtX:(int)x andY:(int)y
-{
-    if (self.mStarPlacementMode == YES)
-    {
-        int result = addStartPos(self.gridHandle, x, y);
-        if (result == 1)
-        {
-            [self playSound:mStarPlacedSoundID];
-            
-            self.mStarPlacementMode = NO;
-            
-            int **startPos = getStartPos(self.gridHandle);
-            int numStartPos = getNumStartPos(self.gridHandle);
-            
-            [[self gameView] updateStartPos:startPos withNum:numStartPos];
-            freeStartPos(self.gridHandle, startPos);
-            startPos = NULL;
-            
-            [self enableDisableAllButtons:YES];
-        }
-        else
-        {
-            [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN];
-        }
-    }
-    else if (self.mHurdleSmasherMode == YES)
-    {
-        int result = smashHurdle(self.gridHandle, x, y);
-        if (result == 1)
-        {
-            [self playSound:mHurdleSmashedSoundID];
-            
-            self.mHurdleSmasherMode = NO;
-            
-            int **gridData = getGridData(self.gridHandle);
-            [[self gameView] updateGameData:gridData];
-            freeGridData(self.gridHandle, gridData);
-            gridData = NULL;
-            
-            [self enableDisableAllButtons:YES];
-        }
-        else
-        {
-            [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN];
-        }
-    }
-}
-
--(void) playSound:(SystemSoundID)soundID
-{
-    if (self.mEnableSound)
-    {
-    //[self stopSound];
-        AudioServicesPlaySystemSound(soundID);
-        mCurrentlyPlayingSound = soundID;
-    }
-}
-
--(void) stopSound
-{
-    if (!self.mEnableSound)
-        return;
-    
-   AudioServicesDisposeSystemSoundID(mCurrentlyPlayingSound);
-   if (mCurrentlyPlayingSound == mButtonClickSoundID)
-   {
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mButtonClickSoundURL, &mButtonClickSoundID);
-   }
-    else if (mCurrentlyPlayingSound == mGameFailedSoundID)
-    {
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameFailedSoundURL, &mGameFailedSoundID);
-    }
-    else if (mCurrentlyPlayingSound == mGameSuccessSoundID)
-    {
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mGameSuccessSoundURL, &mGameSuccessSoundID);
-    }
-    else if (mCurrentlyPlayingSound == mStarPlacedSoundID)
-    {
-        
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mStarPlacedSoundURL, &mStarPlacedSoundID);
-    }
-    else if (mCurrentlyPlayingSound == mHurdleSmashedSoundID)
-    {
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
-    }
-}
-
-
-
 -(void) gameDialogOptionSelected:(int)dialogType WithOption:(int) option
 {
     //stop any sound that might be playing
     [self stopSound];
     
-    NSLog(@"gameDialogOptionSelected, dialogType = %d, option = %d", dialogType, option);
     if (dialogType == DIALOG_TYPE_ADD_MOVES)
     {
         if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Add Moves selected
@@ -942,51 +1067,7 @@ didFailWithError:(NSError *)error
     }
 }
 
--(void)updateCoinsEarned:(int)coins
-{
-    setCoins(coins);
-    [self updateCoinsLabel:coins];
-    
-    //now also udpate the preference
-    [[NSUserDefaults standardUserDefaults] setInteger:coins forKey: @PREFERENCE_TOTAL_COINS_EARNED];
-}
-
-
-
--(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status
-{
-    if (status == YES) //purchase successful!
-    {
-        if ([pid isEqualToString:@IAP_REMOVE_ADS])
-        {
-            [self hideAds];
-        }
-        else
-        {
-            int numCoins = getCoins();
-            if ([pid isEqualToString:@IAP_COINS_FIRST])
-            {
-                [self updateCoinsEarned:(numCoins + getNumCoinsIAPFirst())];
-            }
-            else if ([pid isEqualToString:@IAP_COINS_SECOND])
-            {
-                [self updateCoinsEarned:(numCoins + getNumCoinsIAPSecond())];
-            }
-            else if ([pid isEqualToString:@IAP_COINS_THIRD])
-            {
-                [self updateCoinsEarned:(numCoins + getNumCoinsIAPThird())];
-            }
-            else if ([pid isEqualToString:@IAP_COINS_FOURTH])
-            {
-                [self updateCoinsEarned:(numCoins + getNumCoinsIAPFourth())];
-            }
-        }
-    }
-    else //purchase failed or canceled
-    {
-        [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED];
-    }
-}
+/*********************  System Callbacks **************************/
 
 //hide status bar during game play
 - (BOOL)prefersStatusBarHidden {

@@ -25,15 +25,7 @@
 
     [self setupPageViewController];
     
-    [self setupBackground];
-}
-
--(void)setupBackground
-{
-    //add background image
-    UIImageView *_backGroundView = [MFUtils getBackgroundImage:self];
-    [self.view addSubview:_backGroundView];
-    [self.view sendSubviewToBack:_backGroundView];
+    [MFUtils setBackgroundImage:self];
 }
 
 -(void)setupPageViewController

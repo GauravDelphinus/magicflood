@@ -11,51 +11,11 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <iAd/iAd.h>
 #import "MFGameDialogController.h"
-#import "MFAddCoinsDialog.h"
-#import "MFIAPManager.h"
 
 @interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, ADBannerViewDelegate, GameDialogOptionSelectedDelegate,
                     IAPPurchaseHandler>
-{
-   SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
-    NSURL *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mStarPlacedSoundURL;
-}
 
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mColorButtonBottomConstaints;
 @property int gameLevel; //set by the calling MFViewController
-@property BOOL mStarPlacementMode;
-@property BOOL mHurdleSmasherMode;
-@property BOOL mEnableSound;
-@property (strong, nonatomic) IBOutlet ADBannerView *mAdBannerView;
-@property BOOL mAdBannerVisible;
-@property BOOL mAdsRemoved; //whether ads are removed by user
-@property (strong, nonatomic) IBOutlet UIButton *mAddStarButton;
-@property (strong, nonatomic) IBOutlet UIButton *mAddHurdleSmasherButton;
-@property (strong, nonatomic) IBOutlet UIButton *mAddCoinsButton;
-@property (strong, nonatomic) IBOutlet UIButton *mAddMovesButton;
-@property (strong, nonatomic) IBOutlet UIButton *mRemoveAdsButton;
-@property (strong, nonatomic) IBOutlet UIButton *mMenuButton;
-@property (strong, nonatomic) IBOutlet UIButton *mRedButton;
-@property (strong, nonatomic) IBOutlet UIButton *mGreenButton;
-@property (strong, nonatomic) IBOutlet UIButton *mBlueButton;
-@property (strong, nonatomic) IBOutlet UIButton *mYellowButton;
-@property (strong, nonatomic) IBOutlet UIButton *mOrangeButton;
-@property (strong, nonatomic) IBOutlet UIButton *mCyanButton;
-@property MFIAPManager *mIAPManager;
-
--(int)GetColorCodeFromUIButton:(UIButton *)button;
--(void)startNewGame;
--(void)updateCoinsLabel:(int)numCoins;
--(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale;
--(void)setupSound;
--(void)playSound:(SystemSoundID)soundID;
--(void) gameDialogOptionSelected:(int)dialogType WithOption:(int) option;
--(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType withData:(int)data;
--(void)showDialogOfType:(int)dialogType;
-
-@property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
-
-@property long gridHandle; //handle to the grid object in C++ code
 
 #define DIALOG_TYPE_ADD_MOVES   1
 #define DIALOG_TYPE_ADD_STAR    2

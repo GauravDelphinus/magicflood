@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 @interface MFUtils : NSObject
-+(UIImageView *)getBackgroundImage:(UIViewController *)controller;
++(void)setBackgroundImage:(UIViewController *)controller;
 +(void)setupPageControl:(UIPageViewController *)controller;
 @end
 

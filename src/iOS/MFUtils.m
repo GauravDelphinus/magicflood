@@ -11,7 +11,7 @@
 
 @implementation MFUtils : NSObject
 
-+(UIImageView *)getBackgroundImage:(UIViewController *)controller
++(void)setBackgroundImage:(UIViewController *)controller
 {
     //add background image
     UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
@@ -20,7 +20,8 @@
     backgroundView.frame = controller.view.frame;
     backgroundView.contentMode = UIViewContentModeScaleToFill;
     
-    return backgroundView;
+    [controller.view addSubview:backgroundView];
+    [controller.view sendSubviewToBack:backgroundView];
 }
 
 +(void)setupPageControl:(UIPageViewController *)controller
