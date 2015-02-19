@@ -117,7 +117,7 @@
      Determine the number of level buttons to be shown
      on the current screen.
      **/
-    int numScreens = (int)self.numLevels / NUM_LEVELS_PER_SCREEN;
+    int numScreens = [MFUtils getNumScreensFromNumLevels:self.numLevels WithPerScreen:NUM_LEVELS_PER_SCREEN];
     int numLevelsOnThisScreen = 0;
     if (self.pageIndex + 1 < numScreens)
     {

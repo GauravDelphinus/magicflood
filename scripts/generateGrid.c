@@ -38,6 +38,10 @@ int main(int argc, char *argv[])
 				dummygrid[strIndex++] = '0';
 				//insert 0 to tht position
 			}
+			else if (str[j][k] == '^')
+			{
+				dummygrid[strIndex++] = '^';
+			}
 			else if (str[j][k] == '-')
 			{
 				//insert random number

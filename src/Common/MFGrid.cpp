@@ -259,7 +259,14 @@ void MFGrid::initializeGrid()
                     mGameGrid[i] = (int *)calloc(gridSize, sizeof(int));
                     for (int j = 0; j < gridSize; j++)
                     {
-                        mGameGrid[i][j] = token[k] - '0';
+                        if (token[k] == '^')
+                        {
+                            mGameGrid[i][j] = token[k];
+                        }
+                        else
+                        {
+                            mGameGrid[i][j] = token[k] - '0';
+                        }
                         k++;
                     }
                 }

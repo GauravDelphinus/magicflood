@@ -15,6 +15,7 @@
 +(void)setBackgroundImage:(UIViewController *)controller;
 +(void)setupPageControl:(UIPageViewController *)controller;
 +(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale;
++(int)getNumScreensFromNumLevels:(int)numLevels WithPerScreen:(int)numLevelsPerScreen;
 @end
 
 #define UIColorFromRGB(rgbValue) \

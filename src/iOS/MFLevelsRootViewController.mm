@@ -84,7 +84,7 @@
         return nil;
     }
     
-    int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
+    int numScreens = [MFUtils getNumScreensFromNumLevels:self.numLevels WithPerScreen:NUM_LEVELS_PER_SCREEN];
     index++;
     if (index == numScreens) {
         return nil;
@@ -94,7 +94,7 @@
 
 - (MFLevelsViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
+    int numScreens = [MFUtils getNumScreensFromNumLevels:self.numLevels WithPerScreen:NUM_LEVELS_PER_SCREEN];
     if (index >= numScreens) {
         return nil;
     }
@@ -110,7 +110,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    int numScreens = self.numLevels / NUM_LEVELS_PER_SCREEN;
+    int numScreens = [MFUtils getNumScreensFromNumLevels:self.numLevels WithPerScreen:NUM_LEVELS_PER_SCREEN];
     return numScreens;
 }
 

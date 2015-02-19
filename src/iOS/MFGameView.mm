@@ -257,13 +257,17 @@
     {
         for (int j = 0; j < gridSize; j++)
         {
-            if (myGrid[i][j] != GRID_OBSTACLE)
-            {
-                [self drawColorWithLeft:hOffset + j * cellSize WithTop:vOffset + i * cellSize WithSize:cellSize WithX:i WithY:j];
-            }
-            else //draw a gradient in the obstacles
+            if (myGrid[i][j] == GRID_OBSTACLE) //draw hurdle gradient
             {
                 [self drawHurdleWithLeft:hOffset + j * cellSize WithTop:vOffset + i * cellSize WithSize:cellSize WithX:i WithY:j];
+            }
+            else if (myGrid[i][j] == GRID_SPACE)
+            {
+                //do nothing
+            }
+            else //draw color cell
+            {
+                [self drawColorWithLeft:hOffset + j * cellSize WithTop:vOffset + i * cellSize WithSize:cellSize WithX:i WithY:j];
             }
         }
     }

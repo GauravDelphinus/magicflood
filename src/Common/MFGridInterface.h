@@ -41,6 +41,7 @@ void freeGridData(long handle, int **gridData);
  Please add colors in increasing order, and update the NUM_COLORS macro.
  **/
 #define GRID_OBSTACLE 0
+#define GRID_SPACE  '^'
 
 #define GRID_COLOR_RED 1
 #define GRID_COLOR_GREEN 2

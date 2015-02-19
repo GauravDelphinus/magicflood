@@ -50,4 +50,15 @@
     return formattedPrice;
 }
 
++(int)getNumScreensFromNumLevels:(int)numLevels WithPerScreen:(int)numLevelsPerScreen
+{
+    int numScreens = numLevels / numLevelsPerScreen;
+    if (numLevels % numLevelsPerScreen > 0)
+    {
+        numScreens ++;
+    }
+    
+    return numScreens;
+}
+
 @end
