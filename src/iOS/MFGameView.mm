@@ -27,7 +27,23 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
 #define ROTATION_STEP_DEGREES 20
 #define ROTATION_SPEED_INTERVAL 0.2 //seconds
 
+@interface MFGameView ()
+{
+    int **myGrid; //2-D array containing the grid colors.  Note: this is a heap-based array of integer pointers
+    int gridSize; // order of game board
+    int mNumStartPos; //number of start positions
+    int **startPos; //array of start positions, each array has 2 integers. 0 = x, 1 = y
+    int maxMoves; // max number of moves in this game
+    int mCurrentAngleOfStartPosition; //current rotation angle
+    id <GameViewTapHandler> _delegate;
+}
+@property NSTimer *mStarRotationTimer;
+
+@end
+
 @implementation MFGameView
+
+/*********************  Init / Setup Routines **************************/
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -79,7 +95,6 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
         {
             myGrid[i] = (int *) malloc (size * sizeof(int));
         }
-        NSLog(@"initializeGameData, allocated new myGrid = %p", myGrid);
     }
     
     //copy grid to local data structure
@@ -108,6 +123,9 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     [self setNeedsDisplay];
 }
 
+/**
+ Set up a timer that draws a "rotating" star or stars.
+ **/
 -(void)setupTimer
 {
     self.mStarRotationTimer = [NSTimer scheduledTimerWithTimeInterval:ROTATION_SPEED_INTERVAL
@@ -117,25 +135,27 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
                                     repeats:YES];
 }
 
--(void)dealloc
+/**
+ Timer callback that triggers a re-render of the screen.
+ **/
+-(void)timerCallback:(NSTimer *)timer
 {
-    NSLog(@"MFGameView dealloc");
+    mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
+    mCurrentAngleOfStartPosition = mCurrentAngleOfStartPosition % 360;
+    [self setNeedsDisplay];
 }
 
+/**
+ This is the opportunity for the GameView to release resources and memory.
+ **/
 -(void)removeFromSuperview
 {
     [super removeFromSuperview];
     
     [self.mStarRotationTimer invalidate];
 }
--(void)timerCallback:(NSTimer *)timer
-{
-    mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
-    mCurrentAngleOfStartPosition = mCurrentAngleOfStartPosition % 360;
-    //NSLog(@"timerCallback, current angle = %d", mCurrentAngleOfStartPosition);
-    [self setNeedsDisplay];
-    //change to setNeedsDisplayInRect
-}
+
+/*********************  Update Game Routines **************************/
 
 /**
  Update the game data with updated values after a move was played.
@@ -154,6 +174,9 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     [self setNeedsDisplay];
 }
 
+/**
+ Update the stars!
+ **/
 -(void)updateStartPos:(int **)startpos withNum:(int)numStartPos
 {
     //free existing array
@@ -175,6 +198,8 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     
     [self setNeedsDisplay];
 }
+
+/*********************  Util Routines **************************/
 
 /**
  Retrun the CGColorRef value of the particular cell in the grid.
@@ -210,6 +235,8 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     return [UIColor blackColor].CGColor;
 }
 
+/*********************  Drawing Routines **************************/
+
 /**
  Main drawing routine that draws the game board.
  **/
@@ -242,42 +269,13 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     {
         for (int j = 0; j < gridSize; j++)
         {
-            int left = hOffset + j * cellSize;
-            int top = vOffset + i * cellSize;
-            
             if (myGrid[i][j] != GRID_OBSTACLE)
             {
-                CGRect rectangle = CGRectMake(hOffset + j*cellSize, vOffset + i*cellSize, cellSize, cellSize);
-                CGContextAddRect(context, rectangle);
-                //CGContextSetLineWidth(context, 2);
-                //CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-                //CGContextStrokePath(context);
-                CGContextSetFillColorWithColor(context, [self getColorFromGridForX:i andY:j]);
-                CGContextFillRect(context, rectangle);
+                [self drawColorWithLeft:hOffset + j * cellSize WithTop:vOffset + i * cellSize WithSize:cellSize WithX:i WithY:j];
             }
             else //draw a gradient in the obstacles
             {
-                CGContextSaveGState(context);
-                CGContextBeginPath(context);
-                
-                CGRect rectangle = CGRectMake(hOffset + j*cellSize, vOffset + i*cellSize, cellSize, cellSize);
-                CGContextAddRect(context, rectangle);
-                
-                
-                CGContextClip(context);
-                CGPoint startPoint = CGPointMake(left + cellSize / 2, top + cellSize / 2);
-                
-                CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-                CGFloat locations[] = { 0.0, 1.0 };
-                
-                NSArray *colors = @[(__bridge id) UIColorFromRGB(0x878787).CGColor, (__bridge id) UIColorFromRGB(0x545454).CGColor];
-                
-                CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
-                
-                CGContextDrawRadialGradient (context, gradient, startPoint,
-                                             0, startPoint, cellSize,
-                                             0);
-                CGContextRestoreGState(context);
+                [self drawHurdleWithLeft:hOffset + j * cellSize WithTop:vOffset + i * cellSize WithSize:cellSize WithX:i WithY:j];
             }
         }
     }
@@ -299,6 +297,7 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     /**
      Finally, draw the white borders around cells.
      **/
+    /*
     for (int i = 0; i < gridSize; i++)
     {
         for (int j = 0; j < gridSize; j++)
@@ -310,9 +309,13 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
             CGContextStrokePath(context);
         }
     }
+     */
 
 }
 
+/**
+ Draw the shadow around the grid.
+ **/
 -(void)drawGridShadowWithLeft:(int)left withTop:(int)top WithGridLength:(int)gridlength
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -416,6 +419,90 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     CGContextRestoreGState(context);
     
 }
+
+-(void)drawColorWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize WithX:(int)x WithY:(int)y
+{
+    int shadowThickness = 1;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    CGContextBeginPath(context);
+    
+    CGRect rectangle = CGRectMake(left, top, cellSize - shadowThickness, cellSize - shadowThickness);
+    CGContextAddRect(context, rectangle);
+
+    CGContextSetFillColorWithColor(context, [self getColorFromGridForX:x andY:y]);
+    CGContextFillRect(context, rectangle);
+    
+    /** Draw the shadow on top and bottom edge **/
+
+    CGRect borderRect = CGRectMake(left, top, cellSize, cellSize);
+    CGContextAddRect(context, borderRect);
+    
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextSetLineWidth(context, shadowThickness);
+    CGContextStrokeRect(context, borderRect);
+    
+    CGContextMoveToPoint(context, left + cellSize - shadowThickness, top);
+    CGContextAddLineToPoint(context, left + cellSize - shadowThickness, top + cellSize - shadowThickness);
+    CGContextAddLineToPoint(context, left, top + cellSize - shadowThickness);
+    CGContextSetStrokeColorWithColor(context, [UIColor darkGrayColor].CGColor);
+    CGContextSetLineWidth(context, shadowThickness);
+    CGContextStrokePath(context);
+    
+    CGContextRestoreGState(context);
+}
+
+-(void)drawHurdleWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize WithX:(int)x WithY:(int)y
+{
+    int shadowThickness = 1;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSaveGState(context);
+    CGContextBeginPath(context);
+    
+    /**
+     Note: the reason the clip rect has been expanded in all four directions by 1 pixel is because of the
+     way clip rect works.  What it does is it removes the boundary rect along with all surrounding area, which
+     renders the resulting clip 1 pixel smaller in all directions.  So, we're trying to compensate for that loss.
+     **/
+    CGRect rectangle = CGRectMake(left - 1, top - 1, cellSize - shadowThickness + 2, cellSize - shadowThickness + 2);
+    CGContextAddRect(context, rectangle);
+    
+    CGContextClip(context);
+    CGPoint startPoint = CGPointMake(left + cellSize / 2, top + cellSize / 2);
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGFloat locations[] = { 0.0, 1.0 };
+    
+    NSArray *colors = @[(__bridge id) UIColorFromRGB(0x878787).CGColor, (__bridge id) UIColorFromRGB(0x545454).CGColor];
+    
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
+    
+    CGContextDrawRadialGradient (context, gradient, startPoint,
+                                 0, startPoint, cellSize,
+                                 kCGGradientDrawsAfterEndLocation);
+    
+    /** Draw the shadow on top and bottom edge **/
+    CGRect borderRect = CGRectMake(left, top, cellSize, cellSize);
+    CGContextAddRect(context, borderRect);
+    
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextSetLineWidth(context, shadowThickness);
+    CGContextStrokeRect(context, borderRect);
+    
+    CGContextMoveToPoint(context, left + cellSize - shadowThickness, top);
+    CGContextAddLineToPoint(context, left + cellSize - shadowThickness, top + cellSize - shadowThickness);
+    CGContextAddLineToPoint(context, left, top + cellSize - shadowThickness);
+    CGContextSetStrokeColorWithColor(context, [UIColor darkGrayColor].CGColor);
+    CGContextSetLineWidth(context, shadowThickness);
+    CGContextStrokePath(context);
+    
+    CGContextRestoreGState(context);
+}
+
+/**
+ Draw a star given the various attributes.
+ **/
 -(void)drawStarWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize WithX:(int)x WithY:(int)y
 {
     /*
@@ -540,6 +627,12 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     CGContextRestoreGState(context);
 }
 
+/*********************  User Action Routines **************************/
+
+/**
+ Enable or disable touch input, a request that comes from
+ the controller.
+ **/
 -(void)enableDisableTouchInput:(BOOL)enable
 {
     if (enable == YES)
@@ -552,6 +645,10 @@ alpha:((float)((argbValue & 0xFF000000) >>  24))/255.0]
     }
 }
 
+/**
+ Touch callback when you need to allow user to tap and select
+ a particular cell in the grid.
+ **/
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [[event allTouches] anyObject];

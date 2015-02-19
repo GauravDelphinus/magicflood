@@ -7,34 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "MFGameViewController.h"
+
+/**
+ The actual UIView that renders the game grid
+ **/
+@interface MFGameView : UIView
+
+@property (nonatomic,strong) id delegate; //the delegate that implements the GameViewTapHandler protocol (see below)
+
+-(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves;
+-(void)updateGameData:(int **)grid;
+-(void)updateStartPos:(int **)startPos withNum:(int)numStartPos;
+-(void)enableDisableTouchInput:(BOOL)enable;
+
+@end
 
 @protocol GameViewTapHandler
 @required
 // list of required methods
 -(void)handleGameViewTapAtX:(int)x andY:(int)y;
 @end
-
-@interface MFGameView : UIView
-{
-    int **myGrid; //2-D array containing the grid colors.  Note: this is a heap-based array of integer pointers
-    int gridSize; // order of game board
-    int mNumStartPos; //number of start positions
-    int **startPos; //array of start positions, each array has 2 integers. 0 = x, 1 = y
-    int maxMoves; // max number of moves in this game
-    int mCurrentAngleOfStartPosition; //current rotation angle
-    id <GameViewTapHandler> _delegate;
-}
-
-@property (nonatomic,strong) id delegate;
-@property NSTimer *mStarRotationTimer;
-
--(CGColorRef)getColorFromGridForX:(int)x andY:(int)y;
--(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves;
--(void)updateGameData:(int **)grid;
--(void)updateStartPos:(int **)startPos withNum:(int)numStartPos;
--(void)drawStarWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize WithX:(int)x WithY:(int)y;
--(void)enableDisableTouchInput:(BOOL)enable;
-
-@end
-

@@ -178,7 +178,7 @@ alpha:((float)((argbValue & 0xFF000000) >>  0))/255.0]
             label.text = [NSString stringWithFormat:@"%d", thisLevel];
             
             //check for lock status
-            if (thisLevel <= lastCompletedLevel)
+            if (true) //(thisLevel <= lastCompletedLevel)
             {
                 [imageView setImage:completedImage];
                 
