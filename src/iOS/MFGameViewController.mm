@@ -735,7 +735,7 @@
 
 -(void)updateLevelLabel:(int)level
 {
-    NSString *levelLabel = [NSString stringWithFormat:@"Level %d", level];
+    NSString *levelLabel = [NSString stringWithFormat:NSLocalizedString(@"level_number", @""), level];
     [self.mLevelsLabel setText:levelLabel];
 }
 

@@ -43,7 +43,7 @@
     if (self.data > 0)
     {
         //there's a shortfall, so use the appropriate string
-        NSString *title = [NSString stringWithFormat:NSLocalizedString(@"add_coins_dialog_description_dynamic", @""), self.self.data];
+        NSString *title = [NSString stringWithFormat:NSLocalizedString(@"add_coins_dialog_description_dynamic", @""), self.data];
         [self.mDescriptionLabel setText:title];
     }
     else
