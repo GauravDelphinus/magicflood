@@ -27,9 +27,7 @@
     [super viewDidLoad];
     
     [self initializePreferences];
-    
-    [self setupStrings];
-    
+        
     [MFUtils setBackgroundImage:self];
 }
 
@@ -49,18 +47,6 @@
                                           [NSNumber numberWithBool:NO], @PREFERENCE_ADS_REMOVED,
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
-}
-
--(void)setupStrings
-{
-    NSString *playGameButtonText = NSLocalizedStringFromTable (@"play_game_text", nil, @"");
-    [self.mPlayGameButtonLabel setText:playGameButtonText];
-    
-    NSString *howToPlayButtonText = NSLocalizedStringFromTable (@"how_to_play_game_text", nil, @"");
-    [self.mHowToPlayButtonLabel setText:howToPlayButtonText];
-    
-    NSString *aboutButtonText = NSLocalizedStringFromTable (@"about_game_text", nil, @"");
-    [self.mAboutButtonLabel setText:aboutButtonText];
 }
 
 /*********************  User Actions **************************/

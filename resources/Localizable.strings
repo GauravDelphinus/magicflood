@@ -6,8 +6,6 @@
   Copyright (c) 2015 EzeeIdeas. All rights reserved.
 */
 
-/* Home Screen */
-"play_game_text"="Play Game";
-"how_to_play_game_text"="How to Play";
-"about_game_text"="About";
-
+/** Add Coins Dialog **/
+"add_coins_dialog_description_dynamic"="Hey, looks like you're running short by %d coins.  Add coins now using one of these great deals!";
+"add_coins_dialog_description_static"="Add coins and redeem them against lifeline such as additional Stars, Hurdle Smashers, and more!";

@@ -8,44 +8,41 @@
 
 #import "MFAboutViewController.h"
 #import "MFIAPManager.h"
+#import "MFUtils.h"
 
 @interface MFAboutViewController ()
-
 @end
 
 @implementation MFAboutViewController
 
+/*********************  Init / Setup Routines **************************/
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self setupBackground];
+    [MFUtils setBackgroundImage:self];
 }
 
--(void)setupBackground
-{
-    UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
-    UIImageView* _backGroundView = [[UIImageView alloc] initWithImage:_backGround];
-    
-    _backGroundView.frame = self.view.frame;
-    _backGroundView.contentMode = UIViewContentModeScaleToFill;
-    
-    [self.view addSubview:_backGroundView];
-    [self.view sendSubviewToBack:_backGroundView];
-}
+/*********************  User Actions **************************/
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+/**
+ The X button was pressed.
+ **/
 - (IBAction)dismissScreen:(id)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
 }
+
+/**
+ The Restore Purchases button was pressed.
+ **/
 - (IBAction)restorePurchases:(id)sender {
     MFIAPManager *iapManager = [[MFIAPManager alloc] init];
     [iapManager restorePurchases];
-    
-    
 }
+
+/**
+ The Facebook buttonw as pressed.
+ **/
 - (IBAction)launchFacebook:(id)sender {
     NSURL *facebookURL = [NSURL URLWithString:@"fb://profile/1410732689221094"];
     if ([[UIApplication sharedApplication] canOpenURL:facebookURL]) {
@@ -54,10 +51,18 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://facebook.com/magicfloodgame"]];
     }
 }
+
+/**
+ The Ratings button was pressed.
+ **/
 - (IBAction)launchItunesStore:(id)sender {
     NSString *iTunesLink = @"itms://itunes.apple.com/us/app/apple-store/id469337564?mt=8f";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
 }
+
+/**
+ The Email button was pressed.
+ **/
 - (IBAction)launchEmailFeedback:(id)sender {
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
@@ -75,21 +80,16 @@
     }
 }
 
+/**
+ Callback from the email composer screen.
+ **/
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
     //Add an alert in case of failure
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+/*********************  System Callbacks **************************/
 
 //hide status bar
 - (BOOL)prefersStatusBarHidden {

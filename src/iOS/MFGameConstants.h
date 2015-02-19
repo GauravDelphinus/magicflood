@@ -21,13 +21,13 @@
 #define PREFERENCE_LAST_PLAYED_LEVEL "last_played_level"
 #define PREFERENCE_LAST_COMPLETED_LEVEL "last_completed_level"
 
-#define NUM_HELP_SCREENS    8
-
 /** Default Preferences **/
 #define DEFAULT_LAST_UNLOCKED_LEVEL 1
 #define DEFAULT_LAST_PLAYED_LEVEL 1
 #define DEFAULT_LAST_COMPLETED_LEVEL 0
 #define INITIAL_COINS_ALLOCATED 100
 
+/** Other Constants **/
+#define NUM_HELP_SCREENS    8
 
 #endif

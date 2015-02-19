@@ -14,6 +14,7 @@
 @interface MFUtils : NSObject
 +(void)setBackgroundImage:(UIViewController *)controller;
 +(void)setupPageControl:(UIPageViewController *)controller;
++(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale;
 @end
 
 #endif

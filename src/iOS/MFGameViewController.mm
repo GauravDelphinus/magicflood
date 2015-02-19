@@ -279,7 +279,7 @@
     }
     else //purchase failed or canceled
     {
-        [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED];
+        [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED withData:0];
     }
 }
 
@@ -402,7 +402,7 @@
 }
 
 - (IBAction)removeAds:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_REMOVE_ADS];
+    [self showDialogOfType:DIALOG_TYPE_REMOVE_ADS withData:0];
 }
 
 /**
@@ -466,7 +466,7 @@
      **/
     if (level > getNumLevels())
     {
-        [self showDialogOfType:DIALOG_TYPE_GAME_FINISHED];
+        [self showDialogOfType:DIALOG_TYPE_GAME_FINISHED withData:0];
         
         return;
     }
@@ -502,21 +502,21 @@
  The Add Moves button was pressed.
  **/
 - (IBAction)addMoves:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_ADD_MOVES];
+    [self showDialogOfType:DIALOG_TYPE_ADD_MOVES withData:0];
 }
 
 /**
  The Add Hurdle Smasher button was pressed.
  **/
 - (IBAction)addHurdleSmasher:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER];
+    [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0];
 }
 
 /**
  The Add Star button was pressed.
  **/
 - (IBAction)addStar:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_ADD_STAR];
+    [self showDialogOfType:DIALOG_TYPE_ADD_STAR withData:0];
 }
 
 /**
@@ -524,23 +524,23 @@
  **/
 - (IBAction)addCoins:(id)sender
 {
-    [self addCoins];
+    [self addCoinsWithShortfall:0];
 }
 
 /**
  Add Coins - can be called if you run out of coins to
  add lifelines.
  **/
--(void)addCoins
+-(void)addCoinsWithShortfall:(int)shortfall
 {
-    [self showDialogOfType:DIALOG_TYPE_ADD_COINS];
+    [self showDialogOfType:DIALOG_TYPE_ADD_COINS withData:shortfall];
 }
 
 /**
  Handler of the menu button on the game board.
  **/
 - (IBAction)handleExit:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
+    [self showDialogOfType:DIALOG_TYPE_GAME_MENU withData:0];
 }
 
 /**
@@ -590,13 +590,13 @@
             [[NSUserDefaults standardUserDefaults] setInteger:lastUnlockedLevel forKey: @PREFERENCE_LAST_UNLOCKED_LEVEL];
         }
         
-        [self showDialogOfType:DIALOG_TYPE_GAME_SUCCESS];
+        [self showDialogOfType:DIALOG_TYPE_GAME_SUCCESS withData:0];
     }
     else if (result[0] == RESULT_FAILED) //failed
     {
         [self playSound:mGameFailedSoundID];
         
-        [self showDialogOfType:DIALOG_TYPE_GAME_FAILED];
+        [self showDialogOfType:DIALOG_TYPE_GAME_FAILED withData:0];
     }
     else
     {
@@ -653,11 +653,11 @@
 {
     if (self.gameLevel == getMinLevelToAddStars())
     {
-        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_STARS];
+        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_STARS withData:0];
     }
     else if (self.gameLevel == getMinLevelToAddHurdleSmasher())
     {
-        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS];
+        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS withData:0];
     }
     
     if (self.gameLevel < getMinLevelToAddStars())
@@ -748,7 +748,7 @@
         }
         else //couldn't place the star, so keep trying
         {
-            [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN];
+            [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN withData:0];
         }
     }
     else if (self.mHurdleSmasherMode == YES)
@@ -769,73 +769,73 @@
         }
         else //couldn't find a hurdle.  So keep trying
         {
-            [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN];
+            [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN withData:0];
         }
     }
 }
 
 /*********************  Dialog Handling **************************/
 
--(void)showDialogOfType:(int)dialogType
+-(void)showDialogOfType:(int)dialogType withData:(int)data
 {
     switch (dialogType)
     {
         case DIALOG_TYPE_ADD_MOVES:
-            [self showDialog:@"AddMovesDialog" withDialogType:dialogType];
+            [self showDialog:@"AddMovesDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_ADD_STAR:
-            [self showDialog:@"AddStarDialog" withDialogType:dialogType];
+            [self showDialog:@"AddStarDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_ADD_HURDLE_SMASHER:
-            [self showDialog:@"AddHurdleSmasherDialog" withDialogType:dialogType];
+            [self showDialog:@"AddHurdleSmasherDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_ADD_COINS:
-            [self showDialog:@"AddCoinsDialog" withDialogType:dialogType];
+            [self showDialog:@"AddCoinsDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_REMOVE_ADS:
-            [self showDialog:@"RemoveAdsDialog" withDialogType:dialogType];
+            [self showDialog:@"RemoveAdsDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_GAME_SUCCESS:
-            [self showDialog:@"GameSuccessDialog" withDialogType:dialogType];
+            [self showDialog:@"GameSuccessDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_GAME_FAILED:
-            [self showDialog:@"GameFailedDialog" withDialogType:dialogType];
+            [self showDialog:@"GameFailedDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_GAME_FINISHED:
-            [self showDialog:@"GameFinishedDialog" withDialogType:dialogType];
+            [self showDialog:@"GameFinishedDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_GAME_MENU:
-            [self showDialog:@"GameMenuDialog" withDialogType:dialogType];
+            [self showDialog:@"GameMenuDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_NOT_CONNECTED:
-            [self showDialog:@"NotConnectedDialog" withDialogType:dialogType];
+            [self showDialog:@"NotConnectedDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_STAR_PLACEMENT_INFO:
-            [self showDialog:@"StarPlacementInfoDialog" withDialogType:dialogType];
+            [self showDialog:@"StarPlacementInfoDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN:
-            [self showDialog:@"StarPlacementTryAgainDialog" withDialogType:dialogType];
+            [self showDialog:@"StarPlacementTryAgainDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO:
-            [self showDialog:@"HurdleSmasherPlacementInfoDialog" withDialogType:dialogType];
+            [self showDialog:@"HurdleSmasherPlacementInfoDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN:
-            [self showDialog:@"HurdleSmasherPlacementTryAgainDialog" withDialogType:dialogType];
+            [self showDialog:@"HurdleSmasherPlacementTryAgainDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_IAP_PURCHASE_FAILED:
-            [self showDialog:@"IAPPurchaseFailedDialog" withDialogType:dialogType];
+            [self showDialog:@"IAPPurchaseFailedDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_IAP_CONSUME_FAILED:
-            [self showDialog:@"IAPConsumeFailedDialog" withDialogType:dialogType];
+            [self showDialog:@"IAPConsumeFailedDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_IAP_QUERY_FAILED:
-            [self showDialog:@"IAPQueryFailedDialog" withDialogType:dialogType];
+            [self showDialog:@"IAPQueryFailedDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_INTRODUCE_STARS:
-            [self showDialog:@"IntroduceStarsDialog" withDialogType:dialogType];
+            [self showDialog:@"IntroduceStarsDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS:
-            [self showDialog:@"IntroduceHurdleSmashersDialog" withDialogType:dialogType];
+            [self showDialog:@"IntroduceHurdleSmashersDialog" withDialogType:dialogType withData:data];
             break;
     }
 }
@@ -843,7 +843,7 @@
 /**
  Show the specific dialog using the storyBoardID.
  **/
--(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType
+-(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType withData:(int)data
 {
     MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardID];
     controller.dialogType = dialogType;
@@ -851,6 +851,7 @@
     //set the delegate
     controller.delegate = self;
     controller.mIAPManager = self.mIAPManager;
+    controller.data = data;
     
     /**
      Show the dialog view on top of the current view as an overlay
@@ -913,7 +914,7 @@
             else
             {
                 //show the add coins dialog
-                [self addCoins];
+                [self addCoinsWithShortfall:(numCoinsForMoves - numCoins)];
             }
         }
         else if (option == GAME_DIALOG_NEGATIVE_ACTION_1)
@@ -924,7 +925,7 @@
              **/
             if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
             {
-                [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
+                [self showDialogOfType:DIALOG_TYPE_GAME_MENU withData:0];
             }
         }
     }
@@ -964,11 +965,11 @@
     {
         if (option == GAME_DIALOG_POSITIVE_ACTION_1) // Play On
         {
-            [self showDialogOfType:DIALOG_TYPE_ADD_MOVES];
+            [self showDialogOfType:DIALOG_TYPE_ADD_MOVES withData:0];
         }
         else if (option == GAME_DIALOG_NEGATIVE_ACTION_1) // End Game
         {
-            [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
+            [self showDialogOfType:DIALOG_TYPE_GAME_MENU withData:0];
         }
     }
     else if (dialogType == DIALOG_TYPE_ADD_STAR)
@@ -986,13 +987,13 @@
                 [self.gameView enableDisableTouchInput:YES];
                 self.mStarPlacementMode = YES;
                 
-                [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO];
+                [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO withData:0];
                 
                 [self enableDisableAllButtons:NO];
             }
             else
             {
-                [self addCoins];
+                [self addCoinsWithShortfall:(numCoinsForStar - numCoins)];
             }
         }
     }
@@ -1011,13 +1012,13 @@
                 [self.gameView enableDisableTouchInput:YES];
                 self.mHurdleSmasherMode = YES;
                 
-                [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO];
+                [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO withData:0];
                 
                 [self enableDisableAllButtons:NO];
             }
             else
             {
-                [self addCoins];
+                [self addCoinsWithShortfall:(numCoinsForHurdleSmasher - numCoins)];
             }
         }
     }
@@ -1047,7 +1048,7 @@
              **/
             if (getCurrMove(self.gridHandle) == getMaxMoves(self.gridHandle))
             {
-                [self showDialogOfType:DIALOG_TYPE_GAME_MENU];
+                [self showDialogOfType:DIALOG_TYPE_GAME_MENU withData:0];
             }
         }
     }

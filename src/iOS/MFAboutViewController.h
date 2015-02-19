@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 
+/**
+ The About Screen.
+ **/
 @interface MFAboutViewController : UIViewController <MFMailComposeViewControllerDelegate>
-
 @end

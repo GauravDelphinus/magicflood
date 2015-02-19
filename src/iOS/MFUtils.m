@@ -39,4 +39,15 @@
     }
 }
 
++(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setLocale:locale];
+    NSString *formattedPrice = [numberFormatter stringFromNumber:price];
+    
+    return formattedPrice;
+}
+
 @end

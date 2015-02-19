@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol GameViewTapHandler
+@required
+// list of required methods
+-(void)handleGameViewTapAtX:(int)x andY:(int)y;
+@end
+
 /**
  The actual UIView that renders the game grid
  **/
 @interface MFGameView : UIView
 
-@property (nonatomic,strong) id delegate; //the delegate that implements the GameViewTapHandler protocol (see below)
+@property (nonatomic,strong) id <GameViewTapHandler> delegate; //the delegate that implements the GameViewTapHandler protocol
 
 -(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves;
 -(void)updateGameData:(int **)grid;
@@ -22,8 +29,4 @@
 
 @end
 
-@protocol GameViewTapHandler
-@required
-// list of required methods
--(void)handleGameViewTapAtX:(int)x andY:(int)y;
-@end
+

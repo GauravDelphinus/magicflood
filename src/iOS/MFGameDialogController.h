@@ -9,18 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MFIAPManager.h"
 
-@interface MFGameDialogController : UIViewController
-@property (strong, nonatomic) IBOutlet UILabel *mTitleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *mDescriptionLabel;
-@property (strong, nonatomic) IBOutlet UIButton *mPositiveAction1Button;
-@property (strong, nonatomic) IBOutlet UIButton *mNegativeAction1Button;
-
-@property int dialogType;
-@property int data; // additional data used by a dialog, if required
-@property id delegate; //dialog option selected delegate
-@property MFIAPManager *mIAPManager;
-@end
-
 @protocol GameDialogOptionSelectedDelegate
 -(void) gameDialogOptionSelected:(int)dialogType WithOption:(int) option;
 
@@ -35,3 +23,12 @@
 #define GAME_DIALOG_NEGATIVE_ACTION_4   14
 #define GAME_DIALOG_NEGATIVE_ACTION_5   15
 @end
+
+@interface MFGameDialogController : UIViewController
+
+@property int dialogType;
+@property int data; // additional data used by a dialog, if required
+@property id <GameDialogOptionSelectedDelegate> delegate; //dialog option selected delegate
+@property MFIAPManager *mIAPManager;
+@end
+

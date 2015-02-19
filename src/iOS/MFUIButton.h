@@ -11,6 +11,4 @@
 IB_DESIGNABLE
 
 @interface MFUIButton : UIButton
-
-@property UIColor *normalColor;
 @end
