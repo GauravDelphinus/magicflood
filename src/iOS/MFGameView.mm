@@ -8,6 +8,7 @@
 
 #import "MFGameView.h"
 #import "MFGridInterface.h"
+#import "MFGameConstants.h"
 #import <math.h>
 #import "MFUtils.h"
 
@@ -267,8 +268,6 @@
         }
     }
     
-    
-    
     //show the start position
     for (int i = 0; i < mNumStartPos; i++)
     {
@@ -280,24 +279,6 @@
      **/
     
     [self drawGridShadowWithLeft:hOffset withTop:vOffset WithGridLength:gridlength];
-    
-    /**
-     Finally, draw the white borders around cells.
-     **/
-    /*
-    for (int i = 0; i < gridSize; i++)
-    {
-        for (int j = 0; j < gridSize; j++)
-        {
-            CGRect rectangle = CGRectMake(hOffset + j*cellSize, vOffset + i*cellSize, cellSize, cellSize);
-            CGContextAddRect(context, rectangle);
-            CGContextSetLineWidth(context, 1);
-            CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-            CGContextStrokePath(context);
-        }
-    }
-     */
-
 }
 
 /**
@@ -461,7 +442,7 @@
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGFloat locations[] = { 0.0, 1.0 };
     
-    NSArray *colors = @[(__bridge id) UIColorFromRGB(0x878787).CGColor, (__bridge id) UIColorFromRGB(0x545454).CGColor];
+    NSArray *colors = @[(__bridge id) UIColorFromRGB(HURDLE_GRADIENT_START_COLOR).CGColor, (__bridge id) UIColorFromRGB(HURDLE_GRADIENT_END_COLOR).CGColor];
     
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
     

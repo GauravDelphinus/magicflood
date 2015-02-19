@@ -8,6 +8,7 @@
 
 #import "MFUIButton.h"
 #import "MFUtils.h"
+#import "MFGameConstants.h"
 
 @interface MFUIButton ()
 @property UIColor *normalColor; //normal color (non-pressed) picked from the XIB
@@ -33,7 +34,7 @@
     [super setHighlighted:highlighted];
     
     if (highlighted) {
-        self.backgroundColor = UIColorFromARGB(0x99FFCC00); //slight golden transparent highlight color
+        self.backgroundColor = UIColorFromARGB(BUTTON_HIGHLIGHT_COLOR); //slight golden transparent highlight color
     }
     else {
         self.backgroundColor = self.normalColor;
