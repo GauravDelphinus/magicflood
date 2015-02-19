@@ -9,15 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MFLevelsViewController : UIViewController
-{
-    NSArray *mLevelButtons;
-    NSArray *mLevelLabels;
-    NSArray *mLevelImageViews;
-}
 
-@property NSUInteger pageIndex;
-@property NSString *titleText;
-@property NSUInteger numLevels;
+@property NSUInteger pageIndex; //page index of this view controller (in its parent page view controller)
+@property NSUInteger numLevels; //total number of levels (used by this controller to determine how to show the level buttons)
 
--(void) initialize;
 @end

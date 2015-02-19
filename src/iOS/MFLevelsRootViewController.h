@@ -10,7 +10,4 @@
 #import "MFLevelsViewController.h"
 
 @interface MFLevelsRootViewController : UIViewController <UIPageViewControllerDataSource>
-
-@property (strong, nonatomic) UIPageViewController *pageViewController;
-@property int numLevels;
 @end
