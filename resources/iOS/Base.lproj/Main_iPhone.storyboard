@@ -899,10 +899,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npt-AJ-Nn3" customClass="MFGameView">
-                                <rect key="frame" x="12" y="101" width="297" height="172"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Coins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yp-VV-HRH">
                                 <rect key="frame" x="62" y="72" width="45" height="21"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
@@ -967,7 +963,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_coins.png" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-V6-YVc">
-                                <rect key="frame" x="10" y="62" width="45" height="42"/>
+                                <rect key="frame" x="12" y="62" width="43" height="42"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_moves.png" translatesAutoresizingMaskIntoConstraints="NO" id="ewe-cm-q1z">
                                 <rect key="frame" x="195" y="62" width="60" height="42"/>
@@ -1039,6 +1035,10 @@
                                     <action selector="colorButtonPressed:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="dno-nE-zgt"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npt-AJ-Nn3" customClass="MFGameView">
+                                <rect key="frame" x="12" y="122" width="297" height="172"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -1078,7 +1078,7 @@
                             <constraint firstItem="MCf-mR-EJ4" firstAttribute="leading" secondItem="E0k-Ah-qHM" secondAttribute="trailing" constant="5" id="ejj-8Z-Y7y"/>
                             <constraint firstItem="E0k-Ah-qHM" firstAttribute="top" secondItem="npt-AJ-Nn3" secondAttribute="bottom" constant="2" id="gOB-P1-Iv0"/>
                             <constraint firstItem="anV-qw-AJc" firstAttribute="width" secondItem="bN1-e5-1bq" secondAttribute="width" id="gSx-lm-Ud4"/>
-                            <constraint firstItem="ewe-cm-q1z" firstAttribute="centerY" secondItem="fPd-JK-E5i" secondAttribute="centerY" constant="0.5" id="geA-i4-RuN"/>
+                            <constraint firstItem="ewe-cm-q1z" firstAttribute="centerY" secondItem="fPd-JK-E5i" secondAttribute="centerY" id="geA-i4-RuN"/>
                             <constraint firstItem="anV-qw-AJc" firstAttribute="width" secondItem="9xU-qi-Myu" secondAttribute="width" id="iWp-F5-eBf"/>
                             <constraint firstItem="4Yp-VV-HRH" firstAttribute="centerY" secondItem="ewe-cm-q1z" secondAttribute="centerY" constant="-0.5" id="lNB-Wf-uO4"/>
                             <constraint firstItem="npt-AJ-Nn3" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="3" id="lRW-QK-b1L"/>
