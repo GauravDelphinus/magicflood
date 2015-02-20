@@ -419,6 +419,16 @@
     }
 }
 
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    return YES;
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    NSLog(@"bannerViewActionDidFinish");
+}
+
 - (IBAction)removeAds:(id)sender {
     [self showDialogOfType:DIALOG_TYPE_REMOVE_ADS withData:0];
 }
