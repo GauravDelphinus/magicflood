@@ -79,6 +79,26 @@
     [self startNewGame:self.gameLevel];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    /**
+     Reset self as the delegate for various other objects
+     since we're now coming into the view.
+     **/
+    if (self.mAdBannerView != nil)
+    {
+        self.mAdBannerView.delegate = self;
+    }
+    if (self.gameView != nil)
+    {
+        self.gameView.delegate = self;
+    }
+    if (self.mIAPManager != nil)
+    {
+        self.mIAPManager.mPurchaseDelegate = self;
+    }
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     /**
@@ -102,31 +122,22 @@
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    /*
-    if (self.gridHandle != 0)
+    /**
+     Remove all delegate references so that we can dealloc
+     if the view controller is being dismissed.
+     **/
+    if (self.mAdBannerView != nil)
     {
-        deleteGrid(self.gridHandle);
-        self.gridHandle = 0;
+        self.mAdBannerView.delegate = nil;
     }
-     */
-    
-    /**
-     Removing the MFGameView object from this controller is essential to
-     avoid memory leaks.
-     **/
-    /*
-     [self.gameView removeFromSuperview];
-     self.gameView = nil;
-     */
-    
-    /**
-     Get rid of ad banner.
-     **/
-    /*
-     [self.mAdBannerView removeFromSuperview];
-     self.mAdBannerView.delegate = nil;
-     self.mAdBannerView = nil;
-     */
+    if (self.gameView != nil)
+    {
+        self.gameView.delegate = nil;
+    }
+    if (self.mIAPManager != nil)
+    {
+        self.mIAPManager.mPurchaseDelegate = nil;
+    }
 }
 
 /**
@@ -140,6 +151,20 @@
         deleteGrid(self.gridHandle);
         self.gridHandle = 0;
     }
+    
+    /**
+     Removing the MFGameView object from this controller is essential to
+     avoid memory leaks.
+     **/
+     [self.gameView removeFromSuperview];
+     self.gameView = nil;
+    
+    /**
+     Get rid of ad banner.
+     **/
+     [self.mAdBannerView removeFromSuperview];
+     self.mAdBannerView.delegate = nil;
+     self.mAdBannerView = nil;
 }
 
 /*********************  Sound Related **************************/

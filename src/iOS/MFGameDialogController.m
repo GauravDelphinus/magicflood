@@ -76,6 +76,10 @@
         [self.view removeFromSuperview];
         [self removeFromParentViewController];
     }];
+    
+    //release references
+    self.delegate = nil;
+    self.mIAPManager = nil;
 }
 
 
