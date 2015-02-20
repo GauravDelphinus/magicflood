@@ -85,25 +85,48 @@
      Removing the MFGameView object from this controller is essential to
      avoid memory leaks.
      **/
+    /*
     [self.gameView removeFromSuperview];
     self.gameView = nil;
+     */
     
     /**
      Get rid of ad banner.
      **/
+    /*
     [self.mAdBannerView removeFromSuperview];
     self.mAdBannerView.delegate = nil;
     self.mAdBannerView = nil;
+     */
 }
-
 
 -(void)viewDidDisappear:(BOOL)animated
 {
+    /*
     if (self.gridHandle != 0)
     {
         deleteGrid(self.gridHandle);
         self.gridHandle = 0;
     }
+     */
+    
+    /**
+     Removing the MFGameView object from this controller is essential to
+     avoid memory leaks.
+     **/
+    /*
+     [self.gameView removeFromSuperview];
+     self.gameView = nil;
+     */
+    
+    /**
+     Get rid of ad banner.
+     **/
+    /*
+     [self.mAdBannerView removeFromSuperview];
+     self.mAdBannerView.delegate = nil;
+     self.mAdBannerView = nil;
+     */
 }
 
 /**
@@ -421,6 +444,7 @@
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
 {
+    NSLog(@"bannerViewActionShouldBegin, ad banner view frame = [x = %f, y = %f, width = %f, height = %f ]", self.mAdBannerView.frame.origin.x, self.mAdBannerView.frame.origin.y, self.mAdBannerView.frame.size.width, self.mAdBannerView.frame.size.height);
     return YES;
 }
 
@@ -439,8 +463,6 @@
  **/
 -(void) hideAds
 {
-
-    
     /**
      get rid of the ad banner view completely.
      **/
