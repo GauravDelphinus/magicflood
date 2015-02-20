@@ -116,12 +116,6 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1958,7 +1952,7 @@
                                         <rect key="frame" x="61" y="269" width="142" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBH-hl-01J">
-                                                <rect key="frame" x="5" y="0.0" width="132" height="61"/>
+                                                <rect key="frame" x="8" y="0.0" width="129" height="61"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2466,145 +2460,6 @@
             </objects>
             <point key="canvasLocation" x="2569" y="2639"/>
         </scene>
-        <!--Game Dialog Controller-->
-        <scene sceneID="QSw-Zb-iLi">
-            <objects>
-                <viewController storyboardIdentifier="IAPConsumeFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rRm-BN-bxV" customClass="MFGameDialogController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yII-a8-Obv"/>
-                        <viewControllerLayoutGuide type="bottom" id="8lF-du-vkA"/>
-                    </layoutGuides>
-                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="B2G-fY-MgA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxn-VB-wJ6">
-                                <rect key="frame" x="28" y="59" width="265" height="381"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdk-Hy-Ewr">
-                                        <rect key="frame" x="8" y="45" width="249" height="114"/>
-                                        <string key="text">While the purchase succeeded, there was a problem in synchronizing the purchase.  This problem should get resolved automatically - try relaunching the App.</string>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Something's not right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s34-EH-6TM">
-                                        <rect key="frame" x="30" y="8" width="206" height="41"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HqK-Tg-Bmk">
-                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="rRm-BN-bxV" eventType="touchUpInside" id="gmq-sQ-eO1"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qCK-ZC-9aE" customClass="MFUIButton">
-                                        <rect key="frame" x="61" y="302" width="142" height="61"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsO-QE-rSV">
-                                                <rect key="frame" x="5" y="0.0" width="132" height="61"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                        </accessibility>
-                                        <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="rRm-BN-bxV" eventType="touchUpInside" id="rev-0R-tpS"/>
-                                        </connections>
-                                    </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_failed.png" translatesAutoresizingMaskIntoConstraints="NO" id="gwX-sB-uqm">
-                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A8C-P4-iWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3282" y="2629"/>
-        </scene>
-        <!--Game Dialog Controller-->
-        <scene sceneID="KVZ-nW-x65">
-            <objects>
-                <viewController storyboardIdentifier="IAPQueryFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VqF-LE-X6B" customClass="MFGameDialogController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="R3P-6G-7Ae"/>
-                        <viewControllerLayoutGuide type="bottom" id="GJz-tL-GT4"/>
-                    </layoutGuides>
-                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="DUs-bQ-S7u">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9zL-6r-RzA">
-                                <rect key="frame" x="28" y="59" width="265" height="381"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was an error in communicating with the Google Play server.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJN-Hm-wBJ">
-                                        <rect key="frame" x="8" y="45" width="249" height="114"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Something's not right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ES2-bM-4Dr">
-                                        <rect key="frame" x="30" y="8" width="206" height="41"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-Rq-c1z">
-                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="VqF-LE-X6B" eventType="touchUpInside" id="cA7-fX-Qed"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHT-NS-w0n" customClass="MFUIButton">
-                                        <rect key="frame" x="61" y="302" width="142" height="61"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vu1-Qe-aIf">
-                                                <rect key="frame" x="5" y="0.0" width="132" height="61"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                        </accessibility>
-                                        <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="VqF-LE-X6B" eventType="touchUpInside" id="GgW-0M-xZm"/>
-                                        </connections>
-                                    </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_failed.png" translatesAutoresizingMaskIntoConstraints="NO" id="HVS-Tm-4Bq">
-                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CD7-GG-Dcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3642" y="2629"/>
-        </scene>
         <!--Help Screen View Controller-->
         <scene sceneID="hfq-PD-Frf">
             <objects>
@@ -2920,7 +2775,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60b-98-k0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4036" y="2629"/>
+            <point key="canvasLocation" x="3311" y="2629"/>
         </scene>
     </scenes>
     <resources>
