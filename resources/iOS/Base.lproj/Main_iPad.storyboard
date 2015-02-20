@@ -4,6 +4,52 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ArchitectsDaughter.ttf">
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -17,152 +63,1223 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJp-Ai-axU">
-                                <rect key="frame" x="356" y="515" width="33" height="30"/>
-                                <state key="normal" title="Easy">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="eeq-sD-bU1" kind="modal" id="DvT-V7-aYe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndw-eU-g7i">
-                                <rect key="frame" x="356" y="641" width="56" height="30"/>
-                                <state key="normal" title="Medium">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="eeq-sD-bU1" kind="modal" id="8HH-Lp-KJ1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8s-un-Gy3">
-                                <rect key="frame" x="356" y="762" width="34" height="30"/>
-                                <state key="normal" title="Hard">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="eeq-sD-bU1" kind="modal" id="KiE-Od-3Bb"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-IF-IH6">
-                                <rect key="frame" x="253" y="193" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-IF-IH6">
+                                <rect key="frame" x="224" y="84" width="296" height="225"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hT-CB-xKx" customClass="MFUIButton">
+                                <rect key="frame" x="187" y="394" width="370" height="121"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="r9X-L9-aLE">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="121"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyf-AA-8US">
+                                        <rect key="frame" x="141" y="19" width="229" height="81"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="32"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="launchGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sD8-nG-FHU"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSM-3p-qQM" customClass="MFUIButton">
+                                <rect key="frame" x="187" y="544" width="370" height="121"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_how_to_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="L8v-OH-cdf">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="121"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdH-35-Hd3">
+                                        <rect key="frame" x="136" y="20" width="229" height="81"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="32"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="launchHelpScreens:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HeI-YX-JPB"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HMI-jF-wWn" customClass="MFUIButton">
+                                <rect key="frame" x="187" y="692" width="370" height="121"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_about.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Ro-TN-bzA">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="121"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1K-ve-Onl">
+                                        <rect key="frame" x="136" y="20" width="229" height="81"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="32"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="launchAboutScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9t-iF-J6z"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="mLogoImageView" destination="7Jg-IF-IH6" id="h4O-35-1cE"/>
+                        <outlet property="mAboutButtonLabel" destination="T1K-ve-Onl" id="qAJ-wb-9mK"/>
+                        <outlet property="mHowToPlayButtonLabel" destination="TdH-35-Hd3" id="BFH-at-sby"/>
+                        <outlet property="mPlayGameButtonLabel" destination="Wyf-AA-8US" id="ATC-c2-6qa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="57" y="186"/>
+        </scene>
+        <!--Levels Root View Controller-->
+        <scene sceneID="NZG-44-jrT">
+            <objects>
+                <viewController storyboardIdentifier="LevelsRootViewController" id="Esk-B8-lsu" customClass="MFLevelsRootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PXc-Fj-u66"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hrt-dn-KWL"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Gej-Rm-KN2">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWP-mP-UbP">
+                                <rect key="frame" x="706" y="19" width="24" height="24"/>
+                                <state key="normal" image="ic_button_cancel_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                <connections>
+                                    <action selector="dismissScreen:" destination="Esk-B8-lsu" eventType="touchUpInside" id="2xN-Hu-OfX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Levels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoh-rW-XyK">
+                                <rect key="frame" x="322" y="20" width="124" height="33"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mCancelButton" destination="BWP-mP-UbP" id="wxE-Ff-BLR"/>
+                        <outlet property="mTitleLabel" destination="Zoh-rW-XyK" id="T4a-FA-gw8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ccu-ac-3Tp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="1387"/>
+        </scene>
+        <!--Levels View Controller-->
+        <scene sceneID="eYf-XE-qeF">
+            <objects>
+                <viewController storyboardIdentifier="PageContentViewController" id="MDQ-fG-XuT" customClass="MFLevelsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b81-lD-fmj"/>
+                        <viewControllerLayoutGuide type="bottom" id="bCI-sk-obg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hOU-zF-JOn">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sG-eX-3C2" customClass="MFUIButton">
+                                <rect key="frame" x="41" y="52" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="cg5-WM-6xf">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F3-ZG-N7Z">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="9Uy-Yj-Sbl"/>
+                                </connections>
+                            </view>
+                            <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AqU-6g-zE2" customClass="MFUIButton">
+                                <rect key="frame" x="219" y="52" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q2G-Rn-aDN">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiR-jU-ofb">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="t3w-TE-GDR"/>
+                                </connections>
+                            </view>
+                            <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTN-4O-Z5a" customClass="MFUIButton">
+                                <rect key="frame" x="399" y="52" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="feN-Q4-ptV">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p14-bm-SaX">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="lja-r9-xoB"/>
+                                </connections>
+                            </view>
+                            <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSB-uO-wSM" customClass="MFUIButton">
+                                <rect key="frame" x="577" y="52" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="jKk-8a-Yyk">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-qo-UhI">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="Te7-1t-Ayn"/>
+                                </connections>
+                            </view>
+                            <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRC-IP-VNN" customClass="MFUIButton">
+                                <rect key="frame" x="41" y="271" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSQ-oG-Pul">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcs-ko-C3W">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="YH5-jd-Lwh"/>
+                                </connections>
+                            </view>
+                            <view tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQQ-U1-loo" customClass="MFUIButton">
+                                <rect key="frame" x="219" y="271" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="2HX-7Q-cSp">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U06-vJ-W1i">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="sGW-z5-YwH"/>
+                                </connections>
+                            </view>
+                            <view tag="7" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Rd-Yg-Fvy" customClass="MFUIButton">
+                                <rect key="frame" x="399" y="271" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="dn9-z7-RMO">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jt9-9f-Kr4">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="UDr-go-aXv"/>
+                                </connections>
+                            </view>
+                            <view tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gu9-62-Ceh" customClass="MFUIButton">
+                                <rect key="frame" x="577" y="271" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="twk-B3-bgs">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mq6-ah-NDq">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="Bfq-ge-RdG"/>
+                                </connections>
+                            </view>
+                            <view tag="9" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ct9-p6-IXZ" customClass="MFUIButton">
+                                <rect key="frame" x="41" y="490" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZHh-Y2-cm8">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs2-d8-Dtx">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="Na9-9O-KsZ"/>
+                                </connections>
+                            </view>
+                            <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epU-Rs-5IX" customClass="MFUIButton">
+                                <rect key="frame" x="219" y="490" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cty-NP-JWe">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HQ-xO-bVb">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="ybf-mE-jw8"/>
+                                </connections>
+                            </view>
+                            <view tag="11" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oRH-2l-jHF" customClass="MFUIButton">
+                                <rect key="frame" x="399" y="490" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="A19-1N-GxJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8S-Vq-e9v">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="HuJ-gL-TiV"/>
+                                </connections>
+                            </view>
+                            <view tag="12" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-Dq-fkl" customClass="MFUIButton">
+                                <rect key="frame" x="577" y="490" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="kFG-ub-bAq">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2je-tX-JHr">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="vxC-qY-5yE"/>
+                                </connections>
+                            </view>
+                            <view tag="13" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHY-8x-bby" customClass="MFUIButton">
+                                <rect key="frame" x="41" y="713" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="u2w-8V-0Do">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPH-Rb-fjX">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="3op-MV-dHh"/>
+                                </connections>
+                            </view>
+                            <view tag="14" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3iC-3L-lgK" customClass="MFUIButton">
+                                <rect key="frame" x="219" y="713" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="vpL-wF-rS8">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuP-PS-aeE">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="88z-KC-BF6"/>
+                                </connections>
+                            </view>
+                            <view tag="15" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RNI-ZB-ACv" customClass="MFUIButton">
+                                <rect key="frame" x="399" y="713" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="XcH-XO-ECx">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjy-6C-s2K">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="1ub-Dh-V8G"/>
+                                </connections>
+                            </view>
+                            <view tag="16" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t0f-EH-0Z3" customClass="MFUIButton">
+                                <rect key="frame" x="577" y="713" width="144" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="4JK-2J-UFe">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtK-Rj-seD">
+                                        <rect key="frame" x="0.0" y="100" width="142" height="84"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startLevel:" destination="MDQ-fG-XuT" eventType="touchUpInside" id="Xyn-72-asT"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mLevelButton1" destination="5sG-eX-3C2" id="x8q-N9-f7U"/>
+                        <outlet property="mLevelButton10" destination="epU-Rs-5IX" id="IJz-WZ-TRh"/>
+                        <outlet property="mLevelButton11" destination="oRH-2l-jHF" id="A03-qR-gff"/>
+                        <outlet property="mLevelButton12" destination="gzL-Dq-fkl" id="1pZ-dZ-4Wf"/>
+                        <outlet property="mLevelButton13" destination="sHY-8x-bby" id="FM7-fN-0Ad"/>
+                        <outlet property="mLevelButton14" destination="3iC-3L-lgK" id="VHC-IR-l0s"/>
+                        <outlet property="mLevelButton15" destination="RNI-ZB-ACv" id="oWa-yZ-WnN"/>
+                        <outlet property="mLevelButton16" destination="t0f-EH-0Z3" id="doF-hu-le2"/>
+                        <outlet property="mLevelButton2" destination="AqU-6g-zE2" id="lVd-VF-jEz"/>
+                        <outlet property="mLevelButton3" destination="cTN-4O-Z5a" id="5BR-Is-hSn"/>
+                        <outlet property="mLevelButton4" destination="LSB-uO-wSM" id="N4a-ok-WDB"/>
+                        <outlet property="mLevelButton5" destination="GRC-IP-VNN" id="WM3-1o-MWr"/>
+                        <outlet property="mLevelButton6" destination="RQQ-U1-loo" id="5nA-T3-I5t"/>
+                        <outlet property="mLevelButton7" destination="5Rd-Yg-Fvy" id="bSF-oD-aYr"/>
+                        <outlet property="mLevelButton8" destination="Gu9-62-Ceh" id="mnE-JJ-C3u"/>
+                        <outlet property="mLevelButton9" destination="Ct9-p6-IXZ" id="eMV-jG-fRQ"/>
+                        <outlet property="mLevelImageView1" destination="cg5-WM-6xf" id="Vwy-rw-z8g"/>
+                        <outlet property="mLevelImageView10" destination="Cty-NP-JWe" id="SE3-Ma-eht"/>
+                        <outlet property="mLevelImageView11" destination="A19-1N-GxJ" id="VtJ-v5-Cwr"/>
+                        <outlet property="mLevelImageView12" destination="kFG-ub-bAq" id="ytg-FC-WEr"/>
+                        <outlet property="mLevelImageView13" destination="u2w-8V-0Do" id="SUy-GM-3YR"/>
+                        <outlet property="mLevelImageView14" destination="vpL-wF-rS8" id="tpU-z4-Tof"/>
+                        <outlet property="mLevelImageView15" destination="XcH-XO-ECx" id="mP5-wP-EHs"/>
+                        <outlet property="mLevelImageView16" destination="4JK-2J-UFe" id="8Du-34-3rM"/>
+                        <outlet property="mLevelImageView2" destination="Q2G-Rn-aDN" id="9We-jL-1Qr"/>
+                        <outlet property="mLevelImageView3" destination="feN-Q4-ptV" id="zWT-Kr-h2T"/>
+                        <outlet property="mLevelImageView4" destination="jKk-8a-Yyk" id="FFT-8U-EcN"/>
+                        <outlet property="mLevelImageView5" destination="QSQ-oG-Pul" id="Tb8-0a-ZyY"/>
+                        <outlet property="mLevelImageView6" destination="2HX-7Q-cSp" id="3Yd-mr-CfE"/>
+                        <outlet property="mLevelImageView7" destination="dn9-z7-RMO" id="WRu-sd-8eJ"/>
+                        <outlet property="mLevelImageView8" destination="twk-B3-bgs" id="5Gg-gb-eFR"/>
+                        <outlet property="mLevelImageView9" destination="ZHh-Y2-cm8" id="lKt-Q2-8fa"/>
+                        <outlet property="mLevelLabel1" destination="1F3-ZG-N7Z" id="bIj-rT-9Ul"/>
+                        <outlet property="mLevelLabel10" destination="8HQ-xO-bVb" id="2O4-VN-qTJ"/>
+                        <outlet property="mLevelLabel11" destination="w8S-Vq-e9v" id="bjX-aJ-VnN"/>
+                        <outlet property="mLevelLabel12" destination="2je-tX-JHr" id="8BY-BU-QV0"/>
+                        <outlet property="mLevelLabel13" destination="PPH-Rb-fjX" id="wHz-yj-Wvz"/>
+                        <outlet property="mLevelLabel14" destination="VuP-PS-aeE" id="Sow-9r-j6f"/>
+                        <outlet property="mLevelLabel15" destination="fjy-6C-s2K" id="UcS-Go-IfM"/>
+                        <outlet property="mLevelLabel16" destination="VtK-Rj-seD" id="7wB-Tf-Tio"/>
+                        <outlet property="mLevelLabel2" destination="FiR-jU-ofb" id="eo3-Wt-b5b"/>
+                        <outlet property="mLevelLabel3" destination="p14-bm-SaX" id="Cv2-gr-1Kq"/>
+                        <outlet property="mLevelLabel4" destination="Vga-qo-UhI" id="NsW-Vm-1jD"/>
+                        <outlet property="mLevelLabel5" destination="fcs-ko-C3W" id="av3-fe-2TT"/>
+                        <outlet property="mLevelLabel6" destination="U06-vJ-W1i" id="m81-QY-PdR"/>
+                        <outlet property="mLevelLabel7" destination="Jt9-9f-Kr4" id="l2i-t4-u5q"/>
+                        <outlet property="mLevelLabel8" destination="mq6-ah-NDq" id="eQ2-oS-tLk"/>
+                        <outlet property="mLevelLabel9" destination="Rs2-d8-Dtx" id="pPO-K0-slR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tqa-hP-sgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="201" y="2562"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Jqa-ca-hSG">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="d7L-KT-Che" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nnb-ld-U05" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="938" y="1387"/>
         </scene>
         <!--Game View Controller-->
-        <scene sceneID="JjW-kK-G1i">
+        <scene sceneID="O09-nE-CvR">
             <objects>
-                <viewController id="eeq-sD-bU1" customClass="MFGameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" id="lLd-KQ-amU" customClass="MFGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZZU-tH-oME"/>
-                        <viewControllerLayoutGuide type="bottom" id="T6X-RM-47M"/>
+                        <viewControllerLayoutGuide type="top" id="ph6-YJ-5Tz"/>
+                        <viewControllerLayoutGuide type="bottom" id="je5-g0-ZOd"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="sRm-q6-Uc9" customClass="MFGameView">
+                    <view key="view" contentMode="scaleToFill" id="noz-qN-FoH">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Moves" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0W-f5-D6H">
-                                <rect key="frame" x="363" y="71" width="52" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cb9-1c-d0v">
+                                <rect key="frame" x="26" y="28" width="32" height="32"/>
+                                <state key="normal" image="ic_button_sound_on_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_sound_pressed.png"/>
+                                <connections>
+                                    <action selector="soundButtonPressed:" destination="lLd-KQ-amU" eventType="touchUpInside" id="2yr-jh-WuB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3F4-Ux-AYX">
+                                <rect key="frame" x="706" y="28" width="32" height="32"/>
+                                <state key="normal" image="ic_button_menu_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_menu_pressed.png"/>
+                                <connections>
+                                    <action selector="handleExit:" destination="lLd-KQ-amU" eventType="touchUpInside" id="Rsr-m9-UBJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxH-iB-i7m">
+                                <rect key="frame" x="35" y="916" width="48" height="48"/>
+                                <state key="normal" image="ic_button_color_red_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_color_red_pressed.png"/>
+                                <connections>
+                                    <action selector="colorButtonPressed:" destination="lLd-KQ-amU" eventType="touchUpInside" id="lwp-wm-eGT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlC-6K-esk">
+                                <rect key="frame" x="137" y="916" width="48" height="48"/>
+                                <state key="normal" image="ic_button_color_green_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_color_green_pressed.png"/>
+                                <connections>
+                                    <action selector="colorButtonPressed:" destination="lLd-KQ-amU" eventType="touchUpInside" id="Inz-3G-LvO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFD-j0-6Rh">
+                                <rect key="frame" x="240" y="916" width="48" height="48"/>
+                                <state key="normal" image="ic_button_color_blue_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_color_blue_pressed.png"/>
+                                <connections>
+                                    <action selector="colorButtonPressed:" destination="lLd-KQ-amU" eventType="touchUpInside" id="WLG-JK-1GJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kf7-1h-faQ">
+                                <rect key="frame" x="354" y="916" width="48" height="48"/>
+                                <state key="normal" image="ic_button_color_yellow_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_color_yellow_pressed.png"/>
+                                <connections>
+                                    <action selector="colorButtonPressed:" destination="lLd-KQ-amU" eventType="touchUpInside" id="5Ou-hf-oFg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qT-aR-96X">
+                                <rect key="frame" x="471" y="916" width="48" height="48"/>
+                                <state key="normal" image="ic_button_color_orange_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_color_orange_pressed.png"/>
+                                <connections>
+                                    <action selector="colorButtonPressed:" destination="lLd-KQ-amU" eventType="touchUpInside" id="XjZ-K4-J39"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xh0-OM-9oc">
+                                <rect key="frame" x="608" y="916" width="48" height="48"/>
+                                <state key="normal" image="ic_button_color_purple_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_color_purple_pressed.png"/>
+                                <connections>
+                                    <action selector="colorButtonPressed:" destination="lLd-KQ-amU" eventType="touchUpInside" id="5Sg-u6-KhD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEK-IC-5ZB">
+                                <rect key="frame" x="26" y="819" width="48" height="48"/>
+                                <state key="normal" image="ic_add_coins_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_add_coins_pressed.png"/>
+                                <connections>
+                                    <action selector="addCoins:" destination="lLd-KQ-amU" eventType="touchUpInside" id="aDL-Ie-xFH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8f-z8-94j">
+                                <rect key="frame" x="139" y="819" width="48" height="48"/>
+                                <state key="normal" image="ic_add_moves_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_add_moves_pressed.png"/>
+                                <connections>
+                                    <action selector="addMoves:" destination="lLd-KQ-amU" eventType="touchUpInside" id="Di5-u8-Pv4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5Z-Xj-2RS">
+                                <rect key="frame" x="242" y="819" width="48" height="48"/>
+                                <state key="normal" image="ic_add_star_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_add_star_pressed.png"/>
+                                <connections>
+                                    <action selector="addStar:" destination="lLd-KQ-amU" eventType="touchUpInside" id="6WK-EB-PwH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKy-Fp-Vtv">
+                                <rect key="frame" x="354" y="819" width="48" height="48"/>
+                                <state key="normal" image="ic_add_hurdle_smasher_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_add_hurdle_smasher_pressed.png"/>
+                                <connections>
+                                    <action selector="addHurdleSmasher:" destination="lLd-KQ-amU" eventType="touchUpInside" id="m3V-dr-WU6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSK-v3-f0a" customClass="MFUIButton">
+                                <rect key="frame" x="620" y="819" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Remove Ads">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeAds:" destination="lLd-KQ-amU" eventType="touchUpInside" id="sVH-CH-JsN"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_coins.png" translatesAutoresizingMaskIntoConstraints="NO" id="f84-L9-CBf">
+                                <rect key="frame" x="16" y="106" width="75" height="37"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_moves.png" translatesAutoresizingMaskIntoConstraints="NO" id="bNS-cn-VvZ">
+                                <rect key="frame" x="548" y="100" width="92" height="44"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlq-Ew-wyl">
+                                <rect key="frame" x="139" y="111" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8p-F8-U0d">
+                                <rect key="frame" x="680" y="106" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KWF-9x-Fu9" customClass="MFGameView">
+                                <rect key="frame" x="26" y="177" width="720" height="608"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbR-Ig-a8U">
+                                <rect key="frame" x="256" y="20" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzZ-3e-7dh">
-                                <rect key="frame" x="71" y="67" width="30" height="30"/>
-                                <state key="normal" title="X">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="handleExit:" destination="eeq-sD-bU1" eventType="touchUpInside" id="Q1A-cT-Qcs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJ5-Wa-xaS">
-                                <rect key="frame" x="55" y="925" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="colorButtonPressed:" destination="eeq-sD-bU1" eventType="touchUpInside" id="8k3-cg-c5s"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPF-MV-wW6">
-                                <rect key="frame" x="172" y="925" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="colorButtonPressed:" destination="eeq-sD-bU1" eventType="touchUpInside" id="4Vr-lp-k8J"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9w8-Nc-5Dl">
-                                <rect key="frame" x="285" y="925" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="colorButtonPressed:" destination="eeq-sD-bU1" eventType="touchUpInside" id="M98-4T-pHg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFT-px-yXz">
-                                <rect key="frame" x="395" y="925" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="colorButtonPressed:" destination="eeq-sD-bU1" eventType="touchUpInside" id="ZYe-xv-vAQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fih-qE-M4Q">
-                                <rect key="frame" x="504" y="925" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="colorButtonPressed:" destination="eeq-sD-bU1" eventType="touchUpInside" id="eoT-3x-Axu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9T-1B-Xtf">
-                                <rect key="frame" x="632" y="925" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="colorButtonPressed:" destination="eeq-sD-bU1" eventType="touchUpInside" id="C5n-6C-NW9"/>
-                                </connections>
-                            </button>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-Ra-Vcn">
+                                <rect key="frame" x="2" y="950" width="768" height="66"/>
+                            </adBannerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="je5-g0-ZOd" firstAttribute="top" secondItem="BhH-Ra-Vcn" secondAttribute="bottom" constant="-50" id="zS3-nf-fiZ"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="gameView" destination="sRm-q6-Uc9" id="XMD-9b-oh4"/>
-                        <outlet property="movesLable" destination="b0W-f5-D6H" id="keJ-iv-xtR"/>
+                        <outlet property="coinsLabel" destination="jlq-Ew-wyl" id="ogW-cw-jvz"/>
+                        <outlet property="gameView" destination="KWF-9x-Fu9" id="g5k-Ih-GDc"/>
+                        <outlet property="mAdBannerView" destination="BhH-Ra-Vcn" id="8J8-7P-9yB"/>
+                        <outlet property="mAddCoinsButton" destination="HEK-IC-5ZB" id="ebS-Ub-PNi"/>
+                        <outlet property="mAddHurdleSmasherButton" destination="WKy-Fp-Vtv" id="BMs-g6-lD5"/>
+                        <outlet property="mAddMovesButton" destination="h8f-z8-94j" id="dHZ-2a-WbN"/>
+                        <outlet property="mAddStarButton" destination="G5Z-Xj-2RS" id="a08-Xe-gqb"/>
+                        <outlet property="mBlueButton" destination="BFD-j0-6Rh" id="8fa-Cq-wRp"/>
+                        <outlet property="mColorButtonBottomConstaints" destination="zS3-nf-fiZ" id="1Kw-xR-BYk"/>
+                        <outlet property="mCyanButton" destination="Xh0-OM-9oc" id="XKN-ug-1mE"/>
+                        <outlet property="mGreenButton" destination="nlC-6K-esk" id="BbM-KZ-FOn"/>
+                        <outlet property="mLevelsLabel" destination="rbR-Ig-a8U" id="RfO-mN-G6A"/>
+                        <outlet property="mMenuButton" destination="3F4-Ux-AYX" id="L4V-DL-MZ5"/>
+                        <outlet property="mOrangeButton" destination="8qT-aR-96X" id="qKP-H3-bUU"/>
+                        <outlet property="mRedButton" destination="wxH-iB-i7m" id="y2D-4B-HA3"/>
+                        <outlet property="mRemoveAdsButton" destination="BSK-v3-f0a" id="GHN-oO-DBw"/>
+                        <outlet property="mSoundButton" destination="cb9-1c-d0v" id="4qT-r2-IxM"/>
+                        <outlet property="mYellowButton" destination="Kf7-1h-faQ" id="rqK-AC-zhH"/>
+                        <outlet property="movesLable" destination="Z8p-F8-U0d" id="iVH-Vq-45y"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TmU-vy-CJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ikL-FN-76A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="-291"/>
+            <point key="canvasLocation" x="1007" y="186"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="Cbe-PG-vz7">
+            <objects>
+                <viewController storyboardIdentifier="AddMovesDialog" id="2OA-hH-xii" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tHn-tR-KpL"/>
+                        <viewControllerLayoutGuide type="bottom" id="IOT-Vs-5Jo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JvW-3t-ekU">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xzg-d0-y5Z">
+                                <rect key="frame" x="182" y="239" width="405" height="545"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add 5 More Moves and save your game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkP-YL-8N3">
+                                        <rect key="frame" x="24" y="65" width="360" height="91"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Moves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmI-Mb-eCi">
+                                        <rect key="frame" x="115" y="16" width="182" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgS-sh-UrZ">
+                                        <rect key="frame" x="373" y="8" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="2OA-hH-xii" eventType="touchUpInside" id="vWb-2M-uat"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGB-Au-LOb" customClass="MFUIButton">
+                                        <rect key="frame" x="58" y="397" width="297" height="90"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_coins.png" translatesAutoresizingMaskIntoConstraints="NO" id="x9H-JJ-dEr">
+                                                <rect key="frame" x="0.0" y="0.0" width="114" height="90"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500 coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eos-4r-BOF">
+                                                <rect key="frame" x="122" y="0.0" width="175" height="90"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="2OA-hH-xii" eventType="touchUpInside" id="Nw9-E3-DMY"/>
+                                        </connections>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_add_moves.png" translatesAutoresizingMaskIntoConstraints="NO" id="qdH-wB-lBa">
+                                        <rect key="frame" x="115" y="188" width="175" height="151"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MQI-xh-xcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2103" y="175"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="P3V-vq-M13">
+            <objects>
+                <viewController storyboardIdentifier="AddStarDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QH7-al-GUk" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zC9-SP-1XM"/>
+                        <viewControllerLayoutGuide type="bottom" id="fVd-Qj-2B9"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="fNy-hz-eIG">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acN-4t-3Mu">
+                                <rect key="frame" x="182" y="240" width="405" height="544"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place additional stars and accelerate the game play!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obO-Qj-QzN">
+                                        <rect key="frame" x="22" y="67" width="358" height="91"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_add_star.png" translatesAutoresizingMaskIntoConstraints="NO" id="4zp-UR-9WE">
+                                        <rect key="frame" x="118" y="187" width="167" height="170"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Stars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-Oc-KRB">
+                                        <rect key="frame" x="106" y="18" width="192" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJd-kB-Iaw" customClass="MFUIButton">
+                                        <rect key="frame" x="70" y="416" width="264" height="87"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_coins.png" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-tg-Ozy">
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="87"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000 coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mls-6g-kcs">
+                                                <rect key="frame" x="91" y="0.0" width="173" height="87"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="QH7-al-GUk" eventType="valueChanged" id="HzJ-40-0EC"/>
+                                            <action selector="positiveAction1ButtonPressed:" destination="QH7-al-GUk" eventType="touchUpInside" id="fAR-nX-G79"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ss9-A3-LAR">
+                                        <rect key="frame" x="373" y="8" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="QH7-al-GUk" eventType="touchUpInside" id="yy3-c7-Ity"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TiW-ht-vPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2909" y="175"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="Vym-JX-iCJ">
+            <objects>
+                <viewController storyboardIdentifier="AddHurdleSmasherDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ou5-xn-Na9" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IfD-l1-b6e"/>
+                        <viewControllerLayoutGuide type="bottom" id="szz-3m-ILT"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="FRd-VR-TZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kW-in-5kj">
+                                <rect key="frame" x="174" y="235" width="420" height="554"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create holes in hurdles by smashing them with a Hurdle Smasher!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8GX-Uf-Wee">
+                                        <rect key="frame" x="10" y="45" width="390" height="91"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcL-yQ-P3b">
+                                        <rect key="frame" x="388" y="8" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="Ou5-xn-Na9" eventType="touchUpInside" id="4iW-XD-F5t"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ik-XO-JFf" customClass="MFUIButton">
+                                        <rect key="frame" x="69" y="427" width="283" height="89"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1500 coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqu-QE-kd2">
+                                                <rect key="frame" x="90" y="0.0" width="193" height="89"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_coins.png" translatesAutoresizingMaskIntoConstraints="NO" id="kJ0-MW-MmB">
+                                                <rect key="frame" x="0.0" y="0.0" width="82" height="89"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="Ou5-xn-Na9" eventType="valueChanged" id="2el-W9-iUe"/>
+                                            <action selector="positiveAction1ButtonPressed:" destination="Ou5-xn-Na9" eventType="touchUpInside" id="rrd-GJ-WOQ"/>
+                                        </connections>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Smash a Hurdle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNj-Bf-ZPe">
+                                        <rect key="frame" x="65" y="8" width="280" height="41"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_add_hurdle_smasher.png" translatesAutoresizingMaskIntoConstraints="NO" id="g1E-jl-Abm">
+                                        <rect key="frame" x="123" y="187" width="175" height="180"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="80e-3T-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3736" y="175"/>
+        </scene>
+        <!--Add Coins Dialog-->
+        <scene sceneID="dkJ-5P-b8o">
+            <objects>
+                <viewController storyboardIdentifier="AddCoinsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wqr-lN-x2K" customClass="MFAddCoinsDialog" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0hV-5h-67H"/>
+                        <viewControllerLayoutGuide type="bottom" id="4he-h4-7Nc"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="Xeb-LM-QoI">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sDV-9U-tLR">
+                                <rect key="frame" x="147" y="167" width="475" height="604"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8v4-y1-hgH">
+                                        <rect key="frame" x="443" y="8" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="wqr-lN-x2K" eventType="touchUpInside" id="fFK-3L-9Wb"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-hv-fsg" customClass="MFUIButton">
+                                        <rect key="frame" x="28" y="218" width="200" height="130"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500 coins" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nh-B0-zsL">
+                                                <rect key="frame" x="88" y="0.0" width="112" height="92"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_coins_first.png" translatesAutoresizingMaskIntoConstraints="NO" id="HC9-5O-Yqo">
+                                                <rect key="frame" x="2" y="0.0" width="78" height="92"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-Yh-ldi">
+                                                <rect key="frame" x="31" y="93" width="143" height="37"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="18"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="wqr-lN-x2K" eventType="valueChanged" id="DOR-Le-dGP"/>
+                                            <action selector="positiveAction1ButtonPressed:" destination="wqr-lN-x2K" eventType="touchUpInside" id="FU8-7z-MVq"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbt-zw-BNL" customClass="MFUIButton">
+                                        <rect key="frame" x="246" y="218" width="202" height="130"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$1.49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2L-qo-dca">
+                                                <rect key="frame" x="44" y="90" width="114" height="40"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="18"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000 coins" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbV-Iy-vgS">
+                                                <rect key="frame" x="75" y="0.0" width="127" height="91"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_coins_second.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Kc-F7-ZEi">
+                                                <rect key="frame" x="0.0" y="0.0" width="77" height="86"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction2ButtonPressed:" destination="wqr-lN-x2K" eventType="touchUpInside" id="F2K-7v-C4d"/>
+                                            <action selector="positiveAction2ButtonPressed:" destination="wqr-lN-x2K" eventType="valueChanged" id="iCQ-bG-fWq"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-64-1BD" customClass="MFUIButton">
+                                        <rect key="frame" x="28" y="366" width="200" height="132"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_coins_third.png" translatesAutoresizingMaskIntoConstraints="NO" id="zQx-sa-gam">
+                                                <rect key="frame" x="3" y="0.0" width="78" height="84"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2500 coins" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vht-g4-dFp">
+                                                <rect key="frame" x="83" y="0.0" width="117" height="92"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="23"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$2.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVB-WC-Kxr">
+                                                <rect key="frame" x="43" y="92" width="114" height="40"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="18"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction3ButtonPressed:" destination="wqr-lN-x2K" eventType="valueChanged" id="eAz-e9-EPz"/>
+                                            <action selector="positiveAction3ButtonPressed:" destination="wqr-lN-x2K" eventType="touchUpInside" id="hg5-5T-tML"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-pg-6tF" customClass="MFUIButton">
+                                        <rect key="frame" x="246" y="366" width="202" height="132"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$4.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7L-lA-5Yh">
+                                                <rect key="frame" x="44" y="92" width="114" height="40"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="18"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5000 coins" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbN-U9-Lqj">
+                                                <rect key="frame" x="76" y="0.0" width="126" height="93"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="24"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_coins_fourth.png" translatesAutoresizingMaskIntoConstraints="NO" id="2AD-dN-I2h">
+                                                <rect key="frame" x="3" y="0.0" width="74" height="93"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction4ButtonPressed:" destination="wqr-lN-x2K" eventType="touchUpInside" id="u9X-g8-sUp"/>
+                                            <action selector="positiveAction4ButtonPressed:" destination="wqr-lN-x2K" eventType="valueChanged" id="wvi-5s-jeO"/>
+                                        </connections>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W67-5f-ggG">
+                                        <rect key="frame" x="153" y="21" width="168" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was a problem connecting to the iTunes Store.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvv-pz-s5x">
+                                        <rect key="frame" x="27" y="519" width="421" height="77"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note: Coins are consumable goods.  Coins purchased on one device will not be transferred to another." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eId-aF-6cJ">
+                                        <rect key="frame" x="15" y="506" width="444" height="98"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_hot_deal.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Ho-ap-xj8">
+                                        <rect key="frame" x="394" y="462" width="65" height="49"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey, looks like you're running short by 234 coins.  Add coins now using one of these great deals!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOi-14-AwL">
+                                        <rect key="frame" x="27" y="75" width="420" height="121"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="m1000CoinsButton" destination="bbt-zw-BNL" id="JhZ-Au-CFQ"/>
+                        <outlet property="m2500CoinsButton" destination="6lp-64-1BD" id="Pu9-Vc-aKc"/>
+                        <outlet property="m5000CoinsButton" destination="lSV-pg-6tF" id="Uge-RP-z4V"/>
+                        <outlet property="m500CoinsButton" destination="Lhh-hv-fsg" id="Vml-xH-61u"/>
+                        <outlet property="mConnectionProblemLabel" destination="Fvv-pz-s5x" id="LEk-8t-xtM"/>
+                        <outlet property="mConsumableNoteLabel" destination="eId-aF-6cJ" id="6jM-lb-oo5"/>
+                        <outlet property="mDescriptionLabel" destination="YOi-14-AwL" id="RBu-SV-wAr"/>
+                        <outlet property="mPrice1000CoinsLabel" destination="s2L-qo-dca" id="hXW-GE-D9r"/>
+                        <outlet property="mPrice2500CoinsLabel" destination="OVB-WC-Kxr" id="U0D-7Z-8Ui"/>
+                        <outlet property="mPrice5000CoinsLabel" destination="j7L-lA-5Yh" id="JIO-L1-b3u"/>
+                        <outlet property="mPrice500CoinsLabel" destination="Vuc-Yh-ldi" id="ebf-1f-adB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LLA-8p-BNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2096" y="1355"/>
+        </scene>
+        <!--Remove Ads Dialog View Controller-->
+        <scene sceneID="FA0-k9-su9">
+            <objects>
+                <viewController storyboardIdentifier="RemoveAdsDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rd5-6F-5WG" customClass="MFRemoveAdsDialogViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4FK-JC-Ohv"/>
+                        <viewControllerLayoutGuide type="bottom" id="yg2-cw-Nmg"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="7Yz-6g-Vpq">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jv5-tv-198">
+                                <rect key="frame" x="154" y="307" width="461" height="327"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Permanently remove all ads and enhance your play experience!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53S-qD-KA6">
+                                        <rect key="frame" x="10" y="53" width="436" height="91"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lF-Tv-QLS">
+                                        <rect key="frame" x="429" y="8" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="Rd5-6F-5WG" eventType="touchUpInside" id="HBn-9Y-HyH"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was a problem connecting to the iTunes Store.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36K-AF-X9d">
+                                        <rect key="frame" x="16" y="242" width="421" height="77"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXr-Y7-Dn6" customClass="MFUIButton">
+                                        <rect key="frame" x="44" y="157" width="368" height="68"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="Rd5-6F-5WG" eventType="touchUpInside" id="ZCb-xJ-q5f"/>
+                                        </connections>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note: This purchase is associated with your Apple ID, and will remain valid across devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-ws-6pU">
+                                        <rect key="frame" x="16" y="242" width="430" height="77"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Ads now for $1.49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9T-Tk-zCR">
+                                        <rect key="frame" x="56" y="157" width="347" height="68"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Ads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s8-cD-yeZ">
+                                        <rect key="frame" x="81" y="21" width="299" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="mNotConnectedLabel" destination="36K-AF-X9d" id="0fo-NE-8Vg"/>
+                        <outlet property="mNotePermanentLabel" destination="UHl-ws-6pU" id="kEo-WV-5pG"/>
+                        <outlet property="mRemoveAdsButton" destination="aXr-Y7-Dn6" id="dgD-Oh-LzF"/>
+                        <outlet property="mRemoveAdsButtonLabel" destination="t9T-Tk-zCR" id="Wr8-X8-BlP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tFb-Gl-kGK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2909" y="1355"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_about.png" width="48" height="48"/>
+        <image name="ic_add_coins_normal.png" width="48" height="48"/>
+        <image name="ic_add_coins_pressed.png" width="48" height="48"/>
+        <image name="ic_add_hurdle_smasher.png" width="96" height="96"/>
+        <image name="ic_add_hurdle_smasher_normal.png" width="48" height="48"/>
+        <image name="ic_add_hurdle_smasher_pressed.png" width="48" height="48"/>
+        <image name="ic_add_moves.png" width="96" height="96"/>
+        <image name="ic_add_moves_normal.png" width="48" height="48"/>
+        <image name="ic_add_moves_pressed.png" width="48" height="48"/>
+        <image name="ic_add_star.png" width="96" height="96"/>
+        <image name="ic_add_star_normal.png" width="48" height="48"/>
+        <image name="ic_add_star_pressed.png" width="48" height="48"/>
+        <image name="ic_button_cancel_normal.png" width="24" height="24"/>
+        <image name="ic_button_cancel_pressed.png" width="24" height="24"/>
+        <image name="ic_button_color_blue_normal.png" width="48" height="48"/>
+        <image name="ic_button_color_blue_pressed.png" width="48" height="48"/>
+        <image name="ic_button_color_green_normal.png" width="48" height="48"/>
+        <image name="ic_button_color_green_pressed.png" width="48" height="48"/>
+        <image name="ic_button_color_orange_normal.png" width="48" height="48"/>
+        <image name="ic_button_color_orange_pressed.png" width="48" height="48"/>
+        <image name="ic_button_color_purple_normal.png" width="48" height="48"/>
+        <image name="ic_button_color_purple_pressed.png" width="48" height="48"/>
+        <image name="ic_button_color_red_normal.png" width="48" height="48"/>
+        <image name="ic_button_color_red_pressed.png" width="48" height="48"/>
+        <image name="ic_button_color_yellow_normal.png" width="48" height="48"/>
+        <image name="ic_button_color_yellow_pressed.png" width="48" height="48"/>
+        <image name="ic_button_menu_normal.png" width="32" height="32"/>
+        <image name="ic_button_menu_pressed.png" width="32" height="32"/>
+        <image name="ic_button_sound_on_normal.png" width="32" height="32"/>
+        <image name="ic_button_sound_pressed.png" width="32" height="32"/>
+        <image name="ic_coins.png" width="48" height="48"/>
+        <image name="ic_hot_deal.png" width="48" height="48"/>
+        <image name="ic_how_to_play.png" width="48" height="48"/>
+        <image name="ic_iap_coins_first.png" width="48" height="48"/>
+        <image name="ic_iap_coins_fourth.png" width="48" height="48"/>
+        <image name="ic_iap_coins_second.png" width="48" height="48"/>
+        <image name="ic_iap_coins_third.png" width="48" height="48"/>
+        <image name="ic_iap_lock.png" width="24" height="24"/>
+        <image name="ic_logo_big.png" width="231" height="171"/>
+        <image name="ic_moves.png" width="48" height="48"/>
+        <image name="ic_play.png" width="48" height="48"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="DvT-V7-aYe"/>
-    </inferredMetricsTieBreakers>
 </document>

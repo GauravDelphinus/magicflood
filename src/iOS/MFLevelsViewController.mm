@@ -20,8 +20,6 @@
     NSArray *mLevelImageViews;
 }
 
-@property (strong, nonatomic) IBOutlet UILabel *mTitleLabel;
-
 @property (strong, nonatomic) IBOutlet UIButton *mLevelButton1;
 @property (strong, nonatomic) IBOutlet UIButton *mLevelButton2;
 @property (strong, nonatomic) IBOutlet UIButton *mLevelButton3;
@@ -205,13 +203,6 @@
     
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller animated:YES completion:nil];
-}
-
-/**
- The X button was tapped.
- **/
-- (IBAction)handleBackButton:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end
