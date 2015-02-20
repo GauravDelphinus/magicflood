@@ -88,6 +88,26 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -2205,8 +2225,437 @@
             </objects>
             <point key="canvasLocation" x="6502" y="4813"/>
         </scene>
+        <!--Help Root View Controller-->
+        <scene sceneID="WDj-hf-Ubk">
+            <objects>
+                <viewController storyboardIdentifier="HelpRootViewController" id="UGg-IV-Sfb" customClass="MFHelpRootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2S0-sC-COi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lpa-RQ-dAT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tP6-Cu-gQd">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbH-HB-Ngw">
+                                <rect key="frame" x="720" y="20" width="24" height="24"/>
+                                <state key="normal" image="ic_button_cancel_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                <connections>
+                                    <action selector="dismissScreen:" destination="UGg-IV-Sfb" eventType="touchUpInside" id="YGx-yF-2dY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mCancelButton" destination="DbH-HB-Ngw" id="E0c-5m-Gsc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pa0-NT-5OY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2103" y="6102"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="r65-rZ-m7C">
+            <objects>
+                <pageViewController storyboardIdentifier="HelpPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="UND-fy-lxe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U8M-yn-nhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2919" y="6102"/>
+        </scene>
+        <!--Help Screen View Controller-->
+        <scene sceneID="CEF-Oy-Yhw">
+            <objects>
+                <viewController storyboardIdentifier="HelpScreenViewController1" id="knT-Eq-Yse" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CCZ-YE-Nvq"/>
+                        <viewControllerLayoutGuide type="bottom" id="hLA-Fc-RDS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O32-0L-yWX">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The objective of the game is to fill the entire grid with the same color." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-X9-BO4">
+                                <rect key="frame" x="124" y="682" width="521" height="197"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZH9-3N-LRM">
+                                <rect key="frame" x="224" y="369" width="321" height="232"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Objective" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gk-mZ-Hcz">
+                                <rect key="frame" x="224" y="151" width="321" height="79"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pGz-hl-Km7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3771" y="6102"/>
+        </scene>
+        <!--Help Screen View Controller-->
+        <scene sceneID="9BA-CZ-0vI">
+            <objects>
+                <viewController storyboardIdentifier="HelpScreenViewController2" id="B22-Cg-bRH" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZIP-Vl-oCw"/>
+                        <viewControllerLayoutGuide type="bottom" id="mws-pa-Jvh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lZX-Yd-dIF">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look for the rotating star.  It could be anywhere on the grid.  There could be multiple stars in the game as well!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtY-fO-hvV">
+                                <rect key="frame" x="87" y="686" width="610" height="229"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="D39-Tc-hFq">
+                                <rect key="frame" x="202" y="376" width="365" height="239"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Identify the Start Position" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSm-04-uax">
+                                <rect key="frame" x="194" y="138" width="396" height="98"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xb2-OG-nBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4662" y="6102"/>
+        </scene>
+        <!--Help Screen View Controller-->
+        <scene sceneID="opk-Am-zeC">
+            <objects>
+                <viewController storyboardIdentifier="HelpScreenViewController3" id="P4j-U7-zoE" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j80-vO-LLX"/>
+                        <viewControllerLayoutGuide type="bottom" id="eOd-z4-HUh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U8B-Eg-Jcw">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start filling the grid with colors" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSm-GS-wGG">
+                                <rect key="frame" x="140" y="101" width="489" height="132"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap the color buttons at the bottom to fill the grid." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy3-DR-Dcf">
+                                <rect key="frame" x="100" y="703" width="568" height="153"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_3b.png" translatesAutoresizingMaskIntoConstraints="NO" id="5WD-Ze-jg8">
+                                <rect key="frame" x="100" y="513" width="568" height="164"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_3.png" translatesAutoresizingMaskIntoConstraints="NO" id="38T-w0-eri">
+                                <rect key="frame" x="242" y="282" width="285" height="198"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLq-5x-Bqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5545" y="6102"/>
+        </scene>
+        <!--Help Screen View Controller-->
+        <scene sceneID="ykv-QL-b8l">
+            <objects>
+                <viewController storyboardIdentifier="HelpScreenViewController4" id="8Ul-DY-Wry" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qT7-Ic-frg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gd3-8S-BMe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TvN-i4-t0R">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look out for hurdles, and work your way around them!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbD-vw-G3m">
+                                <rect key="frame" x="67" y="729" width="635" height="119"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look out for hurdles!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czb-nQ-kI2">
+                                <rect key="frame" x="171" y="108" width="427" height="128"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_4.png" translatesAutoresizingMaskIntoConstraints="NO" id="FND-PZ-zlo">
+                                <rect key="frame" x="186" y="354" width="396" height="220"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lp-nt-GaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6398" y="6102"/>
+        </scene>
+        <!--Help Screen View Controller-->
+        <scene sceneID="nMB-V8-5Ku">
+            <objects>
+                <viewController storyboardIdentifier="HelpScreenViewController5" id="x03-Bx-9VJ" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iKf-sk-7cf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q4g-DE-C4d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qYU-BH-74z">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Earn and Redeem Coins!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6b-UM-pTP">
+                                <rect key="frame" x="122" y="128" width="524" height="77"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accumulate and redeem coins for lifelines such as bonus moves, additional stars and hurdle smashers!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hd7-E7-xLa">
+                                <rect key="frame" x="61" y="671" width="647" height="221"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="dO2-nP-sJI">
+                                <rect key="frame" x="264" y="398" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lEo-UG-tU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7251" y="6110"/>
+        </scene>
+        <!--Help Screen View Controller-->
+        <scene sceneID="Nih-eS-kEQ">
+            <objects>
+                <viewController storyboardIdentifier="HelpScreenViewController6" id="1oq-Ll-bDx" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m1K-TY-Zhq"/>
+                        <viewControllerLayoutGuide type="bottom" id="aHR-ur-oA7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IuP-LJ-rRz">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When you're running out of moves, add bonus moves and save your game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuS-H6-pkv">
+                                <rect key="frame" x="72" y="695" width="635" height="164"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_add_moves.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bfx-ow-Kgk">
+                                <rect key="frame" x="236" y="372" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Moves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-r8-ILq">
+                                <rect key="frame" x="192" y="133" width="328" height="81"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wY7-2n-FFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8113" y="6110"/>
+        </scene>
+        <!--Help Screen View Controller-->
+        <scene sceneID="TKn-SP-TnS">
+            <objects>
+                <viewController storyboardIdentifier="HelpScreenViewController7" id="cey-ze-Ist" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zIZ-hn-V45"/>
+                        <viewControllerLayoutGuide type="bottom" id="s7z-wc-9sp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YyH-sc-fKK">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Additional Stars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8m7-BC-cfc">
+                                <rect key="frame" x="204" y="141" width="348" height="67"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add additional stars on the game grid to accelerate the speed of the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffD-aF-VVF">
+                                <rect key="frame" x="76" y="715" width="616" height="110"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_star_placement_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="ouj-zd-XmS">
+                                <rect key="frame" x="193" y="335" width="382" height="261"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EWa-yo-17t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8972" y="6110"/>
+        </scene>
+        <!--Help Screen View Controller-->
+        <scene sceneID="oB5-u6-nqx">
+            <objects>
+                <viewController storyboardIdentifier="HelpScreenViewController8" id="CDG-hS-FLy" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b3p-rT-2oP"/>
+                        <viewControllerLayoutGuide type="bottom" id="05b-ap-Oxc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Czf-7s-ZpO">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hurdle Smashers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeu-Rj-Nuy">
+                                <rect key="frame" x="189" y="146" width="390" height="78"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_8.png" translatesAutoresizingMaskIntoConstraints="NO" id="dVA-mh-sko">
+                                <rect key="frame" x="245" y="352" width="278" height="205"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Hurdle Smashers to make holes in hurdles and create new paths to complete the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33l-7w-MEc">
+                                <rect key="frame" x="94" y="720" width="580" height="148"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9OR-a2-ufj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9795" y="6110"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="2hE-4l-MwS">
+            <objects>
+                <viewController storyboardIdentifier="AboutViewController" id="qg2-rn-XXe" customClass="MFAboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8dZ-EF-G0G"/>
+                        <viewControllerLayoutGuide type="bottom" id="mYM-Ft-6dt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Qe-In-5qv">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by EZEEIDEAS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4V-mS-EDz">
+                                <rect key="frame" x="271" y="153" width="226" height="52"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyright (c) 2015 EZEEIDEAS IT SERVICES LLP" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8A-G3-IpM">
+                                <rect key="frame" x="149" y="287" width="470" height="90"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Rights Reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9t-0g-Nbu">
+                                <rect key="frame" x="217" y="362" width="335" height="64"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De3-4Y-xUy">
+                                <rect key="frame" x="126" y="492" width="516" height="278"/>
+                                <string key="text">If you enjoy using Magic Flood, please take a moment to rate the app on the iTunes Store or Like our page on Facebook.  Thanks for your support, and we welcome your feedback!</string>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gT-4u-DDd">
+                                <rect key="frame" x="269" y="848" width="48" height="48"/>
+                                <state key="normal" image="ic_button_facebook_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_facebook_pressed.png"/>
+                                <connections>
+                                    <action selector="launchFacebook:" destination="qg2-rn-XXe" eventType="touchUpInside" id="IPq-1Y-KwM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6om-hH-T9R">
+                                <rect key="frame" x="391" y="848" width="48" height="48"/>
+                                <state key="normal" image="ic_button_feedback_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_feedback_pressed.png"/>
+                                <connections>
+                                    <action selector="launchEmailFeedback:" destination="qg2-rn-XXe" eventType="touchUpInside" id="oZb-Rp-ga3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vL0-dF-pCT">
+                                <rect key="frame" x="728" y="20" width="24" height="24"/>
+                                <state key="normal" image="ic_button_cancel_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                <connections>
+                                    <action selector="dismissScreen:" destination="qg2-rn-XXe" eventType="touchUpInside" id="DeK-ZE-aKD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4o-4A-Dh3">
+                                <rect key="frame" x="452" y="848" width="48" height="48"/>
+                                <state key="normal" image="ic_button_restore_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_restore_pressed.png"/>
+                                <connections>
+                                    <action selector="restorePurchases:" destination="qg2-rn-XXe" eventType="touchUpInside" id="Pdb-YL-gFW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1h-ga-n61">
+                                <rect key="frame" x="330" y="848" width="48" height="48"/>
+                                <state key="normal" image="ic_button_rate_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_rate_pressed.png"/>
+                                <connections>
+                                    <action selector="launchItunesStore:" destination="qg2-rn-XXe" eventType="touchUpInside" id="EzU-WE-wjE"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_small.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nv7-YF-Set">
+                                <rect key="frame" x="276" y="40" width="217" height="124"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7h-5s-Ygw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="315" y="3968"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="help_image_screen_1.png" width="250" height="183"/>
+        <image name="help_image_screen_2.png" width="200" height="204"/>
+        <image name="help_image_screen_3.png" width="150" height="142"/>
+        <image name="help_image_screen_3b.png" width="400" height="76"/>
+        <image name="help_image_screen_4.png" width="200" height="179"/>
+        <image name="help_image_screen_5.png" width="100" height="95"/>
+        <image name="help_image_screen_8.png" width="250" height="136"/>
         <image name="ic_about.png" width="48" height="48"/>
         <image name="ic_add_coins_normal.png" width="48" height="48"/>
         <image name="ic_add_coins_pressed.png" width="48" height="48"/>
@@ -2233,8 +2682,16 @@
         <image name="ic_button_color_red_pressed.png" width="48" height="48"/>
         <image name="ic_button_color_yellow_normal.png" width="48" height="48"/>
         <image name="ic_button_color_yellow_pressed.png" width="48" height="48"/>
+        <image name="ic_button_facebook_normal.png" width="48" height="48"/>
+        <image name="ic_button_facebook_pressed.png" width="48" height="48"/>
+        <image name="ic_button_feedback_normal.png" width="48" height="48"/>
+        <image name="ic_button_feedback_pressed.png" width="48" height="48"/>
         <image name="ic_button_menu_normal.png" width="32" height="32"/>
         <image name="ic_button_menu_pressed.png" width="32" height="32"/>
+        <image name="ic_button_rate_normal.png" width="48" height="48"/>
+        <image name="ic_button_rate_pressed.png" width="48" height="48"/>
+        <image name="ic_button_restore_normal.png" width="48" height="48"/>
+        <image name="ic_button_restore_pressed.png" width="48" height="48"/>
         <image name="ic_button_sound_on_normal.png" width="32" height="32"/>
         <image name="ic_button_sound_pressed.png" width="32" height="32"/>
         <image name="ic_coins.png" width="48" height="48"/>
@@ -2250,6 +2707,7 @@
         <image name="ic_iap_lock.png" width="24" height="24"/>
         <image name="ic_levels.png" width="48" height="48"/>
         <image name="ic_logo_big.png" width="231" height="171"/>
+        <image name="ic_logo_small.png" width="116" height="86"/>
         <image name="ic_moves.png" width="48" height="48"/>
         <image name="ic_next_level.png" width="48" height="48"/>
         <image name="ic_not_connected.png" width="96" height="96"/>
