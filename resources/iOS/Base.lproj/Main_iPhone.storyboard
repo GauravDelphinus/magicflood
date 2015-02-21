@@ -1919,42 +1919,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-Ip-aKa">
-                                <rect key="frame" x="28" y="94" width="265" height="276"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-Ip-aKa">
+                                <rect key="frame" x="28" y="71" width="284" height="314"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Permanently remove all ads and enhance your play experience!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiM-Ol-V72">
-                                        <rect key="frame" x="8" y="45" width="249" height="91"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Permanently remove all ads and enhance your play experience!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiM-Ol-V72">
+                                        <rect key="frame" x="16" y="39" width="249" height="91"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Ads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYE-So-uhz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Remove Ads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYE-So-uhz">
                                         <rect key="frame" x="66" y="8" width="133" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-0x-Rr6">
-                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="Hlt-PF-6Sb" eventType="touchUpInside" id="MMa-YE-J3K"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was a problem connecting to the iTunes Store.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBe-LJ-hdl">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="There was a problem connecting to the iTunes Store.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBe-LJ-hdl">
                                         <rect key="frame" x="26" y="213" width="216" height="58"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="11"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQJ-5F-LwF" customClass="MFUIButton">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQJ-5F-LwF" customClass="MFUIButton">
                                         <rect key="frame" x="19" y="151" width="230" height="52"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Ads now for $1.49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-qJ-Ncz">
-                                                <rect key="frame" x="0.0" y="7" width="230" height="38"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Remove Ads now for $1.49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-qJ-Ncz">
+                                                <rect key="frame" x="8" y="14" width="205" height="23"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1964,21 +1954,63 @@
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="3xj-qJ-Ncz" secondAttribute="bottom" constant="5" id="8Jg-9R-6x1"/>
+                                            <constraint firstItem="3xj-qJ-Ncz" firstAttribute="top" secondItem="pQJ-5F-LwF" secondAttribute="top" constant="5" id="o5j-bn-BbF"/>
+                                            <constraint firstAttribute="trailing" secondItem="3xj-qJ-Ncz" secondAttribute="trailing" constant="5" id="sKl-GJ-YGJ"/>
+                                            <constraint firstItem="3xj-qJ-Ncz" firstAttribute="leading" secondItem="pQJ-5F-LwF" secondAttribute="leading" constant="5" id="tUk-b0-cX4"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="positiveAction1ButtonPressed:" destination="Hlt-PF-6Sb" eventType="touchUpInside" id="mdD-Ap-dCZ"/>
                                         </connections>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note: This purchase is associated with your Apple ID, and will remain valid across devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHV-hg-pqQ">
-                                        <rect key="frame" x="19" y="213" width="230" height="63"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Note: This purchase is associated with your Apple ID, and will remain valid across devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHV-hg-pqQ">
+                                        <rect key="frame" x="19" y="233" width="230" height="63"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="11"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-0x-Rr6">
+                                        <rect key="frame" x="233" y="8" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="Hlt-PF-6Sb" eventType="touchUpInside" id="MMa-YE-J3K"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="YHV-hg-pqQ" firstAttribute="leading" secondItem="Abb-Ip-aKa" secondAttribute="leading" constant="10" id="0Ym-KW-B0K"/>
+                                    <constraint firstAttribute="centerX" secondItem="pQJ-5F-LwF" secondAttribute="centerX" id="2dN-DF-oxp"/>
+                                    <constraint firstAttribute="centerX" secondItem="gBe-LJ-hdl" secondAttribute="centerX" id="BRB-7H-GxC"/>
+                                    <constraint firstAttribute="bottom" secondItem="YHV-hg-pqQ" secondAttribute="bottom" constant="10" id="Cu7-u1-Bfg"/>
+                                    <constraint firstItem="TiM-Ol-V72" firstAttribute="leading" secondItem="Abb-Ip-aKa" secondAttribute="leading" constant="10" id="NB1-VI-nDX"/>
+                                    <constraint firstItem="TiM-Ol-V72" firstAttribute="top" secondItem="bYE-So-uhz" secondAttribute="bottom" constant="10" id="QwF-K0-g6p"/>
+                                    <constraint firstItem="YHV-hg-pqQ" firstAttribute="top" secondItem="pQJ-5F-LwF" secondAttribute="bottom" constant="10" id="SHM-GW-PQE"/>
+                                    <constraint firstAttribute="trailing" secondItem="EDI-0x-Rr6" secondAttribute="trailing" id="Sif-kw-1Ad"/>
+                                    <constraint firstItem="pQJ-5F-LwF" firstAttribute="top" secondItem="TiM-Ol-V72" secondAttribute="bottom" constant="10" id="T4p-aI-Jd7"/>
+                                    <constraint firstAttribute="centerX" secondItem="YHV-hg-pqQ" secondAttribute="centerX" id="VrX-eZ-snK"/>
+                                    <constraint firstItem="gBe-LJ-hdl" firstAttribute="top" secondItem="pQJ-5F-LwF" secondAttribute="bottom" constant="10" id="XWa-5y-Q17"/>
+                                    <constraint firstAttribute="centerX" secondItem="TiM-Ol-V72" secondAttribute="centerX" id="dnG-bu-IPD"/>
+                                    <constraint firstItem="gBe-LJ-hdl" firstAttribute="leading" secondItem="Abb-Ip-aKa" secondAttribute="leading" constant="10" id="eSw-FT-Ya4"/>
+                                    <constraint firstAttribute="centerX" secondItem="bYE-So-uhz" secondAttribute="centerX" id="j12-Ly-34B"/>
+                                    <constraint firstItem="EDI-0x-Rr6" firstAttribute="top" secondItem="Abb-Ip-aKa" secondAttribute="top" id="jDl-UX-mb1"/>
+                                    <constraint firstAttribute="trailing" secondItem="YHV-hg-pqQ" secondAttribute="trailing" constant="10" id="loD-Qx-rof"/>
+                                    <constraint firstItem="bYE-So-uhz" firstAttribute="top" secondItem="Abb-Ip-aKa" secondAttribute="top" constant="10" id="rzT-lL-iay"/>
+                                    <constraint firstAttribute="trailing" secondItem="TiM-Ol-V72" secondAttribute="trailing" constant="10" id="sLp-fF-eNr"/>
+                                    <constraint firstAttribute="trailing" secondItem="gBe-LJ-hdl" secondAttribute="trailing" constant="10" id="toZ-BD-Zxy"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Abb-Ip-aKa" firstAttribute="leading" secondItem="zmE-Tm-pMf" secondAttribute="leadingMargin" constant="20" id="3Ci-rc-OcH"/>
+                            <constraint firstAttribute="centerY" secondItem="Abb-Ip-aKa" secondAttribute="centerY" id="g0Y-b2-rEe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Abb-Ip-aKa" secondAttribute="trailing" constant="20" id="lzH-je-bOJ"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mNotConnectedLabel" destination="gBe-LJ-hdl" id="dFd-Kr-1xT"/>
@@ -2003,23 +2035,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9f-3S-Sxr">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9f-3S-Sxr">
                                 <rect key="frame" x="28" y="94" width="265" height="342"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sorry, you've run out of moves!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTR-ab-sko">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sorry, you've run out of moves!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTR-ab-sko">
                                         <rect key="frame" x="8" y="45" width="249" height="91"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oops!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmN-C5-1aD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Oops!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmN-C5-1aD">
                                         <rect key="frame" x="66" y="8" width="133" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EB8-H3-GFD">
-                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OWT-nu-5Rc" customClass="MFUIButton">
+                                        <rect key="frame" x="46" y="144" width="173" height="73"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Play On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qE8-3m-P9z">
+                                                <rect key="frame" x="65" y="19" width="100" height="46"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_play_on.png" translatesAutoresizingMaskIntoConstraints="NO" id="sMO-wS-meR">
+                                                <rect key="frame" x="13" y="11" width="59" height="61"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstItem="qE8-3m-P9z" firstAttribute="leading" secondItem="sMO-wS-meR" secondAttribute="trailing" constant="5" id="AX9-Pm-alv"/>
+                                            <constraint firstItem="sMO-wS-meR" firstAttribute="top" secondItem="OWT-nu-5Rc" secondAttribute="top" constant="5" id="RWn-WW-8y0"/>
+                                            <constraint firstItem="sMO-wS-meR" firstAttribute="centerY" secondItem="qE8-3m-P9z" secondAttribute="centerY" id="W7g-fb-6QE"/>
+                                            <constraint firstAttribute="trailing" secondItem="qE8-3m-P9z" secondAttribute="trailing" constant="5" id="Wu7-Lg-gei"/>
+                                            <constraint firstAttribute="bottom" secondItem="sMO-wS-meR" secondAttribute="bottom" constant="5" id="gTH-DA-Y6a"/>
+                                            <constraint firstItem="sMO-wS-meR" firstAttribute="leading" secondItem="OWT-nu-5Rc" secondAttribute="leading" constant="5" id="qLg-KI-Dxx"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="H7P-aC-5sA"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USA-C9-7eC" customClass="MFUIButton">
+                                        <rect key="frame" x="46" y="240" width="173" height="73"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPV-bq-vFW">
+                                                <rect key="frame" x="49" y="6" width="116" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_end_game.png" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-uS-Hdt">
+                                                <rect key="frame" x="8" y="4" width="59" height="61"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="L5I-uS-Hdt" secondAttribute="bottom" constant="5" id="ADa-ff-6he"/>
+                                            <constraint firstItem="fPV-bq-vFW" firstAttribute="leading" secondItem="L5I-uS-Hdt" secondAttribute="trailing" constant="5" id="Dhx-Xm-uIx"/>
+                                            <constraint firstItem="L5I-uS-Hdt" firstAttribute="centerY" secondItem="fPV-bq-vFW" secondAttribute="centerY" id="PvF-Tc-eoE"/>
+                                            <constraint firstItem="L5I-uS-Hdt" firstAttribute="leading" secondItem="USA-C9-7eC" secondAttribute="leading" constant="5" id="X4v-A9-zNs"/>
+                                            <constraint firstAttribute="trailing" secondItem="fPV-bq-vFW" secondAttribute="trailing" constant="5" id="fXT-f7-U19"/>
+                                            <constraint firstItem="L5I-uS-Hdt" firstAttribute="top" secondItem="USA-C9-7eC" secondAttribute="top" constant="5" id="tcT-yw-N2h"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="Huj-sJ-pdi"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EB8-H3-GFD">
+                                        <rect key="frame" x="227" y="13" width="24" height="24"/>
                                         <state key="normal" image="ic_button_cancel_normal.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -2028,53 +2118,32 @@
                                             <action selector="negativeAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="8iQ-Wb-gTw"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OWT-nu-5Rc" customClass="MFUIButton">
-                                        <rect key="frame" x="46" y="144" width="173" height="73"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qE8-3m-P9z">
-                                                <rect key="frame" x="57" y="0.0" width="116" height="61"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="sMO-wS-meR">
-                                                <rect key="frame" x="8" y="6" width="59" height="61"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                        </accessibility>
-                                        <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="H7P-aC-5sA"/>
-                                        </connections>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USA-C9-7eC" customClass="MFUIButton">
-                                        <rect key="frame" x="46" y="240" width="173" height="73"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_end_game.png" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-uS-Hdt">
-                                                <rect key="frame" x="8" y="8" width="59" height="61"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPV-bq-vFW">
-                                                <rect key="frame" x="57" y="6" width="116" height="61"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                        </accessibility>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="YMp-Jp-VOb" eventType="touchUpInside" id="Huj-sJ-pdi"/>
-                                        </connections>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="USA-C9-7eC" firstAttribute="top" secondItem="OWT-nu-5Rc" secondAttribute="bottom" constant="10" id="25e-iY-dhv"/>
+                                    <constraint firstAttribute="bottom" secondItem="USA-C9-7eC" secondAttribute="bottom" constant="10" id="D3z-aN-4Sr"/>
+                                    <constraint firstAttribute="trailing" secondItem="xTR-ab-sko" secondAttribute="trailing" constant="10" id="Igy-gF-Z2D"/>
+                                    <constraint firstItem="FmN-C5-1aD" firstAttribute="top" secondItem="j9f-3S-Sxr" secondAttribute="top" constant="10" id="J2r-ah-FjR"/>
+                                    <constraint firstItem="OWT-nu-5Rc" firstAttribute="top" secondItem="xTR-ab-sko" secondAttribute="bottom" constant="10" id="NOz-VO-0D1"/>
+                                    <constraint firstAttribute="centerX" secondItem="FmN-C5-1aD" secondAttribute="centerX" id="Pqb-PD-zm3"/>
+                                    <constraint firstItem="xTR-ab-sko" firstAttribute="top" secondItem="FmN-C5-1aD" secondAttribute="bottom" constant="10" id="Q95-T4-av7"/>
+                                    <constraint firstItem="OWT-nu-5Rc" firstAttribute="width" secondItem="USA-C9-7eC" secondAttribute="width" id="WgJ-Qh-aYo"/>
+                                    <constraint firstAttribute="centerX" secondItem="OWT-nu-5Rc" secondAttribute="centerX" id="gNg-ET-xOI"/>
+                                    <constraint firstAttribute="trailing" secondItem="EB8-H3-GFD" secondAttribute="trailing" id="icb-cX-G7u"/>
+                                    <constraint firstAttribute="centerX" secondItem="xTR-ab-sko" secondAttribute="centerX" id="pgc-V6-nFl"/>
+                                    <constraint firstItem="EB8-H3-GFD" firstAttribute="top" secondItem="j9f-3S-Sxr" secondAttribute="top" id="psP-5v-z5E"/>
+                                    <constraint firstItem="xTR-ab-sko" firstAttribute="leading" secondItem="j9f-3S-Sxr" secondAttribute="leading" constant="10" id="rlZ-Vl-h6y"/>
+                                    <constraint firstAttribute="centerX" secondItem="USA-C9-7eC" secondAttribute="centerX" id="zB4-Zm-S59"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="j9f-3S-Sxr" secondAttribute="centerY" id="Cd3-Sl-Fbq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j9f-3S-Sxr" secondAttribute="trailing" constant="20" id="Dpr-xG-ZM1"/>
+                            <constraint firstItem="j9f-3S-Sxr" firstAttribute="leading" secondItem="eXs-3m-rFR" secondAttribute="leadingMargin" constant="20" id="X5m-Os-SQF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIf-eN-yQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2093,23 +2162,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBX-tP-OFo">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBX-tP-OFo">
                                 <rect key="frame" x="28" y="94" width="265" height="342"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What would you like to do?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdn-g3-BlI">
-                                        <rect key="frame" x="8" y="45" width="249" height="91"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What would you like to do?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdn-g3-BlI">
+                                        <rect key="frame" x="8" y="32" width="249" height="91"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTC-7H-p7v">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTC-7H-p7v">
                                         <rect key="frame" x="66" y="8" width="133" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmD-uQ-ef9">
-                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adx-zE-pys" customClass="MFUIButton">
+                                        <rect key="frame" x="40" y="144" width="185" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Replay Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g7-Bf-V7E">
+                                                <rect key="frame" x="63" y="5" width="116" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_replay.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nsj-oF-61q">
+                                                <rect key="frame" x="8" y="8" width="59" height="61"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="2g7-Bf-V7E" secondAttribute="trailing" constant="5" id="5Tc-KU-dhq"/>
+                                            <constraint firstItem="Nsj-oF-61q" firstAttribute="top" secondItem="adx-zE-pys" secondAttribute="top" constant="5" id="9XE-OR-Y0p"/>
+                                            <constraint firstAttribute="bottom" secondItem="Nsj-oF-61q" secondAttribute="bottom" constant="5" id="A4W-yR-GMu"/>
+                                            <constraint firstItem="Nsj-oF-61q" firstAttribute="centerY" secondItem="2g7-Bf-V7E" secondAttribute="centerY" id="De0-RM-Ylc"/>
+                                            <constraint firstItem="2g7-Bf-V7E" firstAttribute="leading" secondItem="Nsj-oF-61q" secondAttribute="trailing" constant="5" id="XXA-WP-bJd"/>
+                                            <constraint firstItem="Nsj-oF-61q" firstAttribute="leading" secondItem="adx-zE-pys" secondAttribute="leading" constant="5" id="uAg-3b-sKB"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="woA-Rr-s8Z"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wny-e7-lKQ" customClass="MFUIButton">
+                                        <rect key="frame" x="40" y="240" width="185" height="79"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_levels.png" translatesAutoresizingMaskIntoConstraints="NO" id="mns-Ai-5In">
+                                                <rect key="frame" x="6" y="8" width="59" height="61"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="View Levels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grO-xZ-rtv">
+                                                <rect key="frame" x="61" y="8" width="116" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="mns-Ai-5In" secondAttribute="bottom" constant="5" id="Fyh-VC-QIA"/>
+                                            <constraint firstAttribute="trailing" secondItem="grO-xZ-rtv" secondAttribute="trailing" constant="5" id="Hmi-tV-DEY"/>
+                                            <constraint firstItem="grO-xZ-rtv" firstAttribute="centerY" secondItem="mns-Ai-5In" secondAttribute="centerY" id="QYk-Yb-C3g"/>
+                                            <constraint firstItem="mns-Ai-5In" firstAttribute="top" secondItem="wny-e7-lKQ" secondAttribute="top" constant="5" id="cfY-KX-sDh"/>
+                                            <constraint firstItem="grO-xZ-rtv" firstAttribute="leading" secondItem="mns-Ai-5In" secondAttribute="trailing" constant="5" id="m4r-20-neJ"/>
+                                            <constraint firstItem="mns-Ai-5In" firstAttribute="leading" secondItem="wny-e7-lKQ" secondAttribute="leading" constant="5" id="xOB-lR-HIG"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction2ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="DtM-pW-Hhu"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmD-uQ-ef9">
+                                        <rect key="frame" x="228" y="8" width="24" height="24"/>
                                         <state key="normal" image="ic_button_cancel_normal.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -2118,53 +2245,32 @@
                                             <action selector="negativeAction1ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="QfQ-9d-tzh"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adx-zE-pys" customClass="MFUIButton">
-                                        <rect key="frame" x="40" y="144" width="185" height="77"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Replay Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g7-Bf-V7E">
-                                                <rect key="frame" x="63" y="5" width="116" height="61"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_replay.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nsj-oF-61q">
-                                                <rect key="frame" x="2" y="8" width="59" height="61"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                        </accessibility>
-                                        <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="woA-Rr-s8Z"/>
-                                        </connections>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wny-e7-lKQ" customClass="MFUIButton">
-                                        <rect key="frame" x="40" y="240" width="185" height="79"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_levels.png" translatesAutoresizingMaskIntoConstraints="NO" id="mns-Ai-5In">
-                                                <rect key="frame" x="6" y="8" width="59" height="61"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="View Levels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grO-xZ-rtv">
-                                                <rect key="frame" x="67" y="6" width="116" height="61"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                        </accessibility>
-                                        <connections>
-                                            <action selector="positiveAction2ButtonPressed:" destination="eFa-6C-ADw" eventType="touchUpInside" id="DtM-pW-Hhu"/>
-                                        </connections>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="sdn-g3-BlI" secondAttribute="centerX" id="6cd-Oz-DKA"/>
+                                    <constraint firstAttribute="centerX" secondItem="MTC-7H-p7v" secondAttribute="centerX" id="7Pi-mb-ci5"/>
+                                    <constraint firstItem="sdn-g3-BlI" firstAttribute="top" secondItem="MTC-7H-p7v" secondAttribute="bottom" constant="10" id="AXe-XT-nlS"/>
+                                    <constraint firstAttribute="centerX" secondItem="wny-e7-lKQ" secondAttribute="centerX" id="BxB-8t-mzs"/>
+                                    <constraint firstItem="adx-zE-pys" firstAttribute="top" secondItem="sdn-g3-BlI" secondAttribute="bottom" constant="10" id="HXf-6j-ieL"/>
+                                    <constraint firstItem="sdn-g3-BlI" firstAttribute="leading" secondItem="XBX-tP-OFo" secondAttribute="leading" constant="10" id="HgC-F4-ta8"/>
+                                    <constraint firstItem="VmD-uQ-ef9" firstAttribute="top" secondItem="XBX-tP-OFo" secondAttribute="top" id="PWB-3N-T0V"/>
+                                    <constraint firstItem="MTC-7H-p7v" firstAttribute="top" secondItem="XBX-tP-OFo" secondAttribute="top" constant="10" id="ZmI-w9-vi0"/>
+                                    <constraint firstItem="wny-e7-lKQ" firstAttribute="width" secondItem="adx-zE-pys" secondAttribute="width" id="eKi-fJ-MIH"/>
+                                    <constraint firstAttribute="centerX" secondItem="adx-zE-pys" secondAttribute="centerX" id="ee3-yu-0nf"/>
+                                    <constraint firstItem="wny-e7-lKQ" firstAttribute="top" secondItem="adx-zE-pys" secondAttribute="bottom" constant="10" id="ikW-D4-MyV"/>
+                                    <constraint firstAttribute="trailing" secondItem="VmD-uQ-ef9" secondAttribute="trailing" id="ng2-nx-YiT"/>
+                                    <constraint firstAttribute="bottom" secondItem="wny-e7-lKQ" secondAttribute="bottom" constant="10" id="xD4-PU-9cr"/>
+                                    <constraint firstAttribute="trailing" secondItem="sdn-g3-BlI" secondAttribute="trailing" constant="10" id="xjv-G5-yz0"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="XBX-tP-OFo" firstAttribute="leading" secondItem="PwY-bN-fyr" secondAttribute="leadingMargin" constant="20" id="H2g-YG-lfP"/>
+                            <constraint firstAttribute="centerY" secondItem="XBX-tP-OFo" secondAttribute="centerY" id="U5c-L9-AEw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XBX-tP-OFo" secondAttribute="trailing" constant="20" id="WvV-P0-oV2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elr-g2-Meo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2183,23 +2289,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HbA-5e-iEl">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HbA-5e-iEl">
                                 <rect key="frame" x="28" y="115" width="265" height="249"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nice job - you nailed it!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rG-RR-Oo0">
-                                        <rect key="frame" x="8" y="45" width="249" height="91"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nice job - you nailed it!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rG-RR-Oo0">
+                                        <rect key="frame" x="8" y="57" width="249" height="91"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Great work!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJc-aV-gu4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Great work!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJc-aV-gu4">
                                         <rect key="frame" x="66" y="8" width="133" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZo-0b-pCr">
-                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6M-bP-zGO" customClass="MFUIButton">
+                                        <rect key="frame" x="33" y="156" width="198" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Next Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfX-Uh-ygK">
+                                                <rect key="frame" x="78" y="5" width="116" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_next_level.png" translatesAutoresizingMaskIntoConstraints="NO" id="X0N-Qj-CIF">
+                                                <rect key="frame" x="12" y="8" width="59" height="61"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstItem="KfX-Uh-ygK" firstAttribute="leading" secondItem="X0N-Qj-CIF" secondAttribute="trailing" constant="7" id="Gbq-y6-00H"/>
+                                            <constraint firstItem="X0N-Qj-CIF" firstAttribute="leading" secondItem="t6M-bP-zGO" secondAttribute="leading" constant="12" id="OsJ-ig-d7a"/>
+                                            <constraint firstAttribute="trailing" secondItem="KfX-Uh-ygK" secondAttribute="trailing" constant="4" id="rEm-1g-RAC"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="L8R-Xh-uXg" eventType="touchUpInside" id="R28-JV-lfU"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZo-0b-pCr">
+                                        <rect key="frame" x="228" y="8" width="24" height="24"/>
                                         <state key="normal" image="ic_button_cancel_normal.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -2208,32 +2340,27 @@
                                             <action selector="negativeAction1ButtonPressed:" destination="L8R-Xh-uXg" eventType="touchUpInside" id="xqj-nz-rGS"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6M-bP-zGO" customClass="MFUIButton">
-                                        <rect key="frame" x="31" y="144" width="198" height="77"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfX-Uh-ygK">
-                                                <rect key="frame" x="78" y="5" width="116" height="61"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_next_level.png" translatesAutoresizingMaskIntoConstraints="NO" id="X0N-Qj-CIF">
-                                                <rect key="frame" x="12" y="8" width="59" height="61"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                        </accessibility>
-                                        <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="L8R-Xh-uXg" eventType="touchUpInside" id="R28-JV-lfU"/>
-                                        </connections>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="aZo-0b-pCr" firstAttribute="top" secondItem="HbA-5e-iEl" secondAttribute="top" id="1mM-vH-qCn"/>
+                                    <constraint firstAttribute="bottom" secondItem="t6M-bP-zGO" secondAttribute="bottom" constant="10" id="1uG-gH-RGj"/>
+                                    <constraint firstItem="t6M-bP-zGO" firstAttribute="top" secondItem="8rG-RR-Oo0" secondAttribute="bottom" constant="10" id="8Sr-3c-Dsu"/>
+                                    <constraint firstAttribute="centerX" secondItem="EJc-aV-gu4" secondAttribute="centerX" id="Nbs-jJ-Srk"/>
+                                    <constraint firstItem="8rG-RR-Oo0" firstAttribute="top" secondItem="EJc-aV-gu4" secondAttribute="bottom" constant="10" id="QEp-8u-S7x"/>
+                                    <constraint firstItem="EJc-aV-gu4" firstAttribute="top" secondItem="HbA-5e-iEl" secondAttribute="top" constant="10" id="TsC-lM-qrq"/>
+                                    <constraint firstAttribute="trailing" secondItem="aZo-0b-pCr" secondAttribute="trailing" id="kA8-f6-RlE"/>
+                                    <constraint firstAttribute="centerX" secondItem="t6M-bP-zGO" secondAttribute="centerX" id="nvN-Da-MUB"/>
+                                    <constraint firstAttribute="centerX" secondItem="8rG-RR-Oo0" secondAttribute="centerX" id="rIZ-NY-iG4"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="HbA-5e-iEl" firstAttribute="leading" secondItem="XNm-cI-G8l" secondAttribute="leadingMargin" constant="20" id="P9x-mQ-pFF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HbA-5e-iEl" secondAttribute="trailing" constant="20" id="XUc-RF-3ng"/>
+                            <constraint firstAttribute="centerY" secondItem="HbA-5e-iEl" secondAttribute="centerY" id="dMP-GY-vGD"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gm9-3J-oJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2252,17 +2379,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Zz-UnX">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Zz-UnX">
                                 <rect key="frame" x="28" y="115" width="265" height="179"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations for completing the game.  New levels coming soon!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT4-JP-naC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Congratulations for completing the game.  New levels coming soon!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT4-JP-naC">
                                         <rect key="frame" x="8" y="59" width="249" height="91"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-XC-pjG">
-                                        <rect key="frame" x="241" y="0.0" width="24" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eA-I4-Rbp">
+                                        <rect key="frame" x="36" y="8" width="188" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-XC-pjG">
+                                        <rect key="frame" x="232" y="17" width="24" height="24"/>
                                         <state key="normal" image="ic_button_cancel_normal.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -2271,17 +2404,26 @@
                                             <action selector="negativeAction1ButtonPressed:" destination="iWd-EV-yb8" eventType="touchUpInside" id="U53-i7-O7I"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eA-I4-Rbp">
-                                        <rect key="frame" x="36" y="8" width="188" height="41"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="zT4-JP-naC" secondAttribute="centerX" id="4Z0-DR-doD"/>
+                                    <constraint firstItem="lbb-XC-pjG" firstAttribute="top" secondItem="HdW-Zz-UnX" secondAttribute="top" id="AnN-sN-OEJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="lbb-XC-pjG" secondAttribute="trailing" id="Kd4-No-vON"/>
+                                    <constraint firstItem="3eA-I4-Rbp" firstAttribute="top" secondItem="HdW-Zz-UnX" secondAttribute="top" constant="8" id="NtT-sm-aIp"/>
+                                    <constraint firstAttribute="trailing" secondItem="zT4-JP-naC" secondAttribute="trailing" constant="10" id="dke-UU-2dE"/>
+                                    <constraint firstItem="zT4-JP-naC" firstAttribute="leading" secondItem="HdW-Zz-UnX" secondAttribute="leading" constant="10" id="nKh-dE-t6P"/>
+                                    <constraint firstAttribute="centerX" secondItem="3eA-I4-Rbp" secondAttribute="centerX" id="nef-sX-suf"/>
+                                    <constraint firstItem="zT4-JP-naC" firstAttribute="top" secondItem="3eA-I4-Rbp" secondAttribute="bottom" constant="10" id="tup-3m-PR4"/>
+                                    <constraint firstAttribute="bottom" secondItem="zT4-JP-naC" secondAttribute="bottom" constant="10" id="x08-tQ-BVC"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="HdW-Zz-UnX" firstAttribute="leading" secondItem="enh-OC-Hy9" secondAttribute="leadingMargin" constant="20" id="b30-Hv-xX8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HdW-Zz-UnX" secondAttribute="trailing" constant="20" id="dg9-0h-NIt"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ny5-7K-K31" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3221,6 +3363,7 @@
         <image name="ic_next_level.png" width="48" height="48"/>
         <image name="ic_not_connected.png" width="96" height="96"/>
         <image name="ic_play.png" width="48" height="48"/>
+        <image name="ic_play_on.png" width="48" height="48"/>
         <image name="ic_replay.png" width="48" height="48"/>
         <image name="ic_star_placement_info.png" width="200" height="204"/>
     </resources>
