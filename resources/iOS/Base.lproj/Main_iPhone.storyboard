@@ -127,77 +127,113 @@
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="UIImageView">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="nVG-89-XIh">
-                                <rect key="frame" x="4" y="5" width="312" height="166"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cyL-nP-byu" customClass="MFUIButton">
-                                <rect key="frame" x="64" y="189" width="192" height="78"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGa-x1-OuQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="472"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="LaD-aU-kOj">
-                                        <rect key="frame" x="0.0" y="4" width="71" height="68"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cyL-nP-byu" customClass="MFUIButton">
+                                        <rect key="frame" x="70" y="192" width="192" height="78"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="LaD-aU-kOj">
+                                                <rect key="frame" x="0.0" y="4" width="71" height="68"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JC5-DI-QIT">
+                                                <rect key="frame" x="64" y="10" width="128" height="48"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="fsk-kw-Hpu"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="launchGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Mew-iY-FSQ"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUN-ig-jfV" customClass="MFUIButton">
+                                        <rect key="frame" x="70" y="376" width="192" height="81"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_about.png" translatesAutoresizingMaskIntoConstraints="NO" id="B12-RD-oFs">
+                                                <rect key="frame" x="0.0" y="6" width="71" height="68"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzV-fc-7yO">
+                                                <rect key="frame" x="63" y="20" width="128" height="45"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="4eP-iN-jiS"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="launchAboutScreen:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="L0j-I7-VqY"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-iS-oKs" customClass="MFUIButton">
+                                        <rect key="frame" x="70" y="284" width="192" height="79"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_how_to_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="hk4-Ai-PYX">
+                                                <rect key="frame" x="0.0" y="6" width="71" height="68"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l3-Sp-e8T">
+                                                <rect key="frame" x="64" y="17" width="128" height="45"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="hjs-fa-3eD"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="launchHelpScreens:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TKs-y6-nHR"/>
+                                        </connections>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_logo_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="nVG-89-XIh">
+                                        <rect key="frame" x="24" y="8" width="288" height="174"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JC5-DI-QIT">
-                                        <rect key="frame" x="64" y="10" width="128" height="48"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                </accessibility>
-                                <connections>
-                                    <action selector="launchGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Mew-iY-FSQ"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUN-ig-jfV" customClass="MFUIButton">
-                                <rect key="frame" x="64" y="373" width="192" height="81"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_about.png" translatesAutoresizingMaskIntoConstraints="NO" id="B12-RD-oFs">
-                                        <rect key="frame" x="0.0" y="6" width="71" height="68"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzV-fc-7yO">
-                                        <rect key="frame" x="63" y="20" width="128" height="45"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                </accessibility>
-                                <connections>
-                                    <action selector="launchAboutScreen:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="L0j-I7-VqY"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-iS-oKs" customClass="MFUIButton">
-                                <rect key="frame" x="64" y="281" width="192" height="79"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_how_to_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="hk4-Ai-PYX">
-                                        <rect key="frame" x="0.0" y="6" width="71" height="68"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l3-Sp-e8T">
-                                        <rect key="frame" x="64" y="17" width="128" height="45"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                </accessibility>
-                                <connections>
-                                    <action selector="launchHelpScreens:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TKs-y6-nHR"/>
-                                </connections>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="CUN-ig-jfV" firstAttribute="top" secondItem="j3w-iS-oKs" secondAttribute="bottom" constant="10" id="8qR-9R-SEf"/>
+                                    <constraint firstAttribute="trailing" secondItem="nVG-89-XIh" secondAttribute="trailing" constant="10" id="Erd-3c-EaL"/>
+                                    <constraint firstItem="j3w-iS-oKs" firstAttribute="top" secondItem="cyL-nP-byu" secondAttribute="bottom" constant="10" id="LBR-U0-G3E"/>
+                                    <constraint firstItem="cyL-nP-byu" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="20" id="OIC-bK-bUa"/>
+                                    <constraint firstItem="nVG-89-XIh" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="10" id="Tdu-dY-2Bf"/>
+                                    <constraint firstItem="cyL-nP-byu" firstAttribute="top" secondItem="nVG-89-XIh" secondAttribute="bottom" constant="20" id="U2d-HF-Yri"/>
+                                    <constraint firstItem="j3w-iS-oKs" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="20" id="eBK-iw-CIk"/>
+                                    <constraint firstAttribute="bottom" secondItem="CUN-ig-jfV" secondAttribute="bottom" constant="10" id="ibg-Kx-rbk"/>
+                                    <constraint firstAttribute="trailing" secondItem="cyL-nP-byu" secondAttribute="trailing" constant="20" id="jda-2J-cL1"/>
+                                    <constraint firstItem="CUN-ig-jfV" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="20" id="m4f-TV-7FR"/>
+                                    <constraint firstItem="nVG-89-XIh" firstAttribute="top" secondItem="BGa-x1-OuQ" secondAttribute="top" constant="5" id="xAp-E7-W9e"/>
+                                    <constraint firstAttribute="trailing" secondItem="CUN-ig-jfV" secondAttribute="trailing" constant="20" id="xnq-5v-kfx"/>
+                                    <constraint firstAttribute="trailing" secondItem="j3w-iS-oKs" secondAttribute="trailing" constant="20" id="zJs-E8-5Ec"/>
+                                </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="BGa-x1-OuQ" secondAttribute="centerX" id="1E1-U2-PF6"/>
+                            <constraint firstAttribute="centerX" secondItem="BGa-x1-OuQ" secondAttribute="centerX" id="Xor-GM-BGf"/>
+                            <constraint firstAttribute="centerY" secondItem="BGa-x1-OuQ" secondAttribute="centerY" id="cS0-go-Bhp"/>
+                            <constraint firstAttribute="centerY" secondItem="BGa-x1-OuQ" secondAttribute="centerY" id="dey-nF-IsW"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mAboutButtonLabel" destination="DzV-fc-7yO" id="GkM-NK-vSZ"/>
