@@ -112,6 +112,9 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -127,9 +130,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-IF-IH6">
-                                <rect key="frame" x="224" y="84" width="296" height="225"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hT-CB-xKx" customClass="MFUIButton">
                                 <rect key="frame" x="187" y="394" width="370" height="121"/>
                                 <subviews>
@@ -184,6 +184,9 @@
                                     <action selector="launchAboutScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9t-iF-J6z"/>
                                 </connections>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-IF-IH6">
+                                <rect key="frame" x="169" y="36" width="407" height="287"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -250,14 +253,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sG-eX-3C2" customClass="MFUIButton">
-                                <rect key="frame" x="41" y="52" width="144" height="184"/>
+                                <rect key="frame" x="41" y="77" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="cg5-WM-6xf">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F3-ZG-N7Z">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -268,14 +271,14 @@
                                 </connections>
                             </view>
                             <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AqU-6g-zE2" customClass="MFUIButton">
-                                <rect key="frame" x="219" y="52" width="144" height="184"/>
+                                <rect key="frame" x="219" y="77" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q2G-Rn-aDN">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiR-jU-ofb">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -286,14 +289,14 @@
                                 </connections>
                             </view>
                             <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTN-4O-Z5a" customClass="MFUIButton">
-                                <rect key="frame" x="399" y="52" width="144" height="184"/>
+                                <rect key="frame" x="399" y="77" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="feN-Q4-ptV">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p14-bm-SaX">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -304,14 +307,14 @@
                                 </connections>
                             </view>
                             <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSB-uO-wSM" customClass="MFUIButton">
-                                <rect key="frame" x="577" y="52" width="144" height="184"/>
+                                <rect key="frame" x="577" y="77" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="jKk-8a-Yyk">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-qo-UhI">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -322,14 +325,14 @@
                                 </connections>
                             </view>
                             <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRC-IP-VNN" customClass="MFUIButton">
-                                <rect key="frame" x="41" y="271" width="144" height="184"/>
+                                <rect key="frame" x="41" y="296" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSQ-oG-Pul">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcs-ko-C3W">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -340,14 +343,14 @@
                                 </connections>
                             </view>
                             <view tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQQ-U1-loo" customClass="MFUIButton">
-                                <rect key="frame" x="219" y="271" width="144" height="184"/>
+                                <rect key="frame" x="219" y="296" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="2HX-7Q-cSp">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U06-vJ-W1i">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -358,14 +361,14 @@
                                 </connections>
                             </view>
                             <view tag="7" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Rd-Yg-Fvy" customClass="MFUIButton">
-                                <rect key="frame" x="399" y="271" width="144" height="184"/>
+                                <rect key="frame" x="399" y="296" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="dn9-z7-RMO">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jt9-9f-Kr4">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -376,14 +379,14 @@
                                 </connections>
                             </view>
                             <view tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gu9-62-Ceh" customClass="MFUIButton">
-                                <rect key="frame" x="577" y="271" width="144" height="184"/>
+                                <rect key="frame" x="577" y="296" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="twk-B3-bgs">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mq6-ah-NDq">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -394,14 +397,14 @@
                                 </connections>
                             </view>
                             <view tag="9" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ct9-p6-IXZ" customClass="MFUIButton">
-                                <rect key="frame" x="41" y="490" width="144" height="184"/>
+                                <rect key="frame" x="41" y="515" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZHh-Y2-cm8">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs2-d8-Dtx">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -412,14 +415,14 @@
                                 </connections>
                             </view>
                             <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epU-Rs-5IX" customClass="MFUIButton">
-                                <rect key="frame" x="219" y="490" width="144" height="184"/>
+                                <rect key="frame" x="219" y="515" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cty-NP-JWe">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HQ-xO-bVb">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -430,14 +433,14 @@
                                 </connections>
                             </view>
                             <view tag="11" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oRH-2l-jHF" customClass="MFUIButton">
-                                <rect key="frame" x="399" y="490" width="144" height="184"/>
+                                <rect key="frame" x="399" y="515" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="A19-1N-GxJ">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8S-Vq-e9v">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -448,14 +451,14 @@
                                 </connections>
                             </view>
                             <view tag="12" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-Dq-fkl" customClass="MFUIButton">
-                                <rect key="frame" x="577" y="490" width="144" height="184"/>
+                                <rect key="frame" x="577" y="515" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="kFG-ub-bAq">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2je-tX-JHr">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -466,14 +469,14 @@
                                 </connections>
                             </view>
                             <view tag="13" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHY-8x-bby" customClass="MFUIButton">
-                                <rect key="frame" x="41" y="713" width="144" height="184"/>
+                                <rect key="frame" x="41" y="738" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="u2w-8V-0Do">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPH-Rb-fjX">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -484,14 +487,14 @@
                                 </connections>
                             </view>
                             <view tag="14" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3iC-3L-lgK" customClass="MFUIButton">
-                                <rect key="frame" x="219" y="713" width="144" height="184"/>
+                                <rect key="frame" x="219" y="738" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="vpL-wF-rS8">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuP-PS-aeE">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -502,14 +505,14 @@
                                 </connections>
                             </view>
                             <view tag="15" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RNI-ZB-ACv" customClass="MFUIButton">
-                                <rect key="frame" x="399" y="713" width="144" height="184"/>
+                                <rect key="frame" x="399" y="738" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="XcH-XO-ECx">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjy-6C-s2K">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -520,14 +523,14 @@
                                 </connections>
                             </view>
                             <view tag="16" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t0f-EH-0Z3" customClass="MFUIButton">
-                                <rect key="frame" x="577" y="713" width="144" height="184"/>
+                                <rect key="frame" x="577" y="738" width="144" height="184"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="4JK-2J-UFe">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtK-Rj-seD">
                                         <rect key="frame" x="0.0" y="100" width="142" height="84"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2684,70 +2687,70 @@
         </scene>
     </scenes>
     <resources>
-        <image name="help_image_screen_1.png" width="250" height="183"/>
-        <image name="help_image_screen_2.png" width="200" height="204"/>
-        <image name="help_image_screen_3.png" width="150" height="142"/>
-        <image name="help_image_screen_3b.png" width="400" height="76"/>
-        <image name="help_image_screen_4.png" width="200" height="179"/>
-        <image name="help_image_screen_5.png" width="100" height="95"/>
-        <image name="help_image_screen_8.png" width="250" height="136"/>
-        <image name="ic_about.png" width="48" height="48"/>
-        <image name="ic_add_coins_normal.png" width="48" height="48"/>
-        <image name="ic_add_coins_pressed.png" width="48" height="48"/>
-        <image name="ic_add_hurdle_smasher.png" width="96" height="96"/>
-        <image name="ic_add_hurdle_smasher_normal.png" width="48" height="48"/>
-        <image name="ic_add_hurdle_smasher_pressed.png" width="48" height="48"/>
-        <image name="ic_add_moves.png" width="96" height="96"/>
-        <image name="ic_add_moves_normal.png" width="48" height="48"/>
-        <image name="ic_add_moves_pressed.png" width="48" height="48"/>
-        <image name="ic_add_star.png" width="96" height="96"/>
-        <image name="ic_add_star_normal.png" width="48" height="48"/>
-        <image name="ic_add_star_pressed.png" width="48" height="48"/>
-        <image name="ic_button_cancel_normal.png" width="24" height="24"/>
-        <image name="ic_button_cancel_pressed.png" width="24" height="24"/>
-        <image name="ic_button_color_blue_normal.png" width="48" height="48"/>
-        <image name="ic_button_color_blue_pressed.png" width="48" height="48"/>
-        <image name="ic_button_color_green_normal.png" width="48" height="48"/>
-        <image name="ic_button_color_green_pressed.png" width="48" height="48"/>
-        <image name="ic_button_color_orange_normal.png" width="48" height="48"/>
-        <image name="ic_button_color_orange_pressed.png" width="48" height="48"/>
-        <image name="ic_button_color_purple_normal.png" width="48" height="48"/>
-        <image name="ic_button_color_purple_pressed.png" width="48" height="48"/>
-        <image name="ic_button_color_red_normal.png" width="48" height="48"/>
-        <image name="ic_button_color_red_pressed.png" width="48" height="48"/>
-        <image name="ic_button_color_yellow_normal.png" width="48" height="48"/>
-        <image name="ic_button_color_yellow_pressed.png" width="48" height="48"/>
-        <image name="ic_button_facebook_normal.png" width="48" height="48"/>
-        <image name="ic_button_facebook_pressed.png" width="48" height="48"/>
-        <image name="ic_button_feedback_normal.png" width="48" height="48"/>
-        <image name="ic_button_feedback_pressed.png" width="48" height="48"/>
-        <image name="ic_button_menu_normal.png" width="32" height="32"/>
-        <image name="ic_button_menu_pressed.png" width="32" height="32"/>
-        <image name="ic_button_rate_normal.png" width="48" height="48"/>
-        <image name="ic_button_rate_pressed.png" width="48" height="48"/>
-        <image name="ic_button_restore_normal.png" width="48" height="48"/>
-        <image name="ic_button_restore_pressed.png" width="48" height="48"/>
+        <image name="help_image_screen_1.png" width="400" height="293"/>
+        <image name="help_image_screen_2.png" width="300" height="306"/>
+        <image name="help_image_screen_3.png" width="250" height="236"/>
+        <image name="help_image_screen_3b.png" width="500" height="95"/>
+        <image name="help_image_screen_4.png" width="300" height="268"/>
+        <image name="help_image_screen_5.png" width="200" height="190"/>
+        <image name="help_image_screen_8.png" width="400" height="218"/>
+        <image name="ic_about.png" width="72" height="72"/>
+        <image name="ic_add_coins_normal.png" width="72" height="72"/>
+        <image name="ic_add_coins_pressed.png" width="72" height="72"/>
+        <image name="ic_add_hurdle_smasher.png" width="144" height="144"/>
+        <image name="ic_add_hurdle_smasher_normal.png" width="72" height="72"/>
+        <image name="ic_add_hurdle_smasher_pressed.png" width="72" height="72"/>
+        <image name="ic_add_moves.png" width="144" height="144"/>
+        <image name="ic_add_moves_normal.png" width="72" height="72"/>
+        <image name="ic_add_moves_pressed.png" width="72" height="72"/>
+        <image name="ic_add_star.png" width="144" height="144"/>
+        <image name="ic_add_star_normal.png" width="72" height="72"/>
+        <image name="ic_add_star_pressed.png" width="72" height="72"/>
+        <image name="ic_button_cancel_normal.png" width="36" height="36"/>
+        <image name="ic_button_cancel_pressed.png" width="36" height="36"/>
+        <image name="ic_button_color_blue_normal.png" width="72" height="72"/>
+        <image name="ic_button_color_blue_pressed.png" width="72" height="72"/>
+        <image name="ic_button_color_green_normal.png" width="72" height="72"/>
+        <image name="ic_button_color_green_pressed.png" width="72" height="72"/>
+        <image name="ic_button_color_orange_normal.png" width="72" height="72"/>
+        <image name="ic_button_color_orange_pressed.png" width="72" height="72"/>
+        <image name="ic_button_color_purple_normal.png" width="72" height="72"/>
+        <image name="ic_button_color_purple_pressed.png" width="72" height="72"/>
+        <image name="ic_button_color_red_normal.png" width="72" height="72"/>
+        <image name="ic_button_color_red_pressed.png" width="72" height="72"/>
+        <image name="ic_button_color_yellow_normal.png" width="72" height="72"/>
+        <image name="ic_button_color_yellow_pressed.png" width="72" height="72"/>
+        <image name="ic_button_facebook_normal.png" width="72" height="72"/>
+        <image name="ic_button_facebook_pressed.png" width="72" height="72"/>
+        <image name="ic_button_feedback_normal.png" width="72" height="72"/>
+        <image name="ic_button_feedback_pressed.png" width="72" height="72"/>
+        <image name="ic_button_menu_normal.png" width="48" height="48"/>
+        <image name="ic_button_menu_pressed.png" width="48" height="48"/>
+        <image name="ic_button_rate_normal.png" width="72" height="72"/>
+        <image name="ic_button_rate_pressed.png" width="72" height="72"/>
+        <image name="ic_button_restore_normal.png" width="72" height="72"/>
+        <image name="ic_button_restore_pressed.png" width="72" height="72"/>
         <image name="ic_button_sound_on_normal.png" width="48" height="48"/>
-        <image name="ic_button_sound_pressed.png" width="32" height="32"/>
-        <image name="ic_coins.png" width="48" height="48"/>
-        <image name="ic_end_game.png" width="48" height="48"/>
-        <image name="ic_hot_deal.png" width="48" height="48"/>
-        <image name="ic_how_to_play.png" width="48" height="48"/>
+        <image name="ic_button_sound_pressed.png" width="48" height="48"/>
+        <image name="ic_coins.png" width="72" height="72"/>
+        <image name="ic_end_game.png" width="72" height="72"/>
+        <image name="ic_hot_deal.png" width="72" height="72"/>
+        <image name="ic_how_to_play.png" width="72" height="72"/>
         <image name="ic_hurdle_smasher_info.png" width="200" height="176"/>
-        <image name="ic_iap_coins_first.png" width="48" height="48"/>
-        <image name="ic_iap_coins_fourth.png" width="48" height="48"/>
-        <image name="ic_iap_coins_second.png" width="48" height="48"/>
-        <image name="ic_iap_coins_third.png" width="48" height="48"/>
-        <image name="ic_iap_failed.png" width="96" height="96"/>
-        <image name="ic_iap_lock.png" width="24" height="24"/>
-        <image name="ic_levels.png" width="48" height="48"/>
-        <image name="ic_logo_big.png" width="231" height="171"/>
-        <image name="ic_logo_small.png" width="116" height="86"/>
-        <image name="ic_moves.png" width="48" height="48"/>
-        <image name="ic_next_level.png" width="48" height="48"/>
-        <image name="ic_not_connected.png" width="96" height="96"/>
-        <image name="ic_play.png" width="48" height="48"/>
-        <image name="ic_replay.png" width="48" height="48"/>
+        <image name="ic_iap_coins_first.png" width="72" height="72"/>
+        <image name="ic_iap_coins_fourth.png" width="72" height="72"/>
+        <image name="ic_iap_coins_second.png" width="72" height="72"/>
+        <image name="ic_iap_coins_third.png" width="72" height="72"/>
+        <image name="ic_iap_failed.png" width="144" height="144"/>
+        <image name="ic_iap_lock.png" width="36" height="36"/>
+        <image name="ic_levels.png" width="72" height="72"/>
+        <image name="ic_logo_big.png" width="348" height="256"/>
+        <image name="ic_logo_small.png" width="174" height="129"/>
+        <image name="ic_moves.png" width="72" height="72"/>
+        <image name="ic_next_level.png" width="72" height="72"/>
+        <image name="ic_not_connected.png" width="144" height="144"/>
+        <image name="ic_play.png" width="72" height="72"/>
+        <image name="ic_replay.png" width="72" height="72"/>
         <image name="ic_star_placement_info.png" width="200" height="204"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

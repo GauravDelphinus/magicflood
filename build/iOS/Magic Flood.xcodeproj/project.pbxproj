@@ -337,6 +337,8 @@
 		F164C12C1A8B7E1400CBB5EC /* MFHelpScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F164C12B1A8B7E1400CBB5EC /* MFHelpScreenViewController.m */; };
 		F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */; };
 		F16F2DF61A8F426800CB0678 /* MFIAPManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = F16F2DF51A8F426800CB0678 /* MFIAPManager.mm */; };
+		F1769A411A986DFC00E66CCA /* ic_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1769A401A986DFC00E66CCA /* ic_play@3x.png */; };
+		F1769A451A98710100E66CCA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1769A441A98710100E66CCA /* LaunchScreen.xib */; };
 		F176C0701A8EB71A009D1206 /* MFLevelsRootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F176C06F1A8EB71A009D1206 /* MFLevelsRootViewController.mm */; };
 		F183966A1A7FA1D200D08FF3 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */; };
 		F18448C81A8F1E22000D105A /* MFAddCoinsDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = F18448C71A8F1E22000D105A /* MFAddCoinsDialog.mm */; };
@@ -717,6 +719,8 @@
 		F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAboutViewController.m; path = ../../src/iOS/MFAboutViewController.m; sourceTree = SOURCE_ROOT; };
 		F16F2DF41A8F426800CB0678 /* MFIAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFIAPManager.h; path = ../../src/iOS/MFIAPManager.h; sourceTree = SOURCE_ROOT; };
 		F16F2DF51A8F426800CB0678 /* MFIAPManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFIAPManager.mm; path = ../../src/iOS/MFIAPManager.mm; sourceTree = SOURCE_ROOT; };
+		F1769A401A986DFC00E66CCA /* ic_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_play@3x.png"; sourceTree = "<group>"; };
+		F1769A441A98710100E66CCA /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../../resources/iOS/LaunchImage/LaunchScreen.xib; sourceTree = "<group>"; };
 		F176C06E1A8EB71A009D1206 /* MFLevelsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFLevelsRootViewController.h; path = ../../src/iOS/MFLevelsRootViewController.h; sourceTree = SOURCE_ROOT; };
 		F176C06F1A8EB71A009D1206 /* MFLevelsRootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFLevelsRootViewController.mm; path = ../../src/iOS/MFLevelsRootViewController.mm; sourceTree = SOURCE_ROOT; };
 		F18396691A7FA1D200D08FF3 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArchitectsDaughter.ttf; path = ../../resources/iOS/Fonts/ArchitectsDaughter.ttf; sourceTree = SOURCE_ROOT; };
@@ -752,7 +756,7 @@
 		F1C4EF091A235C6E00322C1E /* MFObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFObstacle.h; path = ../../src/Common/MFObstacle.h; sourceTree = SOURCE_ROOT; };
 		F1D39E4C1A90498A008B7001 /* MFRemoveAdsDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFRemoveAdsDialogViewController.h; path = ../../src/iOS/MFRemoveAdsDialogViewController.h; sourceTree = SOURCE_ROOT; };
 		F1D39E4D1A90498A008B7001 /* MFRemoveAdsDialogViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFRemoveAdsDialogViewController.mm; path = ../../src/iOS/MFRemoveAdsDialogViewController.mm; sourceTree = SOURCE_ROOT; };
-		F1E64BFF1A7E1AAB0042D466 /* bg_sky_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_sky_blue.png; path = ../../resources/iOS/Backgrounds/bg_sky_blue.png; sourceTree = "<group>"; };
+		F1E64BFF1A7E1AAB0042D466 /* bg_sky_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_sky_blue.png; path = ../../resources/iOS/Backgrounds/bg_sky_blue.png; sourceTree = SOURCE_ROOT; };
 		F1FDCE8F1A85DE00005444EF /* MFGameDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGameDialogController.h; path = ../../src/iOS/MFGameDialogController.h; sourceTree = SOURCE_ROOT; };
 		F1FDCE901A85DE00005444EF /* MFGameDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFGameDialogController.m; path = ../../src/iOS/MFGameDialogController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -834,6 +838,7 @@
 		F1A2F2CE1A1D7F1C000DD4E7 = {
 			isa = PBXGroup;
 			children = (
+				F1769A441A98710100E66CCA /* LaunchScreen.xib */,
 				F1A2F2E01A1D7F1C000DD4E7 /* Magic Flood */,
 				F1A2F3021A1D7F1C000DD4E7 /* Magic FloodTests */,
 				F1A2F2D91A1D7F1C000DD4E7 /* Frameworks */,
@@ -973,6 +978,7 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F1769A401A986DFC00E66CCA /* ic_play@3x.png */,
 				F132E2551A979A15003F1FA7 /* help_image_screen_1.png */,
 				F132E2561A979A15003F1FA7 /* help_image_screen_1@2x.png */,
 				F132E2571A979A15003F1FA7 /* help_image_screen_1@2x~ipad.png */,
@@ -1473,6 +1479,7 @@
 				F132E38A1A979A16003F1FA7 /* help_image_screen_3@2x.png in Resources */,
 				F132E41C1A979A16003F1FA7 /* ic_button_feedback_pressed~ipad.png in Resources */,
 				F132E3951A979A16003F1FA7 /* help_image_screen_5.png in Resources */,
+				F1769A451A98710100E66CCA /* LaunchScreen.xib in Resources */,
 				F132E3EC1A979A16003F1FA7 /* ic_button_color_green_pressed~ipad.png in Resources */,
 				F132E3F71A979A16003F1FA7 /* ic_button_color_purple_normal@2x~ipad.png in Resources */,
 				F132E3B81A979A16003F1FA7 /* ic_add_moves_normal~ipad.png in Resources */,
@@ -1633,6 +1640,7 @@
 				F132E3DA1A979A16003F1FA7 /* ic_button_cancel_pressed@2x.png in Resources */,
 				F132E4A21A979A16003F1FA7 /* ic_star_placement_info@2x.png in Resources */,
 				F132E45C1A979A16003F1FA7 /* ic_iap_coins_fourth~ipad.png in Resources */,
+				F1769A411A986DFC00E66CCA /* ic_play@3x.png in Resources */,
 				F132E4901A979A16003F1FA7 /* ic_next_level~ipad.png in Resources */,
 				F132E4081A979A16003F1FA7 /* ic_button_color_yellow_normal~ipad.png in Resources */,
 				F132E4251A979A16003F1FA7 /* ic_button_rate_normal.png in Resources */,
@@ -1850,6 +1858,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/anukrity/Apps/magicflood/src/thirdparty/iOS,
@@ -1864,6 +1873,7 @@
 				);
 				INFOPLIST_FILE = "../../resources/iOS/Magic Flood-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1874,6 +1884,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/anukrity/Apps/magicflood/src/thirdparty/iOS,
@@ -1888,6 +1899,7 @@
 				);
 				INFOPLIST_FILE = "../../resources/iOS/Magic Flood-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
