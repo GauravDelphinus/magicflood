@@ -882,9 +882,6 @@
         case DIALOG_TYPE_GAME_MENU:
             [self showDialog:@"GameMenuDialog" withDialogType:dialogType withData:data];
             break;
-        case DIALOG_TYPE_NOT_CONNECTED:
-            [self showDialog:@"NotConnectedDialog" withDialogType:dialogType withData:data];
-            break;
         case DIALOG_TYPE_STAR_PLACEMENT_INFO:
             [self showDialog:@"StarPlacementInfoDialog" withDialogType:dialogType withData:data];
             break;
@@ -899,12 +896,6 @@
             break;
         case DIALOG_TYPE_IAP_PURCHASE_FAILED:
             [self showDialog:@"IAPPurchaseFailedDialog" withDialogType:dialogType withData:data];
-            break;
-        case DIALOG_TYPE_IAP_CONSUME_FAILED:
-            [self showDialog:@"IAPConsumeFailedDialog" withDialogType:dialogType withData:data];
-            break;
-        case DIALOG_TYPE_IAP_QUERY_FAILED:
-            [self showDialog:@"IAPQueryFailedDialog" withDialogType:dialogType withData:data];
             break;
         case DIALOG_TYPE_IAP_RESTORE_FAILED:
             [self showDialog:@"IAPRestoreFailedDialog" withDialogType:dialogType withData:data];

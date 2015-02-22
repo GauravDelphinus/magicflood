@@ -82,7 +82,7 @@
         [self.mPrice2500CoinsLabel setText:[MFUtils formatIAPPrice:product2500Coins.price WithLocale:product2500Coins.priceLocale]];
         [self.mPrice5000CoinsLabel setText:[MFUtils formatIAPPrice:product5000Coins.price WithLocale:product5000Coins.priceLocale]];
         
-        self.m5000CoinsButton.enabled = YES;
+        self.m500CoinsButton.enabled = YES;
         self.m1000CoinsButton.enabled = YES;
         self.m2500CoinsButton.enabled = YES;
         self.m5000CoinsButton.enabled = YES;
@@ -97,7 +97,7 @@
         [self.mPrice2500CoinsLabel setText:@""];
         [self.mPrice5000CoinsLabel setText:@""];
         
-        self.m5000CoinsButton.enabled = NO;
+        self.m500CoinsButton.enabled = NO;
         self.m1000CoinsButton.enabled = NO;
         self.m2500CoinsButton.enabled = NO;
         self.m5000CoinsButton.enabled = NO;

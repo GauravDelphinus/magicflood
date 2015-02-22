@@ -112,9 +112,6 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1809,76 +1806,6 @@
             <point key="canvasLocation" x="2909" y="3671"/>
         </scene>
         <!--Game Dialog Controller-->
-        <scene sceneID="bJu-E0-k9k">
-            <objects>
-                <viewController storyboardIdentifier="NotConnectedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYV-mU-hob" customClass="MFGameDialogController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AGF-Ap-pgn"/>
-                        <viewControllerLayoutGuide type="bottom" id="jbA-ce-gYT"/>
-                    </layoutGuides>
-                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="UgE-OQ-Q4L">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="clA-01-ccB">
-                                <rect key="frame" x="204" y="244" width="383" height="523"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="It appears you are not connected to the store.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrg-Fq-Xe1">
-                                        <rect key="frame" x="24" y="80" width="335" height="114"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Store not connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HX-5S-Gdp">
-                                        <rect key="frame" x="49" y="21" width="285" height="61"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdy-vz-o2k">
-                                        <rect key="frame" x="351" y="8" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="yYV-mU-hob" eventType="touchUpInside" id="WrV-cF-WMP"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SgZ-3b-w4w" customClass="MFUIButton">
-                                        <rect key="frame" x="81" y="378" width="220" height="82"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVa-qF-uxy">
-                                                <rect key="frame" x="44" y="10" width="132" height="61"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                        </accessibility>
-                                        <connections>
-                                            <action selector="positiveAction1ButtonPressed:" destination="yYV-mU-hob" eventType="touchUpInside" id="rft-4V-369"/>
-                                            <action selector="positiveAction1ButtonPressed:" destination="yYV-mU-hob" eventType="valueChanged" id="yCj-DK-FzS"/>
-                                        </connections>
-                                    </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_not_connected.png" translatesAutoresizingMaskIntoConstraints="NO" id="bPX-7j-Ptd">
-                                        <rect key="frame" x="136" y="221" width="110" height="119"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ag6-X0-Xkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3764" y="3671"/>
-        </scene>
-        <!--Game Dialog Controller-->
         <scene sceneID="wAA-ZB-MA0">
             <objects>
                 <viewController storyboardIdentifier="StarPlacementInfoDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOT-Dw-fb4" customClass="MFGameDialogController" sceneMemberID="viewController">
@@ -2783,7 +2710,6 @@
         <image name="ic_logo_small.png" width="174" height="129"/>
         <image name="ic_moves.png" width="72" height="72"/>
         <image name="ic_next_level.png" width="72" height="72"/>
-        <image name="ic_not_connected.png" width="144" height="144"/>
         <image name="ic_play.png" width="72" height="72"/>
         <image name="ic_play_on.png" width="72" height="72"/>
         <image name="ic_replay.png" width="72" height="72"/>
