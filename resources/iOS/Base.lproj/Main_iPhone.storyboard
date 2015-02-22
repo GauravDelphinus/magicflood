@@ -1471,7 +1471,6 @@
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="iUO-Pb-GaW" secondAttribute="centerY" id="1wd-Vg-JuO"/>
                             <constraint firstItem="iUO-Pb-GaW" firstAttribute="leading" secondItem="21V-P5-eFY" secondAttribute="leadingMargin" constant="20" id="7gd-4t-EYM"/>
-                            <constraint firstAttribute="centerX" secondItem="iUO-Pb-GaW" secondAttribute="centerX" id="8uO-OS-jm4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iUO-Pb-GaW" secondAttribute="trailing" constant="20" id="nRX-kE-tqx"/>
                         </constraints>
                     </view>
@@ -2373,24 +2372,27 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6M-bP-zGO" customClass="MFUIButton">
                                         <rect key="frame" x="33" y="156" width="198" height="77"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Next Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfX-Uh-ygK">
-                                                <rect key="frame" x="78" y="5" width="116" height="61"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_next_level.png" translatesAutoresizingMaskIntoConstraints="NO" id="X0N-Qj-CIF">
+                                                <rect key="frame" x="12" y="8" width="59" height="61"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Next Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfX-Uh-ygK">
+                                                <rect key="frame" x="79" y="13" width="116" height="51"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_next_level.png" translatesAutoresizingMaskIntoConstraints="NO" id="X0N-Qj-CIF">
-                                                <rect key="frame" x="12" y="8" width="59" height="61"/>
-                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                                         </accessibility>
                                         <constraints>
-                                            <constraint firstItem="KfX-Uh-ygK" firstAttribute="leading" secondItem="X0N-Qj-CIF" secondAttribute="trailing" constant="7" id="Gbq-y6-00H"/>
-                                            <constraint firstItem="X0N-Qj-CIF" firstAttribute="leading" secondItem="t6M-bP-zGO" secondAttribute="leading" constant="12" id="OsJ-ig-d7a"/>
-                                            <constraint firstAttribute="trailing" secondItem="KfX-Uh-ygK" secondAttribute="trailing" constant="4" id="rEm-1g-RAC"/>
+                                            <constraint firstItem="X0N-Qj-CIF" firstAttribute="top" secondItem="t6M-bP-zGO" secondAttribute="top" constant="5" id="8XS-vF-Jb3"/>
+                                            <constraint firstItem="KfX-Uh-ygK" firstAttribute="leading" secondItem="X0N-Qj-CIF" secondAttribute="trailing" constant="5" id="Gbq-y6-00H"/>
+                                            <constraint firstItem="X0N-Qj-CIF" firstAttribute="leading" secondItem="t6M-bP-zGO" secondAttribute="leading" constant="5" id="OsJ-ig-d7a"/>
+                                            <constraint firstItem="X0N-Qj-CIF" firstAttribute="centerY" secondItem="KfX-Uh-ygK" secondAttribute="centerY" id="WkQ-TH-Fir"/>
+                                            <constraint firstAttribute="bottom" secondItem="X0N-Qj-CIF" secondAttribute="bottom" constant="5" id="fAQ-Pt-6Dk"/>
+                                            <constraint firstAttribute="trailing" secondItem="KfX-Uh-ygK" secondAttribute="trailing" constant="5" id="rEm-1g-RAC"/>
                                         </constraints>
                                         <connections>
                                             <action selector="positiveAction1ButtonPressed:" destination="L8R-Xh-uXg" eventType="touchUpInside" id="R28-JV-lfU"/>
@@ -2409,8 +2411,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="t6M-bP-zGO" secondAttribute="centerX" id="1kt-h5-jIN"/>
                                     <constraint firstItem="aZo-0b-pCr" firstAttribute="top" secondItem="HbA-5e-iEl" secondAttribute="top" id="1mM-vH-qCn"/>
                                     <constraint firstAttribute="bottom" secondItem="t6M-bP-zGO" secondAttribute="bottom" constant="10" id="1uG-gH-RGj"/>
+                                    <constraint firstAttribute="centerX" secondItem="EJc-aV-gu4" secondAttribute="centerX" id="1we-fJ-INg"/>
+                                    <constraint firstAttribute="centerX" secondItem="8rG-RR-Oo0" secondAttribute="centerX" id="1zk-WM-bz7"/>
                                     <constraint firstItem="t6M-bP-zGO" firstAttribute="top" secondItem="8rG-RR-Oo0" secondAttribute="bottom" constant="10" id="8Sr-3c-Dsu"/>
                                     <constraint firstAttribute="centerX" secondItem="EJc-aV-gu4" secondAttribute="centerX" id="Nbs-jJ-Srk"/>
                                     <constraint firstItem="8rG-RR-Oo0" firstAttribute="top" secondItem="EJc-aV-gu4" secondAttribute="bottom" constant="10" id="QEp-8u-S7x"/>
@@ -2445,22 +2450,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Zz-UnX">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Zz-UnX">
                                 <rect key="frame" x="28" y="115" width="265" height="179"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Congratulations for completing the game.  New levels coming soon!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT4-JP-naC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congratulations for completing the game.  New levels coming soon!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT4-JP-naC">
                                         <rect key="frame" x="8" y="59" width="249" height="91"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eA-I4-Rbp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eA-I4-Rbp">
                                         <rect key="frame" x="36" y="8" width="188" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-XC-pjG">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-XC-pjG">
                                         <rect key="frame" x="232" y="17" width="24" height="24"/>
                                         <state key="normal" image="ic_button_cancel_normal.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2487,6 +2492,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="HdW-Zz-UnX" secondAttribute="centerY" id="Nce-mE-rRx"/>
                             <constraint firstItem="HdW-Zz-UnX" firstAttribute="leading" secondItem="enh-OC-Hy9" secondAttribute="leadingMargin" constant="20" id="b30-Hv-xX8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HdW-Zz-UnX" secondAttribute="trailing" constant="20" id="dg9-0h-NIt"/>
                         </constraints>
@@ -2871,7 +2877,6 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="r83-O8-YFZ" secondAttribute="centerY" id="9JY-Gy-v9O"/>
-                            <constraint firstAttribute="centerY" secondItem="r83-O8-YFZ" secondAttribute="centerY" id="Pty-3w-bKs"/>
                             <constraint firstItem="r83-O8-YFZ" firstAttribute="leading" secondItem="JFw-aC-0sP" secondAttribute="leadingMargin" constant="20" id="ek2-9Q-1Xg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="r83-O8-YFZ" secondAttribute="trailing" constant="20" id="u9t-06-75p"/>
                         </constraints>
@@ -3479,7 +3484,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="18a-yL-Ybt" secondAttribute="trailing" constant="20" id="3Zm-8u-o0s"/>
                             <constraint firstAttribute="centerY" secondItem="18a-yL-Ybt" secondAttribute="centerY" id="5Mq-kP-ckF"/>
                             <constraint firstItem="18a-yL-Ybt" firstAttribute="leading" secondItem="ub7-Jl-7Xi" secondAttribute="leadingMargin" constant="20" id="9Tx-I4-uGm"/>
-                            <constraint firstAttribute="centerY" secondItem="18a-yL-Ybt" secondAttribute="centerY" id="PZV-No-Pl4"/>
                         </constraints>
                     </view>
                 </viewController>
