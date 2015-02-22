@@ -2668,8 +2668,8 @@
         <image name="ic_add_star.png" width="144" height="144"/>
         <image name="ic_add_star_normal.png" width="72" height="72"/>
         <image name="ic_add_star_pressed.png" width="72" height="72"/>
-        <image name="ic_button_cancel_normal.png" width="36" height="36"/>
-        <image name="ic_button_cancel_pressed.png" width="36" height="36"/>
+        <image name="ic_button_cancel_normal.png" width="72" height="72"/>
+        <image name="ic_button_cancel_pressed.png" width="72" height="72"/>
         <image name="ic_button_color_blue_normal.png" width="72" height="72"/>
         <image name="ic_button_color_blue_pressed.png" width="72" height="72"/>
         <image name="ic_button_color_green_normal.png" width="72" height="72"/>
@@ -2686,14 +2686,14 @@
         <image name="ic_button_facebook_pressed.png" width="72" height="72"/>
         <image name="ic_button_feedback_normal.png" width="72" height="72"/>
         <image name="ic_button_feedback_pressed.png" width="72" height="72"/>
-        <image name="ic_button_menu_normal.png" width="48" height="48"/>
-        <image name="ic_button_menu_pressed.png" width="48" height="48"/>
+        <image name="ic_button_menu_normal.png" width="72" height="72"/>
+        <image name="ic_button_menu_pressed.png" width="72" height="72"/>
         <image name="ic_button_rate_normal.png" width="72" height="72"/>
         <image name="ic_button_rate_pressed.png" width="72" height="72"/>
         <image name="ic_button_restore_normal.png" width="72" height="72"/>
         <image name="ic_button_restore_pressed.png" width="72" height="72"/>
-        <image name="ic_button_sound_on_normal.png" width="48" height="48"/>
-        <image name="ic_button_sound_pressed.png" width="48" height="48"/>
+        <image name="ic_button_sound_on_normal.png" width="72" height="72"/>
+        <image name="ic_button_sound_pressed.png" width="72" height="72"/>
         <image name="ic_coins.png" width="72" height="72"/>
         <image name="ic_end_game.png" width="72" height="72"/>
         <image name="ic_hot_deal.png" width="72" height="72"/>
