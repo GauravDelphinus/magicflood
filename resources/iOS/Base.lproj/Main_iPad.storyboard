@@ -2649,12 +2649,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="help_image_screen_1.png" width="400" height="293"/>
-        <image name="help_image_screen_2.png" width="300" height="306"/>
-        <image name="help_image_screen_3.png" width="250" height="236"/>
+        <image name="help_image_screen_1.png" width="307" height="225"/>
+        <image name="help_image_screen_2.png" width="221" height="225"/>
+        <image name="help_image_screen_3.png" width="212" height="200"/>
         <image name="help_image_screen_3b.png" width="500" height="95"/>
-        <image name="help_image_screen_4.png" width="300" height="268"/>
-        <image name="help_image_screen_5.png" width="200" height="190"/>
+        <image name="help_image_screen_4.png" width="252" height="225"/>
+        <image name="help_image_screen_5.png" width="158" height="150"/>
         <image name="help_image_screen_8.png" width="400" height="218"/>
         <image name="ic_about.png" width="72" height="72"/>
         <image name="ic_add_coins_normal.png" width="72" height="72"/>

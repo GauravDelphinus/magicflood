@@ -1,0 +1,2 @@
+#run from the root project folder
+for i in `ls build/Android/res/drawable-mdpi/`; do file=`echo $i | cut -d'.' -f1`; echo $file; cp build/Android/res/drawable-mdpi/$file.png resources/iOS/Icons/$file.png; cp build/Android/res/drawable-hdpi/$file.png resources/iOS/Icons/$file~ipad.png; cp build/Android/res/drawable-xhdpi/$file.png resources/iOS/Icons/$file@2x.png; cp build/Android/res/drawable-xxhdpi/$file.png resources/iOS/Icons/$file@2x~ipad.png; cp build/Android/res/drawable-xxxhdpi/$file.png resources/iOS/Icons/$file@3x.png; done
