@@ -2028,7 +2028,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aHd-fR-HBK">
-                                <rect key="frame" x="159" y="204" width="451" height="615"/>
+                                <rect key="frame" x="159" y="334" width="451" height="356"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Couldn't detect a valid location.  Please try again, by tapping on any location (outside a hurdle)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPB-ID-sof">
                                         <rect key="frame" x="29" y="83" width="401" height="129"/>
@@ -2043,7 +2043,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K5z-HP-Foh" customClass="MFUIButton">
-                                        <rect key="frame" x="110" y="492" width="230" height="76"/>
+                                        <rect key="frame" x="114" y="239" width="230" height="76"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wja-tg-kW6">
                                                 <rect key="frame" x="49" y="7" width="132" height="61"/>
@@ -2061,19 +2061,6 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="nft-wh-Rub" eventType="touchUpInside" id="Crt-kZ-gdM"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_star_placement_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="J1a-8p-n5S">
-                                        <rect key="frame" x="96" y="205" width="267" height="262"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A54-dE-WtK">
-                                        <rect key="frame" x="419" y="8" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="nft-wh-Rub" eventType="touchUpInside" id="9hx-S6-tSE"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                             </view>
@@ -2098,7 +2085,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BI2-Y6-xBG">
-                                <rect key="frame" x="171" y="191" width="438" height="632"/>
+                                <rect key="frame" x="165" y="332" width="438" height="359"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WW6-us-lLo">
                                         <rect key="frame" x="68" y="20" width="296" height="45"/>
@@ -2106,18 +2093,14 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFX-cz-KgT">
-                                        <rect key="frame" x="406" y="8" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="WcO-IM-eAl" eventType="touchUpInside" id="eG5-aO-Nc9"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Couldn't detect a hurdle.  Please try again, by tapping on any hurdle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lg-QK-H7Q">
+                                        <rect key="frame" x="20" y="83" width="393" height="158"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LVf-oS-qVd" customClass="MFUIButton">
-                                        <rect key="frame" x="116" y="513" width="233" height="74"/>
+                                        <rect key="frame" x="103" y="241" width="233" height="74"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRQ-KQ-Zfw">
                                                 <rect key="frame" x="50" y="6" width="132" height="61"/>
@@ -2135,15 +2118,6 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="WcO-IM-eAl" eventType="valueChanged" id="vwA-2R-VIk"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_hurdle_smasher_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="nlF-Pe-DgF">
-                                        <rect key="frame" x="113" y="203" width="238" height="265"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Couldn't detect a hurdle.  Please try again, by tapping on any hurdle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lg-QK-H7Q">
-                                        <rect key="frame" x="20" y="83" width="393" height="158"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                             </view>
