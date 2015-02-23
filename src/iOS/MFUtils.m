@@ -11,8 +11,19 @@
 
 @implementation MFUtils : NSObject
 
-+(void)setBackgroundImage:(UIViewController *)controller
++(void)setBackgroundImage:(UIViewController *)controller darkenBackground:(BOOL)darken
 {
+    if (darken)
+    {
+        //add a slight gray translucent background (to cover over the background image
+        //to aid visibilty of text
+        UIView *grayView = [[UIView alloc] initWithFrame:controller.view.frame];
+        grayView.backgroundColor = UIColorFromARGB(0x22000000);
+    
+        [controller.view addSubview:grayView];
+        [controller.view sendSubviewToBack:grayView];
+    }
+    
     //add background image
     UIImage* _backGround = [UIImage imageNamed:@"bg_sky_blue.png"];
     UIImageView* backgroundView = [[UIImageView alloc] initWithImage:_backGround];

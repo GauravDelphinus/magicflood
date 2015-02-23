@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 @interface MFUtils : NSObject
-+(void)setBackgroundImage:(UIViewController *)controller;
++(void)setBackgroundImage:(UIViewController *)controller darkenBackground:(BOOL)darken;
 +(void)setupPageControl:(UIPageViewController *)controller;
 +(NSString *)formatIAPPrice:(NSNumber *)price WithLocale:(NSLocale *)locale;
 +(int)getNumScreensFromNumLevels:(int)numLevels WithPerScreen:(int)numLevelsPerScreen;

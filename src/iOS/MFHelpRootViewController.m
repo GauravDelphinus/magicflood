@@ -25,7 +25,7 @@
 
     [self setupPageViewController];
     
-    [MFUtils setBackgroundImage:self];
+    [MFUtils setBackgroundImage:self darkenBackground:YES];
 }
 
 -(void)setupPageViewController

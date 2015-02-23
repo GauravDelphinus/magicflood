@@ -61,7 +61,7 @@
     NSLog(@"gameviewcontroller, viewdidload started, mAddBannerVisible = %d", self.mAdBannerVisible);
     [super viewDidLoad];
     
-    [MFUtils setBackgroundImage:self];
+    [MFUtils setBackgroundImage:self darkenBackground:NO];
 
     //set self as delegate for the tap protocol in the MFGameView
     self.gameView.delegate = self;

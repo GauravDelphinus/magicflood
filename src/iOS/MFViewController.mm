@@ -28,7 +28,7 @@
     
     [self initializePreferences];
         
-    [MFUtils setBackgroundImage:self];
+    [MFUtils setBackgroundImage:self darkenBackground:NO];
 }
 
 /**

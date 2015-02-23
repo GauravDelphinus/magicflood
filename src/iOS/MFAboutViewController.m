@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [MFUtils setBackgroundImage:self];
+    [MFUtils setBackgroundImage:self darkenBackground:YES];
 }
 
 /*********************  User Actions **************************/
