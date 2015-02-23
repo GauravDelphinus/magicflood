@@ -1475,6 +1475,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="iUO-Pb-GaW" secondAttribute="trailing" constant="20" id="nRX-kE-tqx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="iUO-Pb-GaW" id="W2M-Fl-xaU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u3s-JJ-S1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1575,6 +1578,9 @@
                             <constraint firstItem="4tj-O5-1P4" firstAttribute="leading" secondItem="nUv-5T-zhk" secondAttribute="leadingMargin" constant="20" id="umU-0P-16s"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="4tj-O5-1P4" id="Cf1-7U-X1X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ec1-H8-Uus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1675,6 +1681,9 @@
                             <constraint firstAttribute="centerY" secondItem="65c-gm-VS9" secondAttribute="centerY" id="tsK-TC-oYM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="65c-gm-VS9" id="lbA-ij-BTf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ZN-He-sZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1956,6 +1965,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dialogView" destination="qfv-gU-YPv" id="Mx3-YW-eJq"/>
                         <outlet property="m1000CoinsButton" destination="jC5-pk-g5M" id="eD3-aV-By9"/>
                         <outlet property="m2500CoinsButton" destination="ZR2-Sk-nYs" id="GFb-yj-z8r"/>
                         <outlet property="m5000CoinsButton" destination="XhK-tB-TqU" id="Csp-RJ-ies"/>
@@ -2079,6 +2089,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dialogView" destination="Abb-Ip-aKa" id="ZfM-db-eOd"/>
                         <outlet property="mNotConnectedLabel" destination="gBe-LJ-hdl" id="dFd-Kr-1xT"/>
                         <outlet property="mNotePermanentLabel" destination="YHV-hg-pqQ" id="Smb-7C-1UH"/>
                         <outlet property="mRemoveAdsButton" destination="pQJ-5F-LwF" id="USB-AQ-WcT"/>
@@ -2211,6 +2222,9 @@
                             <constraint firstItem="j9f-3S-Sxr" firstAttribute="leading" secondItem="eXs-3m-rFR" secondAttribute="leadingMargin" constant="20" id="X5m-Os-SQF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="j9f-3S-Sxr" id="te3-8m-Cwb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIf-eN-yQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2338,6 +2352,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="XBX-tP-OFo" secondAttribute="trailing" constant="20" id="WvV-P0-oV2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="XBX-tP-OFo" id="8T5-cC-FbR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elr-g2-Meo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2434,6 +2451,9 @@
                             <constraint firstAttribute="centerY" secondItem="HbA-5e-iEl" secondAttribute="centerY" id="dMP-GY-vGD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="HbA-5e-iEl" id="85E-AI-Acq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gm9-3J-oJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2498,6 +2518,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="HdW-Zz-UnX" secondAttribute="trailing" constant="20" id="dg9-0h-NIt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="HdW-Zz-UnX" id="RuK-e1-F8r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ny5-7K-K31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2593,6 +2616,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="plF-mJ-9X2" secondAttribute="trailing" constant="20" id="w5e-l9-obQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="plF-mJ-9X2" id="UGG-1k-hH4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xc5-jT-DQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2622,7 +2648,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_add_hurdle_smasher.png" translatesAutoresizingMaskIntoConstraints="NO" id="TuW-Zc-jHB">
                                         <rect key="frame" x="78" y="181" width="110" height="119"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hurdle Smashers Unlocked!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti6-P3-9aH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hurdle Smashers Unlocked!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti6-P3-9aH">
                                         <rect key="frame" x="11" y="44" width="249" height="42"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -2666,6 +2692,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="xFi-V2-yIp" firstAttribute="top" secondItem="Ti6-P3-9aH" secondAttribute="bottom" constant="10" id="1z0-bO-3Ia"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ti6-P3-9aH" secondAttribute="trailing" constant="10" id="28B-Wk-LDJ"/>
                                     <constraint firstAttribute="bottom" secondItem="kI5-2d-sAs" secondAttribute="bottom" constant="10" id="3ST-Au-h5j"/>
                                     <constraint firstItem="TuW-Zc-jHB" firstAttribute="top" secondItem="xFi-V2-yIp" secondAttribute="bottom" constant="10" id="5qK-zI-qyo"/>
                                     <constraint firstAttribute="trailing" secondItem="xFi-V2-yIp" secondAttribute="trailing" constant="10" id="6dq-Gw-Rcq"/>
@@ -2675,6 +2702,7 @@
                                     <constraint firstAttribute="centerX" secondItem="xFi-V2-yIp" secondAttribute="centerX" id="USP-Ty-jyD"/>
                                     <constraint firstAttribute="centerX" secondItem="TuW-Zc-jHB" secondAttribute="centerX" id="ZnR-jP-OIY"/>
                                     <constraint firstItem="xFi-V2-yIp" firstAttribute="leading" secondItem="0sm-tK-RRE" secondAttribute="leading" constant="10" id="bPy-Pw-IYW"/>
+                                    <constraint firstItem="Ti6-P3-9aH" firstAttribute="leading" secondItem="0sm-tK-RRE" secondAttribute="leading" constant="10" id="bub-59-iQF"/>
                                     <constraint firstAttribute="trailing" secondItem="IXL-uA-E1i" secondAttribute="trailing" id="g2T-LF-fqb"/>
                                     <constraint firstAttribute="centerX" secondItem="Ti6-P3-9aH" secondAttribute="centerX" id="led-4d-Tp1"/>
                                     <constraint firstItem="IXL-uA-E1i" firstAttribute="top" secondItem="0sm-tK-RRE" secondAttribute="top" id="qUd-fI-zyE"/>
@@ -2688,6 +2716,9 @@
                             <constraint firstAttribute="centerY" secondItem="0sm-tK-RRE" secondAttribute="centerY" id="qap-Aw-orr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="0sm-tK-RRE" id="MIX-dh-wLU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9WV-IC-Nmm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2771,6 +2802,9 @@
                             <constraint firstAttribute="centerY" secondItem="oY4-cS-gol" secondAttribute="centerY" id="xBm-0j-74Q"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="oY4-cS-gol" id="hkq-Vm-IZb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2r-ut-ZeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2814,7 +2848,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="9Xs-gf-clJ" secondAttribute="trailing" constant="10" id="9Ig-I7-cMa"/>
                                             <constraint firstItem="9Xs-gf-clJ" firstAttribute="leading" secondItem="L3B-LQ-ing" secondAttribute="leading" constant="10" id="DY4-7Z-3Lv"/>
-                                            <constraint firstAttribute="bottom" secondItem="9Xs-gf-clJ" secondAttribute="bottom" constant="12" id="FMM-yc-2F6"/>
+                                            <constraint firstAttribute="bottom" secondItem="9Xs-gf-clJ" secondAttribute="bottom" constant="5" id="FMM-yc-2F6"/>
                                             <constraint firstItem="9Xs-gf-clJ" firstAttribute="top" secondItem="L3B-LQ-ing" secondAttribute="top" constant="5" id="wjC-1R-2QD"/>
                                         </constraints>
                                         <connections>
@@ -2824,7 +2858,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_hurdle_smasher_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="J7u-Qc-znt">
                                         <rect key="frame" x="78" y="167" width="110" height="119"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Super! Now that you have a Hurdle Smasher, use it to make a hole in a hurdle by tapping your finger on the hurdle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJv-FF-wLb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Super! Now that you have a Hurdle Smasher, use it to make a hole in a hurdle by tapping your finger on the hurdle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJv-FF-wLb">
                                         <rect key="frame" x="8" y="38" width="249" height="114"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -2858,6 +2892,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="r83-O8-YFZ" secondAttribute="trailing" constant="20" id="u9t-06-75p"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="r83-O8-YFZ" id="hvb-iI-0bp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lZ-Rp-yWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2947,6 +2984,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="b8a-OV-5ZV" secondAttribute="trailing" constant="20" id="tfs-nR-1hn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="b8a-OV-5ZV" id="mUp-9G-NZg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Af4-Ei-8fJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3347,6 +3387,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="lCf-h2-ve6" secondAttribute="trailing" constant="20" id="v4H-7s-O2v"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="lCf-h2-ve6" id="YYd-xW-GgO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VT8-pn-Lzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3397,7 +3440,7 @@
                                             <constraint firstItem="4W3-bT-cfa" firstAttribute="top" secondItem="q0t-97-Lej" secondAttribute="top" constant="5" id="71U-Dk-AAU"/>
                                             <constraint firstItem="4W3-bT-cfa" firstAttribute="leading" secondItem="q0t-97-Lej" secondAttribute="leading" constant="10" id="I8j-qE-GnT"/>
                                             <constraint firstAttribute="trailing" secondItem="4W3-bT-cfa" secondAttribute="trailing" constant="10" id="Qwb-aq-04i"/>
-                                            <constraint firstAttribute="bottom" secondItem="4W3-bT-cfa" secondAttribute="bottom" constant="12" id="Xb0-Pb-wEx"/>
+                                            <constraint firstAttribute="bottom" secondItem="4W3-bT-cfa" secondAttribute="bottom" constant="5" id="Xb0-Pb-wEx"/>
                                         </constraints>
                                         <connections>
                                             <action selector="positiveAction1ButtonPressed:" destination="CUg-N5-WSD" eventType="touchUpInside" id="Lbe-st-Dlg"/>
@@ -3428,6 +3471,9 @@
                             <constraint firstItem="18a-yL-Ybt" firstAttribute="leading" secondItem="ub7-Jl-7Xi" secondAttribute="leadingMargin" constant="20" id="9Tx-I4-uGm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="18a-yL-Ybt" id="uGp-uM-vrc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKo-oF-PCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3517,6 +3563,9 @@
                             <constraint firstItem="fHz-Hq-oW0" firstAttribute="leading" secondItem="XN3-SC-i1V" secondAttribute="leadingMargin" constant="20" id="aUp-wS-PiD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="fHz-Hq-oW0" id="xL6-q9-bA8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wak-np-l7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

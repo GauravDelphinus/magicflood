@@ -941,6 +941,9 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="xzg-d0-y5Z" id="C4A-44-boZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQI-xh-xcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1014,6 +1017,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="acN-4t-3Mu" id="nEd-4t-Zgn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TiW-ht-vPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1087,6 +1093,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="1kW-in-5kj" id="Twc-uf-TXL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80e-3T-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1242,18 +1251,18 @@
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note: Coins are consumable goods.  Coins purchased on one device will not be transferred to another." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eId-aF-6cJ">
-                                        <rect key="frame" x="15" y="506" width="444" height="98"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_hot_deal.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Ho-ap-xj8">
                                         <rect key="frame" x="394" y="462" width="65" height="49"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey, looks like you're running short by 234 coins.  Add coins now using one of these great deals!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOi-14-AwL">
                                         <rect key="frame" x="27" y="75" width="420" height="121"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note: Coins are consumable goods.  Coins purchased on one device will not be transferred to another." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eId-aF-6cJ">
+                                        <rect key="frame" x="15" y="506" width="444" height="98"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1264,6 +1273,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="dialogView" destination="sDV-9U-tLR" id="Cg2-gO-kVm"/>
                         <outlet property="m1000CoinsButton" destination="bbt-zw-BNL" id="JhZ-Au-CFQ"/>
                         <outlet property="m2500CoinsButton" destination="6lp-64-1BD" id="Pu9-Vc-aKc"/>
                         <outlet property="m5000CoinsButton" destination="lSV-pg-6tF" id="Uge-RP-z4V"/>
@@ -1353,6 +1363,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="dialogView" destination="jv5-tv-198" id="r62-AL-LHY"/>
                         <outlet property="mNotConnectedLabel" destination="36K-AF-X9d" id="0fo-NE-8Vg"/>
                         <outlet property="mNotePermanentLabel" destination="UHl-ws-6pU" id="kEo-WV-5pG"/>
                         <outlet property="mRemoveAdsButton" destination="aXr-Y7-Dn6" id="dgD-Oh-LzF"/>
@@ -1450,6 +1461,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="xcE-Lt-cRo" id="rZT-sf-seL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuw-yU-iOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1542,6 +1556,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="XfQ-DK-XLf" id="gDp-Ax-IgP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgU-t3-Shk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1612,6 +1629,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="ZC9-JG-2mO" id="3by-zi-6nb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2Y-Zc-ZAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1660,6 +1680,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="1M6-KP-EHi" id="fdE-wg-14r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngR-mW-NAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1730,6 +1753,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="nAu-en-jJn" id="dio-yo-sPz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MpQ-tL-B77" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1800,6 +1826,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="qfn-8c-fca" id="cbM-Aw-4CK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Z1-nd-KU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1870,6 +1899,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="EmN-WK-RJj" id="UdK-T5-YUe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqb-fa-dkA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1940,6 +1972,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="lPK-Cm-hrg" id="bWC-dF-DEE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAY-jB-8xM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2010,6 +2045,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="B8A-f5-q8B" id="hfT-fa-Nqq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEl-z3-FTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2067,6 +2105,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="aHd-fR-HBK" id="zwO-fm-J1t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGv-hj-f7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2124,6 +2165,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="BI2-Y6-xBG" id="e1H-8e-Q3u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13e-bH-xTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2194,6 +2238,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="dialogView" destination="heY-5K-j1h" id="vMX-vo-Xxe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aH-sN-tuJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

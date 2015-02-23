@@ -9,6 +9,7 @@
 #import "MFGameDialogController.h"
 
 @interface MFGameDialogController ()
+@property (strong, nonatomic) IBOutlet UIView *dialogView;
 
 @end
 
@@ -18,7 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.dialogView.layer.cornerRadius = 10;
+    self.dialogView.layer.masksToBounds = YES;
 }
 
 /*********************  Dialog Button Callback Actions **************************/
