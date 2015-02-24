@@ -21,6 +21,7 @@
 @interface MFGameView : UIView
 
 @property (nonatomic,strong) id <GameViewTapHandler> delegate; //the delegate that implements the GameViewTapHandler protocol
+@property int mCurrentAngleOfStartPosition; //current rotation angle
 
 -(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves;
 -(void)updateGameData:(int **)grid;

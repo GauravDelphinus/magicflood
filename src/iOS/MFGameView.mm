@@ -13,8 +13,7 @@
 #import "MFUtils.h"
 
 #define SHADOW_THICKNESS 10
-#define ROTATION_STEP_DEGREES 5
-#define ROTATION_SPEED_INTERVAL 0.5 //seconds
+
 
 @interface MFGameView ()
 {
@@ -23,9 +22,7 @@
     int mNumStartPos; //number of start positions
     int **startPos; //array of start positions, each array has 2 integers. 0 = x, 1 = y
     int maxMoves; // max number of moves in this game
-    int mCurrentAngleOfStartPosition; //current rotation angle
 }
-@property NSTimer *mStarRotationTimer;
 
 @end
 
@@ -105,42 +102,8 @@
         startPos[i][0] = startpos[i][0];
         startPos[i][1] = startpos[i][1];
     }
-    
-    [self setupTimer];
-    
+        
     [self setNeedsDisplay];
-}
-
-/**
- Set up a timer that draws a "rotating" star or stars.
- **/
--(void)setupTimer
-{
-    self.mStarRotationTimer = [NSTimer scheduledTimerWithTimeInterval:ROTATION_SPEED_INTERVAL
-                                     target:self
-                                   selector:@selector(timerCallback:)
-                                   userInfo:nil
-                                    repeats:YES];
-}
-
-/**
- Timer callback that triggers a re-render of the screen.
- **/
--(void)timerCallback:(NSTimer *)timer
-{
-    mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
-    mCurrentAngleOfStartPosition = mCurrentAngleOfStartPosition % 360;
-    [self setNeedsDisplay];
-}
-
-/**
- This is the opportunity for the GameView to release resources and memory.
- **/
--(void)removeFromSuperview
-{
-    [super removeFromSuperview];
-    
-    [self.mStarRotationTimer invalidate];
 }
 
 /*********************  Update Game Routines **************************/
@@ -538,7 +501,7 @@
     // Move to the center of the rectangle:
     CGContextTranslateCTM(context, left + r, top + r);
     // Rotate:
-    CGContextRotateCTM(context, mCurrentAngleOfStartPosition * M_PI / 90.0);
+    CGContextRotateCTM(context, self.mCurrentAngleOfStartPosition * M_PI / 90.0);
     CGContextTranslateCTM(context, -(left + r), -(top + r));
     
     double x1 = left + d;
@@ -583,7 +546,7 @@
     CGContextAddPath(context, pathRef);
     CGContextFillPath(context);
     
-    if (myGrid[x][y] == GRID_COLOR_YELLOW)
+    //if (myGrid[x][y] == GRID_COLOR_YELLOW)
     {
         CGContextSetLineWidth(context, 0.5);
         CGContextSetStrokeColorWithColor(context, [UIColor
@@ -593,8 +556,6 @@
     }
     
     CGPathRelease(pathRef);
-    
-    
     
     CGContextRestoreGState(context);
 }

@@ -19,6 +19,9 @@
 #import "MFIAPInterface.h"
 #import "MFUtils.h"
 
+#define ROTATION_SPEED_INTERVAL 0.5 //seconds
+#define ROTATION_STEP_DEGREES 5
+
 @interface MFGameViewController ()
 {
     SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
@@ -51,6 +54,7 @@
 @property MFIAPManager *mIAPManager; //The In-App Purchase Manager
 @property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
 @property long gridHandle; //handle to the grid object in C++ code
+@property NSTimer *mStarRotationTimer; //star rotation timer for the game view
 
 @end
 
@@ -118,6 +122,8 @@
     self.mAdBannerView.delegate = nil;
     self.mAdBannerView = nil;
      */
+    
+    [self stopTimer];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -138,6 +144,11 @@
     {
         self.mIAPManager.mPurchaseDelegate = nil;
     }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self startTimer];
 }
 
 /**
@@ -165,6 +176,38 @@
      [self.mAdBannerView removeFromSuperview];
      self.mAdBannerView.delegate = nil;
      self.mAdBannerView = nil;
+}
+
+/*********************  GameView Related **************************/
+
+/**
+ Set up a timer that draws a "rotating" star or stars.
+ **/
+-(void)startTimer
+{
+    NSLog(@"startTimer");
+    self.mStarRotationTimer = [NSTimer scheduledTimerWithTimeInterval:ROTATION_SPEED_INTERVAL
+                                                               target:self
+                                                             selector:@selector(timerCallback:)
+                                                             userInfo:nil
+                                                              repeats:YES];
+}
+
+-(void)stopTimer
+{
+    NSLog(@"stopTimer");
+    [self.mStarRotationTimer invalidate];
+    self.mStarRotationTimer = nil;
+}
+
+/**
+ Timer callback that triggers a re-render of the screen.
+ **/
+-(void)timerCallback:(NSTimer *)timer
+{
+    self.gameView.mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
+    self.gameView.mCurrentAngleOfStartPosition = self.gameView.mCurrentAngleOfStartPosition % 360;
+    [self.gameView setNeedsDisplay];
 }
 
 /*********************  Sound Related **************************/
