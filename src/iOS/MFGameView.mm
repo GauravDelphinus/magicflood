@@ -546,14 +546,15 @@
     CGContextAddPath(context, pathRef);
     CGContextFillPath(context);
     
-    //if (myGrid[x][y] == GRID_COLOR_YELLOW)
-    {
-        CGContextSetLineWidth(context, 0.5);
-        CGContextSetStrokeColorWithColor(context, [UIColor
+
+    /**
+     Draw the black star border (stroke)
+     **/
+    CGContextSetLineWidth(context, 0.5);
+    CGContextSetStrokeColorWithColor(context, [UIColor
                                                    grayColor].CGColor);
-        CGContextAddPath(context, pathRef);
-        CGContextStrokePath(context);
-    }
+    CGContextAddPath(context, pathRef);
+    CGContextStrokePath(context);
     
     CGPathRelease(pathRef);
     
