@@ -13,8 +13,8 @@
 #import "MFUtils.h"
 
 #define SHADOW_THICKNESS 10
-#define ROTATION_STEP_DEGREES 20
-#define ROTATION_SPEED_INTERVAL 0.2 //seconds
+#define ROTATION_STEP_DEGREES 5
+#define ROTATION_SPEED_INTERVAL 0.5 //seconds
 
 @interface MFGameView ()
 {
@@ -538,29 +538,29 @@
     // Move to the center of the rectangle:
     CGContextTranslateCTM(context, left + r, top + r);
     // Rotate:
-    CGContextRotateCTM(context, mCurrentAngleOfStartPosition);
+    CGContextRotateCTM(context, mCurrentAngleOfStartPosition * M_PI / 90.0);
     CGContextTranslateCTM(context, -(left + r), -(top + r));
     
-    int x1 = left + d;
-    int y1 = top + r;
-    int x3 = left + r + (int)(r * costheta);
-    int y3 = top + r - (int)(r * sintheta);
-    int x5 = left + r - (int)(r * cosphi);
-    int y5 = top + r - (int)(r * sinphi);
-    int x7 = left + r - (int)(r * cosphi);
-    int y7 = top + r + (int)(r * sinphi);
-    int x9 = left + r + (int)(r * costheta);
-    int y9 = top + r + (int)(r * sintheta);
-    int x2 = left + r + (int)(s * cosphi);
-    int y2 = top + r - (int)(s * sinphi);
-    int x4 = left + r - (int)(s * costheta);
-    int y4 = top + r - (int)(s * sintheta);
-    int x6 = left + r - s;
-    int y6 = top + r;
-    int x8 = left + r - (int)(s * costheta);
-    int y8 = top + r + (int)(s * sintheta);
-    int x10 = left + r + (int)(s * cosphi);
-    int y10 = top + r + (int)(s * sinphi);
+    double x1 = left + d;
+    double y1 = top + r;
+    double x3 = left + r + (r * costheta);
+    double y3 = top + r - (r * sintheta);
+    double x5 = left + r - (r * cosphi);
+    double y5 = top + r - (r * sinphi);
+    double x7 = left + r - (r * cosphi);
+    double y7 = top + r + (r * sinphi);
+    double x9 = left + r + (r * costheta);
+    double y9 = top + r + (r * sintheta);
+    double x2 = left + r + (s * cosphi);
+    double y2 = top + r - (s * sinphi);
+    double x4 = left + r - (s * costheta);
+    double y4 = top + r - (s * sintheta);
+    double x6 = left + r - s;
+    double y6 = top + r;
+    double x8 = left + r - (s * costheta);
+    double y8 = top + r + (s * sintheta);
+    double x10 = left + r + (s * cosphi);
+    double y10 = top + r + (s * sinphi);
     
     CGMutablePathRef pathRef = CGPathCreateMutable();
     
