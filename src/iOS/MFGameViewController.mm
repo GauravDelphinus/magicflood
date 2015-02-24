@@ -51,6 +51,7 @@
 @property BOOL mAdBannerVisible;
 @property BOOL mAdsRemoved; //whether ads are removed by user
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *mColorButtonBottomConstaints;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mAdBannerBottomConstraints;
 @property MFIAPManager *mIAPManager; //The In-App Purchase Manager
 @property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
 @property long gridHandle; //handle to the grid object in C++ code
@@ -412,14 +413,29 @@
          and helps adjust the ad banner in or out of view by popping it below the bottom of the screen
          by adjusting the Y position.
          **/
+        [self.view removeConstraint: self.mAdBannerBottomConstraints];
+        self.mAdBannerBottomConstraints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeTop
+                                                                        multiplier:1.0
+                                                                          constant:self.mAdBannerView.frame.size.height]; //the banner height ensures the bottom of the Ad View is exactly this much below the bottom layout guide (just hanging below the screen edge)
+        [self.view addConstraint:self.mAdBannerBottomConstraints];
+        
+        /**
+         Initially, when we haven't started fetching ads, show the color buttons just off
+         the bottom of the screen.
+         **/
         [self.view removeConstraint: self.mColorButtonBottomConstaints];
-        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mRedButton
                                                                          attribute:NSLayoutAttributeBottom
                                                                          relatedBy:NSLayoutRelationEqual
                                                                             toItem:self.bottomLayoutGuide
                                                                          attribute:NSLayoutAttributeBottom
                                                                         multiplier:1.0
-                                                                          constant:self.mAdBannerView.frame.size.height];
+                                                                          constant:-5.0]; //keep the color button 5.0 points above the screen edge
+        
         [self.view addConstraint:self.mColorButtonBottomConstaints];
         
         [self.view setNeedsLayout];
@@ -440,6 +456,8 @@
          bottom layout guide.
          **/
         [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        [self.view removeConstraint: self.mAdBannerBottomConstraints];
+        
         self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mRedButton
                                                                          attribute:NSLayoutAttributeBottom
                                                                          relatedBy:NSLayoutRelationEqual
@@ -464,16 +482,37 @@
  **/
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
+    NSLog(@"adbanner height = %f", self.mAdBannerView.frame.size.height);
+    
     if (!self.mAdBannerVisible)
     {
-        [self.view removeConstraint: self.mColorButtonBottomConstaints];
-        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+        /**
+         Show the ad banner view just aligned with the bottom
+         of the screen.
+         **/
+        [self.view removeConstraint: self.mAdBannerBottomConstraints];
+        self.mAdBannerBottomConstraints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
                                                                          attribute:NSLayoutAttributeBottom
                                                                          relatedBy:NSLayoutRelationEqual
                                                                             toItem:self.bottomLayoutGuide
                                                                          attribute:NSLayoutAttributeBottom
                                                                         multiplier:1.0
                                                                           constant:0.0]; //0.0 ensures the bottom of the Ad View aligns with the bottom layout guide
+        [self.view addConstraint:self.mAdBannerBottomConstraints];
+        
+        /**
+         Connect the ad banner view and the red button, so the buttons
+         are aligned just above the ad banner view.
+         **/
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mRedButton
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.mAdBannerView
+                                                                         attribute:NSLayoutAttributeTop
+                                                                        multiplier:1.0
+                                                                          constant:-5.0]; //keep the color button aligned with the top of the ad banner view
+        
         [self.view addConstraint:self.mColorButtonBottomConstaints];
         
         [self.view setNeedsLayout];
@@ -492,14 +531,33 @@
 {
     if (self.mAdBannerVisible)
     {
-        [self.view removeConstraint: self.mColorButtonBottomConstaints];
-        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
+        /**
+         Hide the ad banner view while we try to look for ads, by hanging it
+         just off the bottom of the screen.
+         **/
+        [self.view removeConstraint: self.mAdBannerBottomConstraints];
+        self.mAdBannerBottomConstraints = [NSLayoutConstraint constraintWithItem:self.mAdBannerView
                                                                          attribute:NSLayoutAttributeBottom
                                                                          relatedBy:NSLayoutRelationEqual
                                                                             toItem:self.bottomLayoutGuide
                                                                          attribute:NSLayoutAttributeTop
                                                                         multiplier:1.0
                                                                           constant:self.mAdBannerView.frame.size.height]; //the banner height ensures the bottom of the Ad View is exactly this much below the bottom layout guide (just hanging below the screen edge)
+        [self.view addConstraint:self.mAdBannerBottomConstraints];
+        
+        /**
+         Since the ad banner view is hidden, align the color buttons
+         just above the bottom of the screen.
+         **/
+        [self.view removeConstraint: self.mColorButtonBottomConstaints];
+        self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mRedButton
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.bottomLayoutGuide
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.0
+                                                                          constant:-5.0]; //keep the color button 5.0 points above the screen edge
+        
         [self.view addConstraint:self.mColorButtonBottomConstaints];
         
         [self.view setNeedsLayout];
@@ -542,6 +600,7 @@
      Update the constraints to now hook the color button with the bottom layout guide
      instead of the ad banner view and the bottom layout guide.
      **/
+    [self.view removeConstraint: self.mAdBannerBottomConstraints];
     [self.view removeConstraint: self.mColorButtonBottomConstaints];
     self.mColorButtonBottomConstaints = [NSLayoutConstraint constraintWithItem:self.mRedButton
                                                                      attribute:NSLayoutAttributeBottom
