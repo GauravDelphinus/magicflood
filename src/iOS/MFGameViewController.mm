@@ -19,8 +19,8 @@
 #import "MFIAPInterface.h"
 #import "MFUtils.h"
 
-#define ROTATION_SPEED_INTERVAL 0.5 //seconds
-#define ROTATION_STEP_DEGREES 5
+#define ROTATION_SPEED_INTERVAL 0.2 //seconds
+#define ROTATION_STEP_DEGREES 2
 
 @interface MFGameViewController ()
 {
@@ -830,11 +830,27 @@
 {
     if (self.gameLevel == getMinLevelToAddStars())
     {
-        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_STARS withData:0 withAnimation:NO];
+        //show the "Stars Unlocked" dialog, if not ever shown
+        BOOL alreadyShown = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_STARS_UNLOCKED];
+        
+        if (!alreadyShown)
+        {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_STARS_UNLOCKED];
+
+            [self showDialogOfType:DIALOG_TYPE_INTRODUCE_STARS withData:0 withAnimation:NO];
+        }
     }
     else if (self.gameLevel == getMinLevelToAddHurdleSmasher())
     {
-        [self showDialogOfType:DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS withData:0 withAnimation:NO];
+        //show the "Hurdle Smashers Unlocked" dialog, if not ever shown
+        BOOL alreadyShown = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_HURDLE_SMASHERS_UNLOCKED];
+        
+        if (!alreadyShown)
+        {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_HURDLE_SMASHERS_UNLOCKED];
+
+            [self showDialogOfType:DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS withData:0 withAnimation:NO];
+        }
     }
     
     if (self.gameLevel < getMinLevelToAddStars())

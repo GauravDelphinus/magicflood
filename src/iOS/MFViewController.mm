@@ -45,6 +45,8 @@
                                           [NSNumber numberWithInt:INITIAL_COINS_ALLOCATED], @PREFERENCE_TOTAL_COINS_EARNED,
                                           [NSNumber numberWithBool:YES], @PREFERENCE_SOUND,
                                           [NSNumber numberWithBool:NO], @PREFERENCE_ADS_REMOVED,
+                                          [NSNumber numberWithBool:NO], @PREFERENCE_STARS_UNLOCKED,
+                                          [NSNumber numberWithBool:NO], @PREFERENCE_HURDLE_SMASHERS_UNLOCKED,
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
 }

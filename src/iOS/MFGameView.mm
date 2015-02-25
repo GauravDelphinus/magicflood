@@ -450,7 +450,10 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
-    int d = cellSize; //diameter
+    int gap = 2;
+    left = left + gap;
+    top = top + gap;
+    int d = cellSize - gap * 2; //diameter
     int r = d/2; //radius of star spikes
     int s = r/2; //radius of star troughs
     double theta = 72 * M_PI / 180; //degrees
@@ -550,7 +553,7 @@
     /**
      Draw the black star border (stroke)
      **/
-    CGContextSetLineWidth(context, 0.5);
+    CGContextSetLineWidth(context, 1);
     CGContextSetStrokeColorWithColor(context, [UIColor
                                                    grayColor].CGColor);
     CGContextAddPath(context, pathRef);
