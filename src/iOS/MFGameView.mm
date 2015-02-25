@@ -14,6 +14,21 @@
 
 #define SHADOW_THICKNESS 10
 
+/**
+ Direction of Linear Gradient for Shadow
+ **/
+#define LINEAR_GRADIENT_DIRECTION_NORTH  1
+#define LINEAR_GRADIENT_DIRECTION_EAST  2
+#define LINEAR_GRADIENT_DIRECTION_SOUTH 3
+#define LINEAR_GRADIENT_DIRECTION_WEST  4
+
+/**
+ Direction of Radial Gradient (whether outward or inward) for Shadow
+ **/
+#define RADIAL_GRADIENT_DIRECTION_NORTH_EAST 1
+#define RADIAL_GRADIENT_DIRECTION_SOUTH_EAST 2
+#define RADIAL_GRADIENT_DIRECTION_SOUTH_WEST 3
+#define RADIAL_GRADIENT_DIRECTION_NORTH_WEST 4
 
 @interface MFGameView ()
 {
@@ -253,10 +268,37 @@
  **/
 -(void)drawGridShadowWithLeft:(int)left withTop:(int)top WithGridLength:(int)gridlength
 {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
     /** Right Shadow **/
+    CGRect rightShadowRect = CGRectMake(left + gridlength, top + SHADOW_THICKNESS, SHADOW_THICKNESS, gridlength - SHADOW_THICKNESS);
+    [self drawLinearGradient:rightShadowRect withDirection:LINEAR_GRADIENT_DIRECTION_EAST];
     
+    /** Bottom Shadow **/
+    CGRect bottomShadowRect = CGRectMake(left + SHADOW_THICKNESS, top + gridlength, gridlength - SHADOW_THICKNESS, SHADOW_THICKNESS);
+    [self drawLinearGradient:bottomShadowRect withDirection:LINEAR_GRADIENT_DIRECTION_SOUTH];
+   
+    /** Left Corner **/
+    CGRect bottomLeftRect = CGRectMake(left, top + gridlength, SHADOW_THICKNESS, SHADOW_THICKNESS);
+    [self drawRadialGradient:bottomLeftRect withDirection:RADIAL_GRADIENT_DIRECTION_SOUTH_WEST isOutward:YES];
+    
+    /** Bottom Right Corner **/
+    CGRect bottomRigthRect = CGRectMake(left + gridlength, top + gridlength, SHADOW_THICKNESS, SHADOW_THICKNESS);
+    [self drawRadialGradient:bottomRigthRect withDirection:RADIAL_GRADIENT_DIRECTION_SOUTH_EAST isOutward:YES];
+
+    /** Top Right Corner **/
+    CGRect topRightRect = CGRectMake(left + gridlength, top, SHADOW_THICKNESS, SHADOW_THICKNESS);
+    [self drawRadialGradient:topRightRect withDirection:RADIAL_GRADIENT_DIRECTION_NORTH_EAST isOutward:YES];
+}
+
+/**
+ Draw a linear gradient in the given rect with the given direction.
+ See direction values at the top of this file.
+ **/
+-(void)drawLinearGradient:(CGRect) rect withDirection:(int)direction
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGContextSaveGState(context);
+
     CGContextBeginPath(context);
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -266,93 +308,112 @@
     
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
     
-    CGContextSaveGState(context);
-    CGRect rightShadowRect = CGRectMake(left + gridlength, top + SHADOW_THICKNESS, SHADOW_THICKNESS, gridlength - SHADOW_THICKNESS);
+    CGPoint startPoint, endPoint;
     
-    CGPoint startPoint = CGPointMake(left + gridlength, top + SHADOW_THICKNESS);
-    CGPoint endPoint = CGPointMake(left + gridlength + SHADOW_THICKNESS, top + SHADOW_THICKNESS);
+    if (direction == LINEAR_GRADIENT_DIRECTION_EAST)
+    {
+        startPoint = CGPointMake(rect.origin.x, rect.origin.y);
+        endPoint = CGPointMake(rect.origin.x + rect.size.width, rect.origin.y);
+    }
+    else if (direction == LINEAR_GRADIENT_DIRECTION_NORTH)
+    {
+        startPoint = CGPointMake(rect.origin.x, rect.origin.y + rect.size.height);
+        endPoint = CGPointMake(rect.origin.x, rect.origin.y);
+    }
+    else if (direction == LINEAR_GRADIENT_DIRECTION_WEST)
+    {
+        startPoint = CGPointMake(rect.origin.x + rect.size.width, rect.origin.y);
+        endPoint = CGPointMake(rect.origin.x, rect.origin.y);
+    }
+    else
+    {
+        //south
+        startPoint = CGPointMake(rect.origin.x, rect.origin.y);
+        endPoint = CGPointMake(rect.origin.x, rect.origin.y + rect.size.height);
+    }
     
-    CGContextAddRect(context, rightShadowRect);
+    CGContextAddRect(context, rect);
     CGContextClip(context);
     
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
     
     CGContextRestoreGState(context);
-    //CGContextSetLineWidth(context, 0.5);
-    //CGContextSetStrokeColorWithColor(context, [UIColor
-     //                                          blackColor].CGColor);
-    //CGContextStrokePath(context);
-    
-    /** Bottom Shadow **/
-    CGContextSaveGState(context);
-    CGContextBeginPath(context);
-    CGRect bottomShadowRect = CGRectMake(left + SHADOW_THICKNESS, top + gridlength, gridlength - SHADOW_THICKNESS, SHADOW_THICKNESS);
-     startPoint = CGPointMake(left + SHADOW_THICKNESS, top + gridlength);
- endPoint = CGPointMake(left + SHADOW_THICKNESS, top + gridlength + SHADOW_THICKNESS);
-    
-    CGContextAddRect(context, bottomShadowRect);
-    CGContextClip(context);
-    
-    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
-    CGContextRestoreGState(context);
-   
-    /** Left Corner **/
-    CGContextSaveGState(context);
-    CGContextBeginPath(context);
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGFloat startAngle = M_PI / 2;
-    CGFloat endAngle = M_PI;
-    CGPathMoveToPoint(path, NULL, left + SHADOW_THICKNESS, top + gridlength + SHADOW_THICKNESS);
-    CGPathAddArc(path, NULL, left + SHADOW_THICKNESS, top + gridlength, SHADOW_THICKNESS, startAngle, endAngle, 0);
-    CGPathAddLineToPoint(path, NULL, left, top + gridlength);
-    CGPathAddLineToPoint(path, NULL, left + SHADOW_THICKNESS, top + gridlength);
-    CGContextAddPath(context, path);
-    CGPathCloseSubpath(path);
-    CGContextClip(context);
-    startPoint = CGPointMake(left + SHADOW_THICKNESS, top + gridlength);
-    CGContextDrawRadialGradient (context, gradient, startPoint,
-                                 0, startPoint, SHADOW_THICKNESS,
-                                 0);
-    CGContextRestoreGState(context);
-    
-    /** Bottom Right Corner **/
-    CGContextSaveGState(context);
-    CGContextBeginPath(context);
-    path = CGPathCreateMutable();
-    startAngle = 0;
-    endAngle = M_PI / 2;
-    CGPathMoveToPoint(path, NULL, left + gridlength + SHADOW_THICKNESS, top + gridlength);
-    CGPathAddArc(path, NULL, left + gridlength, top + gridlength, SHADOW_THICKNESS, startAngle, endAngle, 0);
-    CGPathAddLineToPoint(path, NULL, left + gridlength, top + gridlength);
-    CGPathAddLineToPoint(path, NULL, left + gridlength + SHADOW_THICKNESS, top + gridlength);
-    CGContextAddPath(context, path);
-    CGPathCloseSubpath(path);
-    CGContextClip(context);
-    startPoint = CGPointMake(left + gridlength, top + gridlength);
-    CGContextDrawRadialGradient (context, gradient, startPoint,
-                                 0, startPoint, SHADOW_THICKNESS,
-                                 0);
-    CGContextRestoreGState(context);
+}
 
-    /** Top Right Corner **/
+/**
+ Draw an radial gradient with the given direction
+ in the given rect.  Refer direction values at the top of this file.
+ Outward means from dark to clear.  Inward means from clear to dark.
+ **/
+-(void)drawRadialGradient:(CGRect) rect withDirection:(int)direction isOutward:(BOOL)isOutward
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
     CGContextSaveGState(context);
     CGContextBeginPath(context);
-    path = CGPathCreateMutable();
-    startAngle = 3 * M_PI / 2;
-    endAngle = 0;
-    CGPathMoveToPoint(path, NULL, left + gridlength, top);
-    CGPathAddArc(path, NULL, left + gridlength, top + SHADOW_THICKNESS, SHADOW_THICKNESS, startAngle, endAngle, 0);
-    CGPathAddLineToPoint(path, NULL, left + gridlength, top + SHADOW_THICKNESS);
-    CGPathAddLineToPoint(path, NULL, left + gridlength, top);
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGFloat locations[] = { 0.0, 1.0 };
+    
+    NSArray *colors;
+    
+    if (!isOutward)
+    {
+        colors = @[(__bridge id) [UIColor clearColor].CGColor, (__bridge id) [UIColor blackColor].CGColor];
+    }
+    else
+    {
+        colors = @[(__bridge id) [UIColor blackColor].CGColor, (__bridge id) [UIColor clearColor].CGColor];
+    }
+    
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPoint centerPoint;
+    
+    if (direction == RADIAL_GRADIENT_DIRECTION_SOUTH_WEST)
+    {
+        CGPathMoveToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
+        CGPathAddArc(path, NULL, rect.origin.x + rect.size.width, rect.origin.y, SHADOW_THICKNESS, M_PI / 2, M_PI, 0);
+        CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y);
+        CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y);
+        centerPoint = CGPointMake(rect.origin.x + rect.size.width, rect.origin.y);
+    }
+    else if (direction == RADIAL_GRADIENT_DIRECTION_SOUTH_EAST)
+    {
+        CGPathMoveToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y);
+        CGPathAddArc(path, NULL, rect.origin.x, rect.origin.y, SHADOW_THICKNESS, 0, M_PI / 2, 0);
+        CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y);
+        CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y);
+        centerPoint = CGPointMake(rect.origin.x, rect.origin.y);
+    }
+    else if (direction == RADIAL_GRADIENT_DIRECTION_NORTH_EAST)
+    {
+        CGPathMoveToPoint(path, NULL, rect.origin.x, rect.origin.y);
+        CGPathAddArc(path, NULL, rect.origin.x, rect.origin.y + rect.size.height, SHADOW_THICKNESS, 3 * M_PI / 2, 0, 0);
+        CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height);
+        CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y);
+        centerPoint = CGPointMake(rect.origin.x, rect.origin.y + rect.size.height);
+    }
+    else
+    {
+        //north west
+        CGPathMoveToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height);
+        CGPathAddArc(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height, SHADOW_THICKNESS, 2 * M_PI, 3 * M_PI / 2, 0);
+        CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
+        CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height);
+        centerPoint = CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
+    }
+    
     CGContextAddPath(context, path);
     CGPathCloseSubpath(path);
     CGContextClip(context);
-    startPoint = CGPointMake(left + gridlength, top + SHADOW_THICKNESS);
-    CGContextDrawRadialGradient (context, gradient, startPoint,
-                                 0, startPoint, SHADOW_THICKNESS,
+    
+    CGContextDrawRadialGradient (context, gradient, centerPoint,
+                                 0, centerPoint, SHADOW_THICKNESS,
                                  0);
     CGContextRestoreGState(context);
-    
 }
 
 -(void)drawColorWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize WithX:(int)x WithY:(int)y

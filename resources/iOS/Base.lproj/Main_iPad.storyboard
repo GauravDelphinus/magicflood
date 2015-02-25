@@ -784,10 +784,6 @@
                                 <rect key="frame" x="491" y="874" width="48" height="68"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BCe-CP-cGm">
-                                <rect key="frame" x="354" y="875" width="48" height="68"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jjO-sT-lKn">
                                 <rect key="frame" x="221" y="878" width="48" height="68"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -825,7 +821,6 @@
                             <constraint firstItem="jjO-sT-lKn" firstAttribute="width" secondItem="pzV-Ey-s9k" secondAttribute="width" id="UpE-A4-oif"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xh0-OM-9oc" secondAttribute="trailing" constant="10" id="Ve3-Th-D2r"/>
                             <constraint firstItem="cb9-1c-d0v" firstAttribute="top" secondItem="ph6-YJ-5Tz" secondAttribute="bottom" constant="20" id="WVc-VZ-vvj"/>
-                            <constraint firstItem="jjO-sT-lKn" firstAttribute="width" secondItem="BCe-CP-cGm" secondAttribute="width" id="Wbk-vM-NcU"/>
                             <constraint firstItem="BFD-j0-6Rh" firstAttribute="centerY" secondItem="Kf7-1h-faQ" secondAttribute="centerY" id="WsE-00-NCO"/>
                             <constraint firstItem="KWF-9x-Fu9" firstAttribute="top" secondItem="f84-L9-CBf" secondAttribute="bottom" constant="5" id="aJE-dJ-byJ"/>
                             <constraint firstItem="jlq-Ew-wyl" firstAttribute="leading" secondItem="f84-L9-CBf" secondAttribute="trailing" constant="5" id="akX-mB-53G"/>
@@ -838,8 +833,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Z8p-F8-U0d" secondAttribute="trailing" constant="10" id="ggd-Ds-dsL"/>
                             <constraint firstItem="f84-L9-CBf" firstAttribute="leading" secondItem="noz-qN-FoH" secondAttribute="leadingMargin" constant="10" id="jeL-oV-yMA"/>
                             <constraint firstItem="bNS-cn-VvZ" firstAttribute="centerY" secondItem="Z8p-F8-U0d" secondAttribute="centerY" id="nyD-Fa-yVT"/>
-                            <constraint firstItem="BCe-CP-cGm" firstAttribute="leading" secondItem="BFD-j0-6Rh" secondAttribute="trailing" id="ocb-jB-81E"/>
-                            <constraint firstItem="Kf7-1h-faQ" firstAttribute="leading" secondItem="BCe-CP-cGm" secondAttribute="trailing" id="ppo-go-cni"/>
                             <constraint firstItem="G5Z-Xj-2RS" firstAttribute="centerY" secondItem="h8f-z8-94j" secondAttribute="centerY" id="qeg-MD-ckr"/>
                             <constraint firstItem="nlC-6K-esk" firstAttribute="leading" secondItem="uEE-SK-MGV" secondAttribute="trailing" id="rJq-2d-rvM"/>
                             <constraint firstItem="jjO-sT-lKn" firstAttribute="leading" secondItem="nlC-6K-esk" secondAttribute="trailing" id="wJx-dc-Mes"/>
