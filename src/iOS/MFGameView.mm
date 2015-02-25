@@ -63,7 +63,7 @@
     //free old grid, if present
     if (myGrid != NULL)
     {
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < gridSize; i++)
         {
             free(myGrid[i]);
         }
