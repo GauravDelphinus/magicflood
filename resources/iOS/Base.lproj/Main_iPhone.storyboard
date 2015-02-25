@@ -263,33 +263,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ph-ux-MCe">
-                                <rect key="frame" x="269" y="28" width="24" height="24"/>
-                                <state key="normal" image="ic_button_cancel_normal.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                <connections>
-                                    <action selector="dismissScreen:" destination="8CR-cC-PpR" eventType="touchUpInside" id="XzW-je-ScX"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Levels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0i-jC-BKX">
                                 <rect key="frame" x="96" y="28" width="129" height="26"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTi-KI-rb0">
+                                <rect key="frame" x="246" y="30" width="48" height="48"/>
+                                <state key="normal" image="ic_button_cancel_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                <connections>
+                                    <action selector="dismissScreen:" destination="8CR-cC-PpR" eventType="touchUpInside" id="RhJ-kL-jUp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7ph-ux-MCe" firstAttribute="trailing" secondItem="gyT-k7-Tgw" secondAttribute="trailingMargin" constant="10" id="Oof-jO-lRT"/>
-                            <constraint firstItem="7ph-ux-MCe" firstAttribute="top" secondItem="dRX-Ob-5Ey" secondAttribute="bottom" constant="10" id="lsr-BJ-C4G"/>
+                            <constraint firstItem="tTi-KI-rb0" firstAttribute="top" secondItem="dRX-Ob-5Ey" secondAttribute="bottom" constant="10" id="9US-Hc-N1h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tTi-KI-rb0" secondAttribute="trailing" constant="10" id="Eso-Pc-EEB"/>
                             <constraint firstItem="b0i-jC-BKX" firstAttribute="top" secondItem="dRX-Ob-5Ey" secondAttribute="bottom" constant="10" id="nnm-yr-Gxh"/>
                             <constraint firstAttribute="centerX" secondItem="b0i-jC-BKX" secondAttribute="centerX" id="zib-2J-zwt"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mCancelButton" destination="7ph-ux-MCe" id="APE-d8-O4Q"/>
+                        <outlet property="mCancelButton" destination="tTi-KI-rb0" id="oZs-2z-EYy"/>
                         <outlet property="mTitleLabel" destination="b0i-jC-BKX" id="5O0-Gi-wS4"/>
                     </connections>
                 </viewController>
@@ -1469,6 +1469,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="iUO-Pb-GaW" secondAttribute="centerY" id="1wd-Vg-JuO"/>
                             <constraint firstItem="iUO-Pb-GaW" firstAttribute="leading" secondItem="21V-P5-eFY" secondAttribute="leadingMargin" constant="20" id="7gd-4t-EYM"/>
