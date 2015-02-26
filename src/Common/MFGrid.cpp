@@ -324,7 +324,7 @@ void MFGrid::computeMaxMoves()
     {
         maxMoves -= NUM_REDUCED_MOVES;
     }
-    
+        
     releaseGrid(mMeasureGrid);
     mMeasureGrid = NULL;
 }

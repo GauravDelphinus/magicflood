@@ -87,6 +87,12 @@
     [self setupUI];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"viewDidAppear");
+    [self setupUI];
+}
+
 -(void)setupLists
 {
     /**
@@ -165,7 +171,7 @@
             label.text = [NSString stringWithFormat:@"%d", thisLevel];
             
             //check for lock status
-            if (true) //(thisLevel <= lastCompletedLevel)
+            if (thisLevel <= lastCompletedLevel)
             {
                 [imageView setImage:completedImage];
                 
@@ -189,6 +195,8 @@
             button.hidden = YES;
         }
     }
+    
+    [self.view setNeedsDisplay];
 }
 
 /*********************  User Actions **************************/

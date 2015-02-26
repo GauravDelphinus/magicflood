@@ -808,10 +808,10 @@
 		F1A2F2DA1A1D7F1C000DD4E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1A2F2DC1A1D7F1C000DD4E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F1A2F2DE1A1D7F1C000DD4E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F1A2F2E21A1D7F1C000DD4E7 /* Magic Flood-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Magic Flood-Info.plist"; path = "iOS/Magic Flood-Info.plist"; sourceTree = "<group>"; };
+		F1A2F2E21A1D7F1C000DD4E7 /* Magic Flood-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Magic Flood-Info.plist"; path = "../../resources/iOS/Magic Flood-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F1A2F2E41A1D7F1C000DD4E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F1A2F2E61A1D7F1C000DD4E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../src/iOS/main.m; sourceTree = SOURCE_ROOT; };
-		F1A2F2E81A1D7F1C000DD4E7 /* Magic Flood-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Magic Flood-Prefix.pch"; path = "iOS/Magic Flood-Prefix.pch"; sourceTree = "<group>"; };
+		F1A2F2E81A1D7F1C000DD4E7 /* Magic Flood-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Magic Flood-Prefix.pch"; path = "../../resources/iOS/Magic Flood-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		F1A2F2FB1A1D7F1C000DD4E7 /* Magic FloodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Magic FloodTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2F2FC1A1D7F1C000DD4E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F1A2F3041A1D7F1C000DD4E7 /* Magic FloodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Magic FloodTests-Info.plist"; sourceTree = "<group>"; };
