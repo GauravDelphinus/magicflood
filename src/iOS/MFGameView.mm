@@ -12,7 +12,7 @@
 #import <math.h>
 #import "MFUtils.h"
 
-#define SHADOW_THICKNESS 10
+#define SHADOW_THICKNESS 5
 
 /**
  Direction of Linear Gradient for Shadow
@@ -260,33 +260,96 @@
      Draw the shadow
      **/
     
-    [self drawGridShadowWithLeft:hOffset withTop:vOffset WithGridLength:gridlength];
+    [self drawGridShadowWithLeft:hOffset withTop:vOffset WithGridLength:gridlength WithCellSize:cellSize];
 }
 
 /**
- Draw the shadow around the grid.
+ Draw the shadow around the grid.  Generic implementation.
  **/
--(void)drawGridShadowWithLeft:(int)left withTop:(int)top WithGridLength:(int)gridlength
+-(void)drawGridShadowWithLeft:(int)left withTop:(int)top WithGridLength:(int)gridlength WithCellSize:(int)cellSize
 {
-    /** Right Shadow **/
-    CGRect rightShadowRect = CGRectMake(left + gridlength, top + SHADOW_THICKNESS, SHADOW_THICKNESS, gridlength - SHADOW_THICKNESS);
-    [self drawLinearGradient:rightShadowRect withDirection:LINEAR_GRADIENT_DIRECTION_EAST];
+    for (int i = 0; i < gridSize; i++)
+    {
+        for (int j = 0; j < gridSize; j++)
+        {
+            if ([self isEmptyAtX:j AndY:i]) //only draw shadow around a real colored cell
+            {
+                continue;
+            }
+            
+            int cellLeft = left + j * cellSize;
+            int cellTop = top + i * cellSize;
+            
+            if ([self isEmptyAtX:j AndY:i+1]) //below cell is empty
+            {
+                if (![self isEmptyAtX:j-1 AndY:i]) //left cell is not empty, so just draw the bottom shadow
+                {
+                    //bottom shadow with full cell width
+                    CGRect shadowRect = CGRectMake(cellLeft, cellTop + cellSize, cellSize, SHADOW_THICKNESS);
+                    [self drawLinearGradient:shadowRect withDirection:LINEAR_GRADIENT_DIRECTION_SOUTH];
+                }
+                else //left cell is empty, so the shadow starts here.  so draw the bottom shadow but
+                    //with a rounded offset
+                {
+                    //bottom left corner shadow
+                    CGRect cornerRect = CGRectMake(cellLeft, cellTop + cellSize, SHADOW_THICKNESS, SHADOW_THICKNESS);
+                    [self drawRadialGradient:cornerRect withDirection:RADIAL_GRADIENT_DIRECTION_SOUTH_WEST isOutward:YES];
+                    
+                    //bottom shadow offsetted by the shadow thickness
+                    CGRect shadowRect = CGRectMake(cellLeft + SHADOW_THICKNESS, cellTop + cellSize, cellSize - SHADOW_THICKNESS, SHADOW_THICKNESS);
+                    [self drawLinearGradient:shadowRect withDirection:LINEAR_GRADIENT_DIRECTION_SOUTH];
+                }
+            }
+            
+            if ([self isEmptyAtX:j+1 AndY:i]) //right cell is empty
+            {
+                if (![self isEmptyAtX:j AndY:i-1]) //upper cell is not empty, so just draw the right shadow
+                {
+                    //right shadow with full height
+                    CGRect shadowRect = CGRectMake(cellLeft + cellSize, cellTop, SHADOW_THICKNESS, cellSize);
+                    [self drawLinearGradient:shadowRect withDirection:LINEAR_GRADIENT_DIRECTION_EAST];
+                }
+                else //upper cell is empty, so the shadow starts here.  So draw the offsetted shadow
+                    //with rounded corner
+                {
+                    //top right corner shadow
+                    CGRect cornerRect = CGRectMake(cellLeft + cellSize, cellTop, SHADOW_THICKNESS, SHADOW_THICKNESS);
+                    [self drawRadialGradient:cornerRect withDirection:RADIAL_GRADIENT_DIRECTION_NORTH_EAST isOutward:YES];
+                    
+                    //right shadow offsetted by shadow thickness's height
+                    CGRect shadowRect = CGRectMake(cellLeft + cellSize, cellTop + SHADOW_THICKNESS, SHADOW_THICKNESS, cellSize - SHADOW_THICKNESS);
+                    [self drawLinearGradient:shadowRect withDirection:LINEAR_GRADIENT_DIRECTION_EAST];
+                }
+            }
+            
+            if ([self isEmptyAtX:j AndY:i+1] && [self isEmptyAtX:j+1 AndY:i]) //bottom right corner
+            {
+                /**
+                 the right and bottom shadows would have been drawn already (above), so just draw
+                 the bottom right radial shadow.
+                 **/
+                CGRect cornerRect = CGRectMake(cellLeft + cellSize, cellTop + cellSize, SHADOW_THICKNESS, SHADOW_THICKNESS);
+                [self drawRadialGradient:cornerRect withDirection:RADIAL_GRADIENT_DIRECTION_SOUTH_EAST isOutward:YES];
+            }
+        }
+    }
     
-    /** Bottom Shadow **/
-    CGRect bottomShadowRect = CGRectMake(left + SHADOW_THICKNESS, top + gridlength, gridlength - SHADOW_THICKNESS, SHADOW_THICKNESS);
-    [self drawLinearGradient:bottomShadowRect withDirection:LINEAR_GRADIENT_DIRECTION_SOUTH];
-   
-    /** Left Corner **/
-    CGRect bottomLeftRect = CGRectMake(left, top + gridlength, SHADOW_THICKNESS, SHADOW_THICKNESS);
-    [self drawRadialGradient:bottomLeftRect withDirection:RADIAL_GRADIENT_DIRECTION_SOUTH_WEST isOutward:YES];
-    
-    /** Bottom Right Corner **/
-    CGRect bottomRigthRect = CGRectMake(left + gridlength, top + gridlength, SHADOW_THICKNESS, SHADOW_THICKNESS);
-    [self drawRadialGradient:bottomRigthRect withDirection:RADIAL_GRADIENT_DIRECTION_SOUTH_EAST isOutward:YES];
+}
 
-    /** Top Right Corner **/
-    CGRect topRightRect = CGRectMake(left + gridlength, top, SHADOW_THICKNESS, SHADOW_THICKNESS);
-    [self drawRadialGradient:topRightRect withDirection:RADIAL_GRADIENT_DIRECTION_NORTH_EAST isOutward:YES];
+/**
+ Check if the cell at this position is "empty".
+ **/
+-(BOOL)isEmptyAtX:(int) x AndY:(int)y
+{
+    if (x < 0 || y < 0 || x >= gridSize || y >= gridSize)
+        return YES;
+    
+    if (myGrid[y][x] == GRID_SPACE)
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 
 /**
@@ -400,7 +463,7 @@
     {
         //north west
         CGPathMoveToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height);
-        CGPathAddArc(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height, SHADOW_THICKNESS, 2 * M_PI, 3 * M_PI / 2, 0);
+        CGPathAddArc(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height, SHADOW_THICKNESS, M_PI, 3 * M_PI / 2, 0);
         CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
         CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height);
         centerPoint = CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
@@ -501,13 +564,6 @@
  **/
 -(void)drawStarWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize WithX:(int)x WithY:(int)y
 {
-    /*
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect rectangle = CGRectMake(left, top, cellSize, cellSize);
-    CGContextAddRect(context, rectangle);
-    CGContextSetLineWidth(context, 3.0);
-    CGContextStrokePath(context);
-     */
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
@@ -520,39 +576,6 @@
     double theta = 72 * M_PI / 180; //degrees
     double phi = 36 * M_PI / 180; //degrees
     
-    /**
-     Draw the gradient behind the star (in case of yellow cell) to improve
-     visual identification of star.
-     **/
-    /*
-    if (myGrid[x][y] == GRID_COLOR_YELLOW)
-    {
-        CGGradientRef gradient;
-        CGColorSpaceRef colorspace;
-        CGFloat locations[2] = { 0.0, 1.0};
-        
-        NSArray *colors = @[(id)UIColorFromRGB(0xFDFDFD).CGColor,
-                            (id)[UIColor clearColor].CGColor];
-        colorspace = CGColorSpaceCreateDeviceRGB();
-        
-        gradient = CGGradientCreateWithColors(colorspace,
-                                              (CFArrayRef)colors, locations);
-        
-        CGPoint startPoint, endPoint;
-        CGFloat startRadius, endRadius;
-        startPoint.x = left + r;
-        startPoint.y = top + r;
-        endPoint.x = left + r;
-        endPoint.y = top + r;
-        startRadius = 0;
-        endRadius = r;
-        
-        
-        CGContextDrawRadialGradient (context, gradient, startPoint,
-                                     startRadius, endPoint, endRadius,
-                                     0);
-    }
-     */
     /**
      Get ready to draw the star itself
      **/
