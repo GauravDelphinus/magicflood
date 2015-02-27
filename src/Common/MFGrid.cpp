@@ -316,13 +316,25 @@ void MFGrid::computeMaxMoves()
     }
     
     maxMoves = numMoves;
-    if (level <= GRACE_MOVES_TILL_LEVEL)
+    if (level <= ADJUST_MOVES_UPTO_LEVEL_A)
     {
-        maxMoves += NUM_GRACE_MOVES;
+        maxMoves += NUM_ADJUSTED_MOVES_A;
     }
-    else if (level >= REDUCE_MOVES_FROM_LEVEL)
+    else if (level <= ADJUST_MOVES_UPTO_LEVEL_B)
     {
-        maxMoves -= NUM_REDUCED_MOVES;
+        maxMoves += NUM_ADJUSTED_MOVES_B;
+    }
+    else if (level <= ADJUST_MOVES_UPTO_LEVEL_C)
+    {
+        maxMoves += NUM_ADJUSTED_MOVES_C;
+    }
+    else if (level <= ADJUST_MOVES_UPTO_LEVEL_D)
+    {
+        maxMoves += NUM_ADJUSTED_MOVES_D;
+    }
+    else
+    {
+        maxMoves += NUM_ADJUSTED_MOVES_REMAINING;
     }
         
     releaseGrid(mMeasureGrid);
