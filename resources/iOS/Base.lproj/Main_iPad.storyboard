@@ -727,7 +727,7 @@
                             </button>
                             <button opaque="NO" contentMode="center" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSK-v3-f0a" customClass="MFUIButton">
                                 <rect key="frame" x="620" y="828" width="102" height="34"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Remove Ads">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -792,6 +792,10 @@
                                 <rect key="frame" x="87" y="874" width="48" height="68"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L9y-Q4-dD8">
+                                <rect key="frame" x="354" y="878" width="48" height="68"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -800,6 +804,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="BSK-v3-f0a" secondAttribute="trailing" constant="10" id="5Q7-Wc-aUp"/>
                             <constraint firstItem="HEK-IC-5ZB" firstAttribute="top" secondItem="KWF-9x-Fu9" secondAttribute="bottom" constant="5" id="5cu-Lq-mEk"/>
                             <constraint firstItem="BFD-j0-6Rh" firstAttribute="leading" secondItem="jjO-sT-lKn" secondAttribute="trailing" id="7GM-Kz-Eit"/>
+                            <constraint firstItem="L9y-Q4-dD8" firstAttribute="leading" secondItem="BFD-j0-6Rh" secondAttribute="trailing" id="AYJ-80-X8D"/>
                             <constraint firstItem="G5Z-Xj-2RS" firstAttribute="centerY" secondItem="WKy-Fp-Vtv" secondAttribute="centerY" id="Bfw-qP-E5T"/>
                             <constraint firstItem="wxH-iB-i7m" firstAttribute="leading" secondItem="noz-qN-FoH" secondAttribute="leadingMargin" constant="10" id="CdI-ha-Yvo"/>
                             <constraint firstItem="uEE-SK-MGV" firstAttribute="leading" secondItem="wxH-iB-i7m" secondAttribute="trailing" id="DVm-AK-aVD"/>
@@ -822,6 +827,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Xh0-OM-9oc" secondAttribute="trailing" constant="10" id="Ve3-Th-D2r"/>
                             <constraint firstItem="cb9-1c-d0v" firstAttribute="top" secondItem="ph6-YJ-5Tz" secondAttribute="bottom" constant="20" id="WVc-VZ-vvj"/>
                             <constraint firstItem="BFD-j0-6Rh" firstAttribute="centerY" secondItem="Kf7-1h-faQ" secondAttribute="centerY" id="WsE-00-NCO"/>
+                            <constraint firstItem="Kf7-1h-faQ" firstAttribute="leading" secondItem="L9y-Q4-dD8" secondAttribute="trailing" id="a4U-V5-ZjE"/>
                             <constraint firstItem="KWF-9x-Fu9" firstAttribute="top" secondItem="f84-L9-CBf" secondAttribute="bottom" constant="5" id="aJE-dJ-byJ"/>
                             <constraint firstItem="jlq-Ew-wyl" firstAttribute="leading" secondItem="f84-L9-CBf" secondAttribute="trailing" constant="5" id="akX-mB-53G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3F4-Ux-AYX" secondAttribute="trailing" constant="10" id="bQM-jS-CAX"/>
@@ -838,6 +844,7 @@
                             <constraint firstItem="jjO-sT-lKn" firstAttribute="leading" secondItem="nlC-6K-esk" secondAttribute="trailing" id="wJx-dc-Mes"/>
                             <constraint firstItem="Z8p-F8-U0d" firstAttribute="leading" secondItem="bNS-cn-VvZ" secondAttribute="trailing" constant="5" id="wbS-TB-kDO"/>
                             <constraint firstItem="BFD-j0-6Rh" firstAttribute="centerY" secondItem="wxH-iB-i7m" secondAttribute="centerY" id="whB-Og-lwV"/>
+                            <constraint firstItem="L9y-Q4-dD8" firstAttribute="width" secondItem="jjO-sT-lKn" secondAttribute="width" id="yAE-wx-ZCz"/>
                         </constraints>
                     </view>
                     <connections>
