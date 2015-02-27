@@ -38,7 +38,7 @@
 #define NUM_HELP_SCREENS    8
 #define FACEBOOK_APP_URL    "fb://profile/1410732689221094"
 #define FACEBOOK_PAGE_URL   "http://facebook.com/magicfloodgame"
-#define ITUNES_APP_URL  "itms://itunes.apple.com/us/app/apple-store/id469337564?mt=8f"
+#define ITUNES_APP_URL  "itms://itunes.apple.com/us/app/apple-store/id967517904?mt=8f"
 #define FEEDBACK_EMAIL  "ezeeideas@gmail.com"
 
 #endif
