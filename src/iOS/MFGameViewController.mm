@@ -1263,6 +1263,10 @@
             [self.mIAPManager restorePurchases];
         }
     }
+    else if (dialogType == DIALOG_TYPE_GAME_FINISHED) //end of entire game, go back to levels
+    {
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 /*********************  System Callbacks **************************/
