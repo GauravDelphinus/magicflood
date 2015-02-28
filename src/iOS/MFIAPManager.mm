@@ -31,6 +31,15 @@
 }
 
 /**
+ Called when the IAPManager is released.  Make sure to 
+ remove the delegate methods.
+ **/
+-(void)dealloc
+{
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+}
+
+/**
  Query the iTunes Store for the list of products available
  for IAP in this app.
  **/
@@ -89,6 +98,7 @@
     {
         SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
         payment.quantity = 1;
+        NSLog(@"startPurchase, pid = %@, payment = %@, debug desc = %@", pid, payment.description, payment.debugDescription);
         [[SKPaymentQueue defaultQueue] addPayment:payment];
     }
 }
