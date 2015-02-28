@@ -2649,30 +2649,18 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="gvA-X1-oFt" eventType="touchUpInside" id="DIB-hv-GX4"/>
                                         </connections>
                                     </view>
-                                    <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCG-0h-y8P">
-                                        <rect key="frame" x="233" y="8" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="gvA-X1-oFt" eventType="touchUpInside" id="RWk-BZ-HeO"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Xrn-tR-Q6N" firstAttribute="top" secondItem="18w-kA-1wW" secondAttribute="bottom" constant="10" id="5k9-S0-KDb"/>
                                     <constraint firstItem="QsU-KL-jCk" firstAttribute="top" secondItem="SbR-Or-nnY" secondAttribute="bottom" constant="10" id="9aK-WS-rqM"/>
                                     <constraint firstAttribute="centerX" secondItem="Xrn-tR-Q6N" secondAttribute="centerX" id="API-sg-qYr"/>
-                                    <constraint firstItem="gCG-0h-y8P" firstAttribute="top" secondItem="plF-mJ-9X2" secondAttribute="top" id="GeN-cB-5Kq"/>
                                     <constraint firstAttribute="trailing" secondItem="QsU-KL-jCk" secondAttribute="trailing" constant="10" id="UdQ-uN-tk6"/>
                                     <constraint firstItem="18w-kA-1wW" firstAttribute="top" secondItem="QsU-KL-jCk" secondAttribute="bottom" constant="10" id="WR7-ks-ioa"/>
                                     <constraint firstItem="SbR-Or-nnY" firstAttribute="top" secondItem="plF-mJ-9X2" secondAttribute="top" constant="10" id="cFR-yI-vV4"/>
                                     <constraint firstAttribute="bottom" secondItem="Xrn-tR-Q6N" secondAttribute="bottom" constant="10" id="gUS-0g-Y4C"/>
                                     <constraint firstAttribute="centerX" secondItem="QsU-KL-jCk" secondAttribute="centerX" id="j0V-3T-Sfx"/>
                                     <constraint firstAttribute="centerX" secondItem="18w-kA-1wW" secondAttribute="centerX" id="j9c-1n-Luo"/>
-                                    <constraint firstAttribute="trailing" secondItem="gCG-0h-y8P" secondAttribute="trailing" id="qtc-c3-aL4"/>
                                     <constraint firstItem="QsU-KL-jCk" firstAttribute="leading" secondItem="plF-mJ-9X2" secondAttribute="leading" constant="10" id="tke-6q-uUT"/>
                                     <constraint firstAttribute="centerX" secondItem="SbR-Or-nnY" secondAttribute="centerX" id="xKN-Ro-6oC"/>
                                 </constraints>
@@ -2747,16 +2735,6 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="5Lh-iR-Pfk" eventType="touchUpInside" id="zPM-dP-GxM"/>
                                         </connections>
                                     </view>
-                                    <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXL-uA-E1i">
-                                        <rect key="frame" x="233" y="8" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="5Lh-iR-Pfk" eventType="touchUpInside" id="Deq-xy-3Cq"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -2772,9 +2750,7 @@
                                     <constraint firstAttribute="centerX" secondItem="TuW-Zc-jHB" secondAttribute="centerX" id="ZnR-jP-OIY"/>
                                     <constraint firstItem="xFi-V2-yIp" firstAttribute="leading" secondItem="0sm-tK-RRE" secondAttribute="leading" constant="10" id="bPy-Pw-IYW"/>
                                     <constraint firstItem="Ti6-P3-9aH" firstAttribute="leading" secondItem="0sm-tK-RRE" secondAttribute="leading" constant="10" id="bub-59-iQF"/>
-                                    <constraint firstAttribute="trailing" secondItem="IXL-uA-E1i" secondAttribute="trailing" id="g2T-LF-fqb"/>
                                     <constraint firstAttribute="centerX" secondItem="Ti6-P3-9aH" secondAttribute="centerX" id="led-4d-Tp1"/>
-                                    <constraint firstItem="IXL-uA-E1i" firstAttribute="top" secondItem="0sm-tK-RRE" secondAttribute="top" id="qUd-fI-zyE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3023,25 +2999,13 @@
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_iap_failed.png" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-5U-qzz">
                                         <rect key="frame" x="78" y="167" width="110" height="119"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Stj-ck-mnU">
-                                        <rect key="frame" x="233" y="8" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="mjK-zp-gaE" eventType="touchUpInside" id="j2o-6y-0cj"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="q8a-a0-U9F" firstAttribute="top" secondItem="HAw-5U-qzz" secondAttribute="bottom" constant="10" id="9IV-4D-MVH"/>
                                     <constraint firstAttribute="centerX" secondItem="q8a-a0-U9F" secondAttribute="centerX" id="9Yn-58-Vv8"/>
                                     <constraint firstItem="HAw-5U-qzz" firstAttribute="top" secondItem="w6T-fU-c19" secondAttribute="bottom" constant="10" id="CFc-yU-Sz2"/>
-                                    <constraint firstItem="Stj-ck-mnU" firstAttribute="top" secondItem="b8a-OV-5ZV" secondAttribute="top" id="Ft7-uA-MJ0"/>
                                     <constraint firstAttribute="trailing" secondItem="w6T-fU-c19" secondAttribute="trailing" constant="10" id="Gcq-UI-MVb"/>
-                                    <constraint firstAttribute="trailing" secondItem="Stj-ck-mnU" secondAttribute="trailing" id="Jb4-hX-x2W"/>
                                     <constraint firstItem="w6T-fU-c19" firstAttribute="leading" secondItem="b8a-OV-5ZV" secondAttribute="leading" constant="10" id="Ljp-hV-t21"/>
                                     <constraint firstAttribute="centerX" secondItem="vqF-T3-M13" secondAttribute="centerX" id="S5e-Ra-Z38"/>
                                     <constraint firstAttribute="centerX" secondItem="HAw-5U-qzz" secondAttribute="centerX" id="W8Q-I9-NwG"/>
@@ -3608,23 +3572,11 @@
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_iap_failed.png" translatesAutoresizingMaskIntoConstraints="NO" id="X8I-M5-W7y">
                                         <rect key="frame" x="78" y="167" width="110" height="119"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRD-WB-Ffe">
-                                        <rect key="frame" x="233" y="8" width="24" height="24"/>
-                                        <state key="normal" image="ic_button_cancel_normal.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                        <connections>
-                                            <action selector="negativeAction1ButtonPressed:" destination="Wa4-6X-crO" eventType="touchUpInside" id="zcr-w2-obc"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="TRD-WB-Ffe" secondAttribute="trailing" id="1Uj-AS-LKq"/>
                                     <constraint firstAttribute="trailing" secondItem="3Zt-ln-g8n" secondAttribute="trailing" constant="10" id="2xY-y9-VFX"/>
                                     <constraint firstItem="407-B0-rxf" firstAttribute="top" secondItem="X8I-M5-W7y" secondAttribute="bottom" constant="10" id="4fO-PD-2wS"/>
-                                    <constraint firstItem="TRD-WB-Ffe" firstAttribute="top" secondItem="fHz-Hq-oW0" secondAttribute="top" id="5UH-zV-Fiu"/>
                                     <constraint firstAttribute="centerX" secondItem="3Zt-ln-g8n" secondAttribute="centerX" id="Lmp-lw-ct7"/>
                                     <constraint firstItem="3Zt-ln-g8n" firstAttribute="top" secondItem="fVG-gN-PxI" secondAttribute="bottom" constant="10" id="Wa0-pb-vxC"/>
                                     <constraint firstAttribute="centerX" secondItem="fVG-gN-PxI" secondAttribute="centerX" id="bZE-lq-6E5"/>
