@@ -2017,7 +2017,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-Ip-aKa">
-                                <rect key="frame" x="28" y="10" width="284" height="450"/>
+                                <rect key="frame" x="28" y="19" width="284" height="450"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Permanently remove all ads and enhance your play experience!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiM-Ol-V72">
                                         <rect key="frame" x="18" y="51" width="249" height="91"/>
@@ -2047,10 +2047,10 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-on-55h" customClass="MFUIButton">
                                         <rect key="frame" x="19" y="262" width="230" height="97"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-7a-a2P">
-                                                <rect key="frame" x="8" y="16" width="100" height="66"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-7a-a2P">
+                                                <rect key="frame" x="8" y="16" width="48" height="48"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-Zc-iZF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-Zc-iZF">
                                                 <rect key="frame" x="116" y="0.0" width="106" height="89"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2060,7 +2060,7 @@
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="dQj-7a-a2P" firstAttribute="centerY" secondItem="JDc-Zc-iZF" secondAttribute="centerY" id="97L-Vg-IuL"/>
-                                            <constraint firstItem="dQj-7a-a2P" firstAttribute="leading" secondItem="5lT-on-55h" secondAttribute="leading" constant="5" id="Gjg-FK-Lbb"/>
+                                            <constraint firstItem="dQj-7a-a2P" firstAttribute="leading" secondItem="5lT-on-55h" secondAttribute="leading" constant="10" id="Gjg-FK-Lbb"/>
                                             <constraint firstAttribute="trailing" secondItem="JDc-Zc-iZF" secondAttribute="trailing" constant="5" id="JcL-Ir-oPc"/>
                                             <constraint firstItem="JDc-Zc-iZF" firstAttribute="leading" secondItem="dQj-7a-a2P" secondAttribute="trailing" constant="10" id="X44-RG-5eI"/>
                                             <constraint firstItem="dQj-7a-a2P" firstAttribute="top" secondItem="5lT-on-55h" secondAttribute="top" constant="10" id="Ya4-0J-1cP"/>
@@ -2073,7 +2073,7 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQJ-5F-LwF" customClass="MFUIButton">
                                         <rect key="frame" x="19" y="150" width="230" height="98"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Remove Ads now" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-qJ-Ncz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Remove Ads now" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-qJ-Ncz">
                                                 <rect key="frame" x="116" y="14" width="106" height="46"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2085,8 +2085,8 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_remove_ads.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dmp-8m-eHa">
-                                                <rect key="frame" x="8" y="8" width="79" height="66"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" misplaced="YES" image="ic_remove_ads.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dmp-8m-eHa">
+                                                <rect key="frame" x="8" y="8" width="48" height="48"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -2096,11 +2096,12 @@
                                         <constraints>
                                             <constraint firstItem="3xj-qJ-Ncz" firstAttribute="centerY" secondItem="Dmp-8m-eHa" secondAttribute="centerY" id="GJ3-Na-IUg"/>
                                             <constraint firstAttribute="bottom" secondItem="KUO-nI-OdM" secondAttribute="bottom" constant="5" id="HQL-Aa-xrN"/>
-                                            <constraint firstItem="Dmp-8m-eHa" firstAttribute="top" secondItem="pQJ-5F-LwF" secondAttribute="top" constant="5" id="I5Y-5v-kw1"/>
+                                            <constraint firstItem="Dmp-8m-eHa" firstAttribute="top" secondItem="pQJ-5F-LwF" secondAttribute="top" constant="10" id="I5Y-5v-kw1"/>
                                             <constraint firstItem="KUO-nI-OdM" firstAttribute="top" secondItem="Dmp-8m-eHa" secondAttribute="bottom" constant="5" id="Irb-Sy-XtD"/>
-                                            <constraint firstItem="Dmp-8m-eHa" firstAttribute="leading" secondItem="pQJ-5F-LwF" secondAttribute="leading" constant="5" id="VCX-Xf-zyS"/>
+                                            <constraint firstItem="Dmp-8m-eHa" firstAttribute="leading" secondItem="pQJ-5F-LwF" secondAttribute="leading" constant="10" id="VCX-Xf-zyS"/>
                                             <constraint firstAttribute="centerX" secondItem="KUO-nI-OdM" secondAttribute="centerX" id="Wuw-Jw-ncv"/>
                                             <constraint firstAttribute="trailing" secondItem="3xj-qJ-Ncz" secondAttribute="trailing" constant="5" id="cbZ-cF-aX9"/>
+                                            <constraint firstItem="3xj-qJ-Ncz" firstAttribute="leading" secondItem="Dmp-8m-eHa" secondAttribute="trailing" constant="10" id="ddp-5Z-1ZM"/>
                                             <constraint firstItem="3xj-qJ-Ncz" firstAttribute="leading" secondItem="Dmp-8m-eHa" secondAttribute="trailing" constant="10" id="jX3-Zh-QgJ"/>
                                         </constraints>
                                         <connections>
