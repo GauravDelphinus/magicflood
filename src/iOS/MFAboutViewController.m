@@ -34,14 +34,6 @@
 }
 
 /**
- The Restore Purchases button was pressed.
- **/
-- (IBAction)restorePurchases:(id)sender {
-    MFIAPManager *iapManager = [[MFIAPManager alloc] init];
-    [iapManager restorePurchases];
-}
-
-/**
  The Facebook buttonw as pressed.
  **/
 - (IBAction)launchFacebook:(id)sender {

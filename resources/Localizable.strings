@@ -17,4 +17,4 @@
 "feedback_email_subject"="Feedback related to MagicFlood on %s";
 
 /** Remove Ads Dialog **/
-"remove_ads_description"="Remove all ads for %s";
+"remove_ads_description"="%s";

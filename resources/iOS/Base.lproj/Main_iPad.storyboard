@@ -116,6 +116,7 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1307,16 +1308,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jv5-tv-198">
-                                <rect key="frame" x="154" y="307" width="461" height="327"/>
+                                <rect key="frame" x="154" y="218" width="461" height="588"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Permanently remove all ads and enhance your play experience!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53S-qD-KA6">
-                                        <rect key="frame" x="10" y="53" width="436" height="91"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lF-Tv-QLS">
-                                        <rect key="frame" x="429" y="8" width="24" height="24"/>
+                                        <rect key="frame" x="413" y="16" width="24" height="24"/>
                                         <state key="normal" image="ic_button_cancel_normal.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1326,13 +1321,30 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was a problem connecting to the iTunes Store.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36K-AF-X9d">
-                                        <rect key="frame" x="16" y="242" width="421" height="77"/>
+                                        <rect key="frame" x="16" y="474" width="421" height="77"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXr-Y7-Dn6" customClass="MFUIButton">
-                                        <rect key="frame" x="44" y="157" width="368" height="68"/>
+                                        <rect key="frame" x="42" y="164" width="368" height="136"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_remove_ads.png" translatesAutoresizingMaskIntoConstraints="NO" id="HFF-Ix-DGQ">
+                                                <rect key="frame" x="8" y="8" width="132" height="100"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Ads now" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9T-Tk-zCR">
+                                                <rect key="frame" x="168" y="19" width="192" height="78"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$1.22" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuQ-18-UQ2">
+                                                <rect key="frame" x="88" y="90" width="192" height="46"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
@@ -1341,21 +1353,43 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="Rd5-6F-5WG" eventType="touchUpInside" id="ZCb-xJ-q5f"/>
                                         </connections>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note: This purchase is associated with your Apple ID, and will remain valid across devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-ws-6pU">
-                                        <rect key="frame" x="16" y="242" width="430" height="77"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-ws-6pU">
+                                        <rect key="frame" x="29" y="449" width="403" height="131"/>
+                                        <string key="text">Note: If you have previously purchased this in-app product, simply restore the previous purchase.  The purchase remains valid across devices for your Apple ID.</string>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Ads now for $1.49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9T-Tk-zCR">
-                                        <rect key="frame" x="56" y="157" width="347" height="68"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Ads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s8-cD-yeZ">
+                                        <rect key="frame" x="80" y="16" width="299" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Ads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s8-cD-yeZ">
-                                        <rect key="frame" x="81" y="21" width="299" height="41"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tt5-cu-y7E" customClass="MFUIButton">
+                                        <rect key="frame" x="42" y="321" width="368" height="125"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="coP-R1-yR5">
+                                                <rect key="frame" x="0.0" y="12" width="152" height="102"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOz-G2-W6O">
+                                                <rect key="frame" x="168" y="0.0" width="192" height="125"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="Rd5-6F-5WG" eventType="touchUpInside" id="Glx-zZ-iGo"/>
+                                        </connections>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Permanently remove all ads and enhance your play experience!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53S-qD-KA6">
+                                        <rect key="frame" x="20" y="65" width="421" height="91"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1370,7 +1404,8 @@
                         <outlet property="mNotConnectedLabel" destination="36K-AF-X9d" id="0fo-NE-8Vg"/>
                         <outlet property="mNotePermanentLabel" destination="UHl-ws-6pU" id="kEo-WV-5pG"/>
                         <outlet property="mRemoveAdsButton" destination="aXr-Y7-Dn6" id="dgD-Oh-LzF"/>
-                        <outlet property="mRemoveAdsButtonLabel" destination="t9T-Tk-zCR" id="Wr8-X8-BlP"/>
+                        <outlet property="mRemoveAdsButtonLabel" destination="AuQ-18-UQ2" id="w5u-GI-Vat"/>
+                        <outlet property="mRestorePurchaseButton" destination="tt5-cu-y7E" id="PgX-Zh-NhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFb-Gl-kGK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2624,26 +2659,6 @@
                                     <action selector="launchEmailFeedback:" destination="qg2-rn-XXe" eventType="touchUpInside" id="oZb-Rp-ga3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vL0-dF-pCT">
-                                <rect key="frame" x="728" y="20" width="24" height="24"/>
-                                <state key="normal" image="ic_button_cancel_normal.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
-                                <connections>
-                                    <action selector="dismissScreen:" destination="qg2-rn-XXe" eventType="touchUpInside" id="DeK-ZE-aKD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4o-4A-Dh3">
-                                <rect key="frame" x="526" y="848" width="48" height="48"/>
-                                <state key="normal" image="ic_button_restore_normal.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="ic_button_restore_pressed.png"/>
-                                <connections>
-                                    <action selector="restorePurchases:" destination="qg2-rn-XXe" eventType="touchUpInside" id="Pdb-YL-gFW"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1h-ga-n61">
                                 <rect key="frame" x="332" y="848" width="48" height="48"/>
                                 <state key="normal" image="ic_button_rate_normal.png">
@@ -2663,10 +2678,6 @@
                             </view>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="scK-55-18w">
                                 <rect key="frame" x="385" y="821" width="34" height="101"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lgb-ER-KjO">
-                                <rect key="frame" x="479" y="821" width="39" height="101"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csZ-JO-jo7">
@@ -2695,18 +2706,22 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" text="Restore Purchases" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6m-7J-hc0">
-                                <rect key="frame" x="501" y="924" width="98" height="57"/>
-                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="16"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Copyright (c) 2015 EZEEIDEAS IT SERVICES LLP" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8A-G3-IpM">
                                 <rect key="frame" x="149" y="273" width="470" height="90"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vL0-dF-pCT">
+                                <rect key="frame" x="712" y="28" width="24" height="24"/>
+                                <state key="normal" image="ic_button_cancel_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                <connections>
+                                    <action selector="dismissScreen:" destination="qg2-rn-XXe" eventType="touchUpInside" id="DeK-ZE-aKD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2717,34 +2732,28 @@
                             <constraint firstItem="F8A-G3-IpM" firstAttribute="leading" secondItem="9Qe-In-5qv" secondAttribute="leadingMargin" constant="50" id="8bz-J8-UNx"/>
                             <constraint firstItem="De3-4Y-xUy" firstAttribute="leading" secondItem="9Qe-In-5qv" secondAttribute="leadingMargin" constant="50" id="BHB-Ge-NF7"/>
                             <constraint firstItem="3gT-4u-DDd" firstAttribute="leading" secondItem="csZ-JO-jo7" secondAttribute="trailing" id="BT7-HP-8Rm"/>
-                            <constraint firstItem="a4o-4A-Dh3" firstAttribute="leading" secondItem="Lgb-ER-KjO" secondAttribute="trailing" id="EL6-9j-Iv5"/>
-                            <constraint firstItem="Lgb-ER-KjO" firstAttribute="leading" secondItem="6om-hH-T9R" secondAttribute="trailing" id="ETg-WC-zMD"/>
                             <constraint firstItem="3gT-4u-DDd" firstAttribute="centerX" secondItem="z0D-TD-NLh" secondAttribute="centerX" id="Hpc-aE-bKA"/>
                             <constraint firstItem="u4V-mS-EDz" firstAttribute="top" secondItem="Nv7-YF-Set" secondAttribute="bottom" id="J7C-KB-xgB"/>
-                            <constraint firstItem="B6m-7J-hc0" firstAttribute="centerY" secondItem="z0D-TD-NLh" secondAttribute="centerY" id="NjY-Tu-4qS"/>
                             <constraint firstAttribute="centerX" secondItem="Nv7-YF-Set" secondAttribute="centerX" id="PAe-52-Hd2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F8A-G3-IpM" secondAttribute="trailing" constant="50" id="RB8-ig-2wn"/>
                             <constraint firstItem="z0D-TD-NLh" firstAttribute="top" secondItem="3gT-4u-DDd" secondAttribute="bottom" constant="5" id="Rgy-DM-xm3"/>
-                            <constraint firstItem="6om-hH-T9R" firstAttribute="centerY" secondItem="a4o-4A-Dh3" secondAttribute="centerY" id="TZy-rb-Xg6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vL0-dF-pCT" secondAttribute="trailing" constant="20" id="UG3-SN-jwt"/>
                             <constraint firstItem="6om-hH-T9R" firstAttribute="centerY" secondItem="f1h-ga-n61" secondAttribute="centerY" id="VsA-QM-LwJ"/>
+                            <constraint firstItem="eqW-n8-gSp" firstAttribute="leading" secondItem="6om-hH-T9R" secondAttribute="trailing" id="WQX-tw-eFB"/>
                             <constraint firstAttribute="centerX" secondItem="p9t-0g-Nbu" secondAttribute="centerX" id="WcR-N5-C05"/>
-                            <constraint firstItem="B6m-7J-hc0" firstAttribute="centerY" secondItem="Ume-KE-Qpc" secondAttribute="centerY" id="aP5-nx-c67"/>
                             <constraint firstItem="scK-55-18w" firstAttribute="leading" secondItem="f1h-ga-n61" secondAttribute="trailing" id="dNa-Sk-HeM"/>
                             <constraint firstItem="3Ik-Ax-Ijs" firstAttribute="leading" secondItem="3gT-4u-DDd" secondAttribute="trailing" id="ewS-Qg-wpS"/>
-                            <constraint firstItem="3Ik-Ax-Ijs" firstAttribute="width" secondItem="Lgb-ER-KjO" secondAttribute="width" id="fwe-bZ-V5c"/>
                             <constraint firstItem="rKl-F8-Y4Z" firstAttribute="centerX" secondItem="6om-hH-T9R" secondAttribute="centerX" id="gHM-fF-e3u"/>
                             <constraint firstItem="3gT-4u-DDd" firstAttribute="top" secondItem="De3-4Y-xUy" secondAttribute="bottom" constant="50" id="gHZ-Jh-Oa5"/>
                             <constraint firstItem="csZ-JO-jo7" firstAttribute="leading" secondItem="9Qe-In-5qv" secondAttribute="leadingMargin" id="gXc-DH-u3x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eqW-n8-gSp" secondAttribute="trailing" id="h1w-0d-46k"/>
                             <constraint firstItem="Nv7-YF-Set" firstAttribute="top" secondItem="8dZ-EF-G0G" secondAttribute="bottom" constant="50" id="hQb-qP-9tK"/>
+                            <constraint firstItem="vL0-dF-pCT" firstAttribute="top" secondItem="8dZ-EF-G0G" secondAttribute="bottom" constant="20" id="m7s-Ud-PMl"/>
                             <constraint firstItem="3Ik-Ax-Ijs" firstAttribute="width" secondItem="scK-55-18w" secondAttribute="width" id="oGF-ts-Lfe"/>
                             <constraint firstItem="6om-hH-T9R" firstAttribute="leading" secondItem="scK-55-18w" secondAttribute="trailing" id="pN0-0E-gBs"/>
                             <constraint firstItem="p9t-0g-Nbu" firstAttribute="top" secondItem="F8A-G3-IpM" secondAttribute="bottom" constant="5" id="qbj-9C-fn5"/>
-                            <constraint firstItem="B6m-7J-hc0" firstAttribute="centerX" secondItem="a4o-4A-Dh3" secondAttribute="centerX" id="sCS-Ad-LJ7"/>
-                            <constraint firstItem="B6m-7J-hc0" firstAttribute="centerY" secondItem="rKl-F8-Y4Z" secondAttribute="centerY" id="uLl-Aw-feh"/>
                             <constraint firstItem="f1h-ga-n61" firstAttribute="centerX" secondItem="Ume-KE-Qpc" secondAttribute="centerX" id="xBB-0I-2Vd"/>
                             <constraint firstItem="F8A-G3-IpM" firstAttribute="top" secondItem="u4V-mS-EDz" secondAttribute="bottom" constant="50" id="xtO-CO-VbG"/>
-                            <constraint firstItem="eqW-n8-gSp" firstAttribute="leading" secondItem="a4o-4A-Dh3" secondAttribute="trailing" id="zGb-ls-N73"/>
                             <constraint firstItem="eqW-n8-gSp" firstAttribute="width" secondItem="csZ-JO-jo7" secondAttribute="width" id="zaE-uR-xFy"/>
                         </constraints>
                     </view>
@@ -2796,8 +2805,6 @@
         <image name="ic_button_menu_pressed.png" width="72" height="72"/>
         <image name="ic_button_rate_normal.png" width="72" height="72"/>
         <image name="ic_button_rate_pressed.png" width="72" height="72"/>
-        <image name="ic_button_restore_normal.png" width="72" height="72"/>
-        <image name="ic_button_restore_pressed.png" width="72" height="72"/>
         <image name="ic_button_sound_on_normal.png" width="72" height="72"/>
         <image name="ic_button_sound_pressed.png" width="72" height="72"/>
         <image name="ic_coins.png" width="72" height="72"/>
@@ -2818,7 +2825,9 @@
         <image name="ic_next_level.png" width="72" height="72"/>
         <image name="ic_play.png" width="72" height="72"/>
         <image name="ic_play_on.png" width="72" height="72"/>
+        <image name="ic_remove_ads.png" width="72" height="72"/>
         <image name="ic_replay.png" width="72" height="72"/>
+        <image name="ic_restore_purchase.png" width="72" height="72"/>
         <image name="ic_star_placement_info.png" width="200" height="204"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

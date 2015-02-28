@@ -1258,6 +1258,10 @@
         {
             [self.mIAPManager startPurchase:@ IAP_REMOVE_ADS];
         }
+        else if (option == GAME_DIALOG_POSITIVE_ACTION_2)
+        {
+            [self.mIAPManager restorePurchases];
+        }
     }
 }
 

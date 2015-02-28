@@ -14,6 +14,7 @@
 @interface MFRemoveAdsDialogViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *mRemoveAdsButtonLabel;
 @property (strong, nonatomic) IBOutlet MFUIButton *mRemoveAdsButton;
+@property (strong, nonatomic) IBOutlet MFUIButton *mRestorePurchaseButton;
 @property (strong, nonatomic) IBOutlet UILabel *mNotConnectedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *mNotePermanentLabel;
 
@@ -48,15 +49,17 @@
         
         self.mRemoveAdsButtonLabel.enabled = YES;
         self.mRemoveAdsButton.enabled = YES;
+        self.mRestorePurchaseButton.enabled = YES;
         
         self.mNotConnectedLabel.hidden = YES;
         self.mNotePermanentLabel.hidden = NO;
     }
     else
     {
-        [self.mRemoveAdsButtonLabel setText:@"??"];
+        [self.mRemoveAdsButtonLabel setText:@"----"];
         
         self.mRemoveAdsButton.enabled = NO;
+        self.mRestorePurchaseButton.enabled = NO;
         
         self.mNotConnectedLabel.hidden = NO;
         self.mNotePermanentLabel.hidden = YES;
