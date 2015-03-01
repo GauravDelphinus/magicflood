@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package xmlns="http://apple.com/itunes/importer" version="software5.2">
+    <metadata_token>1425171930401-d93d3f55922fa0cf39de0cf1bd9489f8b2ebefa68fddc15ecde44e37c20ea84b</metadata_token>
+    <provider>AM6BYV4B7R</provider>
+    <team_id>AM6BYV4B7R</team_id>
+    <software>
+        <vendor_id>com.ezeeideas.Magic-Flood</vendor_id>
+        <software_metadata>
+            <in_app_purchases>
+                <in_app_purchase>
+                    <locales>
+                        <locale name="en-US">
+                            <title>Add 1000 coins</title>
+                            <description>Add 1000 coins to redeem against lifelines!</description>
+                        </locale>
+                    </locales>
+                    <review_notes>This is a consumable In-App Purchase option that allows users to buy 1000 additional coins to add to their tally, that they can use to redeem against lifelines.</review_notes>
+                    <review_screenshot>
+                        <file_name>in-app-purchase.png</file_name>
+                        <size>267386</size>
+                        <checksum type="md5">e77b53204d6559eac2ddd4370577b08b</checksum>
+                    </review_screenshot>
+                    <read_only_info>
+                        <read_only_value key="iap-status">Ready to Submit</read_only_value>
+                    </read_only_info>
+                    <product_id>com.ezeeideas.MagicFlood.iap_add_coins_second</product_id>
+                    <reference_name>Add 1000 coins</reference_name>
+                    <type>consumable</type>
+                    <products>
+                        <product>
+                            <cleared_for_sale>true</cleared_for_sale>
+                            <intervals>
+                                <interval>
+                                    <start_date>2015-02-28</start_date>
+                                    <wholesale_price_tier>2</wholesale_price_tier>
+                                </interval>
+                            </intervals>
+                        </product>
+                    </products>
+                </in_app_purchase>
+                <in_app_purchase>
+                    <locales>
+                        <locale name="en-US">
+                            <title>Add 2500 coins</title>
+                            <description>Add 2500 coins to redeem against lifelines!</description>
+                        </locale>
+                    </locales>
+                    <review_notes>This is a consumable In-App Purchase option that allows users to buy 2500 additional coins to add to their tally, that they can use to redeem against lifelines.</review_notes>
+                    <review_screenshot>
+                        <file_name>in-app-purchase.png</file_name>
+                        <size>267386</size>
+                        <checksum type="md5">e77b53204d6559eac2ddd4370577b08b</checksum>
+                    </review_screenshot>
+                    <read_only_info>
+                        <read_only_value key="iap-status">Ready to Submit</read_only_value>
+                    </read_only_info>
+                    <product_id>com.ezeeideas.MagicFlood.iap_add_coins_third</product_id>
+                    <reference_name>Add 2500 coins</reference_name>
+                    <type>consumable</type>
+                    <products>
+                        <product>
+                            <cleared_for_sale>true</cleared_for_sale>
+                            <intervals>
+                                <interval>
+                                    <start_date>2015-02-28</start_date>
+                                    <wholesale_price_tier>3</wholesale_price_tier>
+                                </interval>
+                            </intervals>
+                        </product>
+                    </products>
+                </in_app_purchase>
+                <in_app_purchase>
+                    <locales>
+                        <locale name="en-US">
+                            <title>Add 500 coins</title>
+                            <description>Add 500 coins to redeem against lifelines!</description>
+                        </locale>
+                    </locales>
+                    <review_notes>This is a consumable In-App Purchase option that allows users to buy 500 additional coins to add to their tally, that they can use to redeem against lifelines.</review_notes>
+                    <review_screenshot>
+                        <file_name>in-app-purchase.png</file_name>
+                        <size>267386</size>
+                        <checksum type="md5">e77b53204d6559eac2ddd4370577b08b</checksum>
+                    </review_screenshot>
+                    <read_only_info>
+                        <read_only_value key="iap-status">Ready to Submit</read_only_value>
+                    </read_only_info>
+                    <product_id>com.ezeeideas.MagicFlood.iap_add_coins_first</product_id>
+                    <reference_name>Add 500 coins</reference_name>
+                    <type>consumable</type>
+                    <products>
+                        <product>
+                            <cleared_for_sale>true</cleared_for_sale>
+                            <intervals>
+                                <interval>
+                                    <start_date>2015-02-28</start_date>
+                                    <wholesale_price_tier>1</wholesale_price_tier>
+                                </interval>
+                            </intervals>
+                        </product>
+                    </products>
+                </in_app_purchase>
+                <in_app_purchase>
+                    <locales>
+                        <locale name="en-US">
+                            <title>Add 5000 coins</title>
+                            <description>Add 5000 coins to redeem against lifelines!</description>
+                        </locale>
+                    </locales>
+                    <review_notes>This is a consumable In-App Purchase option that allows users to buy 5000 additional coins to add to their tally, that they can use to redeem against lifelines.</review_notes>
+                    <review_screenshot>
+                        <file_name>in-app-purchase.png</file_name>
+                        <size>267386</size>
+                        <checksum type="md5">e77b53204d6559eac2ddd4370577b08b</checksum>
+                    </review_screenshot>
+                    <read_only_info>
+                        <read_only_value key="iap-status">Ready to Submit</read_only_value>
+                    </read_only_info>
+                    <product_id>com.ezeeideas.MagicFlood.iap_add_coins_fourth</product_id>
+                    <reference_name>Add 5000 coins</reference_name>
+                    <type>consumable</type>
+                    <products>
+                        <product>
+                            <cleared_for_sale>true</cleared_for_sale>
+                            <intervals>
+                                <interval>
+                                    <start_date>2015-02-28</start_date>
+                                    <wholesale_price_tier>4</wholesale_price_tier>
+                                </interval>
+                            </intervals>
+                        </product>
+                    </products>
+                </in_app_purchase>
+                <in_app_purchase>
+                    <locales>
+                        <locale name="en-US">
+                            <title>Remove Ads</title>
+                            <description>Permanently remove all ads and enhance your play experience!</description>
+                        </locale>
+                    </locales>
+                    <review_notes>This is a non-consumable (one-time) In-App Purchase option that allows users to remove Ads from the game.  The option to Restore the Purchase, in case the user had already made the purchase earlier with the same Apple ID, is also provide alongside (refer screenshot).</review_notes>
+                    <review_screenshot>
+                        <file_name>remove-ads.png</file_name>
+                        <size>241329</size>
+                        <checksum type="md5">509a6c82eb833240c4972f42e85b9c96</checksum>
+                    </review_screenshot>
+                    <read_only_info>
+                        <read_only_value key="iap-status">Ready to Submit</read_only_value>
+                    </read_only_info>
+                    <product_id>com.ezeeideas.MagicFlood.iap_remove_ads</product_id>
+                    <reference_name>Remove Ads</reference_name>
+                    <type>non-consumable</type>
+                    <products>
+                        <product>
+                            <cleared_for_sale>true</cleared_for_sale>
+                            <intervals>
+                                <interval>
+                                    <start_date>2015-02-28</start_date>
+                                    <wholesale_price_tier>1</wholesale_price_tier>
+                                </interval>
+                            </intervals>
+                        </product>
+                    </products>
+                </in_app_purchase>
+            </in_app_purchases>
+        </software_metadata>
+    </software>
+</package>
