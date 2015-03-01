@@ -57,6 +57,16 @@
 @property long gridHandle; //handle to the grid object in C++ code
 @property NSTimer *mStarRotationTimer; //star rotation timer for the game view
 
+/**
+ * Dialog data that is used to control workflow
+ */
+#define DIALOG_DATA_NONE 0
+#define DIALOG_DATA_FROM_ADD_STAR_DIALOG 1
+#define DIALOG_DATA_FROM_ADD_MOVES_DIALOG 2
+#define DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG 3
+#define DIALOG_DATA_EXIT 4
+@property int mLastDialogData;
+
 @end
 
 @implementation MFGameViewController
@@ -367,6 +377,24 @@
             {
                 [self updateCoinsEarned:(numCoins + getNumCoinsIAPFourth())];
             }
+            
+            /**
+             If we reached here in the middle of another workflow, try to 
+             reinstante that.
+             **/
+            if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_MOVES_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_MOVES withData:0 withAnimation:NO];
+            }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_STAR_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_STAR withData:0 withAnimation:NO];
+            }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0 withAnimation:NO];
+            }
+            self.mLastDialogData = DIALOG_DATA_NONE;
         }
     }
     else //purchase failed or canceled
@@ -1108,6 +1136,8 @@
             {
                 //show the add coins dialog
                 [self addCoinsWithShortfall:(numCoinsForMoves - numCoins)];
+                
+                self.mLastDialogData = DIALOG_DATA_FROM_ADD_MOVES_DIALOG;
             }
         }
         else if (option == GAME_DIALOG_NEGATIVE_ACTION_1)
@@ -1187,6 +1217,8 @@
             else
             {
                 [self addCoinsWithShortfall:(numCoinsForStar - numCoins)];
+                
+                self.mLastDialogData = DIALOG_DATA_FROM_ADD_STAR_DIALOG;
             }
         }
     }
@@ -1212,6 +1244,8 @@
             else
             {
                 [self addCoinsWithShortfall:(numCoinsForHurdleSmasher - numCoins)];
+                
+                self.mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
             }
         }
     }
@@ -1235,6 +1269,9 @@
         }
         else if (option == GAME_DIALOG_NEGATIVE_ACTION_1)
         {
+            //reset this as the user cancelled the purchase
+            self.mLastDialogData = DIALOG_DATA_NONE;
+            
             /**
              if the user landed here after having "failed" the game,
              show him the game menu dialog again.
@@ -1249,7 +1286,23 @@
     {
         if (option == GAME_DIALOG_POSITIVE_ACTION_1)
         {
-            //do nothing beyond dismissing the dialog
+            /**
+             If we reached here in the middle of another workflow, try to
+             reinstante that.
+             **/
+            if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_MOVES_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_MOVES withData:0 withAnimation:NO];
+            }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_STAR_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_STAR withData:0 withAnimation:NO];
+            }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0 withAnimation:NO];
+            }
+            self.mLastDialogData = DIALOG_DATA_NONE;
         }
     }
     else if (dialogType == DIALOG_TYPE_REMOVE_ADS)
