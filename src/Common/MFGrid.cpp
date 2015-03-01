@@ -98,7 +98,7 @@ bool MFGrid::gridCompleted(int color, int *grid[])
     {
         for (int j = 0; j < gridSize; j++)
         {
-            if (grid[i][j] != GRID_OBSTACLE && grid[i][j] != color)
+            if (isFillable(i, j, grid) && grid[i][j] != color)
             {
                 return false;
                 break;
@@ -349,7 +349,7 @@ int MFGrid::updateNeighbors(int oldColor, int newColor, int x, int y, int *grid[
 {
     int numUpdated = 0;
     
-    if (isObstacle(x, y, grid))
+    if (!isFillable(x, y, grid))
     {
         return 0;
     }
@@ -385,7 +385,7 @@ int MFGrid::checkNeighborDensityForColor(int oldColor, int newColor, int x, int 
 {
     int numUpdated = 0;
     
-    if (isObstacle(x, y, grid) || alreadyCheckedFlags[x][y])
+    if (!isFillable(x, y, grid) || alreadyCheckedFlags[x][y])
     {
         return 0;
     }
@@ -417,7 +417,7 @@ int MFGrid::checkNeighborDensityForColor(int oldColor, int newColor, int x, int 
  **/
 void MFGrid::checkDensity(int color, int x, int y, int *grid[], int *count, bool *alreadyCheckedFlags[])
 {
-    if (isObstacle(x, y, grid) || grid[x][y] != color || alreadyCheckedFlags == NULL
+    if (!isFillable(x, y, grid) || grid[x][y] != color || alreadyCheckedFlags == NULL
         || alreadyCheckedFlags[x][y])
     {
         return;
@@ -434,7 +434,7 @@ void MFGrid::checkDensity(int color, int x, int y, int *grid[], int *count, bool
 
 void MFGrid::checkNeighborDensity(int startColor, int x, int y, int *grid[], std::map<int, int> *map, bool *alreadyCheckedFlags[])
 {
-    if (isObstacle(x, y, grid) || alreadyCheckedFlags[x][y])
+    if (!isFillable(x, y, grid) || alreadyCheckedFlags[x][y])
     {
         return;
     }
@@ -514,14 +514,49 @@ int MFGrid::findMostDenseColor(int *grid[])
     return mostDenseColor;
 }
 
-bool MFGrid::isObstacle(int x, int y, int *grid[])
+/**
+ Check to see if we've hit the grid boundary.  Any cell
+ that is not inside the grid is a boundary, including spaces.
+ Hurdles fall within the boundary.
+ **/
+bool MFGrid::isBoundary(int x, int y, int *grid[])
 {
     if (x < 0 || y < 0)
         return true;
     if (x >= gridSize || y >= gridSize)
         return true;
+    if (grid[x][y] == GRID_SPACE)
+        return true;
+    return false;
+}
+
+/**
+ Check to see if the cell is fillable with a color.
+ Hurdles are not fillable.  Spaces are not fillable.
+ **/
+bool MFGrid::isFillable(int x, int y, int *grid[])
+{
+    if (x < 0 || y < 0)
+        return false;
+    if (x >= gridSize || y >= gridSize)
+        return false;
+    if (grid[x][y] == GRID_OBSTACLE || grid[x][y] == GRID_SPACE)
+        return false;
+    return true;
+}
+
+/**
+ Check to see if the cell is a hurdle.
+ **/
+bool MFGrid::isHurdle(int x, int y, int **grid)
+{
+    if (x < 0 || y < 0)
+        return false;
+    if (x >= gridSize || y >= gridSize)
+        return false;
     if (grid[x][y] == GRID_OBSTACLE)
         return true;
+    
     return false;
 }
 

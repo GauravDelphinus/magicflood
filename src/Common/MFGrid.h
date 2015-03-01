@@ -29,7 +29,9 @@ private:
     void initializeGrid();
     void releaseGrid(int *grid[]);
     
-    bool isObstacle(int x, int y, int *grid[]);
+    bool isBoundary(int x, int y, int *grid[]); //is this cell a grid boundary? (not color and not hurdle)
+    bool isFillable(int x, int y, int *grid[]); //is this cell fillable with a color? (not hurdle and within boundary)
+    bool isHurdle(int x, int y, int *grid[]); //is this cell a legal hurdle? (GRID_OBSTACLE)
     bool gridCompleted(int color, int *grid[]);
     int selectObstacle();
     int playMoveInternal(int color, int *grid[]);
