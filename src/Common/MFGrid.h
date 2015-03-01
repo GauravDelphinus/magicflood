@@ -65,6 +65,7 @@ public:
     int getCurrMoves();
     int* playMove(int color);
     int smashHurdle(int x, int y);
+    bool hasHurdles(); //has at least 1 hurdle
     ~MFGrid();
 };
 

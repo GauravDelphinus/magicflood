@@ -43,6 +43,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *mLevelsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coinsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *movesLable; //UILabel that displays the Moves header
+@property (strong, nonatomic) IBOutlet UIButton *mAddBridgeButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mAddBridgeButtonLeftConstraints;
+
 @property (strong, nonatomic) IBOutlet MFGameView *gameView; //UIView that renders the actual game board
 @property BOOL mStarPlacementMode;
 @property BOOL mHurdleSmasherMode;
@@ -725,6 +728,13 @@
 }
 
 /**
+ The Add Bridge button was pressed.
+ **/
+- (IBAction)addBridge:(id)sender {
+    
+}
+
+/**
  The Add Coins button was pressed.
  **/
 - (IBAction)addCoins:(id)sender
@@ -897,6 +907,56 @@
     else
     {
         self.mAddHurdleSmasherButton.hidden = NO;
+    }
+    
+    /**
+     Don't show the 'Smash Hurdle' button if there are not hurdles in the current grid!
+     **/
+    if (hasHurdles(self.gridHandle))
+    {
+        self.mAddHurdleSmasherButton.hidden = NO;
+    }
+    else
+    {
+        self.mAddHurdleSmasherButton.hidden = YES;
+    }
+    
+    if (self.gameLevel < getMinLevelToAddBridge())
+    {
+        self.mAddBridgeButton.hidden = YES;
+    }
+    else
+    {
+        self.mAddBridgeButton.hidden = NO;
+        
+        //if the hurdle smasher button is hidden, then tag this
+        //one against the add star button
+        if (self.mAddHurdleSmasherButton.hidden)
+        {
+            [self.view removeConstraint:self.mAddBridgeButtonLeftConstraints];
+            
+            self.mAddBridgeButtonLeftConstraints = [NSLayoutConstraint constraintWithItem:self.mAddStarButton
+                                                                             attribute:NSLayoutAttributeRight
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:self.mAddBridgeButton
+                                                                             attribute:NSLayoutAttributeLeft
+                                                                            multiplier:1.0
+                                                                              constant:-2.0]; //the lifeline buttons are separated by a 2.0 space horizontally
+            [self.view addConstraint:self.mAddBridgeButtonLeftConstraints];
+        }
+        else
+        {
+            [self.view removeConstraint:self.mAddBridgeButtonLeftConstraints];
+            
+            self.mAddBridgeButtonLeftConstraints = [NSLayoutConstraint constraintWithItem:self.mAddHurdleSmasherButton
+                                                                                attribute:NSLayoutAttributeRight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:self.mAddBridgeButton
+                                                                                attribute:NSLayoutAttributeLeft
+                                                                               multiplier:1.0
+                                                                                 constant:-2.0]; //the lifeline buttons are separated by a 2.0 space horizontally
+            [self.view addConstraint:self.mAddBridgeButtonLeftConstraints];
+        }
     }
 }
 

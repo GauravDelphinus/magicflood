@@ -118,7 +118,6 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1201,17 +1200,6 @@
                                     <action selector="addHurdleSmasher:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="C2a-9b-54M"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kc1-ib-Y7T" customClass="MFUIButton">
-                                <rect key="frame" x="220" y="402" width="80" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="10"/>
-                                <state key="normal" title="Remove Ads">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="removeAds:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="68W-b8-NFr"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uY9-Me-CMQ">
                                 <rect key="frame" x="95" y="28" width="130" height="21"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
@@ -1315,21 +1303,40 @@
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_moves.png" translatesAutoresizingMaskIntoConstraints="NO" id="ewe-cm-q1z">
                                 <rect key="frame" x="206" y="62" width="60" height="42"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THD-zr-xHP">
+                                <rect key="frame" x="267" y="396" width="47" height="48"/>
+                                <state key="normal" image="ic_remove_ads_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_remove_ads_pressed.png"/>
+                                <connections>
+                                    <action selector="removeAds:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="n5W-gc-eHK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vB-88-F7M">
+                                <rect key="frame" x="212" y="397" width="48" height="48"/>
+                                <state key="normal" image="ic_add_bridge_normal.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="ic_add_bridge_pressed.png"/>
+                                <connections>
+                                    <action selector="addBridge:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="LpG-AN-zwo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AC1-RL-jdM" firstAttribute="leading" secondItem="fG3-s7-6t8" secondAttribute="trailing" id="0MV-AZ-SwX"/>
                             <constraint firstItem="cBG-1s-2JC" firstAttribute="leading" secondItem="TTg-IM-Xdb" secondAttribute="trailing" id="0OT-3I-NL8"/>
                             <constraint firstItem="1oR-fm-sF1" firstAttribute="top" secondItem="m6b-Lj-6dR" secondAttribute="bottom" constant="5" id="0Y9-yI-ON0"/>
-                            <constraint firstItem="bcP-25-JvC" firstAttribute="centerY" secondItem="kc1-ib-Y7T" secondAttribute="centerY" constant="4" id="2Ou-Nb-j4g"/>
                             <constraint firstItem="wlr-cU-due" firstAttribute="centerY" secondItem="eme-ej-egX" secondAttribute="centerY" id="2XS-Om-b7A"/>
                             <constraint firstItem="fPd-JK-E5i" firstAttribute="leading" secondItem="ewe-cm-q1z" secondAttribute="trailing" constant="10" id="3YT-UG-Lp6"/>
-                            <constraint firstItem="E0k-Ah-qHM" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="10" id="47M-0z-C5z"/>
+                            <constraint firstItem="E0k-Ah-qHM" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="5" id="47M-0z-C5z"/>
                             <constraint firstAttribute="centerX" secondItem="uY9-Me-CMQ" secondAttribute="centerX" id="4Bs-so-LCe"/>
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="10" id="5c8-Ao-Y6Y"/>
                             <constraint firstItem="dXw-mP-eYt" firstAttribute="top" secondItem="1oR-fm-sF1" secondAttribute="bottom" constant="-50" id="6xR-WC-pKU"/>
                             <constraint firstItem="m6b-Lj-6dR" firstAttribute="top" secondItem="E0k-Ah-qHM" secondAttribute="bottom" constant="5" id="75w-Jh-LMe"/>
-                            <constraint firstItem="bcP-25-JvC" firstAttribute="leading" secondItem="f4b-5Z-cdg" secondAttribute="trailing" constant="5" id="9zY-yM-LAa"/>
+                            <constraint firstItem="bcP-25-JvC" firstAttribute="leading" secondItem="f4b-5Z-cdg" secondAttribute="trailing" constant="2" id="9zY-yM-LAa"/>
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="top" secondItem="uY9-Me-CMQ" secondAttribute="bottom" constant="5" id="B9k-xP-2eq"/>
                             <constraint firstAttribute="trailing" secondItem="wlr-cU-due" secondAttribute="trailing" constant="5" id="Dhe-Gg-tJM"/>
                             <constraint firstItem="fG3-s7-6t8" firstAttribute="width" secondItem="Lml-C0-KgT" secondAttribute="width" id="HOk-XB-Uk2"/>
@@ -1347,19 +1354,22 @@
                             <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="SfQ-IJ-GvZ" secondAttribute="centerY" id="Yhq-WC-vAe"/>
                             <constraint firstItem="f4b-5Z-cdg" firstAttribute="centerY" secondItem="bcP-25-JvC" secondAttribute="centerY" constant="-4" id="YnE-43-PVS"/>
                             <constraint firstAttribute="trailing" secondItem="npt-AJ-Nn3" secondAttribute="trailing" constant="3" id="Zb0-zi-XRI"/>
-                            <constraint firstAttribute="trailing" secondItem="kc1-ib-Y7T" secondAttribute="trailing" constant="15" id="c2V-Hi-VtX"/>
                             <constraint firstItem="MCf-mR-EJ4" firstAttribute="centerY" secondItem="E0k-Ah-qHM" secondAttribute="centerY" constant="1" id="c3g-Hf-9fa"/>
                             <constraint firstItem="1QK-83-fmP" firstAttribute="leading" secondItem="0k8-Ku-RMH" secondAttribute="trailing" id="dDk-sk-z9b"/>
+                            <constraint firstItem="4vB-88-F7M" firstAttribute="centerY" secondItem="bcP-25-JvC" secondAttribute="centerY" id="dtm-zK-mzF"/>
                             <constraint firstItem="Lml-C0-KgT" firstAttribute="leading" secondItem="cBG-1s-2JC" secondAttribute="trailing" id="eas-cP-SU3"/>
-                            <constraint firstItem="MCf-mR-EJ4" firstAttribute="leading" secondItem="E0k-Ah-qHM" secondAttribute="trailing" constant="5" id="ejj-8Z-Y7y"/>
+                            <constraint firstItem="MCf-mR-EJ4" firstAttribute="leading" secondItem="E0k-Ah-qHM" secondAttribute="trailing" constant="2" id="ejj-8Z-Y7y"/>
                             <constraint firstItem="E0k-Ah-qHM" firstAttribute="top" secondItem="npt-AJ-Nn3" secondAttribute="bottom" constant="2" id="gOB-P1-Iv0"/>
                             <constraint firstItem="ewe-cm-q1z" firstAttribute="centerY" secondItem="fPd-JK-E5i" secondAttribute="centerY" id="geA-i4-RuN"/>
+                            <constraint firstItem="4vB-88-F7M" firstAttribute="leading" secondItem="bcP-25-JvC" secondAttribute="trailing" constant="2" id="keE-Oj-lYH"/>
                             <constraint firstItem="4Yp-VV-HRH" firstAttribute="centerY" secondItem="ewe-cm-q1z" secondAttribute="centerY" constant="-0.5" id="lNB-Wf-uO4"/>
                             <constraint firstItem="npt-AJ-Nn3" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="3" id="lRW-QK-b1L"/>
                             <constraint firstItem="wlr-cU-due" firstAttribute="centerY" secondItem="uY9-Me-CMQ" secondAttribute="centerY" id="lbh-Ia-wLx"/>
                             <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="m6b-Lj-6dR" secondAttribute="centerY" id="mln-Bo-sEX"/>
-                            <constraint firstItem="f4b-5Z-cdg" firstAttribute="leading" secondItem="MCf-mR-EJ4" secondAttribute="trailing" constant="5" id="mvJ-Vq-Y01"/>
+                            <constraint firstItem="f4b-5Z-cdg" firstAttribute="leading" secondItem="MCf-mR-EJ4" secondAttribute="trailing" constant="2" id="mvJ-Vq-Y01"/>
+                            <constraint firstItem="THD-zr-xHP" firstAttribute="centerY" secondItem="4vB-88-F7M" secondAttribute="centerY" id="nJI-Ra-qmp"/>
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="centerY" secondItem="4Yp-VV-HRH" secondAttribute="centerY" constant="0.5" id="o1k-2S-SJF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="THD-zr-xHP" secondAttribute="trailing" constant="5" id="oRJ-ca-pfP"/>
                             <constraint firstItem="0k8-Ku-RMH" firstAttribute="leading" secondItem="SfQ-IJ-GvZ" secondAttribute="trailing" id="qaA-W1-Dnm"/>
                             <constraint firstItem="npt-AJ-Nn3" firstAttribute="top" secondItem="dTR-V6-YVc" secondAttribute="bottom" constant="2" id="rdg-5d-rlE"/>
                             <constraint firstItem="fG3-s7-6t8" firstAttribute="width" secondItem="0k8-Ku-RMH" secondAttribute="width" id="sgN-uO-hxv"/>
@@ -1378,6 +1388,8 @@
                         <outlet property="coinsLabel" destination="4Yp-VV-HRH" id="cdj-tZ-Ndh"/>
                         <outlet property="gameView" destination="npt-AJ-Nn3" id="JQt-wm-X2L"/>
                         <outlet property="mAdBannerView" destination="1oR-fm-sF1" id="Bdg-xK-oZn"/>
+                        <outlet property="mAddBridgeButton" destination="4vB-88-F7M" id="VnD-wx-D0z"/>
+                        <outlet property="mAddBridgeButtonLeftConstraints" destination="keE-Oj-lYH" id="srg-oE-x9Y"/>
                         <outlet property="mAddCoinsButton" destination="E0k-Ah-qHM" id="y9F-Zc-gfv"/>
                         <outlet property="mAddHurdleSmasherButton" destination="bcP-25-JvC" id="65V-Jt-oOU"/>
                         <outlet property="mAddMovesButton" destination="MCf-mR-EJ4" id="H9w-Jh-rf1"/>
@@ -1390,7 +1402,7 @@
                         <outlet property="mMenuButton" destination="wlr-cU-due" id="1lt-UC-BJT"/>
                         <outlet property="mOrangeButton" destination="YJs-Ar-JU0" id="FTf-Kp-TTm"/>
                         <outlet property="mRedButton" destination="m6b-Lj-6dR" id="sqP-UM-xKS"/>
-                        <outlet property="mRemoveAdsButton" destination="kc1-ib-Y7T" id="U7x-sH-Nv6"/>
+                        <outlet property="mRemoveAdsButton" destination="THD-zr-xHP" id="LFl-NO-YvL"/>
                         <outlet property="mSoundButton" destination="eme-ej-egX" id="mod-bz-Tt9"/>
                         <outlet property="mYellowButton" destination="cBG-1s-2JC" id="Gmc-t9-jUR"/>
                         <outlet property="movesLable" destination="fPd-JK-E5i" id="0Pq-Da-jKB"/>
@@ -2047,10 +2059,10 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-on-55h" customClass="MFUIButton">
                                         <rect key="frame" x="19" y="262" width="230" height="97"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" misplaced="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-7a-a2P">
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-7a-a2P">
                                                 <rect key="frame" x="8" y="16" width="48" height="48"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-Zc-iZF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-Zc-iZF">
                                                 <rect key="frame" x="116" y="0.0" width="106" height="89"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3615,6 +3627,8 @@
         <image name="help_image_screen_5.png" width="100" height="95"/>
         <image name="help_image_screen_8.png" width="250" height="136"/>
         <image name="ic_about.png" width="48" height="48"/>
+        <image name="ic_add_bridge_normal.png" width="48" height="48"/>
+        <image name="ic_add_bridge_pressed.png" width="48" height="48"/>
         <image name="ic_add_coins_normal.png" width="48" height="48"/>
         <image name="ic_add_coins_pressed.png" width="48" height="48"/>
         <image name="ic_add_hurdle_smasher.png" width="96" height="96"/>
@@ -3669,6 +3683,8 @@
         <image name="ic_play.png" width="48" height="48"/>
         <image name="ic_play_on.png" width="48" height="48"/>
         <image name="ic_remove_ads.png" width="48" height="48"/>
+        <image name="ic_remove_ads_normal.png" width="36" height="36"/>
+        <image name="ic_remove_ads_pressed.png" width="36" height="36"/>
         <image name="ic_replay.png" width="48" height="48"/>
         <image name="ic_restore_purchase.png" width="48" height="48"/>
         <image name="ic_star_placement_info.png" width="200" height="204"/>

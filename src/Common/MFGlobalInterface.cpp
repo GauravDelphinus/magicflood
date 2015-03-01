@@ -52,6 +52,11 @@ extern "C" int getMinLevelToAddHurdleSmasher()
     return MIN_LEVEL_TO_ADD_HURDLE_SMASHER;
 }
 
+extern "C" int getMinLevelToAddBridge()
+{
+    return MIN_LEVEL_TO_ADD_BRIDGE;
+}
+
 extern "C" int getNumCoinsIAPFirst()
 {
     return COINS_IAP_COINS_FIRST;

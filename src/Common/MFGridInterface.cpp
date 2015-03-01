@@ -275,5 +275,16 @@ int smashHurdle(long handle, int x, int y)
     
     return 0;
 }
+    
+bool hasHurdles(long handle)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid *>(handle);
+    if (grid != NULL)
+    {
+        return grid->hasHurdles();
+    }
+    
+    return false;
+}
 
 }

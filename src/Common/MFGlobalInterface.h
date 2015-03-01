@@ -26,6 +26,7 @@ extern "C" {
     int getNumCoinsForHurdleSmasher();
     int getMinLevelToAddStars();
     int getMinLevelToAddHurdleSmasher();
+    int getMinLevelToAddBridge();
     int getNumCoinsForSuccessfulGame(int currMove, int maxMoves);
 }
 
@@ -39,6 +40,7 @@ extern "C" {
 #define LEVEL_INTERVAL_REQUIRING_COIN_REDEMPTION 5 //interval between levels after which you must redeem coins to move forward
 #define MIN_LEVEL_TO_ADD_STARS 27
 #define MIN_LEVEL_TO_ADD_HURDLE_SMASHER 48
+#define MIN_LEVEL_TO_ADD_BRIDGE 81
 
 
 

@@ -684,3 +684,19 @@ int MFGrid::smashHurdle(int x, int y)
     
     return 1;
 }
+
+bool MFGrid::hasHurdles()
+{
+    for (int i = 0; i < gridSize; i++)
+    {
+        for (int j = 0; j < gridSize; j++)
+        {
+            if (isHurdle(i, j, mGameGrid))
+            {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}
