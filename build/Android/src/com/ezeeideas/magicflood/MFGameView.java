@@ -112,6 +112,8 @@ public class MFGameView extends View
 		 * after accounting for the shadow thickness
 		 */
 		int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS;
+		int cellSize = gridSizePixels/mGridSize;
+		gridSizePixels = cellSize * mGridSize; //remove the rounding off errors
 		
 		/**
 		 * Draw the shadow rect.
@@ -145,7 +147,7 @@ public class MFGameView extends View
 		rectF = new RectF(hOffset + gridSizePixels - SHADOW_THICKNESS, vOffset, hOffset + gridSizePixels + SHADOW_THICKNESS, vOffset  + 2 * SHADOW_THICKNESS);
 		canvas.drawArc(rectF, 0, -90, true, mShadowPaint);
 		
-		int cellSize = gridSizePixels/mGridSize;
+
 		
 		for (int i = 0; i < mGridSize; i++)
 		{

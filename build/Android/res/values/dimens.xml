@@ -52,7 +52,7 @@
     <dimen name="very_large_deal_text_size">10sp</dimen>
     
     <!-- Levels Screen -->
-    <dimen name="level_name_text_size">30sp</dimen>
+    <dimen name="level_name_text_size">25sp</dimen>
     <dimen name="levels_title_text_size">25sp</dimen>
     <dimen name="store_padding">10dp</dimen>
 </resources>
