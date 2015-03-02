@@ -160,6 +160,111 @@ JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getGrid
 JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_smashHurdle
   (JNIEnv *, jobject, jlong, jint, jint);
 
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    setCoins
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_setCoins
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getCoins
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getCoins
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsIAPFirst
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsIAPFirst
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsIAPSecond
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsIAPSecond
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsIAPThird
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsIAPThird
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsIAPFourth
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsIAPFourth
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForMoves
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForMoves
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForStar
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForStar
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForHurdleSmasher
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForHurdleSmasher
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getMinLevelToAddStars
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMinLevelToAddStars
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getMinLevelToAddHurdleSmasher
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMinLevelToAddHurdleSmasher
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getMinLevelToAddBridge
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMinLevelToAddBridge
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForSuccessfulGame
+ * Signature: (II)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForSuccessfulGame
+  (JNIEnv *, jobject, jint, jint);
+
+
 #ifdef __cplusplus
 }
 #endif

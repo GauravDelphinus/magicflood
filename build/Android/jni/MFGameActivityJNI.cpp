@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "MFGameActivityJNI.h"
 #include "MFGridInterface.h"
+#include "MFGlobalInterface.h"
 
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
@@ -205,4 +206,147 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_smashHurdle
   (JNIEnv *env, jobject thisObj, jlong handle, jint x, jint y)
 {
 	return smashHurdle(handle, x, y);
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    setCoins
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_setCoins
+  (JNIEnv *env, jobject thisObj, jint coins)
+{
+	setCoins(coins);
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getCoins
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getCoins
+  (JNIEnv *env, jobject thisObj)
+{
+	return getCoins();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsIAPFirst
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsIAPFirst
+  (JNIEnv *env, jobject thisObj)
+{
+	return getNumCoinsIAPFirst();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsIAPSecond
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsIAPSecond
+  (JNIEnv *env, jobject thisObj)
+{
+	return getNumCoinsIAPSecond();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsIAPThird
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsIAPThird
+  (JNIEnv *env, jobject thisObj)
+{
+	return getNumCoinsIAPThird();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsIAPFourth
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsIAPFourth
+  (JNIEnv *env, jobject thisObj)
+{
+	return getNumCoinsIAPFourth();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForMoves
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForMoves
+  (JNIEnv *env, jobject thisObj)
+{
+	return getNumCoinsForMoves();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForStar
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForStar
+  (JNIEnv *env, jobject thisObj)
+{
+	return getNumCoinsForStar();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForHurdleSmasher
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForHurdleSmasher
+  (JNIEnv *env, jobject thisObj)
+{
+	return getNumCoinsForHurdleSmasher();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getMinLevelToAddStars
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMinLevelToAddStars
+  (JNIEnv *env, jobject thisObj)
+{
+	return getMinLevelToAddStars();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getMinLevelToAddHurdleSmasher
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMinLevelToAddHurdleSmasher
+  (JNIEnv *env, jobject thisObj)
+{
+	return getMinLevelToAddHurdleSmasher();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getMinLevelToAddBridge
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMinLevelToAddBridge
+  (JNIEnv *env, jobject thisObj)
+{
+	return getMinLevelToAddBridge();
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForSuccessfulGame
+ * Signature: (II)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForSuccessfulGame
+  (JNIEnv *env, jobject thisObj, jint currMove, jint maxMoves)
+{
+	return getNumCoinsForSuccessfulGame(currMove, maxMoves);
 }

@@ -14,3 +14,5 @@
 @property NSUInteger numLevels; //total number of levels (used by this controller to determine how to show the level buttons)
 
 @end
+
+#define NUM_LEVELS_PER_SCREEN 16

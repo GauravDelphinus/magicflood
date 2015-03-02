@@ -85,8 +85,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
     	SharedPreferences settings;
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 
-		mTotalCoinsEarned = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, MFGameConstants.INITIAL_COINS_ALLOCATED);
-		String coinsEarnedText = String.format(getResources().getString(R.string.coins_earned_text), mTotalCoinsEarned);
+		int coins = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, MFGameConstants.INITIAL_COINS_ALLOCATED);
+		setCoins(coins);
+		String coinsEarnedText = String.format(getResources().getString(R.string.coins_earned_text), coins);
 		mCoinsEarnedLabel = (TextView) findViewById(R.id.coins_text_id);
 		mCoinsEarnedLabel.setText(coinsEarnedText);
 		mCoinsEarnedLabel.setTypeface(face);
@@ -103,7 +104,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		mAddHurdleSmasherButton = (ImageButton) findViewById(R.id.add_hurdle_smasher_button_id);
 		mAddHurdleSmasherButton.setOnClickListener(this);
-		if (mLevel <= MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
+		if (mLevel <= getMinLevelToAddHurdleSmasher())
 		{
 			mAddHurdleSmasherButton.setVisibility(View.INVISIBLE);
 		}
@@ -400,20 +401,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	
 	private void refreshLifelinesUI()
 	{
-		if (mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
+		if (mLevel == getMinLevelToAddStars())
 		{
 			IntroduceStarsGameDialog dialog = new IntroduceStarsGameDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 		}
-		else if (mLevel == MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
+		else if (mLevel == getMinLevelToAddHurdleSmasher())
 		{
 			IntroduceHurdleSmashersDialog dialog = new IntroduceHurdleSmashersDialog(this, DIALOG_DATA_NONE);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 		}
 		
-		if (mLevel < MFGameConstants.MIN_LEVEL_TO_ADD_STARS)
+		if (mLevel < getMinLevelToAddStars())
 		{
 			mAddStarsButton.setVisibility(View.INVISIBLE);
 		}
@@ -422,7 +423,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			mAddStarsButton.setVisibility(View.VISIBLE);
 		}
 		
-		if (mLevel < MFGameConstants.MIN_LEVEL_TO_ADD_HURDLE_SMASHER)
+		if (mLevel < getMinLevelToAddHurdleSmasher())
 		{
 			mAddHurdleSmasherButton.setVisibility(View.INVISIBLE);
 		}
@@ -617,14 +618,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			playSound(mGameFailedSoundID);
 			
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_FAILURE);
-
-			
-			//update the coins earned
-			SharedPreferences settings;
-			settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-			Editor editor = settings.edit();
-			editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, mTotalCoinsEarned);
-			editor.commit();
 		}
 		else if (result[0] == MFGameConstants.RESULT_SUCCESS) //game successful completed
 		{	
@@ -656,12 +649,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				editor.commit();
 			}
 			
-			//update the coins earned
-			editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, mTotalCoinsEarned);
-			editor.commit();
-			
 			/** Update Coins Earned **/	
-			updateCoinsEarned(mTotalCoinsEarned + currMove + (maxMoves - currMove) * MFGameConstants.COINS_EARNED_FACTOR_ON_REMAINING_MOVES);
+			updateCoinsEarned(getCoins() + maxMoves);
 			
 		}
 		else
@@ -690,26 +679,27 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mRemoveAdsButton.setEnabled(enable);
 	}
 
-	private void updateCoinsEarned(int newValue)
+	private void updateCoinsEarned(int coins)
 	{
-		if (newValue > mTotalCoinsEarned)
+		int currCoins = getCoins();
+		if (coins > currCoins)
 		{
 			CoinsUpdateHandler handler = new CoinsUpdateHandler(mCoinsEarnedLabel);
-			Thread background = new Thread(new CoinsUpdaterRunnable(Math.max(mTotalCoinsEarned, newValue - 10), newValue, handler));
+			Thread background = new Thread(new CoinsUpdaterRunnable(Math.max(currCoins, coins - 10), coins, handler));
 			background.start();
 		}
 		else
 		{
-			String coinsText = String.format(getResources().getString(R.string.coins_earned_text), newValue);
+			String coinsText = String.format(getResources().getString(R.string.coins_earned_text), coins);
 			mCoinsEarnedLabel.setText(coinsText);
 		}
 		
-        mTotalCoinsEarned = newValue;
+		setCoins(coins);
         
         SharedPreferences settings;
 		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 		Editor editor = settings.edit();
-		editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, mTotalCoinsEarned);
+		editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, coins);
 		editor.commit();
 	}
 	
@@ -898,14 +888,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			{
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_MOVES_BUTTON);
 				
-				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_5_MOVES)
+				int currCoins = getCoins();
+				if (currCoins >= getNumCoinsForMoves())
 				{
 					//go ahead and add moves, and adjust coins
 					int maxMoves = getMaxMoves(gridHandle);
 					maxMoves += MFGameConstants.MOVES_ADD_INCREMENT;
 					setMaxMoves(gridHandle, maxMoves);
 					
-					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_5_MOVES);
+					updateCoinsEarned(currCoins - getNumCoinsForMoves());
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_MOVES);
 					
 					int currMove = getCurrMove(gridHandle);
@@ -971,9 +962,10 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			{
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_STAR_BUTTON);
 				
-				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_A_STAR)
+				int currCoins = getCoins();
+				if (currCoins >= getNumCoinsForStar())
 				{
-					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_A_STAR);
+					updateCoinsEarned(currCoins - getNumCoinsForStar());
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_STAR);
 					
 					//go ahead and add star, and adjust coins
@@ -1029,9 +1021,10 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			{
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_HURDLE_SMASHER);
 				
-				if (mTotalCoinsEarned >= MFGameConstants.COINS_TO_ADD_A_HURDLE_SMASHER)
+				int currCoins = getCoins();
+				if (currCoins >= getNumCoinsForHurdleSmasher())
 				{				
-					updateCoinsEarned(mTotalCoinsEarned - MFGameConstants.COINS_TO_ADD_A_HURDLE_SMASHER);
+					updateCoinsEarned(currCoins - getNumCoinsForHurdleSmasher());
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_HURDLE_SMASHER);
 					
 					HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP, DIALOG_DATA_NONE);
@@ -1158,21 +1151,22 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		if (status == true)
 		{
 			//consumed the item, now update the values
+			int currCoins = getCoins();
 			if (pid.equals(MFGameConstants.IAP_COINS_FIRST))
 			{
-				updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FIRST);
+				updateCoinsEarned(currCoins + getNumCoinsIAPFirst());
 			}
 			else if (pid.equals(MFGameConstants.IAP_COINS_SECOND))
 			{
-				updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_SECOND);
+				updateCoinsEarned(currCoins + getNumCoinsIAPSecond());
 			}
 			else if (pid.equals(MFGameConstants.IAP_COINS_THIRD))
 			{
-				updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_THIRD);
+				updateCoinsEarned(currCoins + getNumCoinsIAPThird());
 			}
 			else if (pid.equals(MFGameConstants.IAP_COINS_FOURTH))
 			{
-				updateCoinsEarned(mTotalCoinsEarned + MFGameConstants.COINS_IAP_COUNT_FOURTH);
+				updateCoinsEarned(currCoins + getNumCoinsIAPFourth());
 			}
 			
 			/**
@@ -1327,7 +1321,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	
 	private MFGameView mGameView; //the game view
 	private int mLevel;
-	private int mTotalCoinsEarned;
 	private boolean mPromptUserToStore = false; // whether or not we should prompt the user to check out the store
 	private TextView mMovesLabel; //label that shows the current moves
 	private TextView mLevelLabel, mCoinsEarnedLabel;
@@ -1396,6 +1389,19 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private native int[] playMove(long handle, int color);
 	private native int[] getGridData(long handle);
 	private native int smashHurdle(long handle, int x, int y);
+	private native void setCoins(int coins);
+	private native int getCoins();
+	private native int getNumCoinsIAPFirst();
+	private native int getNumCoinsIAPSecond();
+	private native int getNumCoinsIAPThird();
+	private native int getNumCoinsIAPFourth();
+	private native int getNumCoinsForMoves();
+	private native int getNumCoinsForStar();
+	private native int getNumCoinsForHurdleSmasher();
+	private native int getMinLevelToAddStars();
+	private native int getMinLevelToAddHurdleSmasher();
+	private native int getMinLevelToAddBridge();
+	private native int getNumCoinsForSuccessfulGame(int currMove, int maxMoves);
 
 	/**
 	 * Dialog data that is used to control workflow

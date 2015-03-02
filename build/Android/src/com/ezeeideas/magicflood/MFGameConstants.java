@@ -111,6 +111,7 @@ public class MFGameConstants
 	public static final String PREFERENCE_KEY = "user_prefs";
 	public static final String PREFERENCE_SOUND = "preference_sound";
 	public static final String PREFERENCE_TOTAL_COINS_EARNED = "total_coins_earned";
+	public static final int INITIAL_COINS_ALLOCATED = 100;
 	public static final String PREFERENCE_ADS_REMOVED = "ads_removed";
 	public static final String PREFERENCE_LAST_UNLOCKED_LEVEL = "last_unlocked_level";
 	public static final int DEFAULT_LAST_UNLOCKED_LEVEL = 1;
@@ -122,30 +123,5 @@ public class MFGameConstants
 	/**
 	 * Game Constants
 	 */
-	public static final int FREQUENCY_OF_PROMPTING_USER_TO_STORE = 1;
 	public static final int MOVES_ADD_INCREMENT = 5;
-	public static final int INITIAL_COINS_ALLOCATED = 100;
-	public static final int INITIAL_POINTS_ALLOCATED = 0;
-	public static final int COINS_EARNED_FACTOR_ON_GAME_COMPLETION = 20;
-	public static final int COINS_EARNED_FACTOR_ON_EACH_MOVE = 1;
-	public static final int COINS_EARNED_FACTOR_ON_REMAINING_MOVES = 5;
-	public static final int LEVEL_INTERVAL_REQUIRING_COIN_REDEMPTION = 5; //interval between levels after which you must redeem coins to move forward
-	public static final int COINS_TO_CROSS_LEVEL_INTERVAL = 200; //200 * stage number
-	public static final int MIN_LEVEL_TO_ADD_STARS = 27;
-	public static final int MIN_LEVEL_TO_ADD_HURDLE_SMASHER = 48;
-	
-	/**
-	 * Redeeming Coins for Lifelines
-	 */
-	public static final int COINS_TO_ADD_5_MOVES = 500;
-	public static final int COINS_TO_ADD_A_STAR = 1000;
-	public static final int COINS_TO_ADD_A_HURDLE_SMASHER = 1500;
-	
-	/**
-	 * Adding/Buying Coins via IAP
-	 */
-	public static final int COINS_IAP_COUNT_FIRST = 500;
-	public static final int COINS_IAP_COUNT_SECOND = 1000;
-	public static final int COINS_IAP_COUNT_THIRD = 2500;
-	public static final int COINS_IAP_COUNT_FOURTH = 5000;
 }
