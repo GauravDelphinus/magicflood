@@ -286,5 +286,27 @@ bool hasHurdles(long handle)
     
     return false;
 }
+    
+int buildBridge(long handle, int startx, int starty, int endx, int endy)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid *>(handle);
+    if (grid != NULL)
+    {
+        return grid->buildBridge(startx, starty, endx, endy);
+    }
+    
+    return 0;
+}
+    
+bool hasSpaces(long handle)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid *>(handle);
+    if (grid != NULL)
+    {
+        return grid->hasSpaces();
+    }
+    
+    return false;
+}
 
 }

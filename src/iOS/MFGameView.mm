@@ -39,6 +39,7 @@
     int maxMoves; // max number of moves in this game
 }
 
+@property int mFlashCellX, mFlashCellY; //flash this cell when non-zero
 @end
 
 @implementation MFGameView
@@ -667,6 +668,25 @@
 }
 
 /**
+ Flash/Indicate thsi particular cell.  Used currently during the bridge
+ placement mode when the first point has been selected and the second is
+ in the process of being selected.
+ **/
+-(void)flashCellWithX:(int)x withY:(int)y Enable:(BOOL)enable
+{
+    if (enable)
+    {
+        self.mFlashCellX = x;
+        self.mFlashCellY = y;
+    }
+    else
+    {
+        self.mFlashCellX = 0;
+        self.mFlashCellY = 0;
+    }
+}
+
+/**
  Touch callback when you need to allow user to tap and select
  a particular cell in the grid.
  **/
@@ -693,10 +713,6 @@
     int horizontalGap = screenWidth - gridlength - SHADOW_THICKNESS;
     
     int vOffset = (screenHeight - gridlength - SHADOW_THICKNESS)/2;
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 1.0);
-    
     int hOffset = horizontalGap / 2;
 
     int xOffset = (int)location.x - hOffset;

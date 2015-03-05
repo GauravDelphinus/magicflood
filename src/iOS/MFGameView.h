@@ -27,7 +27,7 @@
 -(void)updateGameData:(int **)grid;
 -(void)updateStartPos:(int **)startPos withNum:(int)numStartPos;
 -(void)enableDisableTouchInput:(BOOL)enable;
-
+-(void)flashCellWithX:(int)x withY:(int)y Enable:(BOOL)enable;
 @end
 
 

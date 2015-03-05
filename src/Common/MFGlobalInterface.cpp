@@ -36,6 +36,7 @@ static int totalCoins = 0;
 #define COINS_TO_ADD_5_MOVES 500
 #define COINS_TO_ADD_A_STAR 1000
 #define COINS_TO_ADD_A_HURDLE_SMASHER 1500
+#define COINS_TO_ADD_A_BRIDGE   2000
 
 extern "C" void setCoins(int coins)
 {
@@ -60,6 +61,11 @@ extern "C" int getNumCoinsForStar()
 extern "C" int getNumCoinsForHurdleSmasher()
 {
     return COINS_TO_ADD_A_HURDLE_SMASHER;
+}
+
+extern "C" int getNumCoinsForBridge()
+{
+    return COINS_TO_ADD_A_BRIDGE;
 }
 
 extern "C" int getMinLevelToAddStars()

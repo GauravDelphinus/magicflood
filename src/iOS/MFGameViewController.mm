@@ -24,8 +24,8 @@
 
 @interface MFGameViewController ()
 {
-    SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
-    NSURL *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mStarPlacedSoundURL;
+    SystemSoundID mCurrentlyPlayingSound, mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mBridgePlacedSoundID, mStarPlacedSoundID;
+    NSURL *mCurrentlyPlayingSoundURL, *mButtonClickSoundURL, *mGameSuccessSoundURL, *mGameFailedSoundURL, *mHurdleSmashedSoundURL, *mBridgePlacedSoundURL, *mStarPlacedSoundURL;
 }
 @property (strong, nonatomic) IBOutlet UIButton *mAddStarButton;
 @property (strong, nonatomic) IBOutlet UIButton *mAddHurdleSmasherButton;
@@ -49,7 +49,9 @@
 @property (strong, nonatomic) IBOutlet MFGameView *gameView; //UIView that renders the actual game board
 @property BOOL mStarPlacementMode;
 @property BOOL mHurdleSmasherMode;
+@property BOOL mBridgeMode;
 @property BOOL mEnableSound;
+@property CGPoint mBridgeStartPoint;
 @property (strong, nonatomic) IBOutlet ADBannerView *mAdBannerView;
 @property BOOL mAdBannerVisible;
 @property BOOL mAdsRemoved; //whether ads are removed by user
@@ -67,7 +69,8 @@
 #define DIALOG_DATA_FROM_ADD_STAR_DIALOG 1
 #define DIALOG_DATA_FROM_ADD_MOVES_DIALOG 2
 #define DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG 3
-#define DIALOG_DATA_EXIT 4
+#define DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG 4
+#define DIALOG_DATA_EXIT 5
 @property int mLastDialogData;
 
 @end
@@ -251,6 +254,11 @@
     mHurdleSmashedSoundURL = [NSURL fileURLWithPath:hurdleSmashedPath];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
     
+    NSString *bridgePlacedPath = [[NSBundle mainBundle]
+                                   pathForResource:@"hurdle_smashed_sound" ofType:@"wav"];
+    mBridgePlacedSoundURL = [NSURL fileURLWithPath:bridgePlacedPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)mBridgePlacedSoundURL, &mBridgePlacedSoundID);
+    
     NSString *starPlacedPath = [[NSBundle mainBundle]
                                 pathForResource:@"star_placed_sound" ofType:@"wav"];
     mStarPlacedSoundURL = [NSURL fileURLWithPath:starPlacedPath];
@@ -335,6 +343,10 @@
     else if (mCurrentlyPlayingSound == mHurdleSmashedSoundID)
     {
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
+    }
+    else if (mCurrentlyPlayingSound == mBridgePlacedSoundID)
+    {
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)mBridgePlacedSoundURL, &mBridgePlacedSoundID);
     }
 }
 
@@ -699,6 +711,9 @@
     int numCoins = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_COINS_EARNED];
     setCoins(numCoins);
     
+    //initialize the bridge related structures
+    self.mBridgeStartPoint = {-1, -1};
+    
     // update the various UI elements
     [self updateCoinsLabel:getCoins()];
     [self updateLevelLabel:self.gameLevel];
@@ -731,7 +746,7 @@
  The Add Bridge button was pressed.
  **/
 - (IBAction)addBridge:(id)sender {
-    
+    [self showDialogOfType:DIALOG_TYPE_ADD_BRIDGE withData:0 withAnimation:NO];
 }
 
 /**
@@ -979,6 +994,7 @@
     self.mAddMovesButton.enabled = enable;
     self.mAddStarButton.enabled = enable;
     self.mAddHurdleSmasherButton.enabled = enable;
+    self.mAddBridgeButton.enabled = enable;
     self.mRemoveAdsButton.enabled = enable;
 }
 
@@ -1053,6 +1069,53 @@
             [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
         }
     }
+    else if (self.mBridgeMode == YES)
+    {
+        if (self.mBridgeStartPoint.x == -1 && self.mBridgeStartPoint.y == -1) //first point selection
+        {
+            int result = buildBridge(self.gridHandle, x, y, -1, -1); //validate the first point
+            if (result == 1)
+            {
+                self.mBridgeStartPoint = CGPointMake(x, y);
+                
+                [self.gameView flashCellWithX:x withY:y Enable:YES];
+            }
+            else
+            {
+                [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
+            }
+        }
+        else
+        {
+            int result = buildBridge(self.gridHandle, self.mBridgeStartPoint.x, self.mBridgeStartPoint.y, x, y);
+            if (result == 1) //success in placing the bridge!
+            {
+                self.mBridgeStartPoint = {-1, -1};
+                
+                [self.gameView flashCellWithX:x withY:y Enable:NO];
+                
+                [self playSound:mBridgePlacedSoundID];
+                
+                self.mBridgeMode = NO;
+                
+                int **gridData = getGridData(self.gridHandle);
+                [[self gameView] updateGameData:gridData];
+                freeGridData(self.gridHandle, gridData);
+                gridData = NULL;
+                
+                [self enableDisableAllButtons:YES];
+            }
+            else //couldn't detect a bridge, so keep trying
+            {
+                /**
+                 Reset the first point to nil as well and allow the user to reselect.
+                 **/
+                self.mBridgeStartPoint = {-1, -1};
+                
+                [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
+            }
+        }
+    }
 }
 
 /*********************  Dialog Handling **************************/
@@ -1069,6 +1132,9 @@
             break;
         case DIALOG_TYPE_ADD_HURDLE_SMASHER:
             [self showDialog:@"AddHurdleSmasherDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            break;
+        case DIALOG_TYPE_ADD_BRIDGE:
+            [self showDialog:@"AddBridgeDialog" withDialogType:dialogType withData:data withAnimation:animate];
             break;
         case DIALOG_TYPE_ADD_COINS:
             [self showDialog:@"AddCoinsDialog" withDialogType:dialogType withData:data withAnimation:animate];
@@ -1099,6 +1165,12 @@
             break;
         case DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN:
             [self showDialog:@"HurdleSmasherPlacementTryAgainDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            break;
+        case DIALOG_TYPE_BRIDGE_PLACEMENT_INFO:
+            [self showDialog:@"BridgePlacementInfoDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            break;
+        case DIALOG_TYPE_BRIDGE_PLACEMENT_TRY_AGAIN:
+            [self showDialog:@"BridgePlacementTryAgainDialog" withDialogType:dialogType withData:data withAnimation:animate];
             break;
         case DIALOG_TYPE_IAP_PURCHASE_FAILED:
             [self showDialog:@"IAPPurchaseFailedDialog" withDialogType:dialogType withData:data withAnimation:animate];
@@ -1306,6 +1378,33 @@
                 [self addCoinsWithShortfall:(numCoinsForHurdleSmasher - numCoins)];
                 
                 self.mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
+            }
+        }
+    }
+    else if (dialogType == DIALOG_TYPE_ADD_BRIDGE)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Add Bridge
+        {
+            int numCoins = getCoins();
+            int numCoinsForBridge = getNumCoinsForBridge();
+            if (numCoins >= numCoinsForBridge)
+            {
+                numCoins -= numCoinsForBridge;
+                [self updateCoinsEarned:numCoins];
+                
+                //enter state where game view detects tap on a specific cell
+                [self.gameView enableDisableTouchInput:YES];
+                self.mBridgeMode = YES;
+                
+                [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_INFO withData:0 withAnimation:NO];
+                
+                [self enableDisableAllButtons:NO];
+            }
+            else
+            {
+                [self addCoinsWithShortfall:(numCoinsForBridge - numCoins)];
+                
+                self.mLastDialogData = DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG;
             }
         }
     }

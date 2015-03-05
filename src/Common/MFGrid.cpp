@@ -545,6 +545,14 @@ bool MFGrid::isFillable(int x, int y, int *grid[])
     return true;
 }
 
+bool MFGrid::isInside(int x, int y)
+{
+    if (x >= 0 && x < gridSize && y >= 0 && y < gridSize)
+        return true;
+    
+    return false;
+}
+
 /**
  Check to see if the cell is a hurdle.
  **/
@@ -699,4 +707,139 @@ bool MFGrid::hasHurdles()
     }
     
     return false;
+}
+
+int MFGrid::buildBridge(int startrow, int startcol, int endrow, int endcol)
+{
+    if (endrow == -1 && endcol == -1) //first point selection
+    {
+        /**
+         Check if the first point is valid.  We must make sure that at least
+         one of the four cells on East/West/North/South is a 'space'
+         **/
+        
+        return isValidBridgeEndpoint(startrow, startcol, mGameGrid);
+    }
+    else //already have the first point, check for second point
+    {
+        int mincol = -1, maxcol = -1, minrow = -1, maxrow = -1;
+        
+        if (!isValidBridgeEndpoint(endrow, endcol, mGameGrid))
+        {
+            return 0;
+        }
+        
+        /**
+         The bridge can be either horizontal or vertical.
+         Either way, the allowed offset variation is +/- 1 row/column
+         **/
+        int bridgeThickness = 2;
+        if (abs(startrow - endrow) < bridgeThickness)
+        {
+            //bridge is horizontal
+            
+            //min and max columns remain the start and end cols
+            mincol = std::min(startcol, endcol);
+            maxcol = std::max(startcol, endcol);
+            
+            //figure out the min and max rows
+            minrow = std::min(startrow, endrow);
+            maxrow = std::max(startrow, endrow);
+            if (maxrow - bridgeThickness + 1 < 0)
+            {
+                //grow from minrow downwards
+                maxrow = minrow + bridgeThickness - 1;
+            }
+            else
+            {
+                //grow from maxrow upwards
+                minrow = maxrow - bridgeThickness + 1;
+            }
+        }
+        else if (abs(startcol - endcol) < bridgeThickness)
+        {
+            //bridge is vertical
+            
+            //min and max rows remain the same as start and end rows
+            minrow = std::min(startrow, endrow);
+            maxrow = std::max(startrow, endrow);
+            
+            //figure out the min and max cols
+            mincol = std::min(startcol, endcol);
+            maxcol = std::max(startcol, endcol);
+            if (maxcol - bridgeThickness + 1 < 0)
+            {
+                //grow from mincol rightwards
+                maxcol = mincol + bridgeThickness - 1;
+            }
+            else
+            {
+                //gro from maxcol leftwards
+                mincol = maxcol - bridgeThickness + 1;
+            }
+        }
+        else
+        {
+            //start and end bridge thickness too far apart
+            return 0;
+        }
+        
+        //now actually build the bridge!
+        srand((unsigned int)time(NULL));
+        
+        /**
+         For the rectangle between minrow, mincol and maxrow, maxcol fill the cells
+         with a random color if they are a space.
+         **/
+        for (int i = minrow; i <= maxrow; i++)
+        {
+            for (int j = mincol; j <= maxcol; j++)
+            {
+                if (mGameGrid[i][j] == '^')
+                {
+                    int randColor = rand() % GRID_NUM_COLORS + 1;
+                    mGameGrid[i][j] = randColor;
+                }
+            }
+        }
+        
+        return 1;
+    }
+    
+    return 0;
+}
+
+bool MFGrid::isValidBridgeEndpoint(int row, int col, int **grid)
+{
+    if (!isInside(row, col)) //invalid coordinates
+    {
+        return 0;
+    }
+    
+    //check west
+    if (col > 0 && mGameGrid[row][col-1] == '^')
+    {
+        return 1;
+    }
+    else if (row > 0 && mGameGrid[row-1][col] == '^') //check north
+    {
+        return 1;
+    }
+    else if (col < gridSize-1 && mGameGrid[row][col+1] == '^') //check east
+    {
+        return 1;
+    }
+    else if (row < gridSize-1 && mGameGrid[row+1][col] == '^') //check south
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+bool MFGrid::hasSpaces()
+{
+    return true;
 }

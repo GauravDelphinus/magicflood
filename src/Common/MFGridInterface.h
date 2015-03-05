@@ -27,6 +27,8 @@ int** getGridData(long handle);
 void freeGridData(long handle, int **gridData);
     int smashHurdle(long handle, int x, int y);
     bool hasHurdles(long handle);
+    int buildBridge(long handle, int startx, int starty, int endx, int endy);
+    bool hasSpaces(long handle);
 }
 
 /**

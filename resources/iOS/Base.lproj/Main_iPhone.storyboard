@@ -118,6 +118,15 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -2059,10 +2068,10 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-on-55h" customClass="MFUIButton">
                                         <rect key="frame" x="19" y="262" width="230" height="97"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-7a-a2P">
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" misplaced="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-7a-a2P">
                                                 <rect key="frame" x="8" y="16" width="48" height="48"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-Zc-iZF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-Zc-iZF">
                                                 <rect key="frame" x="116" y="0.0" width="106" height="89"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3042,7 +3051,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Af4-Ei-8fJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2926" y="2629"/>
+            <point key="canvasLocation" x="3561" y="2629"/>
         </scene>
         <!--Help Screen View Controller-->
         <scene sceneID="hfq-PD-Frf">
@@ -3615,7 +3624,285 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wak-np-l7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3285" y="2629"/>
+            <point key="canvasLocation" x="3935" y="2629"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="YXe-Oa-08C">
+            <objects>
+                <viewController storyboardIdentifier="AddBridgeDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XV1-fo-cGn" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fMn-86-8h8"/>
+                        <viewControllerLayoutGuide type="bottom" id="WD9-eF-12D"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="uMS-1x-WTz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ti9-lx-tav">
+                                <rect key="frame" x="28" y="94" width="265" height="345"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Connect branches in the grid by building bridges!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMO-BV-HSW">
+                                        <rect key="frame" x="8" y="59" width="249" height="91"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_add_bridge.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Vl-DB-JOp">
+                                        <rect key="frame" x="77" y="129" width="110" height="119"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B04-TV-xuX" customClass="MFUIButton">
+                                        <rect key="frame" x="34" y="248" width="203" height="81"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2000 coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkc-l4-GRU">
+                                                <rect key="frame" x="77" y="20" width="116" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_coins.png" translatesAutoresizingMaskIntoConstraints="NO" id="Zdc-Cz-XNe">
+                                                <rect key="frame" x="8" y="9" width="59" height="61"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Rkc-l4-GRU" secondAttribute="trailing" constant="5" id="D8t-OF-mGT"/>
+                                            <constraint firstItem="Zdc-Cz-XNe" firstAttribute="top" secondItem="B04-TV-xuX" secondAttribute="top" constant="5" id="OtI-Ie-S17"/>
+                                            <constraint firstItem="Zdc-Cz-XNe" firstAttribute="leading" secondItem="B04-TV-xuX" secondAttribute="leading" constant="5" id="Tun-NY-sh6"/>
+                                            <constraint firstAttribute="bottom" secondItem="Zdc-Cz-XNe" secondAttribute="bottom" constant="5" id="e5s-2Z-Imu"/>
+                                            <constraint firstItem="Zdc-Cz-XNe" firstAttribute="centerY" secondItem="Rkc-l4-GRU" secondAttribute="centerY" id="hgz-Jk-xPP"/>
+                                            <constraint firstItem="Rkc-l4-GRU" firstAttribute="leading" secondItem="Zdc-Cz-XNe" secondAttribute="trailing" constant="5" id="kcb-Ju-7J7"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="XV1-fo-cGn" eventType="touchUpInside" id="Saf-Vd-7Sw"/>
+                                        </connections>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Build a Bridge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjs-hF-93V">
+                                        <rect key="frame" x="48" y="8" width="168" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rd0-Da-IrZ">
+                                        <rect key="frame" x="233" y="8" width="24" height="24"/>
+                                        <state key="normal" image="ic_button_cancel_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="ic_button_cancel_pressed.png"/>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="XV1-fo-cGn" eventType="touchUpInside" id="OJ0-xI-1Ax"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Rd0-Da-IrZ" firstAttribute="top" secondItem="Ti9-lx-tav" secondAttribute="top" id="4CU-Qs-DAI"/>
+                                    <constraint firstItem="VMO-BV-HSW" firstAttribute="leading" secondItem="Ti9-lx-tav" secondAttribute="leading" constant="10" id="7Ri-lz-tvT"/>
+                                    <constraint firstAttribute="centerX" secondItem="B04-TV-xuX" secondAttribute="centerX" id="HJd-HZ-Yhx"/>
+                                    <constraint firstItem="2Vl-DB-JOp" firstAttribute="top" secondItem="VMO-BV-HSW" secondAttribute="bottom" constant="10" id="HNO-7c-WIi"/>
+                                    <constraint firstItem="VMO-BV-HSW" firstAttribute="top" secondItem="wjs-hF-93V" secondAttribute="bottom" constant="10" id="PCD-vZ-pze"/>
+                                    <constraint firstItem="Rkc-l4-GRU" firstAttribute="top" secondItem="2Vl-DB-JOp" secondAttribute="bottom" constant="10" id="Rbg-8N-Zav"/>
+                                    <constraint firstItem="wjs-hF-93V" firstAttribute="top" secondItem="Ti9-lx-tav" secondAttribute="top" constant="10" id="Zeg-rF-vph"/>
+                                    <constraint firstAttribute="bottom" secondItem="B04-TV-xuX" secondAttribute="bottom" constant="10" id="bl7-a6-uqX"/>
+                                    <constraint firstAttribute="trailing" secondItem="VMO-BV-HSW" secondAttribute="trailing" constant="10" id="cDL-HG-35u"/>
+                                    <constraint firstAttribute="centerX" secondItem="VMO-BV-HSW" secondAttribute="centerX" id="hns-8P-VN7"/>
+                                    <constraint firstAttribute="centerX" secondItem="wjs-hF-93V" secondAttribute="centerX" id="l2F-6C-erX"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rd0-Da-IrZ" secondAttribute="trailing" id="rZf-j6-RuJ"/>
+                                    <constraint firstAttribute="centerX" secondItem="2Vl-DB-JOp" secondAttribute="centerX" id="yIl-7f-dyL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ti9-lx-tav" firstAttribute="leading" secondItem="uMS-1x-WTz" secondAttribute="leadingMargin" constant="20" id="ezW-vx-c7B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ti9-lx-tav" secondAttribute="trailing" constant="20" id="hP5-ej-41i"/>
+                            <constraint firstAttribute="centerY" secondItem="Ti9-lx-tav" secondAttribute="centerY" id="twC-cC-kLE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dialogView" destination="Ti9-lx-tav" id="Kih-wK-AFZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQ8-Wy-vbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2561" y="386"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="t9H-5t-OZ7">
+            <objects>
+                <viewController storyboardIdentifier="BridgePlacementInfoDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XSa-wi-wLx" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oE9-7v-R39"/>
+                        <viewControllerLayoutGuide type="bottom" id="7NF-h6-DpK"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="TOS-1Z-rJm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPb-Bm-MkK">
+                                <rect key="frame" x="28" y="59" width="265" height="381"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Build a Bridge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iB8-zJ-fO6">
+                                        <rect key="frame" x="30" y="8" width="206" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zk8-o1-Vih" customClass="MFUIButton">
+                                        <rect key="frame" x="61" y="302" width="142" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO9-q7-I7k">
+                                                <rect key="frame" x="29" y="12" width="84" height="37"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="TO9-q7-I7k" secondAttribute="trailing" constant="10" id="BXa-k6-w9n"/>
+                                            <constraint firstAttribute="bottom" secondItem="TO9-q7-I7k" secondAttribute="bottom" constant="5" id="NTy-8N-QfD"/>
+                                            <constraint firstItem="TO9-q7-I7k" firstAttribute="top" secondItem="Zk8-o1-Vih" secondAttribute="top" constant="5" id="aCU-I2-AYr"/>
+                                            <constraint firstItem="TO9-q7-I7k" firstAttribute="leading" secondItem="Zk8-o1-Vih" secondAttribute="leading" constant="10" id="xtb-yf-40R"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="XSa-wi-wLx" eventType="touchUpInside" id="I4C-LV-Gy8"/>
+                                        </connections>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_hurdle_smasher_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-DD-K4F">
+                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jER-bt-HVQ">
+                                        <rect key="frame" x="8" y="38" width="249" height="114"/>
+                                        <string key="text">Terrific! Now tap your finger at two points between which you want to build the bridge.  Note that bridges can only be horizontal or vertical, not curved!</string>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Vc6-DD-K4F" firstAttribute="top" secondItem="jER-bt-HVQ" secondAttribute="bottom" constant="10" id="4kL-bn-hFN"/>
+                                    <constraint firstAttribute="centerX" secondItem="jER-bt-HVQ" secondAttribute="centerX" id="64X-QN-kAK"/>
+                                    <constraint firstAttribute="centerX" secondItem="Zk8-o1-Vih" secondAttribute="centerX" id="6CN-zC-wri"/>
+                                    <constraint firstAttribute="trailing" secondItem="jER-bt-HVQ" secondAttribute="trailing" constant="10" id="Bk2-VH-opY"/>
+                                    <constraint firstAttribute="centerX" secondItem="iB8-zJ-fO6" secondAttribute="centerX" id="C6H-WE-vQl"/>
+                                    <constraint firstAttribute="centerX" secondItem="Vc6-DD-K4F" secondAttribute="centerX" id="EU5-u4-kKQ"/>
+                                    <constraint firstItem="iB8-zJ-fO6" firstAttribute="top" secondItem="hPb-Bm-MkK" secondAttribute="top" constant="10" id="JHp-6d-1G1"/>
+                                    <constraint firstItem="jER-bt-HVQ" firstAttribute="top" secondItem="iB8-zJ-fO6" secondAttribute="bottom" constant="10" id="Kql-mL-liR"/>
+                                    <constraint firstAttribute="centerX" secondItem="Vc6-DD-K4F" secondAttribute="centerX" id="NMA-68-oFS"/>
+                                    <constraint firstAttribute="centerX" secondItem="jER-bt-HVQ" secondAttribute="centerX" id="RP7-0C-xEX"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zk8-o1-Vih" secondAttribute="bottom" constant="10" id="UJ2-7j-LuV"/>
+                                    <constraint firstItem="Zk8-o1-Vih" firstAttribute="top" secondItem="Vc6-DD-K4F" secondAttribute="bottom" constant="10" id="jEj-2i-EX5"/>
+                                    <constraint firstAttribute="centerX" secondItem="iB8-zJ-fO6" secondAttribute="centerX" id="kSS-Ho-8cs"/>
+                                    <constraint firstAttribute="centerX" secondItem="Zk8-o1-Vih" secondAttribute="centerX" id="lwb-uc-A4g"/>
+                                    <constraint firstItem="jER-bt-HVQ" firstAttribute="leading" secondItem="hPb-Bm-MkK" secondAttribute="leading" constant="10" id="wNf-FG-LV0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="hPb-Bm-MkK" secondAttribute="trailing" constant="20" id="0kV-ZM-q3j"/>
+                            <constraint firstAttribute="centerY" secondItem="hPb-Bm-MkK" secondAttribute="centerY" id="EXs-ZS-l8o"/>
+                            <constraint firstItem="hPb-Bm-MkK" firstAttribute="leading" secondItem="TOS-1Z-rJm" secondAttribute="leadingMargin" constant="20" id="o8o-zE-brB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dialogView" destination="hPb-Bm-MkK" id="gqr-Pk-hur"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XRi-fT-PYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2901" y="2639"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="v8C-gp-Ies">
+            <objects>
+                <viewController storyboardIdentifier="BridgePlacementTryAgainDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MZ4-O3-Kz7" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bWI-ea-XDd"/>
+                        <viewControllerLayoutGuide type="bottom" id="gtH-gf-TLz"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="iRJ-ct-saQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGX-uI-cPd">
+                                <rect key="frame" x="28" y="59" width="265" height="256"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJp-V8-97Z">
+                                        <rect key="frame" x="30" y="8" width="206" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Couldn't detect valid locations to build the bridge.  Please try again, by tapping on two points." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyc-ws-J0I">
+                                        <rect key="frame" x="8" y="38" width="249" height="114"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="afh-tH-eqz" customClass="MFUIButton">
+                                        <rect key="frame" x="55" y="160" width="142" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWF-9U-hYw">
+                                                <rect key="frame" x="29" y="12" width="84" height="37"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="qWF-9U-hYw" secondAttribute="bottom" constant="5" id="7Sz-Zv-9bP"/>
+                                            <constraint firstAttribute="trailing" secondItem="qWF-9U-hYw" secondAttribute="trailing" constant="10" id="IQf-fb-Mtx"/>
+                                            <constraint firstItem="qWF-9U-hYw" firstAttribute="leading" secondItem="afh-tH-eqz" secondAttribute="leading" constant="10" id="XSz-M0-rgM"/>
+                                            <constraint firstItem="qWF-9U-hYw" firstAttribute="top" secondItem="afh-tH-eqz" secondAttribute="top" constant="5" id="wlV-BA-cjy"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="MZ4-O3-Kz7" eventType="touchUpInside" id="nQ5-w4-B72"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="Kyc-ws-J0I" secondAttribute="centerX" id="623-5W-kqV"/>
+                                    <constraint firstAttribute="centerX" secondItem="dJp-V8-97Z" secondAttribute="centerX" id="7PS-ar-Gis"/>
+                                    <constraint firstAttribute="bottom" secondItem="afh-tH-eqz" secondAttribute="bottom" constant="10" id="8Ma-of-3Mn"/>
+                                    <constraint firstItem="Kyc-ws-J0I" firstAttribute="leading" secondItem="YGX-uI-cPd" secondAttribute="leading" constant="10" id="9Dd-id-D6s"/>
+                                    <constraint firstAttribute="centerX" secondItem="dJp-V8-97Z" secondAttribute="centerX" id="Rp4-jn-veS"/>
+                                    <constraint firstAttribute="centerX" secondItem="afh-tH-eqz" secondAttribute="centerX" id="Tbe-67-4Uk"/>
+                                    <constraint firstItem="afh-tH-eqz" firstAttribute="top" secondItem="Kyc-ws-J0I" secondAttribute="bottom" constant="10" id="WI4-rT-bwo"/>
+                                    <constraint firstItem="dJp-V8-97Z" firstAttribute="top" secondItem="YGX-uI-cPd" secondAttribute="top" constant="10" id="WsU-RZ-918"/>
+                                    <constraint firstItem="Kyc-ws-J0I" firstAttribute="top" secondItem="dJp-V8-97Z" secondAttribute="bottom" constant="10" id="lwf-YY-MjZ"/>
+                                    <constraint firstAttribute="centerX" secondItem="Kyc-ws-J0I" secondAttribute="centerX" id="pSe-y2-RbV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kyc-ws-J0I" secondAttribute="trailing" constant="10" id="tFA-Y5-Xfi"/>
+                                    <constraint firstAttribute="centerX" secondItem="afh-tH-eqz" secondAttribute="centerX" id="z2E-lO-lIx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="YGX-uI-cPd" firstAttribute="leading" secondItem="iRJ-ct-saQ" secondAttribute="leadingMargin" constant="20" id="7yg-0H-8hq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YGX-uI-cPd" secondAttribute="trailing" constant="20" id="ZTB-mx-3hA"/>
+                            <constraint firstAttribute="centerY" secondItem="YGX-uI-cPd" secondAttribute="centerY" id="cjv-0K-olQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dialogView" destination="YGX-uI-cPd" id="4IN-eV-0ne"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xG0-JR-t7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3234" y="2629"/>
         </scene>
     </scenes>
     <resources>
@@ -3627,6 +3914,7 @@
         <image name="help_image_screen_5.png" width="100" height="95"/>
         <image name="help_image_screen_8.png" width="250" height="136"/>
         <image name="ic_about.png" width="48" height="48"/>
+        <image name="ic_add_bridge.png" width="96" height="96"/>
         <image name="ic_add_bridge_normal.png" width="48" height="48"/>
         <image name="ic_add_bridge_pressed.png" width="48" height="48"/>
         <image name="ic_add_coins_normal.png" width="48" height="48"/>

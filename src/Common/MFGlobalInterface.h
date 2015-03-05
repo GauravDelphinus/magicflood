@@ -24,6 +24,7 @@ extern "C" {
     int getNumCoinsForMoves();
     int getNumCoinsForStar();
     int getNumCoinsForHurdleSmasher();
+    int getNumCoinsForBridge();
     int getMinLevelToAddStars();
     int getMinLevelToAddHurdleSmasher();
     int getMinLevelToAddBridge();
