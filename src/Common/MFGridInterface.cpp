@@ -298,6 +298,52 @@ int buildBridge(long handle, int startx, int starty, int endx, int endy)
     return 0;
 }
     
+int isBridgeEndpointValid(long handle, int row, int col)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid *>(handle);
+    if (grid != NULL)
+    {
+        return grid->isBridgeEndpointValid(row, col);
+    }
+    
+    return 0;
+}
+
+int ** checkBridgeValid(long handle, int startrow, int startcol, int endrow, int endcol)
+{
+    MFGrid *grid = reinterpret_cast<MFGrid *>(handle);
+    if (grid != NULL)
+    {
+        return grid->checkBridgeValid(startrow, startcol, endrow, endcol);
+
+        int **internalBridgeExtremes = grid->checkBridgeValid(startrow, startcol, endrow, endcol);
+        int **bridgeExtremes = (int **) malloc (2 * sizeof(int*));
+        for (int i = 0; i < 2; i++)
+        {
+            bridgeExtremes[i] = (int *) malloc (2 * sizeof(int));
+            bridgeExtremes[i][0] = internalBridgeExtremes[i][0];
+            bridgeExtremes[i][1] = internalBridgeExtremes[i][1];
+        }
+        
+        return bridgeExtremes;
+    }
+    
+    return NULL;
+}
+    
+void freeBridgeExtremes(long handle, int **bridgeExtremes)
+{
+    if (bridgeExtremes != NULL)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            free(bridgeExtremes[i]);
+        }
+        
+        free(bridgeExtremes);
+    }
+}
+
 bool hasSpaces(long handle)
 {
     MFGrid *grid = reinterpret_cast<MFGrid *>(handle);

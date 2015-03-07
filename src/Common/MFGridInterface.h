@@ -28,6 +28,9 @@ void freeGridData(long handle, int **gridData);
     int smashHurdle(long handle, int x, int y);
     bool hasHurdles(long handle);
     int buildBridge(long handle, int startx, int starty, int endx, int endy);
+    int ** checkBridgeValid(long handle, int startrow, int startcol, int endrow, int endcol);
+    void freeBridgeExtremes(long handle, int **bridgeExtremes);
+    int isBridgeEndpointValid(long handle, int row, int col);
     bool hasSpaces(long handle);
 }
 

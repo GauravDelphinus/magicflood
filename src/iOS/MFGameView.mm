@@ -39,7 +39,10 @@
     int maxMoves; // max number of moves in this game
 }
 
-@property int mFlashCellX, mFlashCellY; //flash this cell when non-zero
+@property BOOL mBridgeBuildingMode;
+@property BOOL mBridgeValid; //whether the currently drawn bridge is 'valid'.  If not, it will be shown in red color
+@property int mBridgeStartX, mBridgeStartY, mBridgeEndX, mBridgeEndY; //the x/y coordinates (not row/col) of the currently drawn bridge
+@property int mBridgeMinRow, mBridgeMinCol, mBridgeMaxRow, mBridgeMaxCol; //the row/col of the currently drawn bridge
 @end
 
 @implementation MFGameView
@@ -260,8 +263,62 @@
     /**
      Draw the shadow
      **/
-    
     [self drawGridShadowWithLeft:hOffset withTop:vOffset WithGridLength:gridlength WithCellSize:cellSize];
+    
+    /**
+     Draw the bridge
+     **/
+    [self drawBridgeGhost:cellSize];
+}
+
+-(void)drawBridgeGhost:(int)cellSize
+{
+    if (self.mBridgeBuildingMode) //only draw bridge ghost if you're in the building mode.  Else, it's already part of the grid data
+    {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        CGContextSaveGState(context);
+        CGContextBeginPath(context);
+        
+        if (self.mBridgeValid) //current bridge ghost is valid
+        {
+            /**
+             Draw the connector line, in blue color to indicate 'valid'
+             **/
+            CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
+        }
+        else
+        {
+            /**
+             Draw the connector line, in red color, to indicate 'invalid'
+             **/
+            CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
+        }
+
+        CGContextSetLineWidth(context, 2.0);
+        
+        CGContextMoveToPoint(context, self.mBridgeStartX, self.mBridgeStartY);
+        CGContextAddLineToPoint(context, self.mBridgeEndX, self.mBridgeEndY);
+        
+        CGContextStrokePath(context);
+        
+        if (self.mBridgeValid)
+        {
+            /**
+             Now draw the bridge Extremes if available.
+             **/
+            int minX = [self getXForCol:self.mBridgeMinCol];
+            int minY = [self getYForRow:self.mBridgeMinRow];
+            int maxX = [self getXForCol:self.mBridgeMaxCol] + cellSize;
+            int maxY = [self getYForRow:self.mBridgeMaxRow] + cellSize;
+            
+            CGRect bridgeRect = CGRectMake(minX, minY, maxX - minX, maxY - minY);
+            CGContextAddRect(context, bridgeRect);
+            CGContextStrokeRect(context, bridgeRect);
+        }
+        
+        CGContextRestoreGState(context);
+    }
 }
 
 /**
@@ -667,22 +724,43 @@
     }
 }
 
-/**
- Flash/Indicate thsi particular cell.  Used currently during the bridge
- placement mode when the first point has been selected and the second is
- in the process of being selected.
- **/
--(void)flashCellWithX:(int)x withY:(int)y Enable:(BOOL)enable
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (enable)
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint location = [touch locationInView:touch.view];
+    NSLog(@"touchesBegan with x = %d, y = %d", (int)location.x, (int)location.y);
+    
+    //store actual x/y positions to draw the ghost
+    self.mBridgeStartX = (int)location.x;
+    self.mBridgeStartY = (int)location.y;
+    self.mBridgeEndX = (int)location.x;
+    self.mBridgeEndY = (int)location.y;
+    
+    int row = [self getRowForY:location.y];
+    int col = [self getColForX:location.x];
+    
+    if (col >= 0 && col < gridSize && row >= 0 && row < gridSize)
     {
-        self.mFlashCellX = x;
-        self.mFlashCellY = y;
+        [self.delegate handleDragBeginAtX:(int)location.x Y:(int)location.y Row:row Col:col];
     }
-    else
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint location = [touch locationInView:touch.view];
+    NSLog(@"touchesMoved with x = %d, y = %d", (int)location.x, (int)location.y);
+    
+    //update the actual x/y positions to draw the ghost
+    self.mBridgeStartX = (int)location.x;
+    self.mBridgeStartY = (int)location.y;
+    
+    int row = [self getRowForY:location.y];
+    int col = [self getColForX:location.x];
+    
+    if (col >= 0 && col < gridSize && row >= 0 && row < gridSize)
     {
-        self.mFlashCellX = 0;
-        self.mFlashCellY = 0;
+        [self.delegate handleDragMoveAtX:(int)location.x Y:(int)location.y Row:row Col:col];
     }
 }
 
@@ -696,6 +774,28 @@
     CGPoint location = [touch locationInView:touch.view];
     NSLog(@"touchesEnded called with x = %d, y = %d", (int)location.x, (int)location.y);
 
+    //update the actual x/y positions to draw the ghost
+    self.mBridgeStartX = (int)location.x;
+    self.mBridgeStartY = (int)location.y;
+    
+    int row = [self getRowForY:location.y];
+    int col = [self getColForX:location.x];
+    
+    if (col >= 0 && col < gridSize && row >= 0 && row < gridSize)
+    {
+        if (self.mBridgeBuildingMode)
+        {
+            [self.delegate handleDragEndAtX:(int)location.x Y:(int)location.y Row:row Col:col];
+        }
+        else
+        {
+            [self.delegate handleGameViewTapAtX:row andY:col];
+        }
+    }
+}
+
+-(int)getRowForY:(int)y
+{
     CGRect screenBound = [self bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
@@ -708,23 +808,116 @@
     //adjusted gridlength (reduced due to rounding off of each cell)
     gridlength = gridSize * cellSize;
     
-    //NSLog(@"screenWidth = %f, screenHeight = %f, scale= %f", screenWidth, screenHeight, scale);
+    int vOffset = (screenHeight - gridlength - SHADOW_THICKNESS)/2;
+    
+    int yOffset = y - vOffset;
+    int row = yOffset / cellSize;
+    
+    return row;
+}
+
+-(int)getColForX:(int)x
+{
+    CGRect screenBound = [self bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    
+    int gap = 0;
+    int gridlength = MIN(screenSize.height, screenWidth) - gap - SHADOW_THICKNESS;
+    int cellSize = gridlength/gridSize;
+    
+    //adjusted gridlength (reduced due to rounding off of each cell)
+    gridlength = gridSize * cellSize;
     
     int horizontalGap = screenWidth - gridlength - SHADOW_THICKNESS;
     
-    int vOffset = (screenHeight - gridlength - SHADOW_THICKNESS)/2;
     int hOffset = horizontalGap / 2;
+    
+    int xOffset = x - hOffset;
+    
+    int col = xOffset / cellSize;
+    
+    return col;
+}
 
-    int xOffset = (int)location.x - hOffset;
-    int yOffset = (int)location.y - vOffset;
+-(int)getYForRow:(int)row
+{
+    CGRect screenBound = [self bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
     
-    int gridx = xOffset / cellSize;
-    int gridy = yOffset / cellSize;
+    int gap = 0;
+    int gridlength = MIN(screenSize.height, screenWidth) - gap - SHADOW_THICKNESS;
+    int cellSize = gridlength/gridSize;
     
-    if (gridx >= 0 && gridx < gridSize && gridy >= 0 && gridy < gridSize)
+    //adjusted gridlength (reduced due to rounding off of each cell)
+    gridlength = gridSize * cellSize;
+    
+    int vOffset = (screenHeight - gridlength - SHADOW_THICKNESS)/2;
+    
+    int y = vOffset + cellSize * row;
+    return y;
+}
+
+-(int)getXForCol:(int)col
+{
+    CGRect screenBound = [self bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    
+    int gap = 0;
+    int gridlength = MIN(screenSize.height, screenWidth) - gap - SHADOW_THICKNESS;
+    int cellSize = gridlength/gridSize;
+    
+    //adjusted gridlength (reduced due to rounding off of each cell)
+    gridlength = gridSize * cellSize;
+    
+    int horizontalGap = screenWidth - gridlength - SHADOW_THICKNESS;
+    
+    int hOffset = horizontalGap / 2;
+    
+    int x = hOffset + cellSize * col;
+    return x;
+}
+
+-(void)enterExitBrigeBuildingMode:(BOOL)enter ResetData:(BOOL)reset
+{
+    if (enter)
     {
-        [self.delegate handleGameViewTapAtX:gridy andY:gridx];
+        self.mBridgeBuildingMode = YES;
     }
+    else
+    {
+        self.mBridgeBuildingMode = NO;
+    }
+    
+    if (reset)
+    {
+        //re-set all data, as we may be re-entering after a failed attempt to build the bridge
+        self.mBridgeValid = NO;
+        self.mBridgeMinRow = -1;
+        self.mBridgeMinCol = -1;
+        self.mBridgeMaxRow = -1;
+        self.mBridgeMaxCol = -1;
+        self.mBridgeStartX = -1;
+        self.mBridgeStartY = -1;
+        self.mBridgeEndX = -1;
+        self.mBridgeEndY = -1;
+    }
+}
+
+-(void)setBridgeValid:(BOOL)valid
+{
+    self.mBridgeValid = valid;
+}
+
+-(void)setBridgeExtremesMinRow:(int)minRow minCol:(int)minCol maxRow:(int)maxRow maxCol:(int)maxCol
+{
+    self.mBridgeMinRow = minRow;
+    self.mBridgeMinCol = minCol;
+    self.mBridgeMaxRow = maxRow;
+    self.mBridgeMaxCol = maxCol;
 }
 
 @end

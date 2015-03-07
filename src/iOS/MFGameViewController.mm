@@ -45,6 +45,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *movesLable; //UILabel that displays the Moves header
 @property (strong, nonatomic) IBOutlet UIButton *mAddBridgeButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *mAddBridgeButtonLeftConstraints;
+@property int mBridgeStartRow, mBridgeStartCol, mBridgeEndRow, mBridgeEndCol; //the row/col of the currently drawn bridge
 
 @property (strong, nonatomic) IBOutlet MFGameView *gameView; //UIView that renders the actual game board
 @property BOOL mStarPlacementMode;
@@ -1019,6 +1020,88 @@
 }
 
 /*********************  MFGameView Protocol Handlers **************************/
+-(void)handleDragBeginAtX:(int)x Y:(int)y Row:(int)row Col:(int)col
+{
+    if (self.mBridgeMode)
+    {
+        [self.gameView setBridgeValid:NO]; //bridge isn't valid until both points are valid
+        
+        if (isBridgeEndpointValid(self.gridHandle, row, col))
+        {    
+            //store the valid start row/col
+            self.mBridgeStartRow = row;
+            self.mBridgeStartCol = col;
+        }
+        
+        [self.gameView enterExitBrigeBuildingMode:YES ResetData:NO]; //enter the bridge building mode
+    }
+}
+
+-(void)handleDragMoveAtX:(int)x Y:(int)y Row:(int)row Col:(int)col
+{
+    if (self.mBridgeMode)
+    {
+        int **bridgeExtremes = checkBridgeValid(self.gridHandle, self.mBridgeStartRow, self.mBridgeStartCol, row, col);
+        if (bridgeExtremes != NULL)
+        {
+            [self.gameView setBridgeValid:YES];
+            
+            //store the valid end row/col
+            self.mBridgeEndRow = row;
+            self.mBridgeEndCol = col;
+            
+            //update the bridge extremes so we can draw the bridge ghost
+            [self.gameView setBridgeExtremesMinRow:bridgeExtremes[0][0] minCol:bridgeExtremes[0][1] maxRow:bridgeExtremes[1][0] maxCol:bridgeExtremes[1][1]];
+            freeBridgeExtremes(self.gridHandle, bridgeExtremes);
+            bridgeExtremes = NULL;
+        }
+        else
+        {
+            [self.gameView setBridgeValid:NO];
+        }
+    }
+}
+
+-(void)handleDragEndAtX:(int)x Y:(int)y Row:(int)row Col:(int)col
+{
+    if (self.mBridgeMode)
+    {
+        int **bridgeExtremes = checkBridgeValid(self.gridHandle, self.mBridgeStartRow, self.mBridgeStartCol, row, col);
+        if (bridgeExtremes != NULL)
+        {
+            freeBridgeExtremes(self.gridHandle, bridgeExtremes);
+            bridgeExtremes = NULL;
+            
+            [self.gameView setBridgeValid:YES];
+            
+            //store the final valid end/row values
+            self.mBridgeEndRow = row;
+            self.mBridgeEndCol = col;
+            
+            //finalize and build the bridge
+            
+            [self playSound:mBridgePlacedSoundID];
+            
+            self.mBridgeMode = NO;
+            
+            //actually build the bridge
+            buildBridge(self.gridHandle, self.mBridgeStartRow, self.mBridgeStartCol, self.mBridgeEndRow, self.mBridgeEndCol);
+            
+            int **gridData = getGridData(self.gridHandle);
+            [[self gameView] updateGameData:gridData];
+            freeGridData(self.gridHandle, gridData);
+            gridData = NULL;
+            
+            [self enableDisableAllButtons:YES];
+            
+            [self.gameView enterExitBrigeBuildingMode:NO ResetData:NO];
+        }
+        else
+        {
+            [self.gameView enterExitBrigeBuildingMode:YES ResetData:YES]; //reenter the bridge building mode
+        }
+    }
+}
 
 /**
  The user tapped on the game grid at position x,y.
@@ -1069,6 +1152,7 @@
             [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
         }
     }
+    
     else if (self.mBridgeMode == YES)
     {
         if (self.mBridgeStartPoint.x == -1 && self.mBridgeStartPoint.y == -1) //first point selection
@@ -1078,7 +1162,7 @@
             {
                 self.mBridgeStartPoint = CGPointMake(x, y);
                 
-                [self.gameView flashCellWithX:x withY:y Enable:YES];
+                //[self.gameView flashCellWithX:x withY:y Enable:YES];
             }
             else
             {
@@ -1092,7 +1176,7 @@
             {
                 self.mBridgeStartPoint = {-1, -1};
                 
-                [self.gameView flashCellWithX:x withY:y Enable:NO];
+                //[self.gameView flashCellWithX:x withY:y Enable:NO];
                 
                 [self playSound:mBridgePlacedSoundID];
                 
@@ -1116,6 +1200,7 @@
             }
         }
     }
+    
 }
 
 /*********************  Dialog Handling **************************/

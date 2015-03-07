@@ -69,6 +69,8 @@ public:
     int smashHurdle(int x, int y);
     bool hasHurdles(); //has at least 1 hurdle
     int buildBridge(int startx, int starty, int endx, int endy);
+    int ** checkBridgeValid(int startrow, int startcol, int endrow, int endcol);
+    int isBridgeEndpointValid(int row, int col);
     bool hasSpaces();
     ~MFGrid();
 };

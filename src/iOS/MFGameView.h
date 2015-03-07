@@ -13,6 +13,11 @@
 @required
 // list of required methods
 -(void)handleGameViewTapAtX:(int)x andY:(int)y;
+-(void)handleDragBeginAtX:(int)x Y:(int)y Row:(int)row Col:(int)col;
+-(void)handleDragMoveAtX:(int)x Y:(int)y Row:(int)row Col:(int)col;
+-(void)handleDragEndAtX:(int)x Y:(int)y Row:(int)row Col:(int)col;
+-(BOOL)isBridgeValidWithStartRow:(int)startRow startCol:(int)startCol endRow:(int)endRow endCol:(int)endCol;
+-(void)finalizeBridgeWithStartRow:(int) startRow startCol:(int)startCol endRow:(int)endRow endCol:(int)endCol;
 @end
 
 /**
@@ -27,7 +32,9 @@
 -(void)updateGameData:(int **)grid;
 -(void)updateStartPos:(int **)startPos withNum:(int)numStartPos;
 -(void)enableDisableTouchInput:(BOOL)enable;
--(void)flashCellWithX:(int)x withY:(int)y Enable:(BOOL)enable;
+-(void)enterExitBrigeBuildingMode:(BOOL)enter ResetData:(BOOL)reset;
+-(void)setBridgeValid:(BOOL)valid;
+-(void)setBridgeExtremesMinRow:(int)minRow minCol:(int)minCol maxRow:(int)maxRow maxCol:(int)maxCol;
 @end
 
 

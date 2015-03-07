@@ -711,107 +711,183 @@ bool MFGrid::hasHurdles()
 
 int MFGrid::buildBridge(int startrow, int startcol, int endrow, int endcol)
 {
-    if (endrow == -1 && endcol == -1) //first point selection
+    //both the end points must be valid
+    if (!isValidBridgeEndpoint(startrow, startcol, mGameGrid) ||
+            !isValidBridgeEndpoint(endrow, endcol, mGameGrid))
     {
-        /**
-         Check if the first point is valid.  We must make sure that at least
-         one of the four cells on East/West/North/South is a 'space'
-         **/
-        
-        return isValidBridgeEndpoint(startrow, startcol, mGameGrid);
+        return 0;
     }
-    else //already have the first point, check for second point
+    
+    int mincol = -1, maxcol = -1, minrow = -1, maxrow = -1;
+    /**
+     The bridge can be either horizontal or vertical.
+     Either way, the allowed offset variation is +/- 1 row/column
+     **/
+    int bridgeThickness = 2;
+    if (abs(startrow - endrow) < bridgeThickness)
     {
-        int mincol = -1, maxcol = -1, minrow = -1, maxrow = -1;
+        //bridge is horizontal
         
-        if (!isValidBridgeEndpoint(endrow, endcol, mGameGrid))
-        {
-            return 0;
-        }
+        //min and max columns remain the start and end cols
+        mincol = std::min(startcol, endcol);
+        maxcol = std::max(startcol, endcol);
         
-        /**
-         The bridge can be either horizontal or vertical.
-         Either way, the allowed offset variation is +/- 1 row/column
-         **/
-        int bridgeThickness = 2;
-        if (abs(startrow - endrow) < bridgeThickness)
+        //figure out the min and max rows
+        minrow = std::min(startrow, endrow);
+        maxrow = std::max(startrow, endrow);
+        if (maxrow - bridgeThickness + 1 < 0)
         {
-            //bridge is horizontal
-            
-            //min and max columns remain the start and end cols
-            mincol = std::min(startcol, endcol);
-            maxcol = std::max(startcol, endcol);
-            
-            //figure out the min and max rows
-            minrow = std::min(startrow, endrow);
-            maxrow = std::max(startrow, endrow);
-            if (maxrow - bridgeThickness + 1 < 0)
-            {
-                //grow from minrow downwards
-                maxrow = minrow + bridgeThickness - 1;
-            }
-            else
-            {
-                //grow from maxrow upwards
-                minrow = maxrow - bridgeThickness + 1;
-            }
-        }
-        else if (abs(startcol - endcol) < bridgeThickness)
-        {
-            //bridge is vertical
-            
-            //min and max rows remain the same as start and end rows
-            minrow = std::min(startrow, endrow);
-            maxrow = std::max(startrow, endrow);
-            
-            //figure out the min and max cols
-            mincol = std::min(startcol, endcol);
-            maxcol = std::max(startcol, endcol);
-            if (maxcol - bridgeThickness + 1 < 0)
-            {
-                //grow from mincol rightwards
-                maxcol = mincol + bridgeThickness - 1;
-            }
-            else
-            {
-                //gro from maxcol leftwards
-                mincol = maxcol - bridgeThickness + 1;
-            }
+            //grow from minrow downwards
+            maxrow = minrow + bridgeThickness - 1;
         }
         else
         {
-            //start and end bridge thickness too far apart
-            return 0;
+            //grow from maxrow upwards
+            minrow = maxrow - bridgeThickness + 1;
         }
+    }
+    else if (abs(startcol - endcol) < bridgeThickness)
+    {
+        //bridge is vertical
         
-        //now actually build the bridge!
-        srand((unsigned int)time(NULL));
+        //min and max rows remain the same as start and end rows
+        minrow = std::min(startrow, endrow);
+        maxrow = std::max(startrow, endrow);
         
-        /**
-         For the rectangle between minrow, mincol and maxrow, maxcol fill the cells
-         with a random color if they are a space.
-         **/
-        for (int i = minrow; i <= maxrow; i++)
+        //figure out the min and max cols
+        mincol = std::min(startcol, endcol);
+        maxcol = std::max(startcol, endcol);
+        if (maxcol - bridgeThickness + 1 < 0)
         {
-            for (int j = mincol; j <= maxcol; j++)
-            {
-                if (mGameGrid[i][j] == '^')
-                {
-                    int randColor = rand() % GRID_NUM_COLORS + 1;
-                    mGameGrid[i][j] = randColor;
-                }
-            }
+            //grow from mincol rightwards
+            maxcol = mincol + bridgeThickness - 1;
         }
-        
-        return 1;
+        else
+        {
+            //gro from maxcol leftwards
+            mincol = maxcol - bridgeThickness + 1;
+        }
+    }
+    else
+    {
+        //start and end bridge thickness too far apart
+        return 0;
     }
     
-    return 0;
+    //now actually build the bridge!
+    srand((unsigned int)time(NULL));
+    
+    /**
+     For the rectangle between minrow, mincol and maxrow, maxcol fill the cells
+     with a random color if they are a space.
+     **/
+    for (int i = minrow; i <= maxrow; i++)
+    {
+        for (int j = mincol; j <= maxcol; j++)
+        {
+            if (mGameGrid[i][j] == '^')
+            {
+                int randColor = rand() % GRID_NUM_COLORS + 1;
+                mGameGrid[i][j] = randColor;
+            }
+        }
+    }
+    
+    return 1;
+}
+
+int MFGrid::isBridgeEndpointValid(int row, int col)
+{
+    return isValidBridgeEndpoint(row, col, mGameGrid);
+}
+
+int ** MFGrid::checkBridgeValid(int startrow, int startcol, int endrow, int endcol)
+{
+    //both the end points must be valid
+    if (!isValidBridgeEndpoint(startrow, startcol, mGameGrid) ||
+        !isValidBridgeEndpoint(endrow, endcol, mGameGrid))
+    {
+        return NULL;
+    }
+    
+    int mincol = -1, maxcol = -1, minrow = -1, maxrow = -1;
+    /**
+     The bridge can be either horizontal or vertical.
+     Either way, the allowed offset variation is +/- 1 row/column
+     **/
+    int bridgeThickness = 2;
+    if (abs(startrow - endrow) < bridgeThickness)
+    {
+        //bridge is horizontal
+        
+        //min and max columns remain the start and end cols
+        mincol = std::min(startcol, endcol);
+        maxcol = std::max(startcol, endcol);
+        
+        //figure out the min and max rows
+        minrow = std::min(startrow, endrow);
+        maxrow = std::max(startrow, endrow);
+        if (maxrow - bridgeThickness + 1 < 0)
+        {
+            //grow from minrow downwards
+            maxrow = minrow + bridgeThickness - 1;
+        }
+        else
+        {
+            //grow from maxrow upwards
+            minrow = maxrow - bridgeThickness + 1;
+        }
+    }
+    else if (abs(startcol - endcol) < bridgeThickness)
+    {
+        //bridge is vertical
+        
+        //min and max rows remain the same as start and end rows
+        minrow = std::min(startrow, endrow);
+        maxrow = std::max(startrow, endrow);
+        
+        //figure out the min and max cols
+        mincol = std::min(startcol, endcol);
+        maxcol = std::max(startcol, endcol);
+        if (maxcol - bridgeThickness + 1 < 0)
+        {
+            //grow from mincol rightwards
+            maxcol = mincol + bridgeThickness - 1;
+        }
+        else
+        {
+            //gro from maxcol leftwards
+            mincol = maxcol - bridgeThickness + 1;
+        }
+    }
+    else
+    {
+        //start and end bridge thickness too far apart
+        return NULL;
+    }
+    
+    //now fill the extreme row and col
+    int **bridgeExtremes = (int **) malloc(2 * sizeof(int *));
+    for (int i = 0; i < 2; i++)
+    {
+        bridgeExtremes[i] = (int *) malloc (2 * sizeof(int));
+    }
+    bridgeExtremes[0][0] = minrow;
+    bridgeExtremes[0][1] = mincol;
+    bridgeExtremes[1][0] = maxrow;
+    bridgeExtremes[1][1] = maxcol;
+    
+    return bridgeExtremes;
 }
 
 bool MFGrid::isValidBridgeEndpoint(int row, int col, int **grid)
 {
     if (!isInside(row, col)) //invalid coordinates
+    {
+        return 0;
+    }
+    
+    if (!isFillable(row, col, mGameGrid))
     {
         return 0;
     }
