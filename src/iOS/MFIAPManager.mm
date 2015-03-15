@@ -129,8 +129,10 @@
  updatedTransactions:(NSArray *)transactions
 {
     for (SKPaymentTransaction *transaction in transactions) {
+        NSLog(@"transaction status: Error code: %ld, Error description: %@", transaction.error.code, transaction.error.localizedDescription);
         switch (transaction.transactionState) {
                 // Call the appropriate custom method for the transaction state.
+                
             case SKPaymentTransactionStatePurchasing:
                 break;
             case SKPaymentTransactionStateDeferred:

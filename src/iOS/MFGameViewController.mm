@@ -63,6 +63,9 @@
 @property long gridHandle; //handle to the grid object in C++ code
 @property NSTimer *mStarRotationTimer; //star rotation timer for the game view
 
+//@property (strong, nonatomic) IBOutlet UIView *mLifelineInfoCotainerView;
+
+
 /**
  * Dialog data that is used to control workflow
  */
@@ -974,6 +977,39 @@
             [self.view addConstraint:self.mAddBridgeButtonLeftConstraints];
         }
     }
+    
+    if (self.mStarPlacementMode)
+    {
+        //self.mLifelineInfoCotainerView.hidden = NO;
+        
+        //self.mSoundButton.hidden = YES;
+        //self.mLevelsLabel.hidden = YES;
+        //self.mMenuButton.hidden = YES;
+        
+        [self enableDisableAllButtons:NO];
+    }
+    else if (self.mHurdleSmasherMode)
+    {
+        //self.mLifelineInfoCotainerView.hidden = NO;
+        
+        [self enableDisableAllButtons:NO];
+    }
+    else if (self.mBridgeMode)
+    {
+        //self.mLifelineInfoCotainerView.hidden = NO;
+        
+        [self enableDisableAllButtons:NO];
+    }
+    else
+    {
+        //self.mLifelineInfoCotainerView.hidden = YES;
+        
+        //self.mSoundButton.hidden = NO;
+        //self.mLevelsLabel.hidden = NO;
+        //self.mMenuButton.hidden = NO;
+        
+        [self enableDisableAllButtons:YES];
+    }
 }
 
 /**
@@ -1092,7 +1128,7 @@
             freeGridData(self.gridHandle, gridData);
             gridData = NULL;
             
-            [self enableDisableAllButtons:YES];
+            [self refreshLifelinesUI];
             
             [self.gameView enterExitBrigeBuildingMode:NO ResetData:NO];
         }
@@ -1124,7 +1160,7 @@
             freeStartPos(self.gridHandle, startPos);
             startPos = NULL;
             
-            [self enableDisableAllButtons:YES];
+            [self refreshLifelinesUI];
         }
         else //couldn't place the star, so keep trying
         {
@@ -1145,7 +1181,7 @@
             freeGridData(self.gridHandle, gridData);
             gridData = NULL;
             
-            [self enableDisableAllButtons:YES];
+            [self refreshLifelinesUI];
         }
         else //couldn't find a hurdle.  So keep trying
         {
@@ -1187,7 +1223,7 @@
                 freeGridData(self.gridHandle, gridData);
                 gridData = NULL;
                 
-                [self enableDisableAllButtons:YES];
+                [self refreshLifelinesUI];
             }
             else //couldn't detect a bridge, so keep trying
             {
@@ -1429,7 +1465,7 @@
                 
                 [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO withData:0 withAnimation:NO];
                 
-                [self enableDisableAllButtons:NO];
+                [self refreshLifelinesUI];
             }
             else
             {
@@ -1456,7 +1492,7 @@
                 
                 [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO withData:0 withAnimation:NO];
                 
-                [self enableDisableAllButtons:NO];
+                [self refreshLifelinesUI];
             }
             else
             {
@@ -1483,7 +1519,7 @@
                 
                 [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_INFO withData:0 withAnimation:NO];
                 
-                [self enableDisableAllButtons:NO];
+                [self refreshLifelinesUI];
             }
             else
             {
