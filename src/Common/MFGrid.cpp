@@ -261,7 +261,7 @@ void MFGrid::initializeGrid()
                     mGameGrid[i] = (int *)calloc(gridSize, sizeof(int));
                     for (int j = 0; j < gridSize; j++)
                     {
-                        if (token[k] == '^')
+                        if (token[k] == '.')
                         {
                             mGameGrid[i][j] = token[k];
                         }
@@ -791,7 +791,7 @@ int MFGrid::buildBridge(int startrow, int startcol, int endrow, int endcol)
     {
         for (int j = mincol; j <= maxcol; j++)
         {
-            if (mGameGrid[i][j] == '^')
+            if (mGameGrid[i][j] == '.')
             {
                 int randColor = rand() % GRID_NUM_COLORS + 1;
                 mGameGrid[i][j] = randColor;
@@ -899,19 +899,19 @@ bool MFGrid::isValidBridgeEndpoint(int row, int col, int **grid)
     }
     
     //check west
-    if (col > 0 && mGameGrid[row][col-1] == '^')
+    if (col > 0 && mGameGrid[row][col-1] == '.')
     {
         return 1;
     }
-    else if (row > 0 && mGameGrid[row-1][col] == '^') //check north
+    else if (row > 0 && mGameGrid[row-1][col] == '.') //check north
     {
         return 1;
     }
-    else if (col < gridSize-1 && mGameGrid[row][col+1] == '^') //check east
+    else if (col < gridSize-1 && mGameGrid[row][col+1] == '.') //check east
     {
         return 1;
     }
-    else if (row < gridSize-1 && mGameGrid[row+1][col] == '^') //check south
+    else if (row < gridSize-1 && mGameGrid[row+1][col] == '.') //check south
     {
         return 1;
     }

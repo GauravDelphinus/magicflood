@@ -38,9 +38,9 @@ int main(int argc, char *argv[])
 				dummygrid[strIndex++] = '0';
 				//insert 0 to tht position
 			}
-			else if (str[j][k] == '^')
+			else if (str[j][k] == '.')
 			{
-				dummygrid[strIndex++] = '^';
+				dummygrid[strIndex++] = '.';
 			}
 			else if (str[j][k] == '-')
 			{
