@@ -52,6 +52,17 @@
         [self.mDescriptionLabel setText:title];
     }
     
+    [self refreshUI];
+    
+    if ([SKPaymentQueue canMakePayments] && !self.mIAPManager.mIsSynchronized)
+    {
+        [self.mIAPManager synchronize];
+        self.mIAPManager.mQueryDelegate = self;
+    }
+}
+
+-(void)refreshUI
+{
     if ([SKPaymentQueue canMakePayments] && self.mIAPManager.mIsSynchronized)
     {
         SKProduct *product500Coins = nil, *product1000Coins = nil, *product2500Coins = nil, *product5000Coins = nil;
@@ -105,6 +116,16 @@
         self.mConnectionProblemLabel.hidden = NO;
         self.mConsumableNoteLabel.hidden = YES;
     }
+}
+
+/**
+ This is called when a IAP query finished.  If successful,
+ update the values of the IAP items and make the buttons
+ enabled.
+ **/
+-(void)onQueryFinished:(BOOL)status
+{
+    [self refreshUI];
 }
 
 @end

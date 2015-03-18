@@ -8,6 +8,6 @@
 
 #import "MFGameDialogController.h"
 
-@interface MFRemoveAdsDialogViewController : MFGameDialogController
+@interface MFRemoveAdsDialogViewController : MFGameDialogController <IAPQueryHandler>
 
 @end

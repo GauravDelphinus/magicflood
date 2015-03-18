@@ -1981,10 +1981,10 @@
             </objects>
             <point key="canvasLocation" x="3764" y="4813"/>
         </scene>
-        <!--Game Dialog Controller-->
+        <!--Purchase Failed Dialog View Controller-->
         <scene sceneID="HWe-PK-1Pb">
             <objects>
-                <viewController storyboardIdentifier="IAPPurchaseFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ujz-fv-2L4" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IAPPurchaseFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ujz-fv-2L4" customClass="MFIAPPurchaseFailedDialogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IPj-j7-lRJ"/>
                         <viewControllerLayoutGuide type="bottom" id="dtZ-dG-g4Y"/>
@@ -2024,9 +2024,9 @@
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_iap_failed.png" translatesAutoresizingMaskIntoConstraints="NO" id="03u-IN-KZs">
                                         <rect key="frame" x="157" y="296" width="110" height="119"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was an error in completing the purchase.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgg-9S-Sr0">
-                                        <rect key="frame" x="21" y="116" width="383" height="162"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There was an error in completing the purchase.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgg-9S-Sr0">
+                                        <rect key="frame" x="21" y="93" width="383" height="202"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="19"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2038,6 +2038,7 @@
                     </view>
                     <connections>
                         <outlet property="dialogView" destination="B8A-f5-q8B" id="hfT-fa-Nqq"/>
+                        <outlet property="mDescriptionLabel" destination="Lgg-9S-Sr0" id="go0-XK-EUT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEl-z3-FTb" userLabel="First Responder" sceneMemberID="firstResponder"/>

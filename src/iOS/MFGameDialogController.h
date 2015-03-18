@@ -27,7 +27,7 @@
 @interface MFGameDialogController : UIViewController
 
 @property int dialogType;
-@property int data; // additional data used by a dialog, if required
+@property void * data; // additional data used by a dialog, if required
 @property id <GameDialogOptionSelectedDelegate> delegate; //dialog option selected delegate
 @property MFIAPManager *mIAPManager;
 @end

@@ -468,6 +468,7 @@
 		F1B6B3501AA2021200D39B29 /* ic_test@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F1B6B34B1AA2021200D39B29 /* ic_test@2x~ipad.png */; };
 		F1B6B3511AA2021200D39B29 /* ic_test@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1B6B34C1AA2021200D39B29 /* ic_test@3x.png */; };
 		F1B6B3521AA2021200D39B29 /* ic_test~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F1B6B34D1AA2021200D39B29 /* ic_test~ipad.png */; };
+		F1BFABC91AB8D24700BCAAA6 /* MFIAPPurchaseFailedDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BFABC81AB8D24700BCAAA6 /* MFIAPPurchaseFailedDialogViewController.m */; };
 		F1C4EEF21A235C1300322C1E /* MFGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEF01A235C1300322C1E /* MFGrid.cpp */; };
 		F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEF61A235C3500322C1E /* MFAppDelegate.m */; };
 		F1C4EF031A235C3500322C1E /* MFGameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1C4EEF81A235C3500322C1E /* MFGameView.mm */; };
@@ -971,6 +972,8 @@
 		F1B6B34B1AA2021200D39B29 /* ic_test@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_test@2x~ipad.png"; sourceTree = "<group>"; };
 		F1B6B34C1AA2021200D39B29 /* ic_test@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_test@3x.png"; sourceTree = "<group>"; };
 		F1B6B34D1AA2021200D39B29 /* ic_test~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_test~ipad.png"; sourceTree = "<group>"; };
+		F1BFABC71AB8D24700BCAAA6 /* MFIAPPurchaseFailedDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFIAPPurchaseFailedDialogViewController.h; path = ../../src/iOS/MFIAPPurchaseFailedDialogViewController.h; sourceTree = "<group>"; };
+		F1BFABC81AB8D24700BCAAA6 /* MFIAPPurchaseFailedDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFIAPPurchaseFailedDialogViewController.m; path = ../../src/iOS/MFIAPPurchaseFailedDialogViewController.m; sourceTree = "<group>"; };
 		F1C4EEF01A235C1300322C1E /* MFGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGrid.cpp; path = ../../src/Common/MFGrid.cpp; sourceTree = SOURCE_ROOT; };
 		F1C4EEF11A235C1300322C1E /* MFGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGrid.h; path = ../../src/Common/MFGrid.h; sourceTree = SOURCE_ROOT; };
 		F1C4EEF61A235C3500322C1E /* MFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAppDelegate.m; path = ../../src/iOS/MFAppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -1190,6 +1193,8 @@
 				F1D39E4D1A90498A008B7001 /* MFRemoveAdsDialogViewController.mm */,
 				F13B143F1A95370200130409 /* MFUtils.m */,
 				F13B14411A9537CF00130409 /* MFUtils.h */,
+				F1BFABC71AB8D24700BCAAA6 /* MFIAPPurchaseFailedDialogViewController.h */,
+				F1BFABC81AB8D24700BCAAA6 /* MFIAPPurchaseFailedDialogViewController.m */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -2153,6 +2158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1BFABC91AB8D24700BCAAA6 /* MFIAPPurchaseFailedDialogViewController.m in Sources */,
 				F1FDCE911A85DE00005444EF /* MFGameDialogController.m in Sources */,
 				F1C4EF031A235C3500322C1E /* MFGameView.mm in Sources */,
 				F164C12C1A8B7E1400CBB5EC /* MFHelpScreenViewController.m in Sources */,

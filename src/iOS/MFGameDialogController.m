@@ -82,6 +82,8 @@
     
     //release references
     self.delegate = nil;
+    
+    self.mIAPManager.mQueryDelegate = nil; //unregister the query delegate
     self.mIAPManager = nil;
 }
 

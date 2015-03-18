@@ -18,3 +18,12 @@
 
 /** Remove Ads Dialog **/
 "remove_ads_description"="%s";
+
+/** IAP Purchase Failed Dialog **/
+"iap_purchase_failed_dialog_description_dynamic"="There was an error completing the purchase. %s: %s.  Please try again later.";
+"iap_purchase_failed_dialog_description_static"="There was an error completing the purchase.  Please try again later.";
+"iap_purchase_failed_error_SKErrorUnknown"="";
+"iap_purchase_failed_error_SKErrorClientInvalid"="Invalid Client";
+"iap_purchase_failed_error_SKErrorPaymentInvalid"="Invalid Payment";
+"iap_purchase_failed_error_SKErrorPaymentNotAllowed"="Payment Not Allowed";
+"iap_purchase_failed_error_SKErrorStoreProductNotAvailable"="Product Not Available";

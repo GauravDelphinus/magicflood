@@ -11,8 +11,13 @@
 
 @protocol IAPPurchaseHandler
 @required
--(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status;
--(void)onPurchaseRestored:(NSString *)pid WithStatus:(BOOL)status;
+-(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status WithError:(NSError *)error;
+-(void)onPurchaseRestored:(NSString *)pid WithStatus:(BOOL)status WithError:(NSError *)error;
+@end
+
+@protocol IAPQueryHandler
+@required
+-(void)onQueryFinished:(BOOL)status;
 @end
 
 @interface MFIAPManager : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver>
@@ -20,10 +25,12 @@
 -(void)startPurchase:(NSString *)pid;
 -(SKProduct *)getProductFromPID:(NSString *)pid;
 -(void)restorePurchases;
+-(void)synchronize;
 
 @property BOOL mIsSynchronized; //synchronized with server
 @property NSArray *products;
 @property id <IAPPurchaseHandler> mPurchaseDelegate;
+@property id <IAPQueryHandler> mQueryDelegate;
 
 @end
 

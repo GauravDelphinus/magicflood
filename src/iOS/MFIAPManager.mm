@@ -25,9 +25,6 @@
     NSString *id_iap_coins_fourth = @ IAP_COINS_FOURTH;
     self.products = [NSArray arrayWithObjects: id_iap_remove_ads, id_iap_coins_first, id_iap_coins_second,
                      id_iap_coins_third, id_iap_coins_fourth, nil];
-    
-    //query items
-    [self queryItems];
 }
 
 /**
@@ -37,6 +34,12 @@
 -(void)dealloc
 {
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+}
+
+-(void)synchronize
+{
+    //query items
+    [self queryItems];
 }
 
 /**
@@ -77,15 +80,19 @@
         }
     }
     
-    if (!allIsWell)
+    if (allIsWell)
     {
-        return;
+        self.products = nil;
+        self.products = [response.products copy];
+        
+        self.mIsSynchronized = YES;
     }
 
-    self.products = nil;
-    self.products = [response.products copy];
-
-    self.mIsSynchronized = YES;
+    //notify the observers
+    if (self.mQueryDelegate != nil)
+    {
+        [self.mQueryDelegate onQueryFinished:allIsWell];
+    }
 }
 
 /**
@@ -129,7 +136,7 @@
  updatedTransactions:(NSArray *)transactions
 {
     for (SKPaymentTransaction *transaction in transactions) {
-        NSLog(@"transaction status: Error code: %ld, Error description: %@", transaction.error.code, transaction.error.localizedDescription);
+        NSLog(@"transaction status: Error code: %d, Error description: %@", (int)transaction.error.code, transaction.error.localizedDescription);
         switch (transaction.transactionState) {
                 // Call the appropriate custom method for the transaction state.
                 
@@ -138,19 +145,19 @@
             case SKPaymentTransactionStateDeferred:
                 break;
             case SKPaymentTransactionStateFailed:
-                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:NO];
+                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:NO WithError:transaction.error];
                 
                 //finish the transaction
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStatePurchased:
-                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES];
+                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES WithError:transaction.error];
                 
                 //finish the transaction
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStateRestored:
-                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES];
+                [self.mPurchaseDelegate onPurchaseFinished:transaction.payment.productIdentifier WithStatus:YES WithError:transaction.error];
                 
                 //finish the transaction
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
@@ -182,7 +189,7 @@
         {
             switch (transaction.transactionState) {
                 case SKPaymentTransactionStateFailed:
-                    [self.mPurchaseDelegate onPurchaseRestored:transaction.payment.productIdentifier WithStatus:NO];
+                    [self.mPurchaseDelegate onPurchaseRestored:transaction.payment.productIdentifier WithStatus:NO WithError:transaction.error];
                     break;
                 case SKPaymentTransactionStatePurchased:
                 case SKPaymentTransactionStateRestored:
@@ -192,7 +199,7 @@
                     //remove ads has been restored.  Update the preference
                     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_ADS_REMOVED];
                     
-                    [self.mPurchaseDelegate onPurchaseRestored:transaction.payment.productIdentifier WithStatus:YES];
+                    [self.mPurchaseDelegate onPurchaseRestored:transaction.payment.productIdentifier WithStatus:YES WithError:transaction.error];
                     break;
             }
         }

@@ -2967,10 +2967,10 @@
             </objects>
             <point key="canvasLocation" x="2204" y="2639"/>
         </scene>
-        <!--Game Dialog Controller-->
+        <!--Purchase Failed Dialog View Controller-->
         <scene sceneID="DDX-LT-XW0">
             <objects>
-                <viewController storyboardIdentifier="IAPPurchaseFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mjK-zp-gaE" customClass="MFGameDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IAPPurchaseFailedDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mjK-zp-gaE" customClass="MFIAPPurchaseFailedDialogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wYG-4L-xKz"/>
                         <viewControllerLayoutGuide type="bottom" id="SLz-EF-Za6"/>
@@ -2982,9 +2982,9 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b8a-OV-5ZV">
                                 <rect key="frame" x="28" y="59" width="265" height="381"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="There was an error in completing the purchase.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6T-fU-c19">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="There was an error in completing the purchase.  Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6T-fU-c19">
                                         <rect key="frame" x="8" y="45" width="249" height="114"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -3047,6 +3047,7 @@
                     </view>
                     <connections>
                         <outlet property="dialogView" destination="b8a-OV-5ZV" id="mUp-9G-NZg"/>
+                        <outlet property="mDescriptionLabel" destination="w6T-fU-c19" id="LyV-xd-hj0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Af4-Ei-8fJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

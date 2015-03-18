@@ -10,5 +10,5 @@
 #import "MFGameDialogController.h"
 #import "MFIAPManager.h"
 
-@interface MFAddCoinsDialog : MFGameDialogController
+@interface MFAddCoinsDialog : MFGameDialogController <IAPQueryHandler>
 @end

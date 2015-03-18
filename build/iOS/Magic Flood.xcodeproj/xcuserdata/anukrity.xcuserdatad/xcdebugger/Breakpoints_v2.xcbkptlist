@@ -9,45 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../src/iOS/MFGameViewController.mm"
-            timestampString = "447425070.232245"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
-            landmarkName = "-onPurchaseRestored:WithStatus:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../../src/iOS/MFIAPManager.mm"
-            timestampString = "448106072.108362"
+            timestampString = "448346288.687459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "-paymentQueue:updatedTransactions:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../src/iOS/MFGameViewController.mm"
-            timestampString = "448105707.013776"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
-            landmarkName = "-onPurchaseFinished:WithStatus:"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-restorePurchases"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

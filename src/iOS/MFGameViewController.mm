@@ -369,7 +369,7 @@
 /**
  This is called by the IAP Manager on purchase event.
  **/
--(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status
+-(void)onPurchaseFinished:(NSString *)pid WithStatus:(BOOL)status WithError:(NSError *)error
 {
     if (status == YES) //purchase successful!
     {
@@ -418,14 +418,40 @@
     }
     else //purchase failed or canceled
     {
-        [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED withData:0 withAnimation:NO];
+        if (error.code == SKErrorPaymentCancelled) //user cancelled, so don't show any dialog
+        {
+            /**
+             If we reached here in the middle of another workflow, try to
+             reinstante that.
+             **/
+            if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_MOVES_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_MOVES withData:0 withAnimation:NO];
+            }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_STAR_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_STAR withData:0 withAnimation:NO];
+            }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0 withAnimation:NO];
+            }
+            self.mLastDialogData = DIALOG_DATA_NONE;
+        }
+        else
+        {
+            /**
+             There was a genuine error, so show the dialog.
+             **/
+            [self showDialogOfType:DIALOG_TYPE_IAP_PURCHASE_FAILED withData:(void *)error withAnimation:NO];
+        }
     }
 }
 
 /**
  Called when a restore transaction is triggered.
  **/
--(void)onPurchaseRestored:(NSString *)pid WithStatus:(BOOL)status
+-(void)onPurchaseRestored:(NSString *)pid WithStatus:(BOOL)status WithError:(NSError *)error
 {
     if (status == YES) //purchase successful!
     {
@@ -436,7 +462,10 @@
     }
     else
     {
-        [self showDialogOfType:DIALOG_TYPE_IAP_RESTORE_FAILED withData:0 withAnimation:NO];
+        if (error.code != SKErrorPaymentCancelled)
+        {
+            [self showDialogOfType:DIALOG_TYPE_IAP_RESTORE_FAILED withData:(void *)error withAnimation:NO];
+        }
     }
 }
 
@@ -767,7 +796,7 @@
  **/
 -(void)addCoinsWithShortfall:(int)shortfall
 {
-    [self showDialogOfType:DIALOG_TYPE_ADD_COINS withData:shortfall withAnimation:NO];
+    [self showDialogOfType:DIALOG_TYPE_ADD_COINS withData:(void *)shortfall withAnimation:NO];
 }
 
 /**
@@ -1241,7 +1270,7 @@
 
 /*********************  Dialog Handling **************************/
 
--(void)showDialogOfType:(int)dialogType withData:(int)data withAnimation:(BOOL)animate
+-(void)showDialogOfType:(int)dialogType withData:(void *)data withAnimation:(BOOL)animate
 {
     switch (dialogType)
     {
@@ -1311,7 +1340,7 @@
 /**
  Show the specific dialog using the storyBoardID.
  **/
--(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType withData:(int)data withAnimation:(BOOL)animate
+-(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType withData:(void *)data withAnimation:(BOOL)animate
 {
     MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardID];
     controller.dialogType = dialogType;
