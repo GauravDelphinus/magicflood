@@ -9,8 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "MFGrid.h"
-#include "MFGridData.h"
 #include "MFGridInterface.h"
+#include "MFGridData.h"
 
 /**
  The Grid object.
@@ -24,7 +24,7 @@ extern "C" {
  **/
 int getNumLevels()
 {
-    return sizeof(sGridData) / sizeof(const char *);
+    return getNumGrids();
 }
 
 /**

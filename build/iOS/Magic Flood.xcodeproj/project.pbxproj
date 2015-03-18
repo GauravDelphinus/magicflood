@@ -344,6 +344,7 @@
 		F147E7821A2996AC002D4DDD /* MFIAPInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7801A2996AC002D4DDD /* MFIAPInterface.cpp */; };
 		F147E7851A29990F002D4DDD /* MFInAppProduct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7831A29990F002D4DDD /* MFInAppProduct.cpp */; };
 		F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */; };
+		F14C84381AB9787000F25C7B /* MFGridData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F14C84371AB9787000F25C7B /* MFGridData.cpp */; };
 		F153112D1A85671A00F16C1E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F153112C1A85671A00F16C1E /* AdSupport.framework */; };
 		F153112E1A85672600F16C1E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19285B11A84E4B400628DE2 /* AVFoundation.framework */; };
 		F15311301A85672F00F16C1E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F153112F1A85672F00F16C1E /* CoreTelephony.framework */; };
@@ -835,7 +836,8 @@
 		F147E7841A29990F002D4DDD /* MFInAppProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFInAppProduct.h; path = ../../src/Common/MFInAppProduct.h; sourceTree = SOURCE_ROOT; };
 		F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFNativeLog.cpp; path = ../../src/Common/MFNativeLog.cpp; sourceTree = SOURCE_ROOT; };
 		F147E7871A2A8DEF002D4DDD /* MFNativeLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNativeLog.h; path = ../../src/Common/MFNativeLog.h; sourceTree = SOURCE_ROOT; };
-		F147E7891A5D79A9002D4DDD /* MFGridData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFGridData.h; path = ../../src/Common/MFGridData.h; sourceTree = SOURCE_ROOT; };
+		F14C84361AB94C7400F25C7B /* MFGridData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFGridData.h; path = ../../src/Common/MFGridData.h; sourceTree = SOURCE_ROOT; };
+		F14C84371AB9787000F25C7B /* MFGridData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFGridData.cpp; path = ../../src/Common/MFGridData.cpp; sourceTree = "<group>"; };
 		F153112C1A85671A00F16C1E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F153112F1A85672F00F16C1E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F15311311A85673900F16C1E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -1150,9 +1152,10 @@
 				F147E7841A29990F002D4DDD /* MFInAppProduct.h */,
 				F147E7861A2A8DEF002D4DDD /* MFNativeLog.cpp */,
 				F147E7871A2A8DEF002D4DDD /* MFNativeLog.h */,
-				F147E7891A5D79A9002D4DDD /* MFGridData.h */,
 				F11D21D11A7CBD19006A4086 /* MFGlobalInterface.cpp */,
 				F11D21D21A7CBD19006A4086 /* MFGlobalInterface.h */,
+				F14C84361AB94C7400F25C7B /* MFGridData.h */,
+				F14C84371AB9787000F25C7B /* MFGridData.cpp */,
 			);
 			name = Core;
 			path = ../../src;
@@ -2170,6 +2173,7 @@
 				F147E7881A2A8DEF002D4DDD /* MFNativeLog.cpp in Sources */,
 				F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */,
 				F18448C81A8F1E22000D105A /* MFAddCoinsDialog.mm in Sources */,
+				F14C84381AB9787000F25C7B /* MFGridData.cpp in Sources */,
 				F176C0701A8EB71A009D1206 /* MFLevelsRootViewController.mm in Sources */,
 				F1C4EF021A235C3500322C1E /* MFAppDelegate.m in Sources */,
 				F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */,

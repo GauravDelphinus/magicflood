@@ -18,8 +18,10 @@
 #include <vector>
 #include <map>
 #include "MFNativeLog.h"
+#include "MFGridData.h"
 
 extern const char *sGridData[];
+extern const int sMaxMovesList[];
 
 /*************************** Public Functions *****************************
  ***************************************************************************
@@ -280,6 +282,9 @@ void MFGrid::initializeGrid()
 
 void MFGrid::computeMaxMoves()
 {
+    maxMoves = getMaxMovesForLevel(level);
+    
+    /*
     //allocate a temp grid and copy from the game grid
     mMeasureGrid = (int **)calloc(gridSize, sizeof(int *));
     for (int i = 0; i < gridSize; i++)
@@ -339,6 +344,7 @@ void MFGrid::computeMaxMoves()
         
     releaseGrid(mMeasureGrid);
     mMeasureGrid = NULL;
+     */
 }
 
 /**
