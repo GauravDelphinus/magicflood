@@ -118,6 +118,26 @@ int* MFGrid::playMove(int color)
 {
     int *retVal = (int *) malloc (2 * sizeof(int));
     
+    //don't play move if the color under the stars
+    bool sameColor = true;
+    for (int k = 0; k < numStartPos; k++)
+    {
+        int startx = startPos[k][0];
+        int starty = startPos[k][1];
+        int prevColor = mGameGrid[startx][starty];
+        if (prevColor != color)
+        {
+            sameColor = false;
+            break;
+        }
+    }
+    if (sameColor)
+    {
+        retVal[0] = RESULT_CONTINUE;
+        retVal[1] = 0;
+        return retVal;
+    }
+    
     //initialize a 2-d boolean array to mark cells that have already been checked for neighbor density
     bool **alreadyCheckedFlags = (bool **) calloc (gridSize, sizeof(bool *));
     for (int i = 0; i < gridSize; i++)
@@ -321,6 +341,7 @@ void MFGrid::computeMaxMoves()
     }
     
     maxMoves = numMoves;
+    
     if (level <= ADJUST_MOVES_UPTO_LEVEL_A)
     {
         maxMoves += NUM_ADJUSTED_MOVES_A;
@@ -341,10 +362,10 @@ void MFGrid::computeMaxMoves()
     {
         maxMoves += NUM_ADJUSTED_MOVES_REMAINING;
     }
-        
+     
     releaseGrid(mMeasureGrid);
     mMeasureGrid = NULL;
-     */
+    */
 }
 
 /**
