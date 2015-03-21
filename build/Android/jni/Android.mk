@@ -16,6 +16,7 @@ LOCAL_SRC_FILES += $(PROJECT_ROOT)/src/Common/MFObstacle.cpp
 LOCAL_SRC_FILES += $(PROJECT_ROOT)/src/Common/MFIAPInterface.cpp
 LOCAL_SRC_FILES += $(PROJECT_ROOT)/src/Common/MFInAppProduct.cpp
 LOCAL_SRC_FILES += $(PROJECT_ROOT)/src/Common/MFNativeLog.cpp
+LOCAL_SRC_FILES += $(PROJECT_ROOT)/src/Common/MFGridData.cpp
 LOCAL_SRC_FILES += MFInAppPurchaseManagerJNI.cpp
 
 #LOCAL_SHARED_LIBRARIES += libstlport

@@ -488,7 +488,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
 				addCoinsPriceList[3] = details[2];
 				
-				AddCoinsDialog dialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_NONE);
+				AddCoinsDialog dialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_NONE, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 				dialog.setCanceledOnTouchOutside(false);
 				dialog.show();
 			}
@@ -506,7 +506,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_MOVES_BUTTON);
 			
-			AddMovesDialog dialog = new AddMovesDialog(this, DIALOG_DATA_NONE);
+			AddMovesDialog dialog = new AddMovesDialog(this, DIALOG_DATA_NONE, getNumCoinsForMoves());
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
@@ -516,7 +516,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_STAR_BUTTON);
 			
-			AddStarDialog dialog = new AddStarDialog(this, DIALOG_DATA_NONE);
+			AddStarDialog dialog = new AddStarDialog(this, DIALOG_DATA_NONE, getNumCoinsForStar());
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
@@ -526,7 +526,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_HURDLE_SMASHER_BUTTON);
 			
-			AddHurdleSmasherDialog dialog = new AddHurdleSmasherDialog(this, DIALOG_DATA_NONE);
+			AddHurdleSmasherDialog dialog = new AddHurdleSmasherDialog(this, DIALOG_DATA_NONE, getNumCoinsForHurdleSmasher());
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 			
@@ -803,7 +803,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				dialog.cancel();
 				
 				/** Prompt the user with adding moves to continue playing the current game. **/
-				AddMovesDialog addMovesDialog = new AddMovesDialog(this, DIALOG_DATA_NONE);
+				AddMovesDialog addMovesDialog = new AddMovesDialog(this, DIALOG_DATA_NONE, getNumCoinsForMoves());
 				addMovesDialog.setCanceledOnTouchOutside(false);
 				addMovesDialog.show();
 			}
@@ -920,7 +920,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
 						addCoinsPriceList[3] = details[2];
 						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_MOVES_DIALOG);
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_MOVES_DIALOG, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 						addCoinsDialog.setCanceledOnTouchOutside(false);
 						addCoinsDialog.show();
 						mLastDialogData = DIALOG_DATA_FROM_ADD_MOVES_DIALOG;
@@ -993,7 +993,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
 						addCoinsPriceList[3] = details[2];
 						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_STAR_DIALOG);
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_STAR_DIALOG, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 						addCoinsDialog.setCanceledOnTouchOutside(false);
 						addCoinsDialog.show();
 						mLastDialogData = DIALOG_DATA_FROM_ADD_STAR_DIALOG;
@@ -1051,7 +1051,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
 						addCoinsPriceList[3] = details[2];
 						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG);
+						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 						addCoinsDialog.setCanceledOnTouchOutside(false);
 						addCoinsDialog.show();
 						mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
@@ -1178,7 +1178,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mLastDialogData = DIALOG_DATA_NONE;
 				
 				//user landed here after starting the Add Moves.  So, show up the Add Moves dialog again
-				AddMovesDialog addMovesDialog = new AddMovesDialog(this, DIALOG_DATA_NONE);
+				AddMovesDialog addMovesDialog = new AddMovesDialog(this, DIALOG_DATA_NONE, getNumCoinsForMoves());
 				addMovesDialog.setCanceledOnTouchOutside(false);
 				addMovesDialog.show();		
 			}
@@ -1187,7 +1187,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mLastDialogData = DIALOG_DATA_NONE;
 				
 				//user landed here after starting the Add Star workflow.
-				AddStarDialog addStarDialog = new AddStarDialog(this, DIALOG_DATA_NONE);
+				AddStarDialog addStarDialog = new AddStarDialog(this, DIALOG_DATA_NONE, getNumCoinsForStar());
 				addStarDialog.setCanceledOnTouchOutside(false);
 				addStarDialog.show();
 			}
@@ -1196,7 +1196,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mLastDialogData = DIALOG_DATA_NONE;
 				
 				//user landed here after starting the Add Hurdle Smasher workflow
-				AddHurdleSmasherDialog hurdleDialog = new AddHurdleSmasherDialog(this, DIALOG_DATA_NONE);
+				AddHurdleSmasherDialog hurdleDialog = new AddHurdleSmasherDialog(this, DIALOG_DATA_NONE, getNumCoinsForHurdleSmasher());
 				hurdleDialog.setCanceledOnTouchOutside(false);
 				hurdleDialog.show();
 			}

@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 public class AddCoinsDialog extends GameDialogType5 {
 
-	public AddCoinsDialog(Context context, String priceList[], int clientdata) 
+	public AddCoinsDialog(Context context, String priceList[], int clientdata, int numCoinsFirst, int numCoinsSecond, int numCoinsThird, int numCoinsFourth) 
 	{
 		super(context, clientdata);
 		
@@ -20,16 +20,16 @@ public class AddCoinsDialog extends GameDialogType5 {
 		descriptionTV.setTypeface(MFUtils.getTextTypeface(context));
 		
 		AddCoinsProductLayout firstLayout = (AddCoinsProductLayout) mPositiveAction1View;
-		firstLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_FIRST, priceList[0], R.drawable.ic_iap_coins_first);
+		firstLayout.setProperties(numCoinsFirst, priceList[0], R.drawable.ic_iap_coins_first);
 		
 		AddCoinsProductLayout secondLayout = (AddCoinsProductLayout) mPositiveAction2View;
-		secondLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_SECOND, priceList[1], R.drawable.ic_iap_coins_second);
+		secondLayout.setProperties(numCoinsSecond, priceList[1], R.drawable.ic_iap_coins_second);
 		
 		AddCoinsProductLayout thirdLayout = (AddCoinsProductLayout) mPositiveAction3View;
-		thirdLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_THIRD, priceList[2], R.drawable.ic_iap_coins_third);
+		thirdLayout.setProperties(numCoinsThird, priceList[2], R.drawable.ic_iap_coins_third);
 		
 		AddCoinsProductLayout fourthLayout = (AddCoinsProductLayout) mPositiveAction4View;
-		fourthLayout.setProperties(MFGameConstants.COINS_IAP_COUNT_FOURTH, priceList[3], R.drawable.ic_iap_coins_fourth);
+		fourthLayout.setProperties(numCoinsFourth, priceList[3], R.drawable.ic_iap_coins_fourth);
 	}
 
 	protected void setupViews() 

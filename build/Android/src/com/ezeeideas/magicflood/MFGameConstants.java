@@ -27,6 +27,7 @@ public class MFGameConstants
 	 * Color values stored in the Grid
 	 */
 	public static final int GRID_OBSTACLE = 0;
+	public static final int GRID_SPACE = '.';
 	
 	public static final int GRID_COLOR_RED = 1;
 	public static final int GRID_COLOR_GREEN = 2;
