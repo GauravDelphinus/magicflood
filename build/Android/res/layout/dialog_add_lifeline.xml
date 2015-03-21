@@ -14,11 +14,11 @@
 	    >
 	    <TextView
 	        android:id="@+id/dialog_add_lifeline_title_text_id"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
             android:gravity="center"
-            android:layout_toLeftOf="@+id/cancel_button"
+            android:layout_centerHorizontal="true"
             android:textSize="@dimen/dialog_title_text_size" />
 	    	<ImageButton
 	    	    android:id="@+id/cancel_button"

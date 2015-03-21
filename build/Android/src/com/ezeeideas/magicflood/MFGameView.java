@@ -34,7 +34,7 @@ public class MFGameView extends View
 	private int mCurrentAngleOfStartPosition = 0;
 	private static final int ROTATION_STEP_DEGREES = 5;
 	private static final int ROTATION_SPEED_INTERVAL = 200; //milliseconds
-	private static final int SHADOW_THICKNESS = 5;
+	private static final int SHADOW_THICKNESS = 8;
 
 	/**
 	 Direction of Linear Gradient for Shadow
@@ -330,9 +330,6 @@ public class MFGameView extends View
 		Shader cornerShader = null;
 		if (direction == RADIAL_GRADIENT_DIRECTION_SOUTH_WEST)
 		{
-			Log.d("gaurav", "radial gradient left: center x = " + rect.right + ", y = " + rect.top);
-			Log.d("gaurav", "rectF: left = " + rect.left + ", top = " + (rect.top - rectH) + ", right = " + (rect.right + rectW) + ", bottom = " + (rect.bottom));
-			
 			cornerShader = new RadialGradient(rect.right, rect.top, SHADOW_THICKNESS, getResources().getColor(R.color.grid_background_gradient_start_color), getResources().getColor(R.color.transparent), Shader.TileMode.MIRROR);
 			mShadowPaint.setShader(cornerShader);
 			RectF rectF = new RectF(rect.left, rect.top - rectH, rect.right + rectW, rect.bottom);
