@@ -591,7 +591,7 @@
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGFloat locations[] = { 0.0, 1.0 };
     
-    NSArray *colors = @[(__bridge id) UIColorFromRGB(HURDLE_GRADIENT_START_COLOR).CGColor, (__bridge id) UIColorFromRGB(HURDLE_GRADIENT_END_COLOR).CGColor];
+    NSArray *colors = @[(__bridge id) UIColorFromARGB(HURDLE_GRADIENT_START_COLOR).CGColor, (__bridge id) UIColorFromARGB(HURDLE_GRADIENT_END_COLOR).CGColor];
     
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
     
