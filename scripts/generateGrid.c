@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 	//printf("Hello World, %s - %s\n", argv[0], argv[1]);
 
 	FILE * fp;
-	char str[25][25];
+	char str[250][250];
 
 	fp = fopen (argv[1], "r");
 	int i = 0;
