@@ -22,12 +22,19 @@
 #define PREFERENCE_LAST_COMPLETED_LEVEL "last_completed_level"
 #define PREFERENCE_STARS_UNLOCKED "stars_unlocked"
 #define PREFERENCE_HURDLE_SMASHERS_UNLOCKED "hurdle_smashers_unlocked"
+#define PREFERENCE_BRIDGES_UNLOCKED "bridges_unlocked"
+#define PREFERENCE_TOTAL_STARS_EARNED   "total_stars_earned"
+#define PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED "total_hurdle_smashers_earned"
+#define PREFERENCE_TOTAL_BRIDGES_EARNED "total_bridges_earned"
 
 /** Default Preferences **/
 #define DEFAULT_LAST_UNLOCKED_LEVEL 1
 #define DEFAULT_LAST_PLAYED_LEVEL 1
 #define DEFAULT_LAST_COMPLETED_LEVEL 0
 #define INITIAL_COINS_ALLOCATED 100000
+#define INITIAL_STARS_ALLOCATED 2
+#define INITIAL_HURDLE_SMASHERS_ALLOCATED 2
+#define INITIAL_BRIDGES_ALLOCATED 2
 
 /** Non-Standard Colors **/
 #define HURDLE_GRADIENT_START_COLOR 0xFF666666

@@ -112,7 +112,7 @@ bool MFGrid::gridCompleted(int color, int *grid[])
 }
 
 /**
- Play the move for the given color.
+ Play the move for the given color.  Caller is responsible for freeing the returned array.
  **/
 int* MFGrid::playMove(int color)
 {
@@ -240,7 +240,7 @@ void MFGrid::shuffleArray(int array[], int size)
 void MFGrid::initializeGrid()
 {
     char *inputStr = strdup(sGridData[level - 1]);
-        char *token = strtok(inputStr, "#");
+    char *token = strtok(inputStr, "#");
     
     if (token)
     {
@@ -302,9 +302,9 @@ void MFGrid::initializeGrid()
 
 void MFGrid::computeMaxMoves()
 {
-    maxMoves = getMaxMovesForLevel(level);
+    //maxMoves = getMaxMovesForLevel(level);
     
-    /*
+    
     //allocate a temp grid and copy from the game grid
     mMeasureGrid = (int **)calloc(gridSize, sizeof(int *));
     for (int i = 0; i < gridSize; i++)
@@ -365,7 +365,7 @@ void MFGrid::computeMaxMoves()
      
     releaseGrid(mMeasureGrid);
     mMeasureGrid = NULL;
-    */
+    
 }
 
 /**
@@ -614,6 +614,11 @@ MFGrid::~MFGrid()
 
     if (startPos != NULL)
     {
+        for (int i = 0; i < numStartPos; i++)
+        {
+            free(startPos[i]);
+        }
+        
         free(startPos);
         startPos = NULL;
     }

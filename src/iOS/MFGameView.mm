@@ -79,17 +79,7 @@
  **/
 -(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves
 {
-    //free old grid, if present
-    if (myGrid != NULL)
-    {
-        for (int i = 0; i < gridSize; i++)
-        {
-            free(myGrid[i]);
-        }
-        
-        free(myGrid);
-        myGrid = NULL;
-    }
+    [self freeGameData];
     
     //allocate a local data structure, if not already present
     if (myGrid == NULL)
@@ -123,6 +113,35 @@
     }
         
     [self setNeedsDisplay];
+}
+
+/**
+ Free the game data when the view is being dealloc'ed
+ **/
+-(void)freeGameData
+{
+    //free old grid, if present
+    if (myGrid != NULL)
+    {
+        for (int i = 0; i < gridSize; i++)
+        {
+            free(myGrid[i]);
+        }
+        
+        free(myGrid);
+        myGrid = NULL;
+    }
+    
+    if (startPos != NULL)
+    {
+        for (int i = 0; i < mNumStartPos; i++)
+        {
+            free(startPos[i]);
+        }
+        
+        free(startPos);
+        startPos = NULL;
+    }
 }
 
 /*********************  Update Game Routines **************************/
@@ -459,6 +478,7 @@
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
     
     CGContextRestoreGState(context);
+    CGGradientRelease(gradient);
 }
 
 /**
@@ -529,12 +549,14 @@
     
     CGContextAddPath(context, path);
     CGPathCloseSubpath(path);
+    CGPathRelease(path);
     CGContextClip(context);
     
     CGContextDrawRadialGradient (context, gradient, centerPoint,
                                  0, centerPoint, SHADOW_THICKNESS,
                                  0);
     CGContextRestoreGState(context);
+    CGGradientRelease(gradient);
 }
 
 -(void)drawColorWithLeft:(int)left WithTop:(int)top WithSize:(int)cellSize WithX:(int)x WithY:(int)y

@@ -47,6 +47,9 @@
                                           [NSNumber numberWithBool:NO], @PREFERENCE_ADS_REMOVED,
                                           [NSNumber numberWithBool:NO], @PREFERENCE_STARS_UNLOCKED,
                                           [NSNumber numberWithBool:NO], @PREFERENCE_HURDLE_SMASHERS_UNLOCKED,
+                                          [NSNumber numberWithInt:INITIAL_STARS_ALLOCATED], @PREFERENCE_TOTAL_STARS_EARNED,
+                                          [NSNumber numberWithInt:INITIAL_HURDLE_SMASHERS_ALLOCATED], @PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED,
+                                          [NSNumber numberWithInt:INITIAL_BRIDGES_ALLOCATED], @PREFERENCE_TOTAL_BRIDGES_EARNED,
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
 }

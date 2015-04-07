@@ -35,8 +35,14 @@ static int totalCoins = 0;
  */
 #define COINS_TO_ADD_5_MOVES 500
 #define COINS_TO_ADD_A_STAR 1000
+#define COINS_TO_ADD_2_STARS    1500
+#define COINS_TO_ADD_5_STARS    3500
 #define COINS_TO_ADD_A_HURDLE_SMASHER 1500
+#define COINS_TO_ADD_2_HURDLE_SMASHERS 2500
+#define COINS_TO_ADD_5_HURDLE_SMASHERS  5000
 #define COINS_TO_ADD_A_BRIDGE   2000
+#define COINS_TO_ADD_2_BRIDGES  3000
+#define COINS_TO_ADD_5_BRIDGES  6000
 
 extern "C" void setCoins(int coins)
 {
@@ -53,18 +59,39 @@ extern "C" int getNumCoinsForMoves()
     return COINS_TO_ADD_5_MOVES;
 }
 
-extern "C" int getNumCoinsForStar()
+extern "C" int getNumCoinsForStar(int numStars)
 {
+    switch (numStars)
+    {
+        case 1: return COINS_TO_ADD_A_STAR;
+        case 2: return COINS_TO_ADD_2_STARS;
+        case 5: return COINS_TO_ADD_5_STARS;
+    }
+    
     return COINS_TO_ADD_A_STAR;
 }
 
-extern "C" int getNumCoinsForHurdleSmasher()
+extern "C" int getNumCoinsForHurdleSmasher(int numSmashers)
 {
+    switch (numSmashers)
+    {
+        case 1: return COINS_TO_ADD_A_HURDLE_SMASHER;
+        case 2: return COINS_TO_ADD_2_HURDLE_SMASHERS;
+        case 5: return COINS_TO_ADD_5_HURDLE_SMASHERS;
+    }
+    
     return COINS_TO_ADD_A_HURDLE_SMASHER;
 }
 
-extern "C" int getNumCoinsForBridge()
+extern "C" int getNumCoinsForBridge(int numBridges)
 {
+    switch (numBridges)
+    {
+        case 1: return COINS_TO_ADD_A_BRIDGE;
+        case 2: return COINS_TO_ADD_2_BRIDGES;
+        case 5: return COINS_TO_ADD_5_BRIDGES;
+    }
+    
     return COINS_TO_ADD_A_BRIDGE;
 }
 

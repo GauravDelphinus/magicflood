@@ -22,9 +22,9 @@ extern "C" {
     int getNumCoinsIAPThird();
     int getNumCoinsIAPFourth();
     int getNumCoinsForMoves();
-    int getNumCoinsForStar();
-    int getNumCoinsForHurdleSmasher();
-    int getNumCoinsForBridge();
+    int getNumCoinsForStar(int numStars);
+    int getNumCoinsForHurdleSmasher(int numSmashers);
+    int getNumCoinsForBridge(int numBridges);
     int getMinLevelToAddStars();
     int getMinLevelToAddHurdleSmasher();
     int getMinLevelToAddBridge();

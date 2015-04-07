@@ -1,0 +1,72 @@
+{"version":"104","bug_type":"198","os_version":"iPhone OS 7.1.1 (11D201)"}
+Incident Identifier: 262F43B6-3BBA-4A76-993D-97B9C1F8806F
+CrashReporter Key:   611f549460872b5c1e4aa63caa3e1d05c4f34c83
+Hardware Model:      iPhone6,2
+OS Version:          iPhone OS 7.1.1 (11D201)
+Kernel Version:      Darwin Kernel Version 14.0.0: Fri Mar 28 21:22:21 PDT 2014; root:xnu-2423.10.70~1/RELEASE_ARM64_S5L8960X
+Date:                2015-04-05 17:27:42 +0800
+Time since snapshot: 153 ms
+
+Free pages:                              2561
+Active pages:                            118189
+Inactive pages:                          59134
+Speculative pages:                       8
+Throttled pages:                         0
+Purgeable pages:                         2452
+Wired pages:                             40442
+File-backed pages:                       21809
+Anonymous pages:                         155522
+Compressions:                            7372748
+Decompressions:                          3463951
+Compressor Size:                         35415
+Uncompressed Pages in Compressor:        99971
+Largest process:   Magic Flood
+
+Processes
+     Name                    <UUID>                       rpages       recent_max   fds      [reason]          (state)
+
+EscrowSecurityAl <6f0bce805bee397e924f2075df44073d>          215              215  200                      (daemon)
+           gamed <5ac829d4ce1431a4ac9f5052e305ff37>         1176             1176  200                      (daemon)
+      MobileMail <58d210e421a231238e87837d46e4ebb2>         8230             8230  200                      (continuous)
+       MobileSMS <1ecd7e483fd835a0a40bc735357dc8ff>         2645             2645  200                      (background)
+            tccd <645e18e99d063eada960d9c17e68a5f3>          359              359  200                      (daemon)
+             kbd <5490207ee311382399ed2fb2713a77df>         3806             3806  200                      (daemon)
+         AdSheet <c7e9e490f08437c98137ba3bf59beeb5>        11216            11627  200                      (resume) (continuous)
+       CVMServer <499e15a72e693daaaf3f61f8ff27f979>           88               88  200                      (daemon)
+     Magic Flood <5480d1a7275c341fb4d5173ffa3a53ec>       166401           166401  200  [per-process-limit] (frontmost) (resume)
+identityservices <efad1d3298833438bc3be8be9b8e8750>          710              710  100                      (daemon)
+             vmd <7fb0b329ab51359bb9c6da9faa82c44e>          221              221   50                      (daemon)
+         imagent <eed6f0692b9737749061492e49e15ad9>         1299             1299   50                      (daemon)
+         syslogd <88667a0c3dc6398e9b1c6a0c5a5d8f24>          269              269   50                      (daemon)
+           wifid <09ec6e83af9a3b519de6e4a8d0e57b4b>         1658             1658   50                      (daemon)
+          powerd <88883755d1f93a868450d7c876625d3c>          168              168  100                      (daemon)
+       locationd <766be21f18c3362793a85b5931ff4229>         3233             3233  200                      (daemon)
+    mediaserverd <ee8b0003dae53f2f9216f2cd632149c6>         9312             9312   50                      (daemon)
+   iaptransportd <56afcc7d739d305bb076f30eba1d7fdb>          260              260  100                      (daemon)
+   mDNSResponder <fe2259fbcfee3621a6db5ffb0e6f662c>          391              391  200                      (daemon)
+            apsd <a0be58ac33c73ec59e5b78c5b3fafbe2>          783              783  100                      (daemon)
+     dataaccessd <b574575bd5be329cbe90da2d16b4a1f9>         3793             3793  200                      (daemon)
+        sharingd <d18311f47d3631f6a8e8ce94473cba6b>          697              697   50                      (daemon)
+    mobileassetd <e5fd6d36397f33bb91e46ecf17770862>         2141             2141  200                      (daemon)
+      calaccessd <a08f8c2a0d3b388ab8eed0f1c1d68b98>         1299             1299  200                      (daemon)
+     SpringBoard <865e4330f35a37d08289f9c41503250b>        14182            14182  100                     
+      backboardd <f3c27b90f0b53114a6b1af9e3e1d4ade>        12860            12860   50                      (daemon)
+       fseventsd <b3a899b5cf9133afa6ca80f6c5d6ee88>          810              810   50                      (daemon)
+       lockdownd <9ef14b67021d38168131cc85027459bf>          338              338   50                      (daemon)
+         configd <17968161ecbf399796ab7151175dc419>         1071             1071   50                      (daemon)
+    fairplayd.H2 <c8f3874dc3953374912a060755f5d760>          172              172  100                      (daemon)
+        BTServer <e6676ff5039c3b839d2af8c5b9459cc7>          699              699  100                      (daemon)
+       distnoted <fe7400d54f0734fead2c14d1abaac930>          212              212  100                      (daemon)
+WirelessCoexMana <116f1b83a94a35038d555dd134ccc067>          182              182  100                      (daemon)
+  UserEventAgent <81e307fc6d8c327db6358f4d5828379d>         1059             1059  100                      (daemon)
+   biometrickitd <70400ef9b77d3b08a554efb14dc4c221>          302              302  200                      (daemon)
+filecoordination <8d400b4d44fc37bf95b91fefeb401764>          268              268  200                      (daemon)
+             ubd <176ed2eae2a33e02a3792fd405ea3919>         1422             1422  100                      (daemon)
+    itunescloudd <c1c0d68de9d631448207e45c29957652>         1540             1540  100                      (daemon)
+      aggregated <8d7d425cf94237ffb3315ea6ef02f485>         1163             1163  200                      (daemon)
+        networkd <370cdc362d9337738a9f0b0d96e381c5>          671              671  200                      (daemon)
+     touchsetupd <6416cf5b966035969394ebcaf67e1347>          197              197  200                      (daemon)
+      CommCenter <032fec801eb531cfaa2da66e006ef6c8>         2216             2216  100                      (daemon)
+         notifyd <1d555aa3d08c336294a38d9c134dca00>          916              916  100                      (daemon)
+
+**End**

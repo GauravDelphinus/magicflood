@@ -29,6 +29,7 @@
 @property int mCurrentAngleOfStartPosition; //current rotation angle
 
 -(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves;
+-(void)freeGameData;
 -(void)updateGameData:(int **)grid;
 -(void)updateStartPos:(int **)startPos withNum:(int)numStartPos;
 -(void)enableDisableTouchInput:(BOOL)enable;

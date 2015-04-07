@@ -188,15 +188,16 @@
      Removing the MFGameView object from this controller is essential to
      avoid memory leaks.
      **/
-     [self.gameView removeFromSuperview];
-     self.gameView = nil;
+    [self.gameView removeFromSuperview];
+    [self.gameView freeGameData];
+    self.gameView = nil;
     
     /**
      Get rid of ad banner.
      **/
-     [self.mAdBannerView removeFromSuperview];
-     self.mAdBannerView.delegate = nil;
-     self.mAdBannerView = nil;
+    [self.mAdBannerView removeFromSuperview];
+    self.mAdBannerView.delegate = nil;
+    self.mAdBannerView = nil;
 }
 
 /*********************  GameView Related **************************/
@@ -765,21 +766,93 @@
  The Add Hurdle Smasher button was pressed.
  **/
 - (IBAction)addHurdleSmasher:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0 withAnimation:NO];
+    
+    if (self.mHurdleSmasherMode)
+    {
+        /* Cancel the Hurdle Smasher mode */
+        [self enableDisableAllButtons:YES];
+        
+        self.mHurdleSmasherMode = NO;
+        return;
+    }
+    
+    int numSmashers = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED];
+    if (numSmashers == 0)
+    {
+        [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0 withAnimation:NO];
+    }
+    else
+    {
+        //enter state where game view detects tap on a specific cell
+        [self.gameView enableDisableTouchInput:YES];
+        self.mHurdleSmasherMode = YES;
+        
+        [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO withData:0 withAnimation:NO];
+        
+        [self refreshLifelinesUI];
+    }
 }
 
 /**
  The Add Star button was pressed.
  **/
 - (IBAction)addStar:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_ADD_STAR withData:0 withAnimation:NO];
+    
+    if (self.mStarPlacementMode)
+    {
+        /** Cancel the star placement mode */
+        [self enableDisableAllButtons:YES];
+        
+        self.mStarPlacementMode = NO;
+        return;
+    }
+    
+    int numStars = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_STARS_EARNED];
+    if (numStars == 0)
+    {
+        [self showDialogOfType:DIALOG_TYPE_ADD_STAR withData:0 withAnimation:NO];
+    }
+    else
+    {
+        //enter state where game view detects tap on a specific cell
+        [self.gameView enableDisableTouchInput:YES];
+        self.mStarPlacementMode = YES;
+        
+        [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO withData:0 withAnimation:NO];
+        
+        [self refreshLifelinesUI];
+    }
 }
 
 /**
  The Add Bridge button was pressed.
  **/
 - (IBAction)addBridge:(id)sender {
-    [self showDialogOfType:DIALOG_TYPE_ADD_BRIDGE withData:0 withAnimation:NO];
+    
+    if (self.mBridgeMode)
+    {
+        /** Cancel the Bridge Mode **/
+        [self enableDisableAllButtons:YES];
+        
+        self.mBridgeMode = NO;
+        return;
+    }
+    
+    int numBridges = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_BRIDGES_EARNED];
+    if (numBridges == 0)
+    {
+        [self showDialogOfType:DIALOG_TYPE_ADD_BRIDGE withData:0 withAnimation:NO];
+    }
+    else
+    {
+        //enter state where game view detects tap on a specific cell
+        [self.gameView enableDisableTouchInput:YES];
+        self.mBridgeMode = YES;
+        
+        [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_INFO withData:0 withAnimation:NO];
+        
+        [self refreshLifelinesUI];
+    }
 }
 
 /**
@@ -865,6 +938,11 @@
     {
         [self playSound:mButtonClickSoundID];
     }
+    
+    if (result != NULL)
+    {
+        free(result);
+    }
 }
 
 /**
@@ -938,6 +1016,18 @@
             [self showDialogOfType:DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS withData:0 withAnimation:NO];
         }
     }
+    else if (self.gameLevel == getMinLevelToAddBridge())
+    {
+        //show the "Bridges Unlocked" dialog, if not ever shown
+        BOOL alreadyShown = [[NSUserDefaults standardUserDefaults] boolForKey:@PREFERENCE_BRIDGES_UNLOCKED];
+        
+        if (!alreadyShown)
+        {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@PREFERENCE_BRIDGES_UNLOCKED];
+            
+            [self showDialogOfType:DIALOG_TYPE_INTRODUCE_BRIDGES withData:0 withAnimation:NO];
+        }
+    }
     
     if (self.gameLevel < getMinLevelToAddStars())
     {
@@ -946,6 +1036,31 @@
     else
     {
         self.mAddStarButton.hidden = NO;
+        [self.mAddStarButton setImage:nil forState:UIControlStateNormal];
+        [self.mAddStarButton setImage:nil forState:UIControlStateHighlighted];
+        
+        int numStars = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_STARS_EARNED];
+        if (numStars == 0)
+        {
+            [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_add_star_normal.png"]
+                                forState:UIControlStateNormal];
+            [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_add_star_pressed.png"]
+                                           forState:UIControlStateHighlighted];
+        }
+        else if (numStars == 1)
+        {
+            [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_use_star_1_normal.png"]
+                                           forState:UIControlStateNormal];
+            [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_use_star_1_pressed.png"]
+                                           forState:UIControlStateHighlighted];
+        }
+        else if (numStars == 2)
+        {
+            [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_use_star_2_normal.png"]
+                                           forState:UIControlStateNormal];
+            [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_use_star_2_pressed.png"]
+                                           forState:UIControlStateHighlighted];
+        }
     }
     
     if (self.gameLevel < getMinLevelToAddHurdleSmasher())
@@ -954,19 +1069,44 @@
     }
     else
     {
-        self.mAddHurdleSmasherButton.hidden = NO;
-    }
-    
-    /**
-     Don't show the 'Smash Hurdle' button if there are not hurdles in the current grid!
-     **/
-    if (hasHurdles(self.gridHandle))
-    {
-        self.mAddHurdleSmasherButton.hidden = NO;
-    }
-    else
-    {
-        self.mAddHurdleSmasherButton.hidden = YES;
+        /**
+         Don't show the 'Smash Hurdle' button if there are not hurdles in the current grid!
+         **/
+        if (hasHurdles(self.gridHandle))
+        {
+            self.mAddHurdleSmasherButton.hidden = NO;
+            
+            [self.mAddHurdleSmasherButton setImage:nil forState:UIControlStateNormal];
+            [self.mAddHurdleSmasherButton setImage:nil forState:UIControlStateHighlighted];
+            
+            int numSmashers = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED];
+            if (numSmashers == 0)
+            {
+                [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_add_hurdle_smasher_normal.png"]
+                                               forState:UIControlStateNormal];
+                [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_add_hurdle_smasher_pressed.png"]
+                                               forState:UIControlStateHighlighted];
+            }
+            else if (numSmashers == 1)
+            {
+                [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_use_hurdle_smasher_1_normal.png"]
+                                               forState:UIControlStateNormal];
+                [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_use_hurdle_smasher_1_pressed.png"]
+                                               forState:UIControlStateHighlighted];
+            }
+            else if (numSmashers == 2)
+            {
+                [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_use_hurdle_smasher_2_normal.png"]
+                                               forState:UIControlStateNormal];
+                [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_use_hurdle_smasher_2_pressed.png"]
+                                               forState:UIControlStateHighlighted];
+            }
+        }
+        else
+        {
+            self.mAddHurdleSmasherButton.hidden = YES;
+        }
+        
     }
     
     if (self.gameLevel < getMinLevelToAddBridge())
@@ -976,6 +1116,33 @@
     else
     {
         self.mAddBridgeButton.hidden = NO;
+        
+        [self.mAddBridgeButton setImage:nil forState:UIControlStateNormal];
+        [self.mAddBridgeButton setImage:nil forState:UIControlStateHighlighted];
+        
+        int numBridges = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_BRIDGES_EARNED];
+        if (numBridges == 0)
+        {
+            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_add_bridge_normal.png"]
+                                           forState:UIControlStateNormal];
+            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_add_bridge_pressed.png"]
+                                           forState:UIControlStateHighlighted];
+        }
+        else if (numBridges == 1)
+        {
+            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_1_normal.png"]
+                                           forState:UIControlStateNormal];
+            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_1_pressed.png"]
+                                           forState:UIControlStateHighlighted];
+        }
+        else if (numBridges == 2)
+        {
+            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_2_normal.png"]
+                                           forState:UIControlStateNormal];
+            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_2_pressed.png"]
+                                           forState:UIControlStateHighlighted];
+        }
+
         
         //if the hurdle smasher button is hidden, then tag this
         //one against the add star button
@@ -1016,18 +1183,24 @@
         //self.mMenuButton.hidden = YES;
         
         [self enableDisableAllButtons:NO];
+        
+        self.mAddStarButton.enabled = YES;
     }
     else if (self.mHurdleSmasherMode)
     {
         //self.mLifelineInfoCotainerView.hidden = NO;
         
         [self enableDisableAllButtons:NO];
+        
+        self.mAddHurdleSmasherButton.enabled = YES;
     }
     else if (self.mBridgeMode)
     {
         //self.mLifelineInfoCotainerView.hidden = NO;
         
         [self enableDisableAllButtons:NO];
+        
+        self.mAddBridgeButton.enabled = YES;
     }
     else
     {
@@ -1157,6 +1330,11 @@
             freeGridData(self.gridHandle, gridData);
             gridData = NULL;
             
+            /** Update the number of Bridges remaining */
+            int numBridges = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_BRIDGES_EARNED];
+            numBridges --;
+            [[NSUserDefaults standardUserDefaults] setInteger:numBridges forKey: @PREFERENCE_TOTAL_BRIDGES_EARNED];
+            
             [self refreshLifelinesUI];
             
             [self.gameView enterExitBrigeBuildingMode:NO ResetData:NO];
@@ -1189,6 +1367,11 @@
             freeStartPos(self.gridHandle, startPos);
             startPos = NULL;
             
+            /** Update the number of Stars Remaining */
+            int numStars = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_STARS_EARNED];
+            numStars --;
+            [[NSUserDefaults standardUserDefaults] setInteger:numStars forKey: @PREFERENCE_TOTAL_STARS_EARNED];
+            
             [self refreshLifelinesUI];
         }
         else //couldn't place the star, so keep trying
@@ -1210,6 +1393,11 @@
             freeGridData(self.gridHandle, gridData);
             gridData = NULL;
             
+            /** Update the number of Hurdle Smashers remaining */
+            int numSmashers = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED];
+            numSmashers --;
+            [[NSUserDefaults standardUserDefaults] setInteger:numSmashers forKey: @PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED];
+            
             [self refreshLifelinesUI];
         }
         else //couldn't find a hurdle.  So keep trying
@@ -1217,7 +1405,7 @@
             [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
         }
     }
-    
+    /*
     else if (self.mBridgeMode == YES)
     {
         if (self.mBridgeStartPoint.x == -1 && self.mBridgeStartPoint.y == -1) //first point selection
@@ -1256,16 +1444,18 @@
             }
             else //couldn't detect a bridge, so keep trying
             {
-                /**
-                 Reset the first point to nil as well and allow the user to reselect.
-                 **/
+                
+                 //Reset the first point to nil as well and allow the user to reselect.
+     
                 self.mBridgeStartPoint = {-1, -1};
                 
                 [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
             }
         }
+
     }
-    
+*/
+
 }
 
 /*********************  Dialog Handling **************************/
@@ -1333,6 +1523,9 @@
             break;
         case DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS:
             [self showDialog:@"IntroduceHurdleSmashersDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            break;
+        case DIALOG_TYPE_INTRODUCE_BRIDGES:
+            [self showDialog:@"IntroduceBridgesDialog" withDialogType:dialogType withData:data withAnimation:animate];
             break;
     }
 }
@@ -1479,20 +1672,34 @@
     }
     else if (dialogType == DIALOG_TYPE_ADD_STAR)
     {
-        if (option == GAME_DIALOG_POSITIVE_ACTION_1) // Add Star
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1 || option == GAME_DIALOG_POSITIVE_ACTION_2) // Add Star(s)
         {
+            int numStarsToBuy = 0;
+            if (option == GAME_DIALOG_POSITIVE_ACTION_1)
+            {
+                numStarsToBuy = 1;
+            }
+            else if (option == GAME_DIALOG_POSITIVE_ACTION_2)
+            {
+                numStarsToBuy = 2;
+            }
             int numCoins = getCoins();
-            int numCoinsForStar = getNumCoinsForStar();
+            int numCoinsForStar = getNumCoinsForStar(numStarsToBuy);
             if (numCoins >= numCoinsForStar)
             {
                 numCoins -= numCoinsForStar;
                 [self updateCoinsEarned:numCoins];
                 
+                /*
                 //enter state where game view detects tap on a specific cell
                 [self.gameView enableDisableTouchInput:YES];
                 self.mStarPlacementMode = YES;
                 
                 [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO withData:0 withAnimation:NO];
+                */
+                int numStars = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_STARS_EARNED];
+                numStars += numStarsToBuy;
+                [[NSUserDefaults standardUserDefaults] setInteger:numStars forKey: @PREFERENCE_TOTAL_STARS_EARNED];
                 
                 [self refreshLifelinesUI];
             }
@@ -1506,20 +1713,35 @@
     }
     else if (dialogType == DIALOG_TYPE_ADD_HURDLE_SMASHER)
     {
-        if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Add Hurdle Smasher
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1 || option == GAME_DIALOG_POSITIVE_ACTION_2) //Add Hurdle Smasher
         {
+            int numSmashersToBuy = 0;
+            if (option == GAME_DIALOG_POSITIVE_ACTION_1)
+            {
+                numSmashersToBuy = 1;
+            }
+            else if (option == GAME_DIALOG_POSITIVE_ACTION_2)
+            {
+                numSmashersToBuy = 2;
+            }
+            
             int numCoins = getCoins();
-            int numCoinsForHurdleSmasher = getNumCoinsForHurdleSmasher();
+            int numCoinsForHurdleSmasher = getNumCoinsForHurdleSmasher(numSmashersToBuy);
             if (numCoins >= numCoinsForHurdleSmasher)
             {
                 numCoins -= numCoinsForHurdleSmasher;
                 [self updateCoinsEarned:numCoins];
                 
                 //enter state where game view detects tap on a specific cell
+                /*
                 [self.gameView enableDisableTouchInput:YES];
                 self.mHurdleSmasherMode = YES;
                 
                 [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO withData:0 withAnimation:NO];
+                 */
+                int numSmashers = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED];
+                numSmashers += numSmashersToBuy;
+                [[NSUserDefaults standardUserDefaults] setInteger:numSmashers forKey: @PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED];
                 
                 [self refreshLifelinesUI];
             }
@@ -1533,20 +1755,35 @@
     }
     else if (dialogType == DIALOG_TYPE_ADD_BRIDGE)
     {
-        if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Add Bridge
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1 || option == GAME_DIALOG_POSITIVE_ACTION_2) //Add Bridge
         {
+            int numBridgesToBuy = 0;
+            if (option == GAME_DIALOG_POSITIVE_ACTION_1)
+            {
+                numBridgesToBuy = 1;
+            }
+            else if (option == GAME_DIALOG_POSITIVE_ACTION_2)
+            {
+                numBridgesToBuy = 2;
+            }
+            
             int numCoins = getCoins();
-            int numCoinsForBridge = getNumCoinsForBridge();
+            int numCoinsForBridge = getNumCoinsForBridge(numBridgesToBuy);
             if (numCoins >= numCoinsForBridge)
             {
                 numCoins -= numCoinsForBridge;
                 [self updateCoinsEarned:numCoins];
                 
                 //enter state where game view detects tap on a specific cell
+                /*
                 [self.gameView enableDisableTouchInput:YES];
                 self.mBridgeMode = YES;
                 
                 [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_INFO withData:0 withAnimation:NO];
+                */
+                int numBridges = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_BRIDGES_EARNED];
+                numBridges += numBridgesToBuy;
+                [[NSUserDefaults standardUserDefaults] setInteger:numBridges forKey: @PREFERENCE_TOTAL_BRIDGES_EARNED];
                 
                 [self refreshLifelinesUI];
             }

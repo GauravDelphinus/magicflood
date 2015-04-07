@@ -27,3 +27,6 @@
 "iap_purchase_failed_error_SKErrorPaymentInvalid"="Invalid Payment";
 "iap_purchase_failed_error_SKErrorPaymentNotAllowed"="Payment Not Allowed";
 "iap_purchase_failed_error_SKErrorStoreProductNotAvailable"="Product Not Available";
+
+/** Add Lifeline Dialogs **/
+"num_coins_label"="%d";
