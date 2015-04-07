@@ -419,6 +419,36 @@
 		F161465E1AD184DF00BF3A46 /* ic_use_star_2_pressed@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146221AD184DF00BF3A46 /* ic_use_star_2_pressed@2x~ipad.png */; };
 		F161465F1AD184DF00BF3A46 /* ic_use_star_2_pressed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146231AD184DF00BF3A46 /* ic_use_star_2_pressed@3x.png */; };
 		F16146601AD184DF00BF3A46 /* ic_use_star_2_pressed~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146241AD184DF00BF3A46 /* ic_use_star_2_pressed~ipad.png */; };
+		F16146661AD479BC00BF3A46 /* ic_star_mode_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146611AD479BC00BF3A46 /* ic_star_mode_normal.png */; };
+		F16146671AD479BC00BF3A46 /* ic_star_mode_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146621AD479BC00BF3A46 /* ic_star_mode_normal@2x.png */; };
+		F16146681AD479BC00BF3A46 /* ic_star_mode_normal@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146631AD479BC00BF3A46 /* ic_star_mode_normal@2x~ipad.png */; };
+		F16146691AD479BC00BF3A46 /* ic_star_mode_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146641AD479BC00BF3A46 /* ic_star_mode_normal@3x.png */; };
+		F161466A1AD479BC00BF3A46 /* ic_star_mode_normal~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146651AD479BC00BF3A46 /* ic_star_mode_normal~ipad.png */; };
+		F16146701AD480B200BF3A46 /* ic_star_mode_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F161466B1AD480B200BF3A46 /* ic_star_mode_pressed.png */; };
+		F16146711AD480B200BF3A46 /* ic_star_mode_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F161466C1AD480B200BF3A46 /* ic_star_mode_pressed@2x.png */; };
+		F16146721AD480B200BF3A46 /* ic_star_mode_pressed@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F161466D1AD480B200BF3A46 /* ic_star_mode_pressed@2x~ipad.png */; };
+		F16146731AD480B200BF3A46 /* ic_star_mode_pressed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F161466E1AD480B200BF3A46 /* ic_star_mode_pressed@3x.png */; };
+		F16146741AD480B200BF3A46 /* ic_star_mode_pressed~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F161466F1AD480B200BF3A46 /* ic_star_mode_pressed~ipad.png */; };
+		F161467F1AD486CD00BF3A46 /* ic_bridge_mode_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146751AD486CD00BF3A46 /* ic_bridge_mode_normal.png */; };
+		F16146801AD486CD00BF3A46 /* ic_bridge_mode_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146761AD486CD00BF3A46 /* ic_bridge_mode_normal@2x.png */; };
+		F16146811AD486CD00BF3A46 /* ic_bridge_mode_normal@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146771AD486CD00BF3A46 /* ic_bridge_mode_normal@2x~ipad.png */; };
+		F16146821AD486CD00BF3A46 /* ic_bridge_mode_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146781AD486CD00BF3A46 /* ic_bridge_mode_normal@3x.png */; };
+		F16146831AD486CD00BF3A46 /* ic_bridge_mode_normal~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146791AD486CD00BF3A46 /* ic_bridge_mode_normal~ipad.png */; };
+		F16146841AD486CD00BF3A46 /* ic_bridge_mode_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F161467A1AD486CD00BF3A46 /* ic_bridge_mode_pressed.png */; };
+		F16146851AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F161467B1AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x.png */; };
+		F16146861AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F161467C1AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x~ipad.png */; };
+		F16146871AD486CD00BF3A46 /* ic_bridge_mode_pressed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F161467D1AD486CD00BF3A46 /* ic_bridge_mode_pressed@3x.png */; };
+		F16146881AD486CD00BF3A46 /* ic_bridge_mode_pressed~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F161467E1AD486CD00BF3A46 /* ic_bridge_mode_pressed~ipad.png */; };
+		F16146931AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146891AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal.png */; };
+		F16146941AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F161468A1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x.png */; };
+		F16146951AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F161468B1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x~ipad.png */; };
+		F16146961AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F161468C1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@3x.png */; };
+		F16146971AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F161468D1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal~ipad.png */; };
+		F16146981AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F161468E1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed.png */; };
+		F16146991AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F161468F1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x.png */; };
+		F161469A1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146901AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x~ipad.png */; };
+		F161469B1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146911AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@3x.png */; };
+		F161469C1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F16146921AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed~ipad.png */; };
 		F164C1291A8745F600CBB5EC /* MFUIButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = F164C1281A8745F600CBB5EC /* MFUIButton.mm */; };
 		F164C12C1A8B7E1400CBB5EC /* MFHelpScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F164C12B1A8B7E1400CBB5EC /* MFHelpScreenViewController.m */; };
 		F164C14B1A8BFA0900CBB5EC /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F164C14A1A8BFA0900CBB5EC /* MFAboutViewController.m */; };
@@ -976,6 +1006,36 @@
 		F16146221AD184DF00BF3A46 /* ic_use_star_2_pressed@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_use_star_2_pressed@2x~ipad.png"; sourceTree = "<group>"; };
 		F16146231AD184DF00BF3A46 /* ic_use_star_2_pressed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_use_star_2_pressed@3x.png"; sourceTree = "<group>"; };
 		F16146241AD184DF00BF3A46 /* ic_use_star_2_pressed~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_use_star_2_pressed~ipad.png"; sourceTree = "<group>"; };
+		F16146611AD479BC00BF3A46 /* ic_star_mode_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star_mode_normal.png; sourceTree = "<group>"; };
+		F16146621AD479BC00BF3A46 /* ic_star_mode_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_star_mode_normal@2x.png"; sourceTree = "<group>"; };
+		F16146631AD479BC00BF3A46 /* ic_star_mode_normal@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_star_mode_normal@2x~ipad.png"; sourceTree = "<group>"; };
+		F16146641AD479BC00BF3A46 /* ic_star_mode_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_star_mode_normal@3x.png"; sourceTree = "<group>"; };
+		F16146651AD479BC00BF3A46 /* ic_star_mode_normal~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_star_mode_normal~ipad.png"; sourceTree = "<group>"; };
+		F161466B1AD480B200BF3A46 /* ic_star_mode_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star_mode_pressed.png; sourceTree = "<group>"; };
+		F161466C1AD480B200BF3A46 /* ic_star_mode_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_star_mode_pressed@2x.png"; sourceTree = "<group>"; };
+		F161466D1AD480B200BF3A46 /* ic_star_mode_pressed@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_star_mode_pressed@2x~ipad.png"; sourceTree = "<group>"; };
+		F161466E1AD480B200BF3A46 /* ic_star_mode_pressed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_star_mode_pressed@3x.png"; sourceTree = "<group>"; };
+		F161466F1AD480B200BF3A46 /* ic_star_mode_pressed~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_star_mode_pressed~ipad.png"; sourceTree = "<group>"; };
+		F16146751AD486CD00BF3A46 /* ic_bridge_mode_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bridge_mode_normal.png; sourceTree = "<group>"; };
+		F16146761AD486CD00BF3A46 /* ic_bridge_mode_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bridge_mode_normal@2x.png"; sourceTree = "<group>"; };
+		F16146771AD486CD00BF3A46 /* ic_bridge_mode_normal@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bridge_mode_normal@2x~ipad.png"; sourceTree = "<group>"; };
+		F16146781AD486CD00BF3A46 /* ic_bridge_mode_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bridge_mode_normal@3x.png"; sourceTree = "<group>"; };
+		F16146791AD486CD00BF3A46 /* ic_bridge_mode_normal~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bridge_mode_normal~ipad.png"; sourceTree = "<group>"; };
+		F161467A1AD486CD00BF3A46 /* ic_bridge_mode_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bridge_mode_pressed.png; sourceTree = "<group>"; };
+		F161467B1AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bridge_mode_pressed@2x.png"; sourceTree = "<group>"; };
+		F161467C1AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bridge_mode_pressed@2x~ipad.png"; sourceTree = "<group>"; };
+		F161467D1AD486CD00BF3A46 /* ic_bridge_mode_pressed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bridge_mode_pressed@3x.png"; sourceTree = "<group>"; };
+		F161467E1AD486CD00BF3A46 /* ic_bridge_mode_pressed~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bridge_mode_pressed~ipad.png"; sourceTree = "<group>"; };
+		F16146891AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hurdle_smasher_mode_normal.png; sourceTree = "<group>"; };
+		F161468A1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hurdle_smasher_mode_normal@2x.png"; sourceTree = "<group>"; };
+		F161468B1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hurdle_smasher_mode_normal@2x~ipad.png"; sourceTree = "<group>"; };
+		F161468C1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hurdle_smasher_mode_normal@3x.png"; sourceTree = "<group>"; };
+		F161468D1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hurdle_smasher_mode_normal~ipad.png"; sourceTree = "<group>"; };
+		F161468E1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hurdle_smasher_mode_pressed.png; sourceTree = "<group>"; };
+		F161468F1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hurdle_smasher_mode_pressed@2x.png"; sourceTree = "<group>"; };
+		F16146901AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hurdle_smasher_mode_pressed@2x~ipad.png"; sourceTree = "<group>"; };
+		F16146911AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hurdle_smasher_mode_pressed@3x.png"; sourceTree = "<group>"; };
+		F16146921AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hurdle_smasher_mode_pressed~ipad.png"; sourceTree = "<group>"; };
 		F164C1271A8745F600CBB5EC /* MFUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFUIButton.h; path = ../../src/iOS/MFUIButton.h; sourceTree = SOURCE_ROOT; };
 		F164C1281A8745F600CBB5EC /* MFUIButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFUIButton.mm; path = ../../src/iOS/MFUIButton.mm; sourceTree = SOURCE_ROOT; };
 		F164C12A1A8B7E1400CBB5EC /* MFHelpScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHelpScreenViewController.h; path = ../../src/iOS/MFHelpScreenViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1349,6 +1409,36 @@
 		F1E64C011A7E1ADF0042D466 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F16146891AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal.png */,
+				F161468A1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x.png */,
+				F161468B1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x~ipad.png */,
+				F161468C1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@3x.png */,
+				F161468D1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal~ipad.png */,
+				F161468E1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed.png */,
+				F161468F1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x.png */,
+				F16146901AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x~ipad.png */,
+				F16146911AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@3x.png */,
+				F16146921AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed~ipad.png */,
+				F16146751AD486CD00BF3A46 /* ic_bridge_mode_normal.png */,
+				F16146761AD486CD00BF3A46 /* ic_bridge_mode_normal@2x.png */,
+				F16146771AD486CD00BF3A46 /* ic_bridge_mode_normal@2x~ipad.png */,
+				F16146781AD486CD00BF3A46 /* ic_bridge_mode_normal@3x.png */,
+				F16146791AD486CD00BF3A46 /* ic_bridge_mode_normal~ipad.png */,
+				F161467A1AD486CD00BF3A46 /* ic_bridge_mode_pressed.png */,
+				F161467B1AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x.png */,
+				F161467C1AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x~ipad.png */,
+				F161467D1AD486CD00BF3A46 /* ic_bridge_mode_pressed@3x.png */,
+				F161467E1AD486CD00BF3A46 /* ic_bridge_mode_pressed~ipad.png */,
+				F161466B1AD480B200BF3A46 /* ic_star_mode_pressed.png */,
+				F161466C1AD480B200BF3A46 /* ic_star_mode_pressed@2x.png */,
+				F161466D1AD480B200BF3A46 /* ic_star_mode_pressed@2x~ipad.png */,
+				F161466E1AD480B200BF3A46 /* ic_star_mode_pressed@3x.png */,
+				F161466F1AD480B200BF3A46 /* ic_star_mode_pressed~ipad.png */,
+				F16146611AD479BC00BF3A46 /* ic_star_mode_normal.png */,
+				F16146621AD479BC00BF3A46 /* ic_star_mode_normal@2x.png */,
+				F16146631AD479BC00BF3A46 /* ic_star_mode_normal@2x~ipad.png */,
+				F16146641AD479BC00BF3A46 /* ic_star_mode_normal@3x.png */,
+				F16146651AD479BC00BF3A46 /* ic_star_mode_normal~ipad.png */,
 				F16145E91AD184DE00BF3A46 /* ic_use_bridge_1_normal.png */,
 				F16145EA1AD184DE00BF3A46 /* ic_use_bridge_1_normal@2x.png */,
 				F16145EB1AD184DE00BF3A46 /* ic_use_bridge_1_normal@2x~ipad.png */,
@@ -1912,16 +2002,20 @@
 				F132E4971A979A16003F1FA7 /* ic_play_on@2x~ipad.png in Resources */,
 				F132E4581A979A16003F1FA7 /* ic_iap_coins_first~ipad.png in Resources */,
 				F16146341AD184DF00BF3A46 /* ic_use_bridge_2_pressed.png in Resources */,
+				F16146821AD486CD00BF3A46 /* ic_bridge_mode_normal@3x.png in Resources */,
 				F132E4271A979A16003F1FA7 /* ic_button_rate_normal@2x~ipad.png in Resources */,
 				F1A554591A99FB7D00E89E0C /* ic_play_on@3x.png in Resources */,
+				F16146801AD486CD00BF3A46 /* ic_bridge_mode_normal@2x.png in Resources */,
 				F1A554581A99FB7D00E89E0C /* ic_not_connected@3x.png in Resources */,
 				F15311A01A8577C700F16C1E /* hurdle_smashed_sound.wav in Resources */,
 				F1A554441A99FB7D00E89E0C /* ic_coins@3x.png in Resources */,
 				F132E4571A979A16003F1FA7 /* ic_iap_coins_first@2x~ipad.png in Resources */,
 				F132E44C1A979A16003F1FA7 /* ic_hot_deal~ipad.png in Resources */,
 				F1A5542C1A99FB7D00E89E0C /* ic_button_color_blue_pressed@3x.png in Resources */,
+				F161469A1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x~ipad.png in Resources */,
 				F132E3B01A979A16003F1FA7 /* ic_add_hurdle_smasher_pressed~ipad.png in Resources */,
 				F132E4991A979A16003F1FA7 /* ic_play.png in Resources */,
+				F16146931AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal.png in Resources */,
 				F132E3E11A979A16003F1FA7 /* ic_button_color_blue_pressed.png in Resources */,
 				F1A554551A99FB7D00E89E0C /* ic_moves_red@3x.png in Resources */,
 				F132E3D01A979A16003F1FA7 /* ic_add_star_pressed~ipad.png in Resources */,
@@ -1942,6 +2036,7 @@
 				F132E4591A979A16003F1FA7 /* ic_iap_coins_fourth.png in Resources */,
 				F132E4661A979A16003F1FA7 /* ic_iap_failed@2x.png in Resources */,
 				F132E4A91A979A16003F1FA7 /* ic_viewflipper_indicator_unselected.png in Resources */,
+				F16146991AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@2x.png in Resources */,
 				F1B6B3461AA1EE7000D39B29 /* ic_restore_purchase@2x~ipad.png in Resources */,
 				F16146291AD184DF00BF3A46 /* ic_use_bridge_1_normal~ipad.png in Resources */,
 				F161463C1AD184DF00BF3A46 /* ic_use_hurdle_smasher_1_normal@3x.png in Resources */,
@@ -1976,6 +2071,7 @@
 				F132E47E1A979A16003F1FA7 /* ic_logo_big@2x.png in Resources */,
 				F132E4411A979A16003F1FA7 /* ic_coins.png in Resources */,
 				F132E4AB1A979A16003F1FA7 /* ic_viewflipper_indicator_unselected@2x~ipad.png in Resources */,
+				F16146671AD479BC00BF3A46 /* ic_star_mode_normal@2x.png in Resources */,
 				F132E3DC1A979A16003F1FA7 /* ic_button_cancel_pressed~ipad.png in Resources */,
 				F12006C91AA6655F0011747E /* ic_add_bridge@3x.png in Resources */,
 				F1A5543C1A99FB7D00E89E0C /* ic_button_menu_pressed@3x.png in Resources */,
@@ -2047,6 +2143,8 @@
 				F132E4641A979A16003F1FA7 /* ic_iap_coins_third~ipad.png in Resources */,
 				F132E3E41A979A16003F1FA7 /* ic_button_color_blue_pressed~ipad.png in Resources */,
 				F16146351AD184DF00BF3A46 /* ic_use_bridge_2_pressed@2x.png in Resources */,
+				F16146741AD480B200BF3A46 /* ic_star_mode_pressed~ipad.png in Resources */,
+				F16146951AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x~ipad.png in Resources */,
 				F16146521AD184DF00BF3A46 /* ic_use_star_1_pressed.png in Resources */,
 				F12006C71AA6655F0011747E /* ic_add_bridge@2x.png in Resources */,
 				F132E3E21A979A16003F1FA7 /* ic_button_color_blue_pressed@2x.png in Resources */,
@@ -2073,9 +2171,12 @@
 				F132E3ED1A979A16003F1FA7 /* ic_button_color_orange_normal.png in Resources */,
 				F132E38A1A979A16003F1FA7 /* help_image_screen_3@2x.png in Resources */,
 				F132E41C1A979A16003F1FA7 /* ic_button_feedback_pressed~ipad.png in Resources */,
+				F16146701AD480B200BF3A46 /* ic_star_mode_pressed.png in Resources */,
 				F12006AB1AA327F90011747E /* ic_add_bridge_pressed@3x.png in Resources */,
 				F132E3951A979A16003F1FA7 /* help_image_screen_5.png in Resources */,
 				F1769A451A98710100E66CCA /* LaunchScreen.xib in Resources */,
+				F16146871AD486CD00BF3A46 /* ic_bridge_mode_pressed@3x.png in Resources */,
+				F16146731AD480B200BF3A46 /* ic_star_mode_pressed@3x.png in Resources */,
 				F1B6B3511AA2021200D39B29 /* ic_test@3x.png in Resources */,
 				F132E3EC1A979A16003F1FA7 /* ic_button_color_green_pressed~ipad.png in Resources */,
 				F132E3F71A979A16003F1FA7 /* ic_button_color_purple_normal@2x~ipad.png in Resources */,
@@ -2095,6 +2196,7 @@
 				F132E3961A979A16003F1FA7 /* help_image_screen_5@2x.png in Resources */,
 				F132E4341A979A16003F1FA7 /* ic_button_restore_pressed~ipad.png in Resources */,
 				F132E38D1A979A16003F1FA7 /* help_image_screen_3b.png in Resources */,
+				F16146841AD486CD00BF3A46 /* ic_bridge_mode_pressed.png in Resources */,
 				F132E4961A979A16003F1FA7 /* ic_play_on@2x.png in Resources */,
 				F161463B1AD184DF00BF3A46 /* ic_use_hurdle_smasher_1_normal@2x~ipad.png in Resources */,
 				F132E4431A979A16003F1FA7 /* ic_coins@2x~ipad.png in Resources */,
@@ -2153,9 +2255,12 @@
 				F16146411AD184DF00BF3A46 /* ic_use_hurdle_smasher_1_pressed@3x.png in Resources */,
 				F132E4461A979A16003F1FA7 /* ic_end_game@2x.png in Resources */,
 				F132E4361A979A16003F1FA7 /* ic_button_sound_off_normal@2x.png in Resources */,
+				F16146711AD480B200BF3A46 /* ic_star_mode_pressed@2x.png in Resources */,
 				F1A554371A99FB7D00E89E0C /* ic_button_facebook_normal@3x.png in Resources */,
 				F132E4701A979A16003F1FA7 /* ic_iap_tick~ipad.png in Resources */,
 				F1B6B3471AA1EE7000D39B29 /* ic_restore_purchase@3x.png in Resources */,
+				F16146881AD486CD00BF3A46 /* ic_bridge_mode_pressed~ipad.png in Resources */,
+				F16146661AD479BC00BF3A46 /* ic_star_mode_normal.png in Resources */,
 				F132E3AC1A979A16003F1FA7 /* ic_add_hurdle_smasher_normal~ipad.png in Resources */,
 				F132E47A1A979A16003F1FA7 /* ic_levels@2x.png in Resources */,
 				F132E46A1A979A16003F1FA7 /* ic_iap_lock@2x.png in Resources */,
@@ -2163,6 +2268,7 @@
 				F161464F1AD184DF00BF3A46 /* ic_use_star_1_normal@2x~ipad.png in Resources */,
 				F132E40D1A979A16003F1FA7 /* ic_button_facebook_normal.png in Resources */,
 				F132E3F01A979A16003F1FA7 /* ic_button_color_orange_normal~ipad.png in Resources */,
+				F161467F1AD486CD00BF3A46 /* ic_bridge_mode_normal.png in Resources */,
 				F132E4A41A979A16003F1FA7 /* ic_star_placement_info~ipad.png in Resources */,
 				F132E4841A979A16003F1FA7 /* ic_logo_small~ipad.png in Resources */,
 				F132E46C1A979A16003F1FA7 /* ic_iap_lock~ipad.png in Resources */,
@@ -2175,6 +2281,7 @@
 				F132E4101A979A16003F1FA7 /* ic_button_facebook_normal~ipad.png in Resources */,
 				F16146451AD184DF00BF3A46 /* ic_use_hurdle_smasher_2_normal@2x~ipad.png in Resources */,
 				F1B6B3521AA2021200D39B29 /* ic_test~ipad.png in Resources */,
+				F16146971AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal~ipad.png in Resources */,
 				F132E3CF1A979A16003F1FA7 /* ic_add_star_pressed@2x~ipad.png in Resources */,
 				F132E3901A979A16003F1FA7 /* help_image_screen_3b~ipad.png in Resources */,
 				F132E3881A979A16003F1FA7 /* help_image_screen_2~ipad.png in Resources */,
@@ -2240,6 +2347,7 @@
 				F1A554161A99FB7D00E89E0C /* help_image_screen_3@3x.png in Resources */,
 				F132E4231A979A16003F1FA7 /* ic_button_menu_pressed@2x~ipad.png in Resources */,
 				F1A5541C1A99FB7D00E89E0C /* ic_add_coins_normal@3x.png in Resources */,
+				F16146851AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x.png in Resources */,
 				F1A554241A99FB7D00E89E0C /* ic_add_moves_red_pressed@3x.png in Resources */,
 				F132E4621A979A16003F1FA7 /* ic_iap_coins_third@2x.png in Resources */,
 				F1A5543E1A99FB7D00E89E0C /* ic_button_rate_pressed@3x.png in Resources */,
@@ -2257,6 +2365,7 @@
 				F132E39A1A979A16003F1FA7 /* help_image_screen_8@2x.png in Resources */,
 				F132E42D1A979A16003F1FA7 /* ic_button_restore_normal.png in Resources */,
 				F132E48C1A979A16003F1FA7 /* ic_moves~ipad.png in Resources */,
+				F16146981AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed.png in Resources */,
 				F12006C81AA6655F0011747E /* ic_add_bridge@2x~ipad.png in Resources */,
 				F1A2F2E51A1D7F1C000DD4E7 /* InfoPlist.strings in Resources */,
 				F16146281AD184DF00BF3A46 /* ic_use_bridge_1_normal@3x.png in Resources */,
@@ -2269,8 +2378,10 @@
 				F132E3CB1A979A16003F1FA7 /* ic_add_star_normal@2x~ipad.png in Resources */,
 				F1B6B3451AA1EE7000D39B29 /* ic_restore_purchase@2x.png in Resources */,
 				F161462B1AD184DF00BF3A46 /* ic_use_bridge_1_pressed@2x.png in Resources */,
+				F161469C1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed~ipad.png in Resources */,
 				F132E47D1A979A16003F1FA7 /* ic_logo_big.png in Resources */,
 				F132E3FE1A979A16003F1FA7 /* ic_button_color_red_normal@2x.png in Resources */,
+				F161469B1AD486DC00BF3A46 /* ic_hurdle_smasher_mode_pressed@3x.png in Resources */,
 				F132E42E1A979A16003F1FA7 /* ic_button_restore_normal@2x.png in Resources */,
 				F132E4281A979A16003F1FA7 /* ic_button_rate_normal~ipad.png in Resources */,
 				F132E48E1A979A16003F1FA7 /* ic_next_level@2x.png in Resources */,
@@ -2312,6 +2423,7 @@
 				F153119F1A8577C700F16C1E /* game_success_sound.wav in Resources */,
 				F16146251AD184DF00BF3A46 /* ic_use_bridge_1_normal.png in Resources */,
 				F132E3D61A979A16003F1FA7 /* ic_button_cancel_normal@2x.png in Resources */,
+				F16146861AD486CD00BF3A46 /* ic_bridge_mode_pressed@2x~ipad.png in Resources */,
 				F132E3841A979A16003F1FA7 /* help_image_screen_1~ipad.png in Resources */,
 				F15311A11A8577C700F16C1E /* star_placed_sound.wav in Resources */,
 				F132E4AC1A979A16003F1FA7 /* ic_viewflipper_indicator_unselected~ipad.png in Resources */,
@@ -2323,6 +2435,8 @@
 				F132E3891A979A16003F1FA7 /* help_image_screen_3.png in Resources */,
 				F161464B1AD184DF00BF3A46 /* ic_use_hurdle_smasher_2_pressed@3x.png in Resources */,
 				F16146571AD184DF00BF3A46 /* ic_use_star_2_normal.png in Resources */,
+				F16146941AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@2x.png in Resources */,
+				F16146721AD480B200BF3A46 /* ic_star_mode_pressed@2x~ipad.png in Resources */,
 				F132E44F1A979A16003F1FA7 /* ic_how_to_play@2x~ipad.png in Resources */,
 				F132E42F1A979A16003F1FA7 /* ic_button_restore_normal@2x~ipad.png in Resources */,
 				F132E3AD1A979A16003F1FA7 /* ic_add_hurdle_smasher_pressed.png in Resources */,
@@ -2363,7 +2477,9 @@
 				F132E38E1A979A16003F1FA7 /* help_image_screen_3b@2x.png in Resources */,
 				F16146491AD184DF00BF3A46 /* ic_use_hurdle_smasher_2_pressed@2x.png in Resources */,
 				F132E4561A979A16003F1FA7 /* ic_iap_coins_first@2x.png in Resources */,
+				F161466A1AD479BC00BF3A46 /* ic_star_mode_normal~ipad.png in Resources */,
 				F12006A41AA327F90011747E /* ic_add_bridge_normal@2x.png in Resources */,
+				F16146681AD479BC00BF3A46 /* ic_star_mode_normal@2x~ipad.png in Resources */,
 				F132E4161A979A16003F1FA7 /* ic_button_feedback_normal@2x.png in Resources */,
 				F1A554261A99FB7D00E89E0C /* ic_add_star_normal@3x.png in Resources */,
 				F12006A51AA327F90011747E /* ic_add_bridge_normal@2x~ipad.png in Resources */,
@@ -2372,11 +2488,13 @@
 				F132E3B51A979A16003F1FA7 /* ic_add_moves_normal.png in Resources */,
 				F132E48D1A979A16003F1FA7 /* ic_next_level.png in Resources */,
 				F16146371AD184DF00BF3A46 /* ic_use_bridge_2_pressed@3x.png in Resources */,
+				F16146811AD486CD00BF3A46 /* ic_bridge_mode_normal@2x~ipad.png in Resources */,
 				F132E3D51A979A16003F1FA7 /* ic_button_cancel_normal.png in Resources */,
 				F132E3D11A979A16003F1FA7 /* ic_add_star.png in Resources */,
 				F132E4391A979A16003F1FA7 /* ic_button_sound_on_normal.png in Resources */,
 				F1B6B3441AA1EE7000D39B29 /* ic_restore_purchase.png in Resources */,
 				F132E4261A979A16003F1FA7 /* ic_button_rate_normal@2x.png in Resources */,
+				F16146691AD479BC00BF3A46 /* ic_star_mode_normal@3x.png in Resources */,
 				F132E3E81A979A16003F1FA7 /* ic_button_color_green_normal~ipad.png in Resources */,
 				F132E4051A979A16003F1FA7 /* ic_button_color_yellow_normal.png in Resources */,
 				F132E3981A979A16003F1FA7 /* help_image_screen_5~ipad.png in Resources */,
@@ -2384,8 +2502,10 @@
 				F12006AA1AA327F90011747E /* ic_add_bridge_pressed@2x~ipad.png in Resources */,
 				F132E4241A979A16003F1FA7 /* ic_button_menu_pressed~ipad.png in Resources */,
 				F132E3941A979A16003F1FA7 /* help_image_screen_4~ipad.png in Resources */,
+				F16146831AD486CD00BF3A46 /* ic_bridge_mode_normal~ipad.png in Resources */,
 				F132E4511A979A16003F1FA7 /* ic_hurdle_smasher_info.png in Resources */,
 				F132E4001A979A16003F1FA7 /* ic_button_color_red_normal~ipad.png in Resources */,
+				F16146961AD486DC00BF3A46 /* ic_hurdle_smasher_mode_normal@3x.png in Resources */,
 				F132E4AA1A979A16003F1FA7 /* ic_viewflipper_indicator_unselected@2x.png in Resources */,
 				F132E49C1A979A16003F1FA7 /* ic_play~ipad.png in Resources */,
 				F1A554351A99FB7D00E89E0C /* ic_button_color_yellow_normal@3x.png in Resources */,

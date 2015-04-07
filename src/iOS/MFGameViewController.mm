@@ -773,6 +773,8 @@
         [self enableDisableAllButtons:YES];
         
         self.mHurdleSmasherMode = NO;
+        
+        [self refreshLifelinesUI];
         return;
     }
     
@@ -804,6 +806,8 @@
         [self enableDisableAllButtons:YES];
         
         self.mStarPlacementMode = NO;
+        
+        [self refreshLifelinesUI];
         return;
     }
     
@@ -835,6 +839,8 @@
         [self enableDisableAllButtons:YES];
         
         self.mBridgeMode = NO;
+        
+        [self refreshLifelinesUI];
         return;
     }
     
@@ -1176,40 +1182,39 @@
     
     if (self.mStarPlacementMode)
     {
-        //self.mLifelineInfoCotainerView.hidden = NO;
-        
-        //self.mSoundButton.hidden = YES;
-        //self.mLevelsLabel.hidden = YES;
-        //self.mMenuButton.hidden = YES;
-        
         [self enableDisableAllButtons:NO];
         
+        [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_star_mode_normal"]
+                                       forState:UIControlStateNormal];
+        [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_star_mode_pressed"]
+                                       forState:UIControlStateHighlighted];
+
         self.mAddStarButton.enabled = YES;
     }
     else if (self.mHurdleSmasherMode)
     {
-        //self.mLifelineInfoCotainerView.hidden = NO;
-        
         [self enableDisableAllButtons:NO];
+        
+        [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_hurdle_smasher_mode_normal"]
+                                       forState:UIControlStateNormal];
+        [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_hurdle_smasher_mode_pressed"]
+                                       forState:UIControlStateHighlighted];
         
         self.mAddHurdleSmasherButton.enabled = YES;
     }
     else if (self.mBridgeMode)
     {
-        //self.mLifelineInfoCotainerView.hidden = NO;
-        
         [self enableDisableAllButtons:NO];
+        
+        [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_bridge_mode_normal"]
+                                                forState:UIControlStateNormal];
+        [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_bridge_mode_pressed"]
+                                                forState:UIControlStateHighlighted];
         
         self.mAddBridgeButton.enabled = YES;
     }
     else
     {
-        //self.mLifelineInfoCotainerView.hidden = YES;
-        
-        //self.mSoundButton.hidden = NO;
-        //self.mLevelsLabel.hidden = NO;
-        //self.mMenuButton.hidden = NO;
-        
         [self enableDisableAllButtons:YES];
     }
 }
