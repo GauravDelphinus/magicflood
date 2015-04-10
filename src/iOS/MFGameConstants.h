@@ -26,6 +26,9 @@
 #define PREFERENCE_TOTAL_STARS_EARNED   "total_stars_earned"
 #define PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED "total_hurdle_smashers_earned"
 #define PREFERENCE_TOTAL_BRIDGES_EARNED "total_bridges_earned"
+#define PREFERENCE_STAR_PLACEMENT_COUNT "star_placement_count"
+#define PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT "hurdle_smasher_placement_count"
+#define PREFERENCE_BRIDGE_PLACEMENT_COUNT   "bridge_placement_count"
 
 /** Default Preferences **/
 #define DEFAULT_LAST_UNLOCKED_LEVEL 1
@@ -47,5 +50,10 @@
 #define FACEBOOK_PAGE_URL   "http://facebook.com/magicfloodgame"
 #define ITUNES_APP_URL  "itms://itunes.apple.com/us/app/apple-store/id967517904?mt=8f"
 #define FEEDBACK_EMAIL  "ezeeideas@gmail.com"
+
+/** Number of times to show the lifeline placement dialogs **/
+#define MAX_STAR_PLACEMENT_DIALOG_COUNT 2
+#define MAX_HURDLE_SMASHER_PLACEMENT_DIALOG_COUNT 2
+#define MAX_BRIDGE_PLACEMENT_DIALOG_COUNT 2
 
 #endif

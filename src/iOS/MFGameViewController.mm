@@ -62,6 +62,9 @@
 @property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
 @property long gridHandle; //handle to the grid object in C++ code
 @property NSTimer *mStarRotationTimer; //star rotation timer for the game view
+@property (strong, nonatomic) IBOutlet UIView *mLifelinePlacementView;
+@property (strong, nonatomic) IBOutlet UILabel *mLifelinePlacementTitle;
+@property (strong, nonatomic) IBOutlet UITextView *mLifelinePlacementDescription;
 
 //@property (strong, nonatomic) IBOutlet UIView *mLifelineInfoCotainerView;
 
@@ -785,13 +788,23 @@
     }
     else
     {
-        //enter state where game view detects tap on a specific cell
-        [self.gameView enableDisableTouchInput:YES];
-        self.mHurdleSmasherMode = YES;
-        
-        [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO withData:0 withAnimation:NO];
-        
-        [self refreshLifelinesUI];
+        int hurdleSmasherPlacementCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT];
+        if (hurdleSmasherPlacementCount <= MAX_HURDLE_SMASHER_PLACEMENT_DIALOG_COUNT)
+        {
+            //show the placement info dialog
+            [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO withData:0 withAnimation:NO];
+            
+            hurdleSmasherPlacementCount++;
+            [[NSUserDefaults standardUserDefaults] setInteger:hurdleSmasherPlacementCount forKey: @PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT];
+        }
+        else
+        {
+            //enter state where game view detects tap on a specific cell
+            [self.gameView enableDisableTouchInput:YES];
+            self.mHurdleSmasherMode = YES;
+            
+            [self refreshLifelinesUI];
+        }
     }
 }
 
@@ -818,13 +831,23 @@
     }
     else
     {
-        //enter state where game view detects tap on a specific cell
-        [self.gameView enableDisableTouchInput:YES];
-        self.mStarPlacementMode = YES;
-        
-        [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO withData:0 withAnimation:NO];
-        
-        [self refreshLifelinesUI];
+        int starPlacementCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_STAR_PLACEMENT_COUNT];
+        if (starPlacementCount <= MAX_STAR_PLACEMENT_DIALOG_COUNT)
+        {
+            //show the placement info dialog
+            [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO withData:0 withAnimation:NO];
+            
+            starPlacementCount++;
+            [[NSUserDefaults standardUserDefaults] setInteger:starPlacementCount forKey: @PREFERENCE_STAR_PLACEMENT_COUNT];
+        }
+        else
+        {
+            //enter state where game view detects tap on a specific cell
+            [self.gameView enableDisableTouchInput:YES];
+            self.mStarPlacementMode = YES;
+            
+            [self refreshLifelinesUI];
+        }
     }
 }
 
@@ -851,11 +874,35 @@
     }
     else
     {
-        //enter state where game view detects tap on a specific cell
-        [self.gameView enableDisableTouchInput:YES];
-        self.mBridgeMode = YES;
+        int bridgePlacementCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_BRIDGE_PLACEMENT_COUNT];
+        if (bridgePlacementCount <= MAX_BRIDGE_PLACEMENT_DIALOG_COUNT)
+        {
+            //show the placement info dialog
+            [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_INFO withData:0 withAnimation:NO];
+            
+            bridgePlacementCount++;
+            [[NSUserDefaults standardUserDefaults] setInteger:bridgePlacementCount forKey: @PREFERENCE_BRIDGE_PLACEMENT_COUNT];
+        }
+        else
+        {
+            //enter state where game view detects tap on a specific cell
+            [self.gameView enableDisableTouchInput:YES];
+            self.mBridgeMode = YES;
+            
+            [self refreshLifelinesUI];
+        }
+    }
+}
+
+- (IBAction)cancelLifelinePlacementMode:(id)sender {
+    if (self.mStarPlacementMode || self.mHurdleSmasherMode || self.mBridgeMode)
+    {
+        /** Cancel the star placement mode */
+        [self enableDisableAllButtons:YES];
         
-        [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_INFO withData:0 withAnimation:NO];
+        self.mStarPlacementMode = NO;
+        self.mHurdleSmasherMode = NO;
+        self.mBridgeMode = NO;
         
         [self refreshLifelinesUI];
     }
@@ -1184,38 +1231,62 @@
     {
         [self enableDisableAllButtons:NO];
         
-        [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_star_mode_normal"]
-                                       forState:UIControlStateNormal];
-        [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_star_mode_pressed"]
-                                       forState:UIControlStateHighlighted];
-
-        self.mAddStarButton.enabled = YES;
+        self.mLifelinePlacementView.hidden = NO;
+        [self showHideLowerViews:NO];
     }
     else if (self.mHurdleSmasherMode)
     {
         [self enableDisableAllButtons:NO];
         
-        [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_hurdle_smasher_mode_normal"]
-                                       forState:UIControlStateNormal];
-        [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_hurdle_smasher_mode_pressed"]
-                                       forState:UIControlStateHighlighted];
-        
-        self.mAddHurdleSmasherButton.enabled = YES;
+        self.mLifelinePlacementView.hidden = NO;
+        [self showHideLowerViews:NO];
     }
     else if (self.mBridgeMode)
     {
         [self enableDisableAllButtons:NO];
         
-        [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_bridge_mode_normal"]
-                                                forState:UIControlStateNormal];
-        [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_bridge_mode_pressed"]
-                                                forState:UIControlStateHighlighted];
-        
-        self.mAddBridgeButton.enabled = YES;
+        self.mLifelinePlacementView.hidden = NO;
+        [self showHideLowerViews:NO];
     }
     else
     {
         [self enableDisableAllButtons:YES];
+        
+        self.mLifelinePlacementView.hidden = YES;
+        [self showHideLowerViews:YES];
+    }
+}
+
+/**
+ Show or hide all views that are shown below the game view.
+ **/
+-(void) showHideLowerViews:(BOOL)show
+{
+    self.mRedButton.hidden = !show;
+    self.mGreenButton.hidden = !show;
+    self.mBlueButton.hidden = !show;
+    self.mYellowButton.hidden = !show;
+    self.mOrangeButton.hidden = !show;
+    self.mCyanButton.hidden = !show;
+    
+    self.mMenuButton.hidden = !show;
+    self.mSoundButton.hidden = !show;
+    self.mAddCoinsButton.hidden = !show;
+    self.mAddMovesButton.hidden = !show;
+    self.mRemoveAdsButton.hidden = !show;
+    
+    self.mAdBannerView.hidden = !show;
+    
+    /**
+     Lifeline buttons that are optional and only shown
+     based on certain conditions are already handled
+     above.  So, don't show them here.
+     **/
+    if (!show)
+    {
+        self.mAddStarButton.hidden = !show;
+        self.mAddHurdleSmasherButton.hidden = !show;
+        self.mAddBridgeButton.hidden = !show;
     }
 }
 
@@ -1410,57 +1481,6 @@
             [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
         }
     }
-    /*
-    else if (self.mBridgeMode == YES)
-    {
-        if (self.mBridgeStartPoint.x == -1 && self.mBridgeStartPoint.y == -1) //first point selection
-        {
-            int result = buildBridge(self.gridHandle, x, y, -1, -1); //validate the first point
-            if (result == 1)
-            {
-                self.mBridgeStartPoint = CGPointMake(x, y);
-                
-                //[self.gameView flashCellWithX:x withY:y Enable:YES];
-            }
-            else
-            {
-                [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
-            }
-        }
-        else
-        {
-            int result = buildBridge(self.gridHandle, self.mBridgeStartPoint.x, self.mBridgeStartPoint.y, x, y);
-            if (result == 1) //success in placing the bridge!
-            {
-                self.mBridgeStartPoint = {-1, -1};
-                
-                //[self.gameView flashCellWithX:x withY:y Enable:NO];
-                
-                [self playSound:mBridgePlacedSoundID];
-                
-                self.mBridgeMode = NO;
-                
-                int **gridData = getGridData(self.gridHandle);
-                [[self gameView] updateGameData:gridData];
-                freeGridData(self.gridHandle, gridData);
-                gridData = NULL;
-                
-                [self refreshLifelinesUI];
-            }
-            else //couldn't detect a bridge, so keep trying
-            {
-                
-                 //Reset the first point to nil as well and allow the user to reselect.
-     
-                self.mBridgeStartPoint = {-1, -1};
-                
-                [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_TRY_AGAIN withData:0 withAnimation:NO];
-            }
-        }
-
-    }
-*/
-
 }
 
 /*********************  Dialog Handling **************************/
@@ -1870,6 +1890,33 @@
     else if (dialogType == DIALOG_TYPE_GAME_FINISHED) //end of entire game, go back to levels
     {
         [self dismissViewControllerAnimated:NO completion:nil];
+    }
+    else if (dialogType == DIALOG_TYPE_STAR_PLACEMENT_INFO)
+    {
+        /** Enter the star placement mode **/
+        
+        [self.gameView enableDisableTouchInput:YES];
+        self.mStarPlacementMode = YES;
+        
+        [self refreshLifelinesUI];
+    }
+    else if (dialogType == DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO)
+    {
+        /** Enter the hurdle smasher placement mode **/
+        
+        [self.gameView enableDisableTouchInput:YES];
+        self.mHurdleSmasherMode = YES;
+        
+        [self refreshLifelinesUI];
+    }
+    else if (dialogType == DIALOG_TYPE_BRIDGE_PLACEMENT_INFO)
+    {
+        /** Enter the bridge placement mode **/
+        
+        [self.gameView enableDisableTouchInput:YES];
+        self.mBridgeMode = YES;
+        
+        [self refreshLifelinesUI];
     }
 }
 

@@ -50,6 +50,9 @@
                                           [NSNumber numberWithInt:INITIAL_STARS_ALLOCATED], @PREFERENCE_TOTAL_STARS_EARNED,
                                           [NSNumber numberWithInt:INITIAL_HURDLE_SMASHERS_ALLOCATED], @PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED,
                                           [NSNumber numberWithInt:INITIAL_BRIDGES_ALLOCATED], @PREFERENCE_TOTAL_BRIDGES_EARNED,
+                                          [NSNumber numberWithInt:0], @PREFERENCE_STAR_PLACEMENT_COUNT,
+                                          [NSNumber numberWithInt:0], @PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT,
+                                          [NSNumber numberWithInt:0], @PREFERENCE_BRIDGE_PLACEMENT_COUNT,
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
 }
