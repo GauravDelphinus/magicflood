@@ -2659,7 +2659,7 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="gvA-X1-oFt" eventType="touchUpInside" id="DIB-hv-GX4"/>
                                         </connections>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congratulations! You just earned 2 bonus stars that you can place any time on the grid to accelerate the game play!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsU-KL-jCk">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congratulations! You just earned 2 bonus Stars! Use them at any time by placing them on the grid to speed up the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsU-KL-jCk">
                                         <rect key="frame" x="8" y="64" width="249" height="150"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -2745,8 +2745,9 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="5Lh-iR-Pfk" eventType="touchUpInside" id="zPM-dP-GxM"/>
                                         </connections>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Super!  You just earned 2 bonus Hurdle Smashers!  Use them at any time to make holes in hurdles and accelerate your game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFi-V2-yIp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFi-V2-yIp">
                                         <rect key="frame" x="9" y="55" width="250" height="169"/>
+                                        <string key="text">Congratulations!  You just earned 2 bonus Hurdle Smashers!  Use them at any time to make holes in hurdles and accelerate your game!</string>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2806,19 +2807,19 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Place the Star" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7S-lV-psI">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Place a Star" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7S-lV-psI">
                                         <rect key="frame" x="29" y="25" width="206" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_star_placement_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="MA1-7a-Yrs">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_7.png" translatesAutoresizingMaskIntoConstraints="NO" id="MA1-7a-Yrs">
                                         <rect key="frame" x="24" y="158" width="217" height="217"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-8o-PhP" customClass="MFUIButton">
                                         <rect key="frame" x="90" y="374" width="103" height="49"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5Z-oh-NOo">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I'm ready!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5Z-oh-NOo">
                                                 <rect key="frame" x="8" y="6" width="91" height="37"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2895,7 +2896,7 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L3B-LQ-ing" customClass="MFUIButton">
                                         <rect key="frame" x="61" y="302" width="142" height="61"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xs-gf-clJ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I'm ready!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xs-gf-clJ">
                                                 <rect key="frame" x="29" y="12" width="84" height="37"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2916,10 +2917,10 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="uyv-5B-u4r" eventType="touchUpInside" id="TmZ-Ka-Xah"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_hurdle_smasher_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="J7u-Qc-znt">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_8.png" translatesAutoresizingMaskIntoConstraints="NO" id="J7u-Qc-znt">
                                         <rect key="frame" x="78" y="167" width="110" height="119"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Super! Now that you have a Hurdle Smasher, use it to make a hole in a hurdle by tapping your finger on the hurdle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJv-FF-wLb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Create a hole in a hurdle now by tapping your finger on top of it." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJv-FF-wLb">
                                         <rect key="frame" x="8" y="38" width="249" height="114"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -3304,7 +3305,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_star_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="gFm-EO-MKw">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_7.png" translatesAutoresizingMaskIntoConstraints="NO" id="gFm-EO-MKw">
                                 <rect key="frame" x="47" y="162" width="240" height="128"/>
                             </imageView>
                         </subviews>
@@ -3385,7 +3386,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCf-h2-ve6">
                                 <rect key="frame" x="28" y="20" width="265" height="256"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Couldn't detect a valid location.  Please try again, by tapping on any location (outside a hurdle)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAW-EB-Z00">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Couldn't detect a valid location to place a star.  Please try again by tapping on a color cell." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAW-EB-Z00">
                                         <rect key="frame" x="8" y="74" width="249" height="114"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -3645,7 +3646,7 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zk8-o1-Vih" customClass="MFUIButton">
                                         <rect key="frame" x="61" y="302" width="142" height="61"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Got it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO9-q7-I7k">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I'm ready!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO9-q7-I7k">
                                                 <rect key="frame" x="29" y="12" width="84" height="37"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -3666,12 +3667,12 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="XSa-wi-wLx" eventType="touchUpInside" id="I4C-LV-Gy8"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_hurdle_smasher_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-DD-K4F">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_9.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-DD-K4F">
                                         <rect key="frame" x="78" y="167" width="110" height="119"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jER-bt-HVQ">
                                         <rect key="frame" x="8" y="38" width="249" height="114"/>
-                                        <string key="text">Terrific! Now tap your finger at two points between which you want to build the bridge.  Note that bridges can only be horizontal or vertical, not curved!</string>
+                                        <string key="text">Build a bridge now by dragging your finger across branches (over blank spaces). Note that bridges can only be horizontal or vertical, not curved!</string>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3733,7 +3734,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Couldn't detect valid locations to build the bridge.  Please try again, by tapping on two points." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyc-ws-J0I">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Couldn't detect valid locations to build the bridge.  Please try again." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyc-ws-J0I">
                                         <rect key="frame" x="8" y="38" width="249" height="114"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -3844,7 +3845,7 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="zE1-Tu-oAd" eventType="touchUpInside" id="sre-PZ-BHb"/>
                                         </connections>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amazing!  You just earned 2 bonus Bridges that you can use at any time to connect branches and complete the game faster!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqh-1T-mq6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congratulations!  You just earned 2 bonus Bridges! Use them at any time to connect branches and complete the game faster!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqh-1T-mq6">
                                         <rect key="frame" x="7" y="58" width="250" height="161"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -4313,6 +4314,7 @@
         <image name="help_image_screen_3b.png" width="400" height="76"/>
         <image name="help_image_screen_4.png" width="168" height="150"/>
         <image name="help_image_screen_5.png" width="100" height="95"/>
+        <image name="help_image_screen_7.png" width="250" height="186"/>
         <image name="help_image_screen_8.png" width="250" height="136"/>
         <image name="help_image_screen_9.png" width="250" height="201"/>
         <image name="ic_about.png" width="48" height="48"/>
@@ -4360,7 +4362,6 @@
         <image name="ic_hot_deal.png" width="48" height="48"/>
         <image name="ic_how_to_play.png" width="48" height="48"/>
         <image name="ic_hurdle_smasher.png" width="48" height="48"/>
-        <image name="ic_hurdle_smasher_info.png" width="200" height="176"/>
         <image name="ic_iap_coins_first.png" width="48" height="48"/>
         <image name="ic_iap_coins_fourth.png" width="48" height="48"/>
         <image name="ic_iap_coins_second.png" width="48" height="48"/>
@@ -4380,8 +4381,6 @@
         <image name="ic_replay.png" width="48" height="48"/>
         <image name="ic_restore_purchase.png" width="48" height="48"/>
         <image name="ic_star.png" width="48" height="48"/>
-        <image name="ic_star_info.png" width="200" height="149"/>
-        <image name="ic_star_placement_info.png" width="200" height="204"/>
         <image name="ic_use_bridge_2.png" width="96" height="96"/>
         <image name="ic_use_hurdle_smasher_2.png" width="96" height="96"/>
         <image name="ic_use_star_2.png" width="96" height="96"/>
