@@ -62,9 +62,6 @@
 @property UIAlertView *failAlertView, *successAlertView, *exitAlertView, *addMovesAlertView, *addStarAlertView, *addHurdleSmasherAlertView, *addCoinsAlertView, *finishedAllLevelsView;
 @property long gridHandle; //handle to the grid object in C++ code
 @property NSTimer *mStarRotationTimer; //star rotation timer for the game view
-@property (strong, nonatomic) IBOutlet UIView *mLifelinePlacementView;
-@property (strong, nonatomic) IBOutlet UILabel *mLifelinePlacementTitle;
-@property (strong, nonatomic) IBOutlet UITextView *mLifelinePlacementDescription;
 
 //@property (strong, nonatomic) IBOutlet UIView *mLifelineInfoCotainerView;
 
@@ -789,7 +786,7 @@
     else
     {
         int hurdleSmasherPlacementCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT];
-        if (hurdleSmasherPlacementCount <= MAX_HURDLE_SMASHER_PLACEMENT_DIALOG_COUNT)
+        if (hurdleSmasherPlacementCount < MAX_HURDLE_SMASHER_PLACEMENT_DIALOG_COUNT)
         {
             //show the placement info dialog
             [self showDialogOfType:DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO withData:0 withAnimation:NO];
@@ -804,6 +801,9 @@
             self.mHurdleSmasherMode = YES;
             
             [self refreshLifelinesUI];
+            
+            NSString *title = [NSString stringWithFormat:NSLocalizedString(@"hurdle_smasher_placement_title", @"")];
+            [self showDialog:@"LifelinePlacementInfoDialog" withDialogType:0 withData:nil withStrData:title withAnimation:YES autoHide:YES];
         }
     }
 }
@@ -832,7 +832,7 @@
     else
     {
         int starPlacementCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_STAR_PLACEMENT_COUNT];
-        if (starPlacementCount <= MAX_STAR_PLACEMENT_DIALOG_COUNT)
+        if (starPlacementCount < MAX_STAR_PLACEMENT_DIALOG_COUNT)
         {
             //show the placement info dialog
             [self showDialogOfType:DIALOG_TYPE_STAR_PLACEMENT_INFO withData:0 withAnimation:NO];
@@ -847,6 +847,9 @@
             self.mStarPlacementMode = YES;
             
             [self refreshLifelinesUI];
+            
+            NSString *title = [NSString stringWithFormat:NSLocalizedString(@"star_placement_title", @"")];
+            [self showDialog:@"LifelinePlacementInfoDialog" withDialogType:0 withData:nil withStrData:title withAnimation:YES autoHide:YES];
         }
     }
 }
@@ -875,7 +878,7 @@
     else
     {
         int bridgePlacementCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_BRIDGE_PLACEMENT_COUNT];
-        if (bridgePlacementCount <= MAX_BRIDGE_PLACEMENT_DIALOG_COUNT)
+        if (bridgePlacementCount < MAX_BRIDGE_PLACEMENT_DIALOG_COUNT)
         {
             //show the placement info dialog
             [self showDialogOfType:DIALOG_TYPE_BRIDGE_PLACEMENT_INFO withData:0 withAnimation:NO];
@@ -890,6 +893,9 @@
             self.mBridgeMode = YES;
             
             [self refreshLifelinesUI];
+            
+            NSString *title = [NSString stringWithFormat:NSLocalizedString(@"bridge_placement_title", @"")];
+            [self showDialog:@"LifelinePlacementInfoDialog" withDialogType:0 withData:nil withStrData:title withAnimation:YES autoHide:YES];
         }
     }
 }
@@ -1231,62 +1237,37 @@
     {
         [self enableDisableAllButtons:NO];
         
-        self.mLifelinePlacementView.hidden = NO;
-        [self showHideLowerViews:NO];
+        [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_star_mode_normal"]
+                                       forState:UIControlStateNormal];
+        [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_star_mode_pressed.png"]
+                                       forState:UIControlStateHighlighted];
+        self.mAddStarButton.enabled = YES;
     }
     else if (self.mHurdleSmasherMode)
     {
         [self enableDisableAllButtons:NO];
         
-        self.mLifelinePlacementView.hidden = NO;
-        [self showHideLowerViews:NO];
+        [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_hurdle_smasher_mode_normal"]
+                                       forState:UIControlStateNormal];
+        [self.mAddHurdleSmasherButton setBackgroundImage:[UIImage imageNamed:@"ic_hurdle_smasher_mode_pressed.png"]
+                                       forState:UIControlStateHighlighted];
+        
+        self.mAddHurdleSmasherButton.enabled = YES;
     }
     else if (self.mBridgeMode)
     {
         [self enableDisableAllButtons:NO];
         
-        self.mLifelinePlacementView.hidden = NO;
-        [self showHideLowerViews:NO];
+        [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_bridge_mode_normal"]
+                                       forState:UIControlStateNormal];
+        [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_bridge_mode_pressed.png"]
+                                       forState:UIControlStateHighlighted];
+        
+        self.mAddBridgeButton.enabled = YES;
     }
     else
     {
         [self enableDisableAllButtons:YES];
-        
-        self.mLifelinePlacementView.hidden = YES;
-        [self showHideLowerViews:YES];
-    }
-}
-
-/**
- Show or hide all views that are shown below the game view.
- **/
--(void) showHideLowerViews:(BOOL)show
-{
-    self.mRedButton.hidden = !show;
-    self.mGreenButton.hidden = !show;
-    self.mBlueButton.hidden = !show;
-    self.mYellowButton.hidden = !show;
-    self.mOrangeButton.hidden = !show;
-    self.mCyanButton.hidden = !show;
-    
-    self.mMenuButton.hidden = !show;
-    self.mSoundButton.hidden = !show;
-    self.mAddCoinsButton.hidden = !show;
-    self.mAddMovesButton.hidden = !show;
-    self.mRemoveAdsButton.hidden = !show;
-    
-    self.mAdBannerView.hidden = !show;
-    
-    /**
-     Lifeline buttons that are optional and only shown
-     based on certain conditions are already handled
-     above.  So, don't show them here.
-     **/
-    if (!show)
-    {
-        self.mAddStarButton.hidden = !show;
-        self.mAddHurdleSmasherButton.hidden = !show;
-        self.mAddBridgeButton.hidden = !show;
     }
 }
 
@@ -1490,67 +1471,67 @@
     switch (dialogType)
     {
         case DIALOG_TYPE_ADD_MOVES:
-            [self showDialog:@"AddMovesDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"AddMovesDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_ADD_STAR:
-            [self showDialog:@"AddStarDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"AddStarDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_ADD_HURDLE_SMASHER:
-            [self showDialog:@"AddHurdleSmasherDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"AddHurdleSmasherDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_ADD_BRIDGE:
-            [self showDialog:@"AddBridgeDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"AddBridgeDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_ADD_COINS:
-            [self showDialog:@"AddCoinsDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"AddCoinsDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_REMOVE_ADS:
-            [self showDialog:@"RemoveAdsDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"RemoveAdsDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_GAME_SUCCESS:
-            [self showDialog:@"GameSuccessDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"GameSuccessDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_GAME_FAILED:
-            [self showDialog:@"GameFailedDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"GameFailedDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_GAME_FINISHED:
-            [self showDialog:@"GameFinishedDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"GameFinishedDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_GAME_MENU:
-            [self showDialog:@"GameMenuDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"GameMenuDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_STAR_PLACEMENT_INFO:
-            [self showDialog:@"StarPlacementInfoDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"StarPlacementInfoDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_STAR_PLACEMENT_TRY_AGAIN:
-            [self showDialog:@"StarPlacementTryAgainDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"StarPlacementTryAgainDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_INFO:
-            [self showDialog:@"HurdleSmasherPlacementInfoDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"HurdleSmasherPlacementInfoDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_HURDLE_SMASHER_PLACEMENT_TRY_AGAIN:
-            [self showDialog:@"HurdleSmasherPlacementTryAgainDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"HurdleSmasherPlacementTryAgainDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_BRIDGE_PLACEMENT_INFO:
-            [self showDialog:@"BridgePlacementInfoDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"BridgePlacementInfoDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_BRIDGE_PLACEMENT_TRY_AGAIN:
-            [self showDialog:@"BridgePlacementTryAgainDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"BridgePlacementTryAgainDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_IAP_PURCHASE_FAILED:
-            [self showDialog:@"IAPPurchaseFailedDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"IAPPurchaseFailedDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_IAP_RESTORE_FAILED:
-            [self showDialog:@"IAPRestoreFailedDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"IAPRestoreFailedDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_INTRODUCE_STARS:
-            [self showDialog:@"IntroduceStarsDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"IntroduceStarsDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS:
-            [self showDialog:@"IntroduceHurdleSmashersDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"IntroduceHurdleSmashersDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
         case DIALOG_TYPE_INTRODUCE_BRIDGES:
-            [self showDialog:@"IntroduceBridgesDialog" withDialogType:dialogType withData:data withAnimation:animate];
+            [self showDialog:@"IntroduceBridgesDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
     }
 }
@@ -1558,7 +1539,7 @@
 /**
  Show the specific dialog using the storyBoardID.
  **/
--(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType withData:(void *)data withAnimation:(BOOL)animate
+-(void)showDialog:(NSString *)storyBoardID withDialogType:(int)dialogType withData:(void *)data withStrData:(NSString *)strData withAnimation:(BOOL)animate autoHide:(BOOL)autoHide
 {
     MFGameDialogController *controller = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardID];
     controller.dialogType = dialogType;
@@ -1567,6 +1548,8 @@
     controller.delegate = self;
     controller.mIAPManager = self.mIAPManager;
     controller.data = data;
+    controller.strData = strData;
+    controller.autoHide = autoHide;
     
     /**
      Show the dialog view on top of the current view as an overlay
@@ -1594,7 +1577,7 @@
     float animationDelay = 0.3f;
     if (animate)
     {
-        animationDelay = 2.0f;
+        animationDelay = 1.0f;
     }
     
     [UIView animateWithDuration:animationDelay animations:^{

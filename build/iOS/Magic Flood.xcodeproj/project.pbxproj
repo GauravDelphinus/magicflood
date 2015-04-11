@@ -606,6 +606,7 @@
 		F1F35E9E1AD5DBC800BDBD17 /* ic_use_star_2@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F35E991AD5DBC800BDBD17 /* ic_use_star_2@2x~ipad.png */; };
 		F1F35E9F1AD5DBC800BDBD17 /* ic_use_star_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F35E9A1AD5DBC800BDBD17 /* ic_use_star_2@3x.png */; };
 		F1F35EA01AD5DBC800BDBD17 /* ic_use_star_2~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F35E9B1AD5DBC800BDBD17 /* ic_use_star_2~ipad.png */; };
+		F1F35EA51AD92A0700BDBD17 /* MFLifelinePlacementInfoDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1F35EA41AD92A0700BDBD17 /* MFLifelinePlacementInfoDialog.mm */; };
 		F1FDCE911A85DE00005444EF /* MFGameDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDCE901A85DE00005444EF /* MFGameDialogController.m */; };
 /* End PBXBuildFile section */
 
@@ -1249,6 +1250,8 @@
 		F1F35E991AD5DBC800BDBD17 /* ic_use_star_2@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_use_star_2@2x~ipad.png"; sourceTree = "<group>"; };
 		F1F35E9A1AD5DBC800BDBD17 /* ic_use_star_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_use_star_2@3x.png"; sourceTree = "<group>"; };
 		F1F35E9B1AD5DBC800BDBD17 /* ic_use_star_2~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_use_star_2~ipad.png"; sourceTree = "<group>"; };
+		F1F35EA31AD92A0700BDBD17 /* MFLifelinePlacementInfoDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFLifelinePlacementInfoDialog.h; path = ../../src/iOS/MFLifelinePlacementInfoDialog.h; sourceTree = "<group>"; };
+		F1F35EA41AD92A0700BDBD17 /* MFLifelinePlacementInfoDialog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MFLifelinePlacementInfoDialog.mm; path = ../../src/iOS/MFLifelinePlacementInfoDialog.mm; sourceTree = "<group>"; };
 		F1FDCE8F1A85DE00005444EF /* MFGameDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGameDialogController.h; path = ../../src/iOS/MFGameDialogController.h; sourceTree = SOURCE_ROOT; };
 		F1FDCE901A85DE00005444EF /* MFGameDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFGameDialogController.m; path = ../../src/iOS/MFGameDialogController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -1463,6 +1466,8 @@
 				F1A23B351AD12F6500512D04 /* MFAddHurdleSmasherDialog.mm */,
 				F1A23B371AD12F8000512D04 /* MFAddBridgeDialog.h */,
 				F1A23B381AD12F8000512D04 /* MFAddBridgeDialog.mm */,
+				F1F35EA31AD92A0700BDBD17 /* MFLifelinePlacementInfoDialog.h */,
+				F1F35EA41AD92A0700BDBD17 /* MFLifelinePlacementInfoDialog.mm */,
 			);
 			name = iOS;
 			path = ../../src;
@@ -2703,6 +2708,7 @@
 				F16F2DF61A8F426800CB0678 /* MFIAPManager.mm in Sources */,
 				F10A8E061A7D34BC00A31AEA /* MFLevelsViewController.mm in Sources */,
 				F11B479E1A8C03BA00536CAB /* MFHelpRootViewController.m in Sources */,
+				F1F35EA51AD92A0700BDBD17 /* MFLifelinePlacementInfoDialog.mm in Sources */,
 				F1A2F2E71A1D7F1C000DD4E7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

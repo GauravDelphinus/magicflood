@@ -30,3 +30,6 @@
 
 /** Add Lifeline Dialogs **/
 "num_coins_label"="%d";
+"star_placement_title"="Tap anywhere on the grid now to place a star";
+"hurdle_smasher_placement_title"="Tap on any hurdle now to make a hole in it";
+"bridge_placement_title"="Drag across branches in the grid now to connect them with a bridge";

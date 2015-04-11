@@ -28,7 +28,9 @@
 
 @property int dialogType;
 @property void * data; // additional data used by a dialog, if required
+@property NSString * strData; //additional data of type NSString
 @property id <GameDialogOptionSelectedDelegate> delegate; //dialog option selected delegate
+@property BOOL autoHide; // auto hide the dialog after a certain interval
 @property MFIAPManager *mIAPManager;
 @end
 

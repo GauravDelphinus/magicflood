@@ -22,6 +22,11 @@
     
     self.dialogView.layer.cornerRadius = 10;
     self.dialogView.layer.masksToBounds = YES;
+    
+    if (self.autoHide)
+    {
+        [self startTimer];
+    }
 }
 
 /*********************  Dialog Button Callback Actions **************************/
@@ -73,7 +78,13 @@
  **/
 -(void)dismiss
 {
-    [UIView animateWithDuration:0.3f animations:^{
+    float animateDuration = 0.3f;
+    if (self.autoHide)
+    {
+        animateDuration = 1.0f;
+    }
+    
+    [UIView animateWithDuration:animateDuration animations:^{
         self.view.alpha = 0.0f;
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
@@ -87,5 +98,26 @@
     self.mIAPManager = nil;
 }
 
+
+/**
+ Set up a timer that tracks display of the dialog
+ **/
+-(void)startTimer
+{
+    NSLog(@"startTimer");
+    [NSTimer scheduledTimerWithTimeInterval:2
+                                                               target:self
+                                                             selector:@selector(timerCallback:)
+                                                             userInfo:nil
+                                                              repeats:YES];
+}
+
+/**
+ Timer callback that triggers dismissal of the dialog
+ **/
+-(void)timerCallback:(NSTimer *)timer
+{
+    [self dismiss];
+}
 
 @end

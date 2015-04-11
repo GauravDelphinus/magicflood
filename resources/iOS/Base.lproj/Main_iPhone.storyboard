@@ -140,8 +140,6 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
-            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1337,54 +1335,6 @@
                                     <action selector="addBridge:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="LpG-AN-zwo"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeH-ba-FUC">
-                                <rect key="frame" x="23" y="387" width="297" height="141"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKj-oP-9cH" customClass="MFUIButton">
-                                        <rect key="frame" x="216" y="31" width="73" height="69"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Cancel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cN-nb-KFV">
-                                                <rect key="frame" x="11" y="24" width="54" height="21"/>
-                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="11"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.52000000000000002" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="9cN-nb-KFV" firstAttribute="leading" secondItem="fKj-oP-9cH" secondAttribute="leading" constant="5" id="6tp-IM-cOW"/>
-                                            <constraint firstAttribute="trailing" secondItem="9cN-nb-KFV" secondAttribute="trailing" constant="5" id="amX-fj-SQk"/>
-                                            <constraint firstAttribute="centerY" secondItem="9cN-nb-KFV" secondAttribute="centerY" id="w9e-kv-Un0"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="cancelLifelinePlacementMode:" destination="i2A-O7-Ip4" eventType="touchUpInside" id="9iw-l2-D8w"/>
-                                        </connections>
-                                    </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-GP-09a">
-                                        <rect key="frame" x="8" y="35" width="191" height="98"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hA-oX-tvL">
-                                        <rect key="frame" x="46" y="2" width="205" height="21"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ekP-GP-09a" secondAttribute="bottom" constant="5" id="EKa-Bd-wMw"/>
-                                    <constraint firstItem="fKj-oP-9cH" firstAttribute="leading" secondItem="ekP-GP-09a" secondAttribute="trailing" constant="5" id="eDc-W4-UkK"/>
-                                    <constraint firstAttribute="trailing" secondItem="fKj-oP-9cH" secondAttribute="trailing" constant="5" id="oDq-ES-5N1"/>
-                                    <constraint firstItem="ekP-GP-09a" firstAttribute="top" secondItem="2hA-oX-tvL" secondAttribute="bottom" constant="5" id="qVc-Vt-ToN"/>
-                                    <constraint firstItem="2hA-oX-tvL" firstAttribute="top" secondItem="qeH-ba-FUC" secondAttribute="top" constant="5" id="tt1-JI-w1O"/>
-                                    <constraint firstItem="ekP-GP-09a" firstAttribute="leading" secondItem="qeH-ba-FUC" secondAttribute="leading" constant="5" id="uG3-Md-8je"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4b-5Z-cdg">
                                 <rect key="frame" x="111" y="404" width="30" height="34"/>
                                 <state key="normal" image="ic_add_star_normal.png">
@@ -1408,17 +1358,14 @@
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="10" id="5c8-Ao-Y6Y"/>
                             <constraint firstItem="dXw-mP-eYt" firstAttribute="top" secondItem="1oR-fm-sF1" secondAttribute="bottom" constant="-50" id="6xR-WC-pKU"/>
                             <constraint firstItem="m6b-Lj-6dR" firstAttribute="top" secondItem="E0k-Ah-qHM" secondAttribute="bottom" constant="5" id="75w-Jh-LMe"/>
-                            <constraint firstItem="dXw-mP-eYt" firstAttribute="top" secondItem="qeH-ba-FUC" secondAttribute="bottom" id="9GZ-CT-PEp"/>
                             <constraint firstItem="bcP-25-JvC" firstAttribute="leading" secondItem="f4b-5Z-cdg" secondAttribute="trailing" constant="2" id="9zY-yM-LAa"/>
                             <constraint firstItem="dTR-V6-YVc" firstAttribute="top" secondItem="uY9-Me-CMQ" secondAttribute="bottom" constant="5" id="B9k-xP-2eq"/>
-                            <constraint firstItem="qeH-ba-FUC" firstAttribute="top" secondItem="npt-AJ-Nn3" secondAttribute="bottom" id="CJU-dE-b06"/>
                             <constraint firstAttribute="trailing" secondItem="wlr-cU-due" secondAttribute="trailing" constant="5" id="Dhe-Gg-tJM"/>
                             <constraint firstItem="fG3-s7-6t8" firstAttribute="width" secondItem="Lml-C0-KgT" secondAttribute="width" id="HOk-XB-Uk2"/>
                             <constraint firstItem="m6b-Lj-6dR" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="10" id="IxQ-9Q-5IH"/>
                             <constraint firstItem="fG3-s7-6t8" firstAttribute="width" secondItem="TTg-IM-Xdb" secondAttribute="width" id="IzF-f0-OlT"/>
                             <constraint firstItem="fG3-s7-6t8" firstAttribute="leading" secondItem="YJs-Ar-JU0" secondAttribute="trailing" id="K4H-Vm-ufj"/>
                             <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="AC1-RL-jdM" secondAttribute="centerY" id="Lqc-5s-LGc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qeH-ba-FUC" secondAttribute="trailing" id="NNG-TC-pj9"/>
                             <constraint firstAttribute="trailing" secondItem="AC1-RL-jdM" secondAttribute="trailing" constant="10" id="OZR-LL-htg"/>
                             <constraint firstItem="fG3-s7-6t8" firstAttribute="width" secondItem="yAr-mm-0yD" secondAttribute="width" id="PTe-yR-rZf"/>
                             <constraint firstAttribute="trailing" secondItem="fPd-JK-E5i" secondAttribute="trailing" constant="10" id="TxQ-I0-6kI"/>
@@ -1428,7 +1375,6 @@
                             <constraint firstItem="eme-ej-egX" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leading" constant="5" id="YVq-wG-vLy"/>
                             <constraint firstItem="YJs-Ar-JU0" firstAttribute="centerY" secondItem="SfQ-IJ-GvZ" secondAttribute="centerY" id="Yhq-WC-vAe"/>
                             <constraint firstAttribute="trailing" secondItem="npt-AJ-Nn3" secondAttribute="trailing" constant="3" id="Zb0-zi-XRI"/>
-                            <constraint firstItem="qeH-ba-FUC" firstAttribute="leading" secondItem="gPe-Mz-P4N" secondAttribute="leadingMargin" id="ajD-rn-Uzn"/>
                             <constraint firstItem="MCf-mR-EJ4" firstAttribute="centerY" secondItem="E0k-Ah-qHM" secondAttribute="centerY" constant="1" id="c3g-Hf-9fa"/>
                             <constraint firstItem="1QK-83-fmP" firstAttribute="leading" secondItem="0k8-Ku-RMH" secondAttribute="trailing" id="dDk-sk-z9b"/>
                             <constraint firstItem="4vB-88-F7M" firstAttribute="centerY" secondItem="bcP-25-JvC" secondAttribute="centerY" id="dtm-zK-mzF"/>
@@ -1475,9 +1421,6 @@
                         <outlet property="mCyanButton" destination="AC1-RL-jdM" id="pLQ-bm-vgV"/>
                         <outlet property="mGreenButton" destination="SfQ-IJ-GvZ" id="hTk-4l-tOl"/>
                         <outlet property="mLevelsLabel" destination="uY9-Me-CMQ" id="7e7-kL-U89"/>
-                        <outlet property="mLifelinePlacementDescription" destination="ekP-GP-09a" id="aeE-FB-ZFb"/>
-                        <outlet property="mLifelinePlacementTitle" destination="2hA-oX-tvL" id="H3J-no-HpV"/>
-                        <outlet property="mLifelinePlacementView" destination="qeH-ba-FUC" id="Vkj-mz-OvG"/>
                         <outlet property="mMenuButton" destination="wlr-cU-due" id="1lt-UC-BJT"/>
                         <outlet property="mOrangeButton" destination="YJs-Ar-JU0" id="FTf-Kp-TTm"/>
                         <outlet property="mRedButton" destination="m6b-Lj-6dR" id="sqP-UM-xKS"/>
@@ -4314,6 +4257,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ltw-hb-vC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2546" y="393"/>
+        </scene>
+        <!--Lifeline Placement Info Dialog-->
+        <scene sceneID="Uke-wP-NTu">
+            <objects>
+                <viewController storyboardIdentifier="LifelinePlacementInfoDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wq1-Z8-eeX" customClass="MFLifelinePlacementInfoDialog" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dli-AW-YKQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="qX0-82-nwM"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="OSf-lZ-3WL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGz-Bi-ZwT">
+                                <rect key="frame" x="28" y="115" width="265" height="179"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congratulations for completing the game.  New levels coming soon!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpX-l3-VEs">
+                                        <rect key="frame" x="8" y="44" width="249" height="91"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="wpX-l3-VEs" secondAttribute="centerX" id="7V1-H0-0F9"/>
+                                    <constraint firstItem="wpX-l3-VEs" firstAttribute="top" secondItem="VGz-Bi-ZwT" secondAttribute="top" constant="10" id="GZO-ci-Ehl"/>
+                                    <constraint firstAttribute="trailing" secondItem="wpX-l3-VEs" secondAttribute="trailing" constant="10" id="gwW-LE-Lyp"/>
+                                    <constraint firstAttribute="bottom" secondItem="wpX-l3-VEs" secondAttribute="bottom" constant="10" id="iun-Lj-TGe"/>
+                                    <constraint firstItem="wpX-l3-VEs" firstAttribute="leading" secondItem="VGz-Bi-ZwT" secondAttribute="leading" constant="10" id="xXv-pR-rEe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="VGz-Bi-ZwT" secondAttribute="trailing" constant="20" id="0ZF-gB-0U1"/>
+                            <constraint firstItem="VGz-Bi-ZwT" firstAttribute="leading" secondItem="OSf-lZ-3WL" secondAttribute="leadingMargin" constant="20" id="1gY-hM-QPe"/>
+                            <constraint firstAttribute="centerY" secondItem="VGz-Bi-ZwT" secondAttribute="centerY" id="TOu-xV-BFv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dialogView" destination="VGz-Bi-ZwT" id="jJC-Gg-sJZ"/>
+                        <outlet property="mMessage" destination="wpX-l3-VEs" id="aLq-gh-uBB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PwQ-3y-Mpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2920" y="1511"/>
         </scene>
     </scenes>
     <resources>
