@@ -60,7 +60,7 @@ int MFGrid::getNumStartPos()
 
 int MFGrid::addStartPos(int x, int y)
 {
-    if (mGameGrid[x][y] == GRID_OBSTACLE)
+    if (mGameGrid[x][y] == GRID_OBSTACLE || mGameGrid[x][y] == GRID_SPACE)
     {
         return 0; //invalid selection
     }
@@ -595,6 +595,18 @@ bool MFGrid::isHurdle(int x, int y, int **grid)
     return false;
 }
 
+bool MFGrid::isSpace(int x, int y, int **grid)
+{
+    if (x < 0 || y < 0)
+        return false;
+    if (x >= gridSize || y >= gridSize)
+        return false;
+    if (grid[x][y] == GRID_SPACE)
+        return true;
+    
+    return false;
+}
+
 void MFGrid::releaseGrid(int *grid[])
 {
     if (grid != NULL)
@@ -949,5 +961,16 @@ bool MFGrid::isValidBridgeEndpoint(int row, int col, int **grid)
 
 bool MFGrid::hasSpaces()
 {
-    return true;
+    for (int i = 0; i < gridSize; i++)
+    {
+        for (int j = 0; j < gridSize; j++)
+        {
+            if (isSpace(i, j, mGameGrid))
+            {
+                return true;
+            }
+        }
+    }
+    
+    return false;
 }

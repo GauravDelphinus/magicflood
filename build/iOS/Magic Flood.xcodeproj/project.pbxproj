@@ -612,6 +612,7 @@
 		F1F35EB01AD9542B00BDBD17 /* help_image_screen_7@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F35EAB1AD9542B00BDBD17 /* help_image_screen_7@2x~ipad.png */; };
 		F1F35EB11AD9542B00BDBD17 /* help_image_screen_7@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F35EAC1AD9542B00BDBD17 /* help_image_screen_7@3x.png */; };
 		F1F35EB21AD9542B00BDBD17 /* help_image_screen_7~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F35EAD1AD9542B00BDBD17 /* help_image_screen_7~ipad.png */; };
+		F1F35EB41ADA6E0200BDBD17 /* bridge_created_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F1F35EB31ADA6E0200BDBD17 /* bridge_created_sound.wav */; };
 		F1FDCE911A85DE00005444EF /* MFGameDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDCE901A85DE00005444EF /* MFGameDialogController.m */; };
 /* End PBXBuildFile section */
 
@@ -1262,6 +1263,7 @@
 		F1F35EAB1AD9542B00BDBD17 /* help_image_screen_7@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help_image_screen_7@2x~ipad.png"; sourceTree = "<group>"; };
 		F1F35EAC1AD9542B00BDBD17 /* help_image_screen_7@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help_image_screen_7@3x.png"; sourceTree = "<group>"; };
 		F1F35EAD1AD9542B00BDBD17 /* help_image_screen_7~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help_image_screen_7~ipad.png"; sourceTree = "<group>"; };
+		F1F35EB31ADA6E0200BDBD17 /* bridge_created_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bridge_created_sound.wav; path = ../../resources/iOS/Sounds/bridge_created_sound.wav; sourceTree = "<group>"; };
 		F1FDCE8F1A85DE00005444EF /* MFGameDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFGameDialogController.h; path = ../../src/iOS/MFGameDialogController.h; sourceTree = SOURCE_ROOT; };
 		F1FDCE901A85DE00005444EF /* MFGameDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFGameDialogController.m; path = ../../src/iOS/MFGameDialogController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -1331,6 +1333,7 @@
 		F19285A41A84166300628DE2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				F1F35EB31ADA6E0200BDBD17 /* bridge_created_sound.wav */,
 				F15311981A8577C700F16C1E /* button_press_sound.wav */,
 				F15311991A8577C700F16C1E /* game_failed_sound.wav */,
 				F153119A1A8577C700F16C1E /* game_success_sound.wav */,
@@ -2556,6 +2559,7 @@
 				F1B6B3481AA1EE7000D39B29 /* ic_restore_purchase~ipad.png in Resources */,
 				F12006BF1AA3280D0011747E /* ic_remove_ads_pressed@3x.png in Resources */,
 				F132E3A71A979A16003F1FA7 /* ic_add_coins_pressed@2x~ipad.png in Resources */,
+				F1F35EB41ADA6E0200BDBD17 /* bridge_created_sound.wav in Resources */,
 				F132E3F21A979A16003F1FA7 /* ic_button_color_orange_pressed@2x.png in Resources */,
 				F132E39F1A979A16003F1FA7 /* ic_about@2x~ipad.png in Resources */,
 				F161462E1AD184DF00BF3A46 /* ic_use_bridge_1_pressed~ipad.png in Resources */,

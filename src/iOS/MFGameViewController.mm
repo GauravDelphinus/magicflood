@@ -260,7 +260,7 @@
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)mHurdleSmashedSoundURL, &mHurdleSmashedSoundID);
     
     NSString *bridgePlacedPath = [[NSBundle mainBundle]
-                                   pathForResource:@"hurdle_smashed_sound" ofType:@"wav"];
+                                   pathForResource:@"bridge_created_sound" ofType:@"wav"];
     mBridgePlacedSoundURL = [NSURL fileURLWithPath:bridgePlacedPath];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)mBridgePlacedSoundURL, &mBridgePlacedSoundID);
     
@@ -1095,6 +1095,8 @@
     else
     {
         self.mAddStarButton.hidden = NO;
+        self.mAddStarButton.enabled = YES;
+        
         [self.mAddStarButton setImage:nil forState:UIControlStateNormal];
         [self.mAddStarButton setImage:nil forState:UIControlStateHighlighted];
         
@@ -1128,12 +1130,14 @@
     }
     else
     {
+        self.mAddHurdleSmasherButton.hidden = NO;
+        
         /**
-         Don't show the 'Smash Hurdle' button if there are not hurdles in the current grid!
+         Disable the 'Smash Hurdle' button if there are not hurdles in the current grid!
          **/
         if (hasHurdles(self.gridHandle))
         {
-            self.mAddHurdleSmasherButton.hidden = NO;
+            self.mAddHurdleSmasherButton.enabled = YES;
             
             [self.mAddHurdleSmasherButton setImage:nil forState:UIControlStateNormal];
             [self.mAddHurdleSmasherButton setImage:nil forState:UIControlStateHighlighted];
@@ -1163,7 +1167,7 @@
         }
         else
         {
-            self.mAddHurdleSmasherButton.hidden = YES;
+            self.mAddHurdleSmasherButton.enabled = NO;
         }
         
     }
@@ -1176,60 +1180,39 @@
     {
         self.mAddBridgeButton.hidden = NO;
         
-        [self.mAddBridgeButton setImage:nil forState:UIControlStateNormal];
-        [self.mAddBridgeButton setImage:nil forState:UIControlStateHighlighted];
-        
-        int numBridges = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_BRIDGES_EARNED];
-        if (numBridges == 0)
+        if (hasSpaces(self.gridHandle))
         {
-            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_add_bridge_normal.png"]
-                                           forState:UIControlStateNormal];
-            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_add_bridge_pressed.png"]
-                                           forState:UIControlStateHighlighted];
-        }
-        else if (numBridges == 1)
-        {
-            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_1_normal.png"]
-                                           forState:UIControlStateNormal];
-            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_1_pressed.png"]
-                                           forState:UIControlStateHighlighted];
-        }
-        else if (numBridges == 2)
-        {
-            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_2_normal.png"]
-                                           forState:UIControlStateNormal];
-            [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_2_pressed.png"]
-                                           forState:UIControlStateHighlighted];
-        }
-
-        
-        //if the hurdle smasher button is hidden, then tag this
-        //one against the add star button
-        if (self.mAddHurdleSmasherButton.hidden)
-        {
-            [self.view removeConstraint:self.mAddBridgeButtonLeftConstraints];
+            self.mAddBridgeButton.enabled = YES;
             
-            self.mAddBridgeButtonLeftConstraints = [NSLayoutConstraint constraintWithItem:self.mAddStarButton
-                                                                             attribute:NSLayoutAttributeRight
-                                                                             relatedBy:NSLayoutRelationEqual
-                                                                                toItem:self.mAddBridgeButton
-                                                                             attribute:NSLayoutAttributeLeft
-                                                                            multiplier:1.0
-                                                                              constant:-2.0]; //the lifeline buttons are separated by a 2.0 space horizontally
-            [self.view addConstraint:self.mAddBridgeButtonLeftConstraints];
+            [self.mAddBridgeButton setImage:nil forState:UIControlStateNormal];
+            [self.mAddBridgeButton setImage:nil forState:UIControlStateHighlighted];
+            
+            int numBridges = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_TOTAL_BRIDGES_EARNED];
+            if (numBridges == 0)
+            {
+                [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_add_bridge_normal.png"]
+                                                 forState:UIControlStateNormal];
+                [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_add_bridge_pressed.png"]
+                                                 forState:UIControlStateHighlighted];
+            }
+            else if (numBridges == 1)
+            {
+                [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_1_normal.png"]
+                                                 forState:UIControlStateNormal];
+                [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_1_pressed.png"]
+                                                 forState:UIControlStateHighlighted];
+            }
+            else if (numBridges == 2)
+            {
+                [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_2_normal.png"]
+                                                 forState:UIControlStateNormal];
+                [self.mAddBridgeButton setBackgroundImage:[UIImage imageNamed:@"ic_use_bridge_2_pressed.png"]
+                                                 forState:UIControlStateHighlighted];
+            }
         }
         else
         {
-            [self.view removeConstraint:self.mAddBridgeButtonLeftConstraints];
-            
-            self.mAddBridgeButtonLeftConstraints = [NSLayoutConstraint constraintWithItem:self.mAddHurdleSmasherButton
-                                                                                attribute:NSLayoutAttributeRight
-                                                                                relatedBy:NSLayoutRelationEqual
-                                                                                   toItem:self.mAddBridgeButton
-                                                                                attribute:NSLayoutAttributeLeft
-                                                                               multiplier:1.0
-                                                                                 constant:-2.0]; //the lifeline buttons are separated by a 2.0 space horizontally
-            [self.view addConstraint:self.mAddBridgeButtonLeftConstraints];
+            self.mAddBridgeButton.enabled = NO;
         }
     }
     
@@ -1242,6 +1225,8 @@
         [self.mAddStarButton setBackgroundImage:[UIImage imageNamed:@"ic_star_mode_pressed.png"]
                                        forState:UIControlStateHighlighted];
         self.mAddStarButton.enabled = YES;
+        self.mAddHurdleSmasherButton.enabled = NO;
+        self.mAddBridgeButton.enabled = NO;
     }
     else if (self.mHurdleSmasherMode)
     {
@@ -1253,6 +1238,8 @@
                                        forState:UIControlStateHighlighted];
         
         self.mAddHurdleSmasherButton.enabled = YES;
+        self.mAddStarButton.enabled = NO;
+        self.mAddBridgeButton.enabled = NO;
     }
     else if (self.mBridgeMode)
     {
@@ -1264,6 +1251,8 @@
                                        forState:UIControlStateHighlighted];
         
         self.mAddBridgeButton.enabled = YES;
+        self.mAddStarButton.enabled = NO;
+        self.mAddHurdleSmasherButton.enabled = NO;
     }
     else
     {
@@ -1288,9 +1277,6 @@
     self.mSoundButton.enabled = enable;
     self.mAddCoinsButton.enabled = enable;
     self.mAddMovesButton.enabled = enable;
-    self.mAddStarButton.enabled = enable;
-    self.mAddHurdleSmasherButton.enabled = enable;
-    self.mAddBridgeButton.enabled = enable;
     self.mRemoveAdsButton.enabled = enable;
 }
 

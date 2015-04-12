@@ -32,6 +32,7 @@ private:
     bool isBoundary(int x, int y, int *grid[]); //is this cell a grid boundary? (not color and not hurdle)
     bool isFillable(int x, int y, int *grid[]); //is this cell fillable with a color? (not hurdle and within boundary)
     bool isHurdle(int x, int y, int *grid[]); //is this cell a legal hurdle? (GRID_OBSTACLE)
+    bool isSpace(int x, int y, int *grid[]); //is this cell a legal space? (GRID_SPACE)
     bool isInside(int x, int y); //is within the bounds of the grid
     bool isValidBridgeEndpoint(int x, int y, int *grid[]); //check to see if this point is a valid end point for a bridge under construction
     bool gridCompleted(int color, int *grid[]);

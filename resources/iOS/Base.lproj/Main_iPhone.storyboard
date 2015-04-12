@@ -1183,7 +1183,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0k-Ah-qHM">
-                                <rect key="frame" x="12" y="402" width="43" height="36"/>
+                                <rect key="frame" x="12" y="402" width="48" height="48"/>
                                 <state key="normal" image="ic_add_coins_normal.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1336,7 +1336,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4b-5Z-cdg">
-                                <rect key="frame" x="111" y="404" width="30" height="34"/>
+                                <rect key="frame" x="111" y="404" width="48" height="48"/>
                                 <state key="normal" image="ic_add_star_normal.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2062,10 +2062,10 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-on-55h" customClass="MFUIButton">
                                         <rect key="frame" x="19" y="262" width="230" height="97"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-7a-a2P">
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" misplaced="YES" image="ic_restore_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-7a-a2P">
                                                 <rect key="frame" x="8" y="16" width="48" height="48"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-Zc-iZF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Restore Previous Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-Zc-iZF">
                                                 <rect key="frame" x="116" y="0.0" width="106" height="89"/>
                                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2801,7 +2801,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oY4-cS-gol">
                                 <rect key="frame" x="28" y="20" width="265" height="440"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Place a star anywhere on the grid by tapping your finger on the desired location." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8r-fc-4j9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Place a star anywhere on the grid by tapping your finger on the desired location now." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8r-fc-4j9">
                                         <rect key="frame" x="8" y="62" width="249" height="114"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -2849,18 +2849,19 @@
                                     <constraint firstAttribute="trailing" secondItem="w8r-fc-4j9" secondAttribute="trailing" constant="10" id="HPQ-EM-7V5"/>
                                     <constraint firstItem="b7S-lV-psI" firstAttribute="top" secondItem="oY4-cS-gol" secondAttribute="top" constant="10" id="HZ1-xC-UzA"/>
                                     <constraint firstItem="w8r-fc-4j9" firstAttribute="top" secondItem="b7S-lV-psI" secondAttribute="bottom" constant="10" id="MSc-d3-toZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="MA1-7a-Yrs" secondAttribute="trailing" constant="10" id="V7O-Xa-wFq"/>
                                     <constraint firstAttribute="bottom" secondItem="hh2-8o-PhP" secondAttribute="bottom" constant="10" id="Xtq-z5-yNe"/>
                                     <constraint firstItem="w8r-fc-4j9" firstAttribute="leading" secondItem="oY4-cS-gol" secondAttribute="leading" constant="10" id="d3B-jH-uHz"/>
                                     <constraint firstAttribute="centerX" secondItem="b7S-lV-psI" secondAttribute="centerX" id="kfj-Ng-iM9"/>
                                     <constraint firstAttribute="centerX" secondItem="hh2-8o-PhP" secondAttribute="centerX" id="qrs-KJ-HvH"/>
                                     <constraint firstAttribute="centerX" secondItem="MA1-7a-Yrs" secondAttribute="centerX" id="tzp-AK-sYD"/>
+                                    <constraint firstItem="MA1-7a-Yrs" firstAttribute="leading" secondItem="oY4-cS-gol" secondAttribute="leading" constant="10" id="zoE-Qr-rwI"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="oY4-cS-gol" firstAttribute="leading" secondItem="g1O-me-nhQ" secondAttribute="leadingMargin" constant="20" id="1zk-bB-9Mr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oY4-cS-gol" secondAttribute="trailing" constant="20" id="aHF-6K-ouV"/>
+                            <constraint firstAttribute="centerX" secondItem="oY4-cS-gol" secondAttribute="centerX" id="v9F-hY-xei"/>
                             <constraint firstAttribute="centerY" secondItem="oY4-cS-gol" secondAttribute="centerY" id="xBm-0j-74Q"/>
                         </constraints>
                     </view>
@@ -2917,15 +2918,15 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="uyv-5B-u4r" eventType="touchUpInside" id="TmZ-Ka-Xah"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_8.png" translatesAutoresizingMaskIntoConstraints="NO" id="J7u-Qc-znt">
-                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Create a hole in a hurdle now by tapping your finger on top of it." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJv-FF-wLb">
                                         <rect key="frame" x="8" y="38" width="249" height="114"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_8.png" translatesAutoresizingMaskIntoConstraints="NO" id="J7u-Qc-znt">
+                                        <rect key="frame" x="8" y="128" width="250" height="197"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -2934,6 +2935,7 @@
                                     <constraint firstAttribute="centerX" secondItem="HJv-FF-wLb" secondAttribute="centerX" id="5tB-Pm-I85"/>
                                     <constraint firstAttribute="centerX" secondItem="L3B-LQ-ing" secondAttribute="centerX" id="6PK-Wn-gPg"/>
                                     <constraint firstAttribute="centerX" secondItem="HJv-FF-wLb" secondAttribute="centerX" id="7qf-zo-vPe"/>
+                                    <constraint firstItem="J7u-Qc-znt" firstAttribute="leading" secondItem="r83-O8-YFZ" secondAttribute="leading" constant="10" id="820-sk-DtM"/>
                                     <constraint firstAttribute="trailing" secondItem="HJv-FF-wLb" secondAttribute="trailing" constant="10" id="BEk-No-d5w"/>
                                     <constraint firstItem="HJv-FF-wLb" firstAttribute="leading" secondItem="r83-O8-YFZ" secondAttribute="leading" constant="10" id="SnC-g6-bRC"/>
                                     <constraint firstItem="L3B-LQ-ing" firstAttribute="top" secondItem="J7u-Qc-znt" secondAttribute="bottom" constant="10" id="aZL-In-EJW"/>
@@ -2944,14 +2946,14 @@
                                     <constraint firstAttribute="bottom" secondItem="L3B-LQ-ing" secondAttribute="bottom" constant="10" id="qnA-F4-ieE"/>
                                     <constraint firstAttribute="centerX" secondItem="Gqt-hv-i3b" secondAttribute="centerX" id="s7Q-qV-LQI"/>
                                     <constraint firstItem="HJv-FF-wLb" firstAttribute="top" secondItem="Gqt-hv-i3b" secondAttribute="bottom" constant="10" id="uKy-kx-kAm"/>
+                                    <constraint firstAttribute="trailing" secondItem="J7u-Qc-znt" secondAttribute="trailing" constant="10" id="xCj-gS-o7k"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="r83-O8-YFZ" secondAttribute="centerY" id="9JY-Gy-v9O"/>
-                            <constraint firstItem="r83-O8-YFZ" firstAttribute="leading" secondItem="JFw-aC-0sP" secondAttribute="leadingMargin" constant="20" id="ek2-9Q-1Xg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="r83-O8-YFZ" secondAttribute="trailing" constant="20" id="u9t-06-75p"/>
+                            <constraint firstAttribute="centerX" secondItem="r83-O8-YFZ" secondAttribute="centerX" id="dG7-kl-Lpv"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3667,9 +3669,6 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="XSa-wi-wLx" eventType="touchUpInside" id="I4C-LV-Gy8"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_9.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-DD-K4F">
-                                        <rect key="frame" x="78" y="167" width="110" height="119"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jER-bt-HVQ">
                                         <rect key="frame" x="8" y="38" width="249" height="114"/>
                                         <string key="text">Build a bridge now by dragging your finger across branches (over blank spaces). Note that bridges can only be horizontal or vertical, not curved!</string>
@@ -3677,6 +3676,9 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_9.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-DD-K4F">
+                                        <rect key="frame" x="7" y="129" width="250" height="239"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -3685,6 +3687,7 @@
                                     <constraint firstAttribute="centerX" secondItem="Zk8-o1-Vih" secondAttribute="centerX" id="6CN-zC-wri"/>
                                     <constraint firstAttribute="trailing" secondItem="jER-bt-HVQ" secondAttribute="trailing" constant="10" id="Bk2-VH-opY"/>
                                     <constraint firstAttribute="centerX" secondItem="iB8-zJ-fO6" secondAttribute="centerX" id="C6H-WE-vQl"/>
+                                    <constraint firstItem="Vc6-DD-K4F" firstAttribute="leading" secondItem="hPb-Bm-MkK" secondAttribute="leading" constant="10" id="E22-u7-Bsj"/>
                                     <constraint firstAttribute="centerX" secondItem="Vc6-DD-K4F" secondAttribute="centerX" id="EU5-u4-kKQ"/>
                                     <constraint firstItem="iB8-zJ-fO6" firstAttribute="top" secondItem="hPb-Bm-MkK" secondAttribute="top" constant="10" id="JHp-6d-1G1"/>
                                     <constraint firstItem="jER-bt-HVQ" firstAttribute="top" secondItem="iB8-zJ-fO6" secondAttribute="bottom" constant="10" id="Kql-mL-liR"/>
@@ -3694,15 +3697,15 @@
                                     <constraint firstItem="Zk8-o1-Vih" firstAttribute="top" secondItem="Vc6-DD-K4F" secondAttribute="bottom" constant="10" id="jEj-2i-EX5"/>
                                     <constraint firstAttribute="centerX" secondItem="iB8-zJ-fO6" secondAttribute="centerX" id="kSS-Ho-8cs"/>
                                     <constraint firstAttribute="centerX" secondItem="Zk8-o1-Vih" secondAttribute="centerX" id="lwb-uc-A4g"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vc6-DD-K4F" secondAttribute="trailing" constant="10" id="pzc-NT-4rA"/>
                                     <constraint firstItem="jER-bt-HVQ" firstAttribute="leading" secondItem="hPb-Bm-MkK" secondAttribute="leading" constant="10" id="wNf-FG-LV0"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="hPb-Bm-MkK" secondAttribute="trailing" constant="20" id="0kV-ZM-q3j"/>
                             <constraint firstAttribute="centerY" secondItem="hPb-Bm-MkK" secondAttribute="centerY" id="EXs-ZS-l8o"/>
-                            <constraint firstItem="hPb-Bm-MkK" firstAttribute="leading" secondItem="TOS-1Z-rJm" secondAttribute="leadingMargin" constant="20" id="o8o-zE-brB"/>
+                            <constraint firstAttribute="centerX" secondItem="hPb-Bm-MkK" secondAttribute="centerX" id="MBd-Dh-hJX"/>
                         </constraints>
                     </view>
                     <connections>
