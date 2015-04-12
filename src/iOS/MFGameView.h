@@ -27,6 +27,7 @@
 
 @property (nonatomic,strong) id <GameViewTapHandler> delegate; //the delegate that implements the GameViewTapHandler protocol
 @property int mCurrentAngleOfStartPosition; //current rotation angle
+@property int mCurrentStarSize; //current star size.  -5 to -1 == initial, 0 == regular, 1 == large (will start with initial for a few seconds, and then star alternating between regular and large to give a "blink" effect)
 
 -(void)initializeGameData:(int **)grid WithSize:(int)size WithNumStartPos:(int)numStartPos WithStartPos:(int **)startpos WithMaxMoves:(int)maxmoves;
 -(void)freeGameData;

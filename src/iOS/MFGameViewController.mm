@@ -19,8 +19,10 @@
 #import "MFIAPInterface.h"
 #import "MFUtils.h"
 
-#define ROTATION_SPEED_INTERVAL 0.2 //seconds
-#define ROTATION_STEP_DEGREES 2
+#define STAR_ANIMATION_INTERVAL 0.05 //seconds
+#define STAR_ANIMATION_DURATION 10 //steps
+#define STAR_BLINK_INTERVAL 1.0 //seconds
+#define STAR_ANIMATION_INITIAL_SIZE -20
 
 @interface MFGameViewController ()
 {
@@ -208,11 +210,12 @@
 -(void)startTimer
 {
     NSLog(@"startTimer");
-    self.mStarRotationTimer = [NSTimer scheduledTimerWithTimeInterval:ROTATION_SPEED_INTERVAL
+    self.mStarRotationTimer = [NSTimer scheduledTimerWithTimeInterval:STAR_ANIMATION_INTERVAL
                                                                target:self
                                                              selector:@selector(timerCallback:)
                                                              userInfo:nil
                                                               repeats:YES];
+    self.gameView.mCurrentStarSize = STAR_ANIMATION_INITIAL_SIZE;
 }
 
 -(void)stopTimer
@@ -227,8 +230,36 @@
  **/
 -(void)timerCallback:(NSTimer *)timer
 {
-    self.gameView.mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
-    self.gameView.mCurrentAngleOfStartPosition = self.gameView.mCurrentAngleOfStartPosition % 360;
+    /**
+     Show a "Blinking Star" effect.  The initial animation shows the star starting
+     with a big size and reducing to a regular size to attract the player's attention
+     at the start of the game.  Followed by that, the star keeps alternating between
+     regular and large sizes to give a "blinking" effect.  The timer interval for the
+     first and second phase is different.
+     **/
+    if (self.gameView.mCurrentStarSize < 0)
+    {
+        self.gameView.mCurrentStarSize ++;
+        
+        if (self.gameView.mCurrentStarSize == 0) //star is now normal size, so reset the timer interval
+        {
+            [self stopTimer];
+            
+            self.mStarRotationTimer = [NSTimer scheduledTimerWithTimeInterval:STAR_BLINK_INTERVAL
+                                                                       target:self
+                                                                     selector:@selector(timerCallback:)
+                                                                     userInfo:nil
+                                                                      repeats:YES];
+        }
+    }
+    else if (self.gameView.mCurrentStarSize == 0)
+    {
+        self.gameView.mCurrentStarSize = 1;
+    }
+    else if (self.gameView.mCurrentStarSize == 1)
+    {
+        self.gameView.mCurrentStarSize = 0;
+    }
     [self.gameView setNeedsDisplay];
 }
 

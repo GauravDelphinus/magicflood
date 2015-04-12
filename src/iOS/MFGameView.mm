@@ -647,7 +647,24 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
-    int gap = 2;
+    if (self.mCurrentStarSize < 0)
+    {
+        left += self.mCurrentStarSize;
+        top += self.mCurrentStarSize;
+        cellSize += abs(self.mCurrentStarSize * 2);
+    }
+    else if (self.mCurrentStarSize == 0)
+    {
+        //no changes
+    }
+    else if (self.mCurrentStarSize == 1)
+    {
+        left -= 2;
+        top -= 2;
+        cellSize += 4;
+    }
+    
+    int gap = 1;
     left = left + gap;
     top = top + gap;
     int d = cellSize - gap * 2; //diameter
@@ -719,7 +736,7 @@
      **/
     CGContextSetLineWidth(context, 1);
     CGContextSetStrokeColorWithColor(context, [UIColor
-                                                   grayColor].CGColor);
+                                                   blackColor].CGColor);
     CGContextAddPath(context, pathRef);
     CGContextStrokePath(context);
     

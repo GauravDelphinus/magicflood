@@ -844,6 +844,7 @@
                             <constraint firstItem="cb9-1c-d0v" firstAttribute="leading" secondItem="noz-qN-FoH" secondAttribute="leadingMargin" constant="10" id="3eU-GN-klM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BSK-v3-f0a" secondAttribute="trailing" constant="10" id="5Q7-Wc-aUp"/>
                             <constraint firstItem="HEK-IC-5ZB" firstAttribute="top" secondItem="KWF-9x-Fu9" secondAttribute="bottom" constant="5" id="5cu-Lq-mEk"/>
+                            <constraint firstItem="h8f-z8-94j" firstAttribute="centerY" secondItem="HEK-IC-5ZB" secondAttribute="centerY" id="7DD-DU-iap"/>
                             <constraint firstItem="BFD-j0-6Rh" firstAttribute="leading" secondItem="jjO-sT-lKn" secondAttribute="trailing" id="7GM-Kz-Eit"/>
                             <constraint firstItem="L9y-Q4-dD8" firstAttribute="leading" secondItem="BFD-j0-6Rh" secondAttribute="trailing" id="AYJ-80-X8D"/>
                             <constraint firstItem="HEK-IC-5ZB" firstAttribute="leading" secondItem="noz-qN-FoH" secondAttribute="leadingMargin" constant="10" id="AwP-I9-149"/>
@@ -852,7 +853,6 @@
                             <constraint firstItem="wxH-iB-i7m" firstAttribute="leading" secondItem="noz-qN-FoH" secondAttribute="leadingMargin" constant="10" id="CdI-ha-Yvo"/>
                             <constraint firstItem="uEE-SK-MGV" firstAttribute="leading" secondItem="wxH-iB-i7m" secondAttribute="trailing" id="DVm-AK-aVD"/>
                             <constraint firstItem="8qT-aR-96X" firstAttribute="leading" secondItem="pzV-Ey-s9k" secondAttribute="trailing" id="EwC-vl-xzI"/>
-                            <constraint firstItem="G5Z-Xj-2RS" firstAttribute="centerY" secondItem="HEK-IC-5ZB" secondAttribute="centerY" id="FTQ-Q5-q2O"/>
                             <constraint firstItem="3F4-Ux-AYX" firstAttribute="top" secondItem="ph6-YJ-5Tz" secondAttribute="bottom" constant="20" id="Fe6-RP-YWe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KWF-9x-Fu9" secondAttribute="trailing" constant="10" id="ILi-ia-TcG"/>
                             <constraint firstItem="jjO-sT-lKn" firstAttribute="width" secondItem="dPH-Cy-39a" secondAttribute="width" id="JTf-4k-ry3"/>
@@ -2322,7 +2322,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look for the rotating star.  It could be anywhere on the grid.  There could be multiple stars in the game as well!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtY-fO-hvV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look for the blinking star.  It could be anywhere on the grid.  There could be multiple stars in the game as well!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtY-fO-hvV">
                                 <rect key="frame" x="87" y="686" width="610" height="229"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2395,7 +2395,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Look out for hurdles, and work your way around them!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbD-vw-G3m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hurdles come in all shapes and sizes, and you gotta work your way around them!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbD-vw-G3m">
                                 <rect key="frame" x="67" y="729" width="635" height="119"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2456,7 +2456,7 @@
         <!--Help Screen View Controller-->
         <scene sceneID="Nih-eS-kEQ">
             <objects>
-                <viewController storyboardIdentifier="HelpScreenViewController6" id="1oq-Ll-bDx" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpScreenViewController8" id="1oq-Ll-bDx" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m1K-TY-Zhq"/>
                         <viewControllerLayoutGuide type="bottom" id="aHR-ur-oA7"/>
@@ -2465,33 +2465,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When you're running out of moves, add bonus moves and save your game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuS-H6-pkv">
-                                <rect key="frame" x="72" y="695" width="635" height="164"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instead of manouvering around branches, you can connect them using bridges and speed up the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuS-H6-pkv">
+                                <rect key="frame" x="72" y="738" width="635" height="164"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_add_moves.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bfx-ow-Kgk">
-                                <rect key="frame" x="236" y="372" width="240" height="128"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Moves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-r8-ILq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Build Bridges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-r8-ILq">
                                 <rect key="frame" x="192" y="133" width="328" height="81"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_9.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bfx-ow-Kgk">
+                                <rect key="frame" x="184" y="305" width="400" height="382"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wY7-2n-FFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8113" y="6110"/>
+            <point key="canvasLocation" x="9797" y="6102"/>
         </scene>
         <!--Help Screen View Controller-->
         <scene sceneID="TKn-SP-TnS">
             <objects>
-                <viewController storyboardIdentifier="HelpScreenViewController7" id="cey-ze-Ist" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpScreenViewController6" id="cey-ze-Ist" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zIZ-hn-V45"/>
                         <viewControllerLayoutGuide type="bottom" id="s7z-wc-9sp"/>
@@ -2507,13 +2507,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add additional stars on the game grid to accelerate the speed of the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffD-aF-VVF">
-                                <rect key="frame" x="76" y="715" width="616" height="110"/>
+                                <rect key="frame" x="76" y="780" width="616" height="110"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_star_placement_info.png" translatesAutoresizingMaskIntoConstraints="NO" id="ouj-zd-XmS">
-                                <rect key="frame" x="193" y="335" width="382" height="261"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_7.png" translatesAutoresizingMaskIntoConstraints="NO" id="ouj-zd-XmS">
+                                <rect key="frame" x="184" y="311" width="400" height="407"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2521,12 +2521,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWa-yo-17t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8972" y="6110"/>
+            <point key="canvasLocation" x="8076" y="6110"/>
         </scene>
         <!--Help Screen View Controller-->
         <scene sceneID="oB5-u6-nqx">
             <objects>
-                <viewController storyboardIdentifier="HelpScreenViewController8" id="CDG-hS-FLy" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpScreenViewController7" id="CDG-hS-FLy" customClass="MFHelpScreenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b3p-rT-2oP"/>
                         <viewControllerLayoutGuide type="bottom" id="05b-ap-Oxc"/>
@@ -2541,22 +2541,22 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_8.png" translatesAutoresizingMaskIntoConstraints="NO" id="dVA-mh-sko">
-                                <rect key="frame" x="245" y="352" width="278" height="205"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Hurdle Smashers to make holes in hurdles and create new paths to complete the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33l-7w-MEc">
                                 <rect key="frame" x="94" y="720" width="580" height="148"/>
                                 <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_8.png" translatesAutoresizingMaskIntoConstraints="NO" id="dVA-mh-sko">
+                                <rect key="frame" x="184" y="354" width="400" height="315"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9OR-a2-ufj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9795" y="6110"/>
+            <point key="canvasLocation" x="8919" y="6110"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="2hE-4l-MwS">
@@ -3240,7 +3240,6 @@
         <image name="ic_replay.png" width="72" height="72"/>
         <image name="ic_restore_purchase.png" width="72" height="72"/>
         <image name="ic_star.png" width="72" height="72"/>
-        <image name="ic_star_placement_info.png" width="200" height="204"/>
         <image name="ic_use_bridge_2.png" width="144" height="144"/>
         <image name="ic_use_hurdle_smasher_2.png" width="144" height="144"/>
         <image name="ic_use_star_2.png" width="144" height="144"/>
