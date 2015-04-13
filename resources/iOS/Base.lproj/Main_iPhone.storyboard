@@ -140,6 +140,7 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -231,21 +232,29 @@
                                         </connections>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_logo_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="nVG-89-XIh">
-                                        <rect key="frame" x="24" y="8" width="288" height="174"/>
+                                        <rect key="frame" x="60" y="-5" width="200" height="150"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="by EZEEIDEAS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgd-Bm-44d">
+                                        <rect key="frame" x="77" y="145" width="198" height="39"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="cyL-nP-byu" firstAttribute="top" secondItem="Hgd-Bm-44d" secondAttribute="bottom" constant="10" id="6Dh-nM-dfE"/>
+                                    <constraint firstAttribute="trailing" secondItem="nVG-89-XIh" secondAttribute="trailing" constant="20" id="6xt-gn-hV3"/>
                                     <constraint firstItem="CUN-ig-jfV" firstAttribute="top" secondItem="j3w-iS-oKs" secondAttribute="bottom" constant="10" id="8qR-9R-SEf"/>
-                                    <constraint firstAttribute="trailing" secondItem="nVG-89-XIh" secondAttribute="trailing" constant="10" id="Erd-3c-EaL"/>
+                                    <constraint firstItem="nVG-89-XIh" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="20" id="Kfs-tC-X2R"/>
                                     <constraint firstItem="j3w-iS-oKs" firstAttribute="top" secondItem="cyL-nP-byu" secondAttribute="bottom" constant="10" id="LBR-U0-G3E"/>
                                     <constraint firstItem="cyL-nP-byu" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="20" id="OIC-bK-bUa"/>
-                                    <constraint firstItem="nVG-89-XIh" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="10" id="Tdu-dY-2Bf"/>
-                                    <constraint firstItem="cyL-nP-byu" firstAttribute="top" secondItem="nVG-89-XIh" secondAttribute="bottom" constant="20" id="U2d-HF-Yri"/>
                                     <constraint firstItem="j3w-iS-oKs" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="20" id="eBK-iw-CIk"/>
                                     <constraint firstAttribute="bottom" secondItem="CUN-ig-jfV" secondAttribute="bottom" constant="10" id="ibg-Kx-rbk"/>
                                     <constraint firstAttribute="trailing" secondItem="cyL-nP-byu" secondAttribute="trailing" constant="20" id="jda-2J-cL1"/>
                                     <constraint firstItem="CUN-ig-jfV" firstAttribute="leading" secondItem="BGa-x1-OuQ" secondAttribute="leading" constant="20" id="m4f-TV-7FR"/>
+                                    <constraint firstItem="Hgd-Bm-44d" firstAttribute="top" secondItem="nVG-89-XIh" secondAttribute="bottom" id="pOA-17-zq9"/>
+                                    <constraint firstAttribute="centerX" secondItem="Hgd-Bm-44d" secondAttribute="centerX" id="tT4-Ws-jnz"/>
                                     <constraint firstItem="nVG-89-XIh" firstAttribute="top" secondItem="BGa-x1-OuQ" secondAttribute="top" constant="5" id="xAp-E7-W9e"/>
                                     <constraint firstAttribute="trailing" secondItem="CUN-ig-jfV" secondAttribute="trailing" constant="20" id="xnq-5v-kfx"/>
                                     <constraint firstAttribute="trailing" secondItem="j3w-iS-oKs" secondAttribute="trailing" constant="20" id="zJs-E8-5Ec"/>
@@ -3915,7 +3924,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Smash Hurdles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRI-b4-EQL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Hurdle Smashers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRI-b4-EQL">
                                         <rect key="frame" x="66" y="6" width="133" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -4102,7 +4111,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Build Bridges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5U-yx-zuS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Bridges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5U-yx-zuS">
                                         <rect key="frame" x="66" y="6" width="133" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -4378,7 +4387,7 @@
         <image name="ic_iap_failed.png" width="96" height="96"/>
         <image name="ic_iap_lock.png" width="24" height="24"/>
         <image name="ic_levels.png" width="48" height="48"/>
-        <image name="ic_logo_big.png" width="231" height="171"/>
+        <image name="ic_logo_big.png" width="200" height="150"/>
         <image name="ic_logo_small.png" width="116" height="86"/>
         <image name="ic_moves.png" width="48" height="48"/>
         <image name="ic_next_level.png" width="48" height="48"/>

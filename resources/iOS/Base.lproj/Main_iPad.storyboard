@@ -141,6 +141,7 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -163,7 +164,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="121"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyf-AA-8US">
-                                        <rect key="frame" x="141" y="19" width="229" height="81"/>
+                                        <rect key="frame" x="135" y="19" width="229" height="81"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="32"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -181,7 +182,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="121"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdH-35-Hd3">
-                                        <rect key="frame" x="136" y="20" width="229" height="81"/>
+                                        <rect key="frame" x="130" y="20" width="229" height="81"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="32"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -199,7 +200,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="121"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1K-ve-Onl">
-                                        <rect key="frame" x="136" y="20" width="229" height="81"/>
+                                        <rect key="frame" x="129" y="20" width="229" height="81"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="32"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -213,6 +214,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-IF-IH6">
                                 <rect key="frame" x="169" y="36" width="407" height="287"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by EZEEIDEAS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQj-R9-Qq0">
+                                <rect key="frame" x="291" y="290" width="186" height="53"/>
+                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -858,7 +865,6 @@
                             <constraint firstItem="jjO-sT-lKn" firstAttribute="width" secondItem="dPH-Cy-39a" secondAttribute="width" id="JTf-4k-ry3"/>
                             <constraint firstItem="Z8p-F8-U0d" firstAttribute="top" secondItem="3F4-Ux-AYX" secondAttribute="bottom" constant="20" id="JnP-Za-pc0"/>
                             <constraint firstItem="h8f-z8-94j" firstAttribute="leading" secondItem="HEK-IC-5ZB" secondAttribute="trailing" constant="20" id="KRz-uF-cGP"/>
-                            <constraint firstItem="BSK-v3-f0a" firstAttribute="centerY" secondItem="WKy-Fp-Vtv" secondAttribute="centerY" id="KgB-uI-Gdr"/>
                             <constraint firstItem="jlq-Ew-wyl" firstAttribute="centerY" secondItem="f84-L9-CBf" secondAttribute="centerY" id="MMX-s3-3nO"/>
                             <constraint firstItem="BFD-j0-6Rh" firstAttribute="centerY" secondItem="8qT-aR-96X" secondAttribute="centerY" id="Nab-cV-AZC"/>
                             <constraint firstItem="wxH-iB-i7m" firstAttribute="top" secondItem="HEK-IC-5ZB" secondAttribute="bottom" constant="10" id="NxZ-Ti-mwF"/>
@@ -877,6 +883,7 @@
                             <constraint firstItem="jlq-Ew-wyl" firstAttribute="leading" secondItem="f84-L9-CBf" secondAttribute="trailing" constant="5" id="akX-mB-53G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3F4-Ux-AYX" secondAttribute="trailing" constant="10" id="bQM-jS-CAX"/>
                             <constraint firstItem="pzV-Ey-s9k" firstAttribute="leading" secondItem="Kf7-1h-faQ" secondAttribute="trailing" id="cSS-WA-9fK"/>
+                            <constraint firstItem="BSK-v3-f0a" firstAttribute="centerY" secondItem="1h3-b1-De4" secondAttribute="centerY" id="dVi-Wd-qKJ"/>
                             <constraint firstItem="BFD-j0-6Rh" firstAttribute="centerY" secondItem="nlC-6K-esk" secondAttribute="centerY" id="emi-h4-8Wi"/>
                             <constraint firstItem="Xh0-OM-9oc" firstAttribute="leading" secondItem="dPH-Cy-39a" secondAttribute="trailing" id="fce-Gf-XDo"/>
                             <constraint firstAttribute="centerX" secondItem="rbR-Ig-a8U" secondAttribute="centerX" id="fgo-Q0-zjO"/>
@@ -2408,7 +2415,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_image_screen_4.png" translatesAutoresizingMaskIntoConstraints="NO" id="FND-PZ-zlo">
-                                <rect key="frame" x="186" y="354" width="396" height="220"/>
+                                <rect key="frame" x="284" y="359" width="200" height="184"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2733,12 +2740,9 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Smash Hurdles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-go-0dn">
-                                        <rect key="frame" x="79" y="18" width="246" height="41"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_add_hurdle_smasher.png" translatesAutoresizingMaskIntoConstraints="NO" id="s5p-Jo-Q7n">
+                                        <rect key="frame" x="130" y="203" width="144" height="144"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M2N-rZ-9qd" customClass="MFUIButton">
                                         <rect key="frame" x="173" y="379" width="184" height="87"/>
                                         <subviews>
@@ -2809,9 +2813,12 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_add_hurdle_smasher.png" translatesAutoresizingMaskIntoConstraints="NO" id="s5p-Jo-Q7n">
-                                        <rect key="frame" x="130" y="203" width="144" height="144"/>
-                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Hurdle Smashers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-go-0dn">
+                                        <rect key="frame" x="32" y="28" width="341" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                             </view>
@@ -2849,7 +2856,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Build Bridges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4b-Yl-DLs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Bridges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4b-Yl-DLs">
                                         <rect key="frame" x="106" y="17" width="192" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -3173,7 +3180,7 @@
         <image name="help_image_screen_2.png" width="221" height="225"/>
         <image name="help_image_screen_3.png" width="212" height="200"/>
         <image name="help_image_screen_3b.png" width="500" height="95"/>
-        <image name="help_image_screen_4.png" width="252" height="225"/>
+        <image name="help_image_screen_4.png" width="300" height="339"/>
         <image name="help_image_screen_5.png" width="158" height="150"/>
         <image name="help_image_screen_7.png" width="400" height="407"/>
         <image name="help_image_screen_8.png" width="400" height="315"/>
@@ -3230,7 +3237,7 @@
         <image name="ic_iap_failed.png" width="144" height="144"/>
         <image name="ic_iap_lock.png" width="36" height="36"/>
         <image name="ic_levels.png" width="72" height="72"/>
-        <image name="ic_logo_big.png" width="348" height="256"/>
+        <image name="ic_logo_big.png" width="300" height="225"/>
         <image name="ic_logo_small.png" width="174" height="129"/>
         <image name="ic_moves.png" width="72" height="72"/>
         <image name="ic_next_level.png" width="72" height="72"/>
