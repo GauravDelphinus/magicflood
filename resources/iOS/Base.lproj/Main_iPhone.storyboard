@@ -1554,8 +1554,8 @@
                                 <rect key="frame" x="39" y="45" width="265" height="376"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Collect additional stars and place them at any time at your choice of location on the grid to accelerate the game play!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POI-NK-fkJ">
-                                        <rect key="frame" x="8" y="23" width="249" height="91"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <rect key="frame" x="8" y="23" width="249" height="113"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2801,7 +2801,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oY4-cS-gol">
                                 <rect key="frame" x="28" y="20" width="265" height="440"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Place a star anywhere on the grid by tapping your finger on the desired location now." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8r-fc-4j9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Place a star anywhere on the grid by tapping your finger on the desired location now." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8r-fc-4j9">
                                         <rect key="frame" x="8" y="62" width="249" height="114"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -2813,9 +2813,6 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_7.png" translatesAutoresizingMaskIntoConstraints="NO" id="MA1-7a-Yrs">
-                                        <rect key="frame" x="24" y="158" width="217" height="217"/>
-                                    </imageView>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-8o-PhP" customClass="MFUIButton">
                                         <rect key="frame" x="90" y="374" width="103" height="49"/>
                                         <subviews>
@@ -2840,18 +2837,21 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="FIt-QF-f8v" eventType="touchUpInside" id="6ec-QO-JRg"/>
                                         </connections>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="help_image_screen_7.png" translatesAutoresizingMaskIntoConstraints="NO" id="MA1-7a-Yrs">
+                                        <rect key="frame" x="15" y="142" width="250" height="254"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="hh2-8o-PhP" firstAttribute="top" secondItem="MA1-7a-Yrs" secondAttribute="bottom" constant="10" id="A3A-kg-lhA"/>
                                     <constraint firstAttribute="centerX" secondItem="w8r-fc-4j9" secondAttribute="centerX" id="DSg-n9-JE9"/>
                                     <constraint firstItem="MA1-7a-Yrs" firstAttribute="top" secondItem="w8r-fc-4j9" secondAttribute="bottom" constant="10" id="Fo3-aX-PcB"/>
-                                    <constraint firstAttribute="trailing" secondItem="w8r-fc-4j9" secondAttribute="trailing" constant="10" id="HPQ-EM-7V5"/>
                                     <constraint firstItem="b7S-lV-psI" firstAttribute="top" secondItem="oY4-cS-gol" secondAttribute="top" constant="10" id="HZ1-xC-UzA"/>
+                                    <constraint firstItem="w8r-fc-4j9" firstAttribute="leading" secondItem="oY4-cS-gol" secondAttribute="leading" constant="10" id="Jye-QG-e4O"/>
                                     <constraint firstItem="w8r-fc-4j9" firstAttribute="top" secondItem="b7S-lV-psI" secondAttribute="bottom" constant="10" id="MSc-d3-toZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="w8r-fc-4j9" secondAttribute="trailing" constant="10" id="Pf3-0r-BNJ"/>
                                     <constraint firstAttribute="trailing" secondItem="MA1-7a-Yrs" secondAttribute="trailing" constant="10" id="V7O-Xa-wFq"/>
                                     <constraint firstAttribute="bottom" secondItem="hh2-8o-PhP" secondAttribute="bottom" constant="10" id="Xtq-z5-yNe"/>
-                                    <constraint firstItem="w8r-fc-4j9" firstAttribute="leading" secondItem="oY4-cS-gol" secondAttribute="leading" constant="10" id="d3B-jH-uHz"/>
                                     <constraint firstAttribute="centerX" secondItem="b7S-lV-psI" secondAttribute="centerX" id="kfj-Ng-iM9"/>
                                     <constraint firstAttribute="centerX" secondItem="hh2-8o-PhP" secondAttribute="centerX" id="qrs-KJ-HvH"/>
                                     <constraint firstAttribute="centerX" secondItem="MA1-7a-Yrs" secondAttribute="centerX" id="tzp-AK-sYD"/>
@@ -2861,6 +2861,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="oY4-cS-gol" secondAttribute="trailing" constant="10" id="YLS-8u-0KQ"/>
+                            <constraint firstItem="oY4-cS-gol" firstAttribute="leading" secondItem="g1O-me-nhQ" secondAttribute="leadingMargin" constant="10" id="YQS-H6-5Nz"/>
                             <constraint firstAttribute="centerX" secondItem="oY4-cS-gol" secondAttribute="centerX" id="v9F-hY-xei"/>
                             <constraint firstAttribute="centerY" secondItem="oY4-cS-gol" secondAttribute="centerY" id="xBm-0j-74Q"/>
                         </constraints>
@@ -2953,6 +2955,8 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="r83-O8-YFZ" secondAttribute="centerY" id="9JY-Gy-v9O"/>
+                            <constraint firstItem="r83-O8-YFZ" firstAttribute="leading" secondItem="JFw-aC-0sP" secondAttribute="leadingMargin" constant="15" id="MfX-A0-oha"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r83-O8-YFZ" secondAttribute="trailing" constant="15" id="cfj-Sv-2ks"/>
                             <constraint firstAttribute="centerX" secondItem="r83-O8-YFZ" secondAttribute="centerX" id="dG7-kl-Lpv"/>
                         </constraints>
                     </view>
@@ -3388,12 +3392,6 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCf-h2-ve6">
                                 <rect key="frame" x="28" y="20" width="265" height="256"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Couldn't detect a valid location to place a star.  Please try again by tapping on a color cell." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAW-EB-Z00">
-                                        <rect key="frame" x="8" y="74" width="249" height="114"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILE-Q0-djX">
                                         <rect key="frame" x="29" y="25" width="206" height="41"/>
                                         <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
@@ -3424,6 +3422,12 @@
                                             <action selector="positiveAction1ButtonPressed:" destination="ixA-cc-A8I" eventType="touchUpInside" id="LLR-fX-hQT"/>
                                         </connections>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Couldn't detect a valid location to place a star.  Please try again by tapping on a color cell." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAW-EB-Z00">
+                                        <rect key="frame" x="8" y="74" width="249" height="114"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -3706,6 +3710,8 @@
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="hPb-Bm-MkK" secondAttribute="centerY" id="EXs-ZS-l8o"/>
                             <constraint firstAttribute="centerX" secondItem="hPb-Bm-MkK" secondAttribute="centerX" id="MBd-Dh-hJX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hPb-Bm-MkK" secondAttribute="trailing" constant="15" id="S3F-4S-H2u"/>
+                            <constraint firstItem="hPb-Bm-MkK" firstAttribute="leading" secondItem="TOS-1Z-rJm" secondAttribute="leadingMargin" constant="15" id="bbX-l8-XHS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3905,7 +3911,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Collect Hurdle Smashers and use them at any time to make holes in hurdles to speed up the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rW-r4-xaO">
                                         <rect key="frame" x="8" y="23" width="249" height="91"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -4092,7 +4098,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Collect Bridges and use them at any time to build connections between branches in the grid!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-hU-7lV">
                                         <rect key="frame" x="8" y="23" width="249" height="91"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -4315,7 +4321,7 @@
         <image name="help_image_screen_2.png" width="147" height="150"/>
         <image name="help_image_screen_3.png" width="150" height="142"/>
         <image name="help_image_screen_3b.png" width="400" height="76"/>
-        <image name="help_image_screen_4.png" width="168" height="150"/>
+        <image name="help_image_screen_4.png" width="150" height="138"/>
         <image name="help_image_screen_5.png" width="100" height="95"/>
         <image name="help_image_screen_7.png" width="250" height="254"/>
         <image name="help_image_screen_8.png" width="250" height="197"/>

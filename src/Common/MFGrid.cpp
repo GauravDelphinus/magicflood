@@ -302,9 +302,9 @@ void MFGrid::initializeGrid()
 
 void MFGrid::computeMaxMoves()
 {
-    //maxMoves = getMaxMovesForLevel(level);
+    maxMoves = getMaxMovesForLevel(level);
     
-    
+    /*
     //allocate a temp grid and copy from the game grid
     mMeasureGrid = (int **)calloc(gridSize, sizeof(int *));
     for (int i = 0; i < gridSize; i++)
@@ -365,7 +365,7 @@ void MFGrid::computeMaxMoves()
      
     releaseGrid(mMeasureGrid);
     mMeasureGrid = NULL;
-    
+    */
 }
 
 /**
