@@ -881,6 +881,50 @@ int ** MFGrid::checkBridgeValid(int startrow, int startcol, int endrow, int endc
             //grow from maxrow upwards
             minrow = maxrow - bridgeThickness + 1;
         }
+        
+        /**
+         Check against 'multiple jumps'
+         **/
+        bool spaceMarked = false;
+        bool branchMarked = false;
+        for (int col = mincol; col <= maxcol; col++)
+        {
+            bool foundSpace = false;
+            for (int row = minrow; row <= maxrow; row++)
+            {
+                if (isSpace(row, col, mGameGrid))
+                {
+                    foundSpace = true;
+                    break;
+                }
+            }
+            
+            if (foundSpace)
+            {
+                if (branchMarked)
+                {
+                    //found a double space!
+                    return NULL;
+                }
+                else
+                {
+                    spaceMarked = true;
+                }
+            }
+            else
+            {
+                if (spaceMarked)
+                {
+                    branchMarked = true;
+                }
+            }
+        }
+        
+        //make sure the bridge actually crosses some space!
+        if (!spaceMarked)
+        {
+            return NULL;
+        }
     }
     else if (abs(startcol - endcol) < bridgeThickness)
     {
@@ -902,6 +946,50 @@ int ** MFGrid::checkBridgeValid(int startrow, int startcol, int endrow, int endc
         {
             //gro from maxcol leftwards
             mincol = maxcol - bridgeThickness + 1;
+        }
+        
+        /**
+         Check against 'multiple jumps'
+         **/
+        bool spaceMarked = false;
+        bool branchMarked = false;
+        for (int row = minrow; row <= maxrow; row++)
+        {
+            bool foundSpace = false;
+            for (int col = mincol; col <= maxcol; col++)
+            {
+                if (isSpace(row, col, mGameGrid))
+                {
+                    foundSpace = true;
+                    break;
+                }
+            }
+            
+            if (foundSpace)
+            {
+                if (branchMarked)
+                {
+                    //found a double space!
+                    return NULL;
+                }
+                else
+                {
+                    spaceMarked = true;
+                }
+            }
+            else
+            {
+                if (spaceMarked)
+                {
+                    branchMarked = true;
+                }
+            }
+        }
+        
+        //make sure the bridge actually crosses some space!
+        if (!spaceMarked)
+        {
+            return NULL;
         }
     }
     else
@@ -928,14 +1016,15 @@ bool MFGrid::isValidBridgeEndpoint(int row, int col, int **grid)
 {
     if (!isInside(row, col)) //invalid coordinates
     {
-        return 0;
+        return false;
     }
     
     if (!isFillable(row, col, mGameGrid))
     {
-        return 0;
+        return false;
     }
     
+    /*
     //check west
     if (col > 0 && mGameGrid[row][col-1] == '.')
     {
@@ -957,6 +1046,9 @@ bool MFGrid::isValidBridgeEndpoint(int row, int col, int **grid)
     {
         return 0;
     }
+     */
+    
+    return true;
 }
 
 bool MFGrid::hasSpaces()

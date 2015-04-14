@@ -314,7 +314,7 @@
             CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
         }
 
-        CGContextSetLineWidth(context, 2.0);
+        CGContextSetLineWidth(context, 3.0);
         
         CGContextMoveToPoint(context, self.mBridgeStartX, self.mBridgeStartY);
         CGContextAddLineToPoint(context, self.mBridgeEndX, self.mBridgeEndY);
@@ -801,6 +801,8 @@
     {
         [self.delegate handleDragMoveAtX:(int)location.x Y:(int)location.y Row:row Col:col];
     }
+    
+    [self setNeedsDisplay];
 }
 
 /**
