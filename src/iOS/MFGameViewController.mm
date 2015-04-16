@@ -445,6 +445,10 @@
             {
                 [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0 withAnimation:NO];
             }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_BRIDGE withData:0 withAnimation:NO];
+            }
             self.mLastDialogData = DIALOG_DATA_NONE;
         }
     }
@@ -467,6 +471,10 @@
             else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG)
             {
                 [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0 withAnimation:NO];
+            }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_BRIDGE withData:0 withAnimation:NO];
             }
             self.mLastDialogData = DIALOG_DATA_NONE;
         }
@@ -1872,6 +1880,10 @@
             else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG)
             {
                 [self showDialogOfType:DIALOG_TYPE_ADD_HURDLE_SMASHER withData:0 withAnimation:NO];
+            }
+            else if (self.mLastDialogData == DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG)
+            {
+                [self showDialogOfType:DIALOG_TYPE_ADD_BRIDGE withData:0 withAnimation:NO];
             }
             self.mLastDialogData = DIALOG_DATA_NONE;
         }
