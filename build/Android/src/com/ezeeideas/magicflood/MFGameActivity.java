@@ -480,31 +480,11 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		else if (arg0.getId() == R.id.add_coins_button_id)
 		{	
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_COINS_BUTTON);
-			//redeem the coins, show a dialog
-			if (mIAPManager.isSynchronized())
-			{
-				String addCoinsPriceList[] = new String[4];
-				String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
-				addCoinsPriceList[0] = details[2];
-				details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
-				addCoinsPriceList[1] = details[2];
-				details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
-				addCoinsPriceList[2] = details[2];
-				details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
-				addCoinsPriceList[3] = details[2];
-				
-				AddCoinsDialog dialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_NONE, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
-				dialog.setCanceledOnTouchOutside(false);
-				dialog.show();
-			}
-			else
-			{
-				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_COINS);
-				
-				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
-				dialog.setCanceledOnTouchOutside(false);
-				dialog.show();
-			}
+
+			AddCoinsDialog dialog = new AddCoinsDialog(this, DIALOG_DATA_NONE, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+
 			return;
 		}
 		else if (arg0.getId() == R.id.add_moves_button_id)
@@ -923,31 +903,10 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					if (mIAPManager.isSynchronized())
-					{
-						String addCoinsPriceList[] = new String[4];
-						String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
-						addCoinsPriceList[0] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
-						addCoinsPriceList[1] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
-						addCoinsPriceList[2] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
-						addCoinsPriceList[3] = details[2];
-						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_MOVES_DIALOG, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
-						addCoinsDialog.setCanceledOnTouchOutside(false);
-						addCoinsDialog.show();
-						mLastDialogData = DIALOG_DATA_FROM_ADD_MOVES_DIALOG;
-					}
-					else
-					{
-						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_MOVES);
-						
-						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
-						notConnectedDialog.setCanceledOnTouchOutside(false);
-						notConnectedDialog.show();
-					}
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, DIALOG_DATA_FROM_ADD_MOVES_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					addCoinsDialog.setCanceledOnTouchOutside(false);
+					addCoinsDialog.show();
+					mLastDialogData = DIALOG_DATA_FROM_ADD_MOVES_DIALOG;
 				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
@@ -1006,31 +965,11 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					if (mIAPManager.isSynchronized())
-					{
-						String addCoinsPriceList[] = new String[4];
-						String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
-						addCoinsPriceList[0] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
-						addCoinsPriceList[1] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
-						addCoinsPriceList[2] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
-						addCoinsPriceList[3] = details[2];
-						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_STAR_DIALOG, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
-						addCoinsDialog.setCanceledOnTouchOutside(false);
-						addCoinsDialog.show();
-						mLastDialogData = DIALOG_DATA_FROM_ADD_STAR_DIALOG;
-					}
-					else
-					{
-						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_STAR);
-						
-						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
-						notConnectedDialog.setCanceledOnTouchOutside(false);
-						notConnectedDialog.show();
-					}
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, DIALOG_DATA_FROM_ADD_STAR_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					addCoinsDialog.setCanceledOnTouchOutside(false);
+					addCoinsDialog.show();
+					mLastDialogData = DIALOG_DATA_FROM_ADD_STAR_DIALOG;
+
 				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
@@ -1074,31 +1013,10 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					if (mIAPManager.isSynchronized())
-					{
-						String addCoinsPriceList[] = new String[4];
-						String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
-						addCoinsPriceList[0] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
-						addCoinsPriceList[1] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
-						addCoinsPriceList[2] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
-						addCoinsPriceList[3] = details[2];
-						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
-						addCoinsDialog.setCanceledOnTouchOutside(false);
-						addCoinsDialog.show();
-						mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
-					}
-					else
-					{
-						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_HURDLE_SMASHER);
-						
-						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
-						notConnectedDialog.setCanceledOnTouchOutside(false);
-						notConnectedDialog.show();
-					}
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					addCoinsDialog.setCanceledOnTouchOutside(false);
+					addCoinsDialog.show();
+					mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
 				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
@@ -1143,31 +1061,10 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					if (mIAPManager.isSynchronized())
-					{
-						String addCoinsPriceList[] = new String[4];
-						String details[] = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FIRST);
-						addCoinsPriceList[0] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_SECOND);
-						addCoinsPriceList[1] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_THIRD);
-						addCoinsPriceList[2] = details[2];
-						details = mIAPManager.getProductDetails(MFGameConstants.IAP_COINS_FOURTH);
-						addCoinsPriceList[3] = details[2];
-						
-						AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, addCoinsPriceList, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
-						addCoinsDialog.setCanceledOnTouchOutside(false);
-						addCoinsDialog.show();
-						mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
-					}
-					else
-					{
-						MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_ADDING_HURDLE_SMASHER);
-						
-						StoreNotConnectedDialog notConnectedDialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
-						notConnectedDialog.setCanceledOnTouchOutside(false);
-						notConnectedDialog.show();
-					}
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					addCoinsDialog.setCanceledOnTouchOutside(false);
+					addCoinsDialog.show();
+					mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
 				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
@@ -1310,17 +1207,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			//consume failed!
 			//show the "Consume failed dialog"
 			IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_CONSUME_FAILED, DIALOG_DATA_NONE);
-			iapFailedDialog.setCanceledOnTouchOutside(false);
-			iapFailedDialog.show();
-		}
-	}
-	
-	@Override
-	public void onQueryFinished(boolean status) 
-	{
-		if (status == false)
-		{
-			IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_QUERY_FAILED, DIALOG_DATA_EXIT);
 			iapFailedDialog.setCanceledOnTouchOutside(false);
 			iapFailedDialog.show();
 		}

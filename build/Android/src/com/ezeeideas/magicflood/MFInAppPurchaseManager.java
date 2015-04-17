@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.ezeeideas.magicflood.iabutil.IabHelper;
 import com.ezeeideas.magicflood.iabutil.IabResult;
@@ -23,8 +24,11 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	
 	public void initialize()
 	{
+		Log.d("gaurav", "MFInAppPurchaseManager.initialize");
+		
         // compute your public key and store it in base64EncodedPublicKey
 		mPurchaseInterfaceListeners = new ArrayList<IAPPurchaseInterface>();
+		mQueryInterfaceListeners = new ArrayList<IAPQueryInterface>();
 		
         mHelper = new IabHelper(mContext, MFConstants.base64EncodedPublicKey);
         mHelper.enableDebugLogging(true);
@@ -35,6 +39,11 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	{
 		mPurchaseInterfaceListeners.add(listener);
 	}
+	
+	public void addQueryListener(IAPQueryInterface listener)
+	{
+		mQueryInterfaceListeners.add(listener);
+	}
 
 	/**
 	 * Query the service for available in-app purchase items.  This should
@@ -42,6 +51,8 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	 */
 	public void queryInAppItems()
 	{		
+		Log.d("gaurav", "MFInAppPurchaseManager.queryInAppItems");
+		
 		ArrayList<String> skuList = new ArrayList<String>();
 
 		skuList.add(MFGameConstants.IAP_COINS_FIRST);
@@ -73,9 +84,11 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	@Override
 	public void onIabSetupFinished(IabResult result) 
 	{
+		Log.d("gaurav", "MFInAppPurchaseManager.onIabSetupFinished, result = " + result);
+		
 		if (result.isSuccess())
 		{
-			queryInAppItems();
+			mIsConnectedWithServer = true;
 		}
 	}
 	
@@ -92,17 +105,17 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	@Override
 	public void onQueryInventoryFinished(IabResult result, Inventory inv) //for provisioning status
 	{
+		Log.d("gaurav", "MFInAppPurchaseManager.onQueryInventoryFinished, result = " + result);
 		if (result.isFailure()) 
 		{
+			Log.d("gaurav", "result.isFailure");
 			// handle error
 			MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_QUERY_FAILED, MFAnalytics.ANALYTICS_VALUE_IAP_QUERY_FAILED_RESULT_FAILURE, result.getResponse());
 			
-			/*
-			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+			for (IAPQueryInterface listener: mQueryInterfaceListeners)
 			{
 				listener.onQueryFinished(false);
 			}
-			*/
 			return;
 		}
 		
@@ -114,12 +127,10 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 				//handle error.  Let user know.
 				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_QUERY_FAILED, MFAnalytics.ANALYTICS_VALUE_IAP_QUERY_FAILED_SKU_NULL, i);
 				
-				/*
-				for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+				for (IAPQueryInterface listener: mQueryInterfaceListeners)
 				{
 					listener.onQueryFinished(false);
 				}
-				*/
 				return;
 			}
 			String price = inv.getSkuDetails(pidArray[i]).getPrice();
@@ -128,8 +139,6 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			boolean isProvisioned = inv.hasPurchase(pidArray[i]);
 			if (isProvisioned)
 			{
-				mIsAnythingProvisioned = true;
-
 				//* for consumable items such as coins, make sure they are consumed if they were provisioned by the user *//
 				consumeItem(inv.getPurchase(pidArray[i]));
 			}
@@ -137,12 +146,18 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			addInAppProduct(pidArray[i], name, description, price, "tbd", isProvisioned);
 		}
 		
+		
 		mIsSynchronizedWithServer = true;
+		for (IAPQueryInterface listener: mQueryInterfaceListeners)
+		{
+			listener.onQueryFinished(true);
+		}
 	}
 
 	@Override
 	public void onIabPurchaseFinished(IabResult result, Purchase info) 
 	{
+		Log.d("gaurav", "MFInAppPurchaseManager.onIabPurchaseFinished, result = " + result);
 		if (result.isFailure()) 
 		{
 			String sku = mContext.getResources().getString(R.string.store_indeterminate_sku_string);
@@ -210,14 +225,14 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		}
 	}
 	
+	public boolean isConnected()
+	{
+		return mIsConnectedWithServer;
+	}
+	
 	public boolean isSynchronized()
 	{
 		return mIsSynchronizedWithServer;
-	}
-	
-	public boolean isAnyIAPProvisioned()
-	{
-		return mIsAnythingProvisioned;
 	}
 	
 	/**
@@ -229,12 +244,22 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	{
 		void onPurchaseFinished(Purchase purchase, String pid, boolean status);
 		void onConsumeFinished(String pid, boolean status);
+	}
+	
+	/**
+	 * Implement this interface t listen to IAP query callbacks
+	 * @author anukrity
+	 *
+	 */
+	interface IAPQueryInterface
+	{
 		void onQueryFinished(boolean status);
 	}
 	
 	private static MFInAppPurchaseManager sIAPManager = null;
-	private boolean mIsSynchronizedWithServer = false;
-	private boolean mIsAnythingProvisioned = false;
+	private boolean mIsSynchronizedWithServer = false; //query of IAP items was successful
+	private boolean mIsConnectedWithServer = false; //setup IAB successful
+	
 	private Bundle mSkuDetails; //details of the SKU
 	//private QuerySKUDetailsTask mQuerySkuDetailsTask;
 	
@@ -243,6 +268,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	Activity mContext;
 	private IabHelper mHelper;
 	private ArrayList<IAPPurchaseInterface> mPurchaseInterfaceListeners;
+	private ArrayList<IAPQueryInterface> mQueryInterfaceListeners;
 	
 	private native void addInAppProduct(String id, String name, String description, String price, String priceCode, boolean isProvisioned);
 	private native void updateInAppProduct(String id, boolean isProvisioned);

@@ -47,21 +47,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
         
         //set the package name
         MFGameConstants.PACKAGE_NAME = getPackageName();
-        
-        //initialize the in-app purchase manager
-        mIAPManager = new MFInAppPurchaseManager(this);
-    }
-
-    @Override
-    public void onDestroy() 
-    {
-        super.onDestroy();
-        
-        //Unbind the service manager for IAP
-        if (mIAPManager != null)
-        {
-            mIAPManager.unbind();
-        }   
     }
     
     @Override
@@ -124,10 +109,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Game
 		}			
 	}
 	
-	private MFInAppPurchaseManager mIAPManager;
-	//private PieButton mGameLevelPieButton;
 	private View mPlayButton, mHowToPlayButton, mAboutButton;
 	
 	private native int getNumLevels();
-	
 }
