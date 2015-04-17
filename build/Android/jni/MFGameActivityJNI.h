@@ -57,6 +57,24 @@ extern "C" {
 #define com_ezeeideas_magicflood_MFGameActivity_RESULT_FIRST_USER 1L
 #undef com_ezeeideas_magicflood_MFGameActivity_RESULT_OK
 #define com_ezeeideas_magicflood_MFGameActivity_RESULT_OK -1L
+#undef com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_NONE
+#define com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_NONE 0L
+#undef com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_FROM_ADD_STAR_DIALOG
+#define com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_FROM_ADD_STAR_DIALOG 1L
+#undef com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_FROM_ADD_MOVES_DIALOG
+#define com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_FROM_ADD_MOVES_DIALOG 2L
+#undef com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG
+#define com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG 3L
+#undef com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_EXIT
+#define com_ezeeideas_magicflood_MFGameActivity_DIALOG_DATA_EXIT 4L
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumLevels
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumLevels
+  (JNIEnv *, jobject);
+
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    createNewGrid
@@ -64,14 +82,6 @@ extern "C" {
  */
 JNIEXPORT jlong JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_createNewGrid
   (JNIEnv *, jobject, jint);
-
-/*
- * Class:     com_ezeeideas_magicflood_MFGameActivity
- * Method:    getNumLevels
- * Signature: ()J
- */
-JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumLevels
-  (JNIEnv *, jobject);
 
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
@@ -108,7 +118,7 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumStartP
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    addStartPos
- * Signature: (J)V
+ * Signature: (JII)I
  */
 JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_addStartPos
   (JNIEnv *, jobject, jlong, jint, jint);
@@ -128,6 +138,7 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMaxMoves
  */
 JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_setMaxMoves
   (JNIEnv *, jobject, jlong, jint);
+
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    getCurrMove
@@ -219,18 +230,26 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsF
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    getNumCoinsForStar
- * Signature: ()I
+ * Signature: (I)I
  */
 JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForStar
-  (JNIEnv *, jobject);
+  (JNIEnv *, jobject, jint);
 
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
  * Method:    getNumCoinsForHurdleSmasher
- * Signature: ()I
+ * Signature: (I)I
  */
 JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForHurdleSmasher
-  (JNIEnv *, jobject);
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForBridge
+ * Signature: (I)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForBridge
+  (JNIEnv *, jobject, jint);
 
 /*
  * Class:     com_ezeeideas_magicflood_MFGameActivity
@@ -263,7 +282,6 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMinLevelT
  */
 JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForSuccessfulGame
   (JNIEnv *, jobject, jint, jint);
-
 
 #ifdef __cplusplus
 }

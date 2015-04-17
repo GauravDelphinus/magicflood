@@ -291,9 +291,9 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsF
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForStar
-  (JNIEnv *env, jobject thisObj)
+  (JNIEnv *env, jobject thisObj, jint numStars)
 {
-	return getNumCoinsForStar();
+	return getNumCoinsForStar(numStars);
 }
 
 /*
@@ -302,9 +302,20 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsF
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForHurdleSmasher
-  (JNIEnv *env, jobject thisObj)
+  (JNIEnv *env, jobject thisObj, jint numSmashers)
 {
-	return getNumCoinsForHurdleSmasher();
+	return getNumCoinsForHurdleSmasher(numSmashers);
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    getNumCoinsForBridge
+ * Signature: (I)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForBridge
+  (JNIEnv *env, jobject thisObj, jint numBridges)
+{
+	return getNumCoinsForBridge(numBridges);
 }
 
 /*
