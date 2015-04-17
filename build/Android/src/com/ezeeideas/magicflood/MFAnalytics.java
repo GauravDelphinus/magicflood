@@ -80,6 +80,7 @@ public class MFAnalytics
 	public static final String ANALYTICS_LABEL_ADD_MOVES_BUTTON = "add_moves_button";
 	public static final String ANALYTICS_LABEL_ADD_STAR_BUTTON = "add_star_button";
 	public static final String ANALYTICS_LABEL_ADD_HURDLE_SMASHER_BUTTON = "add_hurdle_smasher_button";
+	public static final String ANALYTICS_LABEL_ADD_BRIDGE_BUTTON = "add_bridge_button";
 	public static final String ANALYTICS_LABEL_REMOVE_ADS_BUTTON = "remove_ads_button";
 	public static final String ANALYTICS_LABEL_PLAY_ON_BUTTON = "play_on_button";
 	public static final String ANALYTICS_LABEL_END_GAME_BUTTON = "end_game_button";
@@ -94,6 +95,7 @@ public class MFAnalytics
 	public static final String ANALYTICS_LABEL_REDEEM_COINS_FOR_MOVES_BUTTON = "redeem_coins_for_moves";
 	public static final String ANALYTICS_LABEL_REDEEM_COINS_FOR_STAR_BUTTON = "redeem_coins_for_star";
 	public static final String ANALYTICS_LABEL_REDEEM_COINS_FOR_HURDLE_SMASHER = "redeem_coins_for_hurdle_smasher";
+	public static final String ANALYTICS_LABEL_REDEEM_COINS_FOR_BRIDGE = "redeem_coins_for_bridge";
 	
 	/**
 	 * Labels - Game Ended
@@ -108,6 +110,7 @@ public class MFAnalytics
 	public static final String ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_MOVES = "coins_redeemed_for_moves";
 	public static final String ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_STAR = "coins_redeemed_for_star";
 	public static final String ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_HURDLE_SMASHER = "coins_redeemed_for_hurdle_smasher";
+	public static final String ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_BRIDGE = "coins_redeemed_for_bridge";
 	
 	/**
 	 * Labels - Store Synchronization Status

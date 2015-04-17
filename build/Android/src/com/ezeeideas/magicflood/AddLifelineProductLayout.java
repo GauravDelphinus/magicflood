@@ -21,16 +21,29 @@ public class AddLifelineProductLayout extends LinearLayout
 		mContext = context;
 	}
 	
-	public void setProperties(int count, int imageId)
+	public void setProperties(int imageId, int coins1, int coins2)
 	{
 		//set the iap product image
-		ImageView productImage = (ImageView) findViewById(R.id.add_lifeline_product_image_id);
+		ImageView productImage = (ImageView) findViewById(R.id.add_lifeline_image1_id);
 		productImage.setBackgroundResource(imageId);
 		
-		TextView tvDetail = (TextView) findViewById(R.id.add_lifeline_product_count_text_id);
-		String coinsRequired = String.format(getResources().getString(R.string.coins_required_text), count);
+		productImage = (ImageView) findViewById(R.id.add_lifeline_image2_id);
+		productImage.setBackgroundResource(imageId);
+		
+		TextView tvDetail = (TextView) findViewById(R.id.add_lifeline_product_count1_text_id);
+		String coinsRequired = String.format(getResources().getString(R.string.coins_required_text), coins1);
 		tvDetail.setText(coinsRequired);
 		tvDetail.setTypeface(MFUtils.getTextTypeface(mContext));
+		
+		tvDetail = (TextView) findViewById(R.id.add_lifeline_product_count2_text_id);
+		coinsRequired = String.format(getResources().getString(R.string.coins_required_text), coins2);
+		tvDetail.setText(coinsRequired);
+		tvDetail.setTypeface(MFUtils.getTextTypeface(mContext));
+		
+		TextView multiplierText = (TextView) findViewById(R.id.text_multiplier1_id);
+		multiplierText.setTypeface(MFUtils.getTextTypeface(mContext));
+		multiplierText = (TextView) findViewById(R.id.text_multiplier2_id);
+		multiplierText.setTypeface(MFUtils.getTextTypeface(mContext));
 	}
 	
 	private Context mContext;

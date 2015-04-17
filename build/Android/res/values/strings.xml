@@ -124,10 +124,12 @@
     <!-- Add Lifeline Dialog -->
     <string name="dialog_add_lifeline_moves_title_text">Add Moves</string>
     <string name="dialog_add_lifeline_stars_title_text">Add Stars</string>
-    <string name="dialog_add_lifeline_hurdle_smasher_title_text">Smash a Hurdle</string>
+    <string name="dialog_add_lifeline_hurdle_smasher_title_text">Add Hurdle Smashers</string>
     <string name="dialog_add_lifeline_moves_description_text">Add 5 More Moves and save your game!</string>
-    <string name="dialog_add_lifeline_stars_description_text">Add a Star and start flooding from additional positions on the board!</string>
-    <string name="dialog_add_lifeline_hurdle_smasher_description_text">Create holes in hurdles by smashing them with a Hurdle Smasher!</string>
+    <string name="dialog_add_lifeline_stars_description_text">Collect additional stars and place them at any time at your choice of location on the grid to accelerate the game play!</string>
+    <string name="dialog_add_lifeline_hurdle_smasher_description_text">Collect Hurdle Smashers and use them at any time to make holes in hurdles to speed up the game!</string>
+    <string name="dialog_add_lifeline_bridge_title_text">Add Bridges</string>
+    <string name="dialog_add_lifeline_bridge_description_text">Collect Bridges and use them at any time to build connections between branches in the grid!</string>
     
     <!-- Remove Ads Dialog -->
     <string name="dialog_remove_ads_title_text">Remove Ads</string>

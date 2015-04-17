@@ -4,9 +4,9 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AddStarDialog extends GameDialogType4 {
+public class AddBridgeDialog extends GameDialogType4 {
 
-	public AddStarDialog(Context context, int clientdata, int numCoins1, int numCoins2) 
+	public AddBridgeDialog(Context context, int clientdata, int numCoins1, int numCoins2) 
 	{
 		super(context, clientdata);
 		
@@ -15,17 +15,17 @@ public class AddStarDialog extends GameDialogType4 {
 		postSetupViews();
 		
 		AddLifelineProductLayout layout = (AddLifelineProductLayout) findViewById(R.id.add_lifeline_layout_id);
-		layout.setProperties(R.drawable.ic_star, numCoins1, numCoins2);
+		layout.setProperties(R.drawable.ic_bridge, numCoins1, numCoins2);
 
 		ImageView iv = (ImageView) findViewById(R.id.dialog_add_lifeline_main_image_id);
-		iv.setBackgroundResource(R.drawable.ic_add_star);
+		iv.setBackgroundResource(R.drawable.ic_add_bridge);
 
 		TextView tvTitle = (TextView) findViewById(R.id.dialog_add_lifeline_title_text_id);
-		tvTitle.setText(context.getResources().getString(R.string.dialog_add_lifeline_stars_title_text));
+		tvTitle.setText(context.getResources().getString(R.string.dialog_add_lifeline_bridge_title_text));
 		tvTitle.setTypeface(MFUtils.getTextTypeface(context));
 
 		TextView tvDescription = (TextView) findViewById(R.id.dialog_add_lifeline_description_text_id);
-		tvDescription.setText(context.getResources().getString(R.string.dialog_add_lifeline_stars_description_text));
+		tvDescription.setText(context.getResources().getString(R.string.dialog_add_lifeline_bridge_description_text));
 		tvDescription.setTypeface(MFUtils.getTextTypeface(context));
 	}
 
@@ -46,7 +46,6 @@ public class AddStarDialog extends GameDialogType4 {
 		mPositiveAction1View = findViewById(R.id.add_lifeline1_button_id);
 	}
 	
-
 	@Override
 	protected void setupPositiveAction2View() 
 	{
@@ -59,7 +58,7 @@ public class AddStarDialog extends GameDialogType4 {
 		mNegativeAction1View = findViewById(R.id.cancel_button);
 	}
 	
-	public static final int ADD_LIFELINE_TYPE_MOVES = 1;
-	public static final int ADD_LIFELINE_TYPE_STARS = 2;
+	//public static final int ADD_LIFELINE_TYPE_MOVES = 1;
+	//public static final int ADD_LIFELINE_TYPE_STARS = 2;
 	
 }

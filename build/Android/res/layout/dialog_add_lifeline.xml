@@ -78,28 +78,64 @@
             android:layout_height="10sp" />
       
         <com.ezeeideas.magicflood.AddLifelineProductLayout 
-            android:id="@+id/add_lifeline_button_id"
+            android:id="@+id/add_lifeline_layout_id"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/activity_vertical_padding"
+    android:padding="@dimen/activity_horizontal_padding"
+    >
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/add_lifeline_image1_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_padding"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/text_multiplier1_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/button_text_color"
+                android:textSize="@dimen/dialog_big_text_size"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="x 1"
+                android:layout_gravity="center_vertical"
+                />
+            
+            <LinearLayout
+                android:id="@+id/add_lifeline1_button_id"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@drawable/bg_button_dialog" 
     android:layout_margin="@dimen/activity_vertical_padding"
     android:padding="@dimen/activity_horizontal_padding"
+    android:layout_gravity="center_vertical"
     >
-    
-    
-            
-            <ImageView
-                android:id="@+id/add_lifeline_product_image_id"
+     <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_vertical_padding"
+                android:src="@drawable/ic_coins"
                 />
             
            
 
                 <TextView
-                    android:id="@+id/add_lifeline_product_count_text_id"
+                    android:id="@+id/add_lifeline_product_count1_text_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="@color/button_text_color"
@@ -109,6 +145,73 @@
                     
                     />
                 
+    </LinearLayout>
+            
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/add_lifeline_image2_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_padding"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/text_multiplier2_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/button_text_color"
+                android:textSize="@dimen/dialog_big_text_size"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="x 2"
+                android:layout_gravity="center_vertical"
+                />
+            
+            <LinearLayout
+                android:id="@+id/add_lifeline2_button_id"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_button_dialog" 
+    android:layout_margin="@dimen/activity_vertical_padding"
+    android:padding="@dimen/activity_horizontal_padding"
+    android:layout_gravity="center_vertical"
+    >
+     <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_padding"
+                android:src="@drawable/ic_coins"
+                />
+            
+           
+
+                <TextView
+                    android:id="@+id/add_lifeline_product_count2_text_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/button_text_color"
+                    android:textSize="@dimen/dialog_button_text_size"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    
+                    />
+                
+    </LinearLayout>
+            
+        </LinearLayout>
+        
+        
+    </LinearLayout>
+            
+           
   
 </com.ezeeideas.magicflood.AddLifelineProductLayout>
         </LinearLayout>

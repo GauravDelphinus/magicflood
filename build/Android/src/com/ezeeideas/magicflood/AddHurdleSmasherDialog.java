@@ -4,9 +4,9 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AddHurdleSmasherDialog extends GameDialogType3 {
+public class AddHurdleSmasherDialog extends GameDialogType4 {
 
-	public AddHurdleSmasherDialog(Context context, int clientdata, int numCoins) 
+	public AddHurdleSmasherDialog(Context context, int clientdata, int numCoins1, int numCoins2) 
 	{
 		super(context, clientdata);
 		
@@ -14,8 +14,8 @@ public class AddHurdleSmasherDialog extends GameDialogType3 {
 		
 		postSetupViews();
 		
-		AddLifelineProductLayout layout = (AddLifelineProductLayout) mPositiveAction1View;
-		layout.setProperties(numCoins, R.drawable.ic_coins);
+		AddLifelineProductLayout layout = (AddLifelineProductLayout) findViewById(R.id.add_lifeline_layout_id);
+		layout.setProperties(R.drawable.ic_hurdle_smasher, numCoins1, numCoins2);
 
 		ImageView iv = (ImageView) findViewById(R.id.dialog_add_lifeline_main_image_id);
 		iv.setBackgroundResource(R.drawable.ic_add_hurdle_smasher);
@@ -43,7 +43,13 @@ public class AddHurdleSmasherDialog extends GameDialogType3 {
 	@Override
 	protected void setupPositiveAction1View() 
 	{
-		mPositiveAction1View = findViewById(R.id.add_lifeline_button_id);
+		mPositiveAction1View = findViewById(R.id.add_lifeline1_button_id);
+	}
+	
+	@Override
+	protected void setupPositiveAction2View() 
+	{
+		mPositiveAction2View = findViewById(R.id.add_lifeline2_button_id);
 	}
 
 	@Override

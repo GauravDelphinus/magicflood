@@ -148,6 +148,14 @@
 	    android:src="@drawable/ic_button_add_hurdle_smasher"
 	    android:background="@color/transparent"
 	    />
+	<ImageButton
+	    android:id="@+id/add_bridge_button_id"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@+id/add_hurdle_smasher_button_id"
+	    android:src="@drawable/ic_button_add_bridge"
+	    android:background="@color/transparent"
+	    />
 	<LinearLayout
 		    android:id="@+id/remove_ads_button_id"
 	    android:layout_width="wrap_content"
