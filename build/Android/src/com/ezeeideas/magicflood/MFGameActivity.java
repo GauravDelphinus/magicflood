@@ -481,7 +481,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{	
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_COINS_BUTTON);
 
-			AddCoinsDialog dialog = new AddCoinsDialog(this, DIALOG_DATA_NONE, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+			AddCoinsDialog dialog = new AddCoinsDialog(this, 0, DIALOG_DATA_NONE, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
 
@@ -530,26 +530,11 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		else if (arg0.getId() == R.id.remove_ads_button_id)
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REMOVE_ADS_BUTTON);
-			
-			if (mIAPManager.isSynchronized())
-			{
-			    //Remove Ads IAP
-		        String detailsArray[];
-		        detailsArray = mIAPManager.getProductDetails(MFGameConstants.IAP_REMOVE_ADS);
-		        
-		        RemoveAdsDialog dialog = new RemoveAdsDialog(this, detailsArray[2], DIALOG_DATA_NONE);
-		        dialog.setCanceledOnTouchOutside(false);
-		        dialog.show();
-			}
-			else
-			{
-				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_NOT_CONNECTED, MFAnalytics.ANALYTICS_VALUE_STORE_NOT_CONNECTED_WHILE_REMOVING_ADS);
-				
-				StoreNotConnectedDialog dialog = new StoreNotConnectedDialog(this, DIALOG_DATA_NONE);
-				dialog.setCanceledOnTouchOutside(false);
-				dialog.show();
-			}
-	        
+
+			RemoveAdsDialog dialog = new RemoveAdsDialog(this, DIALOG_DATA_NONE, mIAPManager);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.show();
+
 			return;
 		}
 		
@@ -903,7 +888,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, DIALOG_DATA_FROM_ADD_MOVES_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					int shortfall = getNumCoinsForMoves() - currCoins;
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, shortfall, DIALOG_DATA_FROM_ADD_MOVES_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 					addCoinsDialog.setCanceledOnTouchOutside(false);
 					addCoinsDialog.show();
 					mLastDialogData = DIALOG_DATA_FROM_ADD_MOVES_DIALOG;
@@ -965,7 +951,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, DIALOG_DATA_FROM_ADD_STAR_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					int shortfall = numCoinsRequired - currCoins;
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, shortfall, DIALOG_DATA_FROM_ADD_STAR_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 					addCoinsDialog.setCanceledOnTouchOutside(false);
 					addCoinsDialog.show();
 					mLastDialogData = DIALOG_DATA_FROM_ADD_STAR_DIALOG;
@@ -1013,7 +1000,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					int shortfall = numCoinsRequired - currCoins;
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, shortfall, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 					addCoinsDialog.setCanceledOnTouchOutside(false);
 					addCoinsDialog.show();
 					mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
@@ -1061,7 +1049,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
-					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					int shortfall = numCoinsRequired - currCoins;
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, shortfall, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 					addCoinsDialog.setCanceledOnTouchOutside(false);
 					addCoinsDialog.show();
 					mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;

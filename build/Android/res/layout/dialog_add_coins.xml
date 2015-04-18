@@ -43,7 +43,6 @@
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
             android:gravity="center"
-            android:text="@string/dialog_add_coins_description_text"
             android:textSize="@dimen/dialog_description_text_size" />
         
               
@@ -98,6 +97,16 @@
               </LinearLayout>
               </RelativeLayout>
 
+        <TextView
+            android:id="@+id/dialog_add_coins_error_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_add_coins_error_text"
+            android:textSize="@dimen/dialog_description_text_size"
+            android:textColor="@color/red"
+            android:gravity="center"
+            />
+            
 
 </LinearLayout>
 

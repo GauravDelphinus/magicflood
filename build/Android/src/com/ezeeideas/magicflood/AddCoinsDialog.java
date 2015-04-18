@@ -2,11 +2,12 @@ package com.ezeeideas.magicflood;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class AddCoinsDialog extends GameDialogType5 implements MFInAppPurchaseManager.IAPQueryInterface {
 
-	public AddCoinsDialog(Context context, int clientdata, MFInAppPurchaseManager iapManager, int numCoinsFirst, int numCoinsSecond, int numCoinsThird, int numCoinsFourth) 
+	public AddCoinsDialog(Context context, int shortfall, int clientdata, MFInAppPurchaseManager iapManager, int numCoinsFirst, int numCoinsSecond, int numCoinsThird, int numCoinsFourth) 
 	{
 		super(context, clientdata);
 		mContext = context;
@@ -16,23 +17,25 @@ public class AddCoinsDialog extends GameDialogType5 implements MFInAppPurchaseMa
 		mNumCoinsThird = numCoinsThird;
 		mNumCoinsFourth = numCoinsFourth;
 		
-		mIAPManager = iapManager;
-		
-		setupViews();
+		setupViews(shortfall);
 		
 		postSetupViews();
 		
+		mIAPManager = iapManager;
 		refreshViews();
 		
 		Log.d("gaurav", "AddCoinsDialog, IAPManager isConnected = " + mIAPManager.isConnected() + ", isSynchronized = " + mIAPManager.isSynchronized());
+		
 		if (mIAPManager.isConnected() && !mIAPManager.isSynchronized())
 		{
+			mErrorTextView.setVisibility(View.VISIBLE);
+			
 			mIAPManager.queryInAppItems();
 			mIAPManager.addQueryListener(this);
 		}
 	}
 
-	protected void setupViews() 
+	protected void setupViews(int shortfall) 
 	{
 		setContentView(R.layout.dialog_add_coins);
 		
@@ -40,7 +43,20 @@ public class AddCoinsDialog extends GameDialogType5 implements MFInAppPurchaseMa
 		titleTV.setTypeface(MFUtils.getTextTypeface(mContext));
 		
 		TextView descriptionTV = (TextView) findViewById(R.id.dialog_add_coins_description_text_id);
+		String text = null;
+		if (shortfall == 0)
+		{
+			text = mContext.getResources().getString(R.string.dialog_add_coins_description_static);
+		}
+		else
+		{
+			text = String.format(mContext.getResources().getString(R.string.dialog_add_coins_description_dynamic), shortfall);
+		}
+		descriptionTV.setText(text);
 		descriptionTV.setTypeface(MFUtils.getTextTypeface(mContext));
+		
+		mErrorTextView = (TextView) findViewById(R.id.dialog_add_coins_error_text_id);
+		mErrorTextView.setTypeface(MFUtils.getTextTypeface(mContext));
 	}
 	
 	private void refreshViews()
@@ -68,6 +84,8 @@ public class AddCoinsDialog extends GameDialogType5 implements MFInAppPurchaseMa
 			
 			AddCoinsProductLayout fourthLayout = (AddCoinsProductLayout) mPositiveAction4View;
 			fourthLayout.setProperties(mNumCoinsFourth, addCoinsPriceList[3], R.drawable.ic_iap_coins_fourth);
+			
+			mErrorTextView.setVisibility(View.GONE);
 		}
 		else
 		{
@@ -82,6 +100,8 @@ public class AddCoinsDialog extends GameDialogType5 implements MFInAppPurchaseMa
 			
 			AddCoinsProductLayout fourthLayout = (AddCoinsProductLayout) mPositiveAction4View;
 			fourthLayout.setProperties(mNumCoinsFourth, "", R.drawable.ic_iap_coins_fourth);
+			
+			mErrorTextView.setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -130,4 +150,5 @@ public class AddCoinsDialog extends GameDialogType5 implements MFInAppPurchaseMa
 	MFInAppPurchaseManager mIAPManager;
 	Context mContext;
 	int mNumCoinsFirst, mNumCoinsSecond, mNumCoinsThird, mNumCoinsFourth;
+	TextView mErrorTextView;
 }
