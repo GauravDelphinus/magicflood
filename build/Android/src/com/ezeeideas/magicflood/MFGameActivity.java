@@ -1096,7 +1096,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	}
 	
 	@Override
-	public void onPurchaseFinished(Purchase purchase, String pid, boolean status) 
+	public void onPurchaseFinished(Purchase purchase, String pid, boolean status, boolean cancelled) 
 	{
 		if (pid.equals(MFGameConstants.IAP_REMOVE_ADS))
 		{
@@ -1126,7 +1126,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 		}
 		
-		if (status == false)
+		if (status == false && cancelled == false) //only show failure if not user cancelled
 		{
 			//show the "Purchase failed dialog"
 			IAPFailedDialog iapFailedDialog = new IAPFailedDialog(this, IAPFailedDialog.TYPE_PURCHASE_FAILED, DIALOG_DATA_NONE);

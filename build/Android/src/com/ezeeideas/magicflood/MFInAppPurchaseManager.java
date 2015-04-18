@@ -168,16 +168,22 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 			if (result.getResponse() == IabHelper.IABHELPER_USER_CANCELLED) //user cancelled the purchase
 			{
 				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_CANCELLED, sku, result.getResponse());
+				
+				//successfully purchased.  Update the UI to reflect the changes
+				for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+				{
+					listener.onPurchaseFinished(info, sku, false, true);
+				}
 			}
 			else //the purchase failed for some other reason
 			{
 				MFAnalytics.trackEvent(mContext, MFAnalytics.ANALYTICS_CATEGORY_IAP, MFAnalytics.ANALYTICS_ACTION_IAP_FAILED, sku, result.getResponse());
-			}
-			
-			//successfully purchased.  Update the UI to reflect the changes
-			for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
-			{
-				listener.onPurchaseFinished(info, sku, false);
+				
+				//successfully purchased.  Update the UI to reflect the changes
+				for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
+				{
+					listener.onPurchaseFinished(info, sku, false, false);
+				}
 			}
 			
 			//some failure purchased.  Update the UI to reflect the changes
@@ -189,7 +195,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 		//successfully purchased.  Update the UI to reflect the changes
 		for (IAPPurchaseInterface listener: mPurchaseInterfaceListeners)
 		{
-			listener.onPurchaseFinished(info, info.getSku(), true);
+			listener.onPurchaseFinished(info, info.getSku(), true, false);
 		}
 		
 		//update the provisioning status
@@ -242,7 +248,7 @@ public class MFInAppPurchaseManager implements IabHelper.OnIabSetupFinishedListe
 	 */
 	interface IAPPurchaseInterface
 	{
-		void onPurchaseFinished(Purchase purchase, String pid, boolean status);
+		void onPurchaseFinished(Purchase purchase, String pid, boolean status, boolean cancelled);
 		void onConsumeFinished(String pid, boolean status);
 	}
 	
