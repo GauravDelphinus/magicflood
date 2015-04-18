@@ -141,12 +141,18 @@
     
     <!-- Introduce Stars Dialog -->
     <string name="dialog_introduce_stars_title_text">Stars Unlocked!</string>
-    <string name="dialog_introduce_stars_description_text">Congratulations! You can now add additional stars to your game and accelerate the speed!</string>
-    <string name="dialog_introduce_lifeline_positive_button_text">Got it!</string>
+    <string name="dialog_introduce_stars_description_text">Congratulations! You just earned 2 bonus Stars! Use them at any time by placing them on the grid to speed up the game!</string>
+    <string name="dialog_introduce_stars_button_text">Great!</string>
     
     <!-- Introduce Hurdle Smashers -->
     <string name="dialog_introduce_hurdle_smashers_title_text">Hurdle Smashers Unlocked!</string>
-    <string name="dialog_introduce_hurdle_smashers_description_text">Super!  You can now use Hurdle Smashers to create holes in hurdles to help you complete the game faster!</string>
+    <string name="dialog_introduce_hurdle_smashers_description_text">Congratulations!  You just earned 2 bonus Hurdle Smashers!  Use them at any time to make holes in hurdles and accelerate your game!</string>
+    <string name="dialog_introduce_hurdle_smashers_button_text">Super!</string>
+    
+    <!-- Introduce Bridges Dialog -->
+    <string name="dialog_introduce_bridges_title_text">Bridges Unlocked!</string>
+    <string name="dialog_introduce_bridges_description_text">Congratulations!  You just earned 2 bonus Bridges! Use them at any time to connect branches and complete the game faster!</string>
+    <string name="dialog_introduce_bridges_button_text">I like it!</string>
     
     <!-- Finished All Levels Dialog -->
     <string name="dialog_finished_all_levels_title_text">Congratulations!</string>
@@ -157,12 +163,18 @@
     <string name="dialog_hurdle_smasher_info_not_detected_title_text">Try Again</string>
     <string name="dialog_hurdle_smasher_info_tap_text">Super! Now that you have a Hurdle Smasher, use it to make a hole in a hurdle by tapping your finger on the hurdle.</string>
     <string name="dialog_hurdle_smasher_info_not_detected_text">Couldn\'t detect a hurdle.  Please try again, by tapping on any hurdle.</string>
+    <string name="toast_hurdle_smasher_placement_info">Tap on any hurdle now to make a hole in it</string>
 
     <!-- Star Placement Info Dialog -->
     <string name="dialog_star_placement_info_tap_title_text">Place the Star</string>
     <string name="dialog_star_placement_info_not_detected_title_text">Try Again</string>
     <string name="dialog_star_placement_info_tap_text">Excellent! Now that you have an additional Star, place it anywhere on the grid by tapping your finger on the desired location.</string>
     <string name="dialog_star_placement_info_not_detected_text">Couldn\'t detect a valid location.  Please try again, by tapping on any location (outside a hurdle).</string>
+    <string name="dialog_lifeline_placement_info_button_text">I\'m ready!</string>
+    <string name="toast_star_placement_info">Tap anywhere on the grid now to place a star</string>
+    
+    <!-- Bridge Placement Info Dialog -->
+    <string name="toast_bridge_placement_info">Drag across branches in the grid now to connect them with a bridge</string>
     
     <!-- IAP Failed Dialog -->
     <string name="dialog_iap_failed_purchase_title_text">Something\'s not right</string>
@@ -171,5 +183,5 @@
     <string name="dialog_iap_failed_consume_text">While the purchase succeeded, there was a problem in synchronizing the purchase.  This problem should get resolved automatically - try relaunching the App.</string>
     <string name="dialog_iap_failed_query_title_text">Something\'s not right</string>
     <string name="dialog_iap_failed_query_text">There was an error in communicating with the Google Play server.  Please try again later.</string>
-    
+	<string name="dialog_iap_failed_button_text">Got it!</string>    
 </resources>

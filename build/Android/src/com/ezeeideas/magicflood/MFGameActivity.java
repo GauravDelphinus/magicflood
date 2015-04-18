@@ -27,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MFGameActivity extends Activity implements View.OnClickListener, GameDialogListener, MFInAppPurchaseManager.IAPPurchaseInterface, MFGameView.GameViewTapHandler {
 
@@ -42,8 +43,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
     	
     	//Typeface face = Typeface.createFromAsset(getAssets(),
         //        "fonts/ArchitectsDaughter.ttf");
-        Typeface face = MFUtils.FontCache.get("ArchitectsDaughter.ttf", this);
-    	mMovesLabel.setTypeface(face);
+    	mMovesLabel.setTypeface(MFUtils.getTextTypeface(this));
     
     	mExitButton = (ImageButton) findViewById(R.id.exit_game_button_id);
     	mExitButton.setOnClickListener(this);
@@ -91,7 +91,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		String coinsEarnedText = String.format(getResources().getString(R.string.coins_earned_text), coins);
 		mCoinsEarnedLabel = (TextView) findViewById(R.id.coins_text_id);
 		mCoinsEarnedLabel.setText(coinsEarnedText);
-		mCoinsEarnedLabel.setTypeface(face);
+		mCoinsEarnedLabel.setTypeface(MFUtils.getTextTypeface(this));
 		
 		mAddCoinsButton = (ImageButton) findViewById(R.id.add_coins_button_id);
 		mAddCoinsButton.setOnClickListener(this);
@@ -112,7 +112,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mLevelLabel = (TextView) findViewById(R.id.level_label_id);
 		String levelText = String.format(getResources().getString(R.string.level_text), mLevel);
 		mLevelLabel.setText(levelText);
-		mLevelLabel.setTypeface(face);
+		mLevelLabel.setTypeface(MFUtils.getTextTypeface(this));
 		
 		startNewGame(mLevel);
     }
@@ -298,17 +298,13 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		 * 
 		 * If so, alert the user
 		 */
-		if (mHurdleSmashMode)
+		if (mHurdleSmashMode || mStarPlacementMode || mBridgeMode)
 		{
-			HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_RETRY, DIALOG_DATA_NONE);
-			hurdleDialog.setCanceledOnTouchOutside(false);
-			hurdleDialog.show();
-		}
-		else if (mStarPlacementMode)
-		{
-			StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, StarPlacementInfoDialog.TYPE_RETRY, DIALOG_DATA_NONE);
-			starDialog.setCanceledOnTouchOutside(false);
-			starDialog.show();
+			mHurdleSmashMode = false;
+			mStarPlacementMode = false;
+			mBridgeMode = false;
+			
+			refreshLifelinesUI();
 		}
 		else
 		{
@@ -397,17 +393,50 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	
 	private void refreshLifelinesUI()
 	{
+		SharedPreferences settings;
+		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		
 		if (mLevel == getMinLevelToAddStars())
 		{
-			IntroduceStarsGameDialog dialog = new IntroduceStarsGameDialog(this, DIALOG_DATA_NONE);
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.show();
+			boolean alreadyShown = settings.getBoolean(MFGameConstants.PREFERENCE_STARS_UNLOCKED, false);
+			Editor editor = settings.edit();
+			editor.putBoolean(MFGameConstants.PREFERENCE_STARS_UNLOCKED, true);
+			editor.commit();
+			
+			if (!alreadyShown)
+			{
+				IntroduceStarsGameDialog dialog = new IntroduceStarsGameDialog(this, DIALOG_DATA_NONE);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
 		}
 		else if (mLevel == getMinLevelToAddHurdleSmasher())
 		{
-			IntroduceHurdleSmashersDialog dialog = new IntroduceHurdleSmashersDialog(this, DIALOG_DATA_NONE);
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.show();
+			boolean alreadyShown = settings.getBoolean(MFGameConstants.PREFERENCE_HURDLE_SMASHERS_UNLOCKED, false);
+			Editor editor = settings.edit();
+			editor.putBoolean(MFGameConstants.PREFERENCE_HURDLE_SMASHERS_UNLOCKED, true);
+			editor.commit();
+			
+			if (!alreadyShown)
+			{
+				IntroduceHurdleSmashersDialog dialog = new IntroduceHurdleSmashersDialog(this, DIALOG_DATA_NONE);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
+		}
+		else if (mLevel == getMinLevelToAddBridge())
+		{
+			boolean alreadyShown = settings.getBoolean(MFGameConstants.PREFERENCE_BRIDGES_UNLOCKED, false);
+			Editor editor = settings.edit();
+			editor.putBoolean(MFGameConstants.PREFERENCE_BRIDGES_UNLOCKED, true);
+			editor.commit();
+			
+			if (!alreadyShown)
+			{
+				IntroduceBridgesDialog dialog = new IntroduceBridgesDialog(this, DIALOG_DATA_NONE);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
 		}
 		
 		if (mLevel < getMinLevelToAddStars())
@@ -417,6 +446,23 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		else
 		{
 			mAddStarsButton.setVisibility(View.VISIBLE);
+			
+			int numStars = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, MFGameConstants.INITIAL_STARS_ALLOCATED);
+			if (numStars == 0)
+			{
+				mAddStarsButton.setImageResource(0);
+				mAddStarsButton.setImageResource(R.drawable.ic_button_add_star);
+			}
+			else if (numStars == 1)
+			{
+				mAddStarsButton.setImageResource(0);
+				mAddStarsButton.setImageResource(R.drawable.ic_button_use_star_1);
+			}
+			else if (numStars == 2)
+			{
+				mAddStarsButton.setImageResource(0);
+				mAddStarsButton.setImageResource(R.drawable.ic_button_use_star_2);
+			}
 		}
 		
 		if (mLevel < getMinLevelToAddHurdleSmasher())
@@ -426,6 +472,23 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		else
 		{
 			mAddHurdleSmasherButton.setVisibility(View.VISIBLE);
+			
+			int numSmashers = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, MFGameConstants.INITIAL_HURDLE_SMASHERS_ALLOCATED);
+			if (numSmashers == 0)
+			{
+				mAddHurdleSmasherButton.setImageResource(0);
+				mAddHurdleSmasherButton.setImageResource(R.drawable.ic_button_add_hurdle_smasher);
+			}
+			else if (numSmashers == 1)
+			{
+				mAddHurdleSmasherButton.setImageResource(0);
+				mAddHurdleSmasherButton.setImageResource(R.drawable.ic_button_use_hurdle_smasher_1);
+			}
+			else if (numSmashers == 2)
+			{
+				mAddHurdleSmasherButton.setImageResource(0);
+				mAddHurdleSmasherButton.setImageResource(R.drawable.ic_button_use_hurdle_smasher_2);
+			}
 		}
 		
 		if (mLevel < getMinLevelToAddBridge())
@@ -435,6 +498,55 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		else
 		{
 			mAddBridgeButton.setVisibility(View.VISIBLE);
+			
+			int numBridges = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, MFGameConstants.INITIAL_BRIDGES_ALLOCATED);
+			if (numBridges == 0)
+			{
+				mAddBridgeButton.setImageResource(0);
+				mAddBridgeButton.setImageResource(R.drawable.ic_button_add_bridge);
+			}
+			else if (numBridges == 1)
+			{
+				mAddBridgeButton.setImageResource(0);
+				mAddBridgeButton.setImageResource(R.drawable.ic_button_use_bridge_1);
+			}
+			else if (numBridges == 2)
+			{
+				mAddBridgeButton.setImageResource(0);
+				mAddBridgeButton.setImageResource(R.drawable.ic_button_use_bridge_2);
+			}
+		}
+		
+		if (mStarPlacementMode)
+		{
+			enableDisableAllButtons(false);
+			
+			mAddStarsButton.setImageResource(0);
+			mAddStarsButton.setImageResource(R.drawable.ic_button_star_mode);
+			
+			mAddStarsButton.setEnabled(true);
+		}
+		else if (mHurdleSmashMode)
+		{
+			enableDisableAllButtons(false);
+			
+			mAddHurdleSmasherButton.setImageResource(0);
+			mAddHurdleSmasherButton.setImageResource(R.drawable.ic_button_hurdle_smasher_mode);
+			
+			mAddHurdleSmasherButton.setEnabled(true);
+		}
+		else if (mBridgeMode)
+		{
+			enableDisableAllButtons(false);
+			
+			mAddBridgeButton.setImageResource(0);
+			mAddBridgeButton.setImageResource(R.drawable.ic_button_bridge_mode);
+			
+			mAddBridgeButton.setEnabled(true);
+		}
+		else
+		{
+			enableDisableAllButtons(true);
 		}
 	}
 	
@@ -501,9 +613,50 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_STAR_BUTTON);
 			
-			AddStarDialog dialog = new AddStarDialog(this, DIALOG_DATA_NONE, getNumCoinsForStar(1), getNumCoinsForStar(2));
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.show();
+			/**
+			 * If in the Star Placement mode, exit the mode.
+			 */
+			if (mStarPlacementMode)
+			{
+				mStarPlacementMode = false;
+				refreshLifelinesUI();
+				
+				return;
+			}
+			
+			int numStars = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, MFGameConstants.INITIAL_STARS_ALLOCATED);
+			if (numStars == 0)
+			{
+				AddStarDialog dialog = new AddStarDialog(this, DIALOG_DATA_NONE, getNumCoinsForStar(1), getNumCoinsForStar(2));
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
+			else
+			{
+				int starPlacementCount = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_STAR_PLACEMENT_COUNT, 0);
+				if (starPlacementCount < MFGameConstants.MAX_STAR_PLACEMENT_DIALOG_COUNT)
+				{					
+					//show the dialog
+					StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP, DIALOG_DATA_NONE);
+					starDialog.setCanceledOnTouchOutside(false);
+					starDialog.show();
+					
+					starPlacementCount ++;
+					
+					MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_STAR_PLACEMENT_COUNT, starPlacementCount);
+				}
+				else
+				{
+					//show the toast
+					Toast.makeText(this, getResources().getString(R.string.toast_star_placement_info), Toast.LENGTH_SHORT).show();
+				}
+
+				/** Enter the Star Placement Mode **/
+				mStarPlacementMode = true;
+				
+				refreshLifelinesUI();
+				mGameView.setClickable(true);
+			}
 			
 			return;
 		}
@@ -511,9 +664,49 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_HURDLE_SMASHER_BUTTON);
 			
-			AddHurdleSmasherDialog dialog = new AddHurdleSmasherDialog(this, DIALOG_DATA_NONE, getNumCoinsForHurdleSmasher(1), getNumCoinsForHurdleSmasher(2));
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.show();
+			/**
+			 * If in the Hurdle Smasher Placement mode, exit the mode.
+			 */
+			if (mHurdleSmashMode)
+			{
+				mHurdleSmashMode = false;
+				refreshLifelinesUI();
+				
+				return;
+			}
+			
+			int numSmashers = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, MFGameConstants.INITIAL_HURDLE_SMASHERS_ALLOCATED);
+			if (numSmashers == 0)
+			{
+				AddHurdleSmasherDialog dialog = new AddHurdleSmasherDialog(this, DIALOG_DATA_NONE, getNumCoinsForHurdleSmasher(1), getNumCoinsForHurdleSmasher(2));
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
+			else
+			{
+				int smasherPlacementCount = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT, 0);
+				if (smasherPlacementCount < MFGameConstants.MAX_HURDLE_SMASHER_PLACEMENT_DIALOG_COUNT)
+				{				
+					HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP, DIALOG_DATA_NONE);
+					hurdleDialog.setCanceledOnTouchOutside(false);
+					hurdleDialog.show();
+					
+					smasherPlacementCount ++;
+					
+					MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT, smasherPlacementCount);
+				}
+				else
+				{
+					//show the toast
+					Toast.makeText(this, getResources().getString(R.string.toast_hurdle_smasher_placement_info), Toast.LENGTH_SHORT).show();
+				}
+
+				/** Enter the Hurdle Smashing Mode **/
+				mHurdleSmashMode = true;
+				
+				refreshLifelinesUI();
+				mGameView.setClickable(true);
+			}
 			
 			return;
 		}
@@ -521,9 +714,49 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_ADD_BRIDGE_BUTTON);
 			
-			AddBridgeDialog dialog = new AddBridgeDialog(this, DIALOG_DATA_NONE, getNumCoinsForBridge(1), getNumCoinsForBridge(2));
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.show();
+			/**
+			 * If in the Bridge Placement mode, exit the mode.
+			 */
+			if (mBridgeMode)
+			{
+				mBridgeMode = false;
+				refreshLifelinesUI();
+				
+				return;
+			}
+			
+			int numBridges = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, MFGameConstants.INITIAL_BRIDGES_ALLOCATED);
+			if (numBridges == 0)
+			{
+				AddBridgeDialog dialog = new AddBridgeDialog(this, DIALOG_DATA_NONE, getNumCoinsForBridge(1), getNumCoinsForBridge(2));
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			}
+			else
+			{
+				int bridgePlacementCount = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_BRIDGE_PLACEMENT_COUNT, 0);
+				if (bridgePlacementCount < MFGameConstants.MAX_BRIDGE_PLACEMENT_DIALOG_COUNT)
+				{				
+					BridgeInfoDialog bridgeDialog = new BridgeInfoDialog(this, DIALOG_DATA_NONE);
+					bridgeDialog.setCanceledOnTouchOutside(false);
+					bridgeDialog.show();
+					
+					bridgePlacementCount ++;
+					
+					MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_BRIDGE_PLACEMENT_COUNT, bridgePlacementCount);
+				}
+				else
+				{
+					//show the toast
+					Toast.makeText(this, getResources().getString(R.string.toast_bridge_placement_info), Toast.LENGTH_SHORT).show();
+				}
+
+				/** Enter the Hurdle Smashing Mode **/
+				mBridgeMode = true;
+				
+				refreshLifelinesUI();
+				mGameView.setClickable(true);
+			}
 			
 			return;
 		}
@@ -923,14 +1156,16 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_STAR_BUTTON);
 				
 				int numCoinsRequired = 0;
+				int numStarsToBuy = 0;
 				if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
 				{
-					numCoinsRequired = getNumCoinsForStar(1);
+					numStarsToBuy = 1;
 				}
 				else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2)
 				{
-					numCoinsRequired = getNumCoinsForStar(2);
+					numStarsToBuy = 2;
 				}
+				numCoinsRequired = getNumCoinsForStar(numStarsToBuy);
 				
 				int currCoins = getCoins();
 				if (currCoins >= numCoinsRequired)
@@ -938,14 +1173,12 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					updateCoinsEarned(currCoins - numCoinsRequired);
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_STAR);
 					
-					//go ahead and add star, and adjust coins
-					StarPlacementInfoDialog starDialog = new StarPlacementInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP, DIALOG_DATA_NONE);
-					starDialog.setCanceledOnTouchOutside(false);
-					starDialog.show();
+					//update the number of stars
+					int numStars = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, MFGameConstants.INITIAL_STARS_ALLOCATED);
+					numStars += numStarsToBuy;
+					MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, numStars);
 					
-					mStarPlacementMode = true;
-					enableDisableAllButtons(false);
-					mGameView.setClickable(true);
+					refreshLifelinesUI();
 				}
 				else
 				{
@@ -956,7 +1189,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					addCoinsDialog.setCanceledOnTouchOutside(false);
 					addCoinsDialog.show();
 					mLastDialogData = DIALOG_DATA_FROM_ADD_STAR_DIALOG;
-
 				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
@@ -973,28 +1205,28 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_HURDLE_SMASHER);
 				
 				int numCoinsRequired = 0;
+				int numSmashersToBuy = 0;
 				if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
 				{
-					numCoinsRequired = getNumCoinsForHurdleSmasher(1);
+					numSmashersToBuy = 1;
 				}
 				else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2)
 				{
-					numCoinsRequired = getNumCoinsForHurdleSmasher(2);
+					numSmashersToBuy = 2;
 				}
 				
+				numCoinsRequired = getNumCoinsForHurdleSmasher(numSmashersToBuy);
 				int currCoins = getCoins();
 				if (currCoins >= numCoinsRequired)
 				{				
 					updateCoinsEarned(currCoins - numCoinsRequired);
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_HURDLE_SMASHER);
+
+					int numSmashers = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, MFGameConstants.INITIAL_HURDLE_SMASHERS_ALLOCATED);
+					numSmashers += numSmashersToBuy;
+					MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, numSmashers);
 					
-					HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP, DIALOG_DATA_NONE);
-					hurdleDialog.setCanceledOnTouchOutside(false);
-					hurdleDialog.show();
-					
-					mHurdleSmashMode = true;
-					enableDisableAllButtons(false);
-					mGameView.setClickable(true);
+					refreshLifelinesUI();
 				}
 				else
 				{
@@ -1021,14 +1253,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_BUTTON_PRESS, MFAnalytics.ANALYTICS_LABEL_REDEEM_COINS_FOR_BRIDGE);
 				
 				int numCoinsRequired = 0;
+				int numBridgesToBuy = 0;
 				if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_1)
 				{
-					numCoinsRequired = getNumCoinsForBridge(1);
+					numBridgesToBuy = 1;
 				}
 				else if (option == GameDialog.GAME_DIALOG_ACTION_POSITIVE_2)
 				{
-					numCoinsRequired = getNumCoinsForBridge(2);
+					numBridgesToBuy = 2;
 				}
+				
+				numCoinsRequired = getNumCoinsForBridge(numBridgesToBuy);
 				
 				int currCoins = getCoins();
 				if (currCoins >= numCoinsRequired)
@@ -1044,16 +1279,22 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 					enableDisableAllButtons(false);
 					mGameView.setClickable(true);
 					*/
+					
+					int numBridges = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, MFGameConstants.INITIAL_BRIDGES_ALLOCATED);
+					numBridges += numBridgesToBuy;
+					MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, numBridges);
+					
+					refreshLifelinesUI();
 				}
 				else
 				{
 					//alert hte user tht he must buy coins
 					//redeem the coins, show a dialog
 					int shortfall = numCoinsRequired - currCoins;
-					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, shortfall, DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
+					AddCoinsDialog addCoinsDialog = new AddCoinsDialog(this, shortfall, DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG, mIAPManager, getNumCoinsIAPFirst(), getNumCoinsIAPSecond(), getNumCoinsIAPThird(), getNumCoinsIAPFourth());
 					addCoinsDialog.setCanceledOnTouchOutside(false);
 					addCoinsDialog.show();
-					mLastDialogData = DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG;
+					mLastDialogData = DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG;
 				}
 			}
 			else if (option == GameDialog.GAME_DIALOG_ACTION_NEGATIVE_1)
@@ -1223,19 +1464,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			{
 				mHurdleSmashMode = false;
 				
-				/**
-				 * Show the animation and play a sound!
-				 */
-				/*
-				RelativeLayout rl = (RelativeLayout) findViewById(R.id.game_view_layout_id);
-				ExplodeView explodeView = new ExplodeView(this);
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-				params.leftMargin = 50;
-				params.topMargin = 60;
-				rl.addView(explodeView, params);
-				
-				*/
-				
 				playSound(mHurdleSmashedSoundID);
 				
 				//successfuly smashed a hurdle
@@ -1256,6 +1484,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				
 				enableDisableAllButtons(true);
 				mGameView.setClickable(false);
+				
+				/** Update the number of hurdle smashers remaining **/
+				SharedPreferences settings;
+				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+				int numSmashers = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, MFGameConstants.INITIAL_HURDLE_SMASHERS_ALLOCATED);
+				numSmashers --;
+				Editor editor = settings.edit();
+				editor.putInt(MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, numSmashers);
+				editor.commit();
+				
+				refreshLifelinesUI();
 			}
 			else
 			{
@@ -1287,6 +1526,17 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				}
 				mGameView.updateStartPos(startPosArray, numStartPos);
 				mGameView.invalidate();
+				
+				/** Update the number of stars remaining **/
+				SharedPreferences settings;
+				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+				int numStars = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, MFGameConstants.INITIAL_STARS_ALLOCATED);
+				numStars --;
+				Editor editor = settings.edit();
+				editor.putInt(MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, numStars);
+				editor.commit();
+				
+				refreshLifelinesUI();
 			}
 			else
 			{
@@ -1333,6 +1583,11 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	 */
 	private boolean mHurdleSmashMode; //whether we're in the mode where user is selecting a hurdle to smash
 
+	/**
+	 * Bridge Creation
+	 */
+	private boolean mBridgeMode; //whether we'rein the mode of dragging and creating a bridge
+	
 	/**
 	 * Sound related
 	 */
@@ -1390,7 +1645,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private static final int DIALOG_DATA_FROM_ADD_STAR_DIALOG = 1;
 	private static final int DIALOG_DATA_FROM_ADD_MOVES_DIALOG = 2;
 	private static final int DIALOG_DATA_FROM_ADD_HURDLE_SMASHER_DIALOG = 3;
-	private static final int DIALOG_DATA_EXIT = 4;
+	private static final int DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG = 4;
+	private static final int DIALOG_DATA_EXIT = 5;
 	private int mLastDialogData = DIALOG_DATA_NONE;
 
 }

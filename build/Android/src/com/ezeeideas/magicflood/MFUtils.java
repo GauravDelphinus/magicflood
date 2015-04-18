@@ -3,6 +3,8 @@ package com.ezeeideas.magicflood;
 import java.util.Hashtable;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 
@@ -80,6 +82,25 @@ public class MFUtils
 	        return "mdpi";
 	    }
 	    return "ldpi";
+	}
+	
+	public static int prefGetInt(Context context, String pref, int defaultValue)
+	{
+		SharedPreferences settings;
+		settings = context.getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		int retVal = settings.getInt(pref, defaultValue);
+		
+		return retVal;		
+	}
+	
+	public static void prefPutInt(Context context, String pref, int value)
+	{
+		SharedPreferences settings;
+		settings = context.getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		
+		Editor editor = settings.edit();
+		editor.putInt(pref, value);
+		editor.commit();
 	}
 
 }

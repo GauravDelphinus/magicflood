@@ -58,7 +58,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_hurdle_smasher"
+            android:src="@drawable/ic_use_hurdle_smasher_2"
             />
         
         <View
@@ -77,7 +77,7 @@
         android:id="@+id/dialog_introduce_lifeline_positive_button_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/dialog_introduce_lifeline_positive_button_text"
+        android:text="@string/dialog_introduce_hurdle_smashers_button_text"
         android:textSize="@dimen/dialog_positive_button_text_size"
         android:textColor="@color/dialog_button_text_color"
         android:gravity="center"

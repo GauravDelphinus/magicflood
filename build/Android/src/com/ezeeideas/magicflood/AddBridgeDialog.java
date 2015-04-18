@@ -57,8 +57,4 @@ public class AddBridgeDialog extends GameDialogType4 {
 	{
 		mNegativeAction1View = findViewById(R.id.cancel_button);
 	}
-	
-	//public static final int ADD_LIFELINE_TYPE_MOVES = 1;
-	//public static final int ADD_LIFELINE_TYPE_STARS = 2;
-	
 }

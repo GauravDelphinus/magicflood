@@ -13,12 +13,12 @@
 	    android:layout_height="wrap_content"
 	    >
 	    <TextView
-	        android:id="@+id/dialog_iap_failed_title_text_id"
+	        android:id="@+id/dialog_introduce_bridges_title_text_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
             android:gravity="center"
-            android:layout_centerHorizontal="true"
+            android:text="@string/dialog_introduce_bridges_title_text"
             android:textSize="@dimen/dialog_title_text_size" />
 	    	
 	</RelativeLayout>
@@ -31,11 +31,12 @@
             />
         
         <TextView
-            android:id="@+id/dialog_iap_failed_description_text_id"
+            android:id="@+id/dialog_introduce_bridges_description_text_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
             android:gravity="center"
+            android:text="@string/dialog_introduce_bridges_description_text"
             android:textSize="@dimen/dialog_description_text_size" />
         
               
@@ -57,14 +58,13 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_iap_failed"
+            android:src="@drawable/ic_use_bridge_2"
             />
         
         <View
             android:layout_width="fill_parent"
             android:layout_height="10sp" />
-      
-        <LinearLayout 
+      <LinearLayout 
             android:id="@+id/cancel_button"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -74,10 +74,10 @@
     android:padding="@dimen/activity_horizontal_padding"
     >
     <TextView
-        android:id="@+id/dialog_iap_failed_positive_button_id"
+        android:id="@+id/dialog_introduce_bridges_button_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/dialog_iap_failed_button_text"
+        android:text="@string/dialog_introduce_bridges_button_text"
         android:textSize="@dimen/dialog_positive_button_text_size"
         android:textColor="@color/dialog_button_text_color"
         android:gravity="center"
