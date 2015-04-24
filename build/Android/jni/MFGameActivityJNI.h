@@ -283,6 +283,30 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getMinLevelT
 JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsForSuccessfulGame
   (JNIEnv *, jobject, jint, jint);
 
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    isBridgeEndpointValid
+ * Signature: (JII)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_isBridgeEndpointValid
+  (JNIEnv *, jobject, jlong, jint, jint);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    checkBridgeValid
+ * Signature: (JIIII)[I
+ */
+JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_checkBridgeValid
+  (JNIEnv *, jobject, jlong, jint, jint, jint, jint);
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    buildBridge
+ * Signature: (JIIII)V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_buildBridge
+  (JNIEnv *, jobject, jlong, jint, jint, jint, jint);
+
 #ifdef __cplusplus
 }
 #endif

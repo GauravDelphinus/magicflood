@@ -159,6 +159,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mGameFailedSoundID = mSoundPool.load(this, R.raw.game_failed_sound, 1);
 		mHurdleSmashedSoundID = mSoundPool.load(this, R.raw.hurdle_smashed_sound, 1);
 		mStarPlacedSoundID = mSoundPool.load(this, R.raw.star_placed_sound, 1);
+		mBridgePlacedSoundID = mSoundPool.load(this, R.raw.bridge_created_sound, 1);
 		
 		//read the preference on whether the sound should be muted
 		SharedPreferences settings;
@@ -655,7 +656,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mStarPlacementMode = true;
 				
 				refreshLifelinesUI();
-				mGameView.setClickable(true);
+				mGameView.setMode(MFGameView.MODE_TAP);
 			}
 			
 			return;
@@ -705,7 +706,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mHurdleSmashMode = true;
 				
 				refreshLifelinesUI();
-				mGameView.setClickable(true);
+				mGameView.setMode(MFGameView.MODE_TAP);
 			}
 			
 			return;
@@ -755,7 +756,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mBridgeMode = true;
 				
 				refreshLifelinesUI();
-				mGameView.setClickable(true);
+				mGameView.setMode(MFGameView.MODE_DRAG);
 			}
 			
 			return;
@@ -1270,15 +1271,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				{				
 					updateCoinsEarned(currCoins - numCoinsRequired);
 					MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ACTION, MFAnalytics.ANALYTICS_LABEL_GAME_ACTION_COINS_REDEEMED_FOR_BRIDGE);
-					/*
-					HurdleSmasherInfoDialog hurdleDialog = new HurdleSmasherInfoDialog(this, HurdleSmasherInfoDialog.TYPE_TAP, DIALOG_DATA_NONE);
-					hurdleDialog.setCanceledOnTouchOutside(false);
-					hurdleDialog.show();
-					
-					mHurdleSmashMode = true;
-					enableDisableAllButtons(false);
-					mGameView.setClickable(true);
-					*/
 					
 					int numBridges = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, MFGameConstants.INITIAL_BRIDGES_ALLOCATED);
 					numBridges += numBridgesToBuy;
@@ -1482,8 +1474,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mGameView.updateGameData(gridData);				
 				mGameView.invalidate();		
 				
-				enableDisableAllButtons(true);
-				mGameView.setClickable(false);
+				mGameView.setMode(MFGameView.MODE_NONE);
 				
 				/** Update the number of hurdle smashers remaining **/
 				SharedPreferences settings;
@@ -1512,8 +1503,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				playSound(mStarPlacedSoundID);
 				
 				//successfully placed the star
-				enableDisableAllButtons(true);
-				mGameView.setClickable(false);
+				mGameView.setMode(MFGameView.MODE_NONE);
 				
 				//update the game view
 				int[] startPos = getStartPos(gridHandle);
@@ -1546,6 +1536,99 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				starDialog.show();
 			}
 		}
+	}
+	
+	@Override
+	public void handleGameViewDragBegin(int col, int row) {
+		if (mBridgeMode)
+		{
+			mGameView.setBridgeValid(false);
+			
+			if (isBridgeEndpointValid(gridHandle, row, col) > 0)
+			{
+				mBridgeStartRow = row;
+				mBridgeStartCol = col;
+			}
+			
+			mGameView.enterExitBridgeBuildingMode(true, false);
+		}
+	}
+
+	@Override
+	public void handleGameViewDragMove(int col, int row) {
+		if (mBridgeMode)
+		{
+			int[] bridgeExtremes = checkBridgeValid(gridHandle, mBridgeStartRow, mBridgeStartCol, row, col);
+			if (bridgeExtremes != null && bridgeExtremes.length == 4)
+			{
+				mGameView.setBridgeValid(true);
+				
+				mBridgeEndRow = row;
+				mBridgeEndCol = col;
+				
+				mGameView.setBridgeExtremes(bridgeExtremes[0], bridgeExtremes[1], bridgeExtremes[2], bridgeExtremes[3]);
+			}
+			else
+			{
+				mGameView.setBridgeValid(false);
+			}
+		}
+	}
+
+	@Override
+	public void handleGameViewDragEnd(int col, int row) {
+		if (mBridgeMode)
+		{
+			int[] bridgeExtremes = checkBridgeValid(gridHandle, mBridgeStartRow, mBridgeStartCol, row, col);
+			if (bridgeExtremes != null && bridgeExtremes.length == 4)
+			{
+				mGameView.setBridgeValid(true);
+				
+				mBridgeEndRow = row;
+				mBridgeEndCol = col;
+				
+				playSound(mBridgePlacedSoundID);
+				
+				mBridgeMode = false;
+				
+				//actually build the bridge
+				buildBridge(gridHandle, mBridgeStartRow, mBridgeStartCol, mBridgeEndRow, mBridgeEndCol);
+				
+				//update the game data
+				int[] gridDataOneD = getGridData(gridHandle);
+				int gridSize = getGridSize(gridHandle);
+
+				//convert the one-dimensional array passed from C++ back to 2D array for use in the game view in Java
+				int gridData[][] = new int[gridSize][gridSize];
+				for (int i = 0; i < gridDataOneD.length; i++)
+				{
+					int x = i % gridSize;
+					int y = i / gridSize;
+					gridData[x][y] = gridDataOneD[i];
+				}
+				
+				mGameView.updateGameData(gridData);				
+				mGameView.invalidate();		
+				
+				mGameView.setMode(MFGameView.MODE_NONE);
+				
+				/** Update the number of bridges remaining **/
+				SharedPreferences settings;
+				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+				int numBridges = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, MFGameConstants.INITIAL_BRIDGES_ALLOCATED);
+				numBridges --;
+				MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, numBridges);
+				
+				refreshLifelinesUI();
+				
+				mGameView.enterExitBridgeBuildingMode(false, false);
+			}
+			else
+			{
+				mGameView.enterExitBridgeBuildingMode(true, true);
+			}
+		}
+		
 	}
 	
 	private MFGameView mGameView; //the game view
@@ -1587,13 +1670,14 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	 * Bridge Creation
 	 */
 	private boolean mBridgeMode; //whether we'rein the mode of dragging and creating a bridge
+	private int mBridgeStartRow, mBridgeEndRow, mBridgeStartCol, mBridgeEndCol;
 	
 	/**
 	 * Sound related
 	 */
 	
 	private SoundPool mSoundPool;
-	private int mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID;
+	private int mButtonClickSoundID, mGameSuccessSoundID, mGameFailedSoundID, mHurdleSmashedSoundID, mStarPlacedSoundID, mBridgePlacedSoundID;
 	boolean loaded = false;
 	float actVolume, maxVolume, volume;
 	AudioManager audioManager;
@@ -1637,7 +1721,11 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private native int getMinLevelToAddHurdleSmasher();
 	private native int getMinLevelToAddBridge();
 	private native int getNumCoinsForSuccessfulGame(int currMove, int maxMoves);
-
+	private native int isBridgeEndpointValid(long handle, int row, int col);
+	private native int[] checkBridgeValid(long handle, int startrow, int startcol, int endrow, int endcol);
+	private native void buildBridge(long handle, int startrow, int startcol, int endrow, int endcol);
+	
+	
 	/**
 	 * Dialog data that is used to control workflow
 	 */
@@ -1648,5 +1736,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private static final int DIALOG_DATA_FROM_ADD_BRIDGE_DIALOG = 4;
 	private static final int DIALOG_DATA_EXIT = 5;
 	private int mLastDialogData = DIALOG_DATA_NONE;
+
 
 }

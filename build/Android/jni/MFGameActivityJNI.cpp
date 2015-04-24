@@ -361,3 +361,60 @@ JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_getNumCoinsF
 {
 	return getNumCoinsForSuccessfulGame(currMove, maxMoves);
 }
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    isBridgeEndpointValid
+ * Signature: (JII)I
+ */
+JNIEXPORT jint JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_isBridgeEndpointValid
+  (JNIEnv *env, jobject thisObj, jlong handle, jint row, jint col)
+{
+	return isBridgeEndpointValid(handle, row, col);
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    checkBridgeValid
+ * Signature: (JIIII)[I
+ */
+JNIEXPORT jintArray JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_checkBridgeValid
+  (JNIEnv *env, jobject thisObj, jlong handle, jint startrow, jint startcol, jint endrow, jint endcol)
+{
+	
+	int **bridgeExtremesPtr = checkBridgeValid(handle, startrow, startcol, endrow, endcol);
+	if (bridgeExtremesPtr == NULL)
+	{
+		return NULL;
+	}
+
+	jint *outCArray = (jint *) malloc (2 * 2 * sizeof(jint));
+	for (int i = 0; i < 2; i++)
+	{
+		outCArray[2 * i] = bridgeExtremesPtr[i][0];
+		outCArray[2 * i + 1] = bridgeExtremesPtr[i][1];
+	}
+	freeBridgeExtremes(handle, bridgeExtremesPtr);
+
+	jintArray bridgeExtremesArray = env->NewIntArray(2 * 2);
+	if (NULL == bridgeExtremesArray)
+	{
+		return NULL;
+	}
+
+	env->SetIntArrayRegion(bridgeExtremesArray, 0, 2 * 2, outCArray);
+	free(outCArray);
+
+	return bridgeExtremesArray;
+}
+
+/*
+ * Class:     com_ezeeideas_magicflood_MFGameActivity
+ * Method:    buildBridge
+ * Signature: (JIIII)V
+ */
+JNIEXPORT void JNICALL Java_com_ezeeideas_magicflood_MFGameActivity_buildBridge
+  (JNIEnv *env, jobject thisObj, jlong handle, jint startrow, jint startcol, jint endrow, jint endcol)
+{
+	buildBridge(handle, startrow, startcol, endrow, endcol);
+}

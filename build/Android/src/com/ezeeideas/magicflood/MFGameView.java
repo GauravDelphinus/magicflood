@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.google.android.gms.internal.mh;
+
 import android.content.Context;
 import android.graphics.Canvas;
 
@@ -16,11 +18,13 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.GestureDetector;
+import android.widget.HorizontalScrollView;
 
 public class MFGameView extends View
 {
@@ -101,12 +105,70 @@ public class MFGameView extends View
 		
 		mFillPaint = new Paint();
 		
+		mBridgeValidPaint = new Paint();
+		mBridgeValidPaint.setARGB(255, 0, 0, 0);
+		mBridgeValidPaint.setAntiAlias(true);
+		mBridgeValidPaint.setStyle(Style.STROKE);
+		mBridgeValidPaint.setStrokeWidth(4);
+		
+		mBridgeInvalidPaint = new Paint();
+		mBridgeInvalidPaint.setARGB(255, 255, 0, 0);
+		mBridgeInvalidPaint.setAntiAlias(true);
+		mBridgeInvalidPaint.setStyle(Style.STROKE);
+		mBridgeInvalidPaint.setStrokeWidth(2);
+		
 		mDetector = new GestureDetectorCompat(context, new MyGestureListener());
 	}
 	
 	@Override 
-    public boolean onTouchEvent(MotionEvent event){ 
-        this.mDetector.onTouchEvent(event);
+    public boolean onTouchEvent(MotionEvent event){
+		Log.d("gaurav", "onTouchEvent, mMode = " + mMode);
+		if (mMode == MODE_TAP)
+		{
+			this.mDetector.onTouchEvent(event);
+		}
+		else if (mMode == MODE_DRAG)
+		{
+			int x = (int)event.getX();
+			int y = (int)event.getY();
+			
+			
+			int row = getRowForY(y);
+			int col = getColForX(x);
+			
+			Log.d("gaurav", "row = " + row + ", col = " + col);
+			Log.d("gaurav", "mBridgeStartX = " + mBridgeStartX + ", mBridgeStartY = " + mBridgeStartY);
+			Log.d("gaurav", "mBridgeEndX = " + mBridgeEndX + ", mBridgeEndY = " + mBridgeEndY);
+			if (row >= 0 && row <= mGridSize && col >=0 && col <= mGridSize)
+			{
+				int action = MotionEventCompat.getActionMasked(event);
+				if (action == MotionEvent.ACTION_DOWN)
+				{
+					mBridgeStartX = mBridgeEndX = x;
+					mBridgeStartY = mBridgeEndY = y;
+					
+					mTapHandler.handleGameViewDragBegin(col, row);
+					
+					return true;
+				}
+				else if (action == MotionEvent.ACTION_MOVE)
+				{
+					mBridgeStartX = x;
+					mBridgeStartY = y;
+					
+					mTapHandler.handleGameViewDragMove(col, row);
+					
+					return true;
+				}
+				else if (action == MotionEvent.ACTION_UP)
+				{
+					mBridgeStartX = x;
+					mBridgeStartY = y;
+					
+					mTapHandler.handleGameViewDragEnd(col, row);
+				}
+			}
+		}
         return super.onTouchEvent(event);
     }
 	
@@ -114,6 +176,15 @@ public class MFGameView extends View
 	{		
 		int screenWidth = this.getWidth();
 		int screenHeight = this.getHeight();
+				
+		/**
+		 * Draw a shadown behind the grid to one x and one y direction.  Calculate the size of the grid
+		 * after accounting for the shadow thickness
+		 */
+		int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS - GAME_VIEW_PADDING;
+		int cellSize = gridSizePixels/mGridSize;
+		gridSizePixels = cellSize * mGridSize; //remove the rounding off errors
+		
 		
 		int hOffset = 0;
 		int vOffset = 0;
@@ -122,22 +193,16 @@ public class MFGameView extends View
 		 */
 		if (screenHeight > screenWidth)
 		{
-			hOffset = 0;
-			vOffset = (screenHeight - screenWidth) / 2;
+			int verticalGap = screenHeight - gridSizePixels - SHADOW_THICKNESS;
+			vOffset = verticalGap / 2;
+			hOffset = GAME_VIEW_PADDING;
 		}
 		else
 		{
-			vOffset = 0;
-			hOffset = (screenWidth - screenHeight) / 2;
+			int horizontalGap = screenWidth - gridSizePixels - SHADOW_THICKNESS;
+			hOffset = horizontalGap / 2;
+			vOffset = GAME_VIEW_PADDING;
 		}
-		
-		/**
-		 * Draw a shadown behind the grid to one x and one y direction.  Calculate the size of the grid
-		 * after accounting for the shadow thickness
-		 */
-		int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS;
-		int cellSize = gridSizePixels/mGridSize;
-		gridSizePixels = cellSize * mGridSize; //remove the rounding off errors
 		
 		for (int i = 0; i < mGridSize; i++)
 		{
@@ -192,6 +257,11 @@ public class MFGameView extends View
 		 * Draw the grid shadows
 		 */
 		drawGridShadow(canvas, hOffset, vOffset, gridSizePixels, cellSize);
+		
+		/**
+		 * Draw the bridge ghost
+		 */
+		drawBridgeGhost(canvas, cellSize);
 	}
 
 	/**
@@ -429,6 +499,27 @@ public class MFGameView extends View
 		
 	}
 	
+	private void drawBridgeGhost(Canvas canvas, int cellSize)
+	{
+		if (mBridgeBuildingMode)
+		{
+			canvas.drawLine(mBridgeStartX, mBridgeStartY, mBridgeEndX, mBridgeEndY, mBridgeInvalidPaint);
+			
+			if (mBridgeValid)
+			{
+				int minX = getXForCol(mBridgeMinCol);
+				int minY = getYForRow(mBridgeMinRow);
+				int maxX = getXForCol(mBridgeMaxCol) + cellSize;
+				int maxY = getYForRow(mBridgeMaxRow) + cellSize;
+				
+				Log.d("gaurav", "minCol = " + mBridgeMinCol + ", minRow = " + mBridgeMinRow + ", maxCol = " + mBridgeMaxCol + ", maxRow = " + mBridgeMaxRow);
+				Log.d("gaurav", "minX = " + minX + ", minY = " + minY + ", maxX = " + maxX + ", maxY = " + maxY);
+				
+				canvas.drawRect(minX, minY, maxX, maxY, mBridgeValidPaint);
+			}
+		}
+	}
+	
 	public void initializeGameData(int [][]grid, int size, int[][] startPos, int numStartPos, int maxMoves)
 	{
 		mGrid = new int[size][size];
@@ -534,6 +625,189 @@ public class MFGameView extends View
 		return -1;
 	}
 	
+	public void setBridgeValid(boolean valid)
+	{
+		mBridgeValid = valid;
+	}
+	
+	public void setBridgeExtremes(int minRow, int minCol, int maxRow, int maxCol)
+	{
+		mBridgeMinRow = minRow;
+		mBridgeMaxRow = maxRow;
+		mBridgeMinCol = minCol;
+		mBridgeMaxCol = maxCol;
+	}
+	
+	public void enterExitBridgeBuildingMode(boolean enter, boolean reset)
+	{
+		if (enter)
+		{	
+			mBridgeBuildingMode = true;
+		}
+		else
+		{
+			mBridgeBuildingMode = false;
+		}
+		
+		if (reset)
+		{
+			//re-set all data, as we may be re-entering after a failed attempt to build the bridge
+			mBridgeValid = false;
+			
+			mBridgeMinRow = -1;
+			mBridgeMaxRow = -1;
+			mBridgeMinCol = -1;
+			mBridgeMaxCol = -1;
+			mBridgeStartX = -1;
+			mBridgeStartY = -1;
+			mBridgeEndX = -1;
+			mBridgeEndY = -1;
+		}
+	}
+	
+	private int getColForX(int x)
+	{
+		int screenWidth = this.getWidth();
+		int screenHeight = this.getHeight();
+				
+		/**
+		 * Draw a shadown behind the grid to one x and one y direction.  Calculate the size of the grid
+		 * after accounting for the shadow thickness
+		 */
+		int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS - GAME_VIEW_PADDING;
+		int cellSize = gridSizePixels/mGridSize;
+		gridSizePixels = cellSize * mGridSize; //remove the rounding off errors
+		
+		
+		int hOffset = 0;
+		int vOffset = 0;
+		/**
+		 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
+		 */
+		if (screenHeight > screenWidth)
+		{
+			int verticalGap = screenHeight - gridSizePixels - SHADOW_THICKNESS;
+			vOffset = verticalGap / 2;
+			hOffset = GAME_VIEW_PADDING;
+		}
+		else
+		{
+			int horizontalGap = screenWidth - gridSizePixels - SHADOW_THICKNESS;
+			hOffset = horizontalGap / 2;
+			vOffset = GAME_VIEW_PADDING;
+		}
+		
+		int xOffset = x - hOffset;
+		int col = xOffset / cellSize;
+		
+		return col;
+	}
+	
+	
+	private int getRowForY(int y)
+	{
+		int screenWidth = this.getWidth();
+		int screenHeight = this.getHeight();
+				
+		/**
+		 * Draw a shadown behind the grid to one x and one y direction.  Calculate the size of the grid
+		 * after accounting for the shadow thickness
+		 */
+		int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS - GAME_VIEW_PADDING;
+		int cellSize = gridSizePixels/mGridSize;
+		gridSizePixels = cellSize * mGridSize; //remove the rounding off errors
+		
+		
+		int hOffset = 0;
+		int vOffset = 0;
+		/**
+		 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
+		 */
+		if (screenHeight > screenWidth)
+		{
+			int verticalGap = screenHeight - gridSizePixels - SHADOW_THICKNESS;
+			vOffset = verticalGap / 2;
+			hOffset = GAME_VIEW_PADDING;
+		}
+		else
+		{
+			int horizontalGap = screenWidth - gridSizePixels - SHADOW_THICKNESS;
+			hOffset = horizontalGap / 2;
+			vOffset = GAME_VIEW_PADDING;
+		}
+		
+		int yOffset = y - vOffset;
+		int row = yOffset / cellSize;
+		
+		return row;
+	}
+	
+	int getXForCol(int col)
+	{
+		int screenWidth = this.getWidth();
+		int screenHeight = this.getHeight();
+				
+		/**
+		 * Draw a shadow behind the grid to one x and one y direction.  Calculate the size of the grid
+		 * after accounting for the shadow thickness
+		 */
+		int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS - GAME_VIEW_PADDING;
+		int cellSize = gridSizePixels/mGridSize;
+		gridSizePixels = cellSize * mGridSize; //remove the rounding off errors
+		
+		
+		int hOffset = 0;
+		
+		/**
+		 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
+		 */
+		if (screenHeight > screenWidth)
+		{
+			hOffset = GAME_VIEW_PADDING;
+		}
+		else
+		{
+			int horizontalGap = screenWidth - gridSizePixels - SHADOW_THICKNESS;
+			hOffset = horizontalGap / 2;
+		}
+
+		int x = hOffset + cellSize * col;
+		
+		return x;
+	}
+	
+	int getYForRow(int row)
+	{
+		int screenWidth = this.getWidth();
+		int screenHeight = this.getHeight();
+				
+		/**
+		 * Draw a shadow behind the grid to one x and one y direction.  Calculate the size of the grid
+		 * after accounting for the shadow thickness
+		 */
+		int gridSizePixels = Math.min(screenWidth, screenHeight) - SHADOW_THICKNESS - GAME_VIEW_PADDING;
+		int cellSize = gridSizePixels/mGridSize;
+		gridSizePixels = cellSize * mGridSize; //remove the rounding off errors
+		
+		
+		int vOffset = 0;
+		/**
+		 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
+		 */
+		if (screenHeight > screenWidth)
+		{
+			int verticalGap = screenHeight - gridSizePixels - SHADOW_THICKNESS;
+			vOffset = verticalGap / 2;
+		}
+		else
+		{
+			vOffset = GAME_VIEW_PADDING;
+		}
+		
+		int y = vOffset + cellSize * row;
+	    return y;
+	}
+	
 	public class AnimationTimerTask extends TimerTask
 	{
 		private View mView;
@@ -550,6 +824,15 @@ public class MFGameView extends View
 		}
 	}
 	
+	/**
+	 * Set the mode of the Game View.
+	 * @param mode
+	 */
+	public void setMode(int mode)
+	{
+		mMode = mode;
+	}
+	
 	public void setTapHandler(GameViewTapHandler handler)
 	{
 		mTapHandler = handler;
@@ -557,7 +840,10 @@ public class MFGameView extends View
 	
 	public interface GameViewTapHandler
 	{
-		public void handleGameViewTap(int x, int y);
+		public void handleGameViewTap(int col, int row);
+		public void handleGameViewDragBegin(int col, int row);
+		public void handleGameViewDragMove(int col, int row);
+		public void handleGameViewDragEnd(int col, int row);
 	}
 	
 	class MyGestureListener extends GestureDetector.SimpleOnGestureListener 
@@ -611,6 +897,19 @@ public class MFGameView extends View
 
 	private GestureDetectorCompat mDetector; 
 	private GameViewTapHandler mTapHandler;
-	private Paint mStartPaint, mBorderPaint1, mBorderPaint2, mFillPaint, mTestPaint, mStartStrokePaint, mShadowPaint;
+	private Paint mStartPaint, mBorderPaint1, mBorderPaint2, mFillPaint, mTestPaint, mStartStrokePaint, mShadowPaint, mBridgeValidPaint, mBridgeInvalidPaint;
 	private Path mStarPath;
+	
+	private int mBridgeStartX = 0, mBridgeStartY = 0, mBridgeEndX = 0, mBridgeEndY = 0; //bridge end points
+	private int mBridgeMinRow = 0, mBridgeMaxRow = 0, mBridgeMinCol = 0, mBridgeMaxCol = 0; //bridge extremes as determined by logic
+	private boolean mBridgeValid = false; //the bridge is now valid
+	private boolean mBridgeBuildingMode = false;
+	
+	private int mMode = MODE_NONE;
+	
+	public static final int MODE_NONE = 0; //view is not listening to gestures/taps
+	public static final int MODE_TAP = 1; //view is listening only to taps (for star/hurdle smasher mode)
+	public static final int MODE_DRAG = 2; //view is listening only to drags (for bridge mode)
+	
+	private static final int GAME_VIEW_PADDING = 0; //gap around the game view
 }
