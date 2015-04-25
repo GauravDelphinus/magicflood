@@ -33,11 +33,7 @@ public class MFGameView extends View
 	int[][] mStartPos;
 	int mNumStartPos;
 	int mMaxMoves;
-	private Timer mAnimationTimer = null;
-	private TimerTask mAnimationTimerTask = null;
-	private int mCurrentAngleOfStartPosition = 0;
-	private static final int ROTATION_STEP_DEGREES = 5;
-	private static final int ROTATION_SPEED_INTERVAL = 200; //milliseconds
+
 	private static final int SHADOW_THICKNESS = 8;
 
 	/**
@@ -59,10 +55,6 @@ public class MFGameView extends View
 	public MFGameView(Context context, AttributeSet attrs) 
 	{
 		super(context, attrs);
-		
-		mAnimationTimer = new Timer();
-		mAnimationTimerTask = new AnimationTimerTask(this);
-		mAnimationTimer.scheduleAtFixedRate(mAnimationTimerTask, ROTATION_SPEED_INTERVAL, ROTATION_SPEED_INTERVAL);
 		
 		mBorderPaint1 = new Paint();
 		mBorderPaint1.setARGB(255, 255, 255, 255);
@@ -91,7 +83,7 @@ public class MFGameView extends View
 		mShadowPaint.setColor(getResources().getColor(R.color.game_grid_shadow_color));
 		
 		mStartStrokePaint = new Paint();
-		mStartStrokePaint.setARGB(255, 120, 120, 120);
+		mStartStrokePaint.setARGB(255, 0, 0, 0);
 		mStartStrokePaint.setStyle(Style.STROKE);
 		mStartStrokePaint.setAlpha(255);
 		mStartStrokePaint.setStrokeWidth(1);
@@ -436,6 +428,30 @@ public class MFGameView extends View
 		int bottom = top + cellSize;
 		
 		/**
+		 * Adjust the size/location of the star for the "blinking effect"
+		 */
+		if (mCurrentStarSize < 0)
+		{
+			left += mCurrentStarSize;
+			top += mCurrentStarSize;
+			right -= mCurrentStarSize;
+			bottom -= mCurrentStarSize;
+			cellSize += Math.abs(mCurrentStarSize * 2);
+		}
+		else if (mCurrentStarSize == 0)
+		{
+			//no changes
+		}
+		else if (mCurrentStarSize == 1)
+		{
+			left -= 2;
+			top -= 2;
+			right += 2;
+			bottom += 2;
+			cellSize += 4;
+		}
+		
+		/**
 		 * Now draw the star
 		 */
 		int d = cellSize; //diameter
@@ -469,12 +485,8 @@ public class MFGameView extends View
 		int y8 = top + r + (int)(s * sintheta);
 		int x10 = left + r + (int)(s * cosphi);
 		int y10 = top + r + (int)(s * sinphi);
-		
-		//canvas.drawPoint(left + r, top + r, mTestPaint);
-		
-		mCurrentAngleOfStartPosition += ROTATION_STEP_DEGREES;
+				
 		canvas.save();
-		canvas.rotate(mCurrentAngleOfStartPosition % 360, left + r, top + r);
 		mStarPath.reset();
 		mStarPath.moveTo(x1, y1);
 		mStarPath.lineTo(x2, y2);
@@ -488,15 +500,10 @@ public class MFGameView extends View
 		mStarPath.lineTo(x10, y10);
 		mStarPath.lineTo(x1, y1);
 		
-		//set gradient fill in the paint
-		//mStartPaint.setShader(new RadialGradient(left + r, top + r, r, getResources().getColor(R.color.white), 
-			//	getResources().getColor(R.color.gray), Shader.TileMode.MIRROR));
-
 		//finally, draw the star!
 		canvas.drawPath(mStarPath, mStartPaint);
 		canvas.drawPath(mStarPath, mStartStrokePaint);
 		canvas.restore();
-		
 	}
 	
 	private void drawBridgeGhost(Canvas canvas, int cellSize)
@@ -807,22 +814,7 @@ public class MFGameView extends View
 		int y = vOffset + cellSize * row;
 	    return y;
 	}
-	
-	public class AnimationTimerTask extends TimerTask
-	{
-		private View mView;
-		
-		public AnimationTimerTask(View view)
-		{
-			mView = view;
-		}
-		
-		@Override
-	    public void run()
-		{
-			mView.postInvalidate();
-		}
-	}
+
 	
 	/**
 	 * Set the mode of the Game View.
@@ -912,4 +904,9 @@ public class MFGameView extends View
 	public static final int MODE_DRAG = 2; //view is listening only to drags (for bridge mode)
 	
 	private static final int GAME_VIEW_PADDING = 0; //gap around the game view
+	
+	/**
+	 * Star blinking timer related
+	 */
+	public int mCurrentStarSize = 0;
 }

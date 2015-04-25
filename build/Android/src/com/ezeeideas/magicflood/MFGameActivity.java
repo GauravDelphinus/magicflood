@@ -1,5 +1,8 @@
 package com.ezeeideas.magicflood;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.ezeeideas.magicflood.GameDialog.GameDialogListener;
 import com.ezeeideas.magicflood.iabutil.Purchase;
 import com.google.android.gms.ads.AdRequest;
@@ -128,6 +131,20 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
         {
             mIAPManager.unbind();
         } 
+        
+        //stop the timer
+        if (mStarAnimationTimer != null)
+        {
+        	mStarAnimationTimer.cancel();
+        }
+	}
+	
+	private void startTimer()
+	{
+		mStarAnimationTimer = new Timer();
+		mStarAnimationTimer.scheduleAtFixedRate(new AnimationTimerTask(), STAR_ANIMATION_INTERVAL, STAR_ANIMATION_INTERVAL);
+		
+		mGameView.mCurrentStarSize = STAR_ANIMATION_INITIAL_SIZE;
 	}
 	
 	private void setupSound()
@@ -390,6 +407,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		//if we are introducing stars or hurdles from this level, and this is the first time
 		//play of this game, then show the introductory dialog
 		refreshLifelinesUI();
+		
+		startTimer();
 	}
 	
 	private void refreshLifelinesUI()
@@ -1631,6 +1650,47 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 	}
 	
+	private void starBlinkingTimerCallback()
+	{
+		if (mGameView.mCurrentStarSize < 0)
+		{
+			mGameView.mCurrentStarSize ++;
+
+			if (mGameView.mCurrentStarSize == 0)
+			{
+				mStarAnimationTimer.cancel();
+				
+				mStarAnimationTimer = new Timer();
+				mStarAnimationTimer.scheduleAtFixedRate(new AnimationTimerTask(), STAR_BLINK_INTERVAL, STAR_BLINK_INTERVAL);
+			}
+		}
+		else if (mGameView.mCurrentStarSize == 0)
+		{
+			mGameView.mCurrentStarSize = 1;
+		}
+		else if (mGameView.mCurrentStarSize == 1)
+		{
+			mGameView.mCurrentStarSize = 0;
+		}
+		mGameView.postInvalidate();
+	}
+	
+	public class AnimationTimerTask extends TimerTask
+	{
+		private View mView;
+		
+		public AnimationTimerTask()
+		{
+		}
+		
+		@Override
+	    public void run()
+		{
+			starBlinkingTimerCallback();
+
+		}
+	}
+	
 	private MFGameView mGameView; //the game view
 	private int mLevel;
 	private boolean mPromptUserToStore = false; // whether or not we should prompt the user to check out the store
@@ -1671,6 +1731,15 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	 */
 	private boolean mBridgeMode; //whether we'rein the mode of dragging and creating a bridge
 	private int mBridgeStartRow, mBridgeEndRow, mBridgeStartCol, mBridgeEndCol;
+	
+	/**
+	 * Star Blinking Timer related
+	 */
+	Timer mStarAnimationTimer = null;
+	private static final long STAR_ANIMATION_INTERVAL = 50; //milli seconds
+	private static final int STAR_ANIMATION_DURATION = 10; //steps
+	private static final long STAR_BLINK_INTERVAL = 1000; //milli seconds
+	private static final int STAR_ANIMATION_INITIAL_SIZE = -30;
 	
 	/**
 	 * Sound related
