@@ -1,11 +1,6 @@
 package com.ezeeideas.magicflood;
 
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import com.google.android.gms.internal.mh;
-
 import android.content.Context;
 import android.graphics.Canvas;
 
@@ -24,7 +19,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.GestureDetector;
-import android.widget.HorizontalScrollView;
 
 public class MFGameView extends View
 {
@@ -110,59 +104,82 @@ public class MFGameView extends View
 		mBridgeInvalidPaint.setStrokeWidth(2);
 		
 		mDetector = new GestureDetectorCompat(context, new MyGestureListener());
+		
 	}
 	
 	@Override 
     public boolean onTouchEvent(MotionEvent event){
 		Log.d("gaurav", "onTouchEvent, mMode = " + mMode);
-		if (mMode == MODE_TAP)
+		this.mDetector.onTouchEvent(event);
+
+		int x = (int)event.getX();
+		int y = (int)event.getY();
+
+
+		int row = getRowForY(y);
+		int col = getColForX(x);
+
+		Log.d("gaurav", "row = " + row + ", col = " + col);
+		
+		if (row >= 0 && row <= mGridSize && col >=0 && col <= mGridSize)
 		{
-			this.mDetector.onTouchEvent(event);
-		}
-		else if (mMode == MODE_DRAG)
-		{
-			int x = (int)event.getX();
-			int y = (int)event.getY();
-			
-			
-			int row = getRowForY(y);
-			int col = getColForX(x);
-			
-			Log.d("gaurav", "row = " + row + ", col = " + col);
-			Log.d("gaurav", "mBridgeStartX = " + mBridgeStartX + ", mBridgeStartY = " + mBridgeStartY);
-			Log.d("gaurav", "mBridgeEndX = " + mBridgeEndX + ", mBridgeEndY = " + mBridgeEndY);
-			if (row >= 0 && row <= mGridSize && col >=0 && col <= mGridSize)
+			int action = MotionEventCompat.getActionMasked(event);
+			Log.d("gaurav", "action = " + action);
+			if (mBridgeBuildingMode)
 			{
-				int action = MotionEventCompat.getActionMasked(event);
+				Log.d("gaurav", "mBridgeStartX = " + mBridgeStartX + ", mBridgeStartY = " + mBridgeStartY);
+				Log.d("gaurav", "mBridgeEndX = " + mBridgeEndX + ", mBridgeEndY = " + mBridgeEndY);
+				
 				if (action == MotionEvent.ACTION_DOWN)
 				{
 					mBridgeStartX = mBridgeEndX = x;
 					mBridgeStartY = mBridgeEndY = y;
-					
+
 					mTapHandler.handleGameViewDragBegin(col, row);
-					
+
 					return true;
 				}
 				else if (action == MotionEvent.ACTION_MOVE)
 				{
 					mBridgeStartX = x;
 					mBridgeStartY = y;
-					
+
 					mTapHandler.handleGameViewDragMove(col, row);
-					
+
 					return true;
 				}
 				else if (action == MotionEvent.ACTION_UP)
 				{
 					mBridgeStartX = x;
 					mBridgeStartY = y;
-					
+
 					mTapHandler.handleGameViewDragEnd(col, row);
 				}
 			}
+			else
+			{
+				if (action == MotionEvent.ACTION_UP)
+				{
+					return performClick();
+				}
+				else
+				{
+					return true;
+				}
+			}
 		}
-        return super.onTouchEvent(event);
-    }
+
+		return super.onTouchEvent(event);
+	}
+	
+	@Override 
+    public boolean performClick()
+	{
+		Log.d("gaurav", "perform click");
+
+		
+		return super.performClick();
+	}
 	
 	protected void onDraw(Canvas canvas)
 	{		
@@ -424,9 +441,7 @@ public class MFGameView extends View
 	{
 		int left = hOffset + y * cellSize;
 		int top = vOffset + x * cellSize;
-		int right = left + cellSize;
-		int bottom = top + cellSize;
-		
+	
 		/**
 		 * Adjust the size/location of the star for the "blinking effect"
 		 */
@@ -434,8 +449,6 @@ public class MFGameView extends View
 		{
 			left += mCurrentStarSize;
 			top += mCurrentStarSize;
-			right -= mCurrentStarSize;
-			bottom -= mCurrentStarSize;
 			cellSize += Math.abs(mCurrentStarSize * 2);
 		}
 		else if (mCurrentStarSize == 0)
@@ -446,8 +459,6 @@ public class MFGameView extends View
 		{
 			left -= 2;
 			top -= 2;
-			right += 2;
-			bottom += 2;
 			cellSize += 4;
 		}
 		
@@ -687,21 +698,17 @@ public class MFGameView extends View
 		
 		
 		int hOffset = 0;
-		int vOffset = 0;
 		/**
 		 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
 		 */
 		if (screenHeight > screenWidth)
 		{
-			int verticalGap = screenHeight - gridSizePixels - SHADOW_THICKNESS;
-			vOffset = verticalGap / 2;
 			hOffset = GAME_VIEW_PADDING;
 		}
 		else
 		{
 			int horizontalGap = screenWidth - gridSizePixels - SHADOW_THICKNESS;
 			hOffset = horizontalGap / 2;
-			vOffset = GAME_VIEW_PADDING;
 		}
 		
 		int xOffset = x - hOffset;
@@ -725,7 +732,6 @@ public class MFGameView extends View
 		gridSizePixels = cellSize * mGridSize; //remove the rounding off errors
 		
 		
-		int hOffset = 0;
 		int vOffset = 0;
 		/**
 		 * figure out the hOffset and the vOffset, in trying to center the grid in the given area.
@@ -734,12 +740,9 @@ public class MFGameView extends View
 		{
 			int verticalGap = screenHeight - gridSizePixels - SHADOW_THICKNESS;
 			vOffset = verticalGap / 2;
-			hOffset = GAME_VIEW_PADDING;
 		}
 		else
 		{
-			int horizontalGap = screenWidth - gridSizePixels - SHADOW_THICKNESS;
-			hOffset = horizontalGap / 2;
 			vOffset = GAME_VIEW_PADDING;
 		}
 		
@@ -815,16 +818,6 @@ public class MFGameView extends View
 	    return y;
 	}
 
-	
-	/**
-	 * Set the mode of the Game View.
-	 * @param mode
-	 */
-	public void setMode(int mode)
-	{
-		mMode = mode;
-	}
-	
 	public void setTapHandler(GameViewTapHandler handler)
 	{
 		mTapHandler = handler;
@@ -849,6 +842,7 @@ public class MFGameView extends View
         @Override
         public boolean onSingleTapConfirmed(MotionEvent event) 
         {     		
+        	Log.d("gaurav", "onSinleTapConfirmed");
     			int x = (int) event.getX();
     			int y = (int) event.getY();
     			
@@ -882,8 +876,6 @@ public class MFGameView extends View
     			
     			mTapHandler.handleGameViewTap(gridx, gridy);
     			return true;
-    		
-    		
         }
     }
 

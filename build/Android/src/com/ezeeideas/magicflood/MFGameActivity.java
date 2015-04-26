@@ -15,14 +15,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -675,7 +673,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mStarPlacementMode = true;
 				
 				refreshLifelinesUI();
-				mGameView.setMode(MFGameView.MODE_TAP);
 			}
 			
 			return;
@@ -725,7 +722,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mHurdleSmashMode = true;
 				
 				refreshLifelinesUI();
-				mGameView.setMode(MFGameView.MODE_TAP);
 			}
 			
 			return;
@@ -775,7 +771,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mBridgeMode = true;
 				
 				refreshLifelinesUI();
-				mGameView.setMode(MFGameView.MODE_DRAG);
+				mGameView.enterExitBridgeBuildingMode(true, true);
 			}
 			
 			return;
@@ -1492,9 +1488,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				
 				mGameView.updateGameData(gridData);				
 				mGameView.invalidate();		
-				
-				mGameView.setMode(MFGameView.MODE_NONE);
-				
+								
 				/** Update the number of hurdle smashers remaining **/
 				SharedPreferences settings;
 				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
@@ -1522,7 +1516,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				playSound(mStarPlacedSoundID);
 				
 				//successfully placed the star
-				mGameView.setMode(MFGameView.MODE_NONE);
 				
 				//update the game view
 				int[] startPos = getStartPos(gridHandle);
@@ -1629,11 +1622,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mGameView.updateGameData(gridData);				
 				mGameView.invalidate();		
 				
-				mGameView.setMode(MFGameView.MODE_NONE);
-				
 				/** Update the number of bridges remaining **/
-				SharedPreferences settings;
-				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 				int numBridges = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, MFGameConstants.INITIAL_BRIDGES_ALLOCATED);
 				numBridges --;
 				MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, numBridges);
@@ -1676,9 +1665,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	}
 	
 	public class AnimationTimerTask extends TimerTask
-	{
-		private View mView;
-		
+	{		
 		public AnimationTimerTask()
 		{
 		}
@@ -1687,7 +1674,6 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	    public void run()
 		{
 			starBlinkingTimerCallback();
-
 		}
 	}
 	
