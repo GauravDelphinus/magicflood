@@ -297,7 +297,7 @@ android:orientation="vertical" >
                      <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_add_moves"
+                        android:src="@drawable/help_image_screen_7"
                         />
                    
                     <View
@@ -345,17 +345,9 @@ android:orientation="vertical" >
                      <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_star_placement_info"
+                        android:src="@drawable/help_image_screen_8"
                         />
-                   <View
-                            android:layout_height="@dimen/big_gap"
-                            android:layout_width="wrap_content"
-                            />
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_add_star"
-                        />
+                
                     <View
                             android:layout_height="@dimen/big_gap"
                             android:layout_width="wrap_content"
@@ -401,19 +393,10 @@ android:orientation="vertical" >
                      <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/help_image_screen_8"
+                        android:src="@drawable/help_image_screen_9"
                         />
                    
-                      <View
-                            android:layout_height="@dimen/big_gap"
-                            android:layout_width="wrap_content"
-                            />
-                     
-                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_add_hurdle_smasher"
-                        />
+                    
                     <View
                             android:layout_height="@dimen/big_gap"
                             android:layout_width="wrap_content"

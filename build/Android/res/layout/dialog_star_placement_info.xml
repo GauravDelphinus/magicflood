@@ -57,7 +57,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_star_placement_info"
+            android:src="@drawable/help_image_screen_7"
             />
         
         <View

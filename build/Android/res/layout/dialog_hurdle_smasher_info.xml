@@ -57,7 +57,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_hurdle_smasher_info"
+            android:src="@drawable/help_image_screen_8"
             />
         
         <View

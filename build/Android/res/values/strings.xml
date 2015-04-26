@@ -88,17 +88,17 @@
     <string name="help_screen3_title">Start filling the grid with colors</string>
     <string name="help_screen4_title">Look out for hurdles!</string>
     <string name="help_screen5_title">Earn and Redeem Coins!</string>
-    <string name="help_screen6_title">Add Moves</string>
-    <string name="help_screen7_title">Additional Stars</string>
-    <string name="help_screen8_title">Hurdle Smashers</string>
+    <string name="help_screen6_title">Additional Stars</string>
+    <string name="help_screen7_title">Hurdle Smashers</string>
+    <string name="help_screen8_title">Build Bridges</string>
     <string name="help_screen1_description_text">The objective of the game is to fill the entire grid with the same color.</string>
-    <string name="help_screen2_description_text">Look for the rotating star.  It could be anywhere on the grid.  There could be multiple stars in the game as well!</string>
+    <string name="help_screen2_description_text">Look for the blinking star.  It could be anywhere on the grid.  There could be multiple stars in the game as well!</string>
     <string name="help_screen3_description_text">Tap the color buttons at the bottom to fill the grid.</string>
-    <string name="help_screen4_description_text">Look out for hurdles, and work your way around them!</string>
+    <string name="help_screen4_description_text">Hurdles come in all shapes and sizes, and you gotta work your way around them!</string>
     <string name="help_screen5_description_text">Accumulate and redeem coins for lifelines such as bonus moves, additional stars and hurdle smashers!</string>
-    <string name="help_screen6_description_text">When you\'re running out of moves, add bonus moves and save your game!</string>
-    <string name="help_screen7_description_text">Add additional stars on the game grid to accelerate the speed of the game!</string>
-    <string name="help_screen8_description_text">Use Hurdle Smashers to make holes in hurdles and create new paths to complete the game! </string>
+    <string name="help_screen6_description_text">Add additional stars on the game grid to accelerate the speed of the game!</string>
+    <string name="help_screen7_description_text">Use Hurdle Smashers to make holes in hurdles and create new paths to complete the game!</string>
+    <string name="help_screen8_description_text">Instead of manouvering around branches, you can connect them using bridges and speed up the game! </string>
 
     
     <!-- Levels Screen -->
@@ -161,19 +161,21 @@
     <!-- Hurdle Smasher Info Dialog -->
     <string name="dialog_hurdle_smasher_info_tap_title_text">Smash a Hurdle</string>
     <string name="dialog_hurdle_smasher_info_not_detected_title_text">Try Again</string>
-    <string name="dialog_hurdle_smasher_info_tap_text">Super! Now that you have a Hurdle Smasher, use it to make a hole in a hurdle by tapping your finger on the hurdle.</string>
+    <string name="dialog_hurdle_smasher_info_tap_text">Create a hole in a hurdle now by tapping your finger on top of it.</string>
     <string name="dialog_hurdle_smasher_info_not_detected_text">Couldn\'t detect a hurdle.  Please try again, by tapping on any hurdle.</string>
     <string name="toast_hurdle_smasher_placement_info">Tap on any hurdle now to make a hole in it</string>
 
     <!-- Star Placement Info Dialog -->
     <string name="dialog_star_placement_info_tap_title_text">Place the Star</string>
     <string name="dialog_star_placement_info_not_detected_title_text">Try Again</string>
-    <string name="dialog_star_placement_info_tap_text">Excellent! Now that you have an additional Star, place it anywhere on the grid by tapping your finger on the desired location.</string>
-    <string name="dialog_star_placement_info_not_detected_text">Couldn\'t detect a valid location.  Please try again, by tapping on any location (outside a hurdle).</string>
+    <string name="dialog_star_placement_info_tap_text">Place a star anywhere on the grid by tapping your finger on the desired location now.</string>
+    <string name="dialog_star_placement_info_not_detected_text">Couldn\'t detect a valid location to place a star.  Please try again by tapping on a color cell.</string>
     <string name="dialog_lifeline_placement_info_button_text">I\'m ready!</string>
     <string name="toast_star_placement_info">Tap anywhere on the grid now to place a star</string>
     
     <!-- Bridge Placement Info Dialog -->
+    <string name="dialog_bridge_placement_info_title_text">Build a Bridge</string>
+    <string name="dialog_bridge_placement_info_description_text">Build a bridge now by dragging your finger across branches (over blank spaces). Note that bridges can only be horizontal or vertical, not curved!</string>
     <string name="toast_bridge_placement_info">Drag across branches in the grid now to connect them with a bridge</string>
     
     <!-- IAP Failed Dialog -->
