@@ -11,10 +11,7 @@ import com.google.android.gms.ads.AdView;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
@@ -82,12 +79,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
     	mLevel = getIntent().getIntExtra(MFGameConstants.GAME_LEVEL_KEY, 1);
     	mPromptUserToStore = getIntent().getBooleanExtra(MFGameConstants.PROMPT_USER_TO_STORE, false);
     	
-    	//read system preferences of number of coins, and total points earned so far
-		//get the sharepref
-    	SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-
-		int coins = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, MFGameConstants.INITIAL_COINS_ALLOCATED);
+    	//read system preferences of number of coins, and total points earned so far  
+		int coins = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, MFGameConstants.INITIAL_COINS_ALLOCATED);
 		setCoins(coins);
 		String coinsEarnedText = String.format(getResources().getString(R.string.coins_earned_text), coins);
 		mCoinsEarnedLabel = (TextView) findViewById(R.id.coins_text_id);
@@ -177,11 +170,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mBridgePlacedSoundID = mSoundPool.load(this, R.raw.bridge_created_sound, 1);
 		
 		//read the preference on whether the sound should be muted
-		SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-
-		//get the sharepref
-		mPlaySound = settings.getBoolean(MFGameConstants.PREFERENCE_SOUND, true);
+		mPlaySound = MFUtils.prefGetBoolean(this, MFGameConstants.PREFERENCE_SOUND, true);
 		
 		mSoundButton = (ImageButton) findViewById(R.id.mute_sound_id);
 		if (mPlaySound)
@@ -204,20 +193,16 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		TextView removeAdsTV = (TextView) findViewById(R.id.remove_ads_button_text_id);
 		removeAdsTV.setTypeface(MFUtils.getTextTypeface(this));
 		
-		SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-		boolean containsAdsKey = settings.contains(MFGameConstants.PREFERENCE_ADS_REMOVED);
+		boolean containsAdsKey = MFUtils.prefHasKey(this, MFGameConstants.PREFERENCE_ADS_REMOVED);
 		if (containsAdsKey)
 		{
-			showAds = !settings.getBoolean(MFGameConstants.PREFERENCE_ADS_REMOVED, false);
+			showAds = !MFUtils.prefGetBoolean(this, MFGameConstants.PREFERENCE_ADS_REMOVED, false);
 		}
 		else
 		{
 			if (mIAPManager.getProductProvisioned(MFGameConstants.IAP_REMOVE_ADS))
 			{
-				Editor editor = settings.edit();
-				editor.putBoolean(MFGameConstants.PREFERENCE_ADS_REMOVED, true);
-				editor.commit();
+				MFUtils.prefPutBoolean(this, MFGameConstants.PREFERENCE_ADS_REMOVED, true);
 				
 				showAds = false;
 			}
@@ -392,12 +377,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		mLevelLabel.setText(levelText);
 		
 		//since we just started playing this level, update the corresponding preference
-		SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-		Editor editor = settings.edit();
-		
-		editor.putInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, mLevel);
-		editor.commit();
+		MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, mLevel);
 		
 		//reenable buttons if they were disabled
 		enableDisableAllButtons(true);
@@ -411,15 +391,10 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	
 	private void refreshLifelinesUI()
 	{
-		SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-		
 		if (mLevel == getMinLevelToAddStars())
 		{
-			boolean alreadyShown = settings.getBoolean(MFGameConstants.PREFERENCE_STARS_UNLOCKED, false);
-			Editor editor = settings.edit();
-			editor.putBoolean(MFGameConstants.PREFERENCE_STARS_UNLOCKED, true);
-			editor.commit();
+			boolean alreadyShown = MFUtils.prefGetBoolean(this, MFGameConstants.PREFERENCE_STARS_UNLOCKED, false);
+			MFUtils.prefPutBoolean(this, MFGameConstants.PREFERENCE_STARS_UNLOCKED, true);
 			
 			if (!alreadyShown)
 			{
@@ -430,10 +405,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else if (mLevel == getMinLevelToAddHurdleSmasher())
 		{
-			boolean alreadyShown = settings.getBoolean(MFGameConstants.PREFERENCE_HURDLE_SMASHERS_UNLOCKED, false);
-			Editor editor = settings.edit();
-			editor.putBoolean(MFGameConstants.PREFERENCE_HURDLE_SMASHERS_UNLOCKED, true);
-			editor.commit();
+			boolean alreadyShown = MFUtils.prefGetBoolean(this, MFGameConstants.PREFERENCE_HURDLE_SMASHERS_UNLOCKED, false);
+			MFUtils.prefPutBoolean(this, MFGameConstants.PREFERENCE_HURDLE_SMASHERS_UNLOCKED, true);
 			
 			if (!alreadyShown)
 			{
@@ -444,10 +417,8 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		}
 		else if (mLevel == getMinLevelToAddBridge())
 		{
-			boolean alreadyShown = settings.getBoolean(MFGameConstants.PREFERENCE_BRIDGES_UNLOCKED, false);
-			Editor editor = settings.edit();
-			editor.putBoolean(MFGameConstants.PREFERENCE_BRIDGES_UNLOCKED, true);
-			editor.commit();
+			boolean alreadyShown = MFUtils.prefGetBoolean(this, MFGameConstants.PREFERENCE_BRIDGES_UNLOCKED, false);
+			MFUtils.prefPutBoolean(this, MFGameConstants.PREFERENCE_BRIDGES_UNLOCKED, true);
 			
 			if (!alreadyShown)
 			{
@@ -465,7 +436,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			mAddStarsButton.setVisibility(View.VISIBLE);
 			
-			int numStars = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, MFGameConstants.INITIAL_STARS_ALLOCATED);
+			int numStars = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, MFGameConstants.INITIAL_STARS_ALLOCATED);
 			if (numStars == 0)
 			{
 				mAddStarsButton.setImageResource(0);
@@ -491,7 +462,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			mAddHurdleSmasherButton.setVisibility(View.VISIBLE);
 			
-			int numSmashers = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, MFGameConstants.INITIAL_HURDLE_SMASHERS_ALLOCATED);
+			int numSmashers = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, MFGameConstants.INITIAL_HURDLE_SMASHERS_ALLOCATED);
 			if (numSmashers == 0)
 			{
 				mAddHurdleSmasherButton.setImageResource(0);
@@ -517,7 +488,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		{
 			mAddBridgeButton.setVisibility(View.VISIBLE);
 			
-			int numBridges = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, MFGameConstants.INITIAL_BRIDGES_ALLOCATED);
+			int numBridges = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_BRIDGES_EARNED, MFGameConstants.INITIAL_BRIDGES_ALLOCATED);
 			if (numBridges == 0)
 			{
 				mAddBridgeButton.setImageResource(0);
@@ -599,11 +570,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			}
 			
 			//set the sharedpref
-			SharedPreferences settings;
-			settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-			Editor editor = settings.edit();
-			editor.putBoolean(MFGameConstants.PREFERENCE_SOUND, mPlaySound);
-			editor.commit();
+			MFUtils.prefPutBoolean(this, MFGameConstants.PREFERENCE_SOUND, mPlaySound);
 			
 			return;
 		}
@@ -858,24 +825,19 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			
 			MFAnalytics.trackEvent(this, MFAnalytics.ANALYTICS_CATEGORY_GAME, MFAnalytics.ANALYTICS_ACTION_GAME_ENDED, MFAnalytics.ANALYTICS_LABEL_GAME_ENDED_SUCCESS);
 			
-			//Update the last completed preference
-			SharedPreferences settings;
-			settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-			Editor editor = settings.edit();			
-			int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
+			//Update the last completed preference			
+			int lastCompletedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
 			if (lastCompletedLevel <= mLevel)
 			{
-				editor.putInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, mLevel);
-				editor.commit();
+				MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, mLevel);
 			}
 			
 			//Unlock the next level
-			int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+			int lastUnlockedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
 			if (lastUnlockedLevel <= mLevel)
 			{
 				lastUnlockedLevel ++;
-				editor.putInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, lastUnlockedLevel);
-				editor.commit();
+				MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, lastUnlockedLevel);
 			}
 			
 			/** Update Coins Earned **/	
@@ -925,11 +887,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		
 		setCoins(coins);
         
-        SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-		Editor editor = settings.edit();
-		editor.putInt(MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, coins);
-		editor.commit();
+		MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_TOTAL_COINS_EARNED, coins);
 	}
 	
 	class CoinsUpdateHandler extends Handler
@@ -1351,12 +1309,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 			if (status == true)
 			{
 				//successful purchase
-				//set the sharedpref
-				SharedPreferences settings;
-				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-				Editor editor = settings.edit();
-				editor.putBoolean(MFGameConstants.PREFERENCE_ADS_REMOVED, true);
-				editor.commit();
+				MFUtils.prefPutBoolean(this, MFGameConstants.PREFERENCE_ADS_REMOVED, true);
 				
 				//hide Ads
 				hideAds();
@@ -1490,13 +1443,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mGameView.invalidate();		
 								
 				/** Update the number of hurdle smashers remaining **/
-				SharedPreferences settings;
-				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-				int numSmashers = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, MFGameConstants.INITIAL_HURDLE_SMASHERS_ALLOCATED);
+				int numSmashers = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, MFGameConstants.INITIAL_HURDLE_SMASHERS_ALLOCATED);
 				numSmashers --;
-				Editor editor = settings.edit();
-				editor.putInt(MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, numSmashers);
-				editor.commit();
+				MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_TOTAL_HURDLE_SMASHERS_EARNED, numSmashers);
 				
 				refreshLifelinesUI();
 			}
@@ -1530,13 +1479,9 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 				mGameView.invalidate();
 				
 				/** Update the number of stars remaining **/
-				SharedPreferences settings;
-				settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-				int numStars = settings.getInt(MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, MFGameConstants.INITIAL_STARS_ALLOCATED);
+				int numStars = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, MFGameConstants.INITIAL_STARS_ALLOCATED);
 				numStars --;
-				Editor editor = settings.edit();
-				editor.putInt(MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, numStars);
-				editor.commit();
+				MFUtils.prefPutInt(this, MFGameConstants.PREFERENCE_TOTAL_STARS_EARNED, numStars);
 				
 				refreshLifelinesUI();
 			}

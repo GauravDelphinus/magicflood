@@ -84,6 +84,13 @@ public class MFUtils
 	    return "ldpi";
 	}
 	
+	public static boolean prefHasKey(Context context, String pref)
+	{
+		SharedPreferences settings;
+		settings = context.getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		return settings.contains(pref);
+	}
+	
 	public static int prefGetInt(Context context, String pref, int defaultValue)
 	{
 		SharedPreferences settings;
@@ -100,6 +107,25 @@ public class MFUtils
 		
 		Editor editor = settings.edit();
 		editor.putInt(pref, value);
+		editor.commit();
+	}
+	
+	public static boolean prefGetBoolean(Context context, String pref, boolean defaultValue)
+	{
+		SharedPreferences settings;
+		settings = context.getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		boolean retVal = settings.getBoolean(pref, defaultValue);
+		
+		return retVal;		
+	}
+	
+	public static void prefPutBoolean(Context context, String pref, boolean value)
+	{
+		SharedPreferences settings;
+		settings = context.getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+		
+		Editor editor = settings.edit();
+		editor.putBoolean(pref, value);
 		editor.commit();
 	}
 

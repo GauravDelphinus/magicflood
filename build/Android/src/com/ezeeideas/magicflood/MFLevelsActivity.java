@@ -24,11 +24,9 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 	private void refreshViews()
 	{
 		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
-		SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 
-		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
-		int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
+		int lastUnlockedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+		int lastCompletedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
 		
 		enumerateLevelsAndSetProperties(mViewFlipper, 1, numLevels, lastUnlockedLevel, lastCompletedLevel);
 		
@@ -46,7 +44,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
         		if (levelNum <= numLevels)
         		{
 	        		MFLevelLayout levelLayout = (MFLevelLayout)nextChild;
-	        		if (levelNum <= lastCompletedLevel)
+	        		if (true)//(levelNum <= lastCompletedLevel)
 	        		{
 	        			levelLayout.setProperties(levelNum, MFLevelLayout.LEVEL_STATUS_COMPLETED); //level is unlocked and completed
 	        		}
@@ -87,11 +85,8 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 	{
 		MFLevelLayout layout = (MFLevelLayout) arg0;
 		
-		SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-
-		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
-		if (layout.getLevel() <= lastUnlockedLevel)
+		int lastUnlockedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+		if (true)//(layout.getLevel() <= lastUnlockedLevel)
 		{
 			Intent i = new Intent(this, MFGameActivity.class); 	
 			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, layout.getLevel());
@@ -147,13 +142,10 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 		int numLevels = getIntent().getIntExtra(MFGameConstants.NUM_LEVELS_KEY, 0);
     	ViewFlipper flipper = (ViewFlipper) findViewById(R.id.view_flipper_id);
     	LayoutInflater inflater = LayoutInflater.from(this);
-    	    	
-    	SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 
-		int lastUnlockedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
-		int lastPlayedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, MFGameConstants.DEFAULT_LAST_PLAYED_LEVEL);
-		int lastCompletedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
+		int lastUnlockedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
+		int lastPlayedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, MFGameConstants.DEFAULT_LAST_PLAYED_LEVEL);
+		int lastCompletedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_COMPLETED_LEVEL, MFGameConstants.DEFAULT_LAST_COMPLETED_LEVEL);
 		int screenToStartWith = (lastPlayedLevel - 1) / MFConstants.NUM_LEVELS_PER_SCREEN;
 		
     	int levelNum = 1;
@@ -176,9 +168,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 	@Override
 	protected int getStartScreen() 
 	{
-		SharedPreferences settings;
-		settings = getSharedPreferences(MFGameConstants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-		int lastPlayedLevel = settings.getInt(MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, MFGameConstants.DEFAULT_LAST_PLAYED_LEVEL);
+		int lastPlayedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_PLAYED_LEVEL, MFGameConstants.DEFAULT_LAST_PLAYED_LEVEL);
 		int screenToStartWith = (lastPlayedLevel - 1) / MFConstants.NUM_LEVELS_PER_SCREEN;
 		
 		return screenToStartWith;
