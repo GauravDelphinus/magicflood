@@ -189,9 +189,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 		boolean showAds = true;
 		
 		mAdView = (AdView) findViewById(R.id.banner_ad_id);
-		mRemoveAdsButton = (LinearLayout) findViewById(R.id.remove_ads_button_id);
-		TextView removeAdsTV = (TextView) findViewById(R.id.remove_ads_button_text_id);
-		removeAdsTV.setTypeface(MFUtils.getTextTypeface(this));
+		mRemoveAdsButton = (ImageButton) findViewById(R.id.remove_ads_button_id);
 		
 		boolean containsAdsKey = MFUtils.prefHasKey(this, MFGameConstants.PREFERENCE_ADS_REMOVED);
 		if (containsAdsKey)
@@ -1637,7 +1635,7 @@ public class MFGameActivity extends Activity implements View.OnClickListener, Ga
 	private ImageButton mCyanButton;
 	
 	private ImageButton mAddCoinsButton, mAddMovesButton, mAddStarsButton, mAddHurdleSmasherButton, mAddBridgeButton;
-	private LinearLayout mRemoveAdsButton;
+	private ImageButton mRemoveAdsButton;
 	private ImageView mMovesImage;
 	
 	private AlertDialog mExitAlertDialog, mSuccessAlertDialog, mFailedAlertDialog;

@@ -120,7 +120,7 @@
     <string name="dialog_add_coins_title_text">Add Coins</string>
     <string name="dialog_add_coins_description_dynamic">Hey, looks like you\'re running short by %1$d coins.  Add coins now using one of these great deals!</string>
     <string name="dialog_add_coins_description_static">Add coins and redeem them against lifelines such as additional Stars, Hurdle Smashers, and more!</string>
-    <string name="coins_required_text">%1$d coins</string>
+    <string name="coins_required_text">%1$d</string>
     <string name="dialog_add_coins_error_text">There was a problem connecting to the Play Store.  Please try again later.</string>
     
     <!-- Add Lifeline Dialog -->

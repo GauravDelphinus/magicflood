@@ -156,29 +156,14 @@
 	    android:src="@drawable/ic_button_add_bridge"
 	    android:background="@color/transparent"
 	    />
-	<LinearLayout
-		    android:id="@+id/remove_ads_button_id"
+	<ImageButton
+	    android:id="@+id/remove_ads_button_id"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:orientation="horizontal"
-	    android:background="@drawable/bg_button_general"
-	    android:layout_margin="@dimen/activity_vertical_padding"
-	    android:padding="@dimen/activity_horizontal_padding"
 	    android:layout_alignParentRight="true"
-	    android:layout_centerVertical="true"
-	    >
-	    
-	  
-	    <TextView
-	        android:id="@+id/remove_ads_button_text_id"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:text="@string/remove_ads_button_text"
-	        android:textColor="@color/button_text_color"
-	        android:textSize="@dimen/game_screen_buttons_text_size"
-	        android:gravity="center"
-	        />
-	</LinearLayout>
+	    android:src="@drawable/ic_button_remove_ads"
+	    android:background="@color/transparent"
+	    />
 	
 	</RelativeLayout>
 	<!-- The button bar that contains the color buttons -->

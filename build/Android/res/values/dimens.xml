@@ -5,18 +5,20 @@
     <dimen name="activity_vertical_margin">10dp</dimen>
     <dimen name="activity_horizontal_padding">10dp</dimen>
     <dimen name="activity_vertical_padding">10dp</dimen>
+    <dimen name="small_margin">5dp</dimen>
+    <dimen name="medium_margin">10dp</dimen>
 
 	<dimen name="big_gap">30dp</dimen>
 	
 	<!-- Main Screen -->
 	<dimen name="main_screen_buttons_margin">5dip</dimen>
-	<dimen name="main_screen_buttons_text_size">27sp</dimen>
+	<dimen name="main_screen_buttons_text_size">25sp</dimen>
 	<dimen name="company_name_text_size">15sp</dimen>
 	
 	<!-- Game Screen -->
-	<dimen name="game_level_text_size">30sp</dimen>
-	<dimen name="game_coins_text_size">25sp</dimen>
-	<dimen name="game_moves_text_size">25sp</dimen>
+	<dimen name="game_level_text_size">25sp</dimen>
+	<dimen name="game_coins_text_size">23sp</dimen>
+	<dimen name="game_moves_text_size">23sp</dimen>
 	<dimen name="drop_shadow_thickness">10dp</dimen>
 	<dimen name="game_screen_buttons_text_size">12sp</dimen>
 	
@@ -33,7 +35,7 @@
     <dimen name="dialog_continue_text_size">20sp</dimen>
     <dimen name="dialog_button_text_size">15sp</dimen>
     <dimen name="dialog_positive_button_text_size">20sp</dimen>
-    <dimen name="dialog_big_text_size">30sp</dimen>
+    <dimen name="dialog_big_text_size">25sp</dimen>
     
     <!-- About Screen -->
     <dimen name="about_copyright_text_size">15sp</dimen>
