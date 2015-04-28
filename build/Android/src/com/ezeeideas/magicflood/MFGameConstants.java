@@ -132,7 +132,7 @@ public class MFGameConstants
 	public static final int DEFAULT_LAST_UNLOCKED_LEVEL = 1;
 	public static final int DEFAULT_LAST_PLAYED_LEVEL = 1;
 	public static final int DEFAULT_LAST_COMPLETED_LEVEL = 0;
-	public static final int INITIAL_COINS_ALLOCATED = 100000;
+	public static final int INITIAL_COINS_ALLOCATED = 100;
 	public static final int INITIAL_STARS_ALLOCATED = 2;
 	public static final int INITIAL_HURDLE_SMASHERS_ALLOCATED = 2;
 	public static final int INITIAL_BRIDGES_ALLOCATED = 2;

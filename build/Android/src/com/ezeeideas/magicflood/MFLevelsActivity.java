@@ -44,7 +44,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
         		if (levelNum <= numLevels)
         		{
 	        		MFLevelLayout levelLayout = (MFLevelLayout)nextChild;
-	        		if (true)//(levelNum <= lastCompletedLevel)
+	        		if (levelNum <= lastCompletedLevel)
 	        		{
 	        			levelLayout.setProperties(levelNum, MFLevelLayout.LEVEL_STATUS_COMPLETED); //level is unlocked and completed
 	        		}
@@ -86,7 +86,7 @@ public class MFLevelsActivity extends MFViewFlipperActivity implements OnClickLi
 		MFLevelLayout layout = (MFLevelLayout) arg0;
 		
 		int lastUnlockedLevel = MFUtils.prefGetInt(this, MFGameConstants.PREFERENCE_LAST_UNLOCKED_LEVEL, MFGameConstants.DEFAULT_LAST_UNLOCKED_LEVEL);
-		if (true)//(layout.getLevel() <= lastUnlockedLevel)
+		if (layout.getLevel() <= lastUnlockedLevel)
 		{
 			Intent i = new Intent(this, MFGameActivity.class); 	
 			i.putExtra(MFGameConstants.GAME_LEVEL_KEY, layout.getLevel());
