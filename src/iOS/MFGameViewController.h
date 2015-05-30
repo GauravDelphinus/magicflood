@@ -11,9 +11,10 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <iAd/iAd.h>
 #import "MFGameDialogController.h"
+#import <MessageUI/MessageUI.h>
 
 @interface MFGameViewController : UIViewController <UIAlertViewDelegate, GameViewTapHandler, ADBannerViewDelegate, GameDialogOptionSelectedDelegate,
-                    IAPPurchaseHandler>
+                    IAPPurchaseHandler, MFMailComposeViewControllerDelegate>
 
 @property int gameLevel; //set by the calling MFViewController
 
@@ -39,6 +40,9 @@
 #define DIALOG_TYPE_INTRODUCE_STARS 19
 #define DIALOG_TYPE_INTRODUCE_HURDLE_SMASHERS 20
 #define DIALOG_TYPE_INTRODUCE_BRIDGES   21
+
+#define DIALOG_TYPE_DO_YOU_LIKE_GAME    22
+#define DIALOG_TYPE_RATE_GAME   23
 
 
 @end

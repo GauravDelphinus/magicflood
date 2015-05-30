@@ -53,6 +53,7 @@
                                           [NSNumber numberWithInt:0], @PREFERENCE_STAR_PLACEMENT_COUNT,
                                           [NSNumber numberWithInt:0], @PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT,
                                           [NSNumber numberWithInt:0], @PREFERENCE_BRIDGE_PLACEMENT_COUNT,
+                                          [NSNumber numberWithInt:INITIAL_RATE_GAME_REMINDER], @PREFERENCE_RATE_GAME_REMINDER,
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
 }

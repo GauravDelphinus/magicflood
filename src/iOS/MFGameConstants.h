@@ -29,6 +29,7 @@
 #define PREFERENCE_STAR_PLACEMENT_COUNT "star_placement_count"
 #define PREFERENCE_HURDLE_SMASHER_PLACEMENT_COUNT "hurdle_smasher_placement_count"
 #define PREFERENCE_BRIDGE_PLACEMENT_COUNT   "bridge_placement_count"
+#define PREFERENCE_RATE_GAME_REMINDER "rate_game_reminder"
 
 /** Default Preferences **/
 #define DEFAULT_LAST_UNLOCKED_LEVEL 1
@@ -38,6 +39,7 @@
 #define INITIAL_STARS_ALLOCATED 2
 #define INITIAL_HURDLE_SMASHERS_ALLOCATED 2
 #define INITIAL_BRIDGES_ALLOCATED 2
+#define INITIAL_RATE_GAME_REMINDER  5
 
 /** Non-Standard Colors **/
 #define HURDLE_GRADIENT_START_COLOR 0xFF666666

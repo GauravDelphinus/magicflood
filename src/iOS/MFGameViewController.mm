@@ -974,6 +974,7 @@
  Handler of the menu button on the game board.
  **/
 - (IBAction)handleExit:(id)sender {
+    
     [self showDialogOfType:DIALOG_TYPE_GAME_MENU withData:0 withAnimation:NO];
 }
 
@@ -1081,6 +1082,36 @@
     
     //now also udpate the preference
     [[NSUserDefaults standardUserDefaults] setInteger:coins forKey: @PREFERENCE_TOTAL_COINS_EARNED];
+}
+
+/**
+ After every 5 game completions we prompt the user to rate
+ the app.
+ **/
+-(void)checkRateGameReminder
+{
+    int rateGame = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@PREFERENCE_RATE_GAME_REMINDER];
+    if (rateGame == 1)
+    {
+        [self showDialogOfType:DIALOG_TYPE_DO_YOU_LIKE_GAME withData:NULL withAnimation:false];
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:INITIAL_RATE_GAME_REMINDER forKey: @PREFERENCE_RATE_GAME_REMINDER];
+    }
+    else if (rateGame > 1)
+    {
+        rateGame --;
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:rateGame forKey: @PREFERENCE_RATE_GAME_REMINDER];
+    }
+}
+
+/**
+ Callback from the email composer screen.
+ **/
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    //Add an alert in case of failure
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*********************  UI Updates **************************/
@@ -1558,6 +1589,12 @@
         case DIALOG_TYPE_INTRODUCE_BRIDGES:
             [self showDialog:@"IntroduceBridgesDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
             break;
+        case DIALOG_TYPE_DO_YOU_LIKE_GAME:
+            [self showDialog:@"DoYouLikeGameDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
+            break;
+        case DIALOG_TYPE_RATE_GAME:
+            [self showDialog:@"RateGameDialog" withDialogType:dialogType withData:data withStrData:nil withAnimation:animate autoHide:NO];
+            break;
     }
 }
 
@@ -1686,6 +1723,8 @@
         if (option == GAME_DIALOG_POSITIVE_ACTION_1) // Next Game
         {
             [self startNewGame:(self.gameLevel + 1)];
+            
+            [self checkRateGameReminder];
         }
         else if (option == GAME_DIALOG_NEGATIVE_ACTION_1) //View Levels
         {
@@ -1929,6 +1968,59 @@
         self.mBridgeMode = YES;
         
         [self refreshLifelinesUI];
+    }
+    else if (dialogType == DIALOG_TYPE_DO_YOU_LIKE_GAME)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Love It
+        {
+            [self showDialogOfType:DIALOG_TYPE_RATE_GAME withData:NULL withAnimation:NO];
+        }
+        else if (option == GAME_DIALOG_NEGATIVE_ACTION_1) // Don't love it
+        {
+            //show the email composer window
+            if ([MFMailComposeViewController canSendMail]) {
+                MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
+                [composeViewController setMailComposeDelegate:self];
+                [composeViewController setToRecipients:@[@FEEDBACK_EMAIL]];
+                NSString *subject = nil;
+                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+                {
+                    
+                    subject = [NSString stringWithFormat:NSLocalizedString(@"feedback_email_subject", @""), "iPad"];
+                }
+                else
+                {
+                    subject = [NSString stringWithFormat:NSLocalizedString(@"feedback_email_subject", @""), "iPhone"];
+                }
+                [composeViewController setSubject:subject];
+                
+                [self presentViewController:composeViewController animated:YES completion:nil];
+            }
+        }
+    }
+    else if (dialogType == DIALOG_TYPE_RATE_GAME)
+    {
+        if (option == GAME_DIALOG_POSITIVE_ACTION_1) //Rate It Now
+        {
+            int rateGame = 0; //don't want this dialog to come up again
+            
+            [[NSUserDefaults standardUserDefaults] setInteger:rateGame forKey: @PREFERENCE_RATE_GAME_REMINDER];
+            
+            NSString *iTunesLink = @ITUNES_APP_URL;
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+        }
+        else if (option == GAME_DIALOG_POSITIVE_ACTION_2) //Remind me later
+        {
+            int rateGame = INITIAL_RATE_GAME_REMINDER;
+                
+            [[NSUserDefaults standardUserDefaults] setInteger:rateGame forKey: @PREFERENCE_RATE_GAME_REMINDER];
+        }
+        else if (option == GAME_DIALOG_POSITIVE_ACTION_3) //Already Rated
+        {
+            int rateGame = 0; //don't want this dialog to come up again
+            
+            [[NSUserDefaults standardUserDefaults] setInteger:rateGame forKey: @PREFERENCE_RATE_GAME_REMINDER];
+        }
     }
 }
 

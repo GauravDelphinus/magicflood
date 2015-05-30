@@ -141,6 +141,13 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1355,7 +1362,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.16761243790022434" green="0.32164313296976038" blue="0.9047154017857143" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="AC1-RL-jdM" firstAttribute="leading" secondItem="fG3-s7-6t8" secondAttribute="trailing" id="0MV-AZ-SwX"/>
                             <constraint firstItem="cBG-1s-2JC" firstAttribute="leading" secondItem="TTg-IM-Xdb" secondAttribute="trailing" id="0OT-3I-NL8"/>
@@ -4277,52 +4284,245 @@
             </objects>
             <point key="canvasLocation" x="2546" y="393"/>
         </scene>
-        <!--Lifeline Placement Info Dialog-->
-        <scene sceneID="Uke-wP-NTu">
+        <!--Game Dialog Controller-->
+        <scene sceneID="XQL-GL-Q2g">
             <objects>
-                <viewController storyboardIdentifier="LifelinePlacementInfoDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wq1-Z8-eeX" customClass="MFLifelinePlacementInfoDialog" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RateGameDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pXA-s1-gKJ" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dli-AW-YKQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="qX0-82-nwM"/>
+                        <viewControllerLayoutGuide type="top" id="fQJ-e1-VTf"/>
+                        <viewControllerLayoutGuide type="bottom" id="0My-0n-qek"/>
                     </layoutGuides>
-                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="OSf-lZ-3WL">
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="3o8-Ii-2Qa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGz-Bi-ZwT">
-                                <rect key="frame" x="28" y="115" width="265" height="179"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2VB-Ji-XIB">
+                                <rect key="frame" x="28" y="59" width="265" height="377"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congratulations for completing the game.  New levels coming soon!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpX-l3-VEs">
-                                        <rect key="frame" x="8" y="44" width="249" height="91"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-D7-wjB">
+                                        <rect key="frame" x="8" y="46" width="249" height="127"/>
+                                        <string key="text">We're so happy to hear that you love Magic Flood!  It'd be really helpful if you rated us on the App Store.  Thanks so much for spending some time with us.</string>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thank You!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ij8-Zw-Ynf">
+                                        <rect key="frame" x="59" y="8" width="154" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95s-PU-CLf" customClass="MFUIButton">
+                                        <rect key="frame" x="16" y="182" width="232" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rate Magic Flood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAS-ch-yKN">
+                                                <rect key="frame" x="48" y="19" width="156" height="50"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstItem="LAS-ch-yKN" firstAttribute="top" secondItem="95s-PU-CLf" secondAttribute="top" constant="10" id="Bca-3l-NM5"/>
+                                            <constraint firstAttribute="centerX" secondItem="LAS-ch-yKN" secondAttribute="centerX" id="W6V-Vy-us4"/>
+                                            <constraint firstAttribute="bottom" secondItem="LAS-ch-yKN" secondAttribute="bottom" constant="10" id="m45-7V-m0o"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="pXA-s1-gKJ" eventType="touchUpInside" id="In7-1e-jRH"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHQ-Bt-Hmz" customClass="MFUIButton">
+                                        <rect key="frame" x="20" y="277" width="110" height="79"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Remind me later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhR-xP-JwF">
+                                                <rect key="frame" x="6" y="15" width="102" height="49"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="DhR-xP-JwF" secondAttribute="trailing" constant="5" id="1wg-8u-rB7"/>
+                                            <constraint firstItem="DhR-xP-JwF" firstAttribute="top" secondItem="zHQ-Bt-Hmz" secondAttribute="top" constant="5" id="8Ln-5U-sCI"/>
+                                            <constraint firstItem="DhR-xP-JwF" firstAttribute="leading" secondItem="zHQ-Bt-Hmz" secondAttribute="leading" constant="5" id="PCL-4o-GOo"/>
+                                            <constraint firstAttribute="bottom" secondItem="DhR-xP-JwF" secondAttribute="bottom" constant="5" id="rXb-XW-BYW"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction2ButtonPressed:" destination="pXA-s1-gKJ" eventType="touchUpInside" id="uNR-tU-vps"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syp-LU-Dyq" customClass="MFUIButton">
+                                        <rect key="frame" x="140" y="277" width="112" height="79"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Already Rated" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2T-lw-Q2x">
+                                                <rect key="frame" x="6" y="10" width="96" height="61"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="13"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="q2T-lw-Q2x" secondAttribute="trailing" constant="5" id="BJE-qt-3pc"/>
+                                            <constraint firstItem="q2T-lw-Q2x" firstAttribute="top" secondItem="Syp-LU-Dyq" secondAttribute="top" constant="10" id="Un9-MV-4vq"/>
+                                            <constraint firstItem="q2T-lw-Q2x" firstAttribute="leading" secondItem="Syp-LU-Dyq" secondAttribute="leading" constant="5" id="mVu-xv-CNb"/>
+                                            <constraint firstAttribute="bottom" secondItem="q2T-lw-Q2x" secondAttribute="bottom" constant="10" id="qnz-uA-3Yg"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction3ButtonPressed:" destination="pXA-s1-gKJ" eventType="touchUpInside" id="ekF-5s-Sqd"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="wpX-l3-VEs" secondAttribute="centerX" id="7V1-H0-0F9"/>
-                                    <constraint firstItem="wpX-l3-VEs" firstAttribute="top" secondItem="VGz-Bi-ZwT" secondAttribute="top" constant="10" id="GZO-ci-Ehl"/>
-                                    <constraint firstAttribute="trailing" secondItem="wpX-l3-VEs" secondAttribute="trailing" constant="10" id="gwW-LE-Lyp"/>
-                                    <constraint firstAttribute="bottom" secondItem="wpX-l3-VEs" secondAttribute="bottom" constant="10" id="iun-Lj-TGe"/>
-                                    <constraint firstItem="wpX-l3-VEs" firstAttribute="leading" secondItem="VGz-Bi-ZwT" secondAttribute="leading" constant="10" id="xXv-pR-rEe"/>
+                                    <constraint firstItem="Ij8-Zw-Ynf" firstAttribute="top" secondItem="2VB-Ji-XIB" secondAttribute="top" constant="10" id="1u3-Jr-mHz"/>
+                                    <constraint firstItem="Ci6-D7-wjB" firstAttribute="leading" secondItem="2VB-Ji-XIB" secondAttribute="leading" constant="10" id="4kU-pf-5kX"/>
+                                    <constraint firstItem="95s-PU-CLf" firstAttribute="leading" secondItem="2VB-Ji-XIB" secondAttribute="leading" constant="20" id="9Ad-8P-bbG"/>
+                                    <constraint firstAttribute="centerX" secondItem="95s-PU-CLf" secondAttribute="centerX" id="9iP-TP-cbC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ci6-D7-wjB" secondAttribute="trailing" constant="10" id="9xG-FG-ycI"/>
+                                    <constraint firstAttribute="centerX" secondItem="Ij8-Zw-Ynf" secondAttribute="centerX" id="CKa-Ad-9wD"/>
+                                    <constraint firstAttribute="trailing" secondItem="95s-PU-CLf" secondAttribute="trailing" constant="20" id="CTm-QS-BAD"/>
+                                    <constraint firstAttribute="bottom" secondItem="Syp-LU-Dyq" secondAttribute="bottom" constant="10" id="Ihg-Z1-2ep"/>
+                                    <constraint firstItem="Ci6-D7-wjB" firstAttribute="top" secondItem="Ij8-Zw-Ynf" secondAttribute="bottom" constant="10" id="Jnf-aW-ViP"/>
+                                    <constraint firstItem="zHQ-Bt-Hmz" firstAttribute="top" secondItem="95s-PU-CLf" secondAttribute="bottom" constant="10" id="V0O-YI-ZpC"/>
+                                    <constraint firstItem="95s-PU-CLf" firstAttribute="top" secondItem="Ci6-D7-wjB" secondAttribute="bottom" constant="10" id="cdK-7K-ZVt"/>
+                                    <constraint firstItem="zHQ-Bt-Hmz" firstAttribute="leading" secondItem="2VB-Ji-XIB" secondAttribute="leading" constant="20" id="df2-c3-4ts"/>
+                                    <constraint firstItem="Syp-LU-Dyq" firstAttribute="leading" secondItem="zHQ-Bt-Hmz" secondAttribute="trailing" constant="10" id="lmp-3Z-LGi"/>
+                                    <constraint firstAttribute="bottom" secondItem="zHQ-Bt-Hmz" secondAttribute="bottom" constant="10" id="tuC-u7-YUG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Syp-LU-Dyq" secondAttribute="trailing" constant="20" id="vZN-hz-n9E"/>
+                                    <constraint firstItem="zHQ-Bt-Hmz" firstAttribute="width" secondItem="Syp-LU-Dyq" secondAttribute="width" id="vnd-py-vO9"/>
+                                    <constraint firstAttribute="centerX" secondItem="Ci6-D7-wjB" secondAttribute="centerX" id="wd3-Ix-X5w"/>
+                                    <constraint firstItem="Syp-LU-Dyq" firstAttribute="top" secondItem="95s-PU-CLf" secondAttribute="bottom" constant="10" id="yMM-vz-1hK"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="VGz-Bi-ZwT" secondAttribute="trailing" constant="20" id="0ZF-gB-0U1"/>
-                            <constraint firstItem="VGz-Bi-ZwT" firstAttribute="leading" secondItem="OSf-lZ-3WL" secondAttribute="leadingMargin" constant="20" id="1gY-hM-QPe"/>
-                            <constraint firstAttribute="centerY" secondItem="VGz-Bi-ZwT" secondAttribute="centerY" id="TOu-xV-BFv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2VB-Ji-XIB" secondAttribute="trailing" constant="20" id="39X-ev-AJ7"/>
+                            <constraint firstAttribute="centerY" secondItem="2VB-Ji-XIB" secondAttribute="centerY" id="WMi-eD-QK0"/>
+                            <constraint firstItem="2VB-Ji-XIB" firstAttribute="leading" secondItem="3o8-Ii-2Qa" secondAttribute="leadingMargin" constant="20" id="kyW-vd-G6m"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dialogView" destination="VGz-Bi-ZwT" id="jJC-Gg-sJZ"/>
-                        <outlet property="mMessage" destination="wpX-l3-VEs" id="aLq-gh-uBB"/>
+                        <outlet property="dialogView" destination="2VB-Ji-XIB" id="BL8-8O-ov9"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PwQ-3y-Mpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0fo-eS-voW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2920" y="1511"/>
+            <point key="canvasLocation" x="3326" y="1522"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="kY2-Au-EEh">
+            <objects>
+                <viewController storyboardIdentifier="DoYouLikeGameDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5t7-Af-Lxz" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EPL-Bh-Xec"/>
+                        <viewControllerLayoutGuide type="bottom" id="F5B-r5-p43"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="Pha-M8-PV7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-Gl-gx6">
+                                <rect key="frame" x="28" y="115" width="265" height="193"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8je-86-u60" customClass="MFUIButton">
+                                        <rect key="frame" x="148" y="93" width="104" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Yes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmk-VD-xaT">
+                                                <rect key="frame" x="8" y="16" width="88" height="46"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="Hmk-VD-xaT" secondAttribute="centerY" id="Vg4-2M-kdf"/>
+                                            <constraint firstAttribute="centerX" secondItem="Hmk-VD-xaT" secondAttribute="centerX" id="g6L-C5-QHU"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="5t7-Af-Lxz" eventType="touchUpInside" id="aQV-XZ-dzO"/>
+                                        </connections>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hodie! Do you love Magic Flood?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTf-ZZ-yVG">
+                                        <rect key="frame" x="16" y="23" width="232" height="52"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vml-7T-bfu" customClass="MFUIButton">
+                                        <rect key="frame" x="26" y="93" width="95" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zu-x0-xTc">
+                                                <rect key="frame" x="7" y="18" width="81" height="42"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="2zu-x0-xTc" secondAttribute="centerX" id="63F-rf-ZIL"/>
+                                            <constraint firstAttribute="centerY" secondItem="2zu-x0-xTc" secondAttribute="centerY" id="VuZ-TU-7vz"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="5t7-Af-Lxz" eventType="touchUpInside" id="vZR-Bh-CSf"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CTf-ZZ-yVG" secondAttribute="trailing" constant="20" id="62H-dD-Q3Q"/>
+                                    <constraint firstAttribute="centerX" secondItem="CTf-ZZ-yVG" secondAttribute="centerX" id="I0T-R9-081"/>
+                                    <constraint firstItem="CTf-ZZ-yVG" firstAttribute="top" secondItem="4Cg-Gl-gx6" secondAttribute="top" constant="20" id="IP3-Of-591"/>
+                                    <constraint firstItem="8je-86-u60" firstAttribute="top" secondItem="CTf-ZZ-yVG" secondAttribute="bottom" constant="20" id="M1Y-Ur-SIX"/>
+                                    <constraint firstAttribute="centerX" secondItem="CTf-ZZ-yVG" secondAttribute="centerX" id="Uyw-qS-AOd"/>
+                                    <constraint firstItem="vml-7T-bfu" firstAttribute="leading" secondItem="4Cg-Gl-gx6" secondAttribute="leading" constant="20" id="Wa5-vM-jYH"/>
+                                    <constraint firstAttribute="centerX" secondItem="CTf-ZZ-yVG" secondAttribute="centerX" id="fhH-rA-jDh"/>
+                                    <constraint firstItem="8je-86-u60" firstAttribute="width" secondItem="vml-7T-bfu" secondAttribute="width" id="gDa-XV-x3U"/>
+                                    <constraint firstAttribute="bottom" secondItem="vml-7T-bfu" secondAttribute="bottom" constant="20" id="lmC-qw-c0e"/>
+                                    <constraint firstItem="8je-86-u60" firstAttribute="leading" secondItem="vml-7T-bfu" secondAttribute="trailing" constant="20" id="okq-yU-lgf"/>
+                                    <constraint firstAttribute="bottom" secondItem="8je-86-u60" secondAttribute="bottom" constant="20" id="qOQ-gg-pie"/>
+                                    <constraint firstItem="CTf-ZZ-yVG" firstAttribute="leading" secondItem="4Cg-Gl-gx6" secondAttribute="leading" constant="20" id="s0u-7G-ci2"/>
+                                    <constraint firstItem="vml-7T-bfu" firstAttribute="top" secondItem="CTf-ZZ-yVG" secondAttribute="bottom" constant="20" id="shQ-fd-wXQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="8je-86-u60" secondAttribute="trailing" constant="20" id="yMx-dl-S2A"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="4Cg-Gl-gx6" secondAttribute="centerX" id="mAj-S6-XDS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Cg-Gl-gx6" secondAttribute="trailing" constant="20" id="v2q-Eg-d9F"/>
+                            <constraint firstItem="4Cg-Gl-gx6" firstAttribute="leading" secondItem="Pha-M8-PV7" secondAttribute="leadingMargin" constant="20" id="wD6-DK-Sxx"/>
+                            <constraint firstAttribute="centerY" secondItem="4Cg-Gl-gx6" secondAttribute="centerY" id="wMW-aA-Pqc"/>
+                            <constraint firstAttribute="centerY" secondItem="4Cg-Gl-gx6" secondAttribute="centerY" id="wjj-JX-3Rb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dialogView" destination="4Cg-Gl-gx6" id="t2I-0k-Uvs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2A0-C9-fO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2930" y="1516"/>
         </scene>
     </scenes>
     <resources>

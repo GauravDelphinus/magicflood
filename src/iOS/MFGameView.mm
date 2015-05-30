@@ -199,22 +199,22 @@
     switch (gridColor)
     {
         case GRID_COLOR_RED:
-            return UIColorFromRGB(0xDB4D4D).CGColor;
+            return UIColorFromRGB(0xCC0000).CGColor;
             break;
         case GRID_COLOR_GREEN:
-            return UIColorFromRGB(0x7ACC7A).CGColor;
+            return UIColorFromRGB(0x33CC33).CGColor;
             break;
         case GRID_COLOR_BLUE:
-            return UIColorFromRGB(0x33CCFF).CGColor;
+            return UIColorFromRGB(0x0066FF).CGColor;
             break;
         case GRID_COLOR_YELLOW:
-            return UIColorFromRGB(0xFFFF66).CGColor;
+            return UIColorFromRGB(0xFFFF00).CGColor;
             break;
         case GRID_COLOR_ORANGE:
-            return UIColorFromRGB(0xFFA347).CGColor;
+            return UIColorFromRGB(0xFF6600).CGColor;
             break;
         case GRID_COLOR_CYAN:
-            return UIColorFromRGB(0xDB4DFF).CGColor;
+            return UIColorFromRGB(0x9900CC).CGColor;
             break;
         case GRID_OBSTACLE: //obstacle
             return [UIColor grayColor].CGColor;

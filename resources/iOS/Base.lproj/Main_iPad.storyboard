@@ -142,6 +142,13 @@
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
             <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
+            <string>ArchitectsDaughter</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -3139,24 +3146,68 @@
             </objects>
             <point key="canvasLocation" x="6384" y="4813"/>
         </scene>
-        <!--Lifeline Placement Info Dialog-->
-        <scene sceneID="sSn-ti-RF5">
+        <!--Game Dialog Controller-->
+        <scene sceneID="cgQ-cG-yV8">
             <objects>
-                <viewController storyboardIdentifier="LifelinePlacementInfoDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ebi-SY-VrD" customClass="MFLifelinePlacementInfoDialog" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DoYouLikeGameDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D3m-DX-fYs" customClass="MFGameDialogController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Nqp-tS-jKf"/>
-                        <viewControllerLayoutGuide type="bottom" id="K1P-sQ-sqk"/>
+                        <viewControllerLayoutGuide type="top" id="nN8-JT-46A"/>
+                        <viewControllerLayoutGuide type="bottom" id="AKd-r2-ARm"/>
                     </layoutGuides>
-                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="PEy-xw-vcb">
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="kCQ-na-xN9">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-5y-FX2">
-                                <rect key="frame" x="101" y="456" width="567" height="111"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Lb-qu-yBw">
+                                <rect key="frame" x="207" y="377" width="355.5" height="270"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations! Now that you have something to talk about" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NH-Dl-njG">
-                                        <rect key="frame" x="26" y="9" width="514" height="94"/>
-                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDk-YV-Kyn" customClass="MFUIButton">
+                                        <rect key="frame" x="39" y="157" width="128" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idR-vg-OFc">
+                                                <rect key="frame" x="24" y="18" width="81" height="42"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="idR-vg-OFc" secondAttribute="centerX" id="gOs-eN-R5x"/>
+                                            <constraint firstAttribute="centerY" secondItem="idR-vg-OFc" secondAttribute="centerY" id="q2a-3z-Pmy"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="negativeAction1ButtonPressed:" destination="D3m-DX-fYs" eventType="touchUpInside" id="2E4-bp-N2F"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bsR-AP-8iO" customClass="MFUIButton">
+                                        <rect key="frame" x="185" y="157" width="127" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Yes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBO-6Z-7EU">
+                                                <rect key="frame" x="19" y="16" width="88" height="46"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="yBO-6Z-7EU" secondAttribute="centerX" id="Dkt-bi-Ari"/>
+                                            <constraint firstAttribute="centerY" secondItem="yBO-6Z-7EU" secondAttribute="centerY" id="i6p-kS-RWA"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="D3m-DX-fYs" eventType="touchUpInside" id="LFZ-KQ-UKK"/>
+                                        </connections>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hodie! Do you love Magic Flood?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9B-fD-xGo">
+                                        <rect key="frame" x="18" y="39" width="318" height="92"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="24"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -3164,15 +3215,105 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
-                    <connections>
-                        <outlet property="dialogView" destination="dS8-5y-FX2" id="Uuy-jS-7Le"/>
-                        <outlet property="mMessage" destination="9NH-Dl-njG" id="rUS-TB-IPa"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JZq-R4-aVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSY-qz-Jjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5481" y="2495"/>
+            <point key="canvasLocation" x="5489" y="2495"/>
+        </scene>
+        <!--Game Dialog Controller-->
+        <scene sceneID="gTO-LI-jS0">
+            <objects>
+                <viewController storyboardIdentifier="RateGameDialog" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ERD-bE-jUm" customClass="MFGameDialogController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vEF-c0-NeT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fq5-AP-Ltf"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="zSy-Ms-u5f">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ktt-e7-7sH">
+                                <rect key="frame" x="191" y="267" width="386" height="489"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJ2-mA-JWm">
+                                        <rect key="frame" x="28" y="59" width="330" height="214"/>
+                                        <string key="text">We're so happy to hear that you love Magic Flood!  It'd be really helpful if you rated us on the App Store.  Thanks so much for spending some time with us.</string>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thank You!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qe-4J-26b">
+                                        <rect key="frame" x="116" y="15" width="154" height="41"/>
+                                        <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gde-Cy-Yhd" customClass="MFUIButton">
+                                        <rect key="frame" x="42" y="285" width="296" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate Magic Flood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYv-ug-Ixn">
+                                                <rect key="frame" x="8" y="14" width="280" height="50"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction1ButtonPressed:" destination="ERD-bE-jUm" eventType="touchUpInside" id="byj-kE-WAi"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6IM-Ug-SqB" customClass="MFUIButton">
+                                        <rect key="frame" x="42" y="380" width="135" height="79"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remind me later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTl-3G-xDA">
+                                                <rect key="frame" x="0.0" y="8" width="135" height="64"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="18"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction2ButtonPressed:" destination="ERD-bE-jUm" eventType="touchUpInside" id="Zwa-mK-7Vr"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2tf-mL-F5I" customClass="MFUIButton">
+                                        <rect key="frame" x="191" y="380" width="147" height="79"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Already Rated" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qg-Zi-4S0">
+                                                <rect key="frame" x="4" y="5" width="139" height="70"/>
+                                                <fontDescription key="fontDescription" name="ArchitectsDaughter" family="Architects Daughter" pointSize="18"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <action selector="positiveAction3ButtonPressed:" destination="ERD-bE-jUm" eventType="touchUpInside" id="mSD-Zn-J1g"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HnO-Dd-a0C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6337" y="2495"/>
         </scene>
     </scenes>
     <resources>
